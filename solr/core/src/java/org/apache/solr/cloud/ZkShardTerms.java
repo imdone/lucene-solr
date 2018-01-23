@@ -35,6 +35,7 @@ import org.apache.solr.common.util.Utils;
 import org.apache.solr.core.CoreDescriptor;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
@@ -287,6 +288,10 @@ public class ZkShardTerms implements AutoCloseable{
       try {
         if (numWatcher.compareAndSet(0, 1)) {
           watcher = event -> {
+            // session events are not change events, and do not remove the watcher
+            if (Watcher.Event.EventType.None.equals(event.getType())) {
+              return;
+            }
             numWatcher.compareAndSet(1, 0);
             refreshTerms(false);
           };
