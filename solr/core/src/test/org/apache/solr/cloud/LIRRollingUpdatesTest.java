@@ -94,7 +94,6 @@ public class LIRRollingUpdatesTest extends SolrCloudTestCase {
     }
     proxies = null;
     jettys = null;
-    TestInjection.reset();
   }
 
   @Test

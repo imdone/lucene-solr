@@ -92,9 +92,9 @@ public class ZkShardTerms implements AutoCloseable{
   }
 
   /**
-   * Ensure that leader's term is lower than some replica's terms
+   * Ensure that leader's term is higher than some replica's terms
    * @param leader coreNodeName of leader
-   * @param replicasInLowerTerms replicas which should their term should be lower than leader's term
+   * @param replicasInLowerTerms set of replicas in which their terms should be lower than leader's term
    */
   public void ensureTermsIsHigher(String leader, Set<String> replicasInLowerTerms) {
     Terms newTerms;
@@ -347,6 +347,11 @@ public class ZkShardTerms implements AutoCloseable{
       this.version = version;
     }
 
+    /**
+     * Can this replica become leader or is this replica's term equals to leader's term?
+     * @param coreNodeName of the replica
+     * @return true if this replica can become leader, false if otherwise
+     */
     boolean canBecomeLeader(String coreNodeName) {
       if (values.isEmpty()) return true;
       long maxTerm = Collections.max(values.values());
@@ -357,6 +362,12 @@ public class ZkShardTerms implements AutoCloseable{
       return values.get(coreNodeName);
     }
 
+    /**
+     * Return a new {@link Terms} in which term of {@code leader} is higher than {@code replicasInLowerTerms}
+     * @param leader coreNodeName of leader
+     * @param replicasInLowerTerms set of replicas in which their terms should be lower than leader's term
+     * @return null if term of {@code leader} is already higher than {@code replicasInLowerTerms}
+     */
     Terms increaseTerms(String leader, Set<String> replicasInLowerTerms) {
       if (!values.containsKey(leader)) {
         throw new SolrException(SolrException.ErrorCode.SERVER_ERROR, "Can not find leader's term " + leader);
@@ -384,6 +395,11 @@ public class ZkShardTerms implements AutoCloseable{
       return new Terms(newValues, version);
     }
 
+    /**
+     * Return a new {@link Terms} in which term of {@code coreNodeName} is removed
+     * @param coreNodeName of the replica
+     * @return null if term of {@code coreNodeName} is already not exist
+     */
     Terms removeTerm(String coreNodeName) {
       if (!values.containsKey(coreNodeName)) return null;
 
@@ -392,6 +408,11 @@ public class ZkShardTerms implements AutoCloseable{
       return new Terms(newValues, version);
     }
 
+    /**
+     * Return a new {@link Terms} in which the associate term of {@code coreNodeName} is not null
+     * @param coreNodeName of the replica
+     * @return null if term of {@code coreNodeName} is already exist
+     */
     Terms registerTerm(String coreNodeName) {
       if (values.containsKey(coreNodeName)) return null;
 
@@ -400,6 +421,11 @@ public class ZkShardTerms implements AutoCloseable{
       return new Terms(newValues, version);
     }
 
+    /**
+     * Return a new {@link Terms} in which the term of {@code coreNodeName} is max
+     * @param coreNodeName of the replica
+     * @return null if term of {@code coreNodeName} is already maximum
+     */
     Terms setEqualsToMax(String coreNodeName) {
       long maxTerm;
       try {
