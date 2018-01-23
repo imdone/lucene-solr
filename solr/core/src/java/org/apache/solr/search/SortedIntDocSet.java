@@ -106,7 +106,7 @@ public class SortedIntDocSet extends DocSetBase {
     // array, find where that should be in the small array, and then recurse with
     // the top and bottom half of both arrays until they are small enough to use
     // a fallback intersection method.
-    // NOTE: I tried this and it worked, but it was actually slower than this current
+    // NOTE: I tried this and it worked, but it was actually slower than this current id:1937 gh:1938
     // highly optimized approach.
 
     int icount = 0;
@@ -724,7 +724,7 @@ public class SortedIntDocSet extends DocSetBase {
 
                 int high = endIdx;
 
-                // TODO: probe more before resorting to binary search?
+                // TODO: probe more before resorting to binary search? id:2879 gh:2880
 
                 // binary search
                 while (idx <= high) {

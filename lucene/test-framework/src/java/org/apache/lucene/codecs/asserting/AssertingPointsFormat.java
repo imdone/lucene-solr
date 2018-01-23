@@ -47,7 +47,7 @@ public final class AssertingPointsFormat extends PointsFormat {
    * Expert: Create an AssertingPointsFormat.
    * This is only intended to pass special parameters for testing.
    */
-  // TODO: can we randomize this a cleaner way? e.g. stored fields and vectors do
+  // TODO: can we randomize this a cleaner way? e.g. stored fields and vectors do id:1585 gh:1586
   // this with a separate codec...
   public AssertingPointsFormat(PointsFormat in) {
     this.in = in;

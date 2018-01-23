@@ -199,7 +199,7 @@ public final class CharacterUtils {
     private final char[] buffer;
     private int offset;
     private int length;
-    // NOTE: not private so outer class can access without
+    // NOTE: not private so outer class can access without id:341 gh:342
     // $access methods:
     char lastTrailingHighSurrogate;
     

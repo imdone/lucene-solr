@@ -113,7 +113,7 @@ public class JavaBinUpdateRequestCodec {
     final NamedList[] namedList = new NamedList[1];
     try (JavaBinCodec codec = new JavaBinCodec() {
 
-      // NOTE: this only works because this is an anonymous inner class 
+      // NOTE: this only works because this is an anonymous inner class  id:2444 gh:2445
       // which will only ever be used on a single stream -- if this class 
       // is ever refactored, this will not work.
       private boolean seenOuterMostDocIterator = false;
@@ -195,7 +195,7 @@ public class JavaBinUpdateRequestCodec {
       codec.unmarshal(is);
     }
     
-    // NOTE: if the update request contains only delete commands the params
+    // NOTE: if the update request contains only delete commands the params id:2519 gh:2520
     // must be loaded now
     if(updateRequest.getParams()==null) {
       NamedList params = (NamedList) namedList[0].get("params");

@@ -30,7 +30,7 @@ import org.junit.Test;
 
 public class TestFacetMethods {
 
-  // TODO - make these public in FieldProperties?
+  // TODO - make these public in FieldProperties? id:2926 gh:2927
   protected final static int MULTIVALUED         = 0x00000200;
   protected final static int DOC_VALUES          = 0x00008000;
 
@@ -161,7 +161,7 @@ public class TestFacetMethods {
     SchemaField field = new SchemaField("field", new StrField(), 0, null);
 
     // default is FC, UIF rewrites to FCS for mincount = 0
-    // TODO should it rewrite to FC instead?
+    // TODO should it rewrite to FC instead? id:2333 gh:2334
 
     assertEquals(SimpleFacets.FacetMethod.FC, SimpleFacets.selectFacetMethod(field, null, 0));
     assertEquals(SimpleFacets.FacetMethod.ENUM, SimpleFacets.selectFacetMethod(field, SimpleFacets.FacetMethod.ENUM, 0));

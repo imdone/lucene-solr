@@ -171,7 +171,7 @@ public class ConcurrentSortedSetDocValuesFacetCounts extends Facets {
         return null;
       }
 
-      // TODO: yet another option is to count all segs
+      // TODO: yet another option is to count all segs id:1273 gh:1274
       // first, only in seg-ord space, and then do a
       // merge-sort-PQ in the end to only "resolve to
       // global" those seg ords that can compete, if we know
@@ -243,7 +243,7 @@ public class ConcurrentSortedSetDocValuesFacetCounts extends Facets {
 
     OrdinalMap ordinalMap;
 
-    // TODO: is this right?  really, we need a way to
+    // TODO: is this right?  really, we need a way to id:1491 gh:1492
     // verify that this ordinalMap "matches" the leaves in
     // matchingDocs...
     if (dv instanceof MultiDocValues.MultiSortedSetDocValues && matchingDocs.size() > 1) {
@@ -284,7 +284,7 @@ public class ConcurrentSortedSetDocValuesFacetCounts extends Facets {
 
     OrdinalMap ordinalMap;
 
-    // TODO: is this right?  really, we need a way to
+    // TODO: is this right?  really, we need a way to id:1022 gh:1023
     // verify that this ordinalMap "matches" the leaves in
     // matchingDocs...
     if (dv instanceof MultiDocValues.MultiSortedSetDocValues) {

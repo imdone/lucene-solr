@@ -61,7 +61,7 @@ import org.slf4j.LoggerFactory;
  * </p>
  * 
  * <p>
- * NOTE: In cloud based collections, this processor expects to <b>NOT</b> be used on {@link DistribPhase#FROMLEADER} 
+ * NOTE: In cloud based collections, this processor expects to <b>NOT</b> be used on {@link DistribPhase#FROMLEADER}  id:2816 gh:2817
  * requests (because any successes that occur locally on the leader are considered successes even if there is some 
  * subsequent error on a replica).  {@link TolerantUpdateProcessorFactory} will short circut it away in those 
  * requests.
@@ -177,7 +177,7 @@ public class TolerantUpdateProcessor extends UpdateRequestProcessor {
                                                           t.getMessage());
       knownErrors.add(err);
 
-      // NOTE: we're not using this to dedup before adding to knownErrors.
+      // NOTE: we're not using this to dedup before adding to knownErrors. id:2202 gh:2203
       // if we're lucky enough to get an immediate local failure (ie: we're a leader, or some other processor
       // failed) then recording the multiple failures is a good thing -- helps us with an accurate fail
       // fast if we exceed maxErrors
@@ -292,7 +292,7 @@ public class TolerantUpdateProcessor extends UpdateRequestProcessor {
     // decide if we have hit a situation where we know an error needs to be thrown.
     
     if ((DistribPhase.TOLEADER.equals(distribPhase) ? 0 : maxErrors) < knownErrors.size()) {
-      // NOTE: even if maxErrors wasn't exceeded, we need to throw an error when we have any errors if we're
+      // NOTE: even if maxErrors wasn't exceeded, we need to throw an error when we have any errors if we're id:2114 gh:2115
       // a leader that was forwarded to by another node so that the forwarding node knows we encountered some
       // problems and can aggregate the results
 
@@ -320,7 +320,7 @@ public class TolerantUpdateProcessor extends UpdateRequestProcessor {
    * Only remembers the "first" exception encountered, and wraps it in a SolrException if needed, so that 
    * it can later be annotated with the metadata our users expect and re-thrown.
    *
-   * NOTE: NOT THREAD SAFE
+   * NOTE: NOT THREAD SAFE id:3002 gh:3003
    */
   private static final class FirstErrTracker {
 
@@ -389,7 +389,7 @@ public class TolerantUpdateProcessor extends UpdateRequestProcessor {
               (firstErrMetadata.getName(i), firstErrMetadata.getVal(i))) {
                
             firstErrMetadata.remove(i);
-            // NOTE: post decrementing index so we don't miss anything as we remove items
+            // NOTE: post decrementing index so we don't miss anything as we remove items id:2190 gh:2191
             i--;
           }
         }

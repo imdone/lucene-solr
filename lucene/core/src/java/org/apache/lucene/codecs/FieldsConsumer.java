@@ -44,9 +44,9 @@ public abstract class FieldsConsumer implements Closeable {
   protected FieldsConsumer() {
   }
 
-  // TODO: can we somehow compute stats for you...?
+  // TODO: can we somehow compute stats for you...? id:335 gh:336
 
-  // TODO: maybe we should factor out "limited" (only
+  // TODO: maybe we should factor out "limited" (only id:321 gh:322
   // iterables, no counts/stats) base classes from
   // Fields/Terms/Docs/AndPositions?
 
@@ -105,7 +105,7 @@ public abstract class FieldsConsumer implements Closeable {
     write(mergedFields);
   }
 
-  // NOTE: strange but necessary so javadocs linting is happy:
+  // NOTE: strange but necessary so javadocs linting is happy: id:411 gh:412
   @Override
   public abstract void close() throws IOException;
 }

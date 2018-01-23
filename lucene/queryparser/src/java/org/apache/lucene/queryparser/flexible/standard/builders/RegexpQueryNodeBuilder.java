@@ -37,7 +37,7 @@ public class RegexpQueryNodeBuilder implements StandardQueryBuilder {
   public RegexpQuery build(QueryNode queryNode) throws QueryNodeException {
     RegexpQueryNode regexpNode = (RegexpQueryNode) queryNode;
 
-    // TODO: make the maxStates configurable w/ a reasonable default (QueryParserBase uses 10000)
+    // TODO: make the maxStates configurable w/ a reasonable default (QueryParserBase uses 10000) id:1223 gh:1224
     RegexpQuery q = new RegexpQuery(new Term(regexpNode.getFieldAsString(),
         regexpNode.textToBytesRef()));
 

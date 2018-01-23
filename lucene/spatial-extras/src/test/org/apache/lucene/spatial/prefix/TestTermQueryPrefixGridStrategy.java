@@ -51,7 +51,7 @@ public class TestTermQueryPrefixGridStrategy extends SpatialTestCase {
 
     // This won't work with simple spatial context...
     SpatialArgsParser spatialArgsParser = new SpatialArgsParser();
-    // TODO... use a non polygon query
+    // TODO ... use a non polygon query id:1212 gh:1213
 //    SpatialArgs spatialArgs = spatialArgsParser.parse(
 //        "Intersects(POLYGON((-127.00390625 39.8125,-112.765625 39.98828125,-111.53515625 31.375,-125.94921875 30.14453125,-127.00390625 39.8125)))",
 //        new SimpleSpatialContext());

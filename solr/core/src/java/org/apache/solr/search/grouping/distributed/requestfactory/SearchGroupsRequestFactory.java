@@ -43,7 +43,7 @@ public class SearchGroupsRequestFactory implements ShardRequestFactory {
     sreq.purpose = ShardRequest.PURPOSE_GET_TOP_GROUPS;
 
     sreq.params = new ModifiableSolrParams(rb.req.getParams());
-    // TODO: base on current params or original params?
+    // TODO: base on current params or original params? id:2925 gh:2925
 
     // don't pass through any shards param
     sreq.params.remove(ShardParams.SHARDS);
@@ -56,7 +56,7 @@ public class SearchGroupsRequestFactory implements ShardRequestFactory {
     } else {
       sreq.params.set(CommonParams.START, "0");
     }
-    // TODO: should we even use the SortSpec?  That's obtained from the QParser, and
+    // TODO: should we even use the SortSpec?  That's obtained from the QParser, and id:2071 gh:2072
     // perhaps we shouldn't attempt to parse the query at this level?
     // Alternate Idea: instead of specifying all these things at the upper level,
     // we could just specify that this is a shard request.

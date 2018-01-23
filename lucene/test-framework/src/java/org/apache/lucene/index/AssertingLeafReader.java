@@ -209,7 +209,7 @@ public class AssertingLeafReader extends FilterLeafReader {
       }
     }
 
-    // TODO: we should separately track if we are 'at the end' ?
+    // TODO: we should separately track if we are 'at the end' ? id:2588 gh:2589
     // someone should not call next() after it returns null!!!!
     @Override
     public BytesRef next() throws IOException {
@@ -1018,7 +1018,7 @@ public class AssertingLeafReader extends FilterLeafReader {
         assert StringHelper.compare(bytesPerDim, lastMaxPackedValue, dim*bytesPerDim, packedValue, dim*bytesPerDim) >= 0: "dim=" + dim + " of " +  numDims + " value=" + new BytesRef(packedValue);
       }
 
-      // TODO: we should assert that this "matches" whatever relation the last call to compare had returned
+      // TODO: we should assert that this "matches" whatever relation the last call to compare had returned id:1687 gh:1688
       assert packedValue.length == numDims * bytesPerDim;
       if (numDims == 1) {
         int cmp = StringHelper.compare(bytesPerDim, lastDocValue, 0, packedValue, 0);

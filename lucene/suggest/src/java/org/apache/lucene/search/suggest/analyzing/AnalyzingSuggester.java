@@ -244,7 +244,7 @@ public class AnalyzingSuggester extends Lookup implements Accountable {
     this.exactFirst = (options & EXACT_FIRST) != 0;
     this.preserveSep = (options & PRESERVE_SEP) != 0;
 
-    // NOTE: this is just an implementation limitation; if
+    // NOTE: this is just an implementation limitation; if id:1530 gh:1531
     // somehow this is a problem we could fix it by using
     // more than one byte to disambiguate ... but 256 seems
     // like it should be way more then enough.
@@ -556,13 +556,13 @@ public class AnalyzingSuggester extends Lookup implements Accountable {
           seenSurfaceForms.add(BytesRef.deepCopyOf(surface));
         }
 
-        // TODO: I think we can avoid the extra 2 bytes when
+        // TODO: I think we can avoid the extra 2 bytes when id:2547 gh:2548
         // there is no dup (dedup==0), but we'd have to fix
         // the exactFirst logic ... which would be sort of
         // hairy because we'd need to special case the two
         // (dup/not dup)...
 
-        // NOTE: must be byte 0 so we sort before whatever
+        // NOTE: must be byte 0 so we sort before whatever id:1511 gh:1512
         // is next
         analyzed.append((byte) 0);
         analyzed.append((byte) dedup);
@@ -718,7 +718,7 @@ public class AnalyzingSuggester extends Lookup implements Accountable {
         Util.TopNSearcher<Pair<Long,BytesRef>> searcher;
         searcher = new Util.TopNSearcher<>(fst, count * maxSurfaceFormsPerAnalyzedForm, count * maxSurfaceFormsPerAnalyzedForm, weightComparator);
 
-        // NOTE: we could almost get away with only using
+        // NOTE: we could almost get away with only using id:1393 gh:1394
         // the first start node.  The only catch is if
         // maxSurfaceFormsPerAnalyzedForm had kicked in and
         // pruned our exact match from one of these nodes
@@ -734,7 +734,7 @@ public class AnalyzingSuggester extends Lookup implements Accountable {
         TopResults<Pair<Long,BytesRef>> completions = searcher.search();
         assert completions.isComplete;
 
-        // NOTE: this is rather inefficient: we enumerate
+        // NOTE: this is rather inefficient: we enumerate id:1224 gh:1225
         // every matching "exactly the same analyzed form"
         // path, and then do linear scan to see if one of
         // these exactly matches the input.  It should be
@@ -808,7 +808,7 @@ public class AnalyzingSuggester extends Lookup implements Accountable {
 
         LookupResult result = getLookupResult(completion.output.output1, completion.output.output2, spare);
 
-        // TODO: for fuzzy case would be nice to return
+        // TODO: for fuzzy case would be nice to return id:1533 gh:1535
         // how many edits were required
 
         //System.out.println("    result=" + result);
@@ -854,7 +854,7 @@ public class AnalyzingSuggester extends Lookup implements Accountable {
     automaton = replaceSep(automaton);
     automaton = convertAutomaton(automaton);
 
-    // TODO: LUCENE-5660 re-enable this once we disallow massive suggestion strings
+    // TODO: LUCENE-5660 re-enable this once we disallow massive suggestion strings id:2550 gh:2551
     // assert SpecialOperations.isFinite(automaton);
 
     // Get all paths from the automaton (there can be
@@ -864,7 +864,7 @@ public class AnalyzingSuggester extends Lookup implements Accountable {
   }
 
   final Automaton toLookupAutomaton(final CharSequence key) throws IOException {
-    // TODO: is there a Reader from a CharSequence?
+    // TODO: is there a Reader from a CharSequence? id:1514 gh:1515
     // Turn tokenstream into automaton:
     Automaton automaton = null;
     try (TokenStream ts = queryAnalyzer.tokenStream("", key.toString())) {
@@ -873,7 +873,7 @@ public class AnalyzingSuggester extends Lookup implements Accountable {
 
     automaton = replaceSep(automaton);
 
-    // TODO: we can optimize this somewhat by determinizing
+    // TODO: we can optimize this somewhat by determinizing id:1395 gh:1396
     // while we convert
     automaton = Operations.determinize(automaton, DEFAULT_MAX_DETERMINIZED_STATES);
     return automaton;

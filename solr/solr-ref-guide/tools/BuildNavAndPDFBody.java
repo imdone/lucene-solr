@@ -67,7 +67,7 @@ public class BuildNavAndPDFBody {
     if (null == mainPage) {
       throw new RuntimeException("no main-page found with shortname: " + mainPageShortname);
     }
-    // NOTE: mainPage claims to be it's own parent to prevent anyone decendent from introducing a loop
+    // NOTE: mainPage claims to be it's own parent to prevent anyone decendent from introducing a loop id:2985 gh:2986
     mainPage.buildPageTreeRecursive(mainPage, allPages);
 
     { // validate that there are no orphan pages
@@ -118,7 +118,7 @@ public class BuildNavAndPDFBody {
             // use an explicit anchor, since the auto-generated ID from the "title" might not match
             // the shortname/filename
             w.append("[[").append(page.shortname).append("]]\n");
-            // HACK: where this file actually lives will determine what we need here...
+            // HACK: where this file actually lives will determine what we need here... id:2421 gh:2423
             w.write("include::../");
             w.write(page.file.getName());
             w.write("[leveloffset=+"+Math.max(0, depth.intValue())+"]\n\n");
@@ -160,7 +160,7 @@ public class BuildNavAndPDFBody {
         }
         scrollnav.put(p.shortname, current);
       }
-      // HACK: jekyll doesn't like escaped forward slashes in it's JSON?
+      // HACK: jekyll doesn't like escaped forward slashes in it's JSON? id:2456 gh:2457
       w.write(scrollnav.toString(2).replaceAll("\\\\/","/"));
     }
     
@@ -205,7 +205,7 @@ public class BuildNavAndPDFBody {
           if (0 == stack.size()) {
             assert page == mainPage;
             try {
-              // HACK: jekyll doesn't like escaped forward slashes in it's JSON?
+              // HACK: jekyll doesn't like escaped forward slashes in it's JSON? id:3123 gh:3124
               w.write(current.toString(2).replaceAll("\\\\/","/"));
             } catch (IOException | JSONException e) {
               throw new RuntimeException(e);
@@ -220,18 +220,18 @@ public class BuildNavAndPDFBody {
   /** Simple struct for modeling the key metadata for dealing with page navigation */
   public static final class Page {
     public final File file;
-    public final String title; // NOTE: has html escape codes in it
+    public final String title; // NOTE: has html escape codes in it id:2422 gh:2422
     public final String shortname;
     public final String permalink;
     public final List<String> kidShortnames;
-    /** NOTE: not populated on construction
+    /** NOTE: not populated on construction id:2986 gh:2987
      * @see #buildPageTreeRecursive
      */
     private Page parent;
     public Page getParent() {
       return parent;
     }
-    /** NOTE: not populated on construction
+    /** NOTE: not populated on construction id:2424 gh:2425
      * @see #buildPageTreeRecursive
      */
     public final List<Page> kids;
@@ -247,7 +247,7 @@ public class BuildNavAndPDFBody {
       this.shortname = file.getName().replaceAll("\\.adoc$","");
       this.permalink = this.shortname + ".html";
       
-      // TODO: do error checking if attribute metadata we care about is missing
+      // TODO: do error checking if attribute metadata we care about is missing id:2498 gh:2499
       Map<String,Object> attrs = header.getAttributes();
 
       // See SOLR-11541: Fail if a user adds new docs with older missleading attributes we don't use/want

@@ -42,7 +42,7 @@ import org.apache.lucene.util.automaton.Transition;
 
 import static org.apache.lucene.util.automaton.Operations.DEFAULT_MAX_DETERMINIZED_STATES;
 
-// TODO
+// TODO id:1462 gh:1463
 //    - compare perf to PhraseQuery exact and sloppy
 //    - optimize: find terms that are in fact MUST (because all paths
 //      through the A include that term)
@@ -126,7 +126,7 @@ public class TermAutomatonQuery extends Query {
 
     Transition t = new Transition();
 
-    // TODO: should we add "eps back to initial node" for all states,
+    // TODO: should we add "eps back to initial node" for all states, id:1638 gh:1639
     // and det that?  then we don't need to revisit initial node at
     // every position?  but automaton could blow up?  And, this makes it
     // harder to skip useless positions at search time?
@@ -207,7 +207,7 @@ public class TermAutomatonQuery extends Query {
 
   @Override
   public String toString(String field) {
-    // TODO: what really am I supposed to do with the incoming field...
+    // TODO: what really am I supposed to do with the incoming field... id:1141 gh:1142
     StringBuilder sb = new StringBuilder();
     sb.append("TermAutomatonQuery(field=");
     sb.append(this.field);
@@ -269,7 +269,7 @@ public class TermAutomatonQuery extends Query {
    *  This is extremely useful for visualizing the automaton. */
   public String toDot() {
 
-    // TODO: refactor & share with Automaton.toDot!
+    // TODO: refactor & share with Automaton.toDot! id:1330 gh:1331
 
     StringBuilder b = new StringBuilder();
     b.append("digraph Automaton {\n");
@@ -312,7 +312,7 @@ public class TermAutomatonQuery extends Query {
     return b.toString();
   }
 
-  // TODO: should we impl rewrite to return BooleanQuery of PhraseQuery,
+  // TODO: should we impl rewrite to return BooleanQuery of PhraseQuery, id:1181 gh:1182
   // when 1) automaton is finite, 2) doesn't use ANY transition, 3) is
   // "small enough"?
 
@@ -410,7 +410,7 @@ public class TermAutomatonQuery extends Query {
 
     @Override
     public Explanation explain(LeafReaderContext context, int doc) throws IOException {
-      // TODO
+      // TODO id:1464 gh:1465
       return null;
     }
   }
@@ -425,7 +425,7 @@ public class TermAutomatonQuery extends Query {
       return new TermQuery(new Term(field, idToTerm.get(single.ints[single.offset])));
     }
 
-    // TODO: can PhraseQuery really handle multiple terms at the same position?  If so, why do we even have MultiPhraseQuery?
+    // TODO: can PhraseQuery really handle multiple terms at the same position?  If so, why do we even have MultiPhraseQuery? id:1641 gh:1642
     
     // Try for either PhraseQuery or MultiPhraseQuery, which only works when the automaton is a sausage:
     MultiPhraseQuery.Builder mpq = new MultiPhraseQuery.Builder();
@@ -489,7 +489,7 @@ public class TermAutomatonQuery extends Query {
       return mpq.build();
     }
     
-    // TODO: we could maybe also rewrite to union of PhraseQuery (pull all finite strings) if it's "worth it"?
+    // TODO: we could maybe also rewrite to union of PhraseQuery (pull all finite strings) if it's "worth it"? id:1143 gh:1144
     return this;
   }
 }

@@ -144,7 +144,7 @@ public final class DocIdSetBuilder {
 
   /**
    * Add the content of the provided {@link DocIdSetIterator} to this builder.
-   * NOTE: if you need to build a {@link DocIdSet} out of a single
+   * NOTE: if you need to build a {@link DocIdSet} out of a single id:764 gh:765
    * {@link DocIdSetIterator}, you should rather use {@link RoaringDocIdSet.Builder}.
    */
   public void add(DocIdSetIterator iter) throws IOException {
@@ -281,7 +281,7 @@ public final class DocIdSetBuilder {
   /**
    * Concatenate the buffers in any order, leaving at least one empty slot in
    * the end
-   * NOTE: this method might reuse one of the arrays
+   * NOTE: this method might reuse one of the arrays id:674 gh:675
    */
   private static Buffer concat(List<Buffer> buffers) {
     int totalLength = 0;

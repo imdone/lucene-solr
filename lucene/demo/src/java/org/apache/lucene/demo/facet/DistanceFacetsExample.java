@@ -73,7 +73,7 @@ public class DistanceFacetsExample implements Closeable {
 
   /** Mean radius of the Earth in KM
    *
-   * NOTE: this is approximate, because the earth is a bit
+   * NOTE: this is approximate, because the earth is a bit id:1162 gh:1163
    * wider at the equator than the poles.  See
    * http://en.wikipedia.org/wiki/Earth_radius */
   // see http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf
@@ -87,7 +87,7 @@ public class DistanceFacetsExample implements Closeable {
     IndexWriter writer = new IndexWriter(indexDir, new IndexWriterConfig(
         new WhitespaceAnalyzer()).setOpenMode(OpenMode.CREATE));
 
-    // TODO: we could index in radians instead ... saves all the conversions in getBoundingBoxFilter
+    // TODO: we could index in radians instead ... saves all the conversions in getBoundingBoxFilter id:1463 gh:1464
 
     // Add documents with latitude/longitude location:
     // we index these both as DoublePoints (for bounding box/ranges) and as NumericDocValuesFields (for scoring)
@@ -144,7 +144,7 @@ public class DistanceFacetsExample implements Closeable {
     // licensed under creative commons 3.0:
     // http://creativecommons.org/licenses/by/3.0
 
-    // TODO: maybe switch to recursive prefix tree instead
+    // TODO: maybe switch to recursive prefix tree instead id:1010 gh:1011
     // (in lucene/spatial)?  It should be more efficient
     // since it's a 2D trie...
 

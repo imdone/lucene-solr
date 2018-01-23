@@ -100,7 +100,7 @@ public class AutomatonQuery extends MultiTermQuery {
     this.term = term;
     this.automaton = automaton;
     this.automatonIsBinary = isBinary;
-    // TODO: we could take isFinite too, to save a bit of CPU in CompiledAutomaton ctor?:
+    // TODO: we could take isFinite too, to save a bit of CPU in CompiledAutomaton ctor?: id:836 gh:837
     this.compiled = new CompiledAutomaton(automaton, null, true, maxDeterminizedStates, isBinary);
   }
 

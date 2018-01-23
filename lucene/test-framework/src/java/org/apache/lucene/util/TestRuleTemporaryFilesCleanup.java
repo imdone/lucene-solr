@@ -115,7 +115,7 @@ final class TestRuleTemporaryFilesCleanup extends TestRuleAdapter {
   }
   
   // os/config-independent limit for too many open files
-  // TODO: can we make this lower?
+  // TODO: can we make this lower? id:1732 gh:1733
   private static final int MAX_OPEN_FILES = 2048;
   
   private boolean allowed(Set<String> avoid, Class<? extends FileSystemProvider> clazz) {

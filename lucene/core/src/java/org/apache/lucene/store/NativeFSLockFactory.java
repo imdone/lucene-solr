@@ -131,7 +131,7 @@ public final class NativeFSLockFactory extends FSLockFactory {
         }
       } finally {
         if (lock == null) { // not successful - clear up and move out
-          IOUtils.closeWhileHandlingException(channel); // TODO: addSuppressed
+          IOUtils.closeWhileHandlingException(channel); // TODO: addSuppressed id:659 gh:660
           clearLockHeld(realPath);  // clear LOCK_HELD last 
         }
       }
@@ -147,7 +147,7 @@ public final class NativeFSLockFactory extends FSLockFactory {
     }
   }
 
-  // TODO: kind of bogus we even pass channel:
+  // TODO: kind of bogus we even pass channel: id:686 gh:687
   // FileLock has an accessor, but mockfs doesnt yet mock the locks, too scary atm.
 
   static final class NativeFSLock extends Lock {
@@ -197,7 +197,7 @@ public final class NativeFSLockFactory extends FSLockFactory {
       if (closed) {
         return;
       }
-      // NOTE: we don't validate, as unlike SimpleFSLockFactory, we can't break others locks
+      // NOTE: we don't validate, as unlike SimpleFSLockFactory, we can't break others locks id:606 gh:607
       // first release the lock, then the channel
       try (FileChannel channel = this.channel;
            FileLock lock = this.lock) {

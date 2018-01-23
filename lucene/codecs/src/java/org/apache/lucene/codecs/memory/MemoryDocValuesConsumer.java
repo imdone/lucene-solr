@@ -102,7 +102,7 @@ class MemoryDocValuesConsumer extends DocValuesConsumer {
     long blockSum = 0;
     long gcd = 0;
     boolean missing = false;
-    // TODO: more efficient?
+    // TODO: more efficient? id:316 gh:317
     HashSet<Long> uniqueValues = null;
     long count = 0;
 
@@ -380,7 +380,7 @@ class MemoryDocValuesConsumer extends DocValuesConsumer {
     meta.writeVLong(ord);
   }
   
-  // TODO: in some cases representing missing with minValue-1 wouldn't take up additional space and so on,
+  // TODO: in some cases representing missing with minValue-1 wouldn't take up additional space and so on, id:422 gh:423
   // but this is very simple, and algorithms only check this for values of 0 anyway (doesnt slow down normal decode)
   void writeMissingBitset(Iterable<?> values) throws IOException {
     long bits = 0;

@@ -93,7 +93,7 @@ public final class StemmerOverrideFilter extends TokenFilter {
    * A read-only 4-byte FST backed map that allows fast case-insensitive key
    * value lookups for {@link StemmerOverrideFilter}
    */
-  // TODO maybe we can generalize this and reuse this map somehow?
+  // TODO maybe we can generalize this and reuse this map somehow? id:105 gh:106
   public final static class StemmerOverrideMap {
     private final FST<BytesRef> fst;
     private final boolean ignoreCase;

@@ -432,7 +432,7 @@ public class FSTOrdTermsReader extends FieldsProducer {
         return postingsReader.postings(fieldInfo, state, reuse, flags);
       }
 
-      // TODO: this can be achieved by making use of Util.getByOutput()
+      // TODO: this can be achieved by making use of Util.getByOutput() id:286 gh:287
       //           and should have related tests
       @Override
       public void seekExact(long ord) throws IOException {

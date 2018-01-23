@@ -226,7 +226,7 @@ public class TermVectorComponent extends SearchComponent implements SolrCoreAwar
       }
     } //else, deal with all fields
 
-    // NOTE: currently all types of warnings are schema driven, and guaranteed
+    // NOTE: currently all types of warnings are schema driven, and guaranteed id:2670 gh:2671
     // to be consistent across all shards - if additional types of warnings 
     // are added that might be different between shards, finishStage() needs
     // to be changed to account for that.
@@ -267,7 +267,7 @@ public class TermVectorComponent extends SearchComponent implements SolrCoreAwar
 
     final List<String> uniqValues = new ArrayList<>();
     
-    // TODO: is this required to be single-valued? if so, we should STOP
+    // TODO: is this required to be single-valued? if so, we should STOP id:1960 gh:1961
     // once we find it...
     final StoredFieldVisitor getUniqValue = new StoredFieldVisitor() {
       @Override 
@@ -405,7 +405,7 @@ public class TermVectorComponent extends SearchComponent implements SolrCoreAwar
         termInfo.add("df", df);
       }
 
-      // TODO: this is not TF/IDF by anyone's definition!
+      // TODO: this is not TF/IDF by anyone's definition! id:1854 gh:1855
       if (fieldOptions.tfIdf) {
         double tfIdfVal = ((double) freq) / df;
         termInfo.add("tf-idf", tfIdfVal);

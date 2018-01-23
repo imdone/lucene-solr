@@ -73,7 +73,7 @@ public class ZkContainer {
 
     // zookeeper in quorum mode currently causes a failure when trying to
     // register log4j mbeans.  See SOLR-2369
-    // TODO: remove after updating to an slf4j based zookeeper
+    // TODO: remove after updating to an slf4j based zookeeper id:1779 gh:1780
     System.setProperty("zookeeper.jmx.log4j.disable", "true");
 
     if (zkRun != null) {

@@ -151,7 +151,7 @@ public class IndexFingerprint implements MapSerializable {
   public static int compare(IndexFingerprint f1, IndexFingerprint f2) {
     int cmp;
 
-    // NOTE: some way want number of docs in index to take precedence over highest version (add-only systems for sure)
+    // NOTE: some way want number of docs in index to take precedence over highest version (add-only systems for sure) id:2066 gh:2067
 
     // if we're comparing all of the versions in the index, then go by the highest encountered.
     if (f1.maxVersionSpecified == Long.MAX_VALUE) {

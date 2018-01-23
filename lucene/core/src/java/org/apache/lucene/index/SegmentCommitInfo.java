@@ -63,14 +63,14 @@ public class SegmentCommitInfo {
   // Track the per-field DocValues update files
   private final Map<Integer,Set<String>> dvUpdatesFiles = new HashMap<>();
   
-  // TODO should we add .files() to FieldInfosFormat, like we have on
+  // TODO should we add .files() to FieldInfosFormat, like we have on id:706 gh:707
   // LiveDocsFormat?
   // track the fieldInfos update files
   private final Set<String> fieldInfosFiles = new HashSet<>();
   
   private volatile long sizeInBytes = -1;
 
-  // NOTE: only used in-RAM by IW to track buffered deletes;
+  // NOTE: only used in-RAM by IW to track buffered deletes; id:601 gh:602
   // this is never written to/read from the Directory
   private long bufferedDeletesGen = -1;
   
@@ -223,7 +223,7 @@ public class SegmentCommitInfo {
     // Start from the wrapped info's files:
     Collection<String> files = new HashSet<>(info.files());
 
-    // TODO we could rely on TrackingDir.getCreatedFiles() (like we do for
+    // TODO we could rely on TrackingDir.getCreatedFiles() (like we do for id:610 gh:611
     // updates) and then maybe even be able to remove LiveDocsFormat.files().
     
     // Must separately add any live docs files:

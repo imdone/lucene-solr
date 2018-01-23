@@ -120,7 +120,7 @@ final class MaxScoreSumPropagator {
     }
 
     // We need to find a value 'minScore' so that 'minScore + sumOfOtherMaxScores <= minScoreSum'
-    // TODO: is there an efficient way to find the greatest value that meets this requirement?
+    // TODO: is there an efficient way to find the greatest value that meets this requirement? id:633 gh:634
     float minScore = (float) (minScoreSum - sumOfOtherMaxScores);
     int iters = 0;
     while (sumUpperBound(minScore + sumOfOtherMaxScores) > minScoreSum) {

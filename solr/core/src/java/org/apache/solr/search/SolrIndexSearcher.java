@@ -150,7 +150,7 @@ public class SolrIndexSearcher extends IndexSearcher implements Closeable, SolrI
     }
   }
 
-  // TODO: wrap elsewhere and return a "map" from the schema that overrides get() ?
+  // TODO: wrap elsewhere and return a "map" from the schema that overrides get() ? id:2052 gh:2053
   // this reader supports reopen
   private static DirectoryReader wrapReader(SolrCore core, DirectoryReader reader) throws IOException {
     assert reader != null;
@@ -554,7 +554,7 @@ public class SolrIndexSearcher extends IndexSearcher implements Closeable, SolrI
           // unless the window size is <=1, in which case we will pick
           // the minimum of the number of documents requested last time and
           // a reasonable number such as 40.
-          // TODO: make more configurable later...
+          // TODO: make more configurable later... id:1930 gh:1931
 
           if (queryResultWindowSize <= 1) {
             DocList oldList = (DocList) oldVal;
@@ -584,7 +584,7 @@ public class SolrIndexSearcher extends IndexSearcher implements Closeable, SolrI
     return qr;
   }
 
-  // FIXME: This option has been dead/noop since 3.1, should we re-enable or remove it?
+  // FIXME: This option has been dead/noop since 3.1, should we re-enable or remove it? id:2875 gh:2876
   // public Hits search(Query query, Filter filter, Sort sort) throws IOException {
   // // todo - when Solr starts accepting filters, need to
   // // change this conditional check (filter!=null) and create a new filter
@@ -758,7 +758,7 @@ public class SolrIndexSearcher extends IndexSearcher implements Closeable, SolrI
   }
 
   private BitDocSet makeBitDocSet(DocSet answer) {
-    // TODO: this should be implemented in DocSet, most likely with a getBits method that takes a maxDoc argument
+    // TODO: this should be implemented in DocSet, most likely with a getBits method that takes a maxDoc argument id:1965 gh:1966
     // or make DocSet instances remember maxDoc
     FixedBitSet bs = new FixedBitSet(maxDoc());
     DocIterator iter = answer.iterator();
@@ -1330,7 +1330,7 @@ public class SolrIndexSearcher extends IndexSearcher implements Closeable, SolrI
         if (superset != null) {
           // check that the cache entry has scores recorded if we need them
           if ((flags & GET_SCORES) == 0 || superset.hasScores()) {
-            // NOTE: subset() returns null if the DocList has fewer docs than
+            // NOTE: subset() returns null if the DocList has fewer docs than id:2715 gh:2716
             // requested
             out.docList = superset.subset(cmd.getOffset(), cmd.getLen());
           }
@@ -1457,7 +1457,7 @@ public class SolrIndexSearcher extends IndexSearcher implements Closeable, SolrI
    *          May or may not be a <code>TopFieldDocs</code>
    */
   private void populateNextCursorMarkFromTopDocs(QueryResult qr, QueryCommand qc, TopDocs topDocs) {
-    // TODO: would be nice to rename & generalize this method for non-cursor cases...
+    // TODO: would be nice to rename & generalize this method for non-cursor cases... id:2054 gh:2056
     // ...would be handy to reuse the ScoreDoc/FieldDoc sort vals directly in distrib sort
     // ...but that has non-trivial queryResultCache implications
     // See: SOLR-5595
@@ -1717,11 +1717,11 @@ public class SolrIndexSearcher extends IndexSearcher implements Closeable, SolrI
     if (sliceLen < 0) sliceLen = 0;
 
     qr.setDocList(new DocSlice(0, sliceLen, ids, scores, totalHits, maxScore));
-    // TODO: if we collect results before the filter, we just need to intersect with
+    // TODO: if we collect results before the filter, we just need to intersect with id:1933 gh:1934
     // that filter to generate the DocSet for qr.setDocSet()
     qr.setDocSet(set);
 
-    // TODO: currently we don't generate the DocSet for the base query,
+    // TODO: currently we don't generate the DocSet for the base query, id:2877 gh:2878
     // but the QueryDocSet == CompleteDocSet if filter==null.
     return pf.filter == null && pf.postFilter == null ? qr.getDocSet() : null;
   }
@@ -2051,7 +2051,7 @@ public class SolrIndexSearcher extends IndexSearcher implements Closeable, SolrI
       return a == absQ ? b.intersectionSize(positiveA) : b.andNotSize(positiveA);
     } else {
       // If there isn't a cache, then do a single filtered query
-      // NOTE: we cannot use FilteredQuery, because BitDocSet assumes it will never
+      // NOTE: we cannot use FilteredQuery, because BitDocSet assumes it will never id:1967 gh:1968
       // have deleted documents, but UninvertedField's doNegative has sets with deleted docs
       TotalHitCountCollector collector = new TotalHitCountCollector();
       BooleanQuery.Builder bq = new BooleanQuery.Builder();

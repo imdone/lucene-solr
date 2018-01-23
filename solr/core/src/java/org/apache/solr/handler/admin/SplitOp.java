@@ -81,7 +81,7 @@ class SplitOp implements CoreAdminHandler.CoreAdminOp {
     List<SolrCore> newCores = null;
 
     try {
-      // TODO: allow use of rangesStr in the future
+      // TODO: allow use of rangesStr in the future id:1926 gh:1927
       List<String> paths = null;
       int partitions = pathsArr != null ? pathsArr.length : newCoreNames.length;
 

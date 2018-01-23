@@ -25,7 +25,7 @@ import java.util.Arrays;
  * A stemmer for Greek words, according to: <i>Development of a Stemmer for the
  * Greek Language.</i> Georgios Ntais
  * <p>
- * NOTE: Input is expected to be casefolded for Greek (including folding of final
+ * NOTE: Input is expected to be casefolded for Greek (including folding of final id:55 gh:56
  * sigma to sigma), and with diacritics removed. This can be achieved with 
  * either {@link GreekLowerCaseFilter} or ICUFoldingFilter.
  * @lucene.experimental

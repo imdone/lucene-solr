@@ -265,7 +265,7 @@ public class TestRebalanceLeaders extends AbstractFullDistribZkTestBase {
   // It's OK not to check the return here since the subsequent tests will fail.
   void issueCommands() throws IOException, SolrServerException, KeeperException, InterruptedException {
 
-    // Find a replica to make the preferredLeader. NOTE: may be one that's _already_ leader!
+    // Find a replica to make the preferredLeader. NOTE: may be one that's _already_ leader! id:2884 gh:2885
     expected.clear();
     for (Map.Entry<String, List<Replica>> ent : initial.entrySet()) {
       List<Replica> replicas = ent.getValue();

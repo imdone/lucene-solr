@@ -69,7 +69,7 @@ public class FileDictionary implements Dictionary {
    * Using {@link #DEFAULT_FIELD_DELIMITER} as the 
    * field separator in a line.
    * <p>
-   * NOTE: content is treated as UTF-8
+   * NOTE: content is treated as UTF-8 id:1383 gh:1384
    */
   public FileDictionary(InputStream dictFile) {
     this(dictFile, DEFAULT_FIELD_DELIMITER);
@@ -99,7 +99,7 @@ public class FileDictionary implements Dictionary {
    * Using <code>fieldDelimiter</code> to separate out the
    * fields in a line.
    * <p>
-   * NOTE: content is treated as UTF-8
+   * NOTE: content is treated as UTF-8 id:1218 gh:1219
    */
   public FileDictionary(InputStream dictFile, String fieldDelimiter) {
     in = new BufferedReader(IOUtils.getDecodingReader(dictFile, StandardCharsets.UTF_8));

@@ -51,7 +51,7 @@ public class PeerSyncTest extends BaseDistributedSearchTestCase {
   public PeerSyncTest() {
     stress = 0;
 
-    // TODO: a better way to do this?
+    // TODO: a better way to do this? id:2423 gh:2424
     configString = "solrconfig-tlog.xml";
     schemaString = "schema.xml";
 
@@ -93,7 +93,7 @@ public class PeerSyncTest extends BaseDistributedSearchTestCase {
 
     // both have the same version list, so sync should now return true
     assertSync(client1, numVersions, true, shardsArr[0]);
-    // TODO: test that updates weren't necessary
+    // TODO: test that updates weren't necessary id:3111 gh:3112
 
     client0.commit(); client1.commit(); queryAndCompare(params("q", "*:*"), client0, client1);
 

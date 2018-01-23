@@ -80,7 +80,7 @@ import org.apache.lucene.util.Accountables;
 import org.apache.lucene.util.BytesRef;
 import org.apache.lucene.util.RamUsageEstimator;
 
-// TODO:
+// TODO: id:1480 gh:1481
 //   - a PostingsFormat that stores super-high-freq terms as
 //     a bitset should be a win for the prefix terms?
 //     (LUCENE-5052)
@@ -297,7 +297,7 @@ public class AnalyzingInfixSuggester extends Lookup implements Closeable {
             getIndexWriterConfig(getGramAnalyzer(), IndexWriterConfig.OpenMode.CREATE));
         //long t0 = System.nanoTime();
 
-        // TODO: use threads?
+        // TODO: use threads? id:1385 gh:1386
         BytesRef text;
         while ((text = iter.next()) != null) {
           BytesRef payload;
@@ -358,7 +358,7 @@ public class AnalyzingInfixSuggester extends Lookup implements Closeable {
         assert !(fieldName.equals(TEXTGRAMS_FIELD_NAME) && minPrefixChars == 0) 
                 : "no need \"textgrams\" when minPrefixChars="+minPrefixChars;
         if (fieldName.equals(TEXTGRAMS_FIELD_NAME) && minPrefixChars > 0) {
-          // TODO: should use an EdgeNGramTokenFilterFactory here
+          // TODO: should use an EdgeNGramTokenFilterFactory here id:1219 gh:1220
           TokenFilter filter = new EdgeNGramTokenFilter(components.getTokenStream(), 1, minPrefixChars);
           return new TokenStreamComponents(components.getTokenizer(), filter);
         } else {
@@ -528,11 +528,11 @@ public class AnalyzingInfixSuggester extends Lookup implements Closeable {
    * @param clause one of {@link Occur}
    */
   public void addContextToQuery(BooleanQuery.Builder query, BytesRef context, BooleanClause.Occur clause) {
-    // NOTE: we "should" wrap this in
+    // NOTE: we "should" wrap this in id:1527 gh:1528
     // ConstantScoreQuery, or maybe send this as a
     // Filter instead to search.
     
-    // TODO: if we had a BinaryTermField we could fix
+    // TODO: if we had a BinaryTermField we could fix id:2545 gh:2545
     // this "must be valid ut8f" limitation:
     query.add(new TermQuery(new Term(CONTEXTS_FIELD_NAME, context)), clause);
   }
@@ -638,7 +638,7 @@ public class AnalyzingInfixSuggester extends Lookup implements Closeable {
       }
     }
     
-    // TODO: we could allow blended sort here, combining
+    // TODO: we could allow blended sort here, combining id:1483 gh:1484
     // weight w/ score.  Now we ignore score and sort only
     // by weight:
 
@@ -699,7 +699,7 @@ public class AnalyzingInfixSuggester extends Lookup implements Closeable {
       long score = (Long) fd.fields[0];
 
       // This will just be null if app didn't pass payloads to build():
-      // TODO: maybe just stored fields?  they compress...
+      // TODO: maybe just stored fields?  they compress... id:1391 gh:1392
       BinaryDocValues payloadsDV = MultiDocValues.getBinaryValues(searcher.getIndexReader(), "payloads");
 
       BytesRef payload;
@@ -823,7 +823,7 @@ public class AnalyzingInfixSuggester extends Lookup implements Closeable {
    *  @param prefixToken The prefix of the token that matched
    */
   protected void addPrefixMatch(StringBuilder sb, String surface, String analyzed, String prefixToken) {
-    // TODO: apps can try to invert their analysis logic
+    // TODO: apps can try to invert their analysis logic id:1221 gh:1222
     // here, e.g. downcase the two before checking prefix:
     if (prefixToken.length() >= surface.length()) {
       addWholeMatch(sb, surface, analyzed);

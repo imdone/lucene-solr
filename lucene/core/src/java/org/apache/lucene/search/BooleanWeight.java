@@ -221,11 +221,11 @@ final class BooleanWeight extends Weight {
         return null;
       }
 
-      // TODO: what is the right heuristic here?
+      // TODO: what is the right heuristic here? id:729 gh:730
       final long costThreshold;
       if (query.getMinimumNumberShouldMatch() <= 1) {
         // when all clauses are optional, use BooleanScorer aggressively
-        // TODO: is there actually a threshold under which we should rather
+        // TODO: is there actually a threshold under which we should rather id:623 gh:624
         // use the regular scorer?
         costThreshold = -1;
       } else {
@@ -247,7 +247,7 @@ final class BooleanWeight extends Weight {
         && query.getMinimumNumberShouldMatch() == 0) {
       positiveScorer = requiredBulkScorer(context);
     } else {
-      // TODO: there are some cases where BooleanScorer
+      // TODO: there are some cases where BooleanScorer id:638 gh:639
       // would handle conjunctions faster than
       // BooleanScorer2...
       return null;

@@ -69,8 +69,8 @@ public class FileBasedSpellChecker extends AbstractLuceneSpellChecker {
   public void build(SolrCore core, SolrIndexSearcher searcher) throws IOException {
     loadExternalFileDictionary(core, searcher);
     spellChecker.clearIndex();
-    // TODO: you should be able to specify the IWC params?
-    // TODO: if we enable this, codec gets angry since field won't exist in the schema
+    // TODO: you should be able to specify the IWC params? id:2935 gh:2936
+    // TODO: if we enable this, codec gets angry since field won't exist in the schema id:2086 gh:2087
     // config.setCodec(core.getCodec());
     spellChecker.indexDictionary(dictionary, new IndexWriterConfig(null), false);
   }
@@ -101,7 +101,7 @@ public class FileBasedSpellChecker extends AbstractLuceneSpellChecker {
                 setMaxBufferedDocs(150).
                 setMergePolicy(mp).
                 setOpenMode(IndexWriterConfig.OpenMode.CREATE)
-                // TODO: if we enable this, codec gets angry since field won't exist in the schema
+                // TODO: if we enable this, codec gets angry since field won't exist in the schema id:2764 gh:2765
                 // .setCodec(core.getCodec())
         );
 

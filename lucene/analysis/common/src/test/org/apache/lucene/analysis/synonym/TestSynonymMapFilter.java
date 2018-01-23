@@ -75,7 +75,7 @@ public class TestSynonymMapFilter extends BaseTokenStreamTestCase {
   // /.  If a token should have end offset != the input
   // token's end offset then add :X to it:
 
-  // TODO: we should probably refactor this guy to use/take analyzer,
+  // TODO: we should probably refactor this guy to use/take analyzer, id:204 gh:205
   // the tests are a little messy
   private void verify(String input, String output) throws Exception {
     if (VERBOSE) {
@@ -506,7 +506,7 @@ public class TestSynonymMapFilter extends BaseTokenStreamTestCase {
     }
   }
 
-  // NOTE: this is an invalid test... SynFilter today can't
+  // NOTE: this is an invalid test... SynFilter today can't id:108 gh:109
   // properly consume a graph... we can re-enable this once
   // we fix that...
   /*

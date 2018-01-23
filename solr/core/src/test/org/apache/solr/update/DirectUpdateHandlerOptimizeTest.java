@@ -93,7 +93,7 @@ public class DirectUpdateHandlerOptimizeTest extends SolrTestCaseJ4 {
     });
 
     //
-    // TODO: we need a method that does not rely on physical inspection of the directory.
+    // TODO: we need a method that does not rely on physical inspection of the directory. id:2384 gh:2385
     //
     // assertTrue("Wrong number of segments: " + segs.length + " does not equal: " + numSegs, segs.length == numSegs);
   }

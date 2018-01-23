@@ -35,7 +35,7 @@ public class LongToEnglishQueryMaker implements QueryMaker {
   long counter = Long.MIN_VALUE + 10;
   protected QueryParser parser;
 
-  // TODO: we could take param to specify locale...
+  // TODO: we could take param to specify locale... id:195 gh:196
   private final RuleBasedNumberFormat rnbf = new RuleBasedNumberFormat(Locale.ROOT,
                                                                        RuleBasedNumberFormat.SPELLOUT);
 

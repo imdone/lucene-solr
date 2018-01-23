@@ -437,7 +437,7 @@ final class IndexFileDeleter implements Closeable {
           !refCounts.containsKey(fileName) &&
           (m.matches() || fileName.startsWith(IndexFileNames.SEGMENTS) 
               // we only try to clear out pending_segments_N during rollback(), because we don't ref-count it
-              // TODO: this is sneaky, should we do this, or change TestIWExceptions? rollback closes anyway, and 
+              // TODO: this is sneaky, should we do this, or change TestIWExceptions? rollback closes anyway, and  id:550 gh:551
               // any leftover file will be deleted/retried on next IW bootup anyway...
               || fileName.startsWith(IndexFileNames.PENDING_SEGMENTS))) {
         // Unreferenced file, so remove it
@@ -675,7 +675,7 @@ final class IndexFileDeleter implements Closeable {
     assert locked();
     Set<String> toDelete = new HashSet<>();
     for (final String fileName: files) {
-      // NOTE: it's very unusual yet possible for the
+      // NOTE: it's very unusual yet possible for the id:494 gh:495
       // refCount to be present and 0: it can happen if you
       // open IW on a crashed index, and it removes a bunch
       // of unref'd files, and then you add new docs / do
@@ -724,7 +724,7 @@ final class IndexFileDeleter implements Closeable {
       directory.deleteFile(fileName);
     } catch (NoSuchFileException | FileNotFoundException e) {
       if (Constants.WINDOWS) {
-        // TODO: can we remove this OS-specific hacky logic?  If windows deleteFile is buggy, we should instead contain this workaround in
+        // TODO: can we remove this OS-specific hacky logic?  If windows deleteFile is buggy, we should instead contain this workaround in id:446 gh:447
         // a WindowsFSDirectory ...
         // LUCENE-6684: we suppress this assert for Windows, since a file could be in a confusing "pending delete" state, where we already
         // deleted it once, yet it still shows up in directory listings, and if you try to delete it again you'll hit NSFE/FNFE:

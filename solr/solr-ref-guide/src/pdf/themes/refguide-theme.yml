@@ -200,7 +200,7 @@ description_list:
   description_indent: $horizontal_rhythm * 1.25
 outline_list:
   indent: $horizontal_rhythm * 1.5
-  # NOTE item_spacing applies to list items that do not have complex content
+  # NOTE item_spacing applies to list items that do not have complex content id:3122 gh:3123
   item_spacing: $vertical_rhythm / 2
 table:
   background_color: $page_background_color
@@ -233,7 +233,7 @@ header:
 footer:
   font_size: $base_font_size_small
   font_color: $base_font_color
-  # NOTE if background_color is set, background and border will span width of page
+  # NOTE if background_color is set, background and border will span width of page id:2419 gh:2420
   border_color: '#dddddd'
   border_width: 0.25
   height: $base_line_height_length * 2.5

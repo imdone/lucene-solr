@@ -43,7 +43,7 @@ public class TestScorerPerf extends LuceneTestCase {
   IndexReader r;
   Directory d;
 
-  // TODO: this should be setUp()....
+  // TODO: this should be setUp().... id:1033 gh:1034
   public void createDummySearcher() throws Exception {
       // Create a dummy index with nothing in it.
     // This could possibly fail if Lucene starts checking for docid ranges...

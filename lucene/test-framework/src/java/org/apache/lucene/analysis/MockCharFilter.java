@@ -29,7 +29,7 @@ public class MockCharFilter extends CharFilter {
   // for testing only
   public MockCharFilter(Reader in, int remainder) {
     super(in);
-    // TODO: instead of fixed remainder... maybe a fixed
+    // TODO: instead of fixed remainder... maybe a fixed id:2579 gh:2580
     // random seed?
     this.remainder = remainder;
     if (remainder < 0 || remainder >= 10) {

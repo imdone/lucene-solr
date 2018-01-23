@@ -37,7 +37,7 @@ import org.apache.solr.common.util.NamedList;
        regular expression to (independent from the global highlighter setting).</li>
  * </ul>
  *
- * NOTE: the default for <code>maxAnalyzedChars</code> is much lower for this 
+ * NOTE: the default for <code>maxAnalyzedChars</code> is much lower for this  id:1966 gh:1967
  * fragmenter.  After this limit is exhausted, fragments are produced in the
  * same way as <code>GapFragmenter</code>
  */

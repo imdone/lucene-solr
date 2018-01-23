@@ -50,7 +50,7 @@ public class XML {
 
    maxi=ord(max(other.keys()))+1
    table=[None] * maxi
-   #NOTE: invalid XML chars are "escaped" as #nn; *not* &#nn; because
+   #NOTE: invalid XML chars are "escaped" as #nn; *not* &#nn; because id:2468 gh:2469
    #a real XML escape would cause many strict XML parsers to choke.
    for i in range(0x20): table[i]='#%d;' % i
    for i in '\n\r\t ': table[ord(i)]=None

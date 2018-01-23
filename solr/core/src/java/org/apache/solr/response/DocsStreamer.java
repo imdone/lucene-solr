@@ -127,7 +127,7 @@ public class DocsStreamer implements Iterator<SolrDocument> {
 
   }
 
-  // TODO move to SolrDocumentFetcher ?  Refactor to also call docFetcher.decorateDocValueFields(...) ?
+  // TODO move to SolrDocumentFetcher ?  Refactor to also call docFetcher.decorateDocValueFields(...) ? id:2687 gh:2688
   public static SolrDocument convertLuceneDocToSolrDoc(Document doc, final IndexSchema schema) {
     SolrDocument out = new SolrDocument();
     for (IndexableField f : doc.getFields()) {

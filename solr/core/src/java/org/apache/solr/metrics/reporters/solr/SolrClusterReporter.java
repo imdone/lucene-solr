@@ -64,7 +64,7 @@ import static org.apache.solr.common.params.CommonParams.ID;
  *   capture groups collected by <code>registry</code> pattern</li>
  *   <li>filter - (optional multiple str) regex expression(s) matching selected metrics to be reported.</li>
  * </ul>
- * NOTE: this reporter uses predefined "cluster" group, and it's always created even if explicit configuration
+ * NOTE: this reporter uses predefined "cluster" group, and it's always created even if explicit configuration id:1869 gh:1870
  * is missing. Default configuration uses report specifications from {@link #DEFAULT_REPORTS}.
  * <p>Example configuration:</p>
  * <pre>
@@ -224,7 +224,7 @@ public class SolrClusterReporter extends SolrCoreContainerReporter {
     reporter.start(period, TimeUnit.SECONDS);
   }
 
-  // TODO: fix this when there is an elegant way to retrieve URL of a node that runs Overseer leader.
+  // TODO: fix this when there is an elegant way to retrieve URL of a node that runs Overseer leader. id:2817 gh:2818
   // package visibility for unit tests
   static class OverseerUrlSupplier implements Supplier<String> {
     private static final long DEFAULT_INTERVAL = 30000000; // 30s

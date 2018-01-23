@@ -136,7 +136,7 @@ public final class AssertingPostingsFormat extends PostingsFormat {
     public void write(Fields fields) throws IOException {
       in.write(fields);
 
-      // TODO: more asserts?  can we somehow run a
+      // TODO: more asserts?  can we somehow run a id:2583 gh:2584
       // "limited" CheckIndex here???  Or ... can we improve
       // AssertingFieldsProducer and us it also to wrap the
       // incoming Fields here?

@@ -87,10 +87,10 @@ import org.apache.lucene.util.fst.FST;
  * use {@link FlattenGraphFilter} at index time (not at search time) as well.
  */ 
 
-// TODO: maybe we should resolve token -> wordID then run
+// TODO: maybe we should resolve token -> wordID then run id:39 gh:40
 // FST on wordIDs, for better perf?
 
-// TODO: a more efficient approach would be Aho/Corasick's
+// TODO: a more efficient approach would be Aho/Corasick's id:115 gh:116
 // algorithm
 // http://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_string_matching_algorithm
 // It improves over the current approach here
@@ -121,7 +121,7 @@ public final class SynonymFilter extends TokenFilter {
 
   private int captureCount;
 
-  // TODO: we should set PositionLengthAttr too...
+  // TODO: we should set PositionLengthAttr too... id:162 gh:163
 
   private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
   private final PositionIncrementAttribute posIncrAtt = addAttribute(PositionIncrementAttribute.class);
@@ -310,7 +310,7 @@ public final class SynonymFilter extends TokenFilter {
    synonym matches and buffers up the results into
    futureInputs/Outputs.
 
-   NOTE: this calls input.incrementToken and does not
+   NOTE: this calls input.incrementToken and does not id:40 gh:41
    capture the state if no further tokens were checked.  So
    caller must then forward state to our caller, or capture:
   */
@@ -541,7 +541,7 @@ public final class SynonymFilter extends TokenFilter {
         // At each position, we first output the original
         // token
 
-        // TODO: maybe just a PendingState class, holding
+        // TODO: maybe just a PendingState class, holding id:41 gh:42
         // both input & outputs?
         final PendingInput input = futureInputs[nextRead];
         final PendingOutputs outputs = futureOutputs[nextRead];

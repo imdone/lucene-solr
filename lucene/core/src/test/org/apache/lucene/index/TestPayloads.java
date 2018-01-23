@@ -224,7 +224,7 @@ public class TestPayloads extends LuceneTestCase {
                                                                new BytesRef(terms[0].text()));
     tp.nextDoc();
     tp.nextPosition();
-    // NOTE: prior rev of this test was failing to first
+    // NOTE: prior rev of this test was failing to first id:1288 gh:1289
     // call next here:
     tp.nextDoc();
     // now we don't read this payload

@@ -32,7 +32,7 @@ public class NotQuery extends ComposedQuery {
     BooleanQuery.Builder bq = new BooleanQuery.Builder();
     bq.add( luceneSubQueries.get(0), BooleanClause.Occur.MUST);
     SrndBooleanQuery.addQueriesToBoolean(bq,
-            // FIXME: do not allow weights on prohibited subqueries.
+            // FIXME: do not allow weights on prohibited subqueries. id:1577 gh:1578
             luceneSubQueries.subList(1, luceneSubQueries.size()),
             // later subqueries: not required, prohibited
             BooleanClause.Occur.MUST_NOT);

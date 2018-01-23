@@ -200,7 +200,7 @@ public class TestTieredMergePolicy extends BaseMergePolicyTestCase {
       tmp.setMaxCFSSegmentSizeMB(-2.0);
     });
     
-    // TODO: Add more checks for other non-double setters!
+    // TODO: Add more checks for other non-double setters! id:859 gh:860
   }
 
   // LUCENE-5668

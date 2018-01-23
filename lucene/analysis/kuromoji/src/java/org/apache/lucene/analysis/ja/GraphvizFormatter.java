@@ -26,7 +26,7 @@ import org.apache.lucene.analysis.ja.dict.ConnectionCosts;
 import org.apache.lucene.analysis.ja.dict.Dictionary;
 
 
-// TODO: would be nice to show 2nd best path in a diff't
+// TODO: would be nice to show 2nd best path in a diff't id:130 gh:131
 // color...
 
 /**

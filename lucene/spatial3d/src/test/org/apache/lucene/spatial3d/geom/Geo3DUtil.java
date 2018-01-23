@@ -78,7 +78,7 @@ class Geo3DUtil {
   }
 
   /** Returns smallest double that would encode to int x. */
-  // NOTE: keep this package private!!
+  // NOTE: keep this package private!! id:1465 gh:1466
   static double decodeValueFloor(int x) {
     return x * DECODE;
   }
@@ -103,7 +103,7 @@ class Geo3DUtil {
   }
 
   /** Returns largest double that would encode to int x. */
-  // NOTE: keep this package private!!
+  // NOTE: keep this package private!! id:1379 gh:1380
   static double decodeValueCeil(int x) {
     assert x < Integer.MAX_VALUE;
     return Math.nextDown((x+1) * DECODE);

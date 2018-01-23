@@ -66,7 +66,7 @@ public class FieldUtil {
    *  @lucene.experimental */
   @FunctionalInterface
   public interface OrdFunc {
-    void handleOrd(int docid, int ord); // TODO: throw exception?
+    void handleOrd(int docid, int ord); // TODO: throw exception? id:2911 gh:2912
   }
 
   public static boolean isFieldCache(SortedDocValues singleDv) {
@@ -85,7 +85,7 @@ public class FieldUtil {
         if (singleDv.advanceExact(doc)) {
           ordFunc.handleOrd(doc, singleDv.ordValue());
         } else {
-          // TODO: optionally pass in missingOrd?
+          // TODO: optionally pass in missingOrd? id:2003 gh:2004
         }
       }
     }
@@ -118,7 +118,7 @@ public class FieldUtil {
 
     @Override
     public int advance(int target) throws IOException {
-      return 0; // TODO
+      return 0; // TODO id:2741 gh:2742
     }
 
     @Override

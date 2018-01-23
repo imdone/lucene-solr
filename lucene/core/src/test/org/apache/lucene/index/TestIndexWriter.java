@@ -173,7 +173,7 @@ public class TestIndexWriter extends LuceneTestCase {
     writer.addDocument(doc);
   }
 
-  // TODO: we have the logic in MDW to do this check, and it's better, because it knows about files it tried
+  // TODO: we have the logic in MDW to do this check, and it's better, because it knows about files it tried id:803 gh:803
   // to delete but couldn't: we should replace this!!!!
   public static void assertNoUnreferencedFiles(Directory dir, String message) throws IOException {
     String[] startFiles = dir.listAll();
@@ -985,7 +985,7 @@ public class TestIndexWriter extends LuceneTestCase {
             allowInterrupt = true;
           }
         } catch (ThreadInterruptedException re) {
-          // NOTE: important to leave this verbosity/noise
+          // NOTE: important to leave this verbosity/noise id:999 gh:1000
           // on!!  This test doesn't repro easily so when
           // Jenkins hits a fail we need to study where the
           // interrupts struck!
@@ -1081,7 +1081,7 @@ public class TestIndexWriter extends LuceneTestCase {
     final int numInterrupts = atLeast(100);
     int i = 0;
     while(i < numInterrupts) {
-      // TODO: would be nice to also sometimes interrupt the
+      // TODO: would be nice to also sometimes interrupt the id:839 gh:840
       // CMS merge threads too ...
       Thread.sleep(10);
       if (t.allowInterrupt) {
@@ -1112,7 +1112,7 @@ public class TestIndexWriter extends LuceneTestCase {
     customType.setTokenized(true);
     
     Field f = new Field("binary", b, 10, 17, customType);
-    // TODO: this is evil, changing the type after creating the field:
+    // TODO: this is evil, changing the type after creating the field: id:934 gh:935
     customType.setIndexOptions(IndexOptions.DOCS);
     final MockTokenizer doc1field1 = new MockTokenizer(MockTokenizer.WHITESPACE, false);
     doc1field1.setReader(new StringReader("doc1field1"));
@@ -1202,7 +1202,7 @@ public class TestIndexWriter extends LuceneTestCase {
       FileSystem fs = new WindowsFS(path.getFileSystem()).getFileSystem(URI.create("file:///"));
       Path indexPath = new FilterPath(path, fs);
 
-      // NOTE: on Unix, we cannot use MMapDir, because WindowsFS doesn't see/think it keeps file handles open.  Yet, on Windows, we MUST use
+      // NOTE: on Unix, we cannot use MMapDir, because WindowsFS doesn't see/think it keeps file handles open.  Yet, on Windows, we MUST use id:1276 gh:1277
       // MMapDir because the windows OS will in fact prevent file deletion for us, and fails otherwise:
       FSDirectory dir;
       if (Constants.WINDOWS) {
@@ -1255,7 +1255,7 @@ public class TestIndexWriter extends LuceneTestCase {
       assertNotNull(r2);
       assertTrue(r != r2);
 
-      // NOTE: here we rely on "Windows" behavior, ie, even
+      // NOTE: here we rely on "Windows" behavior, ie, even id:805 gh:806
       // though IW wanted to delete _0.cfs since it was
       // merged away, because we have a reader open
       // against this file, it should still be here:
@@ -1335,7 +1335,7 @@ public class TestIndexWriter extends LuceneTestCase {
   }
 
   public void testEmptyDirRollback() throws Exception {
-    // TODO: generalize this test
+    // TODO: generalize this test id:1001 gh:1002
     assumeFalse("test makes assumptions about file counts", Codec.getDefault() instanceof SimpleTextCodec);
     // Tests that if IW is created over an empty Directory, some documents are
     // indexed, flushed (but not committed) and then IW rolls back, then no

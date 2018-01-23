@@ -37,7 +37,7 @@ public class TestSearch extends LuceneTestCase {
      *  of searches using multi-file index segments with single-file
      *  index segments.
      *
-     *  TODO: someone should check that the results of the searches are
+     *  TODO: someone should check that the results of the searches are id:893 gh:894
      *        still correct by adding assert statements. Right now, the test
      *        passes if the results are the same between multi-file and
      *        single-file formats, even if the results are wrong.

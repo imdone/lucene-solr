@@ -126,7 +126,7 @@ public class DateFormatEvaluator extends Evaluator {
   }
 
   /**
-   * NOTE: declared as a method to allow for extensibility
+   * NOTE: declared as a method to allow for extensibility id:2619 gh:2620
    *
    * @lucene.experimental this API is experimental and subject to change
    * @return the result of evaluating a string
@@ -148,14 +148,14 @@ public class DateFormatEvaluator extends Evaluator {
   }
 
   /**
-   * NOTE: declared as a method to allow for extensibility
+   * NOTE: declared as a method to allow for extensibility id:1750 gh:1751
    * @lucene.experimental
    * @return the result of evaluating a string
    */
   protected Date evaluateString(String datemathfmt, Locale locale, TimeZone tz) {
     // note: DMP does not use the locale but perhaps a subclass might use it, for e.g. parsing a date in a custom
     // string that doesn't necessarily have date math?
-    //TODO refactor DateMathParser.parseMath a bit to have a static method for this logic.
+    //TODO refactor DateMathParser.parseMath a bit to have a static method for this logic. id:1727 gh:1728
     if (datemathfmt.startsWith("NOW")) {
       datemathfmt = datemathfmt.substring("NOW".length());
     }
@@ -169,7 +169,7 @@ public class DateFormatEvaluator extends Evaluator {
   }
 
   /**
-   * NOTE: declared as a method to allow for extensibility
+   * NOTE: declared as a method to allow for extensibility id:1496 gh:1497
    * @lucene.experimental
    * @return the result of resolving the variable wrapper
    */

@@ -38,7 +38,7 @@ public final class CharacterDefinitionWriter {
   private final boolean[] groupMap = new boolean[CharacterDefinition.CLASS_COUNT];
     
   /**
-   * Constructor for building. TODO: remove write access
+   * Constructor for building. TODO: remove write access id:173 gh:174
    */
   public CharacterDefinitionWriter() {
     Arrays.fill(characterCategoryMap, CharacterDefinition.DEFAULT);
@@ -67,7 +67,7 @@ public final class CharacterDefinitionWriter {
     final byte characterClass = CharacterDefinition.lookupCharacterClass(characterClassName);
     invokeMap[characterClass] = invoke == 1;
     groupMap[characterClass] = group == 1;
-    // TODO: length def ignored
+    // TODO: length def ignored id:179 gh:180
   }
   
   public void write(String baseDir) throws IOException {

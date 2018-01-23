@@ -113,7 +113,7 @@ public class SortRescorer extends Rescorer {
       subs.add(Explanation.match(0.0f, "sort field " + sortFields[i].toString() + " value=" + fieldDoc.fields[i]));
     }
 
-    // TODO: if we could ask the Sort to explain itself then
+    // TODO: if we could ask the Sort to explain itself then id:740 gh:741
     // we wouldn't need the separate ExpressionRescorer...
     return Explanation.match(0.0f, "sort field values for sort=" + sort.toString(), subs);
   }

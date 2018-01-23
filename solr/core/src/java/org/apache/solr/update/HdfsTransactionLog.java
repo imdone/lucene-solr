@@ -47,7 +47,7 @@ import org.slf4j.LoggerFactory;
  *  DELETE, VERSION, ID_BYTES
  *  DELETE_BY_QUERY, VERSION, String
  *
- *  TODO: keep two files, one for [operation, version, id] and the other for the actual
+ *  TODO: keep two files, one for [operation, version, id] and the other for the actual id:2063 gh:2064
  *  document data.  That way we could throw away document log files more readily
  *  while retaining the smaller operation log files longer (and we can retrieve
  *  the stored fields from the latest documents from the index).
@@ -174,7 +174,7 @@ public class HdfsTransactionLog extends TransactionLog {
     synchronized (this) {
       assert snapshot_size == pos;
       ensureFlushed();
-      // TODO: how do we rollback with hdfs?? We need HDFS-3107
+      // TODO: how do we rollback with hdfs?? We need HDFS-3107 id:2953 gh:2954
       fos.setWritten(pos);
       assert fos.size() == pos;
       numRecords = snapshot_numRecords;
@@ -594,7 +594,7 @@ public class HdfsTransactionLog extends TransactionLog {
       fis.seek(prevPos);
       nextLength = fis.readInt();     // this is the length of the *next* record (i.e. closer to the beginning)
 
-      // TODO: optionally skip document data
+      // TODO: optionally skip document data id:2136 gh:2137
       Object o = codec.readVal(fis);
 
       // assert fis.position() == prevPos + 4 + thisLength;  // this is only true if we read all the data (and we currently skip reading SolrInputDocument

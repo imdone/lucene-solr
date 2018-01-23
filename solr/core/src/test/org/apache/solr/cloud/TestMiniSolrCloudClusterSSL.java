@@ -232,7 +232,7 @@ public class TestMiniSolrCloudClusterSSL extends SolrTestCaseJ4 {
       // sanity check the HttpClient used under the hood by our the cluster's CloudSolrClient
       // ensure it has the necessary protocols/credentials for each jetty server
       //
-      // NOTE: we're not responsible for closing the cloud client
+      // NOTE: we're not responsible for closing the cloud client id:2282 gh:2283
       final HttpClient cloudClient = cluster.getSolrClient().getLbClient().getHttpClient();
       try (HttpSolrClient client = getRandomizedHttpSolrClient(baseURL)) {
         assertEquals(0, CoreAdminRequest.getStatus(/* all */ null, client).getStatus());
@@ -296,7 +296,7 @@ public class TestMiniSolrCloudClusterSSL extends SolrTestCaseJ4 {
    */
   private static CloseableHttpClient getSslAwareClientWithNoClientCerts() throws Exception {
     
-    // NOTE: This method explicitly does *NOT* use HttpClientUtil code because that
+    // NOTE: This method explicitly does *NOT* use HttpClientUtil code because that id:2880 gh:2881
     // will muck with the global static HttpClientBuilder / SchemeRegistryProvider
     // and we can't do that and still test the entire purpose of what we are trying to test here.
 
@@ -323,7 +323,7 @@ public class TestMiniSolrCloudClusterSSL extends SolrTestCaseJ4 {
    * @see #getHttpSolrClient
    */
   public static HttpSolrClient getRandomizedHttpSolrClient(String url) {
-    // NOTE: at the moment, SolrTestCaseJ4 already returns "new HttpSolrClient" most of the time,
+    // NOTE: at the moment, SolrTestCaseJ4 already returns "new HttpSolrClient" most of the time, id:2289 gh:2290
     // so this method may seem redundant -- but the point here is to sanity check 2 things:
     // 1) a direct test that "new HttpSolrClient" works given the current JVM/sysprop defaults
     // 2) a sanity check that whatever getHttpSolrClient(String) returns will work regardless of

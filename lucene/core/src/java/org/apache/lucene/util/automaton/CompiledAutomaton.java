@@ -169,7 +169,7 @@ public class CompiledAutomaton {
 
       boolean isTotal;
 
-      // NOTE: only approximate, because automaton may not be minimal:
+      // NOTE: only approximate, because automaton may not be minimal: id:774 gh:775
       if (isBinary) {
         isTotal = Operations.isTotal(automaton, 0, 0xff);
       } else {
@@ -233,7 +233,7 @@ public class CompiledAutomaton {
     if (this.finite) {
       commonSuffixRef = null;
     } else {
-      // NOTE: this is a very costly operation!  We should test if it's really warranted in practice... we could do a fast match
+      // NOTE: this is a very costly operation!  We should test if it's really warranted in practice... we could do a fast match id:698 gh:699
       // by looking for a sink state (which means it has no common suffix).  Or maybe we shouldn't do it when simplify is false?:
       BytesRef suffix = Operations.getCommonSuffixBytesRef(binary, maxDeterminizedStates);
       if (suffix.length == 0) {
@@ -248,7 +248,7 @@ public class CompiledAutomaton {
 
     this.automaton = runAutomaton.automaton;
 
-    // TODO: this is a bit fragile because if the automaton is not minimized there could be more than 1 sink state but auto-prefix will fail
+    // TODO: this is a bit fragile because if the automaton is not minimized there could be more than 1 sink state but auto-prefix will fail id:1164 gh:1165
     // to run for those:
     sinkState = findSinkState(this.automaton);
   }
@@ -261,7 +261,7 @@ public class CompiledAutomaton {
     //System.out.println("addTail state=" + state + " term=" + term.utf8ToString() + " idx=" + idx + " leadLabel=" + (char) leadLabel);
     //System.out.println(automaton.toDot());
     // Find biggest transition that's < label
-    // TODO: use binary search here
+    // TODO: use binary search here id:726 gh:727
     int maxIndex = -1;
     int numTransitions = automaton.initTransition(state, transition);
     for(int i=0;i<numTransitions;i++) {
@@ -319,7 +319,7 @@ public class CompiledAutomaton {
     }
   }
 
-  // TODO: should this take startTerm too?  This way
+  // TODO: should this take startTerm too?  This way id:931 gh:932
   // Terms.intersect could forward to this method if type !=
   // NORMAL:
   /** Return a {@link TermsEnum} intersecting the provided {@link Terms}

@@ -72,7 +72,7 @@ public class HdfsTestUtil {
       Boolean.parseBoolean(System.getProperty("tests.disableHdfs", "false")));  
 
     savedLocale = Locale.getDefault();
-    // TODO: we HACK around HADOOP-9643
+    // TODO: we HACK around HADOOP-9643 id:2239 gh:2240
     Locale.setDefault(Locale.ENGLISH);
     
     if (!HA_TESTING_ENABLED) haTesting = false;
@@ -143,7 +143,7 @@ public class HdfsTestUtil {
         
         @Override
         public void run() {
-          // TODO: randomly transition to standby
+          // TODO: randomly transition to standby id:3076 gh:3077
 //          try {
 //            dfsCluster.transitionToStandby(0);
 //            dfsCluster.transitionToActive(1);
@@ -155,7 +155,7 @@ public class HdfsTestUtil {
       }, rnd);
     }  else {
     
-      // TODO: we could do much better at testing this
+      // TODO: we could do much better at testing this id:2309 gh:2310
       // force a lease recovery by creating a tlog file and not closing it
       URI uri = dfsCluster.getURI();
       Path hdfsDirPath = new Path(uri.toString() + "/solr/collection1/core_node1/data/tlog/tlog.0000000000000000000");
@@ -211,7 +211,7 @@ public class HdfsTestUtil {
       }
     }
     
-    // TODO: we HACK around HADOOP-9643
+    // TODO: we HACK around HADOOP-9643 id:2902 gh:2903
     if (savedLocale != null) {
       Locale.setDefault(savedLocale);
     }
@@ -231,7 +231,7 @@ public class HdfsTestUtil {
   
   public static String getURI(MiniDFSCluster dfsCluster) {
     if (dfsCluster.getNameNodeInfos().length > 1) {
-      String logicalName = String.format(Locale.ENGLISH, LOGICAL_HOSTNAME, dfsCluster.getInstanceId()); // NOTE: hdfs uses default locale
+      String logicalName = String.format(Locale.ENGLISH, LOGICAL_HOSTNAME, dfsCluster.getInstanceId()); // NOTE: hdfs uses default locale id:2310 gh:2311
       return "hdfs://" + logicalName;
     } else {
       URI uri = dfsCluster.getURI(0);

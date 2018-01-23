@@ -170,7 +170,7 @@ public class TestRestManager extends SolrRestletTestBase {
     assertJQ("/schema/managed",
              "/responseHeader/status==0");
     /*
-     * TODO: can't assume these will be here unless schema-rest.xml includes these declarations
+     * TODO: can't assume these will be here unless schema-rest.xml includes these declarations id:2928 gh:2929
      * 
              "/managedResources/[0]/class=='org.apache.solr.rest.schema.analysis.ManagedWordSetResource'",
              "/managedResources/[0]/resourceId=='/schema/analysis/stopwords/english'",

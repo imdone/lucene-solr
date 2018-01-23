@@ -72,7 +72,7 @@ public class SystemInfoHandler extends RequestHandlerBase
    * </p>
    *
    * <p>
-   * TODO: should we refactor this (and the associated logic) into a helper method for any other places
+   * TODO: should we refactor this (and the associated logic) into a helper method for any other places id:1813 gh:1814
    * where DNS is used?
    * </p>
    * @see #initHostname

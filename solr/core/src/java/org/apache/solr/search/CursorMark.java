@@ -252,7 +252,7 @@ public final class CursorMark {
       marshalledValues.add(safeValue);
     }
 
-    // TODO: we could also encode info about the SortSpec for error checking:
+    // TODO: we could also encode info about the SortSpec for error checking: id:1947 gh:1948
     // the type/name/dir from the SortFields (or a hashCode to act as a checksum) 
     // could help provide more validation beyond just the number of clauses.
 

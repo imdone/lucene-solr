@@ -49,7 +49,7 @@ import org.apache.lucene.util.fst.FST;
  * <ul>
  *   <li>CompletionDict (.lkp) --&gt; Header, FST<sup>NumSuggestFields</sup>, Footer</li>
  *   <li>Header --&gt; {@link CodecUtil#writeHeader CodecHeader}</li>
- *   <!-- TODO: should the FST output be mentioned at all? -->
+ *   <!-- TODO: should the FST output be mentioned at all? --> id:1232 gh:1233
  *   <li>FST --&gt; {@link FST FST&lt;Long, BytesRef&gt;}</li>
  *   <li>Footer --&gt; {@link CodecUtil#writeFooter CodecFooter}</li>
  * </ul>

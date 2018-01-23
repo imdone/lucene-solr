@@ -49,7 +49,7 @@ public class LruTaxonomyWriterCache implements TaxonomyWriterCache {
 
   /** Creates this with {@link LRUType#LRU_STRING} method. */
   public LruTaxonomyWriterCache(int cacheSize) {
-    // TODO (Facet): choose between NameHashIntCacheLRU and NameIntCacheLRU.
+    // TODO (Facet): choose between NameHashIntCacheLRU and NameIntCacheLRU. id:1085 gh:1086
     // For guaranteed correctness - not relying on no-collisions in the hash
     // function, NameIntCacheLRU should be used:
     // On the other hand, NameHashIntCacheLRU takes less RAM but if there
@@ -60,7 +60,7 @@ public class LruTaxonomyWriterCache implements TaxonomyWriterCache {
 
   /** Creates this with the specified method. */
   public LruTaxonomyWriterCache(int cacheSize, LRUType lruType) {
-    // TODO (Facet): choose between NameHashIntCacheLRU and NameIntCacheLRU.
+    // TODO (Facet): choose between NameHashIntCacheLRU and NameIntCacheLRU. id:917 gh:918
     // For guaranteed correctness - not relying on no-collisions in the hash
     // function, NameIntCacheLRU should be used:
     // On the other hand, NameHashIntCacheLRU takes less RAM but if there

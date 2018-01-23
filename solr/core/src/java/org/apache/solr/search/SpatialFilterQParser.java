@@ -42,7 +42,7 @@ public class SpatialFilterQParser extends QParser {
   @Override
   public Query parse() throws SyntaxError {
     //if more than one, we need to treat them as a point...
-    //TODO: Should we accept multiple fields
+    //TODO: Should we accept multiple fields id:1969 gh:1970
     String[] fields = localParams.getParams("f");
     if (fields == null || fields.length == 0) {
       String field = getParam(SpatialParams.FIELD);
@@ -65,7 +65,7 @@ public class SpatialFilterQParser extends QParser {
     }
 
     String measStr = localParams.get(SpatialParams.MEASURE);
-    //TODO: Need to do something with Measures
+    //TODO: Need to do something with Measures id:2719 gh:2720
     Query result = null;
     //fields is valid at this point
     if (fields.length == 1) {
@@ -83,7 +83,7 @@ public class SpatialFilterQParser extends QParser {
                 + " does not support spatial filtering");
       }
     } else {// fields.length > 1
-      //TODO: Not sure about this just yet, is there a way to delegate, or do we just have a helper class?
+      //TODO: Not sure about this just yet, is there a way to delegate, or do we just have a helper class? id:2058 gh:2059
       //Seems like we could just use FunctionQuery, but then what about scoring
       /*List<ValueSource> sources = new ArrayList<ValueSource>(fields.length);
       for (String field : fields) {

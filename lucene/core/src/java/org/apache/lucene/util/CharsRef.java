@@ -161,7 +161,7 @@ public final class CharsRef implements Comparable<CharsRef>, CharSequence, Clone
 
   @Override
   public char charAt(int index) {
-    // NOTE: must do a real check here to meet the specs of CharSequence
+    // NOTE: must do a real check here to meet the specs of CharSequence id:614 gh:615
     if (index < 0 || index >= length) {
       throw new IndexOutOfBoundsException();
     }
@@ -170,7 +170,7 @@ public final class CharsRef implements Comparable<CharsRef>, CharSequence, Clone
 
   @Override
   public CharSequence subSequence(int start, int end) {
-    // NOTE: must do a real check here to meet the specs of CharSequence
+    // NOTE: must do a real check here to meet the specs of CharSequence id:878 gh:880
     if (start < 0 || end > length || start > end) {
       throw new IndexOutOfBoundsException();
     }

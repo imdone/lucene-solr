@@ -321,7 +321,7 @@ public class AtomicUpdateDocumentMerger {
     SolrInputField numericField = toDoc.get(sif.getName());
     SchemaField sf = schema.getField(sif.getName());
     if (numericField != null || sf.getDefaultValue() != null) {
-      // TODO: fieldtype needs externalToObject?
+      // TODO: fieldtype needs externalToObject? id:2800 gh:2801
       String oldValS = (numericField != null) ?
           numericField.getFirstValue().toString(): sf.getDefaultValue().toString();
       BytesRefBuilder term = new BytesRefBuilder();

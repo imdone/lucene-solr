@@ -31,7 +31,7 @@ import org.apache.lucene.util.SuppressForbidden;
  *  read from the same file.  It's usually better to use
  *  {@link NIOFSDirectory} or {@link MMapDirectory} instead. 
  *  <p>
- *  NOTE: Because this uses RandomAccessFile, it will generally
+ *  NOTE: Because this uses RandomAccessFile, it will generally id:957 gh:958
  *  not work with non-default filesystem providers. It is only
  *  provided for applications that relied on the fact that 
  *  RandomAccessFile's IO was not interruptible.

@@ -92,7 +92,7 @@ public class DateRangeField extends AbstractSpatialPrefixTreeFieldType<NumberRan
   @Override
   public NRShape parseShape(String str) {
     if (str.contains(" TO ")) {
-      //TODO parsing range syntax doesn't support DateMath on either side or exclusive/inclusive
+      //TODO parsing range syntax doesn't support DateMath on either side or exclusive/inclusive id:1928 gh:1929
       try {
         return tree.parseShape(str);
       } catch (ParseException e) {
@@ -107,7 +107,7 @@ public class DateRangeField extends AbstractSpatialPrefixTreeFieldType<NumberRan
   private Calendar parseCalendar(String str) {
     if (str.startsWith("NOW") || str.lastIndexOf('Z') >= 0) { //  ? but not if Z is last char ?   Ehh, whatever.
       //use Solr standard date format parsing rules:
-      //TODO add DMP utility to return ZonedDateTime alternative, then set cal fields manually, which is faster?
+      //TODO add DMP utility to return ZonedDateTime alternative, then set cal fields manually, which is faster? id:2691 gh:2692
       Date date = DateMathParser.parseMath(null, str);
       Calendar cal = tree.newCal();
       cal.setTime(date);

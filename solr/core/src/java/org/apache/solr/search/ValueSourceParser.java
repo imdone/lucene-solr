@@ -1134,7 +1134,7 @@ class DateValueSourceParser extends ValueSourceParser {
     if (arg == null) return null;
     // check character index 1 to be a digit.  Index 0 might be a +/-.
     if (arg.startsWith("NOW") || (arg.length() > 1 && Character.isDigit(arg.charAt(1)))) {
-      Date now = null;//TODO pull from params?
+      Date now = null;//TODO pull from params? id:2881 gh:2882
       return DateMathParser.parseMath(now, arg);
     }
     return null;

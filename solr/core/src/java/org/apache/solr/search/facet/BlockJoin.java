@@ -58,7 +58,7 @@ public class BlockJoin {
     DocIterator iter = childInput.iterator();
     int currentParent = -1;
     while (iter.hasNext()) {
-      int childDoc = iter.nextDoc(); // TODO: skipping
+      int childDoc = iter.nextDoc(); // TODO: skipping id:2060 gh:2061
       if (childDoc <= currentParent) { // use <= since we also allow parents in the input
         // we already visited this parent
         continue;

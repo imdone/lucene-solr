@@ -76,7 +76,7 @@ public class SolrZkServer {
     if (zkProps == null) {
       zkProps = new SolrZkServerProps();
       // set default data dir
-      // TODO: use something based on IP+port???  support ensemble all from same solr home?
+      // TODO: use something based on IP+port???  support ensemble all from same solr home? id:2712 gh:2714
       zkProps.setDataDir(dataHome);
       zkProps.zkRun = zkRun;
       zkProps.solrPort = Integer.toString(solrPort);

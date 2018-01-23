@@ -26,8 +26,8 @@ import org.apache.lucene.analysis.tokenattributes.PositionLengthAttribute;
 import org.apache.lucene.util.AttributeSource;
 import org.apache.lucene.util.RollingBuffer;
 
-// TODO: cut SynFilter over to this
-// TODO: somehow add "nuke this input token" capability...
+// TODO: cut SynFilter over to this id:2578 gh:2579
+// TODO: somehow add "nuke this input token" capability... id:1660 gh:1661
 
 /** An abstract TokenFilter to make it easier to build graph
  *  token filters requiring some lookahead.  This class handles
@@ -275,8 +275,8 @@ public abstract class LookaheadTokenFilter<T extends LookaheadTokenFilter.Positi
     return true;
   }
 
-  // TODO: end()?
-  // TODO: close()?
+  // TODO: end()? id:1438 gh:1439
+  // TODO: close()? id:1320 gh:1321
 
   @Override
   public void reset() throws IOException {

@@ -20,7 +20,7 @@ import random
 
 MAX_UNICODE = 0x10FFFF
 
-# TODO
+# TODO id:1176 gh:1177
 #   - could be more minimal
 #     - eg when bracket lands on a utf8 boundary, like 3 - 2047 -- they can share the two * edges
 #     - also 3 2048 or 3 65536 -- it should not have an * down the red path, but it does

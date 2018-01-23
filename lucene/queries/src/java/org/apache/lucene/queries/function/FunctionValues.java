@@ -47,14 +47,14 @@ public abstract class FunctionValues {
   public int intVal(int doc) throws IOException { throw new UnsupportedOperationException(); }
   public long longVal(int doc) throws IOException { throw new UnsupportedOperationException(); }
   public double doubleVal(int doc) throws IOException { throw new UnsupportedOperationException(); }
-  // TODO: should we make a termVal, returns BytesRef?
+  // TODO: should we make a termVal, returns BytesRef? id:959 gh:960
   public String strVal(int doc) throws IOException { throw new UnsupportedOperationException(); }
 
   public boolean boolVal(int doc) throws IOException {
     return intVal(doc) != 0;
   }
 
-  /** returns the bytes representation of the string val - TODO: should this return the indexed raw bytes not? */
+  /** returns the bytes representation of the string val - TODO: should this return the indexed raw bytes not? id:1341 gh:1342*/
   public boolean bytesVal(int doc, BytesRefBuilder target) throws IOException {
     String s = strVal(doc);
     if (s==null) {
@@ -79,7 +79,7 @@ public abstract class FunctionValues {
   /**
    * @param doc The doc to retrieve to sort ordinal for
    * @return the sort ordinal for the specified doc
-   * TODO: Maybe we can just use intVal for this...
+   * TODO: Maybe we can just use intVal for this... id:1556 gh:1557
    */
   public int ordVal(int doc) throws IOException {
     throw new UnsupportedOperationException();
@@ -133,7 +133,7 @@ public abstract class FunctionValues {
   public void longVal(int doc, long [] vals) throws IOException { throw new UnsupportedOperationException(); }
   public void doubleVal(int doc, double [] vals) throws IOException { throw new UnsupportedOperationException(); }
 
-  // TODO: should we make a termVal, fills BytesRef[]?
+  // TODO: should we make a termVal, fills BytesRef[]? id:1064 gh:1065
   public void strVal(int doc, String [] vals) throws IOException { throw new UnsupportedOperationException(); }
 
   public Explanation explain(int doc) throws IOException {
@@ -160,7 +160,7 @@ public abstract class FunctionValues {
   // A RangeValueSource can't easily be a ValueSource that takes another ValueSource
   // because it needs different behavior depending on the type of fields.  There is also
   // a setup cost - parsing and normalizing params, and doing a binary search on the StringIndex.
-  // TODO: change "reader" to LeafReaderContext
+  // TODO: change "reader" to LeafReaderContext id:1195 gh:1197
   public ValueSourceScorer getRangeScorer(LeafReaderContext readerContext, String lowerVal, String upperVal, boolean includeLower, boolean includeUpper) throws IOException {
     float lower;
     float upper;

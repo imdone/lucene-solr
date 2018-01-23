@@ -79,7 +79,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class SimplePostTool {
   private static final String DEFAULT_POST_HOST = "localhost";
   private static final String DEFAULT_POST_PORT = "8983";
-  private static final String VERSION_OF_THIS_TOOL = "5.0.0";  // TODO: hardcoded for now, but eventually to sync with actual Solr version
+  private static final String VERSION_OF_THIS_TOOL = "5.0.0";  // TODO: hardcoded for now, but eventually to sync with actual Solr version id:2201 gh:2202
 
   private static final String DEFAULT_COMMIT = "yes";
   private static final String DEFAULT_OPTIMIZE = "no";
@@ -789,8 +789,8 @@ public class SimplePostTool {
         if(type == null) {
           type = guessType(file);
         }
-        // TODO: Add a flag that disables /update and sends all to /update/extract, to avoid CSV, JSON, and XML files
-        // TODO: from being interpreted as Solr documents internally
+        // TODO: Add a flag that disables /update and sends all to /update/extract, to avoid CSV, JSON, and XML files id:2826 gh:2827
+        // TODO: from being interpreted as Solr documents internally id:2220 gh:2221
         if (type.equals("application/json") && !"solr".equals(format))  {
           suffix = "/json/docs";
           String urlStr = appendUrlPath(solrUrl, suffix).toString();

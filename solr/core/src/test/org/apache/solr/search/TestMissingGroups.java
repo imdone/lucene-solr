@@ -50,7 +50,7 @@ public class TestMissingGroups extends SolrTestCaseJ4 {
 
     // setup some key values for some random docs in our index
     // every other doc will have no values for these fields
-    // NOTE: special values may be randomly assigned to the *same* docs
+    // NOTE: special values may be randomly assigned to the *same* docs id:3095 gh:3096
     final List<SpecialField> specials = new ArrayList<SpecialField>(7);
     specials.add(new SpecialField(numDocs, "group_s1", "xxx","yyy"));
     specials.add(new SpecialField(numDocs, "group_ti", "42","24"));
@@ -63,7 +63,7 @@ public class TestMissingGroups extends SolrTestCaseJ4 {
                                  
     // build up our index of docs
     
-    for (int i = 1; i < numDocs; i++) { // NOTE: start at 1, doc#0 is below...
+    for (int i = 1; i < numDocs; i++) { // NOTE: start at 1, doc#0 is below... id:2348 gh:2349
       SolrInputDocument d = sdoc("id", i);
       if (SpecialField.special_docids.contains(i)) {
         d.addField("special_s","special");

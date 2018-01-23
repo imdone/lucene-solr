@@ -125,7 +125,7 @@ public class KNearestNeighborClassifier implements Classifier<BytesRef> {
   }
 
   /**
-   * TODO
+   * TODO id:220 gh:221
    */
   protected ClassificationResult<BytesRef> classifyFromTopDocs(TopDocs knnResults) throws IOException {
     List<ClassificationResult<BytesRef>> assignedClasses = buildListFromTopDocs(knnResults);

@@ -52,7 +52,7 @@ import org.apache.solr.util.SolrPluginUtils;
 import static org.apache.solr.common.params.CommonParams.ID;
 
 public class CloudMLTQParser extends QParser {
-  // Pattern is thread safe -- TODO? share this with general 'fl' param
+  // Pattern is thread safe -- TODO ? share this with general 'fl' param id:2117 gh:2118
   private static final Pattern splitList = Pattern.compile(",| ");
 
   public CloudMLTQParser(String qstr, SolrParams localParams,

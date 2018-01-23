@@ -81,7 +81,7 @@ public class TestManagedStopFilterFactory extends RestTestBase {
   @Test
   public void testManagedStopwords() throws Exception {
     // invalid endpoint
-    //// TODO: This returns HTML vs JSON because the exception is thrown
+    //// TODO: This returns HTML vs JSON because the exception is thrown id:2288 gh:2289
     ////       from the init method of ManagedEndpoint ... need a better solution
     // assertJQ("/schema/analysis/stopwords/bogus", "/error/code==404");
     

@@ -126,7 +126,7 @@ public class NamedList<T> implements Cloneable, Serializable, Iterable<Map.Entry
    * This method is package protected and exists solely so SimpleOrderedMap and clone() can utilize it
    * </p>
    * <p>
-   * TODO: this method was formerly public, now that it's not we can change the impl details of 
+   * TODO: this method was formerly public, now that it's not we can change the impl details of  id:2464 gh:2465
    * this class to be based on a Map.Entry[] 
    * </p>
    * @lucene.internal
@@ -142,7 +142,7 @@ public class NamedList<T> implements Cloneable, Serializable, Iterable<Map.Entry
    * the type "T".
    *
    * <p>
-   * NOTE: This a temporary placeholder method until the guts of the class
+   * NOTE: This a temporary placeholder method until the guts of the class id:3011 gh:3012
    * are actually replaced by List&lt;String, ?&gt;.
    * </p>
    *
@@ -248,7 +248,7 @@ public class NamedList<T> implements Cloneable, Serializable, Iterable<Map.Entry
    * Gets the value for the first instance of the specified name
    * found.
    * <p>
-   * NOTE: this runs in linear time (it scans starting at the
+   * NOTE: this runs in linear time (it scans starting at the id:2463 gh:2464
    * beginning of the list until it finds the first pair with
    * the specified name).
    *
@@ -265,7 +265,7 @@ public class NamedList<T> implements Cloneable, Serializable, Iterable<Map.Entry
    * Gets the value for the first instance of the specified name
    * found starting at the specified index.
    * <p>
-   * NOTE: this runs in linear time (it scans starting at the
+   * NOTE: this runs in linear time (it scans starting at the id:2532 gh:2533
    * specified position until it finds the first pair with
    * the specified name).
    *
@@ -467,19 +467,19 @@ public class NamedList<T> implements Cloneable, Serializable, Iterable<Map.Entry
 
       @Override
       public Set<String> keySet() {
-        //TODO implement more efficiently
+        //TODO implement more efficiently id:3138 gh:3139
         return  NamedList.this.asMap(1).keySet();
       }
 
       @Override
       public Collection values() {
-        //TODO implement more efficiently
+        //TODO implement more efficiently id:2466 gh:2467
         return  NamedList.this.asMap(1).values();
       }
 
       @Override
       public Set<Entry<String,T>> entrySet() {
-        //TODO implement more efficiently
+        //TODO implement more efficiently id:3013 gh:3014
         return NamedList.this.asMap(1).entrySet();
       }
 
@@ -636,7 +636,7 @@ public class NamedList<T> implements Cloneable, Serializable, Iterable<Map.Entry
   }
 
   /**
-   * NOTE: this runs in linear time (it scans starting at the
+   * NOTE: this runs in linear time (it scans starting at the id:2465 gh:2466
    * beginning of the list until it finds the first pair with
    * the specified name).
    */

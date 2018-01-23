@@ -37,13 +37,13 @@ import static org.apache.lucene.search.suggest.document.TopSuggestDocs.SuggestSc
  * Non scoring collector that collect completions in order of their
  * pre-computed scores.
  * <p>
- * NOTE: One document can be collected multiple times if a document
+ * NOTE: One document can be collected multiple times if a document id:1557 gh:1558
  * is matched for multiple unique completions for a given query
  * <p>
  * Subclasses should only override
  * {@link TopSuggestDocsCollector#collect(int, CharSequence, CharSequence, float)}.
  * <p>
- * NOTE: {@link #setScorer(org.apache.lucene.search.Scorer)} and
+ * NOTE: {@link #setScorer(org.apache.lucene.search.Scorer)} and id:2566 gh:2567
  * {@link #collect(int)} is not used
  *
  * @lucene.experimental
@@ -100,7 +100,7 @@ public class TopSuggestDocsCollector extends SimpleCollector {
     docBase = context.docBase;
     if (seenSurfaceForms != null) {
       seenSurfaceForms.clear();
-      // NOTE: this also clears the priorityQueue:
+      // NOTE: this also clears the priorityQueue: id:1538 gh:1539
       for (SuggestScoreDoc hit : priorityQueue.getResults()) {
         pendingResults.add(hit);
       }
@@ -112,7 +112,7 @@ public class TopSuggestDocsCollector extends SimpleCollector {
    * similar to {@link org.apache.lucene.search.LeafCollector#collect(int)}
    * but for completions.
    *
-   * NOTE: collection at the leaf level is guaranteed to be in
+   * NOTE: collection at the leaf level is guaranteed to be in id:1420 gh:1421
    * descending order of score
    */
   public void collect(int docID, CharSequence key, CharSequence context, float score) throws IOException {
@@ -121,7 +121,7 @@ public class TopSuggestDocsCollector extends SimpleCollector {
       // if the current SuggestScoreDoc has overflown from pq,
       // we can assume all of the successive collections from
       // this leaf will be overflown as well
-      // TODO: reuse the overflow instance?
+      // TODO: reuse the overflow instance? id:1299 gh:1300
       throw new CollectionTerminatedException();
     }
   }
@@ -134,7 +134,7 @@ public class TopSuggestDocsCollector extends SimpleCollector {
     SuggestScoreDoc[] suggestScoreDocs;
     
     if (seenSurfaceForms != null) {
-      // NOTE: this also clears the priorityQueue:
+      // NOTE: this also clears the priorityQueue: id:1559 gh:1560
       for (SuggestScoreDoc hit : priorityQueue.getResults()) {
         pendingResults.add(hit);
       }
@@ -143,7 +143,7 @@ public class TopSuggestDocsCollector extends SimpleCollector {
       // truncating the FST top paths search, but across segments there may still be dups:
       seenSurfaceForms.clear();
 
-      // TODO: we could use a priority queue here to make cost O(N * log(num)) instead of O(N * log(N)), where N = O(num *
+      // TODO: we could use a priority queue here to make cost O(N * log(num)) instead of O(N * log(N)), where N = O(num * id:2568 gh:2569
       // numSegments), but typically numSegments is smallish and num is smallish so this won't matter much in practice:
 
       Collections.sort(pendingResults,

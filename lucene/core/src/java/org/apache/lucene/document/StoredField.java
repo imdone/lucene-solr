@@ -120,7 +120,7 @@ public class StoredField extends Field {
     super(name, value, type);
   }
 
-  // TODO: not great but maybe not a big problem?
+  // TODO: not great but maybe not a big problem? id:456 gh:454
   /**
    * Create a stored-only field with the given integer value.
    * @param name field name

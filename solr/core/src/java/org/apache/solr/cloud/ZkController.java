@@ -133,7 +133,7 @@ import static org.apache.solr.common.cloud.ZkStateReader.SHARD_ID_PROP;
  * notes: loads everything on init, creates what's not there - further updates
  * are prompted with Watches.
  * <p>
- * TODO: exceptions during close on attempts to update cloud state
+ * TODO: exceptions during close on attempts to update cloud state id:1751 gh:1752
  */
 public class ZkController {
 
@@ -365,7 +365,7 @@ public class ZkController {
               ExecutorService executorService = (cc != null) ? cc.getCoreZkRegisterExecutorService() : null;
               if (descriptors != null) {
                 for (CoreDescriptor descriptor : descriptors) {
-                  // TODO: we need to think carefully about what happens when it
+                  // TODO: we need to think carefully about what happens when it id:2714 gh:2715
                   // was
                   // a leader that was expired - as well as what to do about
                   // leaders/overseers
@@ -1055,7 +1055,7 @@ public class ZkController {
         if (replica != null) {
           joinAtHead = replica.getBool(SliceMutator.PREFERRED_LEADER_PROP, false);
         }
-        //TODO WHy would replica be null?
+        //TODO WHy would replica be null? id:1814 gh:1815
         if (replica == null || replica.getType() != Type.PULL) {
           joinElection(desc, afterExpiration, joinAtHead);
         } else if (replica.getType() == Type.PULL) {
@@ -1088,8 +1088,8 @@ public class ZkController {
         
         // recover from local transaction log and wait for it to complete before
         // going active
-        // TODO: should this be moved to another thread? To recoveryStrat?
-        // TODO: should this actually be done earlier, before (or as part of)
+        // TODO: should this be moved to another thread? To recoveryStrat? id:2632 gh:2633
+        // TODO: should this actually be done earlier, before (or as part of) id:1778 gh:1779
         // leader election perhaps?
         
         UpdateLog ulog = core.getUpdateHandler().getUpdateLog();
@@ -1108,10 +1108,10 @@ public class ZkController {
             Future<UpdateLog.RecoveryInfo> recoveryFuture = core.getUpdateHandler().getUpdateLog().recoverFromLog();
             if (recoveryFuture != null) {
               log.info("Replaying tlog for " + ourUrl + " during startup... NOTE: This can take a while.");
-              recoveryFuture.get(); // NOTE: this could potentially block for
+              recoveryFuture.get(); // NOTE: this could potentially block for id:1753 gh:1754
               // minutes or more!
-              // TODO: public as recovering in the mean time?
-              // TODO: in the future we could do peersync in parallel with recoverFromLog
+              // TODO: public as recovering in the mean time? id:2716 gh:2717
+              // TODO: in the future we could do peersync in parallel with recoverFromLog id:1817 gh:1818
             } else {
               log.debug("No LogReplay needed for core={} baseURL={}", core.getName(), baseUrl);
             }
@@ -1362,7 +1362,7 @@ public class ZkController {
       log.debug("publishing state={}", state.toString());
       // System.out.println(Thread.currentThread().getStackTrace()[3]);
       Integer numShards = cd.getCloudDescriptor().getNumShards();
-      if (numShards == null) { // XXX sys prop hack
+      if (numShards == null) { // XXX sys prop hack id:2633 gh:2634
         log.debug("numShards not found on descriptor - reading it from system property");
         numShards = Integer.getInteger(ZkStateReader.NUM_SHARDS_PROP);
       }
@@ -1524,7 +1524,7 @@ public class ZkController {
         final Map<String, Slice> slicesMap = docCollection.getSlicesMap();
         for (Slice slice : slicesMap.values()) {
           for (Replica replica : slice.getReplicas()) {
-            // TODO: for really large clusters, we could 'index' on this
+            // TODO: for really large clusters, we could 'index' on this id:1780 gh:1781
 
             String nodeName = replica.getStr(ZkStateReader.NODE_NAME_PROP);
             String core = replica.getStr(ZkStateReader.CORE_NAME_PROP);
@@ -1831,7 +1831,7 @@ public class ZkController {
           throw e;
         }
         // if we fail creating, setdata
-        // TODO: we should consider using version
+        // TODO: we should consider using version id:1754 gh:1755
         zkClient.setData(path, Utils.toJSON(props), true);
       }
       return;
@@ -1848,7 +1848,7 @@ public class ZkController {
       props = new ZkNodeProps(CONFIGNAME_PROP, confSetName);
     }
 
-    // TODO: we should consider using version
+    // TODO: we should consider using version id:2718 gh:2719
     zkClient.setData(path, Utils.toJSON(props), true);
 
   }
@@ -2174,7 +2174,7 @@ public class ZkController {
 
     Map<String, Object> stateObj = null;
     if (stateData != null && stateData.length > 0) {
-      // TODO: Remove later ... this is for upgrading from 4.8.x to 4.10.3 (see: SOLR-6732)
+      // TODO: Remove later ... this is for upgrading from 4.8.x to 4.10.3 (see: SOLR-6732) id:1819 gh:1820
       if (stateData[0] == (byte) '{') {
         Object parsedJson = Utils.fromJSON(stateData);
         if (parsedJson instanceof Map) {
@@ -2292,7 +2292,7 @@ public class ZkController {
     
     Integer leaderZkNodeParentVersion = ((ShardLeaderElectionContextBase)context).getLeaderZkNodeParentVersion();
     
-    // TODO: should we do this optimistically to avoid races?
+    // TODO: should we do this optimistically to avoid races? id:2634 gh:2635
     if (zkClient.exists(znodePath, retryOnConnLoss)) {
       List<Op> ops = new ArrayList<>(2);
       ops.add(Op.check(new org.apache.hadoop.fs.Path(((ShardLeaderElectionContextBase)context).leaderPath).getParent().toString(), leaderZkNodeParentVersion));

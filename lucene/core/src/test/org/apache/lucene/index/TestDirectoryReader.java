@@ -550,7 +550,7 @@ public class TestDirectoryReader extends LuceneTestCase {
       writer.addDocument(doc);
   }
 
-  // TODO: maybe this can reuse the logic of test dueling codecs?
+  // TODO: maybe this can reuse the logic of test dueling codecs? id:992 gh:993
   public static void assertIndexEquals(DirectoryReader index1, DirectoryReader index2) throws IOException {
     assertEquals("IndexReaders have different values for numDocs.", index1.numDocs(), index2.numDocs());
     assertEquals("IndexReaders have different values for maxDoc.", index1.maxDoc(), index2.maxDoc());

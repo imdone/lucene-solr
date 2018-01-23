@@ -69,7 +69,7 @@ public class HelloWorldSolrCloudTestCase extends SolrCloudTestCase {
         .commit(cluster.getSolrClient(), COLLECTION);
 
     // add further document(s) here
-    // TODO
+    // TODO id:2224 gh:2225
   }
 
   @Test

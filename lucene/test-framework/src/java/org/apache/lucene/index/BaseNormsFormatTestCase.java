@@ -43,7 +43,7 @@ import static org.apache.lucene.search.DocIdSetIterator.NO_MORE_DOCS;
 
 /**
  * Abstract class to do basic tests for a norms format.
- * NOTE: This test focuses on the norms impl, nothing else.
+ * NOTE: This test focuses on the norms impl, nothing else. id:1354 gh:1355
  * The [stretch] goal is for this test to be
  * so thorough in testing a new NormsFormat that if this
  * test passes, then all Lucene/Solr tests should also pass.  Ie,
@@ -541,20 +541,20 @@ public abstract class BaseNormsFormatTestCase extends BaseIndexFileFormatTestCas
 
   @Override
   protected void addRandomFields(Document doc) {
-    // TODO: improve
+    // TODO: improve id:1614 gh:1615
     doc.add(new TextField("foobar", TestUtil.randomSimpleString(random()), Field.Store.NO));
     
   }
 
   @Override
   public void testMergeStability() throws Exception {
-    // TODO: can we improve this base test to just have subclasses declare the extensions to check,
+    // TODO: can we improve this base test to just have subclasses declare the extensions to check, id:2590 gh:2591
     // rather than a blacklist to exclude? we need to index stuff to get norms, but we dont care about testing
     // the PFs actually doing that...
     assumeTrue("The MockRandom PF randomizes content on the fly, so we can't check it", false);
   }
   
-  // TODO: test thread safety (e.g. across different fields) explicitly here
+  // TODO: test thread safety (e.g. across different fields) explicitly here id:1691 gh:1692
 
   /*
    * LUCENE-6006: Tests undead norms.

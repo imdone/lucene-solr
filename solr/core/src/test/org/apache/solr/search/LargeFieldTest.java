@@ -32,7 +32,7 @@ import org.junit.Test;
 
 public class LargeFieldTest extends SolrTestCaseJ4 {
 
-  private static final String ID_FLD = "str"; // TODO alter underlying schema to be 'id'
+  private static final String ID_FLD = "str"; // TODO alter underlying schema to be 'id' id:2344 gh:2345
   private static final String LAZY_FIELD = "lazyField";
   private static final String BIG_FIELD = "bigField";
 
@@ -47,11 +47,11 @@ public class LargeFieldTest extends SolrTestCaseJ4 {
 
     initCore("solrconfig-managed-schema.xml", "ignoredSchemaName");
 
-    // TODO SOLR-10229 will make this easier
+    // TODO SOLR-10229 will make this easier id:2936 gh:2937
     boolean PERSIST_FALSE = false; // don't write to test resource dir
     IndexSchema schema = h.getCore().getLatestSchema();
     schema = schema.addFieldTypes(Collections.singletonList(
-        schema.newFieldType("textType", "solr.TextField", // redundant; TODO improve api
+        schema.newFieldType("textType", "solr.TextField", // redundant; TODO improve api id:2343 gh:2344
             map("name", "textType",   "class", "solr.TextField",
                 "analyzer", map("class", "org.apache.lucene.analysis.standard.StandardAnalyzer")))),
         PERSIST_FALSE);

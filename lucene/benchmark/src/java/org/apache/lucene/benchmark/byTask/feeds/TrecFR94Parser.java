@@ -32,12 +32,12 @@ public class TrecFR94Parser extends TrecDocParser {
   private static final String DATE = "<DATE>";
   private static final String[] DATE_NOISE_PREFIXES = {
     "DATE:",
-    "date:", //TODO improve date extraction for this format
+    "date:", //TODO improve date extraction for this format id:212 gh:213
     "t.c.",
   };
   private static final String DATE_END = "</DATE>";
   
-  //TODO can we also extract title for this format?
+  //TODO can we also extract title for this format? id:250 gh:251
   
   @Override
   public DocData parse(DocData docData, String name, TrecContentSource trecSrc, 

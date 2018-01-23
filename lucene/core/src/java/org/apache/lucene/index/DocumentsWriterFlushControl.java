@@ -444,7 +444,7 @@ final class DocumentsWriterFlushControl implements Accountable {
 
   @Override
   public long ramBytesUsed() {
-    // TODO: improve this to return more detailed info?
+    // TODO: improve this to return more detailed info? id:407 gh:408
     return getDeleteBytesUsed() + netBytes();
   }
   

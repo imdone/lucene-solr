@@ -123,7 +123,7 @@ public class BasicDistributedZk2Test extends AbstractFullDistribZkTestBase {
         // expected
       }
       
-      // TODO: bring this to its own method?
+      // TODO: bring this to its own method? id:3040 gh:3041
       // try indexing to a leader that has no replicas up
       ZkStateReader zkStateReader = cloudClient.getZkStateReader();
       ZkNodeProps leaderProps = zkStateReader.getLeaderRetry(
@@ -354,7 +354,7 @@ public class BasicDistributedZk2Test extends AbstractFullDistribZkTestBase {
         }
       }
     }
-    // TODO: This test currently fails because debug info is obtained only
+    // TODO: This test currently fails because debug info is obtained only id:2241 gh:2242
     // on shards with matches.
     // query("q","matchesnothing","fl","*,score", "debugQuery", "true");
     

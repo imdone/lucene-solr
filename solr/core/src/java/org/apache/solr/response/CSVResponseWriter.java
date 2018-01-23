@@ -385,7 +385,7 @@ class CSVWriter extends TextResponseWriter {
     // nothing
   }
 
-  //NOTE: a document cannot currently contain another document
+  //NOTE: a document cannot currently contain another document id:1918 gh:1919
   List tmpList;
   @Override
   public void writeSolrDocument(String name, SolrDocument doc, ReturnFields returnFields, int idx ) throws IOException {

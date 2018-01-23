@@ -237,7 +237,7 @@ public class Config {
     try {
       String xstr=normalize(path);
 
-      // TODO: instead of prepending /prefix/, we could do the search rooted at /prefix...
+      // TODO: instead of prepending /prefix/, we could do the search rooted at /prefix... id:1767 gh:1768
       Object o = xpath.evaluate(xstr, doc, type);
       return o;
 

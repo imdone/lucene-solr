@@ -64,14 +64,14 @@ public class DirectoryTaxonomyReader extends TaxonomyReader implements Accountab
 
   private static final int DEFAULT_CACHE_VALUE = 4000;
 
-  // NOTE: very coarse estimate!
+  // NOTE: very coarse estimate! id:1028 gh:1029
   private static final int BYTES_PER_CACHE_ENTRY = 4 * RamUsageEstimator.NUM_BYTES_OBJECT_REF + 4 * RamUsageEstimator.NUM_BYTES_OBJECT_HEADER + 8 * RamUsageEstimator.NUM_BYTES_CHAR;
   
   private final DirectoryTaxonomyWriter taxoWriter;
   private final long taxoEpoch; // used in doOpenIfChanged 
   private final DirectoryReader indexReader;
 
-  // TODO: test DoubleBarrelLRUCache and consider using it instead
+  // TODO: test DoubleBarrelLRUCache and consider using it instead id:1081 gh:1082
   private LRUHashMap<FacetLabel, Integer> ordinalCache;
   private LRUHashMap<Integer, FacetLabel> categoryCache;
 
@@ -313,7 +313,7 @@ public class DirectoryTaxonomyReader extends TaxonomyReader implements Accountab
       return null;
     }
     
-    // TODO: can we use an int-based hash impl, such as IntToObjectMap,
+    // TODO: can we use an int-based hash impl, such as IntToObjectMap, id:912 gh:913
     // wrapped as LRU?
     Integer catIDInteger = Integer.valueOf(ordinal);
     synchronized (categoryCache) {

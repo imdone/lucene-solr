@@ -104,7 +104,7 @@ public abstract class NormsConsumer implements Closeable {
    */
   public void mergeNormsField(final FieldInfo mergeFieldInfo, final MergeState mergeState) throws IOException {
 
-    // TODO: try to share code with default merge of DVConsumer by passing MatchAllBits ?
+    // TODO: try to share code with default merge of DVConsumer by passing MatchAllBits ? id:481 gh:482
     addNormsField(mergeFieldInfo,
                   new NormsProducer() {
                     @Override

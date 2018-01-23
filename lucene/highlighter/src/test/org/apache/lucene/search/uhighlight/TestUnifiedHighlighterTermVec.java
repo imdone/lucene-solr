@@ -121,7 +121,7 @@ public class TestUnifiedHighlighterTermVec extends LuceneTestCase {
 
           @Override
           public Fields getTermVectors(int docID) throws IOException {
-            // if we're invoked by ParallelLeafReader then we can't do our assertion. TODO see LUCENE-6868
+            // if we're invoked by ParallelLeafReader then we can't do our assertion. TODO see LUCENE-6868 id:947 gh:948
             if (calledBy(ParallelLeafReader.class) == false
                 && calledBy(CheckIndex.class) == false) {
               assertFalse("Should not request TVs for doc more than once.", seenDocIDs.get(docID));

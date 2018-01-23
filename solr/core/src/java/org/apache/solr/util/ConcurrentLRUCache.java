@@ -313,7 +313,7 @@ public class ConcurrentLRUCache<K,V> implements Cache<K,V>, Accountable {
     }
 
     // System.out.println("items removed:" + numRemoved + " numKept=" + numKept + " esetSz="+ eSize + " sz-numRemoved=" + (sz-numRemoved));
-    // TODO: allow this to be customized in the constructor?
+    // TODO: allow this to be customized in the constructor? id:3004 gh:3005
     int numPasses=1; // maximum number of linear passes over the data
 
     // if we didn't remove enough entries, then make more passes

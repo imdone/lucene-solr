@@ -578,7 +578,7 @@ public class DirectUpdateHandler2 extends UpdateHandler implements SolrCoreState
     }
     log.info("end_mergeIndexes");
 
-    // TODO: consider soft commit issues
+    // TODO: consider soft commit issues id:2061 gh:2062
     if (rc == 1 && commitTracker.getTimeUpperBound() > 0) {
       commitTracker.scheduleCommitWithin(commitTracker.getTimeUpperBound());
     } else if (rc == 1 && softCommitTracker.getTimeUpperBound() > 0) {
@@ -821,7 +821,7 @@ public class DirectUpdateHandler2 extends UpdateHandler implements SolrCoreState
   }
 
 
-  public static boolean commitOnClose = true;  // TODO: make this a real config option or move it to TestInjection
+  public static boolean commitOnClose = true;  // TODO: make this a real config option or move it to TestInjection id:2951 gh:2952
 
   // IndexWriterCloser interface method - called from solrCoreState.decref(this)
   @Override
@@ -863,7 +863,7 @@ public class DirectUpdateHandler2 extends UpdateHandler implements SolrCoreState
           cmd.waitSearcher = false;
           cmd.softCommit = false;
 
-          // TODO: keep other commit callbacks from being called?
+          // TODO: keep other commit callbacks from being called? id:2133 gh:2135
          //  this.commit(cmd);        // too many test failures using this method... is it because of callbacks?
 
           synchronized (solrCoreState.getUpdateLock()) {

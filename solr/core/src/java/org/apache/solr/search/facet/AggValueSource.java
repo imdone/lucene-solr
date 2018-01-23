@@ -49,7 +49,7 @@ public abstract class AggValueSource extends ValueSource {
     throw new UnsupportedOperationException("NOT IMPLEMENTED " + name + " " + this);
   }
 
-  // TODO: make abstract
+  // TODO: make abstract id:1971 gh:1972
   public SlotAcc createSlotAcc(FacetContext fcontext, int numDocs, int numSlots) throws IOException {
     throw new UnsupportedOperationException("NOT IMPLEMENTED " + name + " " + this);
   }

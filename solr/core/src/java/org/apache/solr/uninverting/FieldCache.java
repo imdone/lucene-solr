@@ -411,7 +411,7 @@ public interface FieldCache {
    * EXPERT: Generates an array of CacheEntry objects representing all items 
    * currently in the FieldCache.
    * <p>
-   * NOTE: These CacheEntry objects maintain a strong reference to the 
+   * NOTE: These CacheEntry objects maintain a strong reference to the  id:2772 gh:2773
    * Cached Values.  Maintaining references to a CacheEntry the AtomicIndexReader 
    * associated with it has garbage collected will prevent the Value itself
    * from being garbage collected when the Cache drops the WeakReference.
@@ -436,7 +436,7 @@ public interface FieldCache {
   /**
    * Expert: drops all cache entries associated with this
    * reader {@link org.apache.lucene.index.IndexReader.CacheHelper#getKey()}.
-   * NOTE: this cache key must
+   * NOTE: this cache key must id:2137 gh:2138
    * precisely match the reader that the cache entry is
    * keyed on. If you pass a top-level reader, it usually
    * will have no effect as Lucene now caches at the segment

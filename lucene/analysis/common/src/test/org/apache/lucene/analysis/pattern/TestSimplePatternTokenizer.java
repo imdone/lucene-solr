@@ -170,7 +170,7 @@ public class TestSimplePatternTokenizer extends BaseTokenStreamTestCase {
   }
   
   /** 
-   * TODO: rewrite tests not to use string comparison.
+   * TODO: rewrite tests not to use string comparison. id:202 gh:203
    */
   private static String tsToString(TokenStream in) throws IOException {
     StringBuilder out = new StringBuilder();

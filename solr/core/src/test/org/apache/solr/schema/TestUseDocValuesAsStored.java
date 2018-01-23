@@ -413,7 +413,7 @@ public class TestUseDocValuesAsStored extends AbstractBadConfigTestBase {
           "/response/docs/[0]/test_mvt_dvt_sf_str/[2]==cccc");
     } catch (Exception e) {
       // do nothing until SOLR-8740 is committed. At that point this should not throw an exception. 
-      // NOTE: I think the test is correct after 8740 so just remove the try/catch
+      // NOTE: I think the test is correct after 8740 so just remove the try/catch id:3092 gh:3093
     }
     assertJQ(req("q", "id:3", "fl", "test_mvt_dvf_st_str"),
         "/response/docs/[0]/test_mvt_dvf_st_str/[0]==cccc",

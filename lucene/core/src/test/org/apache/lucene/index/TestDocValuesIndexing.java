@@ -476,7 +476,7 @@ public class TestDocValuesIndexing extends LuceneTestCase {
     IndexWriter w2 = new IndexWriter(dir, newIndexWriterConfig(new MockAnalyzer(random())));
     doc2.add(new StringField("foo", "bar", Field.Store.NO));
     doc2.add(new BinaryDocValuesField("foo", new BytesRef("foo")));
-    // NOTE: this case follows a different code path inside
+    // NOTE: this case follows a different code path inside id:1270 gh:1271
     // DefaultIndexingChain/FieldInfos, because the field (foo)
     // is first added without DocValues:
     expectThrows(IllegalArgumentException.class, () -> {
@@ -500,7 +500,7 @@ public class TestDocValuesIndexing extends LuceneTestCase {
     IndexWriter w2 = new IndexWriter(dir, newIndexWriterConfig(new MockAnalyzer(random())));
     doc2.add(new StringField("foo", "bar", Field.Store.NO));
     doc2.add(new BinaryDocValuesField("foo", new BytesRef("foo")));
-    // NOTE: this case follows a different code path inside
+    // NOTE: this case follows a different code path inside id:799 gh:800
     // DefaultIndexingChain/FieldInfos, because the field (foo)
     // is first added without DocValues:
     expectThrows(IllegalArgumentException.class, () -> {

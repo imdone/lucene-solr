@@ -42,8 +42,8 @@ reHelpArg = re.compile(r'-{1,2}(?:\?|h(?:elp)?)')
 # Example: Checking out Revision e441a99009a557f82ea17ee9f9c3e9b89c75cee6 (refs/remotes/origin/master)
 reGitRev = re.compile(r'Checking out Revision (\S+)')
 
-# Method example: NOTE: reproduce with: ant test  -Dtestcase=ZkSolrClientTest -Dtests.method=testMultipleWatchesAsync -Dtests.seed=6EF5AB70F0032849 -Dtests.slow=true -Dtests.locale=he-IL -Dtests.timezone=NST -Dtests.asserts=true -Dtests.file.encoding=UTF-8
-# Suite example:  NOTE: reproduce with: ant test  -Dtestcase=CloudSolrClientTest -Dtests.seed=DB2DF2D8228BAF27 -Dtests.multiplier=3 -Dtests.slow=true -Dtests.locale=es-AR -Dtests.timezone=America/Argentina/Cordoba -Dtests.asserts=true -Dtests.file.encoding=US-ASCII
+# Method example: NOTE: reproduce with: ant test  -Dtestcase=ZkSolrClientTest -Dtests.method=testMultipleWatchesAsync -Dtests.seed=6EF5AB70F0032849 -Dtests.slow=true -Dtests.locale=he-IL -Dtests.timezone=NST -Dtests.asserts=true -Dtests.file.encoding=UTF-8 id:7 gh:8
+# Suite example:  NOTE: reproduce with: ant test  -Dtestcase=CloudSolrClientTest -Dtests.seed=DB2DF2D8228BAF27 -Dtests.multiplier=3 -Dtests.slow=true -Dtests.locale=es-AR -Dtests.timezone=America/Argentina/Cordoba -Dtests.asserts=true -Dtests.file.encoding=US-ASCII id:8 gh:9
 reReproLine = re.compile(r'NOTE:\s+reproduce\s+with:(\s+ant\s+test\s+-Dtestcase=(\S+)\s+(?:-Dtests.method=\S+\s+)?(.*))')
 
 # Example: https://jenkins.thetaphi.de/job/Lucene-Solr-master-Linux/21108/

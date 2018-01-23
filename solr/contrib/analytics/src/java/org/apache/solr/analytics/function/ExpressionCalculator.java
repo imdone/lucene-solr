@@ -37,7 +37,7 @@ public class ExpressionCalculator {
   /**
    * Calculate results for the list of {@link AnalyticsExpression}s.
    * <p>
-   * NOTE: This method can, and is, called multiple times to generate different responses. 
+   * NOTE: This method can, and is, called multiple times to generate different responses.  id:2614 gh:2615
    * <br>
    * The results are determined by which {@link ReductionDataCollection} is passed to the {@link ReductionCollectionManager#setData}
    * method of the {@link ReductionCollectionManager} managing the reduction for the list of {@link AnalyticsExpression}s.
@@ -58,7 +58,7 @@ public class ExpressionCalculator {
   /**
    * Calculate results for the list of {@link AnalyticsExpression}s and add them to the given response.
    * <p>
-   * NOTE: This method can, and is, called multiple times to generate different responses. 
+   * NOTE: This method can, and is, called multiple times to generate different responses.  id:1740 gh:1741
    * <br>
    * The results are determined by which {@link ReductionDataCollection} is passed to the {@link ReductionCollectionManager#setData}
    * method of the {@link ReductionCollectionManager} managing the reduction for the list of {@link AnalyticsExpression}s.

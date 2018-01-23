@@ -120,7 +120,7 @@ final class SegmentTermsEnum extends TermsEnum {
    *  computing aggregate statistics. */
   public Stats computeBlockStats() throws IOException {
 
-    // TODO: add total auto-prefix term count
+    // TODO: add total auto-prefix term count id:434 gh:435
 
     Stats stats = new Stats(fr.parent.segment, fr.fieldInfo.name);
     if (fr.index != null) {
@@ -363,7 +363,7 @@ final class SegmentTermsEnum extends TermsEnum {
 
       int cmp = 0;
 
-      // TODO: reverse vLong byte order for better FST
+      // TODO: reverse vLong byte order for better FST id:497 gh:498
       // prefix output sharing
 
       // First compare up to valid seek frames:
@@ -620,7 +620,7 @@ final class SegmentTermsEnum extends TermsEnum {
 
       int cmp = 0;
 
-      // TODO: we should write our vLong backwards (MSB
+      // TODO: we should write our vLong backwards (MSB id:476 gh:477
       // first) to get better sharing from the FST
 
       // First compare up to valid seek frames:
@@ -634,7 +634,7 @@ final class SegmentTermsEnum extends TermsEnum {
         }
         arc = arcs[1+targetUpto];
         assert arc.label == (target.bytes[target.offset + targetUpto] & 0xFF): "arc.label=" + (char) arc.label + " targetLabel=" + (char) (target.bytes[target.offset + targetUpto] & 0xFF);
-        // TODO: we could save the outputs in local
+        // TODO: we could save the outputs in local id:359 gh:360
         // byte[][] instead of making new objs ever
         // seek; but, often the FST doesn't have any
         // shared bytes (but this could change if we

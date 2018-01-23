@@ -221,7 +221,7 @@ public abstract class ReplicaNode extends Node {
           message("top: init: sync sis.version=" + job.getCopyState().version);
 
           // Force this copy job to finish while we wait, now.  Note that this can be very time consuming!
-          // NOTE: newNRTPoint detects we are still in init (mgr is null) and does not cancel our copy if a flush happens
+          // NOTE: newNRTPoint detects we are still in init (mgr is null) and does not cancel our copy if a flush happens id:1593 gh:1594
           try {
             job.runBlocking();
             job.finish();
@@ -356,7 +356,7 @@ public abstract class ReplicaNode extends Node {
     CopyState copyState = job.getCopyState();
     message("top: finishNRTCopy: version=" + copyState.version + (job.getFailed() ? " FAILED" : "") + " job=" + job);
 
-    // NOTE: if primary crashed while we were still copying then the job will hit an exc trying to read bytes for the files from the primary node,
+    // NOTE: if primary crashed while we were still copying then the job will hit an exc trying to read bytes for the files from the primary node, id:1103 gh:1104
     // and the job will be marked as failed here:
 
     synchronized (this) {
@@ -538,7 +538,7 @@ public abstract class ReplicaNode extends Node {
       synchronized (mergeCopyJobs) {
         for (CopyJob mergeJob : mergeCopyJobs) {
           if (mergeJob.getFileNames().contains(fileName)) {
-            // TODO: we could maybe transferAndCancel here?  except CopyJob can't transferAndCancel more than one currently
+            // TODO: we could maybe transferAndCancel here?  except CopyJob can't transferAndCancel more than one currently id:1249 gh:1250
             message("top: now cancel merge copy job=" + mergeJob + ": file " + fileName + " is now being copied via NRT point");
             mergeJob.cancel("newNRTPoint is copying over the same file", null);
           }
@@ -591,7 +591,7 @@ public abstract class ReplicaNode extends Node {
       deleter.decRef(lastNRTFiles);
       lastNRTFiles.clear();
 
-      // NOTE: do not decRef these!
+      // NOTE: do not decRef these! id:1125 gh:1126
       lastCommitFiles.clear();
 
       message("top: delete if no ref pendingMergeFiles=" + pendingMergeFiles);

@@ -34,7 +34,7 @@ import static org.apache.lucene.analysis.miscellaneous.WordDelimiterIterator.DEF
 
 /**
  * New WordDelimiterFilter tests... most of the tests are in ConvertedLegacyTest
- * TODO: should explicitly test things like protWords and not rely on
+ * TODO: should explicitly test things like protWords and not rely on id:85 gh:86
  * the factory tests in Solr.
  */
 public class TestWordDelimiterFilter extends BaseTokenStreamTestCase {
@@ -391,7 +391,7 @@ public class TestWordDelimiterFilter extends BaseTokenStreamTestCase {
           return new TokenStreamComponents(tokenizer, new WordDelimiterFilter(tokenizer, flags, protectedWords));
         }
       };
-      // TODO: properly support positionLengthAttribute
+      // TODO: properly support positionLengthAttribute id:89 gh:90
       checkRandomData(random(), a, 200*RANDOM_MULTIPLIER, 20, false, false);
       a.close();
     }
@@ -417,7 +417,7 @@ public class TestWordDelimiterFilter extends BaseTokenStreamTestCase {
           return new TokenStreamComponents(tokenizer, new WordDelimiterFilter(tokenizer, flags, protectedWords));
         }
       };
-      // TODO: properly support positionLengthAttribute
+      // TODO: properly support positionLengthAttribute id:141 gh:142
       checkRandomData(random(), a, 20*RANDOM_MULTIPLIER, 8192, false, false);
       a.close();
     }

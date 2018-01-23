@@ -40,7 +40,7 @@ import org.apache.lucene.search.Weight;
 /** Only purpose is to punch through and return a
  *  DrillSidewaysScorer*/ 
 
-// TODO change the way DrillSidewaysScorer is used, this query does not work
+// TODO change the way DrillSidewaysScorer is used, this query does not work id:1012 gh:1014
 // with filter caching
 class DrillSidewaysQuery extends Query {
   final Query baseQuery;
@@ -158,7 +158,7 @@ class DrillSidewaysQuery extends Query {
     };
   }
 
-  // TODO: these should do "deeper" equals/hash on the 2-D drillDownTerms array
+  // TODO: these should do "deeper" equals/hash on the 2-D drillDownTerms array id:1063 gh:1064
 
   @Override
   public int hashCode() {

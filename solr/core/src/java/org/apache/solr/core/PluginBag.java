@@ -77,7 +77,7 @@ public class PluginBag<T> implements AutoCloseable {
     this.apiBag = klass == SolrRequestHandler.class ? new ApiBag(core != null) : null;
     this.core = core;
     this.klass = klass;
-    // TODO: since reads will dominate writes, we could also think about creating a new instance of a map each time it changes.
+    // TODO: since reads will dominate writes, we could also think about creating a new instance of a map each time it changes. id:1771 gh:1772
     // Not sure how much benefit this would have over ConcurrentHashMap though
     // We could also perhaps make this constructor into a factory method to return different implementations depending on thread safety needs.
     this.registry = needThreadSafety ? new ConcurrentHashMap<>() : new HashMap<>();
@@ -346,7 +346,7 @@ public class PluginBag<T> implements AutoCloseable {
 
     @Override
     public void close() throws Exception {
-      // TODO: there may be a race here.  One thread can be creating a plugin
+      // TODO: there may be a race here.  One thread can be creating a plugin id:2746 gh:2747
       // and another thread can come along and close everything (missing the plugin
       // that is in the state of being created and will probably never have close() called on it).
       // can close() be called concurrently with other methods?

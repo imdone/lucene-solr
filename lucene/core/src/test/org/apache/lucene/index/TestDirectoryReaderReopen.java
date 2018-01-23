@@ -202,7 +202,7 @@ public class TestDirectoryReaderReopen extends LuceneTestCase {
   
   public void testThreadSafety() throws Exception {
     final Directory dir = newDirectory();
-    // NOTE: this also controls the number of threads!
+    // NOTE: this also controls the number of threads! id:833 gh:834
     final int n = TestUtil.nextInt(random(), 20, 40);
     
     IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig(new MockAnalyzer(random())));

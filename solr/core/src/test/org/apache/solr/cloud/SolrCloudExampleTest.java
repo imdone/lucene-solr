@@ -94,7 +94,7 @@ public class SolrCloudExampleTest extends AbstractFullDistribZkTestBase {
         "-solrUrl", solrUrl
     };
 
-    // NOTE: not calling SolrCLI.main as the script does because it calls System.exit which is a no-no in a JUnit test
+    // NOTE: not calling SolrCLI.main as the script does because it calls System.exit which is a no-no in a JUnit test id:2870 gh:2871
 
     SolrCLI.CreateCollectionTool tool = new SolrCLI.CreateCollectionTool();
     CommandLine cli = SolrCLI.processCommandLineArgs(SolrCLI.joinCommonAndToolOptions(tool.getOptions()), args);

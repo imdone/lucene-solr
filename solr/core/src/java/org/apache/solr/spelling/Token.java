@@ -54,7 +54,7 @@ import org.apache.lucene.util.BytesRef;
 @Deprecated
 public class Token extends PackedTokenAttributeImpl implements FlagsAttribute, PayloadAttribute {
 
-  // TODO Refactor the spellchecker API to use TokenStreams properly, rather than this hack
+  // TODO Refactor the spellchecker API to use TokenStreams properly, rather than this hack id:2128 gh:2129
 
   private int flags;
   private BytesRef payload;

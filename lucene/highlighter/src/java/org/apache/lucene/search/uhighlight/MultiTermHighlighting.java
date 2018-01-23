@@ -63,7 +63,7 @@ class MultiTermHighlighting {
                                                         Predicate<String> fieldMatcher,
                                                         boolean lookInSpan,
                                                         Function<Query, Collection<Query>> preRewriteFunc) {
-    // TODO Lucene needs a Query visitor API!  LUCENE-3041
+    // TODO Lucene needs a Query visitor API!  LUCENE-3041 id:1300 gh:1301
 
     List<CharacterRunAutomaton> list = new ArrayList<>();
     Collection<Query> customSubQueries = preRewriteFunc.apply(query);
@@ -145,7 +145,7 @@ class MultiTermHighlighting {
         } else { // note: is the case for PrefixQuery, TermRangeQuery
           // byte oriented automaton:
           list.add(new CharacterRunAutomaton(Automata.makeEmpty()) { // empty here is bogus just to satisfy API
-            //   TODO can we get access to the aq.compiledAutomaton.runAutomaton ?
+            //   TODO can we get access to the aq.compiledAutomaton.runAutomaton ? id:1526 gh:1527
             ByteRunAutomaton byteRunAutomaton =
                 new ByteRunAutomaton(aq.getAutomaton(), true, Operations.DEFAULT_MAX_DETERMINIZED_STATES);
 

@@ -160,7 +160,7 @@ public class HttpShardHandler extends ShardHandler {
 
         // if there are no shards available for a slice, urls.size()==0
         if (urls.size()==0) {
-          // TODO: what's the right error code here? We should use the same thing when
+          // TODO: what's the right error code here? We should use the same thing when id:1934 gh:1935
           // all of the servers for a shard are down.
           throw new SolrException(SolrException.ErrorCode.SERVICE_UNAVAILABLE, "no servers hosting shard: " + shard);
         }

@@ -100,7 +100,7 @@ public class ExactStatsCache extends StatsCache {
       SolrResponse res = r.getSolrResponse();
       NamedList<Object> nl = res.getResponse();
 
-      // TODO: nl == null if not all shards respond (no server hosting shard)
+      // TODO: nl == null if not all shards respond (no server hosting shard) id:2929 gh:2930
       String termStatsString = (String) nl.get(TERM_STATS_KEY);
       if (termStatsString != null) {
         addToPerShardTermStats(req, shard, termStatsString);

@@ -110,7 +110,7 @@ class PrepRecoveryOp implements CoreAdminHandler.CoreAdminOp {
 
               final Replica.State localState = cloudDescriptor.getLastPublished();
 
-              // TODO: This is funky but I've seen this in testing where the replica asks the
+              // TODO: This is funky but I've seen this in testing where the replica asks the id:1851 gh:1852
               // leader to be in recovery? Need to track down how that happens ... in the meantime,
               // this is a safeguard
               boolean leaderDoesNotNeedRecovery = (onlyIfLeader != null &&

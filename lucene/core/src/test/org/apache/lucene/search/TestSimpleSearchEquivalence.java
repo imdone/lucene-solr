@@ -27,7 +27,7 @@ import org.apache.lucene.search.BooleanClause.Occur;
  */
 public class TestSimpleSearchEquivalence extends SearchEquivalenceTestBase {
   
-  // TODO: we could go a little crazy for a lot of these,
+  // TODO: we could go a little crazy for a lot of these, id:1046 gh:1047
   // but these are just simple minimal cases in case something 
   // goes horribly wrong. Put more intense tests elsewhere.
   

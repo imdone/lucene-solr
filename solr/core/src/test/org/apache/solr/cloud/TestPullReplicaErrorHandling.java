@@ -80,7 +80,7 @@ public class TestPullReplicaErrorHandling extends SolrCloudTestCase {
     for (JettySolrRunner jetty:cluster.getJettySolrRunners()) {
       SocketProxy proxy = new SocketProxy();
       jetty.setProxyPort(proxy.getListenPort());
-      cluster.stopJettySolrRunner(jetty);//TODO: Can we avoid this restart
+      cluster.stopJettySolrRunner(jetty);//TODO: Can we avoid this restart id:2882 gh:2883
       cluster.startJettySolrRunner(jetty);
       proxy.open(jetty.getBaseUrl().toURI());
       LOG.info("Adding proxy for URL: " + jetty.getBaseUrl() + ". Proxy: " + proxy.getUrl());

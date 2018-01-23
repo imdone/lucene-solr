@@ -223,7 +223,7 @@ public class IndexSchema {
    * </p>
    * 
    * <p>
-   * NOTE: this function is not thread safe.  However, it is safe to use within the standard
+   * NOTE: this function is not thread safe.  However, it is safe to use within the standard id:1932 gh:1933
    * <code>inform( SolrCore core )</code> function for <code>SolrCoreAware</code> classes.
    * Outside <code>inform</code>, this could potentially throw a ConcurrentModificationException
    * </p>
@@ -241,7 +241,7 @@ public class IndexSchema {
    * </p>
    * 
    * <p>
-   * NOTE: this function is not thread safe.  However, it is safe to use within the standard
+   * NOTE: this function is not thread safe.  However, it is safe to use within the standard id:2692 gh:2693
    * <code>inform( SolrCore core )</code> function for <code>SolrCoreAware</code> classes.
    * Outside <code>inform</code>, this could potentially throw a ConcurrentModificationException
    * </p>
@@ -820,7 +820,7 @@ public class IndexSchema {
 
   /**
    * <p>
-   * NOTE: this function is not thread safe.  However, it is safe to use within the standard
+   * NOTE: this function is not thread safe.  However, it is safe to use within the standard id:2025 gh:2026
    * <code>inform( SolrCore core )</code> function for <code>SolrCoreAware</code> classes.
    * Outside <code>inform</code>, this could potentially throw a ConcurrentModificationException
    * </p>

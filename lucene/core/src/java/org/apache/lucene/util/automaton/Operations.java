@@ -384,7 +384,7 @@ final public class Operations {
     return subsetOf(a2, a1) && subsetOf(a1, a2);
   }
 
-  // TODO: move to test-framework?
+  // TODO: move to test-framework? id:701 gh:702
   /** Returns true if this automaton has any states that cannot
    *  be reached from the initial state or cannot reach an accept state.
    *  Cost is O(numTransitions+numStates). */
@@ -396,7 +396,7 @@ final public class Operations {
     return numLive < numStates;
   }
 
-  // TODO: move to test-framework?
+  // TODO: move to test-framework? id:1169 gh:1170
   /** Returns true if there are dead states reachable from an initial state. */
   public static boolean hasDeadStatesFromInitial(Automaton a) {
     BitSet reachableFromInitial = getLiveStatesFromInitial(a);
@@ -405,7 +405,7 @@ final public class Operations {
     return reachableFromInitial.isEmpty() == false;
   }
 
-  // TODO: move to test-framework?
+  // TODO: move to test-framework? id:728 gh:729
   /** Returns true if there are dead states that reach an accept state. */
   public static boolean hasDeadStatesToAccept(Automaton a) {
     BitSet reachableFromInitial = getLiveStatesFromInitial(a);
@@ -437,7 +437,7 @@ final public class Operations {
       return isEmpty(a1);
     }
 
-    // TODO: cutover to iterators instead
+    // TODO: cutover to iterators instead id:933 gh:934
     Transition[][] transitions1 = a1.getSortedTransitions();
     Transition[][] transitions2 = a2.getSortedTransitions();
     ArrayDeque<StatePair> worklist = new ArrayDeque<>();
@@ -936,7 +936,7 @@ final public class Operations {
   private static BitSet getLiveStatesToAccept(Automaton a) {
     Automaton.Builder builder = new Automaton.Builder();
 
-    // NOTE: not quite the same thing as what SpecialOperations.reverse does:
+    // NOTE: not quite the same thing as what SpecialOperations.reverse does: id:777 gh:778
     Transition t = new Transition();
     int numStates = a.getNumStates();
     for(int s=0;s<numStates;s++) {
@@ -1030,7 +1030,7 @@ final public class Operations {
    * Checks whether there is a loop containing state. (This is sufficient since
    * there are never transitions to dead states.)
    */
-  // TODO: not great that this is recursive... in theory a
+  // TODO: not great that this is recursive... in theory a id:703 gh:704
   // large automata could exceed java's stack so the maximum level of recursion is bounded to 1000
   private static boolean isFinite(Transition scratch, Automaton a, int state, BitSet path, BitSet visited, int level) {
     if (level > MAX_RECURSION_LEVEL) {
@@ -1080,7 +1080,7 @@ final public class Operations {
     return b.toString();
   }
   
-  // TODO: this currently requites a determinized machine,
+  // TODO: this currently requites a determinized machine, id:1172 gh:1173
   // but it need not -- we can speed it up by walking the
   // NFA instead.  it'd still be fail fast.
   /**
@@ -1291,7 +1291,7 @@ final public class Operations {
     return states;
   }
 
-  // TODO: not great that this is recursive... in theory a
+  // TODO: not great that this is recursive... in theory a id:731 gh:732
   // large automata could exceed java's stack so the maximum level of recursion is bounded to 1000
   private static int topoSortStatesRecurse(Automaton a, BitSet visited, int[] states, int upto, int state, int level) {
     if (level > MAX_RECURSION_LEVEL) {

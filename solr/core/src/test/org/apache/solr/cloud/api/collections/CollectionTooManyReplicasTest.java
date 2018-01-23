@@ -83,7 +83,7 @@ public class CollectionTooManyReplicasTest extends SolrCloudTestCase {
 
 
     // Oddly, we should succeed next just because setting property.name will not check for nodes being "full up"
-    // TODO: Isn't this a bug?
+    // TODO: Isn't this a bug? id:2302 gh:2303
     CollectionAdminRequest.addReplicaToShard(collectionName, "shard1")
         .withProperty("name", "bogus2")
         .setNode(nodeName)

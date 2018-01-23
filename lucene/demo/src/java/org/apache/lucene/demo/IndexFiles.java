@@ -112,7 +112,7 @@ public class IndexFiles {
       IndexWriter writer = new IndexWriter(dir, iwc);
       indexDocs(writer, docDir);
 
-      // NOTE: if you want to maximize search performance,
+      // NOTE: if you want to maximize search performance, id:1059 gh:1060
       // you can optionally call forceMerge here.  This can be
       // a terribly costly operation, so generally it's only
       // worth it when your index is relatively static (ie
@@ -135,7 +135,7 @@ public class IndexFiles {
    * Indexes the given file using the given writer, or if a directory is given,
    * recurses over files and directories found under the given directory.
    * 
-   * NOTE: This method indexes one document per input file.  This is slow.  For good
+   * NOTE: This method indexes one document per input file.  This is slow.  For good id:890 gh:891
    * throughput, put multiple documents into your input file(s).  An example of this is
    * in the benchmark module, which can create "line doc" files, one document per line,
    * using the

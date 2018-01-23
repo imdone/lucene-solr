@@ -54,7 +54,7 @@ import org.apache.solr.schema.SchemaField;
  * http://localhost:8983/solr/test/update/json/docs?processor=uuid;ampersand;uuid.fieldName=id;ampersand;commit=true
  * --data-binary {"id":"1","title": "titleA"}
  *
- * NOTE: The param(s) provided in request handler will override / supersede processor's config.
+ * NOTE: The param(s) provided in request handler will override / supersede processor's config. id:2116 gh:2117
  *
  * If field name is omitted in processor configuration and not provided in request handler param(s),
  * then  @{link org.apache.solr.schema.IndexSchema#getUniqueKeyField()}

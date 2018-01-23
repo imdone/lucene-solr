@@ -91,7 +91,7 @@ public class BlobRepositoryCloudTest extends SolrCloudTestCase {
     assertLastQueryToCollection("col2");
   }
 
-  // TODO: move this up to parent class?
+  // TODO: move this up to parent class? id:3077 gh:3078
   private static String findLiveNodeURI() {
     ZkStateReader zkStateReader = cluster.getSolrClient().getZkStateReader();
     return zkStateReader.getBaseUrlForNodeName(zkStateReader.getClusterState().getCollection(".system").getSlices().iterator().next().getLeader().getNodeName());

@@ -432,7 +432,7 @@ class JSONWriter extends TextResponseWriter {
 
   //
   // Data structure tokens
-  // NOTE: a positive size paramater indicates the number of elements
+  // NOTE: a positive size paramater indicates the number of elements id:1889 gh:1890
   //       contained in an array or map, a negative value indicates 
   //       that the size could not be reliably determined.
   // 

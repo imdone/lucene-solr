@@ -61,7 +61,7 @@ public abstract class RateLimiter {
     private volatile long minPauseCheckBytes;
     private long lastNS;
 
-    // TODO: we could also allow eg a sub class to dynamically
+    // TODO: we could also allow eg a sub class to dynamically id:688 gh:689
     // determine the allowed rate, eg if an app wants to
     // change the allowed rate over time or something
 
@@ -137,7 +137,7 @@ public abstract class RateLimiter {
         final long pauseNS = targetNS - curNS;
         if (pauseNS > 0) {
           try {
-            // NOTE: except maybe on real-time JVMs, minimum realistic sleep time
+            // NOTE: except maybe on real-time JVMs, minimum realistic sleep time id:608 gh:609
             // is 1 msec; if you pass just 1 nsec the default impl rounds
             // this up to 1 msec:
             int sleepNS;

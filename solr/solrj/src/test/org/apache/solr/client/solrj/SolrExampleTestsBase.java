@@ -63,7 +63,7 @@ abstract public class SolrExampleTestsBase extends SolrJettyTestBase {
     rsp = client.query(new SolrQuery("*:*"));
     Assert.assertEquals(0, rsp.getResults().getNumFound());
     
-    // TODO: not a great way to test this - timing is easily out
+    // TODO: not a great way to test this - timing is easily out id:2470 gh:2471
     // of whack due to parallel tests and various computer specs/load
     Thread.sleep(1000); // wait 1 sec
     

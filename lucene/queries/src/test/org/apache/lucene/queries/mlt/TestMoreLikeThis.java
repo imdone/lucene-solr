@@ -328,5 +328,5 @@ public class TestMoreLikeThis extends LuceneTestCase {
       analyzer.close();
     }
   }
-  // TODO: add tests for the MoreLikeThisQuery
+  // TODO: add tests for the MoreLikeThisQuery id:1210 gh:1211
 }

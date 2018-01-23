@@ -236,7 +236,7 @@ public class TestPullReplica extends SolrCloudTestCase {
       
       TimeOut t = new TimeOut(REPLICATION_TIMEOUT_SECS, TimeUnit.SECONDS, TimeSource.NANO_TIME);
       for (Replica r:s.getReplicas(EnumSet.of(Replica.Type.PULL))) {
-        //TODO: assert replication < REPLICATION_TIMEOUT_SECS
+        //TODO: assert replication < REPLICATION_TIMEOUT_SECS id:2208 gh:2209
         try (HttpSolrClient pullReplicaClient = getHttpSolrClient(r.getCoreUrl())) {
           while (true) {
             try {
@@ -310,7 +310,7 @@ public class TestPullReplica extends SolrCloudTestCase {
     CollectionAdminRequest.createCollection(collectionName, "conf", 1, 1, 0, 0)
       .setMaxShardsPerNode(100)
       .process(cluster.getSolrClient());
-//    cluster.getSolrClient().getZkStateReader().registerCore(collectionName); //TODO: Is this needed? 
+//    cluster.getSolrClient().getZkStateReader().registerCore(collectionName); //TODO: Is this needed?  id:3066 gh:3068
     waitForState("Replica not added", collectionName, activeReplicaCount(1, 0, 0));
     addDocs(500);
     List<Replica.State> statesSeen = new ArrayList<>(3);
@@ -476,7 +476,7 @@ public class TestPullReplica extends SolrCloudTestCase {
     CollectionAdminRequest.createCollection(collectionName, "conf", 1, 1, 0, 1)
       .setMaxShardsPerNode(100)
       .process(cluster.getSolrClient());
-//    cluster.getSolrClient().getZkStateReader().registerCore(collectionName); //TODO: Is this needed? 
+//    cluster.getSolrClient().getZkStateReader().registerCore(collectionName); //TODO: Is this needed?  id:2285 gh:2286
     waitForState("Expected collection to be created with 1 shard and 2 replicas", collectionName, clusterShape(1, 2));
     DocCollection docCollection = assertNumberOfReplicas(1, 0, 1, false, true);
     assertEquals(1, docCollection.getSlices().size());

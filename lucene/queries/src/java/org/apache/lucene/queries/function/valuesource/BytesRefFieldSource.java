@@ -45,7 +45,7 @@ public class BytesRefFieldSource extends FieldCacheSource {
     final FieldInfo fieldInfo = readerContext.reader().getFieldInfos().fieldInfo(field);
 
     // To be sorted or not to be sorted, that is the question
-    // TODO: do it cleaner?
+    // TODO: do it cleaner? id:963 gh:964
     if (fieldInfo != null && fieldInfo.getDocValuesType() == DocValuesType.BINARY) {
       final BinaryDocValues binaryValues = DocValues.getBinary(readerContext.reader(), field);
       return new FunctionValues() {

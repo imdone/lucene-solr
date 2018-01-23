@@ -42,7 +42,7 @@ public class TestDeterminism extends LuceneTestCase {
       Automaton a = AutomatonTestUtil.randomAutomaton(random());
       a = AutomatonTestUtil.determinizeSimple(a);
       Automaton b = Operations.determinize(a, Integer.MAX_VALUE);
-      // TODO: more verifications possible?
+      // TODO: more verifications possible? id:886 gh:886
       assertTrue(Operations.sameLanguage(a, b));
     }
   }

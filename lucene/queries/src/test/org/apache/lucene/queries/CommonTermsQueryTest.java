@@ -524,7 +524,7 @@ public class CommonTermsQueryTest extends LuceneTestCase {
     // primary source for our data is from linefiledocs, it's realistic.
     LineFileDocs lineFileDocs = new LineFileDocs(random);
     
-    // TODO: we should add other fields that use things like docs&freqs but omit
+    // TODO: we should add other fields that use things like docs&freqs but omit id:966 gh:967
     // positions,
     // because linefiledocs doesn't cover all the possibilities.
     for (int i = 0; i < numdocs; i++) {

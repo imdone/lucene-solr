@@ -160,7 +160,7 @@ public class TestNumericDocValuesUpdates extends LuceneTestCase {
     final DirectoryReader reader = DirectoryReader.open(dir);
     final IndexSearcher searcher = new IndexSearcher(reader);
 
-    // TODO: make more efficient if max numOperations is going to be increased much
+    // TODO: make more efficient if max numOperations is going to be increased much id:851 gh:852
     for (Map.Entry<Integer,Long> expect : expected.entrySet()) {
       String id = "doc-" + expect.getKey();
       TopFieldDocs td = searcher.search(new TermQuery(new Term("id", id)), 1, 

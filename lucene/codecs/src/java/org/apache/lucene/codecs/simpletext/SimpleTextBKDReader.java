@@ -106,7 +106,7 @@ final class SimpleTextBKDReader extends PointValues implements Accountable {
     if (nodeID >= leafNodeOffset) {
       //System.out.println("ADDALL");
       visitDocIDs(state.in, leafBlockFPs[nodeID-leafNodeOffset], state.visitor);
-      // TODO: we can assert that the first value here in fact matches what the index claimed?
+      // TODO: we can assert that the first value here in fact matches what the index claimed? id:325 gh:326
     } else {
       addAll(state, 2*nodeID);
       addAll(state, 2*nodeID+1);
@@ -158,7 +158,7 @@ final class SimpleTextBKDReader extends PointValues implements Accountable {
 
   void visitDocValues(int[] commonPrefixLengths, byte[] scratchPackedValue, IndexInput in, int[] docIDs, int count, IntersectVisitor visitor) throws IOException {
     visitor.grow(count);
-    // NOTE: we don't do prefix coding, so we ignore commonPrefixLengths
+    // NOTE: we don't do prefix coding, so we ignore commonPrefixLengths id:432 gh:433
     assert scratchPackedValue.length == packedBytesLength;
     BytesRefBuilder scratch = new BytesRefBuilder();
     for(int i=0;i<count;i++) {
@@ -239,7 +239,7 @@ final class SimpleTextBKDReader extends PointValues implements Accountable {
     }
 
     if (nodeID >= leafNodeOffset) {
-      // TODO: we can assert that the first value here in fact matches what the index claimed?
+      // TODO: we can assert that the first value here in fact matches what the index claimed? id:433 gh:434
 
       int leafID = nodeID - leafNodeOffset;
       
@@ -266,7 +266,7 @@ final class SimpleTextBKDReader extends PointValues implements Accountable {
       
       assert splitDim < numDims;
 
-      // TODO: can we alloc & reuse this up front?
+      // TODO: can we alloc & reuse this up front? id:312 gh:313
 
       byte[] splitPackedValue = new byte[packedBytesLength];
 
@@ -315,7 +315,7 @@ final class SimpleTextBKDReader extends PointValues implements Accountable {
       
       assert splitDim < numDims;
 
-      // TODO: can we alloc & reuse this up front?
+      // TODO: can we alloc & reuse this up front? id:298 gh:299
 
       byte[] splitPackedValue = new byte[packedBytesLength];
 

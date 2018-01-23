@@ -1069,7 +1069,7 @@ public class PackedInts {
 
   /** Returns how many bits are required to hold values up
    *  to and including maxValue
-   *  NOTE: This method returns at least 1.
+   *  NOTE: This method returns at least 1. id:965 gh:966
    * @param maxValue the maximum value that should be representable.
    * @return the amount of bits needed to represent values from 0 to maxValue.
    * @lucene.internal
@@ -1083,7 +1083,7 @@ public class PackedInts {
 
   /** Returns how many bits are required to store <code>bits</code>,
    * interpreted as an unsigned value.
-   * NOTE: This method returns at least 1.
+   * NOTE: This method returns at least 1. id:806 gh:807
    * @lucene.internal
    */
   public static int unsignedBitsRequired(long bits) {

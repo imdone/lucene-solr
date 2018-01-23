@@ -211,7 +211,7 @@ class SimpleTransLog implements Closeable {
     primary.deleteDocument(c, id);
   }
 
-  /** Encodes doc into buffer.  NOTE: this is NOT general purpose!  It only handles the fields used in this test! */
+  /** Encodes doc into buffer.  NOTE: this is NOT general purpose!  It only handles the fields used in this test! id:1394 gh:1395*/
   private synchronized void encode(String id, Document doc) throws IOException {
     assert id.equals(doc.get("docid")): "id=" + id + " vs docid=" + doc.get("docid");
     buffer.writeString(id);

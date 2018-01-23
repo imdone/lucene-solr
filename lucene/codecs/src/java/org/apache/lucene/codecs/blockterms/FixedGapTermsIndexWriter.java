@@ -92,7 +92,7 @@ public class FixedGapTermsIndexWriter extends TermsIndexWriterBase {
     return writer;
   }
 
-  /** NOTE: if your codec does not sort in unicode code
+  /** NOTE: if your codec does not sort in unicode code id:235 gh:236
    *  point order, you must override this method, to simply
    *  return indexedTerm.length. */
   protected int indexedTermPrefixLength(final BytesRef priorTerm, final BytesRef indexedTerm) {

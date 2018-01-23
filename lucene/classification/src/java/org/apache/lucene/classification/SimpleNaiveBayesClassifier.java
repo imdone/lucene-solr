@@ -85,7 +85,7 @@ public class SimpleNaiveBayesClassifier implements Classifier<BytesRef> {
    * @param analyzer       an {@link Analyzer} used to analyze unseen text
    * @param query          a {@link Query} to eventually filter the docs used for training the classifier, or {@code null}
    *                       if all the indexed docs should be used
-   * @param classFieldName the name of the field used as the output for the classifier NOTE: must not be havely analyzed
+   * @param classFieldName the name of the field used as the output for the classifier NOTE: must not be havely analyzed id:303 gh:304
    *                       as the returned class will be a token indexed for this field
    * @param textFieldNames the name of the fields used as the inputs for the classifier, NO boosting supported per field
    */

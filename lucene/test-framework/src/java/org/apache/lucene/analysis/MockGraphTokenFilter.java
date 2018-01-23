@@ -22,7 +22,7 @@ import java.util.Random;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.util.TestUtil;
 
-// TODO: sometimes remove tokens too...?
+// TODO: sometimes remove tokens too...? id:1663 gh:1664
 
 /** Randomly inserts overlapped (posInc=0) tokens with
  *  posLength sometimes &gt; 1.  The chain must have
@@ -84,7 +84,7 @@ public final class MockGraphTokenFilter extends LookaheadTokenFilter<LookaheadTo
                              " endOffset=" + offsetAtt.endOffset() +
                              " posLength=" + posLenAtt.getPositionLength());
         }
-        // TODO: set TypeAtt too?
+        // TODO: set TypeAtt too? id:1440 gh:1441
       } else {
         // Either 1) the tokens ended before our posLength,
         // or 2) our posLength ended inside a hole from the
@@ -97,7 +97,7 @@ public final class MockGraphTokenFilter extends LookaheadTokenFilter<LookaheadTo
   @Override
   public void reset() throws IOException {
     super.reset();
-    // NOTE: must be "deterministically random" because
+    // NOTE: must be "deterministically random" because id:1324 gh:1325
     // BaseTokenStreamTestCase pulls tokens twice on the
     // same input and asserts they are the same:
     this.random = new Random(seed);

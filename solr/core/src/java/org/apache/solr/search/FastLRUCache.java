@@ -241,7 +241,7 @@ public class FastLRUCache<K, V> extends SolrCacheBase implements SolrCache<K,V> 
         long cinserts = 0;
         long cevictions = 0;
 
-        // NOTE: It is safe to iterate on a CopyOnWriteArrayList
+        // NOTE: It is safe to iterate on a CopyOnWriteArrayList id:2041 gh:2042
         for (ConcurrentLRUCache.Stats statistiscs : statsList) {
           clookups += statistiscs.getCumulativeLookups();
           chits += statistiscs.getCumulativeHits();

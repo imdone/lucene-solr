@@ -59,7 +59,7 @@ public class AssertingIndexSearcher extends IndexSearcher {
 
   @Override
   public Query rewrite(Query original) throws IOException {
-    // TODO: use the more sophisticated QueryUtils.check sometimes!
+    // TODO: use the more sophisticated QueryUtils.check sometimes! id:1643 gh:1644
     QueryUtils.check(original);
     Query rewritten = super.rewrite(original);
     QueryUtils.check(rewritten);

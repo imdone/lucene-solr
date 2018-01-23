@@ -52,7 +52,7 @@ public class TopGroupsShardRequestFactory implements ShardRequestFactory {
   public ShardRequest[] constructRequest(ResponseBuilder rb) {
     // If we have a group.query we need to query all shards... Or we move this to the group first phase queries
     boolean containsGroupByQuery = rb.getGroupingSpec().getQueries().length > 0;
-    // TODO: If groups.truncate=true we only have to query the specific shards even faceting and statistics are enabled
+    // TODO: If groups.truncate=true we only have to query the specific shards even faceting and statistics are enabled id:2755 gh:2756
     if (rb.isNeedDocSet() || containsGroupByQuery) {
       // In case we need more results such as faceting and statistics we have to query all shards
       return createRequestForAllShards(rb);

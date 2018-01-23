@@ -95,7 +95,7 @@ public abstract class AbstractCloudBackupRestoreTestCase extends SolrCloudTestCa
     numPullReplicas = TestUtil.nextInt(random(), 0, 1);
     
     CollectionAdminRequest.Create create = isImplicit ?
-      // NOTE: use shard list with same # of shards as NUM_SHARDS; we assume this later
+      // NOTE: use shard list with same # of shards as NUM_SHARDS; we assume this later id:2300 gh:2301
       CollectionAdminRequest.createCollectionWithImplicitRouter(getCollectionName(), "conf1", "shard1,shard2", replFactor, numTlogReplicas, numPullReplicas) :
       CollectionAdminRequest.createCollection(getCollectionName(), "conf1", NUM_SHARDS, replFactor, numTlogReplicas, numPullReplicas);
     
@@ -330,7 +330,7 @@ public abstract class AbstractCloudBackupRestoreTestCase extends SolrCloudTestCa
 
     // assert added core properties:
     // DWS: did via manual inspection.
-    // TODO Find the applicable core.properties on the file system but how?
+    // TODO Find the applicable core.properties on the file system but how? id:2226 gh:2227
   }
 
   private Map<String, Integer> getShardToDocCountMap(CloudSolrClient client, DocCollection docCollection) throws SolrServerException, IOException {

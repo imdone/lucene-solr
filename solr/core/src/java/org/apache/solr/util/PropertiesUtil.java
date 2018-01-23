@@ -81,7 +81,7 @@ public class PropertiesUtil {
     while ((pos = value.indexOf("$", prev)) >= 0) {
 
       //if there was any text before this, add it as a fragment
-      //TODO, this check could be modified to go if pos>prev;
+      //TODO , this check could be modified to go if pos>prev; id:3010 gh:3011
       //seems like this current version could stick empty strings
       //into the list
       if (pos > 0) {

@@ -287,7 +287,7 @@ public class TestIndexableField extends LuceneTestCase {
 
             assertNull(termsEnum.next());
 
-            // TODO: offsets
+            // TODO: offsets id:1112 gh:1113
             
           } else {
             Fields vectors = r.getTermVectors(docID);

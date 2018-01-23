@@ -150,7 +150,7 @@ public class VelocityResponseWriter implements QueryResponseWriter, SolrCoreAwar
 
   @Override
   public void write(Writer writer, SolrQueryRequest request, SolrQueryResponse response) throws IOException {
-    VelocityEngine engine = createEngine(request);  // TODO: have HTTP headers available for configuring engine
+    VelocityEngine engine = createEngine(request);  // TODO: have HTTP headers available for configuring engine id:1764 gh:1765
 
     Template template = getTemplate(engine, request);
 
@@ -202,7 +202,7 @@ public class VelocityResponseWriter implements QueryResponseWriter, SolrCoreAwar
     toolConfig.put("locale", locale);
 
 
-    context.put("log", log);   // TODO: add test; TODO: should this be overridable with a custom "log" named tool?
+    context.put("log", log);   // TODO: add test; TODO: should this be overridable with a custom "log" named tool? id:1739 gh:1740
     context.put("esc", new EscapeTool());
     context.put("date", new ComparisonDateTool());
     context.put("list", new ListTool());
@@ -243,7 +243,7 @@ public class VelocityResponseWriter implements QueryResponseWriter, SolrCoreAwar
     }
 
     // custom tools _cannot_ override context objects added below, like $request and $response
-    // TODO: at least log a warning when one of the *fixed* tools classes in name with a custom one, currently silently ignored
+    // TODO: at least log a warning when one of the *fixed* tools classes in name with a custom one, currently silently ignored id:2701 gh:2702
 
 
     // Turn the SolrQueryResponse into a SolrResponse.
@@ -351,7 +351,7 @@ public class VelocityResponseWriter implements QueryResponseWriter, SolrCoreAwar
     String path = (String) request.getContext().get("path");
     if (templateName == null && path != null) {
       templateName = path;
-    }  // TODO: path is never null, so qt won't get picked up  maybe special case for '/select' to use qt, otherwise use path?
+    }  // TODO: path is never null, so qt won't get picked up  maybe special case for '/select' to use qt, otherwise use path? id:1725 gh:1726
     if (templateName == null && qt != null) {
       templateName = qt;
     }

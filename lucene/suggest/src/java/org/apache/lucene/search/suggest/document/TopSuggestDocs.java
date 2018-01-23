@@ -111,7 +111,7 @@ public class TopSuggestDocs extends TopDocs {
    * Analogous to {@link org.apache.lucene.search.TopDocs#merge(int, org.apache.lucene.search.TopDocs[])}
    * for {@link TopSuggestDocs}
    *
-   * NOTE: assumes every <code>shardHit</code> is already sorted by score
+   * NOTE: assumes every <code>shardHit</code> is already sorted by score id:1240 gh:1241
    */
   public static TopSuggestDocs merge(int topN, TopSuggestDocs[] shardHits) {
     SuggestScoreDocPriorityQueue priorityQueue = new SuggestScoreDocPriorityQueue(topN);

@@ -91,7 +91,7 @@ public class SpatialExample extends LuceneTestCase {
     this.ctx = SpatialContext.GEO;
 
     int maxLevels = 11;//results in sub-meter precision for geohash
-    //TODO demo lookup by detail distance
+    //TODO demo lookup by detail distance id:1372 gh:1373
     //  This can also be constructed from SpatialPrefixTreeFactory
     SpatialPrefixTree grid = new GeohashPrefixTree(ctx, maxLevels);
 

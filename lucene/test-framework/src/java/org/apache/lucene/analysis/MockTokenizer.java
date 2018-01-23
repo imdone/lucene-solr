@@ -45,7 +45,7 @@ public class MockTokenizer extends Tokenizer {
   public static final CharacterRunAutomaton WHITESPACE = 
     new CharacterRunAutomaton(new RegExp("[^ \t\r\n]+").toAutomaton());
   /** Acts Similar to KeywordTokenizer.
-   * TODO: Keyword returns an "empty" token for an empty reader... 
+   * TODO: Keyword returns an "empty" token for an empty reader...  id:1328 gh:1329
    */
   public static final CharacterRunAutomaton KEYWORD =
     new CharacterRunAutomaton(new RegExp(".*").toAutomaton());
@@ -69,7 +69,7 @@ public class MockTokenizer extends Tokenizer {
   int bufferedCodePoint = -1; // -1 indicates empty buffer
   int bufferedOff = -1;
 
-  // TODO: "register" with LuceneTestCase to ensure all streams are closed() ?
+  // TODO: "register" with LuceneTestCase to ensure all streams are closed() ? id:1581 gh:1582
   // currently, we can only check that the lifecycle is correct if someone is reusing,
   // but not for "one-offs".
   private static enum State { 
@@ -288,7 +288,7 @@ public class MockTokenizer extends Tokenizer {
       super.close();
       // in some exceptional cases (e.g. TestIndexWriterExceptions) a test can prematurely close()
       // these tests should disable this check, by default we check the normal workflow.
-      // TODO: investigate the CachingTokenFilter "double-close"... for now we ignore this
+      // TODO: investigate the CachingTokenFilter "double-close"... for now we ignore this id:2581 gh:2582
       if (!(streamState == State.END || streamState == State.CLOSE)) {
         fail("close() called in wrong state: " + streamState);
       }

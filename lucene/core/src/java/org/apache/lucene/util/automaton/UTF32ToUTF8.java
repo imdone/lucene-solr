@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO
+// TODO id:936 gh:937
 //   - do we really need the .bits...?  if not we can make util in UnicodeUtil to convert 1 char into a BytesRef
 
 /** 
@@ -47,12 +47,12 @@ public final class UTF32ToUTF8 {
   // define a code point.  value is the byte value; bits is
   // how many bits are "used" by utf8 at that byte
   private static class UTF8Byte {
-    int value;                                    // TODO: change to byte
+    int value;                                    // TODO: change to byte id:778 gh:779
     byte bits;
   }
 
   // Holds a single code point, as a sequence of 1-4 utf8 bytes:
-  // TODO: maybe move to UnicodeUtil?
+  // TODO: maybe move to UnicodeUtil? id:707 gh:708
   private static class UTF8Sequence {
     private final UTF8Byte[] bytes;
     private int len;

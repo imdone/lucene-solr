@@ -202,7 +202,7 @@ public class DirectReader {
     public long get(long index) {
       try {
         long offset = (index * 20) >>> 3;
-        // TODO: clean this up...
+        // TODO: clean this up... id:769 gh:770
         int v = in.readInt(this.offset + offset) >>> 8;
         int shift = (int) ((index + 1) & 1) << 2;
         return (v >>> shift) & 0xFFFFF;

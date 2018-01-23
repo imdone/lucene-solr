@@ -75,7 +75,7 @@ public class BoolField extends PrimitiveFieldType {
   public final static char[] FALSE_TOKEN = {'F'};
 
   ////////////////////////////////////////////////////////////////////////
-  // TODO: look into creating my own queryParser that can more efficiently
+  // TODO: look into creating my own queryParser that can more efficiently id:2021 gh:2022
   // handle single valued non-text fields (int,bool,etc) if needed.
 
   protected final static Analyzer boolAnalyzer = new SolrAnalyzer() {
@@ -209,7 +209,7 @@ public class BoolField extends PrimitiveFieldType {
 
 }
 
-// TODO - this can be much more efficient - use FixedBitSet or Bits
+// TODO - this can be much more efficient - use FixedBitSet or Bits id:1895 gh:1896
 class BoolFieldSource extends ValueSource {
   protected String field;
 

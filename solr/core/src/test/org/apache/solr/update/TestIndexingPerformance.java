@@ -38,7 +38,7 @@ import java.util.Arrays;
  */
 public class TestIndexingPerformance extends SolrTestCaseJ4 {
   
-  // TODO: fix this test to not require FSDirectory
+  // TODO: fix this test to not require FSDirectory id:2393 gh:2394
   static String savedFactory;
   @BeforeClass
   public static void beforeClass() throws Exception {

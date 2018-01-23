@@ -142,7 +142,7 @@ final class TermVectorsConsumerPerField extends TermsHashPerField {
         } else {
           doVectorPayloads = false;
           if (field.fieldType().storeTermVectorPayloads()) {
-            // TODO: move this check somewhere else, and impl the other missing ones
+            // TODO: move this check somewhere else, and impl the other missing ones id:557 gh:558
             throw new IllegalArgumentException("cannot index term vector payloads without term vector positions (field=\"" + field.name() + "\")");
           }
         }

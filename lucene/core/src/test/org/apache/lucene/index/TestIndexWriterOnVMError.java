@@ -220,7 +220,7 @@ public class TestIndexWriterOnVMError extends LuceneTestCase {
     if (e instanceof VirtualMachineError && e.getMessage() != null && e.getMessage().startsWith("Fake")) {
       log.println("\nTEST: got expected fake exc:" + e.getMessage());
       e.printStackTrace(log);
-      // TODO: remove rollback here, and add this assert to ensure "full OOM protection" anywhere IW does writes
+      // TODO: remove rollback here, and add this assert to ensure "full OOM protection" anywhere IW does writes id:847 gh:848
       // assertTrue("hit OOM but writer is still open, WTF: ", writer.isClosed());
       try {
         writer.rollback();

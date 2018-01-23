@@ -102,9 +102,9 @@ public class TokenStreamToTermAutomatonQuery {
 
     in.end();
 
-    // TODO: look at endOffset?  ts2a did...
+    // TODO: look at endOffset?  ts2a did... id:1466 gh:1467
 
-    // TODO: this (setting "last" state as the only accept state) may be too simplistic?
+    // TODO: this (setting "last" state as the only accept state) may be too simplistic? id:1645 gh:1646
     query.setAccept(state, true);
     query.finish();
 

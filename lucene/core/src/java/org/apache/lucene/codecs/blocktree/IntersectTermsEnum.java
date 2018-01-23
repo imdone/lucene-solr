@@ -80,7 +80,7 @@ final class IntersectTermsEnum extends TermsEnum {
   /** True if we did return the current auto-prefix term */
   private boolean useAutoPrefixTerm;
 
-  // TODO: in some cases we can filter by length?  eg
+  // TODO: in some cases we can filter by length?  eg id:342 gh:343
   // regexp foo*bar must be at least length 6 bytes
   public IntersectTermsEnum(FieldReader fr, Automaton automaton, RunAutomaton runAutomaton, BytesRef commonSuffix, BytesRef startTerm, int sinkState) throws IOException {
     this.fr = fr;
@@ -106,7 +106,7 @@ final class IntersectTermsEnum extends TermsEnum {
     
     fstReader = fr.index.getBytesReader();
 
-    // TODO: if the automaton is "smallish" we really
+    // TODO: if the automaton is "smallish" we really id:429 gh:430
     // should use the terms index to seek at least to
     // the initial term and likely to subsequent terms
     // (or, maybe just fallback to ATE for such cases).
@@ -193,7 +193,7 @@ final class IntersectTermsEnum extends TermsEnum {
     BytesRef output = currentFrame.outputPrefix;
     while (idx < f.prefix) {
       final int target = term.bytes[idx] & 0xff;
-      // TODO: we could be more efficient for the next()
+      // TODO: we could be more efficient for the next() id:493 gh:494
       // case by using current arc as starting point,
       // passed to findTargetArc
       arc = fr.index.findTargetArc(target, arc, getArc(1+idx), fstReader);
@@ -241,7 +241,7 @@ final class IntersectTermsEnum extends TermsEnum {
     return state;
   }
 
-  // NOTE: specialized to only doing the first-time
+  // NOTE: specialized to only doing the first-time id:470 gh:471
   // seek, but we could generalize it to allow
   // arbitrary seekExact/Ceil.  Note that this is a
   // seekFloor!
@@ -522,7 +522,7 @@ final class IntersectTermsEnum extends TermsEnum {
       int state;
       int lastState;
 
-      // NOTE: suffix == 0 can only happen on the first term in a block, when
+      // NOTE: suffix == 0 can only happen on the first term in a block, when id:355 gh:356
       // there is a term exactly matching a prefix in the index.  If we
       // could somehow re-org the code so we only checked this case immediately
       // after pushing a frame...
@@ -627,7 +627,7 @@ final class IntersectTermsEnum extends TermsEnum {
           }
         }
 
-        // TODO: maybe we should do the same linear test
+        // TODO: maybe we should do the same linear test id:345 gh:346
         // that AutomatonTermsEnum does, so that if we
         // reach a part of the automaton where .* is
         // "temporarily" accepted, we just blindly .next()

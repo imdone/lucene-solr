@@ -44,7 +44,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class SimpleMLTQParser extends QParser {
-  // Pattern is thread safe -- TODO? share this with general 'fl' param
+  // Pattern is thread safe -- TODO ? share this with general 'fl' param id:2038 gh:2039
   private static final Pattern splitList = Pattern.compile(",| ");
 
   public SimpleMLTQParser(String qstr, SolrParams localParams,

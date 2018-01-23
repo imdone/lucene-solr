@@ -507,7 +507,7 @@ class SimpleTextDocValuesWriter extends DocValuesConsumer {
       boolean success = false;
       try {
         assert !fieldsSeen.isEmpty();
-        // TODO: sheisty to do this here?
+        // TODO: sheisty to do this here? id:336 gh:337
         SimpleTextUtil.write(data, END);
         SimpleTextUtil.writeNewline(data);
         SimpleTextUtil.writeChecksum(data, scratch);

@@ -106,7 +106,7 @@ public class TestStandardQP extends QueryParserTestBase {
   @Override
   public void testOperatorVsWhitespace() throws Exception {
     // LUCENE-2566 is not implemented for StandardQueryParser
-    // TODO implement LUCENE-2566 and remove this (override)method
+    // TODO implement LUCENE-2566 and remove this (override)method id:1092 gh:1093
     Analyzer a = new Analyzer() {
       @Override
       public TokenStreamComponents createComponents(String fieldName) {
@@ -140,7 +140,7 @@ public class TestStandardQP extends QueryParserTestBase {
   @Override
   public void testEscapedWildcard() throws Exception {
     CommonQueryParserConfiguration qp = getParserConfig( new MockAnalyzer(random(), MockTokenizer.WHITESPACE, false));
-    WildcardQuery q = new WildcardQuery(new Term("field", "foo?ba?r"));//TODO not correct!!
+    WildcardQuery q = new WildcardQuery(new Term("field", "foo?ba?r"));//TODO not correct!! id:1243 gh:1244
     assertEquals(q, getQuery("foo\\?ba?r", qp));
   }
   
@@ -184,10 +184,10 @@ public class TestStandardQP extends QueryParserTestBase {
     /**
      * custom behavior, the synonyms are expanded, unless you use quote operator
      */
-    //TODO test something like "SmartQueryParser()"
+    //TODO test something like "SmartQueryParser()" id:1118 gh:1119
   }
 
-  // TODO: Remove this specialization once the flexible standard parser gets multi-word synonym support
+  // TODO: Remove this specialization once the flexible standard parser gets multi-word synonym support id:1380 gh:1381
   @Override
   public void testQPA() throws Exception {
     super.testQPA();

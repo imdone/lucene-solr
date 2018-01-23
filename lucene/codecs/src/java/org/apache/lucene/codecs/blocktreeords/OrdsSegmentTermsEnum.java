@@ -280,7 +280,7 @@ public final class OrdsSegmentTermsEnum extends TermsEnum {
 
       int cmp = 0;
 
-      // TODO: reverse vLong byte order for better FST
+      // TODO: reverse vLong byte order for better FST id:251 gh:252
       // prefix output sharing
 
       // First compare up to valid seek frames:
@@ -538,7 +538,7 @@ public final class OrdsSegmentTermsEnum extends TermsEnum {
 
       int cmp = 0;
 
-      // TODO: we should write our vLong backwards (MSB
+      // TODO: we should write our vLong backwards (MSB id:371 gh:372
       // first) to get better sharing from the FST
 
       // First compare up to valid seek frames:
@@ -552,7 +552,7 @@ public final class OrdsSegmentTermsEnum extends TermsEnum {
         }
         arc = arcs[1+targetUpto];
         assert arc.label == (target.bytes[target.offset + targetUpto] & 0xFF): "arc.label=" + (char) arc.label + " targetLabel=" + (char) (target.bytes[target.offset + targetUpto] & 0xFF);
-        // TODO: we could save the outputs in local
+        // TODO: we could save the outputs in local id:253 gh:254
         // byte[][] instead of making new objs ever
         // seek; but, often the FST doesn't have any
         // shared bytes (but this could change if we
@@ -1031,7 +1031,7 @@ public final class OrdsSegmentTermsEnum extends TermsEnum {
 
   private final FST.Arc<Output> arc = new FST.Arc<>();
   
-  // TODO: this is similar to Util.getByOutput ... can we refactor/share?
+  // TODO: this is similar to Util.getByOutput ... can we refactor/share? id:271 gh:272
   /** Specialized getByOutput that can understand the ranges (startOrd to endOrd) we use here, not just startOrd. */
   private InputOutput getByOutput(long targetOrd) throws IOException {
 

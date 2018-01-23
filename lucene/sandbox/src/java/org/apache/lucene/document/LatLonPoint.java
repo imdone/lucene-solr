@@ -73,7 +73,7 @@ import static org.apache.lucene.geo.GeoEncodingUtils.encodeLongitudeCeil;
  * @see PointValues
  * @see LatLonDocValuesField
  */
-// TODO ^^^ that is very sandy and hurts the API, usage, and tests tremendously, because what the user passes
+// TODO ^^^ that is very sandy and hurts the API, usage, and tests tremendously, because what the user passes id:1173 gh:1174
 // to the field is not actually what gets indexed. Float would be 1E-5 error vs 1E-7, but it might be
 // a better tradeoff? then it would be completely transparent to the user and lucene would be "lossless".
 public class LatLonPoint extends Field {
@@ -188,7 +188,7 @@ public class LatLonPoint extends Field {
    */
   public static Query newBoxQuery(String field, double minLatitude, double maxLatitude, double minLongitude, double maxLongitude) {
     // exact double values of lat=90.0D and lon=180.0D must be treated special as they are not represented in the encoding
-    // and should not drag in extra bogus junk! TODO: should encodeCeil just throw ArithmeticException to be less trappy here?
+    // and should not drag in extra bogus junk! TODO: should encodeCeil just throw ArithmeticException to be less trappy here? id:1458 gh:1459
     if (minLatitude == 90.0) {
       // range cannot match as 90.0 can never exist
       return new MatchNoDocsQuery("LatLonPoint.newBoxQuery with minLatitude=90.0");
@@ -289,7 +289,7 @@ public class LatLonPoint extends Field {
    *         if {@code field} or {@code searcher} is null, or if {@code latitude}, {@code longitude} or {@code n} are out-of-bounds
    * @throws IOException if an IOException occurs while finding the points.
    */
-  // TODO: what about multi-valued documents? what happens?
+  // TODO: what about multi-valued documents? what happens? id:1627 gh:1628
   public static TopFieldDocs nearest(IndexSearcher searcher, String field, double latitude, double longitude, int n) throws IOException {
     GeoUtils.checkLatitude(latitude);
     GeoUtils.checkLongitude(longitude);

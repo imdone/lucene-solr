@@ -184,7 +184,7 @@ public class TestIDVersionPostingsFormat extends LuceneTestCase {
     return ids;
   }
 
-  // TODO make a similar test for BT, w/ varied IDs:
+  // TODO make a similar test for BT, w/ varied IDs: id:1337 gh:1338
 
   public void testRandom() throws Exception {
     Directory dir = newDirectory();
@@ -637,7 +637,7 @@ public class TestIDVersionPostingsFormat extends LuceneTestCase {
     final LiveFieldValues<IndexSearcher,Long> versionValues = new LiveFieldValues<IndexSearcher,Long>(mgr, missingValue) {
       @Override
       protected Long lookupFromSearcher(IndexSearcher s, String id) {
-        // TODO: would be cleaner if we could do our PerThreadLookup here instead of "up above":
+        // TODO: would be cleaner if we could do our PerThreadLookup here instead of "up above": id:1185 gh:1186
         // We always return missing: the caller then does a lookup against the current reader
         return missingValue;
       }
@@ -704,7 +704,7 @@ public class TestIDVersionPostingsFormat extends LuceneTestCase {
 
               int x = random().nextInt(ids.length);
 
-              // TODO: we could relax this, if e.g. we assign indexer thread based on ID.  This would ensure a given ID cannot be indexed at
+              // TODO: we could relax this, if e.g. we assign indexer thread based on ID.  This would ensure a given ID cannot be indexed at id:1472 gh:1473
               // the same time in multiple threads:
 
               // Only one thread can update an ID at once:
@@ -723,8 +723,8 @@ public class TestIDVersionPostingsFormat extends LuceneTestCase {
                   if (VERBOSE) System.out.println("\n" + Thread.currentThread().getName() + ": update id=" + id + " newVersion=" + newVersion);
 
                   if (lookup == null || lookupReader != s.getIndexReader()) {
-                    // TODO: sort of messy; we could add reopen to PerThreadVersionPKLookup?
-                    // TODO: this is thin ice .... that we don't incRef/decRef this reader we are implicitly holding onto:
+                    // TODO: sort of messy; we could add reopen to PerThreadVersionPKLookup? id:1648 gh:1649
+                    // TODO: this is thin ice .... that we don't incRef/decRef this reader we are implicitly holding onto: id:1416 gh:1417
                     lookupReader = s.getIndexReader();
                     if (VERBOSE) System.out.println(Thread.currentThread().getName() + ": open new PK lookup reader=" + lookupReader);
                     lookup = new PerThreadVersionPKLookup(lookupReader, "id");

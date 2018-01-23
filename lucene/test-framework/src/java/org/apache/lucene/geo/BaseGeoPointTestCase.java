@@ -70,7 +70,7 @@ import org.apache.lucene.util.bkd.BKDWriter;
 /**
  * Abstract class to do basic tests for a geospatial impl (high level
  * fields and queries)
- * NOTE: This test focuses on geospatial (distance queries, polygon
+ * NOTE: This test focuses on geospatial (distance queries, polygon id:1473 gh:1474
  * queries, etc) indexing and search, not any underlying storage
  * format or encoding: it merely supplies two hooks for the encoding
  * so that tests can be exact. The [stretch] goal is for this test to be
@@ -82,7 +82,7 @@ public abstract class BaseGeoPointTestCase extends LuceneTestCase {
 
   protected static final String FIELD_NAME = "point";
   
-  // TODO: remove these hooks once all subclasses can pass with new random!
+  // TODO: remove these hooks once all subclasses can pass with new random! id:1345 gh:1346
 
   protected double nextLongitude() {
     return org.apache.lucene.geo.GeoTestUtil.nextLongitude();
@@ -183,7 +183,7 @@ public abstract class BaseGeoPointTestCase extends LuceneTestCase {
   }
   
   /** Add a single point and search for it in a box */
-  // NOTE: we don't currently supply an exact search, only ranges, because of the lossiness...
+  // NOTE: we don't currently supply an exact search, only ranges, because of the lossiness... id:1603 gh:1604
   public void testBoxBasics() throws Exception {
     Directory dir = newDirectory();
     RandomIndexWriter writer = new RandomIndexWriter(random(), dir);
@@ -540,7 +540,7 @@ public abstract class BaseGeoPointTestCase extends LuceneTestCase {
       w.addDocument(doc);
     }
 
-    // TODO: share w/ verify; just need parallel array of the expected ids
+    // TODO: share w/ verify; just need parallel array of the expected ids id:2587 gh:2588
     if (random().nextBoolean()) {
       w.forceMerge(1);
     }
@@ -1156,7 +1156,7 @@ public abstract class BaseGeoPointTestCase extends LuceneTestCase {
 
   public void testRectBoundariesAreInclusive() throws Exception {
     Rectangle rect;
-    // TODO: why this dateline leniency???
+    // TODO: why this dateline leniency??? id:1685 gh:1686
     while (true) {
       rect = nextBox();
       if (rect.crossesDateline() == false) {
@@ -1369,7 +1369,7 @@ public abstract class BaseGeoPointTestCase extends LuceneTestCase {
   /** return topdocs over a small set of points in field "point" */
   private TopDocs searchSmallSet(Query query, int size) throws Exception {
     // this is a simple systematic test, indexing these points
-    // TODO: fragile: does not understand quantization in any way yet uses extremely high precision!
+    // TODO: fragile: does not understand quantization in any way yet uses extremely high precision! id:1477 gh:1478
     double[][] pts = new double[][] {
         { 32.763420,          -96.774             },
         { 32.7559529921407,   -96.7759895324707   },
@@ -1391,7 +1391,7 @@ public abstract class BaseGeoPointTestCase extends LuceneTestCase {
     
     Directory directory = newDirectory();
 
-    // TODO: must these simple tests really rely on docid order?
+    // TODO: must these simple tests really rely on docid order? id:1348 gh:1349
     IndexWriterConfig iwc = newIndexWriterConfig(new MockAnalyzer(random()));
     iwc.setMaxBufferedDocs(TestUtil.nextInt(random(), 100, 1000));
     iwc.setMergePolicy(newLogMergePolicy());

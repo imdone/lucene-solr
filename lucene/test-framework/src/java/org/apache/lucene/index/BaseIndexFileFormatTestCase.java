@@ -95,7 +95,7 @@ abstract class BaseIndexFileFormatTestCase extends LuceneTestCase {
     EXCLUDED_CLASSES.add(FieldInfo.class);
 
     // constant overhead is typically due to strings
-    // TODO: can we remove this and still pass the test consistently
+    // TODO: can we remove this and still pass the test consistently id:1689 gh:1690
     EXCLUDED_CLASSES.add(String.class);
   }
 
@@ -510,7 +510,7 @@ abstract class BaseIndexFileFormatTestCase extends LuceneTestCase {
   }
   
   /** Tests exception handling on write and openInput/createOutput */
-  // TODO: this is really not ideal. each BaseXXXTestCase should have unit tests doing this.
+  // TODO: this is really not ideal. each BaseXXXTestCase should have unit tests doing this. id:1485 gh:1486
   // but we use this shotgun approach to prevent bugs in the meantime: it just ensures the
   // codec does not corrupt the index or leak file handles.
   public void testRandomExceptions() throws Exception {

@@ -88,7 +88,7 @@ def checkClassDetails(fullPath):
   Checks for invalid HTML in the full javadocs under each field/method.
   """
 
-  # TODO: only works with java7 generated javadocs now!
+  # TODO: only works with java7 generated javadocs now! id:1 gh:2
   with open(fullPath, encoding='UTF-8') as f:
     desc = []
     cat = None
@@ -150,7 +150,7 @@ def checkClassDetails(fullPath):
 def checkClassSummaries(fullPath):
   #print("check %s" % fullPath)
 
-  # TODO: only works with java7 generated javadocs now!
+  # TODO: only works with java7 generated javadocs now! id:2 gh:3
   f = open(fullPath, encoding='UTF-8')
 
   missing = []
@@ -272,7 +272,7 @@ def checkSummary(fullPath):
   for line in f.readlines():
     lineLower = line.strip().lower()
     if desc is not None:
-      # TODO: also detect missing description in overview-summary
+      # TODO: also detect missing description in overview-summary id:0 gh:1
       if lineLower.startswith('package ') or lineLower.startswith('<h1 title="package" '):
         sawPackage = True
       elif sawPackage:

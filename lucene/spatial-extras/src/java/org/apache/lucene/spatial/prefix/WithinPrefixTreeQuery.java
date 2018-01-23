@@ -48,11 +48,11 @@ import org.apache.lucene.util.FixedBitSet;
  * @lucene.experimental
  */
 public class WithinPrefixTreeQuery extends AbstractVisitingPrefixTreeQuery {
-  //TODO LUCENE-4869: implement faster algorithm based on filtering out false-positives of a
+  //TODO LUCENE-4869: implement faster algorithm based on filtering out false-positives of a id:1665 gh:1666
   //  minimal query buffer by looking in a DocValues cache holding a representative
   //  point of each disjoint component of a document's shape(s).
 
-  //TODO Could the recursion in allCellsIntersectQuery() be eliminated when non-fuzzy or other
+  //TODO Could the recursion in allCellsIntersectQuery() be eliminated when non-fuzzy or other id:1437 gh:1438
   //  circumstances?
 
   private final Shape bufferedQueryShape;//if null then the whole world
@@ -101,7 +101,7 @@ public class WithinPrefixTreeQuery extends AbstractVisitingPrefixTreeQuery {
 
   /** Returns a new shape that is larger than shape by at distErr.
    */
-  //TODO move this generic code elsewhere?  Spatial4j?
+  //TODO move this generic code elsewhere?  Spatial4j? id:1361 gh:1362
   protected Shape bufferShape(Shape shape, double distErr) {
     if (distErr <= 0)
       throw new IllegalArgumentException("distErr must be > 0");

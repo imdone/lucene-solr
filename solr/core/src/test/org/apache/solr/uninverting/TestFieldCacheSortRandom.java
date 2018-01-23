@@ -84,7 +84,7 @@ public class TestFieldCacheSortRandom extends LuceneTestCase {
 
     int numDocs = 0;
     final List<BytesRef> docValues = new ArrayList<>();
-    // TODO: deletions
+    // TODO: deletions id:2382 gh:2383
     while (numDocs < NUM_DOCS) {
       final Document doc = new Document();
 

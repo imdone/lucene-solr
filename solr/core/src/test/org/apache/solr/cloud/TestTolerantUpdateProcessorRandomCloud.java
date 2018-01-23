@@ -242,7 +242,7 @@ public class TestTolerantUpdateProcessorRandomCloud extends SolrCloudTestCase {
 
               if (lo != hi) {
                 assert lo < hi : "lo="+lo+" hi="+hi;
-                // NOTE: clear & set are exclusive of hi, so we use "}" in range query accordingly
+                // NOTE: clear & set are exclusive of hi, so we use "}" in range query accordingly id:2890 gh:2891
                 q = "id_i:[" + lo + " TO " + hi + "}";
                 expectedDocIds.clear(lo, hi);
                 docsAffectedThisRequest.set(lo, hi);
@@ -339,10 +339,10 @@ public class TestTolerantUpdateProcessorRandomCloud extends SolrCloudTestCase {
 
   /**
    * Given a BitSet, returns a random bit that is currently false, or -1 if all bits are true.
-   * NOTE: this method is not fair.
+   * NOTE: this method is not fair. id:2298 gh:2299
    */
   public static final int randomUnsetBit(Random r, BitSet bits, final int max) {
-    // NOTE: don't forget, BitSet will grow automatically if not careful
+    // NOTE: don't forget, BitSet will grow automatically if not careful id:2222 gh:2223
     if (bits.cardinality() == max+1) {
       return -1;
     }

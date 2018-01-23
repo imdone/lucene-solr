@@ -103,7 +103,7 @@ public class TestManagedResource extends SolrTestCaseJ4 {
     }
 
     
-    // NOTE: These methods are better tested from the REST API
+    // NOTE: These methods are better tested from the REST API id:2336 gh:2337
     // so they are stubbed out here and not used in this test
     
     @Override

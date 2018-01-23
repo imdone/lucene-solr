@@ -145,7 +145,7 @@ public class TestInPlaceUpdatesDistrib extends AbstractFullDistribZkTestBase {
     delayedReorderingFetchesMissingUpdateFromLeaderTest();
     updatingDVsInAVeryOldSegment();
 
-    // TODO Should we combine all/some of these into a single test, so as to cut down on execution time?
+    // TODO Should we combine all/some of these into a single test, so as to cut down on execution time? id:3112 gh:3113
     reorderedDBQIndividualReplicaTest();
     reorderedDeletesTest();
     reorderedDBQsSimpleTest();
@@ -331,7 +331,7 @@ public class TestInPlaceUpdatesDistrib extends AbstractFullDistribZkTestBase {
     // now we're going to overwrite the value for all of our testing docs
     // giving them a value between -5 and +5
     for (int id : ids) {
-      // NOTE: in rare cases, this may be setting the value to 0, on a doc that
+      // NOTE: in rare cases, this may be setting the value to 0, on a doc that id:2391 gh:2392
       // already had an init value of 0 -- which is an interesting edge case, so we don't exclude it
       final float multiplier = r.nextBoolean() ? -5.0F : 5.0F;
       final float value = r.nextFloat() * multiplier;
@@ -853,7 +853,7 @@ public class TestInPlaceUpdatesDistrib extends AbstractFullDistribZkTestBase {
 
     commit();
 
-    // TODO: Could try checking ZK for LIR flags to ensure LIR has not kicked in
+    // TODO: Could try checking ZK for LIR flags to ensure LIR has not kicked in id:2973 gh:2974
     // Check every 10ms, 100 times, for a replica to go down (& assert that it doesn't)
     for (int i=0; i<100; i++) {
       Thread.sleep(10);
@@ -908,7 +908,7 @@ public class TestInPlaceUpdatesDistrib extends AbstractFullDistribZkTestBase {
 
       commit();
 
-      // TODO: Could try checking ZK for LIR flags to ensure LIR has not kicked in
+      // TODO: Could try checking ZK for LIR flags to ensure LIR has not kicked in id:2392 gh:2393
       // Check every 10ms, 100 times, for a replica to go down (& assert that it doesn't)
       ZkController zkController = shardToLeaderJetty.get(SHARD1).jetty.getCoreContainer().getZkController();
       String lirPath = zkController.getLeaderInitiatedRecoveryZnodePath(DEFAULT_TEST_COLLECTION_NAME, SHARD1);
@@ -1164,7 +1164,7 @@ public class TestInPlaceUpdatesDistrib extends AbstractFullDistribZkTestBase {
 
     commit();
 
-    // TODO: Could try checking ZK for LIR flags to ensure LIR has not kicked in
+    // TODO: Could try checking ZK for LIR flags to ensure LIR has not kicked in id:2428 gh:2429
     // Check every 10ms, 100 times, for a replica to go down (& assert that it doesn't)
     for (int i=0; i<100; i++) {
       Thread.sleep(10);

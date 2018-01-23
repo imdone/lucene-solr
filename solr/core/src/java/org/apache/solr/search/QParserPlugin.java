@@ -95,7 +95,7 @@ public abstract class QParserPlugin implements NamedListInitializedPlugin, SolrI
 
   @Override
   public String getName() {
-    // TODO: ideally use the NAME property that each qparser plugin has
+    // TODO: ideally use the NAME property that each qparser plugin has id:2711 gh:2712
 
     return this.getClass().getName();
   }

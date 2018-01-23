@@ -170,7 +170,7 @@ public class TestStressLiveNodes extends SolrCloudTestCase {
       log.info("preparing parallel adds to live nodes: iter={}, numThreads={} numNodesPerThread={}",
                iter, numThreads, numNodesPerThrasher);
       
-      // NOTE: using ephemeral nodes
+      // NOTE: using ephemeral nodes id:2294 gh:2295
       // so we can't close any of these thrashers until we are done with our assertions
       final List<LiveNodeTrasher> thrashers = new ArrayList<>(numThreads);
       for (int i = 0; i < numThreads; i++) {
@@ -212,7 +212,7 @@ public class TestStressLiveNodes extends SolrCloudTestCase {
     }
   }
 
-  /** NOTE: has internal counter which is not thread safe, only call() in one thread at a time */
+  /** NOTE: has internal counter which is not thread safe, only call() in one thread at a time id:2216 gh:2217*/
   public static final class LiveNodeTrasher implements Callable<Integer> {
     private final String id;
     private final int numNodesToAdd;
@@ -230,7 +230,7 @@ public class TestStressLiveNodes extends SolrCloudTestCase {
     /** returns the number of nodes actually added w/o error */
     public Integer call() {
       running = true;
-      // NOTE: test includes 'running'
+      // NOTE: test includes 'running' id:3069 gh:3070
       for (int i = 0; running && i < numNodesToAdd; i++) {
         final String nodePath = ZkStateReader.LIVE_NODES_ZKNODE + "/thrasher-" + id + "-" + i;
         try {

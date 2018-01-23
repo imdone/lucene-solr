@@ -58,7 +58,7 @@ import org.apache.lucene.util.QueryBuilder;
 import org.junit.After;
 import org.junit.Before;
 
-//TODO rename to reflect position sensitivity
+//TODO rename to reflect position sensitivity id:1165 gh:1166
 public class TestUnifiedHighlighterStrictPhrases extends LuceneTestCase {
 
   final FieldType fieldType;

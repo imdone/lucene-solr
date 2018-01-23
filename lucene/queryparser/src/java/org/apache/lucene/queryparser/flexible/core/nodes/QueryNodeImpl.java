@@ -35,7 +35,7 @@ import org.apache.lucene.queryparser.flexible.core.util.StringUtils;
 public abstract class QueryNodeImpl implements QueryNode, Cloneable {
 
   /* index default field */
-  // TODO remove PLAINTEXT_FIELD_NAME replacing it with configuration APIs
+  // TODO remove PLAINTEXT_FIELD_NAME replacing it with configuration APIs id:974 gh:975
   public static final String PLAINTEXT_FIELD_NAME = "_plain";
 
   private boolean isLeaf = true;
@@ -208,7 +208,7 @@ public abstract class QueryNodeImpl implements QueryNode, Cloneable {
    * @param fld - field name
    * @return true if fld is the default field
    */
-  // TODO: remove this method, it's commonly used by {@link
+  // TODO: remove this method, it's commonly used by {@link id:1362 gh:1363
   // #toQueryString(org.apache.lucene.queryParser.core.parser.EscapeQuerySyntax)}
   // to figure out what is the default field, however, {@link
   // #toQueryString(org.apache.lucene.queryParser.core.parser.EscapeQuerySyntax)}

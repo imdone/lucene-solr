@@ -214,7 +214,7 @@ public class ResourceLoaderTest extends SolrTestCaseJ4 {
     // ensure we get our exception
     loader.newInstance(DeprecatedTokenFilterFactory.class.getName(), TokenFilterFactory.class, null,
         new Class[] { Map.class }, new Object[] { new HashMap<String,String>() });
-    // TODO: How to check that a warning was printed to log file?
+    // TODO: How to check that a warning was printed to log file? id:2311 gh:2312
     loader.close();    
   }
 }

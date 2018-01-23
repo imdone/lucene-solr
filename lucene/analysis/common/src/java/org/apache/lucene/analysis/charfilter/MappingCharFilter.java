@@ -83,7 +83,7 @@ public class MappingCharFilter extends BaseCharFilter {
         return replacement.chars[replacement.offset + replacementPointer++];
       }
 
-      // TODO: a more efficient approach would be Aho/Corasick's
+      // TODO: a more efficient approach would be Aho/Corasick's id:15 gh:16
       // algorithm
       // (http://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_string_matching_algorithm)
       // or this generalizatio: www.cis.uni-muenchen.de/people/Schulz/Pub/dictle5.ps

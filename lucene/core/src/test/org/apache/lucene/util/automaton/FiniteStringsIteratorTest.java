@@ -56,10 +56,10 @@ public class FiniteStringsIteratorTest extends LuceneTestCase {
       }
     }
 
-    // TODO: we could sometimes use
+    // TODO: we could sometimes use id:1152 gh:1153
     // DaciukMihovAutomatonBuilder here
 
-    // TODO: what other random things can we do here...
+    // TODO: what other random things can we do here... id:1445 gh:1446
     Automaton a = Operations.union(automata);
     if (random().nextBoolean()) {
       a = MinimizationOperations.minimize(a, 1000000);

@@ -171,7 +171,7 @@ public class UnifiedSolrHighlighter extends SolrHighlighter implements PluginInf
       for (String field : fieldNames) {
         String snippet = snippets.get(field)[i];
         if (snippet == null) {
-          //TODO reuse logic of DefaultSolrHighlighter.alternateField
+          //TODO reuse logic of DefaultSolrHighlighter.alternateField id:1892 gh:1893
           summary.add(field, ZERO_LEN_STR_ARRAY);
         } else {
           // we used a special snippet separator char and we can now split on it.
@@ -328,7 +328,7 @@ public class UnifiedSolrHighlighter extends SolrHighlighter implements PluginInf
         return baseBI;
       }
       return LengthGoalBreakIterator.createMinLength(baseBI, fragsize);
-      // TODO option for using createClosestToLength()
+      // TODO option for using createClosestToLength() id:2674 gh:2675
     }
 
     /**
@@ -405,7 +405,7 @@ public class UnifiedSolrHighlighter extends SolrHighlighter implements PluginInf
 
     @Override
     protected Predicate<String> getFieldMatcher(String field) {
-      // TODO define hl.queryFieldPattern as a more advanced alternative to hl.requireFieldMatch.
+      // TODO define hl.queryFieldPattern as a more advanced alternative to hl.requireFieldMatch. id:1968 gh:1969
 
       // note that the UH & PH at Lucene level default to effectively "true"
       if (params.getFieldBool(field, HighlightParams.FIELD_MATCH, false)) {

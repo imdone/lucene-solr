@@ -71,7 +71,7 @@ public class ICUNormalizer2FilterFactory extends TokenFilterFactory implements M
     this.normalizer = normalizer;
   }
 
-  // TODO: support custom normalization
+  // TODO: support custom normalization id:121 gh:122
   
   @Override
   public TokenStream create(TokenStream input) {

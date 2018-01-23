@@ -48,7 +48,7 @@ import org.apache.solr.util.plugin.SolrCoreAware;
 import static java.util.stream.Collectors.toMap;
 
 /**
- * TODO!
+ * TODO ! id:2656 gh:2657
  *
  *
  * @since solr 1.3
@@ -148,7 +148,7 @@ public class HighlightComponent extends SearchComponent implements PluginInfoIni
 
       SolrHighlighter highlighter = getHighlighter(params);
 
-      //TODO: get from builder by default?
+      //TODO: get from builder by default? id:1931 gh:1932
       String[] defaultHighlightFields = rb.getQparser() != null ? rb.getQparser().getDefaultHighlightFields() : null;
       
       Query highlightQuery = rb.getHighlightQuery();
@@ -174,7 +174,7 @@ public class HighlightComponent extends SearchComponent implements PluginInfoIni
                 req, defaultHighlightFields );
         
         if(sumData != null) {
-          // TODO ???? add this directly to the response?
+          // TODO ???? add this directly to the response? id:1827 gh:1828
           rb.rsp.add(highlightingResponseField(), convertHighlights(sumData));
         }
       }
@@ -192,12 +192,12 @@ public class HighlightComponent extends SearchComponent implements PluginInfoIni
         if (solrConfigHighlighter instanceof UnifiedSolrHighlighter) {
           return solrConfigHighlighter;
         }
-        return new UnifiedSolrHighlighter(); // TODO cache one?
+        return new UnifiedSolrHighlighter(); // TODO cache one? id:2775 gh:2776
       case POSTINGS:
         if (solrConfigHighlighter instanceof PostingsSolrHighlighter) {
           return solrConfigHighlighter;
         }
-        return new PostingsSolrHighlighter(); // TODO cache one?
+        return new PostingsSolrHighlighter(); // TODO cache one? id:1858 gh:1859
       case FAST_VECTOR: // fall-through
       case ORIGINAL:
         if (solrConfigHighlighter instanceof DefaultSolrHighlighter) {
@@ -236,7 +236,7 @@ public class HighlightComponent extends SearchComponent implements PluginInfoIni
       final Object[] objArr = newHighlightsArray(rb.resultIds.size());
       final String highlightingResponseField = highlightingResponseField();
 
-      // TODO: make a generic routine to do automatic merging of id keyed data
+      // TODO: make a generic routine to do automatic merging of id keyed data id:2657 gh:2658
       for (ShardRequest sreq : rb.finished) {
         if ((sreq.purpose & ShardRequest.PURPOSE_GET_HIGHLIGHTS) == 0) continue;
         for (ShardResponse srsp : sreq.responses) {

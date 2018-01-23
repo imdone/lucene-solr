@@ -70,7 +70,7 @@ public final class ICUFoldingFilter extends ICUNormalizer2Filter {
    * applying foldings from UTR#30 Character Foldings.
    */
   public static final Normalizer2 NORMALIZER = Normalizer2.getInstance(
-    // TODO: if the wrong version of the ICU jar is used, loading these data files may give a strange error.
+    // TODO: if the wrong version of the ICU jar is used, loading these data files may give a strange error. id:114 gh:115
     // maybe add an explicit check? http://icu-project.org/apiref/icu4j/com/ibm/icu/util/VersionInfo.html
     ICUFoldingFilter.class.getResourceAsStream("utr30.nrm"),
     "utr30", Normalizer2.Mode.COMPOSE);

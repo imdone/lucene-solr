@@ -108,7 +108,7 @@ public class TestSwappedIndexFiles extends LuceneTestCase {
       }
 
       try {
-        // NOTE: we .close so that if the test fails (truncation not detected) we don't also get all these confusing errors about open files:
+        // NOTE: we .close so that if the test fails (truncation not detected) we don't also get all these confusing errors about open files: id:1293 gh:1294
         DirectoryReader.open(dirCopy).close();
         fail("wrong file " + victim + " not detected");
       } catch (CorruptIndexException | EOFException | IndexFormatTooOldException e) {

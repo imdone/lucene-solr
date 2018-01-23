@@ -44,9 +44,9 @@ import org.apache.lucene.util.IOUtils;
 import org.apache.lucene.util.LuceneTestCase;
 import org.apache.lucene.util.TestUtil;
 
-// TODO: we really need to test indexingoffsets, but then getting only docs / docs + freqs.
+// TODO: we really need to test indexingoffsets, but then getting only docs / docs + freqs. id:975 gh:976
 // not all codecs store prx separate...
-// TODO: fix sep codec to index offsets so we can greatly reduce this list!
+// TODO: fix sep codec to index offsets so we can greatly reduce this list! id:1014 gh:1015
 public class TestPostingsOffsets extends LuceneTestCase {
   IndexWriterConfig iwc;
   
@@ -227,7 +227,7 @@ public class TestPostingsOffsets extends LuceneTestCase {
 
     FieldType ft = new FieldType(TextField.TYPE_NOT_STORED);
 
-    // TODO: randomize what IndexOptions we use; also test
+    // TODO: randomize what IndexOptions we use; also test id:853 gh:854
     // changing this up in one IW buffered segment...:
     ft.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
     if (random().nextBoolean()) {
@@ -288,7 +288,7 @@ public class TestPostingsOffsets extends LuceneTestCase {
 
     final String[] terms = new String[] {"a", "b", "c", "d"};
     for(LeafReaderContext ctx : r.leaves()) {
-      // TODO: improve this
+      // TODO: improve this id:1116 gh:1117
       LeafReader sub = ctx.reader();
       //System.out.println("\nsub=" + sub);
       final TermsEnum termsEnum = sub.terms("content").iterator();
@@ -350,7 +350,7 @@ public class TestPostingsOffsets extends LuceneTestCase {
           }
         }
       }        
-      // TODO: test advance:
+      // TODO: test advance: id:1290 gh:1291
     }
     r.close();
     dir.close();
@@ -405,7 +405,7 @@ public class TestPostingsOffsets extends LuceneTestCase {
     dir.close(); // checkindex
   }
   
-  // NOTE: the next two tests aren't that good as we need an EvilToken...
+  // NOTE: the next two tests aren't that good as we need an EvilToken... id:978 gh:979
   public void testNegativeOffsets() throws Exception {
     expectThrows(IllegalArgumentException.class, () -> {
       checkTokens(new Token[] { 
@@ -505,7 +505,7 @@ public class TestPostingsOffsets extends LuceneTestCase {
     iw.close();
     dir.close();
   }
-  // TODO: more tests with other possibilities
+  // TODO: more tests with other possibilities id:1016 gh:1017
   
   private void checkTokens(Token[] field1, Token[] field2) throws IOException {
     Directory dir = newDirectory();

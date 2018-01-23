@@ -294,7 +294,7 @@ final class Stemmer {
    */
   private List<CharsRef> stem(char word[], int length, int previous, int prevFlag, int prefixFlag, int recursionDepth, boolean doPrefix, boolean doSuffix, boolean previousWasPrefix, boolean circumfix, boolean caseVariant) throws IOException {
     
-    // TODO: allow this stuff to be reused by tokenfilter
+    // TODO: allow this stuff to be reused by tokenfilter id:27 gh:28
     List<CharsRef> stems = new ArrayList<>();
     
     if (doPrefix && dictionary.prefixes != null) {
@@ -505,7 +505,7 @@ final class Stemmer {
    * @return List of stems for the word, or an empty list if none are found
    */
   List<CharsRef> applyAffix(char strippedWord[], int length, int affix, int prefixFlag, int recursionDepth, boolean prefix, boolean circumfix, boolean caseVariant) throws IOException {    
-    // TODO: just pass this in from before, no need to decode it twice
+    // TODO: just pass this in from before, no need to decode it twice id:26 gh:27
     affixReader.setPosition(8 * affix);
     char flag = (char) (affixReader.readShort() & 0xffff);
     affixReader.skipBytes(2); // strip

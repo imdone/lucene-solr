@@ -1187,7 +1187,7 @@ public class ExportWriter implements SolrCore.RawWriter, Closeable {
 
     public void setCurrentValue(int docId) throws IOException {
       if (docId < lastDocID) {
-        // TODO: can we enforce caller to go in order instead?
+        // TODO: can we enforce caller to go in order instead? id:1838 gh:1839
         this.vals = DocValues.getNumeric(this.reader, this.field);
       }
       lastDocID = docId;
@@ -1580,7 +1580,7 @@ public class ExportWriter implements SolrCore.RawWriter, Closeable {
           // Throw exception to prevent confusing OOME:
           throw new IllegalArgumentException("maxSize must be <= " + ArrayUtil.MAX_ARRAY_LENGTH + "; got: " + maxSize);
         } else {
-          // NOTE: we add +1 because all access to heap is
+          // NOTE: we add +1 because all access to heap is id:2647 gh:2648
           // 1-based not 0-based.  heap[0] is unused.
           heapSize = maxSize + 1;
         }

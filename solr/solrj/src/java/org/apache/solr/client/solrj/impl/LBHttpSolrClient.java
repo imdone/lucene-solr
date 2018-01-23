@@ -544,7 +544,7 @@ public class LBHttpSolrClient extends SolrClient {
   private void addToAlive(ServerWrapper wrapper) {
     synchronized (aliveServers) {
       ServerWrapper prev = aliveServers.put(wrapper.getKey(), wrapper);
-      // TODO: warn if there was a previous entry?
+      // TODO: warn if there was a previous entry? id:2432 gh:2433
       updateAliveList();
     }
   }

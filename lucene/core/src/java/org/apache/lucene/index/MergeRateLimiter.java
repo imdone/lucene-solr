@@ -64,7 +64,7 @@ public class MergeRateLimiter extends RateLimiter {
       }
       this.mbPerSec = mbPerSec;
   
-      // NOTE: Double.POSITIVE_INFINITY casts to Long.MAX_VALUE
+      // NOTE: Double.POSITIVE_INFINITY casts to Long.MAX_VALUE id:528 gh:529
       this.minPauseCheckBytes = Math.min(1024*1024, (long) ((MIN_PAUSE_CHECK_MSEC / 1000.0) * mbPerSec * 1024 * 1024));
       assert minPauseCheckBytes >= 0;
     }

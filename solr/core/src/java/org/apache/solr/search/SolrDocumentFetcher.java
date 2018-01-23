@@ -242,7 +242,7 @@ public class SolrDocumentFetcher {
       this.doc = getDocument();
       this.lazyFieldProducer = toLoad != null && enableLazyFieldLoading ? new LazyDocument(reader, docId) : null;
       this.addLargeFieldsLazily = (documentCache != null && !largeFields.isEmpty());
-      //TODO can we return Status.STOP after a val is loaded and we know there are no other fields of interest?
+      //TODO can we return Status.STOP after a val is loaded and we know there are no other fields of interest? id:2713 gh:2713
       //    When: toLoad is one single-valued field, no lazyFieldProducer
     }
 

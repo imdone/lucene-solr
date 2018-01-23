@@ -103,7 +103,7 @@ public abstract class AbstractPrefixTreeQuery extends Query {
 
   /** Holds transient state and docid collecting utility methods as part of
    * traversing a {@link TermsEnum} for a {@link org.apache.lucene.index.LeafReaderContext}. */
-  public abstract class BaseTermsEnumTraverser {//TODO rename to LeafTermsEnumTraverser ?
+  public abstract class BaseTermsEnumTraverser {//TODO rename to LeafTermsEnumTraverser ? id:1349 gh:1350
     //note: only 'fieldName' (accessed in constructor) keeps this from being a static inner class
 
     protected final LeafReaderContext context;

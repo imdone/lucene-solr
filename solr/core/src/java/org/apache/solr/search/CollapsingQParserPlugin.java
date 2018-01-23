@@ -390,7 +390,7 @@ public class CollapsingQParserPlugin extends QParserPlugin {
       this.field = field;
     }
 
-    // NOTE: delegating the caches is wrong here as we are altering the content
+    // NOTE: delegating the caches is wrong here as we are altering the content id:2035 gh:2036
     // of the reader, this should ONLY be used under an uninvertingreader which
     // will restore doc values back using uninversion, otherwise all sorts of
     // crazy things could happen.
@@ -1453,7 +1453,7 @@ public class CollapsingQParserPlugin extends QParserPlugin {
      */
     public boolean setupIfNeeded(final GroupHeadSelector groupHeadSelector,
                                  final Map readerContext) {
-      // HACK, but not really any better options until/unless we can recursively
+      // HACK , but not really any better options until/unless we can recursively id:1909 gh:1910
       // ask value sources if they depend on score
       if (wantsCScore(groupHeadSelector.selectorText)) {
         readerContext.put("CSCORE", this);
@@ -1463,7 +1463,7 @@ public class CollapsingQParserPlugin extends QParserPlugin {
     }
 
     /** 
-     * Huge HACK, but not really any better options until/unless we can recursively 
+     * Huge HACK , but not really any better options until/unless we can recursively  id:2857 gh:2858
      * ask value sources if they depend on score 
      */
     public static boolean wantsCScore(final String text) {

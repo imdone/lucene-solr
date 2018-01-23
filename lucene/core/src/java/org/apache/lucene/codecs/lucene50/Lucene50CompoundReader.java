@@ -59,7 +59,7 @@ final class Lucene50CompoundReader extends Directory {
   /**
    * Create a new CompoundFileDirectory.
    */
-  // TODO: we should just pre-strip "entries" and append segment name up-front like simpletext?
+  // TODO: we should just pre-strip "entries" and append segment name up-front like simpletext? id:445 gh:446
   // this need not be a "general purpose" directory anymore (it only writes index files)
   public Lucene50CompoundReader(Directory directory, SegmentInfo si, IOContext context) throws IOException {
     this.directory = directory;
@@ -79,7 +79,7 @@ final class Lucene50CompoundReader extends Directory {
     try {
       CodecUtil.checkIndexHeader(handle, Lucene50CompoundFormat.DATA_CODEC, version, version, si.getId(), "");
       
-      // NOTE: data file is too costly to verify checksum against all the bytes on open,
+      // NOTE: data file is too costly to verify checksum against all the bytes on open, id:510 gh:511
       // but for now we at least verify proper structure of the checksum footer: which looks
       // for FOOTER_MAGIC + algorithmID. This is cheap and can detect some forms of corruption
       // such as file truncation.

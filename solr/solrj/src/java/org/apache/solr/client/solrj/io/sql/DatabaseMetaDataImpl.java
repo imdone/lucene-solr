@@ -43,7 +43,7 @@ class DatabaseMetaDataImpl implements DatabaseMetaData {
   }
 
   private int getVersionPart(String version, int part) {
-    // TODO Is there a better way to do this? Reuse code from elsewhere?
+    // TODO Is there a better way to do this? Reuse code from elsewhere? id:2435 gh:2436
     // Gets the parts of the Solr version. If fail then just return 0.
     if (version != null) {
       try {

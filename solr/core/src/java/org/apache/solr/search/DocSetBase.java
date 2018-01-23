@@ -206,7 +206,7 @@ abstract class DocSetBase implements DocSet {
 
               @Override
               public int nextDoc() {
-                pos = bs.nextSetBit(pos+1);  // TODO: this is buggy if getBits() returns a bitset that does not have a capacity of maxDoc
+                pos = bs.nextSetBit(pos+1);  // TODO: this is buggy if getBits() returns a bitset that does not have a capacity of maxDoc id:2859 gh:2860
                 return adjustedDoc = pos<max ? pos-base : NO_MORE_DOCS;
               }
 

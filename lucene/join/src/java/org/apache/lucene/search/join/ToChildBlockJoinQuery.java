@@ -84,7 +84,7 @@ public class ToChildBlockJoinQuery extends Query {
       this.doScores = doScores;
     }
 
-    // NOTE: acceptDocs applies (and is checked) only in the
+    // NOTE: acceptDocs applies (and is checked) only in the id:1325 gh:1326
     // child document space
     @Override
     public Scorer scorer(LeafReaderContext readerContext) throws IOException {
@@ -96,7 +96,7 @@ public class ToChildBlockJoinQuery extends Query {
         return null;
       }
 
-      // NOTE: this doesn't take acceptDocs into account, the responsibility
+      // NOTE: this doesn't take acceptDocs into account, the responsibility id:1548 gh:1549
       // to not match deleted docs is on the scorer
       final BitSet parents = parentsFilter.getBitSet(readerContext);
       if (parents == null) {
@@ -172,7 +172,7 @@ public class ToChildBlockJoinQuery extends Query {
 
                 if (parentDoc == 0) {
                   // Degenerate but allowed: first parent doc has no children
-                  // TODO: would be nice to pull initial parent
+                  // TODO: would be nice to pull initial parent id:1054 gh:1055
                   // into ctor so we can skip this if... but it's
                   // tricky because scorer must return -1 for
                   // .doc() on init...

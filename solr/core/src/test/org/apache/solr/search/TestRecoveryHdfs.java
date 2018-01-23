@@ -62,7 +62,7 @@ import com.carrotsearch.randomizedtesting.annotations.ThreadLeakFilters;
 @ThreadLeakFilters(defaultFilters = true, filters = {
     BadHdfsThreadsFilter.class // hdfs currently leaks thread(s)
 })
-// TODO: longer term this should be combined with TestRecovery somehow ??
+// TODO: longer term this should be combined with TestRecovery somehow ?? id:2946 gh:2948
 public class TestRecoveryHdfs extends SolrTestCaseJ4 {
 
   // means that we've seen the leader and have version info (i.e. we are a non-leader replica)
@@ -479,7 +479,7 @@ public class TestRecoveryHdfs extends SolrTestCaseJ4 {
       assertTrue(ulog.dropBufferedUpdates());
 
       // make sure we can overwrite with a lower version
-      // TODO: is this functionality needed?
+      // TODO: is this functionality needed? id:2353 gh:2354
       updateJ(jsonAdd(sdoc("id","C301", "_version_","301")), params(DISTRIB_UPDATE_PARAM,FROM_LEADER));
       updateJ(jsonAdd(sdoc("id","C302", "_version_","302")), params(DISTRIB_UPDATE_PARAM,FROM_LEADER));
 
@@ -1010,7 +1010,7 @@ public class TestRecoveryHdfs extends SolrTestCaseJ4 {
   }
 
 
-  // NOTE: replacement must currently be same size
+  // NOTE: replacement must currently be same size id:2385 gh:2386
   private static void findReplace(byte[] from, byte[] to, byte[] data) {
     int idx = -from.length;
     for(;;) {

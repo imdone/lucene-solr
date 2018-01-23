@@ -138,7 +138,7 @@ public class ZkSolrClientTest extends SolrTestCaseJ4 {
       server = new ZkTestServer(zkDir, zkServerPort);
       server.run();
 
-      // TODO: can we do better?
+      // TODO: can we do better? id:2892 gh:2893
       // wait for reconnect
       Thread.sleep(600);
 

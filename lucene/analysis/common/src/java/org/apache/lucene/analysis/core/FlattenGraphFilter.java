@@ -176,7 +176,7 @@ public final class FlattenGraphFilter extends TokenFilter {
       }
       //System.out.println("  release maxToNode=" + maxToNode + " vs inputFrom=" + inputFrom);
 
-      // TODO: we could shrink the frontier here somewhat if we
+      // TODO: we could shrink the frontier here somewhat if we id:19 gh:20
       // always output posLen=1 as part of our "sausagizing":
       if (maxToNode <= inputFrom || done) {
         //System.out.println("  output node merged these inputs: " + output.inputNodes);
@@ -373,7 +373,7 @@ public final class FlattenGraphFilter extends TokenFilter {
     if (done == false) {
       super.end();
     } else {
-      // NOTE, shady: don't call super.end, because we did already from incrementToken
+      // NOTE , shady: don't call super.end, because we did already from incrementToken id:20 gh:21
     }
 
     clearAttributes();

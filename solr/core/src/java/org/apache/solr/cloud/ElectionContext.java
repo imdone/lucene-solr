@@ -396,7 +396,7 @@ final class ShardLeaderElectionContext extends ShardLeaderElectionContextBase {
         if (!success) {
           boolean hasRecentUpdates = false;
           if (ulog != null) {
-            // TODO: we could optimize this if necessary
+            // TODO: we could optimize this if necessary id:1801 gh:1802
             try (UpdateLog.RecentUpdates recentUpdates = ulog.getRecentUpdates()) {
               hasRecentUpdates = !recentUpdates.getVersions(1).isEmpty();
             }
@@ -751,7 +751,7 @@ final class ShardLeaderElectionContext extends ShardLeaderElectionContextBase {
     log.debug("My last published State was "
         + core.getCoreDescriptor().getCloudDescriptor().getLastPublished()
         + ", I won't be the leader.");
-    // TODO: and if no one is a good candidate?
+    // TODO: and if no one is a good candidate? id:2628 gh:2629
     
     return false;
   }

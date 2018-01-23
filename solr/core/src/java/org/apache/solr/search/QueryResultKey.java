@@ -47,7 +47,7 @@ public final class QueryResultKey {
 
     if (filters != null) {
       for (Query filt : filters)
-        // NOTE: simple summation used here so keys with the same filters but in
+        // NOTE: simple summation used here so keys with the same filters but in id:2873 gh:2874
         // different orders get the same hashCode
         h += filt.hashCode();
     }

@@ -81,12 +81,12 @@ public class IndexBasedSpellChecker extends AbstractLuceneSpellChecker {
     // Create the dictionary
     dictionary = new HighFrequencyDictionary(reader, field,
         threshold);
-    // TODO: maybe whether or not to clear the index should be configurable?
+    // TODO: maybe whether or not to clear the index should be configurable? id:2125 gh:2126
     // an incremental update is faster (just adds new terms), but if you 'expunged'
     // old terms I think they might hang around.
     spellChecker.clearIndex();
-    // TODO: you should be able to specify the IWC params?
-    // TODO: if we enable this, codec gets angry since field won't exist in the schema
+    // TODO: you should be able to specify the IWC params? id:2046 gh:2048
+    // TODO: if we enable this, codec gets angry since field won't exist in the schema id:2937 gh:2938
     // config.setCodec(core.getCodec());
     spellChecker.indexDictionary(dictionary, new IndexWriterConfig(null), false);
   }

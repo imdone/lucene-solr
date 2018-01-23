@@ -67,7 +67,7 @@ final class SegmentCoreReaders {
    * in the case of DV updates, SR may hold a newer version. */
   final FieldInfos coreFieldInfos;
 
-  // TODO: make a single thread local w/ a
+  // TODO: make a single thread local w/ a id:551 gh:552
   // Thingy class holding fieldsReader, termVectorsReader,
   // normsProducer
 
@@ -112,7 +112,7 @@ final class SegmentCoreReaders {
       fields = format.fieldsProducer(segmentReadState);
       assert fields != null;
       // ask codec for its Norms: 
-      // TODO: since we don't write any norms file if there are no norms,
+      // TODO: since we don't write any norms file if there are no norms, id:822 gh:823
       // kinda jaky to assume the codec handles the case of no norms file at all gracefully?!
 
       if (coreFieldInfos.hasNorms()) {

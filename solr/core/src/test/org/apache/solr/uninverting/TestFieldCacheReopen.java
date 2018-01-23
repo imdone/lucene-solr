@@ -28,7 +28,7 @@ import org.apache.lucene.util.LuceneTestCase;
 
 public class TestFieldCacheReopen extends LuceneTestCase {
   
-  // TODO: make a version of this that tests the same thing with UninvertingReader.wrap()
+  // TODO: make a version of this that tests the same thing with UninvertingReader.wrap() id:2967 gh:2968
   
   // LUCENE-1579: Ensure that on a reopened reader, that any
   // shared segments reuse the doc values arrays in

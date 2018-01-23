@@ -71,7 +71,7 @@ public final class Lucene50PostingsReader extends PostingsReaderBase {
     IndexInput posIn = null;
     IndexInput payIn = null;
     
-    // NOTE: these data files are too costly to verify checksum against all the bytes on open,
+    // NOTE: these data files are too costly to verify checksum against all the bytes on open, id:368 gh:369
     // but for now we at least verify proper structure of the checksum footer: which looks
     // for FOOTER_MAGIC + algorithmID. This is cheap and can detect some forms of corruption
     // such as file truncation.
@@ -393,7 +393,7 @@ public final class Lucene50PostingsReader extends PostingsReaderBase {
 
     @Override
     public int advance(int target) throws IOException {
-      // TODO: make frq block load lazy/skippable
+      // TODO: make frq block load lazy/skippable id:365 gh:366
 
       // current skip docID < docIDs generated from current buffer <= next skip docID
       // we don't need to skip if target is buffered already
@@ -661,7 +661,7 @@ public final class Lucene50PostingsReader extends PostingsReaderBase {
     
     @Override
     public int advance(int target) throws IOException {
-      // TODO: make frq block load lazy/skippable
+      // TODO: make frq block load lazy/skippable id:447 gh:448
 
       if (target > nextSkipDoc) {
         if (skipper == null) {
@@ -726,7 +726,7 @@ public final class Lucene50PostingsReader extends PostingsReaderBase {
       return doc = accum;
     }
 
-    // TODO: in theory we could avoid loading frq block
+    // TODO: in theory we could avoid loading frq block id:514 gh:516
     // when not needed, ie, use skip data to load how far to
     // seek the pos pointer ... instead of having to load frq
     // blocks only to sum up how many positions to skip
@@ -1077,7 +1077,7 @@ public final class Lucene50PostingsReader extends PostingsReaderBase {
     
     @Override
     public int advance(int target) throws IOException {
-      // TODO: make frq block load lazy/skippable
+      // TODO: make frq block load lazy/skippable id:500 gh:501
 
       if (target > nextSkipDoc) {
         if (skipper == null) {
@@ -1144,7 +1144,7 @@ public final class Lucene50PostingsReader extends PostingsReaderBase {
       return doc = accum;
     }
 
-    // TODO: in theory we could avoid loading frq block
+    // TODO: in theory we could avoid loading frq block id:370 gh:371
     // when not needed, ie, use skip data to load how far to
     // seek the pos pointer ... instead of having to load frq
     // blocks only to sum up how many positions to skip

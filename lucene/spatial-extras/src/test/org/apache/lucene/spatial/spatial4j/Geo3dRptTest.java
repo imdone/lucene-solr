@@ -131,7 +131,7 @@ public class Geo3dRptTest extends RandomSpatialOpStrategyTestCase {
     return new Geo3dShape<>(areaShape, ctx);
   }
 
-  //TODO move to a new test class?
+  //TODO move to a new test class? id:1684 gh:1685
   @Test
   public void testWKT() throws Exception {
     Geo3dSpatialContextFactory factory = new Geo3dSpatialContextFactory();

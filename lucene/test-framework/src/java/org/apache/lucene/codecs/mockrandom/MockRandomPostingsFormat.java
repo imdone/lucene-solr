@@ -93,7 +93,7 @@ public final class MockRandomPostingsFormat extends PostingsFormat {
 
     // we pull this before the seed intentionally: because it's not consumed at runtime
     // (the skipInterval is written into postings header).
-    // NOTE: Currently not passed to postings writer.
+    // NOTE: Currently not passed to postings writer. id:2585 gh:2586
     //       before, it was being passed in wrongly as acceptableOverhead!
     int skipInterval = TestUtil.nextInt(seedRandom, minSkipInterval, 10);
     
@@ -150,7 +150,7 @@ public final class MockRandomPostingsFormat extends PostingsFormat {
         System.out.println("MockRandomCodec: writing BlockTree terms dict");
       }
 
-      // TODO: would be nice to allow 1 but this is very
+      // TODO: would be nice to allow 1 but this is very id:1680 gh:1681
       // slow to write
       final int minTermsInBlock = TestUtil.nextInt(random, 2, 100);
       final int maxTermsInBlock = Math.max(2, (minTermsInBlock-1)*2 + random.nextInt(100));
@@ -240,7 +240,7 @@ public final class MockRandomPostingsFormat extends PostingsFormat {
         System.out.println("MockRandomCodec: writing OrdsBlockTree");
       }
 
-      // TODO: would be nice to allow 1 but this is very
+      // TODO: would be nice to allow 1 but this is very id:1470 gh:1471
       // slow to write
       final int minTermsInBlock = TestUtil.nextInt(random, 2, 100);
       final int maxTermsInBlock = Math.max(2, (minTermsInBlock-1)*2 + random.nextInt(100));

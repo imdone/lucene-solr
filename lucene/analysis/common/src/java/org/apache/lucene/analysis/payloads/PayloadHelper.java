@@ -54,7 +54,7 @@ public class PayloadHelper {
 
   /**
    * Decode the payload that was encoded using {@link #encodeFloat(float)}.
-   * NOTE: the length of the array must be at least offset + 4 long.
+   * NOTE: the length of the array must be at least offset + 4 long. id:35 gh:36
    * @param bytes The bytes to decode
    * @param offset The offset into the array.
    * @return The float that was encoded

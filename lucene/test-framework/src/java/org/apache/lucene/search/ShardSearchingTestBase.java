@@ -37,7 +37,7 @@ import org.apache.lucene.util.LuceneTestCase;
 import org.apache.lucene.util.PrintStreamInfoStream;
 import org.apache.lucene.util.TestUtil;
 
-// TODO
+// TODO id:1623 gh:1624
 //   - doc blocks?  so we can test joins/grouping...
 //   - controlled consistency (NRTMgr)
 
@@ -46,7 +46,7 @@ import org.apache.lucene.util.TestUtil;
  */
 public abstract class ShardSearchingTestBase extends LuceneTestCase {
 
-  // TODO: maybe SLM should throw this instead of returning null...
+  // TODO: maybe SLM should throw this instead of returning null... id:1402 gh:1403
   /**
    * Thrown when the lease for a searcher has expired.
    */
@@ -151,7 +151,7 @@ public abstract class ShardSearchingTestBase extends LuceneTestCase {
     }
   }
 
-  // TODO: broadcastNodeExpire?  then we can purge the
+  // TODO: broadcastNodeExpire?  then we can purge the id:1649 gh:1650
   // known-stale cache entries...
 
   // MOCK: in a real env you have to hit the wire
@@ -203,7 +203,7 @@ public abstract class ShardSearchingTestBase extends LuceneTestCase {
     public final int myNodeID;
     public final long[] currentNodeVersions;
 
-    // TODO: nothing evicts from here!!!  Somehow, on searcher
+    // TODO: nothing evicts from here!!!  Somehow, on searcher id:2602 gh:2603
     // expiration on remote nodes we must evict from our
     // local cache...?  And still LRU otherwise (for the
     // still-live searchers).
@@ -296,7 +296,7 @@ public abstract class ShardSearchingTestBase extends LuceneTestCase {
 
       @Override
       public CollectionStatistics collectionStatistics(String field) throws IOException {
-        // TODO: we could compute this on init and cache,
+        // TODO: we could compute this on init and cache, id:1715 gh:1716
         // since we are re-inited whenever any nodes have a
         // new reader
         long docCount = 0;
@@ -441,7 +441,7 @@ public abstract class ShardSearchingTestBase extends LuceneTestCase {
     public NodeState(Random random, int nodeID, int numNodes) throws IOException {
       myNodeID = nodeID;
       dir = newFSDirectory(createTempDir("ShardSearchingTestBase"));
-      // TODO: set warmer
+      // TODO: set warmer id:1626 gh:1625
       MockAnalyzer analyzer = new MockAnalyzer(random());
       analyzer.setMaxTokenLength(TestUtil.nextInt(random(), 1, IndexWriter.MAX_TERM_LENGTH));
       IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
@@ -535,7 +535,7 @@ public abstract class ShardSearchingTestBase extends LuceneTestCase {
     }
   }
 
-  // TODO: make this more realistic, ie, each node should
+  // TODO: make this more realistic, ie, each node should id:1404 gh:1405
   // have its own thread, so we have true node to node
   // concurrency
   private final class ChangeIndices extends Thread {
@@ -557,7 +557,7 @@ public abstract class ShardSearchingTestBase extends LuceneTestCase {
           } else {
             node.writer.deleteDocuments(new Term("docid", ""+random().nextInt(numDocs)));
           }
-          // TODO: doc blocks too
+          // TODO: doc blocks too id:1651 gh:1652
 
           if (random().nextInt(17) == 12) {
             node.writer.commit();

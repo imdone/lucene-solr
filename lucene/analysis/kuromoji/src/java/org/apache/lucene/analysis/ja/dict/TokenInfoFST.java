@@ -55,7 +55,7 @@ public final class TokenInfoFST {
     fst.getFirstArc(firstArc);
     FST.Arc<Long> arc = new FST.Arc<>();
     final FST.BytesReader fstReader = fst.getBytesReader();
-    // TODO: jump to 3040, readNextRealArc to ceiling? (just be careful we don't add bugs)
+    // TODO: jump to 3040, readNextRealArc to ceiling? (just be careful we don't add bugs) id:226 gh:227
     for (int i = 0; i < rootCache.length; i++) {
       if (fst.findTargetArc(0x3040 + i, firstArc, arc, fstReader) != null) {
         rootCache[i] = new FST.Arc<Long>().copyFrom(arc);

@@ -112,7 +112,7 @@ public class ToParentBlockJoinQuery extends Query {
       return scorerSupplier.get(Long.MAX_VALUE);
     }
 
-    // NOTE: acceptDocs applies (and is checked) only in the
+    // NOTE: acceptDocs applies (and is checked) only in the id:1171 gh:1172
     // parent document space
     @Override
     public ScorerSupplier scorerSupplier(LeafReaderContext context) throws IOException {
@@ -121,7 +121,7 @@ public class ToParentBlockJoinQuery extends Query {
         return null;
       }
 
-      // NOTE: this does not take accept docs into account, the responsibility
+      // NOTE: this does not take accept docs into account, the responsibility id:951 gh:952
       // to not match deleted docs is on the scorer
       final BitSet parents = parentsFilter.getBitSet(context);
       if (parents == null) {
@@ -222,7 +222,7 @@ public class ToParentBlockJoinQuery extends Query {
 
     @Override
     public float matchCost() {
-      // TODO: how could we compute a match cost?
+      // TODO: how could we compute a match cost? id:1329 gh:1330
       return childTwoPhase.matchCost() + 10;
     }
   }

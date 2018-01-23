@@ -96,13 +96,13 @@ public abstract class TermsEnum implements BytesRefIterator {
    * Seeking by {@link TermState} should only be used iff the state was obtained 
    * from the same {@link TermsEnum} instance. 
    * <p>
-   * NOTE: Using this method with an incompatible {@link TermState} might leave
+   * NOTE: Using this method with an incompatible {@link TermState} might leave id:619 gh:620
    * this {@link TermsEnum} in undefined state. On a segment level
    * {@link TermState} instances are compatible only iff the source and the
    * target {@link TermsEnum} operate on the same field. If operating on segment
    * level, TermState instances must not be used across segments.
    * <p>
-   * NOTE: A seek by {@link TermState} might not restore the
+   * NOTE: A seek by {@link TermState} might not restore the id:634 gh:635
    * {@link AttributeSource}'s state. {@link AttributeSource} states must be
    * maintained separately if this method is used.
    * @param term the term the TermState corresponds to
@@ -174,7 +174,7 @@ public abstract class TermsEnum implements BytesRefIterator {
    * Expert: Returns the TermsEnums internal state to position the TermsEnum
    * without re-seeking the term dictionary.
    * <p>
-   * NOTE: A seek by {@link TermState} might not capture the
+   * NOTE: A seek by {@link TermState} might not capture the id:559 gh:560
    * {@link AttributeSource}'s state. Callers must maintain the
    * {@link AttributeSource} states separately
    * 

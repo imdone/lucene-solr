@@ -521,7 +521,7 @@ class SolrTable extends AbstractQueryableTable implements TranslatableTable {
       tupleStream = parallelStream;
     }
 
-    //TODO: Currently we are not pushing down the having clause.
+    //TODO: Currently we are not pushing down the having clause. id:1964 gh:1965
     //      We need to push down the having clause to ensure that LIMIT does not cut off records prior to the having filter.
 
     if(orders != null && orders.size() > 0) {

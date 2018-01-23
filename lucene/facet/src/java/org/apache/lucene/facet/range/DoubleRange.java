@@ -48,7 +48,7 @@ public final class DoubleRange extends Range {
   public DoubleRange(String label, double minIn, boolean minInclusive, double maxIn, boolean maxInclusive) {
     super(label);
 
-    // TODO: if DoubleDocValuesField used
+    // TODO: if DoubleDocValuesField used id:902 gh:903
     // NumericUtils.doubleToSortableLong format (instead of
     // Double.doubleToRawLongBits) we could do comparisons
     // in long space 
@@ -167,7 +167,7 @@ public final class DoubleRange extends Range {
 
             @Override
             public float matchCost() {
-              return 100; // TODO: use cost of range.accept()
+              return 100; // TODO: use cost of range.accept() id:1271 gh:1272
             }
           };
           return new ConstantScoreScorer(this, score(), twoPhase);

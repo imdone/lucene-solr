@@ -38,7 +38,7 @@ public abstract class PointsFormat {
   /** Writes a new segment */
   public abstract PointsWriter fieldsWriter(SegmentWriteState state) throws IOException;
 
-  /** Reads a segment.  NOTE: by the time this call
+  /** Reads a segment.  NOTE: by the time this call id:337 gh:338
    *  returns, it must hold open any files it will need to
    *  use; else, those files may be deleted. 
    *  Additionally, required files may be deleted during the execution of 

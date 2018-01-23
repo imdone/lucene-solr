@@ -147,7 +147,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
               return !((Boolean) args[2]); // args are broken if consumeAllTokens is false
           });
       for (Class<?> c : Arrays.<Class<?>>asList(
-          // TODO: can we promote some of these to be only
+          // TODO: can we promote some of these to be only id:68 gh:69
           // offsets offenders?
           // doesn't actual reset itself!
           CachingTokenFilter.class,
@@ -156,7 +156,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
           // Not broken: we forcefully add this, so we shouldn't
           // also randomly pick it:
           ValidatingTokenFilter.class, 
-          // TODO: needs to be a tokenizer, doesnt handle graph inputs properly (a shingle or similar following will then cause pain)
+          // TODO: needs to be a tokenizer, doesnt handle graph inputs properly (a shingle or similar following will then cause pain) id:131 gh:132
           WordDelimiterFilter.class,
           // Cannot correct offsets when a char filter had changed them:
           WordDelimiterGraphFilter.class,
@@ -174,7 +174,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
     }
   }
 
-  // TODO: also fix these and remove (maybe):
+  // TODO: also fix these and remove (maybe): id:194 gh:195
   // Classes/options that don't produce consistent graph offsets:
   private static final Map<Constructor<?>,Predicate<Object[]>> brokenOffsetsConstructors = new HashMap<>();
   static {
@@ -182,15 +182,15 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
       for (Class<?> c : Arrays.<Class<?>>asList(
           ReversePathHierarchyTokenizer.class,
           PathHierarchyTokenizer.class,
-          // TODO: it seems to mess up offsets!?
+          // TODO: it seems to mess up offsets!? id:70 gh:71
           WikipediaTokenizer.class,
-          // TODO: doesn't handle graph inputs
+          // TODO: doesn't handle graph inputs id:72 gh:73
           CJKBigramFilter.class,
-          // TODO: doesn't handle graph inputs (or even look at positionIncrement)
+          // TODO: doesn't handle graph inputs (or even look at positionIncrement) id:71 gh:72
           HyphenatedWordsFilter.class,
-          // TODO: LUCENE-4983
+          // TODO: LUCENE-4983 id:133 gh:134
           CommonGramsFilter.class,
-          // TODO: doesn't handle graph inputs
+          // TODO: doesn't handle graph inputs id:196 gh:197
           CommonGramsQueryFilter.class)) {
         for (Constructor<?> ctor : c.getConstructors()) {
           brokenOffsetsConstructors.put(ctor, ALWAYS);
@@ -310,13 +310,13 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
   
   private static final Map<Class<?>,Function<Random,Object>> argProducers = new IdentityHashMap<Class<?>,Function<Random,Object>>() {{
     put(int.class, random ->  {
-        // TODO: could cause huge ram usage to use full int range for some filters
+        // TODO: could cause huge ram usage to use full int range for some filters id:73 gh:74
         // (e.g. allocate enormous arrays)
         // return Integer.valueOf(random.nextInt());
         return Integer.valueOf(TestUtil.nextInt(random, -50, 50));
     });
     put(char.class, random ->  {
-        // TODO: fix any filters that care to throw IAE instead.
+        // TODO: fix any filters that care to throw IAE instead. id:74 gh:75
         // also add a unicode validating filter to validate termAtt?
         // return Character.valueOf((char)random.nextInt(65536));
         while(true) {
@@ -359,18 +359,18 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
         int num = random.nextInt(10);
         CharArraySet set = new CharArraySet(num, random.nextBoolean());
         for (int i = 0; i < num; i++) {
-          // TODO: make nastier
+          // TODO: make nastier id:75 gh:76
           set.add(TestUtil.randomSimpleString(random));
         }
         return set;
     });
-    // TODO: don't want to make the exponentially slow ones Dawid documents
+    // TODO: don't want to make the exponentially slow ones Dawid documents id:136 gh:137
     // in TestPatternReplaceFilter, so dont use truly random patterns (for now)
     put(Pattern.class, random ->  Pattern.compile("a"));
     put(Pattern[].class, random -> new Pattern[] {Pattern.compile("([a-z]+)"), Pattern.compile("([0-9]+)")});
     put(PayloadEncoder.class, random -> new IdentityEncoder()); // the other encoders will throw exceptions if tokens arent numbers?
     put(Dictionary.class, random -> {
-        // TODO: make nastier
+        // TODO: make nastier id:197 gh:198
         InputStream affixStream = TestHunspellStemFilter.class.getResourceAsStream("simple.aff");
         InputStream dictStream = TestHunspellStemFilter.class.getResourceAsStream("simple.dic");
         try {
@@ -381,7 +381,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
         }
     });
     put(HyphenationTree.class, random -> {
-        // TODO: make nastier
+        // TODO: make nastier id:76 gh:77
         try {
           InputSource is = new InputSource(TestCompoundWordTokenFilter.class.getResource("da_UTF8.xml").toExternalForm());
           HyphenationTree hyphenator = HyphenationCompoundWordTokenFilter.getHyphenationTree(is);
@@ -402,7 +402,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
         }
     });
     put(String.class, random ->  {
-        // TODO: make nastier
+        // TODO: make nastier id:79 gh:80
         if (random.nextBoolean()) {
           // a token type
           return StandardTokenizer.TOKEN_TYPES[random.nextInt(StandardTokenizer.TOKEN_TYPES.length)];
@@ -428,7 +428,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
         return builder.build();
     });
     put(CharacterRunAutomaton.class, random -> {
-        // TODO: could probably use a purely random automaton
+        // TODO: could probably use a purely random automaton id:77 gh:78
         switch(random.nextInt(5)) {
           case 0: return MockTokenizer.KEYWORD;
           case 1: return MockTokenizer.SIMPLE;
@@ -441,7 +441,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
         int num = random.nextInt(10);
         CharArrayMap<String> map = new CharArrayMap<>(num, random.nextBoolean());
         for (int i = 0; i < num; i++) {
-          // TODO: make nastier
+          // TODO: make nastier id:139 gh:140
           map.put(TestUtil.randomSimpleString(random), TestUtil.randomSimpleString(random));
         }
         return map;
@@ -518,7 +518,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
     allowedTokenFilterArgs = Collections.newSetFromMap(new IdentityHashMap<Class<?>,Boolean>());
     allowedTokenFilterArgs.addAll(argProducers.keySet());
     allowedTokenFilterArgs.add(TokenStream.class);
-    // TODO: fix this one, thats broken:
+    // TODO: fix this one, thats broken: id:198 gh:199
     allowedTokenFilterArgs.add(CommonGramsFilter.class);
     
     allowedCharFilterArgs = Collections.newSetFromMap(new IdentityHashMap<Class<?>,Boolean>());
@@ -538,7 +538,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
     for (int i = 0; i < args.length; i++) {
       Class<?> paramType = paramTypes[i];
       if (paramType == AttributeSource.class) {
-        // TODO: args[i] = new AttributeSource();
+        // TODO: args[i] = new AttributeSource(); id:80 gh:81
         // this is currently too scary to deal with!
         args[i] = null; // force IAE
       } else {
@@ -568,7 +568,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
       if (paramType == TokenStream.class) {
         args[i] = stream;
       } else if (paramType == CommonGramsFilter.class) {
-        // TODO: fix this one, thats broken: CommonGramsQueryFilter takes this one explicitly
+        // TODO: fix this one, thats broken: CommonGramsQueryFilter takes this one explicitly id:82 gh:83
         args[i] = new CommonGramsFilter(stream, newRandomArg(random, CharArraySet.class));
       } else {
         args[i] = newRandomArg(random, paramType);
@@ -585,7 +585,7 @@ public class TestRandomChains extends BaseTokenStreamTestCase {
     }
 
     public boolean offsetsAreCorrect() {
-      // TODO: can we not do the full chain here!?
+      // TODO: can we not do the full chain here!? id:84 gh:85
       Random random = new Random(seed);
       TokenizerSpec tokenizerSpec = newTokenizer(random);
       TokenFilterSpec filterSpec = newFilterChain(random, tokenizerSpec.tokenizer, tokenizerSpec.offsetsAreCorrect);

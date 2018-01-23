@@ -101,7 +101,7 @@ public abstract class PerFieldPostingsFormat extends PostingsFormat {
     if (outerSegmentSuffix.length() == 0) {
       return segmentSuffix;
     } else {
-      // TODO: support embedding; I think it should work but
+      // TODO: support embedding; I think it should work but id:527 gh:528
       // we need a test confirm to confirm
       // return outerSegmentSuffix + "_" + segmentSuffix;
       throw new IllegalStateException("cannot embed PerFieldPostingsFormat inside itself (field \"" + fieldName + "\" returned PerFieldPostingsFormat)");

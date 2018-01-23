@@ -60,7 +60,7 @@ public class TestRollingUpdates extends LuceneTestCase {
       System.out.println("TEST: numUpdates=" + numUpdates);
     }
     int updateCount = 0;
-    // TODO: sometimes update ids not in order...
+    // TODO: sometimes update ids not in order... id:855 gh:856
     for(int docIter=0;docIter<numUpdates;docIter++) {
       final Document doc = docs.nextDoc();
       final String myID = Integer.toString(id);

@@ -388,7 +388,7 @@ public class TestConfigSetsAPI extends SolrTestCaseJ4 {
         HttpClientUtil.close(cl);
       }
     }
-    Thread.sleep(5000); // TODO: Without a delay, the test fails. Some problem with Authc/Authz framework?
+    Thread.sleep(5000); // TODO: Without a delay, the test fails. Some problem with Authc/Authz framework? id:2204 gh:2205
   }
 
   private void uploadConfigSet(String configSetName, String suffix, String username, String password) throws Exception {

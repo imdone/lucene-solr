@@ -167,7 +167,7 @@ public class BlockCacheTest extends LuceneTestCase {
 
           int blockOffset = r.nextInt(blockSize);
           long globalOffset = block * blockSize + blockOffset;
-          int len = r.nextInt(blockSize - blockOffset) + 1;  // TODO: bias toward smaller reads?
+          int len = r.nextInt(blockSize - blockOffset) + 1;  // TODO: bias toward smaller reads? id:2379 gh:2380
 
           blockCacheKey.setBlock(block);
 
@@ -229,7 +229,7 @@ public class BlockCacheTest extends LuceneTestCase {
   public void testCacheConcurrent() throws Exception {
     Random rnd = random();
 
-    // TODO: introduce more randomness in cache size, hit rate, etc
+    // TODO: introduce more randomness in cache size, hit rate, etc id:2416 gh:2417
     final int blocksInTest = 400;
     final int maxEntries = blocksInTest/2;
 

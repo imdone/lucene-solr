@@ -35,7 +35,7 @@ import org.apache.lucene.codecs.lucene50.Lucene50PostingsWriter;
 import org.apache.lucene.index.SegmentReadState;
 import org.apache.lucene.index.SegmentWriteState;
 
-// TODO: we could make separate base class that can wrap
+// TODO: we could make separate base class that can wrap id:1675 gh:1676
 // any PostingsFormat and make it ord-able...
 
 /**
@@ -58,7 +58,7 @@ public final class LuceneFixedGap extends PostingsFormat {
   public FieldsConsumer fieldsConsumer(SegmentWriteState state) throws IOException {
     PostingsWriterBase docs = new Lucene50PostingsWriter(state);
 
-    // TODO: should we make the terms index more easily
+    // TODO: should we make the terms index more easily id:1448 gh:1449
     // pluggable?  Ie so that this codec would record which
     // index impl was used, and switch on loading?
     // Or... you must make a new Codec for this?

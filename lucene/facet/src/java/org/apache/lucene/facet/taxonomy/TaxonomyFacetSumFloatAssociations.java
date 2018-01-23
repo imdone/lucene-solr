@@ -59,7 +59,7 @@ public class TaxonomyFacetSumFloatAssociations extends FloatTaxonomyFacets {
       int doc;
       while ((doc = docs.nextDoc()) != DocIdSetIterator.NO_MORE_DOCS) {
         //System.out.println("  doc=" + doc);
-        // TODO: use OrdinalsReader?  we'd need to add a
+        // TODO: use OrdinalsReader?  we'd need to add a id:910 gh:911
         // BytesRef getAssociation()?
         if (dv.docID() < doc) {
           dv.advance(doc);

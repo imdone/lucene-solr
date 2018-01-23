@@ -185,7 +185,7 @@ public final class IntBlockPool {
   
   
   // no need to make this public unless we support different sizes
-  // TODO make the levels and the sizes configurable
+  // TODO make the levels and the sizes configurable id:766 gh:767
   /**
    * An array holding the offset into the {@link IntBlockPool#LEVEL_SIZE_ARRAY}
    * to quickly navigate to the next slice level.

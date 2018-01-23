@@ -168,7 +168,7 @@ public final class CompressingStoredFieldsReader extends StoredFieldsReader {
         throw new CorruptIndexException("invalid chunk counts: dirty=" + numDirtyChunks + ", total=" + numChunks, fieldsStream);
       }
 
-      // NOTE: data file is too costly to verify checksum against all the bytes on open,
+      // NOTE: data file is too costly to verify checksum against all the bytes on open, id:496 gh:497
       // but for now we at least verify proper structure of the checksum footer: which looks
       // for FOOTER_MAGIC + algorithmID. This is cheap and can detect some forms of corruption
       // such as file truncation.

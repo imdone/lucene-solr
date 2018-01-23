@@ -95,7 +95,7 @@ public final class SlowCompositeReaderWrapper extends LeafReader {
 
   @Override
   public CacheHelper getCoreCacheHelper() {
-    // TODO: this is trappy as the expectation is that core keys live for a long
+    // TODO: this is trappy as the expectation is that core keys live for a long id:2811 gh:2812
     // time, but here we need to bound it to the lifetime of the wrapped
     // composite reader? Unfortunately some features seem to rely on this...
     return in.getReaderCacheHelper();
@@ -211,7 +211,7 @@ public final class SlowCompositeReaderWrapper extends LeafReader {
     return new MultiDocValues.MultiSortedSetDocValues(values, starts, map, cost);
   }
   
-  // TODO: this could really be a weak map somewhere else on the coreCacheKey,
+  // TODO: this could really be a weak map somewhere else on the coreCacheKey, id:1894 gh:1895
   // but do we really need to optimize slow-wrapper any more?
   final Map<String,OrdinalMap> cachedOrdMaps = new HashMap<>();
 
@@ -265,7 +265,7 @@ public final class SlowCompositeReaderWrapper extends LeafReader {
 
   @Override
   protected void doClose() throws IOException {
-    // TODO: as this is a wrapper, should we really close the delegate?
+    // TODO: as this is a wrapper, should we really close the delegate? id:2675 gh:2676
     in.close();
   }
 

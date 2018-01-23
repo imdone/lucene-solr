@@ -353,7 +353,7 @@ public class CarrotClusteringEngine extends SearchClusteringEngine {
       SolrDocument sdoc = docsIter.next();
       String snippet = null;
       
-      // TODO: docIds will be null when running distributed search.
+      // TODO: docIds will be null when running distributed search. id:1748 gh:1749
       // See comment in ClusteringComponent#finishStage().
       if (produceSummary && docIds != null) {
         docsHolder[0] = docIds.get(sdoc).intValue();

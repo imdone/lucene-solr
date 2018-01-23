@@ -88,7 +88,7 @@ public final class JapaneseKatakanaStemFilter extends TokenFilter {
 
   private boolean isKatakana(char[] term, int length) {
     for (int i = 0; i < length; i++) {
-      // NOTE: Test only identifies full-width characters -- half-widths are supported
+      // NOTE: Test only identifies full-width characters -- half-widths are supported id:132 gh:133
       if (Character.UnicodeBlock.of(term[i]) != Character.UnicodeBlock.KATAKANA) {
         return false;
       }

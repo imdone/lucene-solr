@@ -101,7 +101,7 @@ public class Dictionary {
   private static final String UTF8_FLAG_TYPE = "UTF-8";
   private static final String LONG_FLAG_TYPE = "long";
   
-  // TODO: really for suffixes we should reverse the automaton and run them backwards
+  // TODO: really for suffixes we should reverse the automaton and run them backwards id:22 gh:23
   private static final String PREFIX_CONDITION_REGEX_PATTERN = "%s.*";
   private static final String SUFFIX_CONDITION_REGEX_PATTERN = ".*%s";
 
@@ -144,7 +144,7 @@ public class Dictionary {
   // when set, some words have exceptional stems, and the last entry is a pointer to stemExceptions
   boolean hasStemExceptions;
   
-  private final Path tempPath = getDefaultTempDir(); // TODO: make this configurable?
+  private final Path tempPath = getDefaultTempDir(); // TODO: make this configurable? id:23 gh:24
   
   boolean ignoreCase;
   boolean complexPrefixes;
@@ -526,7 +526,7 @@ public class Dictionary {
       if (".".equals(condition)) {
         regex = ".*"; // Zero condition is indicated by dot
       } else if (condition.equals(strip)) {
-        regex = ".*"; // TODO: optimize this better:
+        regex = ".*"; // TODO: optimize this better: id:24 gh:25
                       // if we remove 'strip' from condition, we don't have to append 'strip' to check it...!
                       // but this is complicated...
       } else {
@@ -889,7 +889,7 @@ public class Dictionary {
     
     try (ByteSequencesReader reader = new ByteSequencesReader(tempDir.openChecksumInput(sorted, IOContext.READONCE), sorted)) {
     
-      // TODO: the flags themselves can be double-chars (long) or also numeric
+      // TODO: the flags themselves can be double-chars (long) or also numeric id:102 gh:103
       // either way the trick is to encode them as char... but they must be parsed differently
     
       String currentEntry = null;
@@ -1216,7 +1216,7 @@ public class Dictionary {
     }
   }
   
-  // TODO: this could be more efficient!
+  // TODO: this could be more efficient! id:58 gh:59
   static void applyMappings(FST<CharsRef> fst, StringBuilder sb) throws IOException {
     final FST.BytesReader bytesReader = fst.getBytesReader();
     final FST.Arc<CharsRef> firstArc = fst.getFirstArc(new FST.Arc<CharsRef>());

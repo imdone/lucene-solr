@@ -211,7 +211,7 @@ public final class OpenNLPSentenceBreakIterator extends BreakIterator {
       CharArrayIterator charArrayIterator = (CharArrayIterator)text;
       fullText = new String(charArrayIterator.getText(), charArrayIterator.getStart(), charArrayIterator.getLength());
     } else {
-      // TODO: is there a better way to extract full text from arbitrary CharacterIterators?
+      // TODO: is there a better way to extract full text from arbitrary CharacterIterators? id:236 gh:237
       StringBuilder builder = new StringBuilder();
       for (char ch = text.first(); ch != CharacterIterator.DONE; ch = text.next()) {
         builder.append(ch);

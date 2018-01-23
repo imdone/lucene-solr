@@ -49,7 +49,7 @@ public class Metrics extends SolrCacheBase implements SolrInfoBean, SolrMetricPr
 
 
   // These are used by the BufferStore (just a generic cache of byte[]).
-  // TODO: If this (the Store) is a good idea, we should make it more general and use it across more places in Solr.
+  // TODO: If this (the Store) is a good idea, we should make it more general and use it across more places in Solr. id:2130 gh:2131
   public AtomicLong shardBuffercacheAllocate = new AtomicLong(0);
   public AtomicLong shardBuffercacheLost = new AtomicLong(0);
 
@@ -97,7 +97,7 @@ public class Metrics extends SolrCacheBase implements SolrInfoBean, SolrMetricPr
       map.put("storeFails_persec", getPerSecond(storeFail_delta, seconds));  // evictions per second since the last call
       map.put("time_delta", seconds);  // seconds since last call
 
-      // TODO: these aren't really related to the BlockCache
+      // TODO: these aren't really related to the BlockCache id:2051 gh:2052
       map.put("buffercache.allocations", getPerSecond(shardBuffercacheAllocate.getAndSet(0), seconds));
       map.put("buffercache.lost", getPerSecond(shardBuffercacheLost.getAndSet(0), seconds));
 

@@ -43,7 +43,7 @@ public class ShardRoutingTest extends AbstractFullDistribZkTestBase {
 
   @BeforeClass
   public static void beforeShardHashingTest() throws Exception {
-    // TODO: we use an fs based dir because something
+    // TODO: we use an fs based dir because something id:2189 gh:2190
     // like a ram dir will not recover correctly right now
     // because tran log will still exist on restart and ram
     // dir will not persist - perhaps translog can empty on
@@ -329,7 +329,7 @@ public class ShardRoutingTest extends AbstractFullDistribZkTestBase {
     doQuery(ids, "qt", "/get", "ids", ids);
   }
 
-  // TODO: refactor some of this stuff into the SolrJ client... it should be easier to use
+  // TODO: refactor some of this stuff into the SolrJ client... it should be easier to use id:3054 gh:3055
   void doDBQ(String q, String... reqParams) throws Exception {
     UpdateRequest req = new UpdateRequest();
     req.deleteByQuery(q);

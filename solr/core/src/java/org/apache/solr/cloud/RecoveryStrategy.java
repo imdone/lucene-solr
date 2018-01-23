@@ -331,7 +331,7 @@ public class RecoveryStrategy implements Runnable, Closeable {
 
       String ourUrl = ZkCoreNodeProps.getCoreUrl(baseUrl, coreName);
 
-      boolean isLeader = leaderUrl.equals(ourUrl); //TODO: We can probably delete most of this code if we say this strategy can only be used for pull replicas
+      boolean isLeader = leaderUrl.equals(ourUrl); //TODO: We can probably delete most of this code if we say this strategy can only be used for pull replicas id:1806 gh:1807
       if (isLeader && !cloudDesc.isLeader()) {
         throw new SolrException(ErrorCode.SERVER_ERROR, "Cloud state still says we are leader.");
       }
@@ -394,7 +394,7 @@ public class RecoveryStrategy implements Runnable, Closeable {
 
     if (!successfulRecovery) {
       // lets pause for a moment and we need to try again...
-      // TODO: we don't want to retry for some problems?
+      // TODO: we don't want to retry for some problems? id:2630 gh:2631
       // Or do a fall off retry...
       try {
 
@@ -445,7 +445,7 @@ public class RecoveryStrategy implements Runnable, Closeable {
   LOG.info("Finished recovery process, successful=[{}]", Boolean.toString(successfulRecovery));
 }
 
-  // TODO: perhaps make this grab a new core each time through the loop to handle core reloads?
+  // TODO: perhaps make this grab a new core each time through the loop to handle core reloads? id:1774 gh:1775
   final public void doSyncOrReplicateRecovery(SolrCore core) throws Exception {
     boolean replayed = false;
     boolean successfulRecovery = false;
@@ -687,7 +687,7 @@ public class RecoveryStrategy implements Runnable, Closeable {
 
       if (!successfulRecovery) {
         // lets pause for a moment and we need to try again...
-        // TODO: we don't want to retry for some problems?
+        // TODO: we don't want to retry for some problems? id:1749 gh:1750
         // Or do a fall off retry...
         try {
 

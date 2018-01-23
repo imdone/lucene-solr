@@ -277,8 +277,7 @@ EMAIL = {EMAILlocalPart} "@" ({DomainNameStrict} | {EMAILbracketedHost})
     { yybegin(YYINITIAL); return WORD_TYPE; }
 
 
-  // From UAX #29:
-  //
+  // From UAX #29: // id:37 gh:38
   //    [C]haracters with the Line_Break property values of Contingent_Break (CB),
   //    Complex_Context (SA/South East Asian), and XX (Unknown) are assigned word
   //    boundary property values based on criteria outside of the scope of this

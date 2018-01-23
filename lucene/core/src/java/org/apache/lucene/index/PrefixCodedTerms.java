@@ -159,7 +159,7 @@ public class PrefixCodedTerms implements Accountable {
       }
     }
 
-    // TODO: maybe we should freeze to FST or automaton instead?
+    // TODO: maybe we should freeze to FST or automaton instead? id:704 gh:706
     private void readTermBytes(int prefix, int suffix) throws IOException {
       builder.grow(prefix + suffix);
       input.readBytes(builder.bytes(), prefix, suffix);

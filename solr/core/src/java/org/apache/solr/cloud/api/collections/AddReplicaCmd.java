@@ -250,7 +250,7 @@ public class AddReplicaCmd implements OverseerCollectionMessageHandler.Cmd {
         }
       } else {
         node = Assign.getNodesForNewReplicas(clusterState, collection, shard, 1, node,
-            cloudManager).get(0).nodeName;// TODO: use replica type in this logic too
+            cloudManager).get(0).nodeName;// TODO: use replica type in this logic too id:1782 gh:1783
       }
     }
     log.info("Node Identified {} for creating new replica", node);

@@ -222,7 +222,7 @@ public class TestSelectiveWeightCreation extends TestRerankBase {
     assertJQ("/query" + query.toQueryString(), "/response/docs/[0]/id=='4'");
     assertJQ("/query" + query.toQueryString(), "/response/docs/[1]/id=='3'");
     assertJQ("/query" + query.toQueryString(), "/response/docs/[2]/id=='1'");
-    // FIXME design better way to test this, we can't rely on absolute scores
+    // FIXME design better way to test this, we can't rely on absolute scores id:1706 gh:1707
     // assertJQ("/query" + query.toQueryString(), "/response/docs/[0]/fv=='"+docs0fv+"'");
 
     // extract all features from fstore4
@@ -236,7 +236,7 @@ public class TestSelectiveWeightCreation extends TestRerankBase {
     assertJQ("/query" + query.toQueryString(), "/response/docs/[0]/id=='4'");
     assertJQ("/query" + query.toQueryString(), "/response/docs/[1]/id=='3'");
     assertJQ("/query" + query.toQueryString(), "/response/docs/[2]/id=='1'");
-    // FIXME design better way to test this, we can't rely on absolute scores
+    // FIXME design better way to test this, we can't rely on absolute scores id:2624 gh:2625
     // assertJQ("/query" + query.toQueryString(), "/response/docs/[0]/fv=='"+docs0fv_fstore4+"'");
 
     // extract all features from fstore4
@@ -249,7 +249,7 @@ public class TestSelectiveWeightCreation extends TestRerankBase {
     assertJQ("/query" + query.toQueryString(), "/response/docs/[0]/id=='5'"); 
     assertJQ("/query" + query.toQueryString(), "/response/docs/[1]/id=='4'"); 
     assertJQ("/query" + query.toQueryString(), "/response/docs/[2]/id=='3'");
-    // FIXME design better way to test this, we can't rely on absolute scores
+    // FIXME design better way to test this, we can't rely on absolute scores id:1762 gh:1763
     // assertJQ("/query" + query.toQueryString(), "/response/docs/[0]/fv=='"+docs0fv_fstore4+"'");
   }
 }

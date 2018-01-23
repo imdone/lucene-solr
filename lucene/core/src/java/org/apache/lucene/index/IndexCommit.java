@@ -40,7 +40,7 @@ import org.apache.lucene.store.Directory;
  * @lucene.experimental
 */
 
-// TODO: this is now a poor name, because this class also represents a
+// TODO: this is now a poor name, because this class also represents a id:668 gh:669
 // point-in-time view from an NRT reader
 public abstract class IndexCommit implements Comparable<IndexCommit> {
 

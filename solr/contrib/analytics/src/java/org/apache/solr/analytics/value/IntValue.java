@@ -35,7 +35,7 @@ public interface IntValue extends IntValueStream, AnalyticsValue {
   /**
    * Get the int representation of the current value.
    * <p>
-   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}.
+   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}. id:1690 gh:1691
    * 
    * @return the current value
    */

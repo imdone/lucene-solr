@@ -252,7 +252,7 @@ public class BlockDirectoryTest extends SolrTestCaseJ4 {
     try {
       IOUtils.rm(file.toPath());
     } catch (Throwable ignored) {
-      // TODO: should this class care if a file couldnt be deleted?
+      // TODO: should this class care if a file couldnt be deleted? id:3109 gh:3110
       // this just emulates previous behavior, where only SecurityException would be handled.
     }
   }

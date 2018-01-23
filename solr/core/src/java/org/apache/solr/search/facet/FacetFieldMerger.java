@@ -28,7 +28,7 @@ import java.util.Set;
 import org.apache.solr.common.util.SimpleOrderedMap;
 
 
-// TODO: refactor more out to base class
+// TODO: refactor more out to base class id:2064 gh:2065
 public class FacetFieldMerger extends FacetRequestSortedMerger<FacetField> {
   FacetBucket missingBucket;
   FacetBucket allBuckets;
@@ -116,7 +116,7 @@ public class FacetFieldMerger extends FacetRequestSortedMerger<FacetField> {
     }
     ***/
 
-    // TODO: change effective offsets + limits at shards...
+    // TODO: change effective offsets + limits at shards... id:2002 gh:2003
 
     int off = (int)freq.offset;
     int lim = freq.limit >= 0 ? (int)freq.limit : Integer.MAX_VALUE;
@@ -152,8 +152,8 @@ public class FacetFieldMerger extends FacetRequestSortedMerger<FacetField> {
 
   @Override
   public void finish(Context mcontext) {
-    // TODO: check refine of subs?
-    // TODO: call subs each time with a shard/shardnum that is missing a bucket at this level?
+    // TODO: check refine of subs? id:2887 gh:2888
+    // TODO: call subs each time with a shard/shardnum that is missing a bucket at this level? id:1977 gh:1978
     // or pass a bit vector of shards w/ value???
 
     // build up data structure and only then call the context (or whatever) to do the refinement?
@@ -221,7 +221,7 @@ public class FacetFieldMerger extends FacetRequestSortedMerger<FacetField> {
     public Object getMergedResult() {
       long exactCount = values == null ? 0 : values.size();
       return exactCount + shardsMissingSum + shardsTruncatedSum;
-      // TODO: reduce count by (at least) number of buckets that fail to hit mincount (after merging)
+      // TODO: reduce count by (at least) number of buckets that fail to hit mincount (after merging) id:2724 gh:2725
       // that should make things match for most of the small tests at least
     }
   }

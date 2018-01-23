@@ -100,7 +100,7 @@ public class TestLazyCores extends SolrTestCaseJ4 {
     CoreContainer cc = init();
     try {
 
-      // NOTE: This checks the initial state for loading, no need to do this elsewhere.
+      // NOTE: This checks the initial state for loading, no need to do this elsewhere. id:3078 gh:3079
       checkInCores(cc, "collection1", "collection2", "collection5");
       checkNotInCores(cc, Arrays.asList("collection3", "collection4", "collection6", "collection7",
           "collection8", "collection9"));

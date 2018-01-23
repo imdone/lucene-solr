@@ -273,7 +273,7 @@ public class FSTTermsReader extends FieldsProducer {
       BaseTermsEnum() throws IOException {
         this.state = postingsReader.newTermState();
         this.bytesReader = new ByteArrayDataInput();
-        // NOTE: metadata will only be initialized in child class
+        // NOTE: metadata will only be initialized in child class id:288 gh:289
       }
 
       @Override

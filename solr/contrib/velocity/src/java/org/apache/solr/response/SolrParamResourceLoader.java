@@ -36,7 +36,7 @@ public class SolrParamResourceLoader extends ResourceLoader {
   public SolrParamResourceLoader(SolrQueryRequest request) {
     super();
 
-    // TODO: Consider using content streams, but need a template name associated with each stream
+    // TODO: Consider using content streams, but need a template name associated with each stream id:2625 gh:2626
     // for now, a custom param convention of template.<name>=<template body> is a nice example
     // of per-request overrides of templates
 

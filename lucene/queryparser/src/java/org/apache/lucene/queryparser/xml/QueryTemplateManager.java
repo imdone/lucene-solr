@@ -97,7 +97,7 @@ public class QueryTemplateManager {
    */
   public static String getQueryAsXmlString(Properties formProperties, Templates template)
       throws ParserConfigurationException, TransformerException {
-    // TODO: Suppress XML header with encoding (as Strings have no encoding)
+    // TODO: Suppress XML header with encoding (as Strings have no encoding) id:1237 gh:1238
     StringWriter writer = new StringWriter();
     StreamResult result = new StreamResult(writer);
     transformCriteria(formProperties, template, result);
@@ -109,7 +109,7 @@ public class QueryTemplateManager {
    */
   public static String getQueryAsXmlString(Properties formProperties, InputStream xslIs)
       throws SAXException, IOException, ParserConfigurationException, TransformerException {
-    // TODO: Suppress XML header with encoding (as Strings have no encoding)
+    // TODO: Suppress XML header with encoding (as Strings have no encoding) id:1107 gh:1108
     StringWriter writer = new StringWriter();
     StreamResult result = new StreamResult(writer);
     transformCriteria(formProperties, xslIs, result);

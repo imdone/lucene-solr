@@ -153,7 +153,7 @@ public final class PatternTokenizer extends Tokenizer {
     index = 0;
   }
   
-  // TODO: we should see if we can make this tokenizer work without reading
+  // TODO: we should see if we can make this tokenizer work without reading id:81 gh:82
   // the entire document into RAM, perhaps with Matcher.hitEnd/requireEnd ?
   final char[] buffer = new char[8192];
   private void fillBuffer(Reader input) throws IOException {

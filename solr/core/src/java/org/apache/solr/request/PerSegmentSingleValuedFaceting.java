@@ -100,7 +100,7 @@ class PerSegmentSingleValuedFaceting {
 
     final List<LeafReaderContext> leaves = searcher.getTopReaderContext().leaves();
     // The list of pending tasks that aren't immediately submitted
-    // TODO: Is there a completion service, or a delegating executor that can
+    // TODO: Is there a completion service, or a delegating executor that can id:1986 gh:1987
     // limit the number of concurrent tasks submitted to a bigger executor?
     LinkedList<Callable<SegFacet>> pending = new LinkedList<>();
 
@@ -114,7 +114,7 @@ class PerSegmentSingleValuedFaceting {
         return segFacet;
       };
 
-      // TODO: if limiting threads, submit by largest segment first?
+      // TODO: if limiting threads, submit by largest segment first? id:1881 gh:1882
 
       if (--threads >= 0) {
         completionService.submit(task);
@@ -277,7 +277,7 @@ class PerSegmentSingleValuedFaceting {
         startTermIndex = si.lookupTerm(prefixRef.get());
         if (startTermIndex<0) startTermIndex=-startTermIndex-1;
         prefixRef.append(UnicodeUtil.BIG_TERM);
-        // TODO: we could constrain the lower endpoint if we had a binarySearch method that allowed passing start/end
+        // TODO: we could constrain the lower endpoint if we had a binarySearch method that allowed passing start/end id:2829 gh:2830
         endTermIndex = si.lookupTerm(prefixRef.get());
         assert endTermIndex < 0;
         endTermIndex = -endTermIndex-1;
@@ -360,7 +360,7 @@ class CountSortedFacetCollector extends FacetCollector {
   @Override
   public boolean collect(BytesRef term, int count) {
     if (count > min) {
-      // NOTE: we use c>min rather than c>=min as an optimization because we are going in
+      // NOTE: we use c>min rather than c>=min as an optimization because we are going in id:1912 gh:1913
       // index order, so we already know that the keys are ordered.  This can be very
       // important if a lot of the counts are repeated (like zero counts would be).
       spare.copyUTF8Bytes(term);

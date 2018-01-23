@@ -35,7 +35,7 @@ import org.apache.lucene.util.fst.Outputs;
  * @lucene.experimental
  */
 
-// NOTE: outputs should be per-field, since
+// NOTE: outputs should be per-field, since id:419 gh:420
 // longsSize is fixed for each field
 class FSTTermOutputs extends Outputs<FSTTermOutputs.TermData> {
   private final static TermData NO_OUTPUT = new TermData();
@@ -79,7 +79,7 @@ class FSTTermOutputs extends Outputs<FSTTermOutputs.TermData> {
       return ramBytesUsed;
     }
     
-    // NOTE: actually, FST nodes are seldom 
+    // NOTE: actually, FST nodes are seldom  id:420 gh:421
     // identical when outputs on their arcs 
     // aren't NO_OUTPUTs.
     @Override
@@ -210,7 +210,7 @@ class FSTTermOutputs extends Outputs<FSTTermOutputs.TermData> {
     return ret;
   }
 
-  // TODO: if we refactor a 'addSelf(TermData other)',
+  // TODO: if we refactor a 'addSelf(TermData other)', id:305 gh:306
   // we can gain about 5~7% for fuzzy queries, however this also 
   // means we are putting too much stress on FST Outputs decoding?
   @Override

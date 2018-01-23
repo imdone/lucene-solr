@@ -53,7 +53,7 @@ public abstract class DocIdSet implements Accountable {
    * are no docs that match. */
   public abstract DocIdSetIterator iterator() throws IOException;
 
-  // TODO: somehow this class should express the cost of
+  // TODO: somehow this class should express the cost of id:563 gh:564
   // iteration vs the cost of random access Bits; for
   // expensive Filters (e.g. distance < 1 km) we should use
   // bits() after all other Query/Filters have matched, but

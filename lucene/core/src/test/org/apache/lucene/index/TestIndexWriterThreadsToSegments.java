@@ -136,7 +136,7 @@ public class TestIndexWriterThreadsToSegments extends LuceneTestCase {
         if (VERBOSE) {
           System.out.println("TEST: iter done; now verify oldSegCount=" + oldSegmentCount + " newSegCount=" + r2.leaves().size() + " maxExpected=" + maxExpectedSegments);
         }
-        // NOTE: it won't necessarily be ==, in case some threads were strangely scheduled and never conflicted with one another (should be uncommon...?):
+        // NOTE: it won't necessarily be ==, in case some threads were strangely scheduled and never conflicted with one another (should be uncommon...?): id:817 gh:818
         assertTrue(r.leaves().size() <= maxExpectedSegments);
         setNextIterThreadCount();
       } catch (Exception e) {
@@ -352,7 +352,7 @@ public class TestIndexWriterThreadsToSegments extends LuceneTestCase {
     dir.close();
   }
   
-  // TODO: remove this hack and fix this test to be better?
+  // TODO: remove this hack and fix this test to be better? id:1009 gh:1010
   // the whole thing relies on default codec too...
   byte[] readSegmentInfoID(Directory dir, String file) throws IOException {
     try (IndexInput in = dir.openInput(file, IOContext.DEFAULT)) {

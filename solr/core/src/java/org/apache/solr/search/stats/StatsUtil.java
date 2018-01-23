@@ -100,7 +100,7 @@ public class StatsUtil {
     String value = data.substring(idx + 1);
     try {
       return new Term(field, value);
-      // XXX this would be more correct
+      // XXX this would be more correct id:2119 gh:2120
       // byte[] bytes = Base64.base64ToByteArray(value);
       // return new Term(field, new BytesRef(bytes));
     } catch (Exception e) {

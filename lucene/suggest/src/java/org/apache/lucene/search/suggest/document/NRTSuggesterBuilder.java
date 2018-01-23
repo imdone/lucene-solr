@@ -136,7 +136,7 @@ final class NRTSuggesterBuilder {
    * if n <= 5: 1 + (2 * n)
    * else: (1 + (2 * n)) * n
    * <p>
-   * TODO: is there a better way to make the fst built to be
+   * TODO: is there a better way to make the fst built to be id:2564 gh:2565
    * more TopNSearcher friendly?
    */
   private static int maxNumArcsForDedupByte(int currentNumDedupBytes) {

@@ -501,7 +501,7 @@ public class SolrZkClient implements Closeable {
         } catch (NodeExistsException e) {
 
           if (!failOnExists) {
-            // TODO: version ? for now, don't worry about race
+            // TODO: version ? for now, don't worry about race id:3134 gh:3135
             setData(currentPath, data, -1, retryOnConnLoss);
             // set new watch
             exists(currentPath, watcher, retryOnConnLoss);
@@ -518,7 +518,7 @@ public class SolrZkClient implements Closeable {
           exists(currentPath, watcher, retryOnConnLoss);
         }
       } else if (i == paths.length - 1) {
-        // TODO: version ? for now, don't worry about race
+        // TODO: version ? for now, don't worry about race id:2458 gh:2459
         setData(currentPath, data, -1, retryOnConnLoss);
         // set new watch
         exists(currentPath, watcher, retryOnConnLoss);

@@ -83,7 +83,7 @@ public class TestSearcherReuse extends SolrTestCaseJ4 {
     // seed some docs & segments
     int numDocs = atLeast(1);
     for (int i = 1; i <= numDocs; i++) {
-      // NOTE: starting at "1", we'll use id=0 later
+      // NOTE: starting at "1", we'll use id=0 later id:2357 gh:2358
       assertU(adoc("id", ""+i));
       if (random().nextBoolean()) {
         assertU(commit());
@@ -100,7 +100,7 @@ public class TestSearcherReuse extends SolrTestCaseJ4 {
     final SolrQueryRequest baseReq = req("q","foo");
     try {
       // we make no index changes in this block, so the searcher should always be the same
-      // NOTE: we *have* to call getSearcher() in advance, it's a delayed binding
+      // NOTE: we *have* to call getSearcher() in advance, it's a delayed binding id:2948 gh:2949
       final SolrIndexSearcher expectedSearcher = getMainSearcher(baseReq);
 
       assertU(commit());
@@ -132,7 +132,7 @@ public class TestSearcherReuse extends SolrTestCaseJ4 {
 
     beforeReq = req("q","foo");
     try {
-      // NOTE: we *have* to call getSearcher() in advance: delayed binding
+      // NOTE: we *have* to call getSearcher() in advance: delayed binding id:2355 gh:2356
       SolrIndexSearcher before = getMainSearcher(beforeReq);
 
       assertU(delI("1"));
@@ -144,7 +144,7 @@ public class TestSearcherReuse extends SolrTestCaseJ4 {
     
     beforeReq = req("q","foo");
     try {
-      // NOTE: we *have* to call getSearcher() in advance: delayed binding
+      // NOTE: we *have* to call getSearcher() in advance: delayed binding id:2387 gh:2388
       SolrIndexSearcher before = getMainSearcher(beforeReq);
 
       assertU(adoc("id", "0"));
@@ -156,7 +156,7 @@ public class TestSearcherReuse extends SolrTestCaseJ4 {
 
     beforeReq = req("q","foo");
     try {
-      // NOTE: we *have* to call getSearcher() in advance: delayed binding
+      // NOTE: we *have* to call getSearcher() in advance: delayed binding id:3100 gh:3101
       SolrIndexSearcher before = getMainSearcher(beforeReq);
 
       assertU(delQ("id:[0 TO 5]"));
@@ -168,7 +168,7 @@ public class TestSearcherReuse extends SolrTestCaseJ4 {
 
     beforeReq = req("q","foo");
     try {
-      // NOTE: we *have* to call getSearcher() in advance: delayed binding
+      // NOTE: we *have* to call getSearcher() in advance: delayed binding id:2358 gh:2359
       SolrIndexSearcher before = getMainSearcher(beforeReq);
 
       // create a new field & add it.
@@ -218,7 +218,7 @@ public class TestSearcherReuse extends SolrTestCaseJ4 {
    */
   public static void assertMainSearcher(SolrIndexSearcher s) {
     assertTrue("Searcher isn't 'main': " + s.toString(),
-               // TODO brittle, better solution?
+               // TODO brittle, better solution? id:2950 gh:2951
                s.toString().contains(" main{"));
     assertTrue("Searcher is non-caching", s.isCachingEnabled());
   }

@@ -37,7 +37,7 @@ class FreqProxFields extends Fields {
   final Map<String,FreqProxTermsWriterPerField> fields = new LinkedHashMap<>();
 
   public FreqProxFields(List<FreqProxTermsWriterPerField> fieldList) {
-    // NOTE: fields are already sorted by field name
+    // NOTE: fields are already sorted by field name id:487 gh:488
     for(FreqProxTermsWriterPerField field : fieldList) {
       fields.put(field.fieldInfo.name, field);
     }
@@ -104,7 +104,7 @@ class FreqProxFields extends Fields {
 
     @Override
     public boolean hasOffsets() {
-      // NOTE: the in-memory buffer may have indexed offsets
+      // NOTE: the in-memory buffer may have indexed offsets id:415 gh:416
       // because that's what FieldInfo said when we started,
       // but during indexing this may have been downgraded:
       return terms.fieldInfo.getIndexOptions().compareTo(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS) >= 0;      
@@ -112,7 +112,7 @@ class FreqProxFields extends Fields {
   
     @Override
     public boolean hasPositions() {
-      // NOTE: the in-memory buffer may have indexed positions
+      // NOTE: the in-memory buffer may have indexed positions id:566 gh:567
       // because that's what FieldInfo said when we started,
       // but during indexing this may have been downgraded:
       return terms.fieldInfo.getIndexOptions().compareTo(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS) >= 0;
@@ -145,7 +145,7 @@ class FreqProxFields extends Fields {
     }
 
     public SeekStatus seekCeil(BytesRef text) {
-      // TODO: we could instead keep the BytesRefHash
+      // TODO: we could instead keep the BytesRefHash id:662 gh:663
       // intact so this is a hash lookup
 
       // binary search:
@@ -277,7 +277,7 @@ class FreqProxFields extends Fields {
      * Expert: Returns the TermsEnums internal state to position the TermsEnum
      * without re-seeking the term dictionary.
      * <p>
-     * NOTE: A seek by {@link TermState} might not capture the
+     * NOTE: A seek by {@link TermState} might not capture the id:542 gh:543
      * {@link AttributeSource}'s state. Callers must maintain the
      * {@link AttributeSource} states separately
      * 

@@ -604,7 +604,7 @@ public class TestReplicationHandler extends SolrTestCaseJ4 {
     //get docs from master and check if number is equal to master
     assertEquals(nDocs+1, numFound(rQuery(nDocs+1, "*:*", masterClient)));
     
-    // NOTE: this test is wierd, we want to verify it DOESNT replicate...
+    // NOTE: this test is wierd, we want to verify it DOESNT replicate... id:3079 gh:3080
     // for now, add a sleep for this.., but the logic is wierd.
     Thread.sleep(3000);
     
@@ -714,7 +714,7 @@ public class TestReplicationHandler extends SolrTestCaseJ4 {
     // make sure prepareCommit doesn't mess up commit  (SOLR-3938)
     
     // todo: make SolrJ easier to pass arbitrary params to
-    // TODO: precommit WILL screw with the rest of this test
+    // TODO: precommit WILL screw with the rest of this test id:2315 gh:2316
 
     masterClient.commit();
 

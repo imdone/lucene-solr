@@ -51,7 +51,7 @@ public abstract class SlotAcc implements Closeable {
   }
 
   /**
-   * NOTE: this currently detects when it is being reused and calls resetIterators by comparing reader ords
+   * NOTE: this currently detects when it is being reused and calls resetIterators by comparing reader ords id:2007 gh:2008
    * with previous calls to setNextReader.  For this reason, current users must call setNextReader
    * in segment order.  Failure to do so will cause worse performance.
    */
@@ -214,7 +214,7 @@ public abstract class SlotAcc implements Closeable {
 
 }
 
-// TODO: we should really have a decoupled value provider...
+// TODO: we should really have a decoupled value provider... id:2745 gh:2746
 // This would enhance reuse and also prevent multiple lookups of same value across diff stats
 abstract class FuncSlotAcc extends SlotAcc {
   protected final ValueSource valueSource;
@@ -234,12 +234,12 @@ abstract class FuncSlotAcc extends SlotAcc {
 
 // have a version that counts the number of times a Slot has been hit? (for avg... what else?)
 
-// TODO: make more sense to have func as the base class rather than double?
+// TODO: make more sense to have func as the base class rather than double? id:2105 gh:2106
 // double-slot-func -> func-slot -> slot -> acc
 // double-slot-func -> double-slot -> slot -> acc
 
 abstract class DoubleFuncSlotAcc extends FuncSlotAcc {
-  double[] result; // TODO: use DoubleArray
+  double[] result; // TODO: use DoubleArray id:2026 gh:2027
   double initialValue;
 
   public DoubleFuncSlotAcc(ValueSource values, FacetContext fcontext, int numSlots) {
@@ -570,7 +570,7 @@ class CountSlotArrAcc extends CountSlotAcc {
   }
 
   @Override
-  public void collect(int doc, int slotNum) { // TODO: count arrays can use fewer bytes based on the number of docs in
+  public void collect(int doc, int slotNum) { // TODO: count arrays can use fewer bytes based on the number of docs in id:2917 gh:2918
                                               // the base set (that's the upper bound for single valued) - look at ttf?
     result[slotNum]++;
   }

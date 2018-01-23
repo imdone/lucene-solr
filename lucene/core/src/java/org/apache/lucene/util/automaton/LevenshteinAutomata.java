@@ -178,7 +178,7 @@ public class LevenshteinAutomata {
       a.setAccept(state, description.isAccept(i));
     }
 
-    // TODO: this creates bogus states/transitions (states are final, have self loops, and can't be reached from an init state)
+    // TODO: this creates bogus states/transitions (states are final, have self loops, and can't be reached from an init state) id:775 gh:776
 
     // create transitions from state to state
     for (int k = 0; k < numStates; k++) {

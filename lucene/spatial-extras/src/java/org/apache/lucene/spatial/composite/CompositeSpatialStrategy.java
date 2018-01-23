@@ -45,10 +45,10 @@ import org.locationtech.spatial4j.shape.Shape;
  */
 public class CompositeSpatialStrategy extends SpatialStrategy {
 
-  //TODO support others? (BBox)
+  //TODO support others? (BBox) id:1188 gh:1189
   private final RecursivePrefixTreeStrategy indexStrategy;
 
-  /** Has the geometry. */ // TODO support others?
+  /** Has the geometry. */ // TODO support others? id:1478 gh:1479
   private final SerializedDVStrategy geometryStrategy;
   private boolean optimizePredicates = true;
 
@@ -87,7 +87,7 @@ public class CompositeSpatialStrategy extends SpatialStrategy {
 
   @Override
   public DoubleValuesSource makeDistanceValueSource(Point queryPoint, double multiplier) {
-    //TODO consider indexing center-point in DV?  Guarantee contained by the shape, which could then be used for
+    //TODO consider indexing center-point in DV?  Guarantee contained by the shape, which could then be used for id:1652 gh:1653
     // other purposes like faster WITHIN predicate?
     throw new UnsupportedOperationException();
   }
@@ -103,7 +103,7 @@ public class CompositeSpatialStrategy extends SpatialStrategy {
     if (pred == SpatialOperation.IsDisjointTo) {
 //      final Query intersectQuery = makeQuery(new SpatialArgs(SpatialOperation.Intersects, args.getShape()));
 //      DocValues.getDocsWithField(reader, geometryStrategy.getFieldName());
-      //TODO resurrect Disjoint spatial query utility accepting a field name known to have DocValues.
+      //TODO resurrect Disjoint spatial query utility accepting a field name known to have DocValues. id:1423 gh:1424
       // update class docs when it's added.
       throw new UnsupportedSpatialOperation(pred);
     }
@@ -126,7 +126,7 @@ public class CompositeSpatialStrategy extends SpatialStrategy {
         // note: we could map IsWithin as well but it's pretty darned slow since it touches all world grids
         indexArgs = args;
       } else {
-        //TODO add args.clone method with new predicate? Or simply make non-final?
+        //TODO add args.clone method with new predicate? Or simply make non-final? id:1346 gh:1347
         indexArgs = new SpatialArgs(SpatialOperation.Intersects, args.getShape());
         indexArgs.setDistErr(args.getDistErr());
         indexArgs.setDistErrPct(args.getDistErrPct());

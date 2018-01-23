@@ -84,7 +84,7 @@ public class GeohashHaversineFunction extends ValueSource {
     String h1 = gh1DV.strVal(doc);
     String h2 = gh2DV.strVal(doc);
     if (h1 != null && h2 != null && h1.equals(h2) == false){
-      //TODO: If one of the hashes is a literal value source, seems like we could cache it
+      //TODO: If one of the hashes is a literal value source, seems like we could cache it id:2034 gh:2035
       //and avoid decoding every time
       Point p1 = GeohashUtils.decode(h1,ctx);
       Point p2 = GeohashUtils.decode(h2,ctx);

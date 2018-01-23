@@ -244,7 +244,7 @@ public final class Version {
     this.minor = minor;
     this.bugfix = bugfix;
     this.prerelease = prerelease;
-    // NOTE: do not enforce major version so we remain future proof, except to
+    // NOTE: do not enforce major version so we remain future proof, except to id:926 gh:927
     // make sure it fits in the 8 bits we encode it into:
     if (major > 255 || major < 0) {
       throw new IllegalArgumentException("Illegal major version: " + major);

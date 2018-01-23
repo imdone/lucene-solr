@@ -330,7 +330,7 @@ public class CloudSolrStream extends TupleStream implements Expressible {
 
     Map<String, DocCollection> collectionsMap = clusterState.getCollectionsMap();
 
-    //TODO we should probably split collection by comma to query more than one
+    //TODO we should probably split collection by comma to query more than one id:2439 gh:2440
     //  which is something already supported in other parts of Solr
 
     // check for alias or collection

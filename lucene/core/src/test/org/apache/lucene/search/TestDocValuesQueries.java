@@ -256,12 +256,12 @@ public class TestDocValuesQueries extends LuceneTestCase {
     final long hi = NumericUtils.doubleToSortableLong(2.0801416404385346E-41);
     
     Query query = SortedNumericDocValuesField.newSlowRangeQuery("dv", lo, hi);
-    // TODO: assert expected matches
+    // TODO: assert expected matches id:1302 gh:1303
     searcher.search(query, searcher.reader.maxDoc(), Sort.INDEXORDER);
 
     // swap order, should still work
     query = SortedNumericDocValuesField.newSlowRangeQuery("dv", hi, lo);
-    // TODO: assert expected matches
+    // TODO: assert expected matches id:989 gh:990
     searcher.search(query, searcher.reader.maxDoc(), Sort.INDEXORDER);
     
     reader.close();

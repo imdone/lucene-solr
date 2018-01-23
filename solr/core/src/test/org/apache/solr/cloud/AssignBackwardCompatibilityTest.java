@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Test for backward compatibility when users update from 6.x or 7.0 to 7.1,
  * then the counter of collection does not exist in Zk
- * TODO Remove in Solr 9.0
+ * TODO Remove in Solr 9.0 id:2173 gh:2174
  */
 public class AssignBackwardCompatibilityTest extends SolrCloudTestCase {
   private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

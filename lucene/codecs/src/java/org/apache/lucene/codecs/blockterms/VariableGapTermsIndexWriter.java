@@ -142,7 +142,7 @@ public class VariableGapTermsIndexWriter extends TermsIndexWriterBase {
     }
   }
 
-  // TODO: it'd be nice to let the FST builder prune based
+  // TODO: it'd be nice to let the FST builder prune based id:240 gh:241
   // on term count of each node (the prune1/prune2 that it
   // accepts), and build the index based on that.  This
   // should result in a more compact terms index, more like
@@ -200,7 +200,7 @@ public class VariableGapTermsIndexWriter extends TermsIndexWriterBase {
     return writer;
   }
 
-  /** NOTE: if your codec does not sort in unicode code
+  /** NOTE: if your codec does not sort in unicode code id:261 gh:262
    *  point order, you must override this method, to simply
    *  return indexedTerm.length. */
   protected int indexedTermPrefixLength(final BytesRef priorTerm, final BytesRef indexedTerm) {
@@ -245,7 +245,7 @@ public class VariableGapTermsIndexWriter extends TermsIndexWriterBase {
     @Override
     public boolean checkIndexTerm(BytesRef text, TermStats stats) throws IOException {
       //System.out.println("VGW: index term=" + text.utf8ToString());
-      // NOTE: we must force the first term per field to be
+      // NOTE: we must force the first term per field to be id:266 gh:267
       // indexed, in case policy doesn't:
       if (policy.isIndexTerm(text, stats) || first) {
         first = false;

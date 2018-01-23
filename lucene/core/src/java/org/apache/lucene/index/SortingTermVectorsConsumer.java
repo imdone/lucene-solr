@@ -97,7 +97,7 @@ final class SortingTermVectorsConsumer extends TermVectorsConsumer {
 
     int numFields = vectors.size();
     if (numFields == -1) {
-      // count manually! TODO: Maybe enforce that Fields.size() returns something valid?
+      // count manually! TODO: Maybe enforce that Fields.size() returns something valid? id:830 gh:831
       numFields = 0;
       for (final Iterator<String> it = vectors.iterator(); it.hasNext(); ) {
         it.next();

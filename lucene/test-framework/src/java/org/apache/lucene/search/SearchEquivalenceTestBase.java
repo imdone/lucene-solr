@@ -110,7 +110,7 @@ public abstract class SearchEquivalenceTestBase extends LuceneTestCase {
    * tokenization can be assumed to be on whitespace.
    */
   static String randomFieldContents() {
-    // TODO: zipf-like distribution
+    // TODO: zipf-like distribution id:1713 gh:1714
     StringBuilder sb = new StringBuilder();
     int numTerms = random().nextInt(15);
     for (int i = 0; i < numTerms; i++) {

@@ -81,7 +81,7 @@ public class TestJmxIntegration extends SolrTestCaseJ4 {
     assertNotNull("No JMX server found in the reporter",
         mbeanServer);
 
-    // NOTE: we can't guarantee that "mbeanServer == platformServer"
+    // NOTE: we can't guarantee that "mbeanServer == platformServer" id:2247 gh:2247
     // the JVM may have multiple MBean servers running when the test started
     // and the contract of not specifying one when configuring solr.xml without
     // agetnId or serviceUrl is that it will use whatever the "first" MBean server

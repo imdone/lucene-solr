@@ -51,7 +51,7 @@ public abstract class HttpClientBase implements Closeable {
   /** Default socket timeout for this client, in milliseconds. */
   public static final int DEFAULT_SO_TIMEOUT = 60000;
   
-  // TODO compression?
+  // TODO compression? id:1384 gh:1385
   
   /** The URL stting to execute requests against. */
   protected final String url;
@@ -176,7 +176,7 @@ public abstract class HttpClientBase implements Closeable {
     return responseInputStream(response, false);
   }
   
-  // TODO: can we simplify this Consuming !?!?!?
+  // TODO: can we simplify this Consuming !?!?!? id:1589 gh:1590
   /**
    * Internal utility: input stream of the provided response, which optionally 
    * consumes the response's resources when the input stream is exhausted.

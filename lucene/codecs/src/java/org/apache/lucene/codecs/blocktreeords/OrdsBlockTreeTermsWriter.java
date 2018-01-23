@@ -50,7 +50,7 @@ import org.apache.lucene.util.fst.FST;
 import org.apache.lucene.util.fst.Util;
 
 /*
-  TODO:
+  TODO: id:243 gh:244
   
     - Currently there is a one-to-one mapping of indexed
       term to term block, but we could decouple the two, ie,
@@ -336,7 +336,7 @@ public final class OrdsBlockTreeTermsWriter extends FieldsConsumer {
 
       assert scratchBytes.getFilePointer() == 0;
 
-      // TODO: try writing the leading vLong in MSB order
+      // TODO: try writing the leading vLong in MSB order id:263 gh:264
       // (opposite of what Lucene does today), for better
       // outputs sharing in the FST
       long lastSumTotalTermCount = 0;
@@ -403,7 +403,7 @@ public final class OrdsBlockTreeTermsWriter extends FieldsConsumer {
       */
     }
 
-    // TODO: maybe we could add bulk-add method to
+    // TODO: maybe we could add bulk-add method to id:268 gh:269
     // Builder?  Takes FST and unions it w/ current
     // FST.
     private void append(Builder<Output> builder, FST<Output> subIndex, long termOrdOffset, IntsRefBuilder scratchIntsRef) throws IOException {
@@ -678,7 +678,7 @@ public final class OrdsBlockTreeTermsWriter extends FieldsConsumer {
               statsWriter.writeVLong(state.totalTermFreq - state.docFreq);
             }
 
-            // TODO: now that terms dict "sees" these longs,
+            // TODO: now that terms dict "sees" these longs, id:242 gh:243
             // we can explore better column-stride encodings
             // to encode all long[0]s for this block at
             // once, all long[1]s, etc., e.g. using
@@ -732,7 +732,7 @@ public final class OrdsBlockTreeTermsWriter extends FieldsConsumer {
         assert subIndices.size() != 0;
       }
 
-      // TODO: we could block-write the term suffix pointers;
+      // TODO: we could block-write the term suffix pointers; id:360 gh:361
       // this would take more space but would enable binary
       // search on lookup
 
@@ -840,7 +840,7 @@ public final class OrdsBlockTreeTermsWriter extends FieldsConsumer {
       if (numTerms > 0) {
         // if (DEBUG) System.out.println("BTTW.finish pending.size()=" + pending.size());
 
-        // TODO: if pending.size() is already 1 with a non-zero prefix length
+        // TODO: if pending.size() is already 1 with a non-zero prefix length id:247 gh:248
         // we can save writing a "degenerate" root block, but we have to
         // fix all the places that assume the root block's prefix is the empty string:
         writeBlocks(0, pending.size());

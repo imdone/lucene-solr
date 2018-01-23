@@ -55,7 +55,7 @@ public abstract class ValueSourceScorer extends Scorer {
 
       @Override
       public float matchCost() {
-        return 100; // TODO: use cost of ValueSourceScorer.this.matches()
+        return 100; // TODO: use cost of ValueSourceScorer.this.matches() id:961 gh:962
       }
     };
     this.disi = TwoPhaseIterator.asDocIdSetIterator(twoPhaseIterator);
@@ -81,7 +81,7 @@ public abstract class ValueSourceScorer extends Scorer {
 
   @Override
   public float score() throws IOException {
-    // (same as FunctionQuery, but no qWeight)  TODO consider adding configurable qWeight
+    // (same as FunctionQuery, but no qWeight)  TODO consider adding configurable qWeight id:1344 gh:1345
     float score = values.floatVal(disi.docID());
     // Current Lucene priority queues can't handle NaN and -Infinity, so
     // map to -Float.MAX_VALUE. This conditional handles both -infinity

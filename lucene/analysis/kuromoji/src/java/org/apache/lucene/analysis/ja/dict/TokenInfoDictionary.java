@@ -53,7 +53,7 @@ public final class TokenInfoDictionary extends BinaryDictionary {
         IOUtils.closeWhileHandlingException(is);
       }
     }
-    // TODO: some way to configure?
+    // TODO: some way to configure? id:170 gh:171
     this.fst = new TokenInfoFST(fst, true);
   }
   

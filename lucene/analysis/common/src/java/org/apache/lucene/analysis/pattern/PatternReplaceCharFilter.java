@@ -33,7 +33,7 @@ import org.apache.lucene.analysis.charfilter.BaseCharFilter;
  * output="aa#bb&nbsp;aa#bb"
  * </p>
  * 
- * NOTE: If you produce a phrase that has different length to source string
+ * NOTE: If you produce a phrase that has different length to source string id:107 gh:108
  * and the field is used for highlighting for a term of the phrase, you will
  * face a trouble.
  * 

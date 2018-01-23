@@ -155,7 +155,7 @@ public class TestTermsEnum2 extends LuceneTestCase {
     }
   }
   
-  /** tests intersect: TODO start at a random term! */
+  /** tests intersect: TODO start at a random term! id:1019 gh:1020*/
   public void testIntersect() throws Exception {
     for (int i = 0; i < numIterations; i++) {
       String reg = AutomatonTestUtil.randomRegexp(random());

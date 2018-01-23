@@ -64,7 +64,7 @@ import org.junit.Test;
  * 
  *
  */
-//TODO: would be better in this test to pull termsenums and instanceof or something?
+//TODO: would be better in this test to pull termsenums and instanceof or something? id:813 gh:814
 // this way we can verify PFPF is doing the right thing.
 // for now we do termqueries.
 public class TestPerFieldPostingsFormat2 extends LuceneTestCase {
@@ -131,7 +131,7 @@ public class TestPerFieldPostingsFormat2 extends LuceneTestCase {
   /*
    * Test that heterogeneous index segments are merged sucessfully
    */
-  // TODO: not sure this test is that great, we should probably peek inside PerFieldPostingsFormat or something?!
+  // TODO: not sure this test is that great, we should probably peek inside PerFieldPostingsFormat or something?! id:899 gh:900
   @Test
   public void testChangeCodecAndMerge() throws IOException {
     Directory dir = newDirectory();

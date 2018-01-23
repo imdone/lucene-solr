@@ -242,7 +242,7 @@ public class SolrConfig extends Config implements MapSerializable {
     if (get("query/HashDocSet", null) != null)
       log.warn("solrconfig.xml: <HashDocSet> is deprecated and no longer recommended used.");
 
-// TODO: Old code - in case somebody wants to re-enable. Also see SolrIndexSearcher#search()
+// TODO: Old code - in case somebody wants to re-enable. Also see SolrIndexSearcher#search() id:2643 gh:2644
 //    filtOptEnabled = getBool("query/boolTofilterOptimizer/@enabled", false);
 //    filtOptCacheSize = getInt("query/boolTofilterOptimizer/@cacheSize",32);
 //    filtOptThreshold = getFloat("query/boolTofilterOptimizer/@threshold",.05f);
@@ -343,7 +343,7 @@ public class SolrConfig extends Config implements MapSerializable {
       .add(new SolrPluginInfo(SearchComponent.class, "searchComponent", REQUIRE_NAME, REQUIRE_CLASS, MULTI_OK))
       .add(new SolrPluginInfo(UpdateRequestProcessorFactory.class, "updateProcessor", REQUIRE_NAME, REQUIRE_CLASS, MULTI_OK))
       .add(new SolrPluginInfo(SolrCache.class, "cache", REQUIRE_NAME, REQUIRE_CLASS, MULTI_OK))
-          // TODO: WTF is up with queryConverter???
+          // TODO: WTF is up with queryConverter??? id:1795 gh:1796
           // it apparently *only* works as a singleton? - SOLR-4304
           // and even then -- only if there is a single SpellCheckComponent
           // because of queryConverter.setIndexAnalyzer
@@ -416,7 +416,7 @@ public class SolrConfig extends Config implements MapSerializable {
       try {
         in = loader.openResource(ConfigOverlay.RESOURCE_NAME);
       } catch (IOException e) {
-        // TODO: we should be explicitly looking for file not found exceptions
+        // TODO: we should be explicitly looking for file not found exceptions id:1773 gh:1774
         // and logging if it's not the expected IOException
         // hopefully no problem, assume no overlay.json file
         return new ConfigOverlay(Collections.EMPTY_MAP, -1);
@@ -874,7 +874,7 @@ public class SolrConfig extends Config implements MapSerializable {
     result.put("peerSync", m);
     m.put("useRangeVersions", useRangeVersionsForPeerSync);
 
-    //TODO there is more to add
+    //TODO there is more to add id:2748 gh:2749
 
     return result;
   }

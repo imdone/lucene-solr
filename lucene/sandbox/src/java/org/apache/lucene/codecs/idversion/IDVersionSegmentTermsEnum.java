@@ -258,7 +258,7 @@ public final class IDVersionSegmentTermsEnum extends TermsEnum {
 
     boolean changed = false;
 
-    // TODO: we could stop earlier w/ the version check, every time we traverse an index arc we can check?
+    // TODO: we could stop earlier w/ the version check, every time we traverse an index arc we can check? id:1609 gh:1610
 
     if (currentFrame != staticFrame) {
 
@@ -285,7 +285,7 @@ public final class IDVersionSegmentTermsEnum extends TermsEnum {
 
       int cmp = 0;
 
-      // TODO: reverse vLong byte order for better FST
+      // TODO: reverse vLong byte order for better FST id:1117 gh:1118
       // prefix output sharing
 
       // First compare up to valid seek frames:
@@ -627,7 +627,7 @@ public final class IDVersionSegmentTermsEnum extends TermsEnum {
 
       int cmp = 0;
 
-      // TODO: we should write our vLong backwards (MSB
+      // TODO: we should write our vLong backwards (MSB id:1256 gh:1257
       // first) to get better sharing from the FST
 
       // First compare up to valid seek frames:
@@ -641,7 +641,7 @@ public final class IDVersionSegmentTermsEnum extends TermsEnum {
         }
         arc = arcs[1+targetUpto];
         assert arc.label == (target.bytes[target.offset + targetUpto] & 0xFF): "arc.label=" + (char) arc.label + " targetLabel=" + (char) (target.bytes[target.offset + targetUpto] & 0xFF);
-        // TODO: we could save the outputs in local
+        // TODO: we could save the outputs in local id:1159 gh:1160
         // byte[][] instead of making new objs ever
         // seek; but, often the FST doesn't have any
         // shared bytes (but this could change if we

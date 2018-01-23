@@ -35,7 +35,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * NOTE: do *not* use real hostnames, not even "example.com", in this test.
+ * NOTE: do *not* use real hostnames, not even "example.com", in this test. id:3115 gh:3116
  *
  * Even though a MockPageFetcher is used to prevent real HTTP requests from being 
  * executed, the use of the URL class in SimplePostTool causes attempted resolution of 
@@ -105,7 +105,7 @@ public class SimplePostToolTest extends SolrTestCaseJ4 {
     assertEquals("http://[ff01::114]/index.html", t_web.computeFullUrl(new URL("http://[ff01::114]/"), "/index.html"));
     assertEquals("http://[ff01::114]/index.html", t_web.computeFullUrl(new URL("http://[ff01::114]/foo/bar/"), "/index.html"));
     assertEquals("http://[ff01::114]/fil.html", t_web.computeFullUrl(new URL("http://[ff01::114]/foo.htm?baz#hello"), "fil.html"));
-//    TODO: How to know what is the base if URL path ends with "foo"?? 
+//    TODO: How to know what is the base if URL path ends with "foo"??  id:2399 gh:2400
 //    assertEquals("http://[ff01::114]/fil.html", t_web.computeFullUrl(new URL("http://[ff01::114]/foo?baz#hello"), "fil.html"));
     assertEquals(null, t_web.computeFullUrl(new URL("http://[ff01::114]/"), "fil.jpg"));
     assertEquals(null, t_web.computeFullUrl(new URL("http://[ff01::114]/"), "mailto:hello@foo.bar"));

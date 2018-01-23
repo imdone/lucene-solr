@@ -140,7 +140,7 @@ public class URLClassifyProcessor extends UpdateRequestProcessor {
    * @return The URL object representing the canonical URL
    */
   public URL getCanonicalUrl(URL url) {
-    // NOTE: Do we want to make sure this URL is normalized? (Christian thinks we should)
+    // NOTE: Do we want to make sure this URL is normalized? (Christian thinks we should) id:2206 gh:2207
     String urlString = url.toString();
     try {
       String lps = landingPageSuffix(url);

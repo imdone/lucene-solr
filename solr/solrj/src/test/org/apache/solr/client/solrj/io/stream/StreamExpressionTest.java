@@ -1290,7 +1290,7 @@ public class StreamExpressionTest extends SolrCloudTestCase {
   @Test
   public void testFetchStream() throws Exception {
 
-    SolrClientCache solrClientCache = new SolrClientCache();//TODO share in @Before ; close in @After ?
+    SolrClientCache solrClientCache = new SolrClientCache();//TODO share in @Before ; close in @After ? id:3142 gh:3143
 
     new UpdateRequest()
         .add(id, "0", "a_s", "hello0", "a_i", "0", "a_f", "1", "subject", "blah blah blah 0")

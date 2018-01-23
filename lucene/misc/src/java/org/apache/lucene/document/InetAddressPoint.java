@@ -270,7 +270,7 @@ public class InetAddressPoint extends Field {
     // We must compare the encoded form (InetAddress doesn't implement Comparable, and even if it
     // did, we do our own thing with ipv4 addresses):
 
-    // NOTE: we could instead convert-per-comparison and save this extra array, at cost of slower sort:
+    // NOTE: we could instead convert-per-comparison and save this extra array, at cost of slower sort: id:1553 gh:1554
     byte[][] sortedValues = new byte[values.length][];
     for(int i=0;i<values.length;i++) {
       sortedValues[i] = encode(values[i]);

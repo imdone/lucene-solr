@@ -39,7 +39,7 @@ import org.locationtech.spatial4j.shape.SpatialRelation;
  * @lucene.experimental
  */
 public class HeatmapFacetCounter {
-  //TODO where should this code live? It could go to PrefixTreeFacetCounter, or maybe here in its own class is fine.
+  //TODO where should this code live? It could go to PrefixTreeFacetCounter, or maybe here in its own class is fine. id:1490 gh:1491
 
   /** Maximum number of supported rows (or columns). */
   public static final int MAX_ROWS_OR_COLUMNS = (int) Math.sqrt(ArrayUtil.MAX_ARRAY_LENGTH);

@@ -55,10 +55,10 @@ import org.slf4j.LoggerFactory;
  * 
  * It can also run in a background thread and start and stop jetties
  * randomly.
- * TODO: expire multiple sessions / connectionloss at once
- * TODO: kill multiple jetties at once
- * TODO: ? add random headhunter mode that always kills the leader
- * TODO: chaosmonkey should be able to do cluster stop/start tests
+ * TODO: expire multiple sessions / connectionloss at once id:2479 gh:2480
+ * TODO: kill multiple jetties at once id:2540 gh:2541
+ * TODO: ? add random headhunter mode that always kills the leader id:3146 gh:3147
+ * TODO: chaosmonkey should be able to do cluster stop/start tests id:2483 gh:2484
  */
 public class ChaosMonkey {
   private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -69,7 +69,7 @@ public class ChaosMonkey {
   private Map<String,List<CloudJettyRunner>> shardToJetty;
   
   private static final Boolean MONKEY_ENABLED = Boolean.valueOf(System.getProperty("solr.tests.cloud.cm.enabled", "true"));
-  // NOTE: CONN_LOSS and EXP are currently being set to "false" intentionally here. Remove the default value once we know tests pass reliably under those conditions
+  // NOTE: CONN_LOSS and EXP are currently being set to "false" intentionally here. Remove the default value once we know tests pass reliably under those conditions id:3029 gh:3030
   private static final String CONN_LOSS = System.getProperty("solr.tests.cloud.cm.connloss", "false");
   private static final String EXP = System.getProperty("solr.tests.cloud.cm.exp", "false");
   
@@ -130,7 +130,7 @@ public class ChaosMonkey {
         + " cause connection loss:" + causeConnectionLoss);
   }
   
-  // TODO: expire all clients at once?
+  // TODO: expire all clients at once? id:2481 gh:2482
   public void expireSession(final JettySolrRunner jetty) {
     CoreContainer cores = jetty.getCoreContainer();
     if (cores != null) {
@@ -357,7 +357,7 @@ public class ChaosMonkey {
     
     numActive = checkIfKillIsLegal(slice, numActive);
     
-    // TODO: stale state makes this a tough call
+    // TODO: stale state makes this a tough call id:2541 gh:2542
     if (numActive < 2) {
       // we cannot kill anyone
       monkeyLog("only one active node in shard - monkey cannot kill :(");
@@ -531,7 +531,7 @@ public class ChaosMonkey {
 
     this.aggressivelyKillLeaders = killLeaders;
     runTimer = new RTimer();
-    // TODO: when kill leaders is on, lets kill a higher percentage of leaders
+    // TODO: when kill leaders is on, lets kill a higher percentage of leaders id:3147 gh:3148
     
     stop = false;
     monkeyThread = new Thread() {
@@ -548,7 +548,7 @@ public class ChaosMonkey {
           } catch (InterruptedException e) {
             //
           } catch (Exception e) {
-            // TODO Auto-generated catch block
+            // TODO Auto-generated catch block id:2486 gh:2487
             e.printStackTrace();
           }
         }

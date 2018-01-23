@@ -106,7 +106,7 @@ public class RequestUtil {
 
 
     // see if the json has a "params" section
-    // TODO: we should currently *not* do this if this is a leaf of a distributed search since it could overwrite parameters set by the top-level
+    // TODO: we should currently *not* do this if this is a leaf of a distributed search since it could overwrite parameters set by the top-level id:2686 gh:2687
     // The parameters we extract will be propagated anyway.
     if (jsonS != null && !isShard) {
       for (String json : jsonS) {

@@ -553,7 +553,7 @@ public class ExpandComponent extends SearchComponent implements PluginInfoInitia
 
     @Override
     public ScoreMode scoreMode() {
-      return ScoreMode.COMPLETE; // TODO: is this always true?
+      return ScoreMode.COMPLETE; // TODO: is this always true? id:2771 gh:2772
     }
 
     public LeafCollector getLeafCollector(LeafReaderContext context) throws IOException {
@@ -640,7 +640,7 @@ public class ExpandComponent extends SearchComponent implements PluginInfoInitia
     
     @Override
     public ScoreMode scoreMode() {
-      return ScoreMode.COMPLETE; // TODO: is this always true?
+      return ScoreMode.COMPLETE; // TODO: is this always true? id:1855 gh:1856
     }
 
     public LeafCollector getLeafCollector(LeafReaderContext context) throws IOException {
@@ -815,7 +815,7 @@ public class ExpandComponent extends SearchComponent implements PluginInfoInitia
       return infos;
     }
 
-    // NOTE: delegating the caches is wrong here as we are altering the content
+    // NOTE: delegating the caches is wrong here as we are altering the content id:2655 gh:2656
     // of the reader, this should ONLY be used under an uninvertingreader which
     // will restore doc values back using uninversion, otherwise all sorts of
     // crazy things could happen.

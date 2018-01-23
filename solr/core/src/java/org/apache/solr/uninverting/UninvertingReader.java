@@ -210,7 +210,7 @@ public class UninvertingReader extends FilterLeafReader {
       return new UninvertingDirectoryReader(in, mapper);
     }
 
-    // NOTE: delegating the cache helpers is wrong since this wrapper alters the
+    // NOTE: delegating the cache helpers is wrong since this wrapper alters the id:2776 gh:2777
     // content of the reader, it is only fine to do that because Solr ALWAYS
     // consumes index readers through this wrapper
 
@@ -376,7 +376,7 @@ public class UninvertingReader extends FilterLeafReader {
     return mapping.get(field);
   }
 
-  // NOTE: delegating the cache helpers is wrong since this wrapper alters the
+  // NOTE: delegating the cache helpers is wrong since this wrapper alters the id:2142 gh:2143
   // content of the reader, it is only fine to do that because Solr ALWAYS
   // consumes index readers through this wrapper
 

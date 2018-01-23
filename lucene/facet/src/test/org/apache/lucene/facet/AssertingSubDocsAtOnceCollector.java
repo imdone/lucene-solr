@@ -29,7 +29,7 @@ import org.apache.lucene.search.SimpleCollector;
  *  the collected doc. */
 class AssertingSubDocsAtOnceCollector extends SimpleCollector {
 
-  // TODO: allow wrapping another Collector
+  // TODO: allow wrapping another Collector id:1285 gh:1286
 
   List<Scorer> allScorers;
 

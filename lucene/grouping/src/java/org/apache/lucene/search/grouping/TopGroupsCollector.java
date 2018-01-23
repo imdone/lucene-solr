@@ -70,7 +70,7 @@ public class TopGroupsCollector<T> extends SecondPassGroupingCollector<T> {
       this.needsScores = getScores || getMaxScores || withinGroupSort.needsScores();
       this.supplier = withinGroupSort == Sort.RELEVANCE ?
           () -> TopScoreDocCollector.create(maxDocsPerGroup) :
-          () -> TopFieldCollector.create(withinGroupSort, maxDocsPerGroup, fillSortFields, getScores, getMaxScores, true); // TODO: disable exact counts?
+          () -> TopFieldCollector.create(withinGroupSort, maxDocsPerGroup, fillSortFields, getScores, getMaxScores, true); // TODO: disable exact counts? id:1292 gh:1293
     }
 
     @Override

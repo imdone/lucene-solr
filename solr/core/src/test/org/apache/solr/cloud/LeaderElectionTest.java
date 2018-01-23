@@ -519,7 +519,7 @@ public class LeaderElectionTest extends SolrTestCaseJ4 {
     
     int seq = threads.get(getLeaderThread()).getSeq();
     
-    // we have a leader we know, TODO: lets check some other things
+    // we have a leader we know, TODO: lets check some other things id:2260 gh:2261
     
     // cleanup any threads still running
     for (ClientThread thread : threads) {

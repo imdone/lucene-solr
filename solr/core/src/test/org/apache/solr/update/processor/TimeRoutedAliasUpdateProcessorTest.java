@@ -136,7 +136,7 @@ public class TimeRoutedAliasUpdateProcessorTest extends SolrCloudTestCase {
     assertTrue("ConfigNames should be :" + expectedConfigSetNames, expectedConfigSetNames.containsAll(retrievedConfigSetNames) && retrievedConfigSetNames.containsAll(expectedConfigSetNames));
 
     CollectionAdminRequest.createAlias(alias, col23rd).process(solrClient);
-    //TODO use SOLR-11617 client API to set alias metadata
+    //TODO use SOLR-11617 client API to set alias metadata id:2396 gh:2397
     final ZkStateReader zkStateReader = cluster.getSolrClient().getZkStateReader();
 
     zkStateReader.aliasesHolder.applyModificationAndExportToZk(a ->
@@ -217,7 +217,7 @@ public class TimeRoutedAliasUpdateProcessorTest extends SolrCloudTestCase {
     numDocsDeletedOrFailed++;
   }
 
-  private void checkNoError(NamedList<Object> response) { //TODO rename
+  private void checkNoError(NamedList<Object> response) { //TODO rename id:2977 gh:2978
     Object errors = response.get("errorMessages");
     assertNull("" + errors, errors);
   }

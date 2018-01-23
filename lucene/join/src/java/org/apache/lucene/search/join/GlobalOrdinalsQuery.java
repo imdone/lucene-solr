@@ -198,7 +198,7 @@ final class GlobalOrdinalsQuery extends Query {
 
         @Override
         public float matchCost() {
-          return 100; // TODO: use cost of values.getOrd() and foundOrds.get()
+          return 100; // TODO: use cost of values.getOrd() and foundOrds.get() id:1322 gh:1323
         }
       };
     }
@@ -234,7 +234,7 @@ final class GlobalOrdinalsQuery extends Query {
 
         @Override
         public float matchCost() {
-          return 100; // TODO: use cost of values.getOrd() and foundOrds.get()
+          return 100; // TODO: use cost of values.getOrd() and foundOrds.get() id:1546 gh:1547
         }
       };
     }

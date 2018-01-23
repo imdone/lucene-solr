@@ -33,7 +33,7 @@ public interface FloatValue extends FloatValueStream, AnalyticsValue {
   /**
    * Get the float representation of the current value.
    * <p>
-   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}.
+   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}. id:1489 gh:1490
    * 
    * @return the current value
    */

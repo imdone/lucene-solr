@@ -28,7 +28,7 @@ import org.apache.lucene.util.ThreadInterruptedException;
 /**
  * Test utility - slow directory
  */
-// TODO: move to test-framework and sometimes use in tests?
+// TODO: move to test-framework and sometimes use in tests? id:1506 gh:1507
 public class SlowRAMDirectory extends RAMDirectory {
 
   private static final int IO_SLEEP_THRESHOLD = 50;
@@ -117,7 +117,7 @@ public class SlowRAMDirectory extends RAMDirectory {
       ii.readBytes(b, offset, len);
     }
     
-    // TODO: is it intentional that clone doesnt wrap?
+    // TODO: is it intentional that clone doesnt wrap? id:1032 gh:1033
     @Override public IndexInput clone() { return ii.clone(); }
     @Override public IndexInput slice(String sliceDescription, long offset, long length) throws IOException { 
       return ii.slice(sliceDescription, offset, length);

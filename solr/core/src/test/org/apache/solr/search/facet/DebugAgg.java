@@ -132,7 +132,7 @@ public class DebugAgg extends AggValueSource {
 
     @Override
     public void setValues(SimpleOrderedMap<Object> bucket, int slotNum) throws IOException {
-      sub.key = this.key;  // TODO: Blech... this should be fixed
+      sub.key = this.key;  // TODO: Blech... this should be fixed id:2398 gh:2399
       sub.setValues(bucket, slotNum);
     }
 

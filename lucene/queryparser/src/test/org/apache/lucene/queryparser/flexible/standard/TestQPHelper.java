@@ -86,7 +86,7 @@ import org.junit.Ignore;
  * 
  * Tests QueryParser.
  */
-// TODO: really this should extend QueryParserTestBase too!
+// TODO: really this should extend QueryParserTestBase too! id:1580 gh:1581
 public class TestQPHelper extends LuceneTestCase {
 
   public static Analyzer qpAnalyzer;
@@ -442,7 +442,7 @@ public class TestQPHelper extends LuceneTestCase {
         "t�rm term term");
     assertQueryEquals("�mlaut", new MockAnalyzer(random(), MockTokenizer.WHITESPACE, false), "�mlaut");
 
-    // FIXME: change MockAnalyzer to not extend CharTokenizer for this test
+    // FIXME: change MockAnalyzer to not extend CharTokenizer for this test id:1090 gh:1091
     //assertQueryEquals("\"\"", new KeywordAnalyzer(), "");
     //assertQueryEquals("foo:\"\"", new KeywordAnalyzer(), "foo:");
 
@@ -602,7 +602,7 @@ public class TestQPHelper extends LuceneTestCase {
     assertWildcardQueryEquals("Term~", "term~2");
     // Range queries:
 
-    // TODO: implement this on QueryParser
+    // TODO: implement this on QueryParser id:1241 gh:1242
     // Q0002E_INVALID_SYNTAX_CANNOT_PARSE: Syntax Error, cannot parse '[A TO
     // C]': Lexical error at line 1, column 1. Encountered: "[" (91), after
     // : ""
@@ -836,7 +836,7 @@ public class TestQPHelper extends LuceneTestCase {
     assertQueryEquals("a:b\\:c~", a, "a:b:c~2");
     assertQueryEquals("a:b\\\\c~", a, "a:b\\c~2");
 
-    // TODO: implement Range queries on QueryParser
+    // TODO: implement Range queries on QueryParser id:1115 gh:1116
     assertQueryEquals("[ a\\- TO a\\+ ]", null, "[a- TO a+]");
     assertQueryEquals("[ a\\: TO a\\~ ]", null, "[a: TO a~]");
     assertQueryEquals("[ a\\\\ TO a\\* ]", null, "[a\\ TO a*]");
@@ -1324,8 +1324,8 @@ public class TestQPHelper extends LuceneTestCase {
     parser.setAnalyzer(new MockAnalyzer(random()));
 
     BooleanQuery.Builder exp = new BooleanQuery.Builder();
-    exp.add(new BooleanClause(new RegexpQuery(new Term("b", "ab.+")), BooleanClause.Occur.SHOULD));//TODO spezification? was "MUST"
-    exp.add(new BooleanClause(new RegexpQuery(new Term("t", "ab.+")), BooleanClause.Occur.SHOULD));//TODO spezification? was "MUST"
+    exp.add(new BooleanClause(new RegexpQuery(new Term("b", "ab.+")), BooleanClause.Occur.SHOULD));//TODO spezification? was "MUST" id:1378 gh:1377
+    exp.add(new BooleanClause(new RegexpQuery(new Term("t", "ab.+")), BooleanClause.Occur.SHOULD));//TODO spezification? was "MUST" id:1582 gh:1583
 
     assertEquals(exp.build(), parser.parse("/ab.+/", null));
 

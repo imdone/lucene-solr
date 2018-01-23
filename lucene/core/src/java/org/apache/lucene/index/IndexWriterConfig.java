@@ -284,12 +284,12 @@ public final class IndexWriterConfig extends LiveIndexWriterConfig {
   /** Expert: Sets the {@link DocumentsWriterPerThreadPool} instance used by the
    * IndexWriter to assign thread-states to incoming indexing threads.
    * <p>
-   * NOTE: The given {@link DocumentsWriterPerThreadPool} instance must not be used with
+   * NOTE: The given {@link DocumentsWriterPerThreadPool} instance must not be used with id:574 gh:575
    * other {@link IndexWriter} instances once it has been initialized / associated with an
    * {@link IndexWriter}.
    * </p>
    * <p>
-   * NOTE: This only takes effect when IndexWriter is first created.</p>*/
+   * NOTE: This only takes effect when IndexWriter is first created.</p> id:584 gh:585*/
   IndexWriterConfig setIndexerThreadPool(DocumentsWriterPerThreadPool threadPool) {
     if (threadPool == null) {
       throw new IllegalArgumentException("threadPool must not be null");
@@ -308,7 +308,7 @@ public final class IndexWriterConfig extends LiveIndexWriterConfig {
    *  merging, unless a near-real-time reader has been
    *  obtained by calling {@link DirectoryReader#open(IndexWriter)}.
    *  This method lets you enable pooling without getting a
-   *  near-real-time reader.  NOTE: if you set this to
+   *  near-real-time reader.  NOTE: if you set this to id:525 gh:526
    *  false, IndexWriter will still pool readers once
    *  {@link DirectoryReader#open(IndexWriter)} is called.
    *

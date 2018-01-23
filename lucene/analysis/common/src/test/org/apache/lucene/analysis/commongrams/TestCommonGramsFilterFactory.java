@@ -31,7 +31,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * Tests pretty much copied from StopFilterFactoryTest We use the test files
- * used by the StopFilterFactoryTest TODO: consider creating separate test files
+ * used by the StopFilterFactoryTest TODO: consider creating separate test files id:61 gh:62
  * so this won't break if stop filter test files change
  **/
 public class TestCommonGramsFilterFactory extends BaseTokenStreamFactoryTestCase {

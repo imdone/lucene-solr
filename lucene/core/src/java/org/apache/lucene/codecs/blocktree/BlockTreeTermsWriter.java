@@ -50,7 +50,7 @@ import org.apache.lucene.util.fst.FST;
 import org.apache.lucene.util.fst.Util;
 
 /*
-  TODO:
+  TODO: id:333 gh:334
   
     - Currently there is a one-to-one mapping of indexed
       term to term block, but we could decouple the two, ie,
@@ -163,7 +163,7 @@ import org.apache.lucene.util.fst.Util;
  *   <li>Header --&gt; {@link CodecUtil#writeHeader CodecHeader}</li>
  *   <li>DirOffset --&gt; {@link DataOutput#writeLong Uint64}</li>
  *   <li>IndexStartFP --&gt; {@link DataOutput#writeVLong VLong}</li>
- *   <!-- TODO: better describe FST output here -->
+ *   <!-- TODO: better describe FST output here --> id:423 gh:425
  *   <li>FSTIndex --&gt; {@link FST FST&lt;byte[]&gt;}</li>
  *   <li>Footer --&gt; {@link CodecUtil#writeFooter CodecFooter}</li>
  * </ul>
@@ -434,7 +434,7 @@ public final class BlockTreeTermsWriter extends FieldsConsumer {
 
       assert scratchBytes.getFilePointer() == 0;
 
-      // TODO: try writing the leading vLong in MSB order
+      // TODO: try writing the leading vLong in MSB order id:488 gh:489
       // (opposite of what Lucene does today), for better
       // outputs sharing in the FST
       scratchBytes.writeVLong(encodeOutput(fp, hasTerms, isFloor));
@@ -488,7 +488,7 @@ public final class BlockTreeTermsWriter extends FieldsConsumer {
       */
     }
 
-    // TODO: maybe we could add bulk-add method to
+    // TODO: maybe we could add bulk-add method to id:464 gh:465
     // Builder?  Takes FST and unions it w/ current
     // FST.
     private void append(Builder<BytesRef> builder, FST<BytesRef> subIndex, IntsRefBuilder scratchIntsRef) throws IOException {
@@ -677,7 +677,7 @@ public final class BlockTreeTermsWriter extends FieldsConsumer {
       */
 
       // 1st pass: pack term suffix bytes into byte[] blob
-      // TODO: cutover to bulk int codec... simple64?
+      // TODO: cutover to bulk int codec... simple64? id:349 gh:350
 
       // We optimize the leaf block case (block has only terms), writing a more
       // compact format in this case:
@@ -763,7 +763,7 @@ public final class BlockTreeTermsWriter extends FieldsConsumer {
               statsWriter.writeVLong(state.totalTermFreq - state.docFreq);
             }
 
-            // TODO: now that terms dict "sees" these longs,
+            // TODO: now that terms dict "sees" these longs, id:338 gh:339
             // we can explore better column-stride encodings
             // to encode all long[0]s for this block at
             // once, all long[1]s, etc., e.g. using
@@ -811,7 +811,7 @@ public final class BlockTreeTermsWriter extends FieldsConsumer {
         assert subIndices.size() != 0;
       }
 
-      // TODO: we could block-write the term suffix pointers;
+      // TODO: we could block-write the term suffix pointers; id:426 gh:427
       // this would take more space but would enable binary
       // search on lookup
 
@@ -927,7 +927,7 @@ public final class BlockTreeTermsWriter extends FieldsConsumer {
         // Add empty term to force closing of all final blocks:
         pushTerm(new BytesRef());
 
-        // TODO: if pending.size() is already 1 with a non-zero prefix length
+        // TODO: if pending.size() is already 1 with a non-zero prefix length id:491 gh:492
         // we can save writing a "degenerate" root block, but we have to
         // fix all the places that assume the root block's prefix is the empty string:
         pushTerm(new BytesRef());

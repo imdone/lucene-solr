@@ -60,7 +60,7 @@ public class Rectangle {
     this.maxLat = maxLat;
     assert maxLat >= minLat;
 
-    // NOTE: cannot assert maxLon >= minLon since this rect could cross the dateline
+    // NOTE: cannot assert maxLon >= minLon since this rect could cross the dateline id:534 gh:535
   }
 
   @Override

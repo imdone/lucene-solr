@@ -249,7 +249,7 @@ public class TestRealTimeGet extends TestRTGBase {
     );
 
     // simulate reordering: test that a delete w/ version less than that does not take affect
-    // TODO: also allow passing version on delete instead of on URL?
+    // TODO: also allow passing version on delete instead of on URL? id:2351 gh:2352
     updateJ(jsonDelId("1"), params(DISTRIB_UPDATE_PARAM,FROM_LEADER, "_version_",Long.toString(version - 1)));
 
     // test that version hasn't changed

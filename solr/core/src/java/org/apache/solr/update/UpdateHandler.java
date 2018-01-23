@@ -188,7 +188,7 @@ public abstract class UpdateHandler implements SolrInfoBean {
   public abstract UpdateLog getUpdateLog();
 
   /**
-   * NOTE: this function is not thread safe.  However, it is safe to call within the
+   * NOTE: this function is not thread safe.  However, it is safe to call within the id:2964 gh:2965
    * <code>inform( SolrCore core )</code> function for <code>SolrCoreAware</code> classes.
    * Outside <code>inform</code>, this could potentially throw a ConcurrentModificationException
    *
@@ -200,7 +200,7 @@ public abstract class UpdateHandler implements SolrInfoBean {
   }
 
   /**
-   * NOTE: this function is not thread safe.  However, it is safe to call within the
+   * NOTE: this function is not thread safe.  However, it is safe to call within the id:2151 gh:2152
    * <code>inform( SolrCore core )</code> function for <code>SolrCoreAware</code> classes.
    * Outside <code>inform</code>, this could potentially throw a ConcurrentModificationException
    *
@@ -212,7 +212,7 @@ public abstract class UpdateHandler implements SolrInfoBean {
   }
 
   /**
-   * NOTE: this function is not thread safe.  However, it is safe to call within the
+   * NOTE: this function is not thread safe.  However, it is safe to call within the id:2792 gh:2793
    * <code>inform( SolrCore core )</code> function for <code>SolrCoreAware</code> classes.
    * Outside <code>inform</code>, this could potentially throw a ConcurrentModificationException
    *

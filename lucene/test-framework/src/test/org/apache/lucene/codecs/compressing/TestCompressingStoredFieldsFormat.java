@@ -75,7 +75,7 @@ public class TestCompressingStoredFieldsFormat extends BaseStoredFieldsFormatTes
       
       @Override
       public String stringValue() {
-        // TODO: really bad & scary that this causes IW to
+        // TODO: really bad & scary that this causes IW to id:1681 gh:1682
         // abort the segment!!  We should fix this.
         return null;
       }

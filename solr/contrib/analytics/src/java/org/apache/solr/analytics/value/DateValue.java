@@ -30,14 +30,14 @@ import org.apache.solr.analytics.value.constant.ConstantDateValue;
  * The back-end production of the value can change inbetween calls to {@link #getDate()} and {@link #exists()},
  * resulting in different values on each call.
  * <p>
- * NOTE: Most date expressions work with the {@code long} representation of the date, so that less
+ * NOTE: Most date expressions work with the {@code long} representation of the date, so that less id:1688 gh:1689
  * objects need to be created during execution.
  */
 public interface DateValue extends DateValueStream, LongValue {
   /**
    * Get the date representation of the current value.
    * <p>
-   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}.
+   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}. id:2616 gh:2617
    * 
    * @return the current value
    */

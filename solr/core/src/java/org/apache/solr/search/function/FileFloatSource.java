@@ -90,7 +90,7 @@ public class FileFloatSource extends ValueSource {
 
       @Override
       public Object objectVal(int doc) {
-        return floatVal(doc);   // TODO: keep track of missing values
+        return floatVal(doc);   // TODO: keep track of missing values id:2068 gh:2069
       }
     };
   }

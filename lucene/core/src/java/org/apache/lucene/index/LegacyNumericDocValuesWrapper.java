@@ -80,7 +80,7 @@ public final class LegacyNumericDocValuesWrapper extends NumericDocValues {
 
   @Override
   public long cost() {
-    // TODO
+    // TODO id:577 gh:578
     return 0;
   }
 

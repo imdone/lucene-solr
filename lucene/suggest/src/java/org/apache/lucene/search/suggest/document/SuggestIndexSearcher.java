@@ -38,7 +38,7 @@ import org.apache.lucene.search.Weight;
  */
 public class SuggestIndexSearcher extends IndexSearcher {
 
-  // NOTE: we do not accept an ExecutorService here, because at least the dedup
+  // NOTE: we do not accept an ExecutorService here, because at least the dedup id:1534 gh:1534
   // logic in TopSuggestDocsCollector/NRTSuggester would not be thread safe (and maybe other things)
 
   /**
@@ -67,7 +67,7 @@ public class SuggestIndexSearcher extends IndexSearcher {
    * is called for every matching completion hit.
    */
   public void suggest(CompletionQuery query, TopSuggestDocsCollector collector) throws IOException {
-    // TODO use IndexSearcher.rewrite instead
+    // TODO use IndexSearcher.rewrite instead id:1417 gh:1418
     // have to implement equals() and hashCode() in CompletionQuerys and co
     query = (CompletionQuery) query.rewrite(getIndexReader());
     Weight weight = query.createWeight(this, collector.scoreMode(), 1f);

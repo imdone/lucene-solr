@@ -50,7 +50,7 @@ public abstract class CachingCollector extends FilterCollector {
 
   private static final class CachedScorer extends Scorer {
 
-    // NOTE: these members are package-private b/c that way accessing them from
+    // NOTE: these members are package-private b/c that way accessing them from id:562 gh:563
     // the outer class does not incur access check by the JVM. The same
     // situation would be if they were defined in the outer class as private
     // members.

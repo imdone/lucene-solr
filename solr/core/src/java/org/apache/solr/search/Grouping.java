@@ -305,7 +305,7 @@ public class Grouping {
 
     needScores = (cmd.getFlags() & SolrIndexSearcher.GET_SCORES) != 0;
     boolean cacheScores = false;
-    // NOTE: Change this when withinGroupSort can be specified per group
+    // NOTE: Change this when withinGroupSort can be specified per group id:2705 gh:2706
     if (!needScores && !commands.isEmpty()) {
       Sort withinGroupSort = commands.get(0).withinGroupSort;
       cacheScores = withinGroupSort == null || withinGroupSort.needsScores();
@@ -614,7 +614,7 @@ public class Grouping {
       }
       int docsToCollect = getMax(off, len, max);
 
-      // TODO: implement a DocList impl that doesn't need to start at offset=0
+      // TODO: implement a DocList impl that doesn't need to start at offset=0 id:2045 gh:2047
       int docsCollected = Math.min(docsToCollect, groups.scoreDocs.length);
 
       int ids[] = new int[docsCollected];
@@ -829,7 +829,7 @@ public class Grouping {
   /**
    * A group command for grouping on a query.
    */
-  //NOTE: doesn't need to be generic. Maybe Command interface --> First / Second pass abstract impl.
+  //NOTE: doesn't need to be generic. Maybe Command interface --> First / Second pass abstract impl. id:1919 gh:1920
   public class CommandQuery extends Command {
 
     public Query query;

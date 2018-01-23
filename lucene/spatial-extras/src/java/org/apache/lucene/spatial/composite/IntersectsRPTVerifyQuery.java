@@ -128,7 +128,7 @@ public class IntersectsRPTVerifyQuery extends Query {
 
           @Override
           public float matchCost() {
-            return 100; // TODO: use cost of exactIterator.advance() and predFuncValues.cost()
+            return 100; // TODO: use cost of exactIterator.advance() and predFuncValues.cost() id:1482 gh:1483
           }
         };
 
@@ -146,7 +146,7 @@ public class IntersectsRPTVerifyQuery extends Query {
   //This may be a "Query" but we don't use it as-such; the caller calls the constructor and then compute() and examines
   // the results which consists of two parts -- the approximated results, and a subset of exact matches. The
   // difference needs to be verified.
-  // TODO refactor AVPTQ to not be a Query?
+  // TODO refactor AVPTQ to not be a Query? id:1654 gh:1655
   private static class IntersectsDifferentiatingQuery extends AbstractVisitingPrefixTreeQuery {
 
     public IntersectsDifferentiatingQuery(Shape queryShape, String fieldName, SpatialPrefixTree grid,
@@ -162,7 +162,7 @@ public class IntersectsRPTVerifyQuery extends Query {
       return result;
     }
 
-    // TODO consider if IntersectsPrefixTreeQuery should simply do this and provide both sets
+    // TODO consider if IntersectsPrefixTreeQuery should simply do this and provide both sets id:1427 gh:1428
 
     class IntersectsDifferentiatingVisitor extends VisitorTemplate {
       DocIdSetBuilder approxBuilder;

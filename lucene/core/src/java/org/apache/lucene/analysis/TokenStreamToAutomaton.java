@@ -27,7 +27,7 @@ import org.apache.lucene.util.BytesRef;
 import org.apache.lucene.util.RollingBuffer;
 import org.apache.lucene.util.automaton.Automaton;
 
-// TODO: maybe also toFST?  then we can translate atts into FST outputs/weights
+// TODO: maybe also toFST?  then we can translate atts into FST outputs/weights id:472 gh:473
 
 /** Consumes a TokenStream and creates an {@link Automaton}
  *  where the transition labels are UTF8 bytes (or Unicode 

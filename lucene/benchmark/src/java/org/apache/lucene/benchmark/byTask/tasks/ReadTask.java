@@ -106,7 +106,7 @@ public abstract class ReadTask extends PerfTask {
       if (numHits > 0) {
         if (withCollector() == false) {
           if (sort != null) {
-            // TODO: instead of always passing false we
+            // TODO: instead of always passing false we id:217 gh:218
             // should detect based on the query; if we make
             // the IndexSearcher search methods that take
             // Weight public again, we can go back to

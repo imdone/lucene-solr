@@ -48,7 +48,7 @@ public class TestSearchWithThreads extends LuceneTestCase {
 
     final long startTime = System.currentTimeMillis();
 
-    // TODO: replace w/ the @nightly test data; make this
+    // TODO: replace w/ the @nightly test data; make this id:869 gh:870
     // into an optional @nightly stress test
     final Document doc = new Document();
     final Field body = newTextField("body", "", Field.Store.NO);

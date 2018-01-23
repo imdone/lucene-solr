@@ -555,9 +555,9 @@ for my $rel (@releases) {
       # Link LUCENE-XXX, SOLR-XXX and INFRA-XXX to JIRA
       $item =~ s{(?:${jira_url_prefix})?((?:LUCENE|SOLR|INFRA)-\d+)}
                 {<a href="${jira_url_prefix}$1">$1</a>}g;
-      $item =~ s{(issue\s*\#?\s*(\d{3,}))}            # Link Issue XXX to JIRA
+      $item =~ s{(issue\s*\#?\s*(\d{3,}))}            # Link Issue XXX to JIRA id:1186 gh:1187
                 {<a href="${jira_url_prefix}LUCENE-$2">$1</a>}gi;
-      # Link Lucene XXX, SOLR XXX and INFRA XXX to JIRA
+      # Link Lucene XXX , SOLR XXX and INFRA XXX to JIRA id:1475 gh:1476
       $item =~ s{((LUCENE|SOLR|INFRA)\s+(\d{3,}))}
                 {<a href="${jira_url_prefix}\U$2\E-$3">$1</a>}gi;
       # Link "[ github | gh ] pull request [ # ] X+" to Github pull request

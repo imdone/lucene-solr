@@ -35,7 +35,7 @@ public interface IndexableFieldType {
    * This has no effect if {@link #indexOptions()} returns
    * IndexOptions.NONE.
    */
-  // TODO: shouldn't we remove this?  Whether/how a field is
+  // TODO: shouldn't we remove this?  Whether/how a field is id:690 gh:691
   // tokenized is an impl detail under Field?
   public boolean tokenized();
 

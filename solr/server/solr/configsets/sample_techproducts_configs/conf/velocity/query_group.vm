@@ -12,8 +12,8 @@
     <label #annTitle("Add the &group.field parameter. Multiselect is supported")>
       Group By:
       <select id="group" name="group.field" multiple="true">
-        ## TODO: Handle multiple selects correctly
-        ## TODO: fix empty / "No Group" selection
+        ## TODO: Handle multiple selects correctly id:2412 gh:2413
+        ## TODO: fix empty / "No Group" selection id:2447 gh:2448
 
         <option value=""
           #if($groupF == '')selected="true"#end

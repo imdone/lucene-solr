@@ -162,7 +162,7 @@ public class SpellingQueryConverter extends QueryConverter  {
       try {
         analyze(result, word, startIndex, flagValue);
       } catch (IOException e) {
-        // TODO: shouldn't we log something?
+        // TODO: shouldn't we log something? id:2088 gh:2089
       }   
     }
     if(lastBooleanOp != null) {
@@ -176,7 +176,7 @@ public class SpellingQueryConverter extends QueryConverter  {
   
   protected void analyze(Collection<Token> result, String text, int offset, int flagsAttValue) throws IOException {
     TokenStream stream = analyzer.tokenStream("", text);
-    // TODO: support custom attributes
+    // TODO: support custom attributes id:2766 gh:2767
     CharTermAttribute termAtt = stream.addAttribute(CharTermAttribute.class);
     TypeAttribute typeAtt = stream.addAttribute(TypeAttribute.class);
     PayloadAttribute payloadAtt = stream.addAttribute(PayloadAttribute.class);

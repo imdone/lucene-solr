@@ -28,7 +28,7 @@ import org.apache.lucene.util.BytesRef;
 import org.apache.lucene.util.automaton.Transition;
 import org.apache.lucene.util.fst.FST;
 
-// TODO: can we share this with the frame in STE?
+// TODO: can we share this with the frame in STE? id:248 gh:249
 final class OrdsIntersectTermsEnumFrame {
   final int ord;
   long fp;
@@ -228,7 +228,7 @@ final class OrdsIntersectTermsEnumFrame {
     }
   }
 
-  // TODO: maybe add scanToLabel; should give perf boost
+  // TODO: maybe add scanToLabel; should give perf boost id:367 gh:368
 
   public boolean next() {
     return isLeafBlock ? nextLeaf() : nextNonLeaf();
@@ -277,16 +277,16 @@ final class OrdsIntersectTermsEnumFrame {
     boolean absolute = metaDataUpto == 0;
     assert limit > 0;
 
-    // TODO: better API would be "jump straight to term=N"???
+    // TODO: better API would be "jump straight to term=N"??? id:252 gh:253
     while (metaDataUpto < limit) {
 
-      // TODO: we could make "tiers" of metadata, ie,
+      // TODO: we could make "tiers" of metadata, ie, id:269 gh:270
       // decode docFreq/totalTF but don't decode postings
       // metadata; this way caller could get
       // docFreq/totalTF w/o paying decode cost for
       // postings
 
-      // TODO: if docFreq were bulk decoded we could
+      // TODO: if docFreq were bulk decoded we could id:274 gh:275
       // just skipN here:
 
       // stats

@@ -61,7 +61,7 @@ def unshortenURL(url):
       return response.getheader('Location')
   return url  
 
-# TODO
+# TODO id:9 gh:10
 #   + verify KEYS contains key that signed the release
 #   + make sure changes HTML looks ok
 #   - verify license/notice of all dep jars
@@ -210,7 +210,7 @@ def checkJARMetaData(desc, jarFile, gitRevision, version):
 
     if gitRevision != 'skip':
       # Make sure this matches the version and git revision we think we are releasing:
-      # TODO: LUCENE-7023: is it OK that Implementation-Version's value now spans two lines?
+      # TODO: LUCENE-7023: is it OK that Implementation-Version's value now spans two lines? id:83 gh:84
       verifyRevision = 'Implementation-Version: %s %s' % (version, gitRevision)
       if s.find(verifyRevision) == -1:
         raise RuntimeError('%s is missing "%s" inside its META-INF/MANIFEST.MF (wrong git revision?)' % \
@@ -421,7 +421,7 @@ def testChangesText(dir, version, project):
   "Checks all CHANGES.txt under this dir."
   for root, dirs, files in os.walk(dir):
 
-    # NOTE: O(N) but N should be smallish:
+    # NOTE: O(N) but N should be smallish: id:43 gh:44
     if 'CHANGES.txt' in files:
       fullPath = '%s/CHANGES.txt' % root
       #print 'CHECK %s' % fullPath
@@ -665,7 +665,7 @@ def verifyUnpacked(java, project, artifact, unpackPath, gitRevision, version, te
       SOLR_LICENSE = open('%s/LICENSE.txt' % unpackPath, encoding='UTF-8').read()
 
   if not isSrc:
-    # TODO: we should add verifyModule/verifySubmodule (e.g. analysis) here and recurse through
+    # TODO: we should add verifyModule/verifySubmodule (e.g. analysis) here and recurse through id:10 gh:11
     if project == 'lucene':
       expectedJARs = ()
     else:
@@ -678,14 +678,14 @@ def verifyUnpacked(java, project, artifact, unpackPath, gitRevision, version, te
       l.remove(fileName)
 
   if project == 'lucene':
-    # TODO: clean this up to not be a list of modules that we must maintain
+    # TODO: clean this up to not be a list of modules that we must maintain id:11 gh:12
     extras = ('analysis', 'backward-codecs', 'benchmark', 'classification', 'codecs', 'core', 'demo', 'docs', 'expressions', 'facet', 'grouping', 'highlighter', 'join', 'memory', 'misc', 'queries', 'queryparser', 'replicator', 'sandbox', 'spatial', 'spatial-extras', 'spatial3d', 'suggest', 'test-framework', 'licenses')
     if isSrc:
       extras += ('build.xml', 'common-build.xml', 'module-build.xml', 'top-level-ivy-settings.xml', 'default-nested-ivy-settings.xml', 'ivy-versions.properties', 'ivy-ignore-conflicts.properties', 'version.properties', 'tools', 'site')
   else:
     extras = ()
 
-  # TODO: if solr, verify lucene/licenses, solr/licenses are present
+  # TODO: if solr, verify lucene/licenses, solr/licenses are present id:12 gh:13
 
   for e in extras:
     if e not in l:
@@ -970,7 +970,7 @@ def checkMaven(solrSrcUnpackPath, baseURL, tmpDir, gitRevision, version, isSigne
   checkAllJARs('%s/maven/org/apache/solr' % tmpDir, 'solr', gitRevision, version, tmpDir, baseURL)
 
 def getBinaryDistFilesForMavenChecks(tmpDir, version, baseURL):
-  # TODO: refactor distribution unpacking so that it only happens once per distribution per smoker run
+  # TODO: refactor distribution unpacking so that it only happens once per distribution per smoker run id:88 gh:89
   distFiles = defaultdict()
   for project in ('lucene', 'solr'):
     distFiles[project] = getBinaryDistFiles(project, tmpDir, version, baseURL)

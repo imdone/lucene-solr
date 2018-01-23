@@ -204,7 +204,7 @@ public class SolrException extends RuntimeException {
     if (t != null && t instanceof AssertionError) return null;
 
     for (String regex : ignorePatterns) {
-      Pattern pattern = Pattern.compile(regex); // TODO why do we compile late; why not up-front?
+      Pattern pattern = Pattern.compile(regex); // TODO why do we compile late; why not up-front? id:2452 gh:2453
       Matcher matcher = pattern.matcher(m);
       
       if (matcher.find()) return "Ignoring exception matching " + regex;

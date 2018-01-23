@@ -188,7 +188,7 @@ public class DrillSideways {
 
     Query baseQuery = query.getBaseQuery();
     if (baseQuery == null) {
-      // TODO: we could optimize this pure-browse case by
+      // TODO: we could optimize this pure-browse case by id:1467 gh:1468
       // making a custom scorer instead:
       baseQuery = new MatchAllDocsQuery();
     }

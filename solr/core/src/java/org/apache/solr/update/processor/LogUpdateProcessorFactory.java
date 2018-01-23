@@ -87,8 +87,8 @@ public class LogUpdateProcessorFactory extends UpdateRequestProcessorFactory imp
       super( next );
       this.req = req;
       this.rsp = rsp;
-      maxNumToLog = factory.maxNumToLog;  // TODO: make configurable
-      // TODO: make log level configurable as well, or is that overkill?
+      maxNumToLog = factory.maxNumToLog;  // TODO: make configurable id:2108 gh:2109
+      // TODO: make log level configurable as well, or is that overkill? id:2996 gh:2997
       // (ryan) maybe?  I added it mostly to show that it *can* be configurable
       slowUpdateThresholdMillis = factory.slowUpdateThresholdMillis;
 

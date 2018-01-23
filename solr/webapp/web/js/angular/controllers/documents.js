@@ -29,7 +29,7 @@ solrAdminApp.controller('DocumentsController',
 
         $scope.refresh = function () {
             Luke.schema({core: $routeParams.core}, function(data) {
-                //TODO: handle dynamic fields
+                //TODO: handle dynamic fields id:2485 gh:2485
                 delete data.schema.fields._version_;
                 $scope.fields = Object.keys(data.schema.fields);
             });

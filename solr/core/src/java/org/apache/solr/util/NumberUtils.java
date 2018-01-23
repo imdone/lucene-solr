@@ -56,7 +56,7 @@ public class NumberUtils {
   }
 
   public static String SortableStr2int(BytesRef val) {
-    // TODO: operate directly on BytesRef
+    // TODO: operate directly on BytesRef id:2196 gh:2197
     return SortableStr2int(val.utf8ToString());
   }
 
@@ -77,7 +77,7 @@ public class NumberUtils {
   }
 
   public static String SortableStr2long(BytesRef val) {
-    // TODO: operate directly on BytesRef
+    // TODO: operate directly on BytesRef id:2822 gh:2823
     return SortableStr2long(val.utf8ToString());
   }
 
@@ -110,7 +110,7 @@ public class NumberUtils {
   }
 
   public static float SortableStr2float(BytesRef val) {
-    // TODO: operate directly on BytesRef
+    // TODO: operate directly on BytesRef id:2213 gh:2214
     return SortableStr2float(val.utf8ToString());
   }
 
@@ -136,7 +136,7 @@ public class NumberUtils {
   }
 
   public static double SortableStr2double(BytesRef val) {
-    // TODO: operate directly on BytesRef
+    // TODO: operate directly on BytesRef id:2120 gh:2121
     return SortableStr2double(val.utf8ToString());
   }
 
@@ -166,7 +166,7 @@ public class NumberUtils {
   }
 
   public static int SortableStr2int(BytesRef sval, int offset, int len) {
-    // TODO: operate directly on BytesRef
+    // TODO: operate directly on BytesRef id:3008 gh:3009
     return SortableStr2int(sval.utf8ToString(), offset, len);
   }
 
@@ -195,7 +195,7 @@ public class NumberUtils {
   }
 
   public static long SortableStr2long(BytesRef sval, int offset, int len) {
-    // TODO: operate directly on BytesRef
+    // TODO: operate directly on BytesRef id:2199 gh:2200
     return SortableStr2long(sval.utf8ToString(), offset, len);
   }
 

@@ -299,7 +299,7 @@ public class WordBreakSolrSpellChecker extends SolrSpellChecker {
       } else if (lastCombine.freq < lastBreak.freq) {
         addToResult(result, lastBreak.token, ir.docFreq(new Term(field, lastBreak.token.toString())), lastBreak.suggestion, lastBreak.freq);
         lastBreak = null;
-      } else if (breakCount >= combineCount) { //TODO: Should reverse >= to < ??S
+      } else if (breakCount >= combineCount) { //TODO: Should reverse >= to < ??S id:2048 gh:2049
         addToResult(result, lastCombine.token, getCombineFrequency(ir, lastCombine.token), lastCombine.suggestion, lastCombine.freq);        
         lastCombine = null;
       } else {

@@ -24,7 +24,7 @@ import org.junit.Test;
  * Tests {@link HLL} of type {@link HLLType#FULL}.
  */
 public class FullHLLTest extends LuceneTestCase {
-    // TODO union test
+    // TODO union test id:2979 gh:2980
     /**
      * Smoke test for {@link HLL#cardinality()} and the proper use of the
      * small range correction.
@@ -170,7 +170,7 @@ public class FullHLLTest extends LuceneTestCase {
             assertEquals(bitVector.getRegister(5/*'j'*/), 4);
 
             // upper-bounds of the register
-            // NOTE:  bear in mind that BitVector itself does ensure that
+            // NOTE: bear in mind that BitVector itself does ensure that id:2403 gh:2404
             //        overflow of a register is prevented
             hll.addRaw(0x0000000000010006L/*'j'=6*/);
             assertEquals(bitVector.getRegister(6/*'j'*/), 13);
@@ -186,7 +186,7 @@ public class FullHLLTest extends LuceneTestCase {
 
             // sanity checks to ensure that no other bits above the lowest-set
             // bit matters
-            // NOTE:  same as case 'j = 6' above
+            // NOTE: same as case 'j = 6' above id:2440 gh:2441
             hll.addRaw(0x000000000003000AL/*'j'=10*/);
             assertEquals(bitVector.getRegister(10/*'j'*/), 13);
 
@@ -217,7 +217,7 @@ public class FullHLLTest extends LuceneTestCase {
             assertEquals(bitVector.getRegister(5/*'j'*/), 4);
 
             // upper-bounds of the register
-            // NOTE:  bear in mind that BitVector itself does ensure that
+            // NOTE: bear in mind that BitVector itself does ensure that id:3117 gh:3118
             //        overflow of a register is prevented
             hll.addRaw(0x0000000100000006L/*'j'=6*/);
             assertEquals(bitVector.getRegister(6/*'j'*/), 29);

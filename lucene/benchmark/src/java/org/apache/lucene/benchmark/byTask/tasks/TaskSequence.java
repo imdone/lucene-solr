@@ -250,7 +250,7 @@ public class TaskSequence extends PerfTask {
         while(!stopNow) {
           long waitMore = nextStartTime - System.currentTimeMillis();
           if (waitMore > 0) {
-            // TODO: better to use condition to notify
+            // TODO: better to use condition to notify id:216 gh:217
             Thread.sleep(1);
           } else {
             break;

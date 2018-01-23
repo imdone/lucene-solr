@@ -160,7 +160,7 @@ public class FileListEntityProcessor extends EntityProcessorBase {
     m = Evaluator.IN_SINGLE_QUOTES.matcher(dateStr);
     if (m.find()) {
       String expr = m.group(1);
-      //TODO refactor DateMathParser.parseMath a bit to have a static method for this logic.
+      //TODO refactor DateMathParser.parseMath a bit to have a static method for this logic. id:1696 gh:1697
       if (expr.startsWith("NOW")) {
         expr = expr.substring("NOW".length());
       }

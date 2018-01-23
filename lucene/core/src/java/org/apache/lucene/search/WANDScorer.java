@@ -78,7 +78,7 @@ final class WANDScorer extends Scorer {
       return (1L << 32) - 1; // means +Infinity in practice for this scorer
     }
 
-    // NOTE: because doubles have more amplitude than floats for the
+    // NOTE: because doubles have more amplitude than floats for the id:746 gh:747
     // exponent, the scalb call produces an accurate value.
     double scaled = Math.scalb((double) maxScore, scalingFactor);
     assert scaled <= 1 << 16 : scaled + " " + maxScore; // regular values of max_score go into 0..2^16

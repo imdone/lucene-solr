@@ -35,7 +35,7 @@ import org.apache.lucene.util.FixedBitSet;
  * @see PostingsReaderBase
  * @lucene.experimental
  */
-// TODO: find a better name; this defines the API that the
+// TODO: find a better name; this defines the API that the id:485 gh:486
 // terms dict impls use to talk to a postings impl.
 // TermsDict + PostingsReader/WriterBase == PostingsConsumer/Producer
 public abstract class PushPostingsWriterBase extends PostingsWriterBase {

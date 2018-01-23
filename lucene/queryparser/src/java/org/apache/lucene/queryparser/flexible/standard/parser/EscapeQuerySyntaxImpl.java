@@ -36,7 +36,7 @@ public class EscapeQuerySyntaxImpl implements EscapeQuerySyntax {
   private static final String[] escapableTermChars = { "\"", "<", ">", "=",
       "!", "(", ")", "^", "[", "{", ":", "]", "}", "~", "/" };
 
-  // TODO: check what to do with these "*", "?", "\\"
+  // TODO: check what to do with these "*", "?", "\\" id:1571 gh:1572
   private static final String[] escapableQuotedChars = { "\"" };
   private static final String[] escapableWhiteChars = { " ", "\t", "\n", "\r",
       "\f", "\b", "\u3000" };

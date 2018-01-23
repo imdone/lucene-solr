@@ -145,7 +145,7 @@ public class SpanTermQuery extends SpanQuery {
    *  <p>
    *  This is a copy of org.apache.lucene.search.PhraseQuery.termPositionsCost().
    *  <br>
-   *  TODO: keep only a single copy of this method and the constants used in it
+   *  TODO: keep only a single copy of this method and the constants used in it id:750 gh:751
    *  when SpanTermQuery moves to the o.a.l.search package.
    */
   static float termPositionsCost(TermsEnum termsEnum) throws IOException {

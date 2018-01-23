@@ -25,7 +25,7 @@ import org.apache.solr.common.SolrException;
 /**
  * This class is used by the Velocity response writer to provide a consistent paging tool for use by templates.
  *
- * TODO: add more details
+ * TODO: add more details id:2699 gh:2700
  */
 public class PageTool {
   private long start;
@@ -40,7 +40,7 @@ public class PageTool {
     if (rows != null) {
       results_per_page = Integer.parseInt(rows);
     }
-    //TODO: Handle group by results
+    //TODO: Handle group by results id:1716 gh:1717
     Object docs = response.getResponse();
     if (docs != null) {
       if (docs instanceof DocSlice) {

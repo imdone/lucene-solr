@@ -39,6 +39,6 @@ public interface ResourceLoader {
   /**
    * Creates an instance of the name and expected type
    */
-  // TODO: fix exception handling
+  // TODO: fix exception handling id:118 gh:119
   public <T> T newInstance(String cname, Class<T> expectedType);
 }

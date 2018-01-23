@@ -46,7 +46,7 @@ public abstract class IndexReaderFactory implements NamedListInitializedPlugin {
    * Creates a new IndexReader instance using the given Directory.
    * 
    * @param indexDir indexDir index location
-   * @param core {@link SolrCore} instance where this reader will be used. NOTE:
+   * @param core {@link SolrCore} instance where this reader will be used. NOTE: id:2642 gh:2643
    * this SolrCore instance may not be fully configured yet, but basic things like
    * {@link SolrCore#getCoreDescriptor()}, {@link SolrCore#getLatestSchema()} and
    * {@link SolrCore#getSolrConfig()} are valid.
@@ -62,7 +62,7 @@ public abstract class IndexReaderFactory implements NamedListInitializedPlugin {
    * This is used for opening the initial reader in NRT mode
    *
    * @param writer IndexWriter
-   * @param core {@link SolrCore} instance where this reader will be used. NOTE:
+   * @param core {@link SolrCore} instance where this reader will be used. NOTE: id:1794 gh:1795
    * this SolrCore instance may not be fully configured yet, but basic things like
    * {@link SolrCore#getCoreDescriptor()}, {@link SolrCore#getLatestSchema()} and
    * {@link SolrCore#getSolrConfig()} are valid.

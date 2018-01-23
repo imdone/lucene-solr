@@ -42,7 +42,7 @@ public class HealthCheckRequest extends SolrRequest<HealthCheckResponse> {
 
   @Override
   protected HealthCheckResponse createResponse(SolrClient client) {
-    // TODO: Accept requests w/ CloudSolrClient while ensuring that the request doesn't get routed to
+    // TODO: Accept requests w/ CloudSolrClient while ensuring that the request doesn't get routed to id:2997 gh:2998
     // an unintended recepient.
     assert client instanceof HttpSolrClient;
     return new HealthCheckResponse();

@@ -42,8 +42,8 @@ import org.junit.Test;
  */
 public class DistributedFacetSimpleRefinementLongTailTest extends BaseDistributedSearchTestCase {
 
-  // TODO: SOLR-11695: need "num_values" and "missing"...
-  // TODO: add hll & variance - update all assertions to test their values (right after any mention of 'stddev')
+  // TODO: SOLR-11695: need "num_values" and "missing"... id:3103 gh:3104
+  // TODO: add hll & variance - update all assertions to test their values (right after any mention of 'stddev') id:2365 gh:2366
   private static List<String> ALL_STATS = Arrays.asList("min", "max", "sum", "stddev", "avg", "sumsq", "unique");
                                                         
   private String STAT_FIELD = "stat_i1";
@@ -53,7 +53,7 @@ public class DistributedFacetSimpleRefinementLongTailTest extends BaseDistribute
     // we need DVs on point fields to compute stats & facets
     if (Boolean.getBoolean(NUMERIC_POINTS_SYSPROP)) System.setProperty(NUMERIC_DOCVALUES_SYSPROP,"true");
 
-    // TODO: randomizing STAT_FIELD to be multiValued=true blocked by SOLR-11706
+    // TODO: randomizing STAT_FIELD to be multiValued=true blocked by SOLR-11706 id:2956 gh:2957
     // STAT_FIELD = random().nextBoolean() ? "stat_i1" : "stat_i";
 
     for (String stat : ALL_STATS) {
@@ -117,14 +117,14 @@ public class DistributedFacetSimpleRefinementLongTailTest extends BaseDistribute
 
       // shard2's top 5 sub-pivot terms are junk only it has with 8 docs each
       // and 5 docs that use "tailB"
-      // NOTE: none of these get statField ! !
+      // NOTE: none of these get statField ! ! id:2367 gh:2368
       sub_term = (i < 40) ? "junkB"+(i % 5) : "tailB";
       shard2.add(sdoc("id", docNum.incrementAndGet(), "foo_s", "tail", "bar_s", sub_term));
     }
 
     // really long tail uncommon foo_s terms on shard2
     for (int i = 0; i < 30; i++) {
-      // NOTE: using "Z" here so these sort before bbb0 when they tie for '1' instance each on shard2
+      // NOTE: using "Z" here so these sort before bbb0 when they tie for '1' instance each on shard2 id:2401 gh:2402
       shard2.add(sdoc("id", docNum.incrementAndGet(), "foo_s", "ZZZ"+i));
     }
 
@@ -230,8 +230,8 @@ public class DistributedFacetSimpleRefinementLongTailTest extends BaseDistribute
       assertEquals(ALL_STATS.size() + 3, bucket.size()); // val,count,facet
       assertEquals(-2L, bucket.get("min"));                                         // this min only exists on shard2
       assertEquals(1L, bucket.get("max"));
-      // assertEquals(101L, bucket.get("num_values")); // TODO: SOLR-11695
-      // assertEquals(0L, bucket.get("missing")); // TODO: SOLR-11695
+      // assertEquals(101L, bucket.get("num_values")); // TODO: SOLR-11695 id:3104 gh:3105
+      // assertEquals(0L, bucket.get("missing")); // TODO: SOLR-11695 id:2368 gh:2369
       assertEquals(48.0D, bucket.get("sum"));
       assertEquals(0.475247524752475D, (double) bucket.get("avg"), 0.1E-7);
       assertEquals(54.0D, (double) bucket.get("sumsq"), 0.1E-7);
@@ -386,8 +386,8 @@ public class DistributedFacetSimpleRefinementLongTailTest extends BaseDistribute
     assertEquals(300L, aaa0_Bucket.get("count"));
     assertEquals(-99L, aaa0_Bucket.get("min"));
     assertEquals(693L, aaa0_Bucket.get("max"));
-    // assertEquals(300L, aaa0_Bucket.get("num_values")); // TODO: SOLR-11695
-    // assertEquals(0L, aaa0_Bucket.get("missing")); // TODO: SOLR-11695
+    // assertEquals(300L, aaa0_Bucket.get("num_values")); // TODO: SOLR-11695 id:2958 gh:2959
+    // assertEquals(0L, aaa0_Bucket.get("missing")); // TODO: SOLR-11695 id:2369 gh:2370
     assertEquals(34650.0D, aaa0_Bucket.get("sum"));
     assertEquals(115.5D, (double) aaa0_Bucket.get("avg"), 0.1E-7);
     assertEquals(1.674585E7D, (double) aaa0_Bucket.get("sumsq"), 0.1E-7);
@@ -400,8 +400,8 @@ public class DistributedFacetSimpleRefinementLongTailTest extends BaseDistribute
     assertEquals(135L, tail_Bucket.get("count"));
     assertEquals(0L, tail_Bucket.get("min"));
     assertEquals(44L, tail_Bucket.get("max"));
-    // assertEquals(90L, tail_Bucket.get("num_values")); // TODO: SOLR-11695
-    // assertEquals(45L, tail_Bucket.get("missing")); // TODO: SOLR-11695
+    // assertEquals(90L, tail_Bucket.get("num_values")); // TODO: SOLR-11695 id:2405 gh:2406
+    // assertEquals(45L, tail_Bucket.get("missing")); // TODO: SOLR-11695 id:3105 gh:3106
     assertEquals(1980.0D, tail_Bucket.get("sum"));
     assertEquals(22.0D, (double) tail_Bucket.get("avg"), 0.1E-7);
     assertEquals(58740.0D, (double) tail_Bucket.get("sumsq"), 0.1E-7);

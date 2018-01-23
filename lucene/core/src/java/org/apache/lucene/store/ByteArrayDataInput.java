@@ -47,7 +47,7 @@ public final class ByteArrayDataInput extends DataInput {
     reset(bytes, 0, bytes.length);
   }
 
-  // NOTE: sets pos to 0, which is not right if you had
+  // NOTE: sets pos to 0, which is not right if you had id:651 gh:652
   // called reset w/ non-zero offset!!
   public void rewind() {
     pos = 0;
@@ -153,13 +153,13 @@ public final class ByteArrayDataInput extends DataInput {
     throw new RuntimeException("Invalid vLong detected (negative values disallowed)");
   }
 
-  // NOTE: AIOOBE not EOF if you read too much
+  // NOTE: AIOOBE not EOF if you read too much id:677 gh:678
   @Override
   public byte readByte() {
     return bytes[pos++];
   }
 
-  // NOTE: AIOOBE not EOF if you read too much
+  // NOTE: AIOOBE not EOF if you read too much id:600 gh:601
   @Override
   public void readBytes(byte[] b, int offset, int len) {
     System.arraycopy(bytes, pos, b, offset, len);

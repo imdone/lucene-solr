@@ -92,7 +92,7 @@ public class CompositeStrategyTest extends RandomSpatialOpStrategyTestCase {
       if (pred == SpatialOperation.BBoxIntersects || pred == SpatialOperation.BBoxWithin) {
         continue;
       }
-      if (pred == SpatialOperation.IsDisjointTo) {//TODO
+      if (pred == SpatialOperation.IsDisjointTo) {//TODO id:1209 gh:1210
         continue;
       }
       testOperationRandomShapes(pred);
@@ -115,10 +115,10 @@ public class CompositeStrategyTest extends RandomSpatialOpStrategyTestCase {
     return random().nextBoolean() ? randomCircle() : randomRectangle();
   }
 
-  //TODO move up
+  //TODO move up id:1509 gh:1510
   private Shape randomCircle() {
     final Point point = randomPoint();
-    //TODO pick using gaussian
+    //TODO pick using gaussian id:1678 gh:1679
     double radius;
     if (ctx.isGeo()) {
       radius = randomDouble() * 100;

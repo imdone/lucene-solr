@@ -55,7 +55,7 @@ public class PKIAuthenticationIntegrationTest extends SolrCloudTestCase {
 
     CollectionAdminRequest.createCollection("collection", "conf", 2, 1).process(cluster.getSolrClient());
 
-    // TODO make a SolrJ helper class for this
+    // TODO make a SolrJ helper class for this id:2413 gh:2414
     byte[] bytes = Utils.toJSON(makeMap("authorization", singletonMap("class", MockAuthorizationPlugin.class.getName()),
         "authentication", singletonMap("class", MockAuthenticationPlugin.class.getName())));
     zkClient().setData(ZkStateReader.SOLR_SECURITY_CONF_PATH, bytes, true);

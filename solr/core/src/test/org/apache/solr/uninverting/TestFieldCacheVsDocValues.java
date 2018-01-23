@@ -218,7 +218,7 @@ public class TestFieldCacheVsDocValues extends LuceneTestCase {
 
   private static final int LARGE_BINARY_FIELD_LENGTH = (1 << 15) - 2;
 
-  // TODO: get this out of here and into the deprecated codecs (4.0, 4.2)
+  // TODO: get this out of here and into the deprecated codecs (4.0, 4.2) id:2420 gh:2421
   public void testHugeBinaryValueLimit() throws Exception {
     // We only test DVFormats that have a limit
     assumeFalse("test requires codec with limits on max binary field length", codecAcceptsHugeBinaryValues("field"));

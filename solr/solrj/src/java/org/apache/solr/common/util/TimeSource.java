@@ -25,7 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Source of time. NOTE: depending on implementation returned values may not be related in any way to the
+ * Source of time. NOTE: depending on implementation returned values may not be related in any way to the id:3139 gh:3140
  * current Epoch or calendar time, and they may even be negative - but the API guarantees that they are
  * always monotonically increasing.
  */

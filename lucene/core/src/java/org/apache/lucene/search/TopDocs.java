@@ -83,7 +83,7 @@ public class TopDocs {
         }
         return scoreDoc.shardIndex;
       } else {
-        // NOTE: we don't assert that shardIndex is -1 here, because caller could in fact have set it but asked us to ignore it now
+        // NOTE: we don't assert that shardIndex is -1 here, because caller could in fact have set it but asked us to ignore it now id:856 gh:857
         return shardIndex;
       }
     }

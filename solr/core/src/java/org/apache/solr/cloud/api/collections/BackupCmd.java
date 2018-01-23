@@ -118,9 +118,9 @@ public class BackupCmd implements OverseerCollectionMessageHandler.Cmd {
     properties.put(OverseerCollectionMessageHandler.COLL_CONF, configName);
     properties.put(BackupManager.START_TIME_PROP, startTime.toString());
     properties.put(BackupManager.INDEX_VERSION_PROP, Version.LATEST.toString());
-    //TODO: Add MD5 of the configset. If during restore the same name configset exists then we can compare checksums to see if they are the same.
+    //TODO: Add MD5 of the configset. If during restore the same name configset exists then we can compare checksums to see if they are the same. id:1758 gh:1759
     //if they are not the same then we can throw an error or have an 'overwriteConfig' flag
-    //TODO save numDocs for the shardLeader. We can use it to sanity check the restore.
+    //TODO save numDocs for the shardLeader. We can use it to sanity check the restore. id:2732 gh:2733
 
     backupMgr.writeBackupProperties(location, backupName, properties);
 

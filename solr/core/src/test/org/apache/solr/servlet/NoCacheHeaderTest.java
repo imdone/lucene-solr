@@ -30,7 +30,7 @@ import org.junit.Test;
  * A test case for the several HTTP cache headers emitted by Solr
  */
 public class NoCacheHeaderTest extends CacheHeaderTestBase {
-  // TODO: fix this test not to directly use the test-files copied to build/
+  // TODO: fix this test not to directly use the test-files copied to build/ id:3108 gh:3107
   // as its home. it could interfere with other tests!
   @BeforeClass
   public static void beforeTest() throws Exception {

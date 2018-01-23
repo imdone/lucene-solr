@@ -26,7 +26,7 @@ public class QueryResult {
   private DocListAndSet docListAndSet;
   private CursorMark nextCursorMark;
   
-  public Object groupedResults; // TODO: currently for testing
+  public Object groupedResults; // TODO: currently for testing id:1927 gh:1928
   
   public DocList getDocList() {
     return docListAndSet.docList;

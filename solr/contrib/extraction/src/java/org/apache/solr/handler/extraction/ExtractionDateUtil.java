@@ -151,7 +151,7 @@ public class ExtractionDateUtil {
       dateValue = dateValue.substring(1, dateValue.length() - 1);
     }
 
-    //TODO upgrade to Java 8 DateTimeFormatter. But how to deal with the GMT as a default?
+    //TODO upgrade to Java 8 DateTimeFormatter. But how to deal with the GMT as a default? id:1731 gh:1732
     SimpleDateFormat dateParser = null;
     Iterator formatIter = dateFormats.iterator();
 

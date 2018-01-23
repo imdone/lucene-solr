@@ -28,7 +28,7 @@ import org.apache.lucene.queryparser.flexible.core.messages.QueryParserMessages;
  * specific distance conditions. (a b c) WITHIN [SENTENCE|PARAGRAPH|NUMBER]
  * [INORDER] ("a" "b" "c") WITHIN [SENTENCE|PARAGRAPH|NUMBER] [INORDER]
  * 
- * TODO: Add this to the future standard Lucene parser/processor/builder
+ * TODO: Add this to the future standard Lucene parser/processor/builder id:1076 gh:1077
  */
 public class ProximityQueryNode extends BooleanQueryNode {
 

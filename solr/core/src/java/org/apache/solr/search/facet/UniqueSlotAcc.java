@@ -102,8 +102,8 @@ abstract class UniqueSlotAcc extends SlotAcc {
     map.add("nTerms", nTerms);
 
     int maxExplicit=100;
-    // TODO: make configurable
-    // TODO: share values across buckets
+    // TODO: make configurable id:2111 gh:2112
+    // TODO: share values across buckets id:2032 gh:2033
     if (unique > 0) {
 
       List lst = new ArrayList( Math.min(unique, maxExplicit) );
@@ -139,7 +139,7 @@ abstract class UniqueSlotAcc extends SlotAcc {
 
   @Override
   public int compare(int slotA, int slotB) {
-    if (counts == null) {  // TODO: a more efficient way to do this?  prepareSort?
+    if (counts == null) {  // TODO: a more efficient way to do this?  prepareSort? id:2923 gh:2924
       calcCounts();
     }
     return counts[slotA] - counts[slotB];

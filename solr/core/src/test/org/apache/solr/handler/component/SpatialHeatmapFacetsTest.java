@@ -72,7 +72,7 @@ public class SpatialHeatmapFacetsTest extends BaseDistributedSearchTestCase {
     assertEquals(7, getHmObj(query(params(baseParams, FacetParams.FACET_HEATMAP_GEOM, testBox))).get("gridLevel"));//default
     assertEquals(3, getHmObj(query(params(baseParams, FacetParams.FACET_HEATMAP_GEOM, testBox, FacetParams.FACET_HEATMAP_LEVEL, "3"))).get("gridLevel"));
     assertEquals(2, getHmObj(query(params(baseParams, FacetParams.FACET_HEATMAP_GEOM, testBox, FacetParams.FACET_HEATMAP_DIST_ERR, "100"))).get("gridLevel"));
-    //TODO test impact of distance units
+    //TODO test impact of distance units id:2270 gh:2271
     assertEquals(9, getHmObj(query(params(baseParams, FacetParams.FACET_HEATMAP_GEOM, testBox, FacetParams.FACET_HEATMAP_DIST_ERR_PCT, "0.05"))).get("gridLevel"));
     assertEquals(6, getHmObj(query(params(baseParams, FacetParams.FACET_HEATMAP_DIST_ERR_PCT, "0.10"))).get("gridLevel"));
 

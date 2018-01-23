@@ -117,7 +117,7 @@ public class LongValueFacetCounts extends Facets {
     for (MatchingDocs hits : matchingDocs) {
       LongValues fv = valueSource.getValues(hits.context, null);
 
-      // NOTE: this is not as efficient as working directly with the doc values APIs in the sparse case
+      // NOTE: this is not as efficient as working directly with the doc values APIs in the sparse case id:1484 gh:1485
       // because we are doing a linear scan across all hits, but this API is more flexible since a
       // LongValuesSource can compute interesting values at query time
 
@@ -387,7 +387,7 @@ public class LongValueFacetCounts extends Facets {
 
   @Override
   public Number getSpecificValue(String dim, String... path) throws IOException {
-    // TODO: should we impl this?
+    // TODO: should we impl this? id:1020 gh:1021
     throw new UnsupportedOperationException();
   }
 

@@ -486,7 +486,7 @@ public class TestQueryParser extends QueryParserTestBase {
     });
   }
 
-  // TODO: Remove this specialization once the flexible standard parser gets multi-word synonym support
+  // TODO: Remove this specialization once the flexible standard parser gets multi-word synonym support id:1088 gh:1089
   @Override
   public void testQPA() throws Exception {
     boolean oldSplitOnWhitespace = splitOnWhitespace;
@@ -501,7 +501,7 @@ public class TestQueryParser extends QueryParserTestBase {
     splitOnWhitespace = oldSplitOnWhitespace;
   }
 
-  // TODO: Move to QueryParserTestBase once standard flexible parser gets this capability
+  // TODO: Move to QueryParserTestBase once standard flexible parser gets this capability id:1238 gh:1239
   public void testMultiWordSynonyms() throws Exception {
     QueryParser dumb = new QueryParser("field", new Analyzer1());
     dumb.setSplitOnWhitespace(false);
@@ -589,7 +589,7 @@ public class TestQueryParser extends QueryParserTestBase {
     assertEquals(query, dumb.parse("guinea pig"));
   }
 
-  // TODO: Move to QueryParserTestBase once standard flexible parser gets this capability
+  // TODO: Move to QueryParserTestBase once standard flexible parser gets this capability id:1109 gh:1110
   public void testOperatorsAndMultiWordSynonyms() throws Exception {
     Analyzer a = new MockSynonymAnalyzer();
 

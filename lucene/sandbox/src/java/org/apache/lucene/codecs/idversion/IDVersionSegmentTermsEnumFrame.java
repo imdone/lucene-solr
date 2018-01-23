@@ -156,7 +156,7 @@ final class IDVersionSegmentTermsEnumFrame {
     isLastInFloor = (code & 1) != 0;
     assert arc == null || (isLastInFloor || isFloor);
 
-    // TODO: if suffixes were stored in random-access
+    // TODO: if suffixes were stored in random-access id:1450 gh:1451
     // array structure, then we could do binary search
     // instead of linear scan to find target term; eg
     // we could have simple array of offsets
@@ -185,7 +185,7 @@ final class IDVersionSegmentTermsEnumFrame {
     nextEnt = 0;
     lastSubFP = -1;
 
-    // TODO: we could skip this if !hasTerms; but
+    // TODO: we could skip this if !hasTerms; but id:1611 gh:1612
     // that's rare so won't help much
     // metadata
     numBytes = ste.in.readVInt();
@@ -243,7 +243,7 @@ final class IDVersionSegmentTermsEnumFrame {
     statsReader.rewind();
     metaDataUpto = 0;
     state.termBlockOrd = 0;
-    // TODO: skip this if !hasTerms?  Then postings
+    // TODO: skip this if !hasTerms?  Then postings id:1124 gh:1125
     // impl wouldn't have to write useless 0 byte
     postingsReader.resetTermsBlock(fieldInfo, state);
     lastSubFP = -1;
@@ -300,7 +300,7 @@ final class IDVersionSegmentTermsEnumFrame {
     }
   }
         
-  // TODO: make this array'd so we can do bin search?
+  // TODO: make this array'd so we can do bin search? id:1258 gh:1260
   // likely not worth it?  need to measure how many
   // floor blocks we "typically" get
   public void scanToFloorFrame(BytesRef target) {
@@ -380,16 +380,16 @@ final class IDVersionSegmentTermsEnumFrame {
     final int limit = getTermBlockOrd();
     boolean absolute = metaDataUpto == 0;
 
-    // TODO: better API would be "jump straight to term=N"???
+    // TODO: better API would be "jump straight to term=N"??? id:1161 gh:1162
     while (metaDataUpto < limit) {
 
-      // TODO: we could make "tiers" of metadata, ie,
+      // TODO: we could make "tiers" of metadata, ie, id:1452 gh:1453
       // decode docFreq/totalTF but don't decode postings
       // metadata; this way caller could get
       // docFreq/totalTF w/o paying decode cost for
       // postings
 
-      // TODO: if docFreq were bulk decoded we could
+      // TODO: if docFreq were bulk decoded we could id:1615 gh:1616
       // just skipN here:
 
       // stats
@@ -420,7 +420,7 @@ final class IDVersionSegmentTermsEnumFrame {
   }
 
   // Scans to sub-block that has this target fp; only
-  // called by next(); NOTE: does not set
+  // called by next(); NOTE: does not set id:1128 gh:1129
   // startBytePos/suffix as a side effect
   public void scanToSubBlock(long subFP) {
     assert !isLeafBlock;
@@ -453,7 +453,7 @@ final class IDVersionSegmentTermsEnumFrame {
     }
   }
 
-  // NOTE: sets startBytePos/suffix as a side effect
+  // NOTE: sets startBytePos/suffix as a side effect id:1260 gh:1261
   public SeekStatus scanToTerm(BytesRef target, boolean exactOnly) throws IOException {
     return isLeafBlock ? scanToTermLeaf(target, exactOnly) : scanToTermNonLeaf(target, exactOnly);
   }
@@ -582,7 +582,7 @@ final class IDVersionSegmentTermsEnumFrame {
       fillTerm();
     }
 
-    // TODO: not consistent that in the
+    // TODO: not consistent that in the id:1163 gh:1164
     // not-exact case we don't next() into the next
     // frame here
     return SeekStatus.END;
@@ -715,7 +715,7 @@ final class IDVersionSegmentTermsEnumFrame {
       fillTerm();
     }
 
-    // TODO: not consistent that in the
+    // TODO: not consistent that in the id:1453 gh:1454
     // not-exact case we don't next() into the next
     // frame here
     return SeekStatus.END;

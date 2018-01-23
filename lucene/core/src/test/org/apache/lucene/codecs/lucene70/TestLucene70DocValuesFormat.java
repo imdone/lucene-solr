@@ -83,7 +83,7 @@ public class TestLucene70DocValuesFormat extends BaseCompressingDocValuesFormatT
     return codec;
   }
   
-  // TODO: these big methods can easily blow up some of the other ram-hungry codecs...
+  // TODO: these big methods can easily blow up some of the other ram-hungry codecs... id:1248 gh:1249
   // for now just keep them here, as we want to test this for this format.
   
   @Slow
@@ -279,7 +279,7 @@ public class TestLucene70DocValuesFormat extends BaseCompressingDocValuesFormatT
     dir.close();
   }
 
-  // TODO: try to refactor this and some termsenum tests into the base class.
+  // TODO: try to refactor this and some termsenum tests into the base class. id:782 gh:783
   // to do this we need to fix the test class to get a DVF not a Codec so we can setup
   // the postings format correctly.
   private void doTestTermsEnumRandom(int numDocs, Supplier<String> valuesProducer) throws Exception {

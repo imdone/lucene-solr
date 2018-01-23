@@ -67,7 +67,7 @@ public class TestRecovery extends SolrTestCaseJ4 {
 
   private static int timeout=60;  // acquire timeout in seconds.  change this to a huge number when debugging to prevent threads from advancing.
 
-  // TODO: fix this test to not require FSDirectory
+  // TODO: fix this test to not require FSDirectory id:2383 gh:2384
   static String savedFactory;
 
 
@@ -749,7 +749,7 @@ public class TestRecovery extends SolrTestCaseJ4 {
       assertTrue(ulog.dropBufferedUpdates());
 
       // make sure we can overwrite with a lower version
-      // TODO: is this functionality needed?
+      // TODO: is this functionality needed? id:3098 gh:3099
       updateJ(jsonAdd(sdoc("id","C301", "_version_",v301)), params(DISTRIB_UPDATE_PARAM,FROM_LEADER));
       updateJ(jsonAdd(sdoc("id","C302", "_version_",v302)), params(DISTRIB_UPDATE_PARAM,FROM_LEADER));
 
@@ -1581,7 +1581,7 @@ public class TestRecovery extends SolrTestCaseJ4 {
 
   }
 
-  // NOTE: replacement must currently be same size
+  // NOTE: replacement must currently be same size id:2354 gh:2355
   private static void findReplace(byte[] from, byte[] to, byte[] data) {
     int idx = -from.length;
     for(;;) {

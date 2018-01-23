@@ -448,7 +448,7 @@ public class TestHarness extends BaseTestHarness {
      *   </li>
      * </ul>
      *
-     * TODO: this isn't really safe in the presense of core reloads!
+     * TODO: this isn't really safe in the presense of core reloads! id:3035 gh:3036
      * Perhaps the best we could do is increment the core reference count
      * and decrement it in the request close() method?
      */

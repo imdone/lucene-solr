@@ -677,7 +677,7 @@ public class FacetComponent extends SearchComponent {
   }
   
   private int doOverRequestMath(int limit, double ratio, int count) {
-    // NOTE: normally, "1.0F < ratio"
+    // NOTE: normally, "1.0F < ratio" id:1929 gh:1930
     //
     // if the user chooses a ratio < 1, we allow it and don't "bottom out" at
     // the original limit until *after* we've also added the count.
@@ -809,7 +809,7 @@ public class FacetComponent extends SearchComponent {
             }
           }
           if (maxCount >= smallestCount) {
-            // TODO: on a tie, we could check the term values
+            // TODO: on a tie, we could check the term values id:1816 gh:1817
             needRefinement = true;
           }
         }
@@ -1098,7 +1098,7 @@ public class FacetComponent extends SearchComponent {
         }
       } else if (dff.sort.equals(FacetParams.FACET_SORT_INDEX)) {
         counts = dff.getLexSorted();
-      } else { // TODO: log error or throw exception?
+      } else { // TODO: log error or throw exception? id:2773 gh:2774
         counts = dff.getLexSorted();
       }
       
@@ -1516,7 +1516,7 @@ public class FacetComponent extends SearchComponent {
     // (assumes the shard did not report a count for this value)
     long maxPossible(int shardNum) {
       return missingMax[shardNum];
-      // TODO: could store the last term in the shard to tell if this term
+      // TODO: could store the last term in the shard to tell if this term id:1857 gh:1858
       // comes before or after it. If it comes before, we could subtract 1
     }
 

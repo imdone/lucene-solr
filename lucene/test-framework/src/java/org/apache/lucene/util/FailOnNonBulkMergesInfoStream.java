@@ -19,7 +19,7 @@ package org.apache.lucene.util;
 import java.io.IOException;
 
 /** Hackidy-Häck-Hack to cause a test to fail on non-bulk merges */
-// TODO: we should probably be a wrapper so verbose still works...
+// TODO: we should probably be a wrapper so verbose still works... id:1724 gh:1725
 public class FailOnNonBulkMergesInfoStream extends InfoStream {
 
   @Override

@@ -124,7 +124,7 @@ public abstract class Filter extends Query {
 
             @Override
             public float matchCost() {
-              return 10; // TODO use cost of bits.get()
+              return 10; // TODO use cost of bits.get() id:1915 gh:1916
             }
           };
           return new ConstantScoreScorer(this, 0f, twoPhase);

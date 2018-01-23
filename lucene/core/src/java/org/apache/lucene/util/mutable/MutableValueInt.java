@@ -70,7 +70,7 @@ public class MutableValueInt extends MutableValue {
   @Override
   public int hashCode() {
     assert exists || 0 == value;
-    // TODO: if used in HashMap, it already mixes the value... maybe use a straight value?
+    // TODO: if used in HashMap, it already mixes the value... maybe use a straight value? id:891 gh:892
     return (value>>8) + (value>>16);
   }
 }

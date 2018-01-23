@@ -53,10 +53,10 @@ final class DocumentsWriterPerThreadPool {
   @SuppressWarnings("serial")
   final static class ThreadState extends ReentrantLock {
     DocumentsWriterPerThread dwpt;
-    // TODO this should really be part of DocumentsWriterFlushControl
+    // TODO this should really be part of DocumentsWriterFlushControl id:408 gh:409
     // write access guarded by DocumentsWriterFlushControl
     volatile boolean flushPending = false;
-    // TODO this should really be part of DocumentsWriterFlushControl
+    // TODO this should really be part of DocumentsWriterFlushControl id:484 gh:485
     // write access guarded by DocumentsWriterFlushControl
     long bytesUsed = 0;
 
@@ -133,7 +133,7 @@ final class DocumentsWriterPerThreadPool {
    * Returns a new {@link ThreadState} iff any new state is available otherwise
    * <code>null</code>.
    * <p>
-   * NOTE: the returned {@link ThreadState} is already locked iff non-
+   * NOTE: the returned {@link ThreadState} is already locked iff non- id:658 gh:659
    * <code>null</code>.
    * 
    * @return a new {@link ThreadState} iff any new state is available otherwise
@@ -164,7 +164,7 @@ final class DocumentsWriterPerThreadPool {
     // don't recycle DWPT by default
   }
 
-  // TODO: maybe we should try to do load leveling here: we want roughly even numbers
+  // TODO: maybe we should try to do load leveling here: we want roughly even numbers id:536 gh:537
   // of items (docs, deletes, DV updates) to most take advantage of concurrency while flushing
 
   /** This method is used by DocumentsWriter/FlushControl to obtain a ThreadState to do an indexing operation (add/updateDocument). */
@@ -228,7 +228,7 @@ final class DocumentsWriterPerThreadPool {
     return threadStates.get(ord);
   }
 
-  // TODO: merge this with getActiveThreadStateCount: they are the same!
+  // TODO: merge this with getActiveThreadStateCount: they are the same! id:413 gh:414
   synchronized int getMaxThreadStates() {
     return threadStates.size();
   }

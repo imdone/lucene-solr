@@ -99,7 +99,7 @@ public class VersionedFile
           try {
             Files.deleteIfExists(df.toPath());
           } catch (IOException cause) {
-            // TODO: should this class care if a file couldn't be deleted?
+            // TODO: should this class care if a file couldn't be deleted? id:2205 gh:2206
             // this just emulates previous behavior, where only SecurityException would be handled.
           }
           // deleteList.remove(df);

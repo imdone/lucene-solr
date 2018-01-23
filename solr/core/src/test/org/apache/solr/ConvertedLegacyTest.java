@@ -371,7 +371,7 @@ public class ConvertedLegacyTest extends SolrTestCaseJ4 {
     assertU("<delete><id>44</id></delete>");
     assertU("<add><doc><field name=\"id\">44</field><field name=\"sind\">abc123</field></doc></add>");
     assertU("<commit/>");
-    // TODO: how to search for something with spaces....
+    // TODO: how to search for something with spaces.... id:2242 gh:2243
 
     assertQ(req("sind:abc123")
             ,"//@numFound[.='1'] "
@@ -383,7 +383,7 @@ public class ConvertedLegacyTest extends SolrTestCaseJ4 {
     assertU("<delete><id>44</id></delete>");
     assertU("<add><doc><field name=\"id\">44</field><field name=\"sindsto\">abc123</field></doc></add>");
     assertU("<commit/>");
-    // TODO: how to search for something with spaces....
+    // TODO: how to search for something with spaces.... id:2152 gh:2153
 
     assertQ(req("sindsto:abc123")
             ,"//str[.='abc123']"

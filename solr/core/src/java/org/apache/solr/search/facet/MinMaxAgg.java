@@ -92,7 +92,7 @@ public class MinMaxAgg extends SimpleAggValueSource {
     }
   }
 
-  // TODO: can this be replaced by ComparableMerger?
+  // TODO: can this be replaced by ComparableMerger? id:2913 gh:2914
   private class NumericMerger extends FacetDoubleMerger {
     double val = Double.NaN;
 
@@ -131,7 +131,7 @@ public class MinMaxAgg extends SimpleAggValueSource {
 
     @Override
     public int compareTo(FacetSortableMerger other, FacetRequest.SortDirection direction) {
-      // NOTE: we don't use the minmax multiplier here because we still want natural ordering between slots (i.e. min(field) asc and max(field) asc) both sort "A" before "Z")
+      // NOTE: we don't use the minmax multiplier here because we still want natural ordering between slots (i.e. min(field) asc and max(field) asc) both sort "A" before "Z") id:2005 gh:2006
       return this.val.compareTo(((ComparableMerger)other).val);
     }
   }
@@ -208,7 +208,7 @@ public class MinMaxAgg extends SimpleAggValueSource {
       boolean eb = b != 0 || exists.get(slotB);
 
       if (ea != eb) {
-        if (ea) return 1;  // a exists and b doesn't TODO: we need context to be able to sort missing last!  SOLR-10618
+        if (ea) return 1;  // a exists and b doesn't TODO: we need context to be able to sort missing last!  SOLR-10618 id:2743 gh:2744
         if (eb) return -1; // b exists and a is missing
       }
 
@@ -267,8 +267,8 @@ public class MinMaxAgg extends SimpleAggValueSource {
     public int compare(int slotA, int slotB) {
       int a = slotOrd[slotA];
       int b = slotOrd[slotB];
-      // NOTE: we don't use the minmax multiplier here because we still want natural ordering between slots (i.e. min(field) asc and max(field) asc) both sort "A" before "Z")
-      return a - b;  // TODO: we probably want sort-missing-last functionality
+      // NOTE: we don't use the minmax multiplier here because we still want natural ordering between slots (i.e. min(field) asc and max(field) asc) both sort "A" before "Z") id:2103 gh:2104
+      return a - b;  // TODO: we probably want sort-missing-last functionality id:2024 gh:2025
     }
 
     @Override

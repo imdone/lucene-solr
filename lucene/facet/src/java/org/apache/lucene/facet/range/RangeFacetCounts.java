@@ -72,7 +72,7 @@ abstract class RangeFacetCounts extends Facets {
 
   @Override
   public Number getSpecificValue(String dim, String... path) throws IOException {
-    // TODO: should we impl this?
+    // TODO: should we impl this? id:904 gh:905
     throw new UnsupportedOperationException();
   }
 

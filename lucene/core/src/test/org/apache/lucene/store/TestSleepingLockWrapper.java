@@ -45,5 +45,5 @@ public class TestSleepingLockWrapper extends BaseLockFactoryTestCase {
     }
   }
   
-  // TODO: specific tests to this impl
+  // TODO: specific tests to this impl id:1150 gh:1151
 }

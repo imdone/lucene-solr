@@ -92,15 +92,15 @@ PARSER_END(StandardSyntaxParser)
 /* ***************** */
 
 <*> TOKEN : {
-  <#_NUM_CHAR:   ["0"-"9"] >
+  <#_NUM_CHAR: ["0"-"9"] > id:1225 gh:1226
 // every character that follows a backslash is considered as an escaped character
-| <#_ESCAPED_CHAR: "\\" ~[] >
-| <#_TERM_START_CHAR: ( ~[ " ", "\t", "\n", "\r", "\u3000", "+", "-", "!", "(", ")", ":", "^",
+| <#_ESCAPED_CHAR: "\\" ~[] > id:979 gh:980
+| <#_TERM_START_CHAR: ( ~[ " ", "\t", "\n", "\r", "\u3000", "+", "-", "!", "(", ")", ":", "^", id:1367 gh:1368
                            "<", ">", "=", "[", "]", "\"", "{", "}", "~", "\\", "/" ]
                        | <_ESCAPED_CHAR> ) >
-| <#_TERM_CHAR: ( <_TERM_START_CHAR> | <_ESCAPED_CHAR> | "-" | "+" ) >
-| <#_WHITESPACE: ( " " | "\t" | "\n" | "\r" | "\u3000") >
-| <#_QUOTED_CHAR: ( ~[ "\"", "\\" ] | <_ESCAPED_CHAR> ) >
+| <#_TERM_CHAR: ( <_TERM_START_CHAR> | <_ESCAPED_CHAR> | "-" | "+" ) > id:1573 gh:1574
+| <#_WHITESPACE: ( " " | "\t" | "\n" | "\r" | "\u3000") > id:1082 gh:1083
+| <#_QUOTED_CHAR: ( ~[ "\"", "\\" ] | <_ESCAPED_CHAR> ) > id:1229 gh:1230
 }
 
 <DEFAULT, Range> SKIP : {

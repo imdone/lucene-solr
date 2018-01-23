@@ -212,7 +212,7 @@ public class IntervalFacets implements Iterable<FacetInterval> {
             longs = DocValues.getNumeric(ctx.reader(), fieldName);
             break;
           case FLOAT:
-            // TODO: this bit flipping should probably be moved to tie-break in the PQ comparator
+            // TODO: this bit flipping should probably be moved to tie-break in the PQ comparator id:2825 gh:2826
             longs = new FilterNumericDocValues(DocValues.getNumeric(ctx.reader(), fieldName)) {
               @Override
               public long longValue() throws IOException {
@@ -221,7 +221,7 @@ public class IntervalFacets implements Iterable<FacetInterval> {
             };
             break;
           case DOUBLE:
-            // TODO: this bit flipping should probably be moved to tie-break in the PQ comparator
+            // TODO: this bit flipping should probably be moved to tie-break in the PQ comparator id:1908 gh:1909
             longs = new FilterNumericDocValues(DocValues.getNumeric(ctx.reader(), fieldName)) {
               @Override
               public long longValue() throws IOException {
@@ -585,8 +585,8 @@ public class IntervalFacets implements Iterable<FacetInterval> {
       } catch (SyntaxError | SolrException e) {
         throw new SyntaxError(String.format(Locale.ROOT, "Invalid end interval for key '%s': %s", key, e.getMessage()), e);
       }
-      // TODO: what about escaping star (*)?
-      // TODO: escaping spaces on ends?
+      // TODO: what about escaping star (*)? id:2682 gh:2683
+      // TODO: escaping spaces on ends? id:1984 gh:1985
       if (schemaField.getType().getNumberType() != null) {
         setNumericLimits(schemaField);
       }

@@ -44,7 +44,7 @@ public class TestGeoUtils extends LuceneTestCase {
         radiusMeters = random().nextDouble() * 50000000;
       }
 
-      // TODO: randomly quantize radius too, to provoke exact math errors?
+      // TODO: randomly quantize radius too, to provoke exact math errors? id:784 gh:785
 
       Rectangle bbox = Rectangle.fromPointDistance(centerLat, centerLon, radiusMeters);
 
@@ -192,7 +192,7 @@ public class TestGeoUtils extends LuceneTestCase {
     }
   }
 
-  // TODO: does not really belong here, but we test it like this for now
+  // TODO: does not really belong here, but we test it like this for now id:973 gh:974
   // we can make a fake IndexReader to send boxes directly to Point visitors instead?
   public void testCircleOpto() throws Exception {
     int iters = atLeast(20);
@@ -202,7 +202,7 @@ public class TestGeoUtils extends LuceneTestCase {
       final double centerLon = -180 + 360.0 * random().nextDouble();
       final double radius = 50_000_000D * random().nextDouble();
       final Rectangle box = Rectangle.fromPointDistance(centerLat, centerLon, radius);
-      // TODO: remove this leniency!
+      // TODO: remove this leniency! id:818 gh:819
       if (box.crossesDateline()) {
         --i; // try again...
         continue;

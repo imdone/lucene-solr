@@ -72,7 +72,7 @@ public class HealthCheckHandler extends RequestHandlerBase {
       return;
     }
     if(!cores.isZooKeeperAware()) {
-      //TODO: Support standalone instances
+      //TODO: Support standalone instances id:1789 gh:1790
       rsp.setException(new SolrException(SolrException.ErrorCode.BAD_REQUEST, "Health check is only available when running in SolrCloud mode"));
       return;
     }

@@ -29,7 +29,7 @@
       </label>
 
       <div><select ng-model="type" id="document-type" ng-change="changeDocumentType()" placeholder="The type of the document field">
-        <!-- TODO: support the Builder -->
+        <!-- TODO: support the Builder id:3164 gh:3165-->
         <option value="csv">CSV</option>
         <option value="wizard">Document Builder</option>
         <option value="upload">File Upload</option>
@@ -69,10 +69,10 @@
       </div>
 
       <div id="advanced">
-        <!-- TODO: only show for JSON/XML-->
+        <!-- TODO: only show for JSON/XML id:2530 gh:2531-->
         <div id="attribs">
           <div id="upload-only" ng-show="type=='upload'">
-            <label for="erh-params"><!-- TODO: cleaner way to do this? -->
+            <label for="erh-params"><!-- TODO: cleaner way to do this? id:3065 gh:3067-->
               <a rel="help">Extracting Req. Handler Params</a>
             </label>
             <input ng-model="literalParams" type="text" id="erh-params" value="&literal.id=change.me"

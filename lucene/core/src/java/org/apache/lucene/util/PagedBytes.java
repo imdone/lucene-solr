@@ -31,13 +31,13 @@ import org.apache.lucene.store.IndexInput;
  *
  * @lucene.internal
  **/
-// TODO: refactor this, byteblockpool, fst.bytestore, and any
+// TODO: refactor this, byteblockpool, fst.bytestore, and any id:679 gh:680
 // other "shift/mask big arrays". there are too many of these classes!
 public final class PagedBytes implements Accountable {
   private static final long BASE_RAM_BYTES_USED = RamUsageEstimator.shallowSizeOfInstance(PagedBytes.class);
   private byte[][] blocks = new byte[16][];
   private int numBlocks;
-  // TODO: these are unused?
+  // TODO: these are unused? id:1147 gh:1148
   private final int blockSize;
   private final int blockBits;
   private final int blockMask;
@@ -109,7 +109,7 @@ public final class PagedBytes implements Accountable {
      * 
      * @lucene.internal
      **/
-    // TODO: this really needs to be refactored into fieldcacheimpl
+    // TODO: this really needs to be refactored into fieldcacheimpl id:625 gh:626
     public void fill(BytesRef b, long start) {
       final int index = (int) (start >> blockBits);
       final int offset = (int) (start & blockMask);
@@ -198,7 +198,7 @@ public final class PagedBytes implements Accountable {
       upto = 0;
       left = blockSize;
       assert bytes.length <= blockSize;
-      // TODO: we could also support variable block sizes
+      // TODO: we could also support variable block sizes id:919 gh:920
     }
 
     out.bytes = currentBlock;
@@ -254,7 +254,7 @@ public final class PagedBytes implements Accountable {
 
   /** Copy bytes in, writing the length as a 1 or 2 byte
    *  vInt prefix. */
-  // TODO: this really needs to be refactored into fieldcacheimpl!
+  // TODO: this really needs to be refactored into fieldcacheimpl! id:768 gh:769
   public long copyUsingLengthPrefix(BytesRef bytes) {
     if (bytes.length >= 32768) {
       throw new IllegalArgumentException("max length is 32767 (got " + bytes.length + ")");

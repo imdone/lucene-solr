@@ -275,7 +275,7 @@ public class HttpSolrCall {
       if (core == null) {
         // lookup core from collection, or route away if need to
         String collectionName = collectionsList.isEmpty() ? null : collectionsList.get(0); // route to 1st
-        //TODO try the other collections if can't find a local replica of the first?   (and do to V2HttpSolrCall)
+        //TODO try the other collections if can't find a local replica of the first?   (and do to V2HttpSolrCall) id:2931 gh:2932
 
         boolean isPreferLeader = (path.endsWith("/update") || path.contains("/update/"));
 
@@ -443,7 +443,7 @@ public class HttpSolrCall {
     } else {
       if (!retry) {
         // we couldn't find a core to work with, try reloading aliases
-        // TODO: it would be nice if admin ui elements skipped this...
+        // TODO: it would be nice if admin ui elements skipped this... id:2080 gh:2081
         cores.getZkController().getZkStateReader().aliasesHolder.update();
         action = RETRY;
       }
@@ -758,7 +758,7 @@ public class HttpSolrCall {
     if (newCollectionParam.equals(collectionParam)) {
       return;
     }
-    // TODO add a SolrRequest.getModifiableParams ?
+    // TODO add a SolrRequest.getModifiableParams ? id:2760 gh:2761
     ModifiableSolrParams params = new ModifiableSolrParams(solrReq.getParams());
     params.set(COLLECTION_PROP, newCollectionParam);
     solrReq.setParams(params);

@@ -85,7 +85,7 @@ import org.apache.solr.common.SolrException.ErrorCode;
  * (You can also specify whether all parameters must exist, or at least one must exist for the returned value to exist)
  * </ul>
  * <p>
- * NOTE: The combination of name and parameters MUST be unique for an expression.
+ * NOTE: The combination of name and parameters MUST be unique for an expression. id:1714 gh:1715
  * <br>
  * For example consider if {@code join(fieldA, ',')} and {@code join(fieldA, ';')} are both called. If the JoinFunction uses:
  * <br>
@@ -600,7 +600,7 @@ public class LambdaFunction {
    * the given lambda function applied to every value. 
    * 
    * <p>
-   * NOTE: The lambda must work on longs, not Date objects
+   * NOTE: The lambda must work on longs, not Date objects id:1434 gh:1435
    * 
    * @param name name for the function
    * @param lambda the function to be applied to every value: {@code (long) -> long}
@@ -619,7 +619,7 @@ public class LambdaFunction {
    * The given lambda is used to associatively (order not guaranteed) reduce all values for a document down to a single value. 
    * 
    * <p>
-   * NOTE: The lambda must work on longs, not Date objects
+   * NOTE: The lambda must work on longs, not Date objects id:1686 gh:1687
    * 
    * @param name name for the function
    * @param lambda the associative function used to reduce the values: {@code (long, long) -> long}
@@ -641,7 +641,7 @@ public class LambdaFunction {
    * </ul>
    * 
    * <p>
-   * NOTE: The lambda must work on longs, not Date objects
+   * NOTE: The lambda must work on longs, not Date objects id:2615 gh:2616
    * 
    * @param name name for the function
    * @param lambda the function to be applied to every value: {@code (long,long) -> long}
@@ -681,7 +681,7 @@ public class LambdaFunction {
    * If {@code allMustExist} is false, only one of the parameters' values must exist.
    * 
    * <p>
-   * NOTE: The lambda must work on longs, not Date objects
+   * NOTE: The lambda must work on longs, not Date objects id:1742 gh:1743
    * 
    * @param name name for the function
    * @param lambda the associative function used to reduce the values: {@code (long, long) -> long}

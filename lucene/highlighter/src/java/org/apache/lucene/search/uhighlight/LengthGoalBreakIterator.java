@@ -165,7 +165,7 @@ public class LengthGoalBreakIterator extends BreakIterator {
     //boolean moved = baseIter.isBoundary(idx); // probably not particularly expensive
     //assert moved && current() == idx;
 
-    // TODO fix: Would prefer to do "- 1" instead of "- 2" but CustomSeparatorBreakIterator has a bug.
+    // TODO fix: Would prefer to do "- 1" instead of "- 2" but CustomSeparatorBreakIterator has a bug. id:1040 gh:1041
     int current = baseIter.following(idx - 2);
     assert current == idx : "following() didn't move us to the expected index.";
     return idx;

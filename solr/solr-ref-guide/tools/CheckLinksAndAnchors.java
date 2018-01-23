@@ -98,12 +98,12 @@ import org.jsoup.select.NodeVisitor;
  * </ul>
  *
  *
- * TODO: build a list of all known external links so that some other tool could (optionally) ping them all for 200 status?
+ * TODO: build a list of all known external links so that some other tool could (optionally) ping them all for 200 status? id:3124 gh:3126
  *
  * @see https://github.com/asciidoctor/asciidoctor/issues/1865
  * @see https://github.com/asciidoctor/asciidoctor/issues/1866
  */
-public class CheckLinksAndAnchors { // TODO: rename this class now that it does more then just links & anchors
+public class CheckLinksAndAnchors { // TODO: rename this class now that it does more then just links & anchors id:2425 gh:2426
 
   public static final class HtmlFileFilter implements FileFilter {
     public boolean accept(File pathname) {

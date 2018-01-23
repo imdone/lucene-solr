@@ -116,7 +116,7 @@ class BinaryDocValuesFieldUpdates extends DocValuesFieldUpdates {
     return size;
   }
 
-  // NOTE: we fully consume the incoming BytesRef so caller is free to reuse it after we return:
+  // NOTE: we fully consume the incoming BytesRef so caller is free to reuse it after we return: id:386 gh:387
   @Override
   synchronized public void add(int doc, Object value) {
     if (finished) {
@@ -125,7 +125,7 @@ class BinaryDocValuesFieldUpdates extends DocValuesFieldUpdates {
 
     assert doc < maxDoc: "doc=" + doc + " maxDoc=" + maxDoc;
 
-    // TODO: if the Sorter interface changes to take long indexes, we can remove that limitation
+    // TODO: if the Sorter interface changes to take long indexes, we can remove that limitation id:462 gh:463
     if (size == Integer.MAX_VALUE) {
       throw new IllegalStateException("cannot support more than Integer.MAX_VALUE doc/value entries");
     }
@@ -179,7 +179,7 @@ class BinaryDocValuesFieldUpdates extends DocValuesFieldUpdates {
       @Override
       protected int compare(int i, int j) {
         // increasing docID order:
-        // NOTE: we can have ties here, when the same docID was updated in the same segment, in which case we rely on sort being
+        // NOTE: we can have ties here, when the same docID was updated in the same segment, in which case we rely on sort being id:537 gh:538
         // stable and preserving original order so the last update to that docID wins
         return Integer.compare((int) docs.get(i), (int) docs.get(j));
       }

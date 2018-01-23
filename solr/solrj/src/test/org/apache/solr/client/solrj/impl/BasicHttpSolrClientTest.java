@@ -796,7 +796,7 @@ public class BasicHttpSolrClientTest extends SolrJettyTestBase {
        try {
         client.request(req);
        } catch (ParseException ignored) {}
-      // NOTE: single stream requests send all the params
+      // NOTE: single stream requests send all the params id:3141 gh:3142
       // as part of the query string.  So add "neither" to the request
       // so it passes the verification step.
       req.setQueryParams(setOf("requestOnly", "both", "neither"));

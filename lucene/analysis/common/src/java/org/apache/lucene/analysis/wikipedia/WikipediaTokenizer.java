@@ -153,7 +153,7 @@ public final class WikipediaTokenizer extends Tokenizer {
   }
   
   private void init(int tokenOutput, Set<String> untokenizedTypes) {
-    // TODO: cutover to enum
+    // TODO: cutover to enum id:54 gh:55
     if (tokenOutput != TOKENS_ONLY &&
         tokenOutput != UNTOKENIZED_ONLY &&
         tokenOutput != BOTH) {
@@ -207,7 +207,7 @@ public final class WikipediaTokenizer extends Tokenizer {
     //collapse
     StringBuilder buffer = new StringBuilder(32);
     int numAdded = scanner.setText(buffer);
-    //TODO: how to know how much whitespace to add
+    //TODO: how to know how much whitespace to add id:57 gh:58
     int theStart = scanner.yychar();
     int lastPos = theStart + numAdded;
     int tmpTokType;
@@ -229,7 +229,7 @@ public final class WikipediaTokenizer extends Tokenizer {
       lastPos = currPos + numAdded;
     }
     //trim the buffer
-    // TODO: this is inefficient
+    // TODO: this is inefficient id:119 gh:120
     String s = buffer.toString().trim();
     termAtt.setEmpty().append(s);
     offsetAtt.setOffset(correctOffset(theStart), correctOffset(theStart + s.length()));
@@ -251,7 +251,7 @@ public final class WikipediaTokenizer extends Tokenizer {
     //collapse
     StringBuilder buffer = new StringBuilder(32);
     int numAdded = scanner.setText(buffer);
-    //TODO: how to know how much whitespace to add
+    //TODO: how to know how much whitespace to add id:176 gh:177
     int theStart = scanner.yychar();
     int lastPos = theStart + numAdded;
     int tmpTokType;
@@ -268,7 +268,7 @@ public final class WikipediaTokenizer extends Tokenizer {
       lastPos = currPos + numAdded;
     }
     //trim the buffer
-    // TODO: this is inefficient
+    // TODO: this is inefficient id:56 gh:57
     String s = buffer.toString().trim();
     termAtt.setEmpty().append(s);
     offsetAtt.setOffset(correctOffset(theStart), correctOffset(theStart + s.length()));

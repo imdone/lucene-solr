@@ -91,7 +91,7 @@ public final class GeoUtils {
    * @return the sine of the argument.
    * @see Math#sin(double)
    */
-  // TODO: deprecate/remove this? at least its no longer public.
+  // TODO: deprecate/remove this? at least its no longer public. id:382 gh:383
   public static double sloppySin(double a) {
     return cos(a - PIO2);
   }

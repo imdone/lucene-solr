@@ -24,7 +24,7 @@ import org.apache.lucene.util.BytesRef;
  * Mainly for use with the DelimitedPayloadTokenFilter, converts char buffers to
  * {@link BytesRef}.
  * <p>
- * NOTE: This interface is subject to change 
+ * NOTE: This interface is subject to change  id:36 gh:37
  *
  **/
 public interface PayloadEncoder {

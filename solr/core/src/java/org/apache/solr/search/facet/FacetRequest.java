@@ -130,7 +130,7 @@ public abstract class FacetRequest {
         
         final Object queryJoin = domainMap.get("join");
         if (null != queryJoin) {
-          // TODO: maybe allow simple string (instead of map) to mean "self join on this field name" ?
+          // TODO: maybe allow simple string (instead of map) to mean "self join on this field name" ? id:2733 gh:2734
           if (! (queryJoin instanceof Map)) {
             throw new SolrException(SolrException.ErrorCode.BAD_REQUEST,
                                     "'join' domain change requires a map containing the 'from' and 'to' fields");
@@ -155,7 +155,7 @@ public abstract class FacetRequest {
        * current base of the FacetContext.
        */
       public Query createDomainQuery(FacetContext fcontext) throws IOException {
-        // NOTE: this code lives here, instead of in FacetProcessor.handleJoin, in order to minimize
+        // NOTE: this code lives here, instead of in FacetProcessor.handleJoin, in order to minimize id:2090 gh:2091
         // the number of classes that have to know about the number of possible settings on the join
         // (ie: if we add a score mode, or some other modifier to how the joins are done)
         
@@ -244,9 +244,9 @@ class FacetContext {
 
   Map<String,Object> facetInfo; // refinement info for this node
   QueryContext qcontext;
-  SolrQueryRequest req;  // TODO: replace with params?
+  SolrQueryRequest req;  // TODO: replace with params? id:2016 gh:2018
   SolrIndexSearcher searcher;
-  Query filter;  // TODO: keep track of as a DocSet or as a Query?
+  Query filter;  // TODO: keep track of as a DocSet or as a Query? id:2905 gh:2906
   DocSet base;
   FacetContext parent;
   int flags;
@@ -312,7 +312,7 @@ abstract class FacetParser<FacetRequestT extends FacetRequest> {
 
   public abstract FacetRequest parse(Object o) throws SyntaxError;
 
-  // TODO: put the FacetRequest on the parser object?
+  // TODO: put the FacetRequest on the parser object? id:1996 gh:1997
   public void parseSubs(Object o) throws SyntaxError {
     if (o==null) return;
     if (o instanceof Map) {
@@ -331,7 +331,7 @@ abstract class FacetParser<FacetRequestT extends FacetRequest> {
 
         Object parsedValue = parseFacetOrStat(key, value);
 
-        // TODO: have parseFacetOrStat directly add instead of return?
+        // TODO: have parseFacetOrStat directly add instead of return? id:2735 gh:2736
         if (parsedValue instanceof FacetRequest) {
           facet.addSubFacet(key, (FacetRequest)parsedValue);
         } else if (parsedValue instanceof AggValueSource) {
@@ -383,7 +383,7 @@ abstract class FacetParser<FacetRequestT extends FacetRequest> {
   }
 
   public Object parseFacetOrStat(String key, String type, Object args) throws SyntaxError {
-    // TODO: a place to register all these facet types?
+    // TODO: a place to register all these facet types? id:2092 gh:2093
 
     if ("field".equals(type) || "terms".equals(type)) {
       return parseFieldFacet(key, args);
@@ -420,7 +420,7 @@ abstract class FacetParser<FacetRequestT extends FacetRequest> {
   public Object parseStringFacetOrStat(String key, String s) throws SyntaxError {
     // "avg(myfield)"
     return parseStringStat(key, s);
-    // TODO - simple string representation of facets
+    // TODO - simple string representation of facets id:2017 gh:2019
   }
 
   // parses avg(x)
@@ -492,7 +492,7 @@ abstract class FacetParser<FacetRequestT extends FacetRequest> {
 
 
   public String getField(Map<String,Object> args) {
-    Object fieldName = args.get("field"); // TODO: pull out into defined constant
+    Object fieldName = args.get("field"); // TODO: pull out into defined constant id:2907 gh:2908
     if (fieldName == null) {
       fieldName = args.get("f");  // short form
     }
@@ -540,7 +540,7 @@ abstract class FacetParser<FacetRequestT extends FacetRequest> {
     if (o == null) {
       return defVal;
     }
-    // TODO: should we be more flexible and accept things like "true" (strings)?
+    // TODO: should we be more flexible and accept things like "true" (strings)? id:1999 gh:2000
     // Perhaps wait until the use case comes up.
     if (!(o instanceof Boolean)) {
       throw err("Expected boolean type for param '"+paramName + "' but got " + o.getClass().getSimpleName() + " = " + o);
@@ -640,7 +640,7 @@ class FacetQueryParser extends FacetParser<FacetQuery> {
       parseSubs( m.get("facet") );
     }
 
-    // TODO: substats that are from defaults!!!
+    // TODO: substats that are from defaults!!! id:2737 gh:2738
 
     if (qstring != null) {
       QParser parser = QParser.getParser(qstring, getSolrRequest());
@@ -691,7 +691,7 @@ class FacetFieldParser extends FacetParser<FacetField> {
     if (arg instanceof String) {
       // just the field name...
       facet.field = (String)arg;
-      parseSort( null );  // TODO: defaults
+      parseSort( null );  // TODO: defaults id:2095 gh:2096
 
     } else if (arg instanceof Map) {
       Map<String, Object> m = (Map<String, Object>) arg;
@@ -708,7 +708,7 @@ class FacetFieldParser extends FacetParser<FacetField> {
       facet.method = FacetField.FacetMethod.fromString(getString(m, "method", null));
       facet.cacheDf = (int)getLong(m, "cacheDf", facet.cacheDf);
 
-      // TODO: pull up to higher level?
+      // TODO: pull up to higher level? id:2019 gh:2020
       facet.refine = FacetField.RefineMethod.fromObj(m.get("refine"));
 
       facet.perSeg = (Boolean)m.get("perSeg");
@@ -748,7 +748,7 @@ class FacetFieldParser extends FacetParser<FacetField> {
     } else {
      // sort : { myvar : 'desc' }
       Map<String,Object> map = (Map<String,Object>)sort;
-      // TODO: validate
+      // TODO: validate id:2909 gh:2910
       Map.Entry<String,Object> entry = map.entrySet().iterator().next();
       String k = entry.getKey();
       Object v = entry.getValue();
@@ -784,7 +784,7 @@ class FacetRangeParser extends FacetParser<FacetRange> {
     facet.hardend = getBoolean(m, "hardend", facet.hardend);
     facet.mincount = getLong(m, "mincount", 0);
 
-    // TODO: refactor list-of-options code
+    // TODO: refactor list-of-options code id:2001 gh:2002
 
     Object o = m.get("include");
     String[] includeList = null;

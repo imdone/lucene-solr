@@ -287,7 +287,7 @@ public final class MultiTermsEnum extends TermsEnum {
     if (lastSeekExact) {
       // Must seekCeil at this point, so those subs that
       // didn't have the term can find the following term.
-      // NOTE: we could save some CPU by only seekCeil the
+      // NOTE: we could save some CPU by only seekCeil the id:592 gh:593
       // subs that didn't match the last exact seek... but
       // most impls short-circuit if you seekCeil to term
       // they are already on.
@@ -302,7 +302,7 @@ public final class MultiTermsEnum extends TermsEnum {
 
     // gather equal top fields
     if (queue.size() > 0) {
-      // TODO: we could maybe defer this somewhat costly operation until one of the APIs that
+      // TODO: we could maybe defer this somewhat costly operation until one of the APIs that id:535 gh:536
       // needs to see the top is invoked (docFreq, postings, etc.)
       pullTop();
     } else {

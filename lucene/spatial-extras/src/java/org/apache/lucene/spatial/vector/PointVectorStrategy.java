@@ -202,7 +202,7 @@ public class PointVectorStrategy extends SpatialStrategy {
       return new DistanceRangeQuery(makeWithin(bbox), makeDistanceValueSource(circle.getCenter()), circle.getRadius());
     } else {
       throw new UnsupportedOperationException("Only Rectangles and Circles are currently supported, " +
-          "found [" + shape.getClass() + "]");//TODO
+          "found [" + shape.getClass() + "]");//TODO id:1507 gh:1508
     }
   }
 
@@ -241,7 +241,7 @@ public class PointVectorStrategy extends SpatialStrategy {
       return DoublePoint.newRangeQuery(fieldName, min, max);
 
     }
-    //TODO try doc-value range query?
+    //TODO try doc-value range query? id:1674 gh:1675
     throw new UnsupportedOperationException("An index is required for this operation.");
   }
 

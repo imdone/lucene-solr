@@ -17,7 +17,7 @@
 package org.apache.lucene.util.fst;
 
 
-// TODO: can we use just ByteArrayDataInput...?  need to
+// TODO: can we use just ByteArrayDataInput...?  need to id:798 gh:799
 // add a .skipBytes to DataInput.. hmm and .setPosition
 
 /** Reads from a single byte[]. */

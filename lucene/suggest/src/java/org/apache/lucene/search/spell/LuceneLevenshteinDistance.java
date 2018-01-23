@@ -33,7 +33,7 @@ import org.apache.lucene.util.IntsRef;
  *         distance 3.
  *  </ul>
  *  
- *  NOTE: this class is not particularly efficient. It is only intended
+ *  NOTE: this class is not particularly efficient. It is only intended id:1215 gh:1216
  *  for merging results from multiple DirectSpellCheckers.
  */
 public final class LuceneLevenshteinDistance implements StringDistance {
@@ -51,7 +51,7 @@ public final class LuceneLevenshteinDistance implements StringDistance {
     int n;
     int d[][]; // cost array
     
-    // NOTE: if we cared, we could 3*m space instead of m*n space, similar to 
+    // NOTE: if we cared, we could 3*m space instead of m*n space, similar to  id:1518 gh:1519
     // what LevenshteinDistance does, except cycling thru a ring of three 
     // horizontal cost arrays... but this comparator is never actually used by 
     // DirectSpellChecker, it's only used for merging results from multiple shards 

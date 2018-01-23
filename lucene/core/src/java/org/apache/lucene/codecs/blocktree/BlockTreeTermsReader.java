@@ -154,7 +154,7 @@ public final class BlockTreeTermsReader extends FieldsProducer {
       // Have PostingsReader init itself
       postingsReader.init(termsIn, state);
       
-      // NOTE: data file is too costly to verify checksum against all the bytes on open,
+      // NOTE: data file is too costly to verify checksum against all the bytes on open, id:346 gh:347
       // but for now we at least verify proper structure of the checksum footer: which looks
       // for FOOTER_MAGIC + algorithmID. This is cheap and can detect some forms of corruption
       // such as file truncation.

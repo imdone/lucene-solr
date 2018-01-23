@@ -25,7 +25,7 @@ import org.apache.lucene.util.TestUtil;
  * Tests MemoryPostingsFormat
  */
 public class TestMemoryPostingsFormat extends BasePostingsFormatTestCase {
-  // TODO: randomize doPack
+  // TODO: randomize doPack id:448 gh:449
   private final Codec codec = TestUtil.alwaysPostingsFormat(new MemoryPostingsFormat());
 
   @Override

@@ -69,7 +69,7 @@ public class TestIndexWriterOnJRECrash extends TestNRTThreads {
     } else {
       // note: re-enable this if we create a 4.x impersonator,
       // and if its format is actually different than the real 4.x (unlikely)
-      // TODO: the non-fork code could simply enable impersonation?
+      // TODO: the non-fork code could simply enable impersonation? id:1007 gh:1008
       // assumeFalse("does not support PreFlex, see LUCENE-3992", 
       //    Codec.getDefault().getName().equals("Lucene4x"));
       

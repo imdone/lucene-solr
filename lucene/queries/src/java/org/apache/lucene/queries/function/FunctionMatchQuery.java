@@ -77,7 +77,7 @@ public final class FunctionMatchQuery extends Query {
 
           @Override
           public float matchCost() {
-            return 100; // TODO maybe DoubleValuesSource should have a matchCost?
+            return 100; // TODO maybe DoubleValuesSource should have a matchCost? id:1190 gh:1191
           }
         };
         return new ConstantScoreScorer(this, score(), twoPhase);

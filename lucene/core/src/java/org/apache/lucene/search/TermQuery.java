@@ -104,7 +104,7 @@ public class TermQuery extends Query {
     }
 
     private long getMaxFreq(IndexOptions indexOptions, long ttf, long df) {
-      // TODO: store the max term freq?
+      // TODO: store the max term freq? id:854 gh:855
       if (indexOptions.compareTo(IndexOptions.DOCS) <= 0) {
         // omitTFAP field, tf values are implicitly 1.
         return 1;

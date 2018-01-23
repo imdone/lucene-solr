@@ -220,7 +220,7 @@ public class TestReloadDeadlock extends TestRTGBase {
     Long returnedVersion = deleteByQueryAndGetVersion("id:" + Integer.toString(id),
         params("_version_", Long.toString(-version), DISTRIB_UPDATE_PARAM, FROM_LEADER));
 
-    // TODO: returning versions for these types of updates is redundant
+    // TODO: returning versions for these types of updates is redundant id:3099 gh:3100
     // but if we do return, they had better be equal
     if (returnedVersion != null) {
       assertEquals(-version, returnedVersion.longValue());

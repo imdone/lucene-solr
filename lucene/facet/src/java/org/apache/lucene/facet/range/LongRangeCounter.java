@@ -134,7 +134,7 @@ final class LongRangeCounter {
   public void add(long v) {
     //System.out.println("add v=" + v);
 
-    // NOTE: this works too, but it's ~6% slower on a simple
+    // NOTE: this works too, but it's ~6% slower on a simple id:1073 gh:1074
     // test with a high-freq TermQuery w/ range faceting on
     // wikimediumall:
     /*

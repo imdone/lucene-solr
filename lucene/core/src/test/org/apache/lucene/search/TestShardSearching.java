@@ -32,7 +32,7 @@ import org.apache.lucene.util.BytesRef;
 import org.apache.lucene.util.LuceneTestCase.SuppressCodecs;
 import org.apache.lucene.util.TestUtil;
 
-// TODO
+// TODO id:995 gh:996
 //   - other queries besides PrefixQuery & TermQuery (but:
 //     FuzzyQ will be problematic... the top N terms it
 //     takes means results will differ)
@@ -172,8 +172,8 @@ public class TestShardSearching extends ShardSearchingTestBase {
           sort = prevSearchState.sort;
         } else {
           if (terms == null && docCount > minDocsToMakeTerms) {
-            // TODO: try to "focus" on high freq terms sometimes too
-            // TODO: maybe also periodically reset the terms...?
+            // TODO: try to "focus" on high freq terms sometimes too id:1043 gh:1044
+            // TODO: maybe also periodically reset the terms...? id:872 gh:873
             final TermsEnum termsEnum = MultiFields.getTerms(mockReader, "body").iterator();
             terms = new ArrayList<>();
             while(termsEnum.next() != null) {
@@ -208,12 +208,12 @@ public class TestShardSearching extends ShardSearchingTestBase {
             if (random().nextBoolean()) {
               sort = null;
             } else {
-              // TODO: sort by more than 1 field
+              // TODO: sort by more than 1 field id:1144 gh:1145
               final int what = random().nextInt(3);
               if (what == 0) {
                 sort = new Sort(SortField.FIELD_SCORE);
               } else if (what == 1) {
-                // TODO: this sort doesn't merge
+                // TODO: this sort doesn't merge id:1318 gh:1319
                 // correctly... it's tricky because you
                 // could have > 2.1B docs across all shards: 
                 //sort = new Sort(SortField.FIELD_DOC);

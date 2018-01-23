@@ -59,7 +59,7 @@ public class ParallelLeafReader extends LeafReader {
   private final boolean hasDeletions;
   private final LeafMetaData metaData;
   private final SortedMap<String,LeafReader> tvFieldToReader = new TreeMap<>();
-  private final SortedMap<String,LeafReader> fieldToReader = new TreeMap<>();//TODO needn't sort?
+  private final SortedMap<String,LeafReader> fieldToReader = new TreeMap<>();//TODO needn't sort? id:599 gh:600
   private final Map<String,LeafReader> termsFieldToReader = new HashMap<>();
 
   /** Create a ParallelLeafReader based on the provided
@@ -102,7 +102,7 @@ public class ParallelLeafReader extends LeafReader {
       }
     }
     
-    // TODO: make this read-only in a cleaner way?
+    // TODO: make this read-only in a cleaner way? id:541 gh:542
     FieldInfos.Builder builder = new FieldInfos.Builder();
 
     Sort indexSort = null;
@@ -127,16 +127,16 @@ public class ParallelLeafReader extends LeafReader {
 
       final FieldInfos readerFieldInfos = reader.getFieldInfos();
       for (FieldInfo fieldInfo : readerFieldInfos) {
-        // NOTE: first reader having a given field "wins":
+        // NOTE: first reader having a given field "wins": id:812 gh:813
         if (!fieldToReader.containsKey(fieldInfo.name)) {
           builder.add(fieldInfo, fieldInfo.getDocValuesGen());
           fieldToReader.put(fieldInfo.name, reader);
           // only add these if the reader responsible for that field name is the current:
-          // TODO consider populating 1st leaf with vectors even if the field name has been seen on a previous leaf
+          // TODO consider populating 1st leaf with vectors even if the field name has been seen on a previous leaf id:702 gh:703
           if (fieldInfo.hasVectors()) {
             tvFieldToReader.put(fieldInfo.name, reader);
           }
-          // TODO consider populating 1st leaf with terms even if the field name has been seen on a previous leaf
+          // TODO consider populating 1st leaf with terms even if the field name has been seen on a previous leaf id:594 gh:595
           if (fieldInfo.getIndexOptions() != IndexOptions.NONE) {
             termsFieldToReader.put(fieldInfo.name, reader);
           }
@@ -211,7 +211,7 @@ public class ParallelLeafReader extends LeafReader {
   /**
    * {@inheritDoc}
    * <p>
-   * NOTE: the returned field numbers will likely not
+   * NOTE: the returned field numbers will likely not id:603 gh:604
    * correspond to the actual field numbers in the underlying
    * readers, and codec metadata ({@link FieldInfo#getAttribute(String)}
    * will be unavailable.

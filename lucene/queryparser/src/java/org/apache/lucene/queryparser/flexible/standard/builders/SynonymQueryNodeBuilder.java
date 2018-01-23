@@ -32,7 +32,7 @@ public class SynonymQueryNodeBuilder implements StandardQueryBuilder {
 
   @Override
   public Query build(QueryNode queryNode) throws QueryNodeException {
-    // TODO: use SynonymQuery instead
+    // TODO: use SynonymQuery instead id:977 gh:978
     SynonymQueryNode node = (SynonymQueryNode) queryNode;
     BooleanQuery.Builder builder = new BooleanQuery.Builder();
     for (QueryNode child : node.getChildren()) {

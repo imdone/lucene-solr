@@ -41,7 +41,7 @@ import java.util.Collections;
  */
 public abstract class Scorer {
   /** the Scorer's parent Weight. in some cases this may be null */
-  // TODO can we clean this up?
+  // TODO can we clean this up? id:738 gh:739
   protected final Weight weight;
 
   /**

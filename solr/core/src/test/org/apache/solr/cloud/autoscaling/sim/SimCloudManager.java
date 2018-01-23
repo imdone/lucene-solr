@@ -467,7 +467,7 @@ public class SimCloudManager implements SolrCloudManager {
   }
 
   /**
-   * Handler method for autoscaling requests. NOTE: only a specific subset of autoscaling requests is
+   * Handler method for autoscaling requests. NOTE: only a specific subset of autoscaling requests is id:2896 gh:2897
    * supported!
    * @param req autoscaling request
    * @return results

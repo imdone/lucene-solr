@@ -84,7 +84,7 @@ final class IDVersionPostingsWriter extends PushPostingsWriterBase {
 
   @Override
   public void startDoc(int docID, int termDocFreq) throws IOException {
-    // TODO: LUCENE-5693: we don't need this check if we fix IW to not send deleted docs to us on flush:
+    // TODO: LUCENE-5693: we don't need this check if we fix IW to not send deleted docs to us on flush: id:1396 gh:1397
     if (liveDocs != null && liveDocs.get(docID) == false) {
       return;
     }

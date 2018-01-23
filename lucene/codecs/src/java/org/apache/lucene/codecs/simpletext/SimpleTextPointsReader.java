@@ -98,7 +98,7 @@ class SimpleTextPointsReader extends PointsReader {
   }
 
   private SimpleTextBKDReader initReader(long fp) throws IOException {
-    // NOTE: matches what writeIndex does in SimpleTextPointsWriter
+    // NOTE: matches what writeIndex does in SimpleTextPointsWriter id:465 gh:466
     dataIn.seek(fp);
     readLine(dataIn);
     int numDims = parseInt(NUM_DIMS);

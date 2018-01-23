@@ -64,7 +64,7 @@ public class LikeThisQueryBuilder implements QueryBuilder {
     }
 
     //Parse any "stopWords" attribute
-    //TODO MoreLikeThis needs to ideally have per-field stopWords lists - until then
+    //TODO MoreLikeThis needs to ideally have per-field stopWords lists - until then id:1578 gh:1579
     //I use all analyzers/fields to generate multi-field compatible stop list
     String stopWords = e.getAttribute("stopWords");
     Set<String> stopWordsSet = null;

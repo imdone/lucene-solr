@@ -68,7 +68,7 @@ public class TestPerFieldAnalyzerWrapper extends BaseTokenStreamTestCase {
       assertFalse(tokenStream.incrementToken());
       tokenStream.end();
     }
-    // TODO: fix this about PFAW, this is crazy
+    // TODO: fix this about PFAW, this is crazy id:140 gh:141
     analyzer.close();
     defaultAnalyzer.close();
     IOUtils.close(analyzerPerField.values());    
@@ -157,6 +157,6 @@ public class TestPerFieldAnalyzerWrapper extends BaseTokenStreamTestCase {
         new int[] { 2 }
     );
     p.close();
-    a.close(); // TODO: fix this about PFAW, its a trap
+    a.close(); // TODO: fix this about PFAW, its a trap id:199 gh:200
   }
 }

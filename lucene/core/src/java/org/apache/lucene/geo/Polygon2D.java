@@ -54,7 +54,7 @@ public final class Polygon2D {
   /** maximum longitude of this component or any of its children */
   private double maxX;
   /** which dimension was this node split on */
-  // TODO: its implicit based on level, but boolean keeps code simple
+  // TODO: its implicit based on level, but boolean keeps code simple id:458 gh:459
   private boolean splitX;
 
   // child components, or null

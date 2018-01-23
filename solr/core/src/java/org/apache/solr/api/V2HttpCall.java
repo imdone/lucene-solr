@@ -111,7 +111,7 @@ public class V2HttpCall extends HttpSolrCall {
 
         collectionsList = resolveCollectionListOrAlias(queryParams.get(COLLECTION_PROP, origCorename));
         String collectionName = collectionsList.get(0); // first
-        //TODO try the other collections if can't find a local replica of the first?
+        //TODO try the other collections if can't find a local replica of the first? id:2627 gh:2628
 
         DocCollection collection = getDocCollection(collectionName);
         if (collection == null) {

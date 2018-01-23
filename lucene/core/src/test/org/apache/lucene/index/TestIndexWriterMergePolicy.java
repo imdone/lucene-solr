@@ -291,6 +291,6 @@ public class TestIndexWriterMergePolicy extends LuceneTestCase {
       lmp.setMaxCFSSegmentSizeMB(-2.0);
     });
     
-    // TODO: Add more checks for other non-double setters!
+    // TODO: Add more checks for other non-double setters! id:1005 gh:1006
   }
 }

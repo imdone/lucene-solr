@@ -198,8 +198,8 @@ class LatLonPointDistanceComparator extends FieldComparator<Double> implements L
     return Double.compare(topValue, haversin2(sortKey(doc)));
   }
   
-  // TODO: optimize for single-valued case?
-  // TODO: do all kinds of other optimizations!
+  // TODO: optimize for single-valued case? id:1135 gh:1137
+  // TODO: do all kinds of other optimizations! id:1316 gh:1317
   double sortKey(int doc) throws IOException {
     if (doc > currentDocs.docID()) {
       currentDocs.advance(doc);

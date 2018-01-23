@@ -45,7 +45,7 @@ public class DateFieldTest extends SolrTestCaseJ4 {
     f.init(schema, Collections.<String,String>emptyMap());
   }
 
-  // NOTE: Many other tests were moved to DateMathParserTest
+  // NOTE: Many other tests were moved to DateMathParserTest id:2930 gh:2931
 
   public void testCreateField() {
     int props = FieldProperties.INDEXED ^ FieldProperties.STORED;

@@ -49,7 +49,7 @@ import static org.apache.lucene.search.DocIdSetIterator.NO_MORE_DOCS;
  */
 class SortingLeafReader extends FilterLeafReader {
 
-  //TODO remove from here; move to FreqProxTermsWriter or FreqProxFields?
+  //TODO remove from here; move to FreqProxTermsWriter or FreqProxFields? id:828 gh:829
   static class SortingFields extends FilterFields {
 
     private final Sorter.DocMap docMap;
@@ -217,7 +217,7 @@ class SortingLeafReader extends FilterLeafReader {
   private final Map<String,CachedBinaryDVs> cachedBinaryDVs = new HashMap<>();
 
   static class CachedBinaryDVs {
-    // TODO: at least cutover to BytesRefArray here:
+    // TODO: at least cutover to BytesRefArray here: id:718 gh:719
     private final BytesRef[] values;
     private final BitSet docsWithField;
 
@@ -438,7 +438,7 @@ class SortingLeafReader extends FilterLeafReader {
     }
   }
 
-  // TODO: pack long[][] into an int[] (offset) and long[] instead:
+  // TODO: pack long[][] into an int[] (offset) and long[] instead: id:615 gh:616
   private final Map<String,long[][]> cachedSortedSetDVs = new HashMap<>();
 
   static class SortingSortedSetDocValues extends SortedSetDocValues {

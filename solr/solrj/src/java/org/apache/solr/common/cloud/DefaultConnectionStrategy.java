@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * TODO: improve backoff retry impl
+ * TODO: improve backoff retry impl id:2455 gh:2456
  */
 public class DefaultConnectionStrategy extends ZkClientConnectionStrategy {
 

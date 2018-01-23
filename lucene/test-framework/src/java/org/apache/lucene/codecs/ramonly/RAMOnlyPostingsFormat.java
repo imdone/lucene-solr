@@ -55,7 +55,7 @@ import org.apache.lucene.util.RamUsageEstimator;
  *  token (header + single int) to identify which "slot" the
  *  index is using in RAM HashMap.
  *
- *  NOTE: this codec sorts terms by reverse-unicode-order! */
+ *  NOTE: this codec sorts terms by reverse-unicode-order! id:1342 gh:1343*/
 
 public final class RAMOnlyPostingsFormat extends PostingsFormat {
 
@@ -453,7 +453,7 @@ public final class RAMOnlyPostingsFormat extends PostingsFormat {
 
     @Override
     public BytesRef term() {
-      // TODO: reuse BytesRef
+      // TODO: reuse BytesRef id:1598 gh:1599
       return new BytesRef(current);
     }
 
@@ -489,7 +489,7 @@ public final class RAMOnlyPostingsFormat extends PostingsFormat {
       return slowAdvance(targetDocID);
     }
 
-    // TODO: override bulk read, for better perf
+    // TODO: override bulk read, for better perf id:2586 gh:2587
     @Override
     public int nextDoc() {
       upto++;
@@ -558,7 +558,7 @@ public final class RAMOnlyPostingsFormat extends PostingsFormat {
   public FieldsConsumer fieldsConsumer(SegmentWriteState writeState) throws IOException {
     final int id = nextID.getAndIncrement();
 
-    // TODO -- ok to do this up front instead of
+    // TODO -- ok to do this up front instead of id:1682 gh:1683
     // on close....?  should be ok?
     // Write our ID:
     final String idFileName = IndexFileNames.segmentFileName(writeState.segmentInfo.name, writeState.segmentSuffix, ID_EXTENSION);

@@ -40,7 +40,7 @@ public class HLLAgg extends StrAggValueSource {
   }
 
   // factory for the hyper-log-log algorithm.
-  // TODO: make stats component HllOptions inherit from this?
+  // TODO: make stats component HllOptions inherit from this? id:2101 gh:2102
   public static class HLLFactory {
     int log2m = 13;
     int regwidth = 6;
@@ -116,7 +116,7 @@ public class HLLAgg extends StrAggValueSource {
   }
 
 
-  // TODO: hybrid model for non-distrib numbers?
+  // TODO: hybrid model for non-distrib numbers? id:2022 gh:2023
   // todo - better efficiency for sorting?
 
   abstract class BaseNumericAcc extends SlotAcc {

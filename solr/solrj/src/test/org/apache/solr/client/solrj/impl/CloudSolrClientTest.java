@@ -788,7 +788,7 @@ public class CloudSolrClientTest extends SolrCloudTestCase {
     assertEquals(1, slice.getReplicas().size()); // sanity check
     final String old_leader_core_node_name = slice.getLeader().getName();
 
-    // NOTE: creating our own CloudSolrClient whose settings we can muck with...
+    // NOTE: creating our own CloudSolrClient whose settings we can muck with... id:3019 gh:3020
     try (CloudSolrClient stale_client = new CloudSolrClientBuilder()
         .withZkHost(cluster.getZkServer().getZkAddress())
         .sendDirectUpdatesToAnyShardReplica()
@@ -805,7 +805,7 @@ public class CloudSolrClientTest extends SolrCloudTestCase {
       assertEquals("Couldn't create collection", 0,
                    CollectionAdminRequest.addReplicaToShard(COL, "shard1")
                    .setNode(new_leader_node.getNodeName())
-                   // NOTE: don't use our stale_client for this -- don't tip it off of a collection change
+                   // NOTE: don't use our stale_client for this -- don't tip it off of a collection change id:2471 gh:2472
                    .process(cluster.getSolrClient()).getStatus());
       AbstractDistribZkTestBase.waitForRecoveriesToFinish
         (COL, cluster.getSolrClient().getZkStateReader(), true, true, 330);
@@ -813,7 +813,7 @@ public class CloudSolrClientTest extends SolrCloudTestCase {
       // ...and delete our original leader.
       assertEquals("Couldn't create collection", 0,
                    CollectionAdminRequest.deleteReplica(COL, "shard1", old_leader_core_node_name)
-                   // NOTE: don't use our stale_client for this -- don't tip it off of a collection change
+                   // NOTE: don't use our stale_client for this -- don't tip it off of a collection change id:2536 gh:2537
                    .process(cluster.getSolrClient()).getStatus());
       AbstractDistribZkTestBase.waitForRecoveriesToFinish
         (COL, cluster.getSolrClient().getZkStateReader(), true, true, 330);

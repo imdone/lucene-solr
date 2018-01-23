@@ -239,7 +239,7 @@ public class SolrSuggester implements Accountable {
     SuggesterResult res = new SuggesterResult();
     List<LookupResult> suggestions;
     if(options.contextFilterQuery == null){
-      //TODO: this path needs to be fixed to accept query params to override configs such as allTermsRequired, highlight
+      //TODO: this path needs to be fixed to accept query params to override configs such as allTermsRequired, highlight id:2939 gh:2940
       suggestions = lookup.lookup(options.token, false, options.count);
     } else {
       BooleanQuery query = parseContextFilterQuery(options.contextFilterQuery);

@@ -154,7 +154,7 @@ public final class CompletionTokenStream extends TokenStream {
    * Converts the tokenStream to an automaton
    */
   public Automaton toAutomaton(boolean unicodeAware) throws IOException {
-    // TODO refactor this
+    // TODO refactor this id:1547 gh:1548
     // maybe we could hook up a modified automaton from TermAutomatonQuery here?
     Automaton automaton = null;
     try {
@@ -177,7 +177,7 @@ public final class CompletionTokenStream extends TokenStream {
       IOUtils.closeWhileHandlingException(inputTokenStream);
     }
 
-    // TODO: we can optimize this somewhat by determinizing
+    // TODO: we can optimize this somewhat by determinizing id:2560 gh:2561
     // while we convert
     automaton = replaceSep(automaton, preserveSep, SEP_LABEL);
     // This automaton should not blow up during determinize:

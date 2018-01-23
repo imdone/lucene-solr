@@ -134,7 +134,7 @@ class NearestNeighbor {
         return;
       }
 
-      // TODO: work in int space, use haversinSortKey
+      // TODO: work in int space, use haversinSortKey id:1459 gh:1460
 
       double docLatitude = decodeLatitude(packedValue, 0);
       double docLongitude = decodeLongitude(packedValue, Integer.BYTES);
@@ -193,14 +193,14 @@ class NearestNeighbor {
     }
   }
 
-  // TODO: can we somehow share more with, or simply directly use, the LatLonPointDistanceComparator?  It's really doing the same thing as
+  // TODO: can we somehow share more with, or simply directly use, the LatLonPointDistanceComparator?  It's really doing the same thing as id:1632 gh:1633
   // our hitQueue...
 
   public static NearestHit[] nearest(double pointLat, double pointLon, List<BKDReader> readers, List<Bits> liveDocs, List<Integer> docBases, final int n) throws IOException {
 
     //System.out.println("NEAREST: readers=" + readers + " liveDocs=" + liveDocs + " pointLat=" + pointLat + " pointLon=" + pointLon);
     // Holds closest collected points seen so far:
-    // TODO: if we used lucene's PQ we could just updateTop instead of poll/offer:
+    // TODO: if we used lucene's PQ we could just updateTop instead of poll/offer: id:1137 gh:1138
     final PriorityQueue<NearestHit> hitQueue = new PriorityQueue<>(n, new Comparator<NearestHit>() {
         @Override
         public int compare(NearestHit a, NearestHit b) {
@@ -244,7 +244,7 @@ class NearestNeighbor {
       Cell cell = cellQueue.poll();
       //System.out.println("  visit " + cell);
 
-      // TODO: if we replace approxBestDistance with actualBestDistance, we can put an opto here to break once this "best" cell is fully outside of the hitQueue bottom's radius:
+      // TODO: if we replace approxBestDistance with actualBestDistance, we can put an opto here to break once this "best" cell is fully outside of the hitQueue bottom's radius: id:1321 gh:1322
       BKDReader reader = readers.get(cell.readerIndex);
 
       if (cell.index.isLeafNode()) {
@@ -299,7 +299,7 @@ class NearestNeighbor {
     return hits;
   }
 
-  // NOTE: incoming args never cross the dateline, since they are a BKD cell
+  // NOTE: incoming args never cross the dateline, since they are a BKD cell id:1177 gh:1178
   private static double approxBestDistance(byte[] minPackedValue, byte[] maxPackedValue, double pointLat, double pointLon) {
     double minLat = decodeLatitude(minPackedValue, 0);
     double minLon = decodeLongitude(minPackedValue, Integer.BYTES);
@@ -308,10 +308,10 @@ class NearestNeighbor {
     return approxBestDistance(minLat, maxLat, minLon, maxLon, pointLat, pointLon);
   }
 
-  // NOTE: incoming args never cross the dateline, since they are a BKD cell
+  // NOTE: incoming args never cross the dateline, since they are a BKD cell id:1461 gh:1462
   private static double approxBestDistance(double minLat, double maxLat, double minLon, double maxLon, double pointLat, double pointLon) {
     
-    // TODO: can we make this the trueBestDistance?  I.e., minimum distance between the point and ANY point on the box?  we can speed things
+    // TODO: can we make this the trueBestDistance?  I.e., minimum distance between the point and ANY point on the box?  we can speed things id:1635 gh:1636
     // up if so, but not enrolling any BKD cell whose true best distance is > bottom of the current hit queue
 
     if (pointLat >= minLat && pointLat <= maxLat && pointLon >= minLon && pointLon <= maxLon) {

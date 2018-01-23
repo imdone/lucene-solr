@@ -570,7 +570,7 @@ public class ConcurrentUpdateSolrClient extends SolrClient {
 
       synchronized (runners) {
 
-        // NOTE: if the executor is shut down, runners may never become empty (a scheduled task may never be run,
+        // NOTE: if the executor is shut down, runners may never become empty (a scheduled task may never be run, id:2430 gh:2431
         // which means it would never remove itself from the runners list. This is why we don't wait forever
         // and periodically check if the scheduler is shutting down.
         int loopCount = 0;
@@ -586,7 +586,7 @@ public class ConcurrentUpdateSolrClient extends SolrClient {
           // Need to check if the queue is empty before really considering this is finished (SOLR-4260)
           int queueSize = queue.size();
           if (queueSize > 0 && runners.isEmpty()) {
-            // TODO: can this still happen?
+            // TODO: can this still happen? id:2504 gh:2505
             log.warn("No more runners, but queue still has " +
                 queueSize + " adding more runners to process remaining requests on queue");
             addRunner();

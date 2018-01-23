@@ -61,7 +61,7 @@ public abstract class SolrParams implements Serializable, MapWriter {
   /** returns a RequiredSolrParams wrapping this */
   public RequiredSolrParams required()
   {
-    // TODO? should we want to stash a reference?
+    // TODO ? should we want to stash a reference? id:2462 gh:2463
     return new RequiredSolrParams(this);
   }
 
@@ -505,7 +505,7 @@ public abstract class SolrParams implements Serializable, MapWriter {
   public String toLocalParamsString() {
     final StringBuilder sb = new StringBuilder(128);
     sb.append("{!");
-    //TODO perhaps look for 'type' and add here?  but it doesn't matter.
+    //TODO perhaps look for 'type' and add here?  but it doesn't matter. id:3009 gh:3010
     for (final Iterator<String> it = getParameterNamesIterator(); it.hasNext();) {
       final String name = it.next();
       for (String val : getParams(name)) {

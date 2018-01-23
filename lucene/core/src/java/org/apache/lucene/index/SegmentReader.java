@@ -67,7 +67,7 @@ public final class SegmentReader extends CodecReader {
    * @throws CorruptIndexException if the index is corrupt
    * @throws IOException if there is a low-level IO error
    */
-  // TODO: why is this public?
+  // TODO: why is this public? id:609 gh:610
   public SegmentReader(SegmentCommitInfo si, int createdVersionMajor, IOContext context) throws IOException {
     this.si = si;
     this.metaData = new LeafMetaData(createdVersionMajor, si.info.getMinVersion(), si.info.getIndexSort());
@@ -82,7 +82,7 @@ public final class SegmentReader extends CodecReader {
     final Codec codec = si.info.getCodec();
     try {
       if (si.hasDeletions()) {
-        // NOTE: the bitvector is stored using the regular directory, not cfs
+        // NOTE: the bitvector is stored using the regular directory, not cfs id:618 gh:619
         liveDocs = codec.liveDocsFormat().readLiveDocs(directory(), si, IOContext.READONCE);
       } else {
         assert si.getDelCount() == 0;

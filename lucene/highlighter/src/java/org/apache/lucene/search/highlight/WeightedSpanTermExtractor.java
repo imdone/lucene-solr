@@ -431,7 +431,7 @@ public class WeightedSpanTermExtractor {
 
     @Override
     public FieldInfos getFieldInfos() {
-      throw new UnsupportedOperationException();//TODO merge them
+      throw new UnsupportedOperationException();//TODO merge them id:1097 gh:1098
     }
 
     @Override

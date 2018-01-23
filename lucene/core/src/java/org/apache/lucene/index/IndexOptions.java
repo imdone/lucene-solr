@@ -23,7 +23,7 @@ package org.apache.lucene.index;
  */
 
 public enum IndexOptions { 
-  // NOTE: order is important here; FieldInfo uses this
+  // NOTE: order is important here; FieldInfo uses this id:579 gh:580
   // order to merge two conflicting IndexOptions (always
   // "downgrades" by picking the lowest).
   /** Not indexed */

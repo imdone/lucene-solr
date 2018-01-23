@@ -286,7 +286,7 @@ public class HttpClusterStateProvider implements ClusterStateProvider {
   public String getPolicyNameByCollection(String coll) {
     throw new UnsupportedOperationException("Fetching cluster properties not supported"
         + " using the HttpClusterStateProvider. "
-        + "ZkClientClusterStateProvider can be used for this."); // TODO
+        + "ZkClientClusterStateProvider can be used for this."); // TODO id:2433 gh:2434
   }
 
   @Override

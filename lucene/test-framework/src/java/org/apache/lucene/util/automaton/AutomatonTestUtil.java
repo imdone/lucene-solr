@@ -471,7 +471,7 @@ public class AutomatonTestUtil {
    * Checks whether there is a loop containing s. (This is sufficient since
    * there are never transitions to dead states.)
    */
-  // TODO: not great that this is recursive... in theory a
+  // TODO: not great that this is recursive... in theory a id:1710 gh:1711
   // large automata could exceed java's stack
   private static boolean isFiniteSlow(Automaton a, int s, HashSet<Integer> path) {
     path.add(s);

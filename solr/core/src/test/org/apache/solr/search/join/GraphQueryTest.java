@@ -53,7 +53,7 @@ public class GraphQueryTest extends SolrTestCaseJ4 {
     String node_id = p.get("node_id");
     String edge_id = p.get("edge_id");
 
-    // NOTE: from/to fields are reversed from {!join}... values are looked up in the "toField" and then matched on the "fromField"
+    // NOTE: from/to fields are reversed from {!join}... values are looked up in the "toField" and then matched on the "fromField" id:3107 gh:3109
     // 1->-2->(3,9)->(4,5)->7
     // 8->(1,-2)->...
     assertU(adoc("id", "doc_1", node_id, "1", edge_id, "-2", "text", "foo", "title", "foo10" ));
@@ -81,7 +81,7 @@ public class GraphQueryTest extends SolrTestCaseJ4 {
     // Now we have created a simple graph
     // start traversal from node id to edge id
 
-    // TODO: assert which documents actually come back
+    // TODO: assert which documents actually come back id:2375 gh:2376
     assertJQ(req(p, "q","{!graph from=${node_id} to=${edge_id}}id:doc_1")
         , "/response/numFound==7"
     );

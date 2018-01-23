@@ -241,7 +241,7 @@ public abstract class BinaryDictionaryWriter {
     writePosDict(baseName + BinaryDictionary.POSDICT_FILENAME_SUFFIX);
   }
   
-  // TODO: maybe this int[] should instead be the output to the FST...
+  // TODO: maybe this int[] should instead be the output to the FST... id:234 gh:235
   protected void writeTargetMap(String filename) throws IOException {
     new File(filename).getParentFile().mkdirs();
     OutputStream os = new FileOutputStream(filename);

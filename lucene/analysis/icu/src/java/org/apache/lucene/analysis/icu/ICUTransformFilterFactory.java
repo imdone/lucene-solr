@@ -41,7 +41,7 @@ import com.ibm.icu.text.Transliterator;
 public class ICUTransformFilterFactory extends TokenFilterFactory implements MultiTermAwareComponent {
   private final Transliterator transliterator;
   
-  // TODO: add support for custom rules
+  // TODO: add support for custom rules id:154 gh:155
   /** Creates a new ICUTransformFilterFactory */
   public ICUTransformFilterFactory(Map<String,String> args) {
     super(args);

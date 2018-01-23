@@ -47,7 +47,7 @@ public class GeoDistValueSourceParser extends ValueSourceParser {
 
   @Override
   public ValueSource parse(FunctionQParser fp) throws SyntaxError {
-    // TODO: dispatch through SpatialQueryable in the future?
+    // TODO: dispatch through SpatialQueryable in the future? id:2113 gh:2114
 
     //note: parseValueSourceList can't handle a field reference to an AbstractSpatialFieldType,
     // so those fields are expressly handled via sfield=

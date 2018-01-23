@@ -158,7 +158,7 @@ public class CdcrVersionReplicationTest extends BaseCdcrDistributedZkTest {
     doQueryShardReplica(SHARD2, "doc2,12,doc3,12", "q", "*:*");
 
     // version conflict thanks to optimistic locking
-    if (solrClient instanceof CloudSolrClient) // TODO: it seems that optimistic locking doesn't work with forwarding, test with shard2 client
+    if (solrClient instanceof CloudSolrClient) // TODO: it seems that optimistic locking doesn't work with forwarding, test with shard2 client id:2900 gh:2901
       vdeleteFail("doc2", 50, 409);
 
     // cleanup after ourselves for the next run

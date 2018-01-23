@@ -221,7 +221,7 @@ public class TestOfflineSorter extends LuceneTestCase {
     }
   }
 
-  /** NOTE: closes the provided {@link IndexOutput} */
+  /** NOTE: closes the provided {@link IndexOutput} id:1053 gh:1054*/
   private void writeAll(IndexOutput out, byte[][] data) throws IOException {
     try (ByteSequencesWriter w = new OfflineSorter.ByteSequencesWriter(out)) {
       for (byte [] datum : data) {

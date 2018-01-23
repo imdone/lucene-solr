@@ -234,9 +234,9 @@ class ReadersAndUpdates {
     return didDelete;
   }
 
-  // NOTE: removes callers ref
+  // NOTE: removes callers ref id:598 gh:599
   public synchronized void dropReaders() throws IOException {
-    // TODO: can we somehow use IOUtils here...?  problem is
+    // TODO: can we somehow use IOUtils here...?  problem is id:607 gh:608
     // we are calling .decRef not .close)...
     if (reader != null) {
       try {
@@ -250,7 +250,7 @@ class ReadersAndUpdates {
   }
 
   /**
-   * Returns a ref to a clone. NOTE: you should decRef() the reader when you're
+   * Returns a ref to a clone. NOTE: you should decRef() the reader when you're id:549 gh:550
    * done (ie do not call close()).
    */
   public synchronized SegmentReader getReadOnlyClone(IOContext context) throws IOException {
@@ -449,7 +449,7 @@ class ReadersAndUpdates {
 
                 @Override
                 public long cost() {
-                  // TODO
+                  // TODO id:819 gh:820
                   return 0;
                 }
 

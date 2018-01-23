@@ -152,7 +152,7 @@ class ChildDocTransformer extends DocTransformer {
             docFetcher.decorateDocValueFields(solrChildDoc, childDocNum, dvFieldsToReturn);
           }
 
-          // TODO: future enhancement...
+          // TODO: future enhancement... id:2688 gh:2689
           // support an fl local param in the transformer, which is used to build
           // a private ReturnFields instance that we use to prune unwanted field 
           // names from solrChildDoc

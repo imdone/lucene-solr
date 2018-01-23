@@ -60,7 +60,7 @@ import org.apache.lucene.util.ThreadInterruptedException;
 import com.carrotsearch.randomizedtesting.SeedUtils;
 
 /*
-  TODO
+  TODO id:1606 gh:1607
     - fangs
       - sometimes have one replica be really slow at copying / have random pauses (fake GC) / etc.
     - test should not print scary exceptions and then succeed!
@@ -310,7 +310,7 @@ public class TestStressNRTReplication extends LuceneTestCase {
       if (random().nextInt(10) == 1) {
         NodeProcess node = nodes[random().nextInt(nodes.length)];
         if (node != null && node.nodeIsClosing.get() == false) {
-          // TODO: if this node is primary, it means we committed an unpublished version (not exposed as an NRT point)... not sure it matters.
+          // TODO: if this node is primary, it means we committed an unpublished version (not exposed as an NRT point)... not sure it matters. id:1113 gh:1114
           // maybe we somehow allow IW to commit a specific sis (the one we just flushed)?
           message("top: now commit node=" + node);
           try {
@@ -956,7 +956,7 @@ public class TestStressNRTReplication extends LuceneTestCase {
 
             Integer oldHitCount = hitCounts.get(version);
 
-            // TODO: we never prune this map...
+            // TODO: we never prune this map... id:1254 gh:1255
             if (oldHitCount == null) {
               hitCounts.put(version, hitCount);
               message("top: searcher: record search hitCount version=" + version + " hitCount=" + hitCount + " node=" + node);

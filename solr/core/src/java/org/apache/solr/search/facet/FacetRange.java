@@ -158,7 +158,7 @@ class FacetRangeProcessor extends FacetProcessor<FacetRange> {
                   "Expected numeric field type :" + sf);
       }
     } else if (ft instanceof PointField) {
-      // TODO, this is the same in Trie and Point now
+      // TODO , this is the same in Trie and Point now id:2901 gh:2902
       switch (ft.getNumberType()) {
         case FLOAT:
           calc = new FloatCalc(sf);
@@ -360,12 +360,12 @@ class FacetRangeProcessor extends FacetProcessor<FacetRange> {
   private DocSet[] intersections;
   private void rangeStats(Range range, int slot) throws IOException {
     Query rangeQ = sf.getType().getRangeQuery(null, sf, range.low == null ? null : calc.formatValue(range.low), range.high==null ? null : calc.formatValue(range.high), range.includeLower, range.includeUpper);
-    // TODO: specialize count only
+    // TODO: specialize count only id:1991 gh:1992
     DocSet intersection = fcontext.searcher.getDocSet(rangeQ, fcontext.base);
     filters[slot] = rangeQ;
-    intersections[slot] = intersection;  // save for later  // TODO: only save if number of slots is small enough?
+    intersections[slot] = intersection;  // save for later  // TODO: only save if number of slots is small enough? id:2731 gh:2732
     int num = collect(intersection, slot);
-    countAcc.incrementCount(slot, num); // TODO: roll this into collect()
+    countAcc.incrementCount(slot, num); // TODO: roll this into collect() id:2087 gh:2088
   }
 
   private void doSubs(SimpleOrderedMap bucket, int slot) throws IOException {
@@ -732,7 +732,7 @@ class FacetRangeProcessor extends FacetProcessor<FacetRange> {
     List<SimpleOrderedMap> bucketList = new ArrayList<>( leaves.size() + skip.size() + partial.size() );
     res.add("buckets", bucketList);
 
-    // TODO: an alternate implementations can fill all accs at once
+    // TODO: an alternate implementations can fill all accs at once id:2015 gh:2016
     createAccs(-1, 1);
 
     for (Object bucketVal : leaves) {
@@ -778,7 +778,7 @@ class FacetRangeProcessor extends FacetProcessor<FacetRange> {
   }
 
   private SimpleOrderedMap<Object> refineBucket(Object bucketVal, boolean skip, Map<String,Object> facetInfo) throws IOException {
-    // TODO: refactor this repeated code from above
+    // TODO: refactor this repeated code from above id:2903 gh:2904
     Comparable start = calc.getValue(bucketVal.toString());
     Comparable end = calc.getValue(freq.end.toString());
     EnumSet<FacetParams.FacetRangeInclude> include = freq.include;

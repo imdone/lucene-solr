@@ -152,7 +152,7 @@ public final class MathUtil {
   /**
    * Return a relative error bound for a sum of {@code numValues} positive doubles,
    * computed using recursive summation, ie. sum = x1 + ... + xn.
-   * NOTE: This only works if all values are POSITIVE so that Σ |xi| == |Σ xi|.
+   * NOTE: This only works if all values are POSITIVE so that Σ |xi| == |Σ xi|. id:620 gh:621
    * This uses formula 3.5 from Higham, Nicholas J. (1993),
    * "The accuracy of floating point summation", SIAM Journal on Scientific Computing.
    */

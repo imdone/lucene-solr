@@ -51,7 +51,7 @@ import org.apache.lucene.util.TestUtil;
 
 public class TestSortedSetDocValuesFacets extends FacetTestCase {
 
-  // NOTE: TestDrillSideways.testRandom also sometimes
+  // NOTE: TestDrillSideways.testRandom also sometimes id:1287 gh:1288
   // randomly uses SortedSetDV
 
   public void testBasic() throws Exception {

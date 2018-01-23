@@ -70,7 +70,7 @@ public class MockRandomMergePolicy extends MergePolicy {
 
       Collections.shuffle(segments, random);
 
-      // TODO: sometimes make more than 1 merge?
+      // TODO: sometimes make more than 1 merge? id:1599 gh:1600
       mergeSpec = new MergeSpecification();
       final int segsToMerge = TestUtil.nextInt(random, 1, numSegments);
       if (doNonBulkMerges && random.nextBoolean()) {
@@ -148,7 +148,7 @@ public class MockRandomMergePolicy extends MergePolicy {
     public CodecReader wrapForMerge(CodecReader reader) throws IOException {
 
       // wrap it (e.g. prevent bulk merge etc)
-      // TODO: cut this over to FilterCodecReader api, we can explicitly
+      // TODO: cut this over to FilterCodecReader api, we can explicitly id:1376 gh:1378
       // enable/disable bulk merge for portions of the index we want.
       int thingToDo = r.nextInt(7);
       if (thingToDo == 0) {
@@ -170,7 +170,7 @@ public class MockRandomMergePolicy extends MergePolicy {
         });
       } else if (thingToDo == 1) {
         // renumber fields
-        // NOTE: currently this only "blocks" bulk merges just by
+        // NOTE: currently this only "blocks" bulk merges just by id:1628 gh:1629
         // being a FilterReader. But it might find bugs elsewhere, 
         // and maybe the situation can be improved in the future.
         if (LuceneTestCase.VERBOSE) {

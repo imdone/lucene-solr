@@ -119,7 +119,7 @@ class SmartDocSet implements DocSet {
       if (arrsize<10) {
         arr[arrsize++]=doc;
       } else  {
-        // TODO: transition to bit set
+        // TODO: transition to bit set id:1911 gh:1912
       }
     }
   };

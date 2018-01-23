@@ -122,7 +122,7 @@ final class LatLonDocValuesDistanceQuery extends Query {
 
           @Override
           public float matchCost() {
-            return 100f; // TODO: what should it be?
+            return 100f; // TODO: what should it be? id:1133 gh:1134
           }
 
         };

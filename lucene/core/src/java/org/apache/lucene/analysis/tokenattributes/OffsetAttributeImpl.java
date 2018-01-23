@@ -36,7 +36,7 @@ public class OffsetAttributeImpl extends AttributeImpl implements OffsetAttribut
   @Override
   public void setOffset(int startOffset, int endOffset) {
 
-    // TODO: we could assert that this is set-once, ie,
+    // TODO: we could assert that this is set-once, ie, id:402 gh:404
     // current values are -1?  Very few token filters should
     // change offsets once set by the tokenizer... and
     // tokenizer should call clearAtts before re-using
@@ -59,7 +59,7 @@ public class OffsetAttributeImpl extends AttributeImpl implements OffsetAttribut
 
   @Override
   public void clear() {
-    // TODO: we could use -1 as default here?  Then we can
+    // TODO: we could use -1 as default here?  Then we can id:474 gh:475
     // assert in setOffset...
     startOffset = 0;
     endOffset = 0;

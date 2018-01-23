@@ -25,7 +25,7 @@ import org.apache.lucene.document.FieldType;
 import org.apache.lucene.index.IndexOptions;
 import org.apache.lucene.util.BytesRef;
 
-// TODO: can we take a BytesRef token instead?
+// TODO: can we take a BytesRef token instead? id:1145 gh:1146
 
 /** Produces a single String token from the provided value, with the provided payload. */
 class StringAndPayloadField extends Field {

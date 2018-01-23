@@ -100,7 +100,7 @@ public class TestFunctionQuery extends SolrTestCaseJ4 {
   }
 
   protected void singleTest(String field, String funcTemplate, List<String> args, float... results) {
-    // NOTE: we're abusing the "results" float[] here ...
+    // NOTE: we're abusing the "results" float[] here ... id:2374 gh:2375
     // - even elements are ids which must be valid 'ints'
     // - odd elements are the expected score values
     

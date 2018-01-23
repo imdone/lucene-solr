@@ -99,7 +99,7 @@ public abstract class AbstractVisitingPrefixTreeQuery extends AbstractPrefixTree
   */
 
     //
-    //  TODO MAJOR REFACTOR SIMPLIFICATION BASED ON TreeCellIterator  TODO
+    //  TODO MAJOR REFACTOR SIMPLIFICATION BASED ON TreeCellIterator  TODO id:1192 gh:1193
     //
 
     private VNode curVNode;//current pointer, derived from query shape
@@ -179,7 +179,7 @@ public abstract class AbstractVisitingPrefixTreeQuery extends AbstractPrefixTree
 
         // If indexedCell is a leaf then there's no prefix (prefix sorts before) -- just visit and continue
         if (indexedCell.isLeaf()) {
-          visitLeaf(indexedCell);//TODO or query cell? Though shouldn't matter.
+          visitLeaf(indexedCell);//TODO or query cell? Though shouldn't matter. id:1487 gh:1488
           if (!nextTerm()) break;
           continue;
         }
@@ -188,7 +188,7 @@ public abstract class AbstractVisitingPrefixTreeQuery extends AbstractPrefixTree
         if (!nextTerm()) break;
         // Check for adjacent leaf with the same prefix
         if (indexedCell.isLeaf() && indexedCell.getLevel() == curVNode.cell.getLevel()) {
-          visitLeaf(indexedCell);//TODO or query cell? Though shouldn't matter.
+          visitLeaf(indexedCell);//TODO or query cell? Though shouldn't matter. id:1656 gh:1657
           if (!nextTerm()) break;
         }
 
@@ -214,7 +214,7 @@ public abstract class AbstractVisitingPrefixTreeQuery extends AbstractPrefixTree
       // scan through terms beneath this cell.
       // Scanning is a performance optimization trade-off.
 
-      //TODO use termsEnum.docFreq() as heuristic
+      //TODO use termsEnum.docFreq() as heuristic id:1431 gh:1432
       boolean scan = cell.getLevel() >= prefixGridScanLevel;//simple heuristic
 
       if (!scan) {

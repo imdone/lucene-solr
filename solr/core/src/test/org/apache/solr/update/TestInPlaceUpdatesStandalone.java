@@ -613,7 +613,7 @@ public class TestInPlaceUpdatesStandalone extends SolrTestCaseJ4 {
                 //
                 sdoc("id", "1", inplaceField, map("set", 555L)),
                 SOFTCOMMIT,
-                sdoc("id", "1", "regular_l", 666L), // NOTE: no inplaceField, regular add w/overwrite 
+                sdoc("id", "1", "regular_l", 666L), // NOTE: no inplaceField, regular add w/overwrite  id:3113 gh:3114
                 sdoc("id", "1", inplaceField, map("inc", -77)),
                 HARDCOMMIT);
   }

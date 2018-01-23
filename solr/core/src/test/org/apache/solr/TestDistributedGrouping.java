@@ -31,7 +31,7 @@ import org.apache.solr.SolrTestCaseJ4.SuppressPointFields;
 import org.junit.Test;
 
 /**
- * TODO? perhaps use:
+ * TODO ? perhaps use: id:2244 gh:2245
  *  http://docs.codehaus.org/display/JETTY/ServletTester
  * rather then open a real connection?
  *
@@ -270,7 +270,7 @@ public class TestDistributedGrouping extends BaseDistributedSearchTestCase {
 
     // We validate distributed grouping with scoring as first sort.
     // note: this 'q' matches all docs and returns the 'id' as the score, which is unique and so our results should be deterministic.
-    handle.put("maxScore", SKIP);// TODO see SOLR-6612
+    handle.put("maxScore", SKIP);// TODO see SOLR-6612 id:2157 gh:2158
     query("q", "{!func}id_i1", "rows", 100, "fl", "score,id," + i1, "group", "true", "group.field", i1, "group.limit", -1, "sort", i1 + " desc", "group.sort", "score desc"); // SOLR-2955
     query("q", "{!func}id_i1", "rows", 100, "fl", "score,id," + i1, "group", "true", "group.field", i1, "group.limit", -1, "sort", "score desc, _docid_ asc, id asc");
     query("q", "{!func}id_i1", "rows", 100, "fl", "score,id," + i1, "group", "true", "group.field", i1, "group.limit", -1);

@@ -38,8 +38,8 @@ public class PivotFacetHelper {
    * @see #decodeRefinementValuePath
    */
   public static String encodeRefinementValuePath(List<String> values) {
-    // HACK: prefix flag every value to account for empty string vs null
-    // NOTE: even if we didn't have to worry about null's smartSplit is stupid about
+    // HACK: prefix flag every value to account for empty string vs null id:1831 gh:1832
+    // NOTE: even if we didn't have to worry about null's smartSplit is stupid about id:2779 gh:2780
     // pruning empty strings from list
     // "^" prefix = null
     // "~" prefix = not null, may be empty string

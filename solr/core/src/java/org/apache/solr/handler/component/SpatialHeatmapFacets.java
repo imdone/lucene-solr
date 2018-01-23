@@ -71,7 +71,7 @@ public class SpatialHeatmapFacets {
   public static final String FORMAT_PNG = "png";
   public static final String FORMAT_INTS2D = "ints2D";
   //note: if we change or add more formats, remember to update the javadoc on the format param
-  //TODO for more format ideas, see formatCountsAndAddToNL
+  //TODO for more format ideas, see formatCountsAndAddToNL id:2666 gh:2667
 
   public static final double DEFAULT_DIST_ERR_PCT = 0.15;
 
@@ -181,7 +181,7 @@ public class SpatialHeatmapFacets {
     } else if (docSet instanceof BitDocSet) {
       return ((BitDocSet) docSet).getBits();
     } else {
-      // TODO DocSetBase.calcBits ought to be at DocSet level?
+      // TODO DocSetBase.calcBits ought to be at DocSet level? id:1952 gh:1953
       FixedBitSet bits = new FixedBitSet(searcher.maxDoc());
       for (DocIterator iter = docSet.iterator(); iter.hasNext();) {
         bits.set(iter.nextDoc());
@@ -201,9 +201,9 @@ public class SpatialHeatmapFacets {
       case FORMAT_PNG: //A PNG graphic; compressed.  Good for large & dense heatmaps; hard to consume.
         countsVal = counts != null ? asPngBytes(columns, rows, counts, rb) : null;
         break;
-      //TODO  case skipList: //A sequence of values; negative values are actually how many 0's to insert.
+      //TODO case skipList: //A sequence of values; negative values are actually how many 0's to insert. id:1846 gh:1847
       //            Good for small or large but sparse heatmaps.
-      //TODO    auto choose png or skipList; use skipList when < ~25% full or <= ~512 cells
+      //TODO auto choose png or skipList; use skipList when < ~25% full or <= ~512 cells id:2795 gh:2796
       //  remember to augment error list below when we add more formats.
       default:
         throw new SolrException(SolrException.ErrorCode.BAD_REQUEST,
@@ -410,7 +410,7 @@ public class SpatialHeatmapFacets {
       // Wrap ImageInputStream around the bytes.  We could use MemoryCacheImageInputStream but it will
       // cache the data which is quite unnecessary given we have it all in-memory already.
       ImageInputStream imageInputStream = new ImageInputStreamImpl() {
-        //TODO re-use this instance; superclass has 8KB buffer.
+        //TODO re-use this instance; superclass has 8KB buffer. id:1878 gh:1879
 
         @Override
         public int read() throws IOException {
@@ -453,7 +453,7 @@ public class SpatialHeatmapFacets {
         }
       };
       try {
-        //TODO can/should we re-use an imageReader instance on FacetInfo?
+        //TODO can/should we re-use an imageReader instance on FacetInfo? id:2667 gh:2668
         ImageReader imageReader = imageReaderSpi.createReaderInstance();
 
         imageReader.setInput(imageInputStream,

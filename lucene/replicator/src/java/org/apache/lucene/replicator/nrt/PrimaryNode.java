@@ -123,7 +123,7 @@ public abstract class PrimaryNode extends Node {
     return primaryGen;
   }
 
-  // TODO: in the future, we should separate "flush" (returns an incRef'd SegmentInfos) from "refresh" (open new NRT reader from
+  // TODO: in the future, we should separate "flush" (returns an incRef'd SegmentInfos) from "refresh" (open new NRT reader from id:1590 gh:1591
   // IndexWriter) so that the latter can be done concurrently while copying files out to replicas, minimizing the refresh time from the
   // replicas.  But fixing this is tricky because e.g. IndexWriter may complete a big merge just after returning the incRef'd SegmentInfos
   // and before we can open a new reader causing us to close the just-merged readers only to then open them again from the (now stale)
@@ -170,7 +170,7 @@ public abstract class PrimaryNode extends Node {
   public void commit() throws IOException {
     Map<String,String> commitData = new HashMap<>();
     commitData.put(PRIMARY_GEN_KEY, Long.toString(primaryGen));
-    // TODO (opto): it's a bit wasteful that we put "last refresh" version here, not the actual version we are committing, because it means
+    // TODO (opto): it's a bit wasteful that we put "last refresh" version here, not the actual version we are committing, because it means id:1100 gh:1101
     // on xlog replay we are replaying more ops than necessary.
     commitData.put(VERSION_KEY, Long.toString(copyState.version));
     message("top: commit commitData=" + commitData);
@@ -251,7 +251,7 @@ public abstract class PrimaryNode extends Node {
     for(SegmentCommitInfo info : infos) {
       for(String fileName : info.files()) {
         FileMetaData metaData = readLocalFileMetaData(fileName);
-        // NOTE: we hold a refCount on this infos, so this file better exist:
+        // NOTE: we hold a refCount on this infos, so this file better exist: id:1247 gh:1248
         assert metaData != null: "file \"" + fileName + "\" is missing metadata";
         assert filesMetaData.containsKey(fileName) == false;
         filesMetaData.put(fileName, metaData);

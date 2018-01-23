@@ -52,7 +52,7 @@ import org.apache.http.annotation.Experimental;
  *          CoreDescriptors are read-once. During "core discovery" all valid descriptors are enumerated and added to
  *          the appropriate list. Thereafter, they are NOT re-read from disk. In those situations where you want
  *          to re-define the coreDescriptor, maintain a "side list" of changed core descriptors. Then override
- *          getTransientDescriptor to return your new core descriptor. NOTE: assuming you've already closed the
+ *          getTransientDescriptor to return your new core descriptor. NOTE: assuming you've already closed the id:1798 gh:1799
  *          core, the _next_ time that core is required getTransientDescriptor will be called and if you return the
  *          new core descriptor your re-definition should be honored. You'll have to maintain this list for the
  *          duration of this Solr instance running. If you persist the coreDescriptor, then next time Solr starts

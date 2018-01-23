@@ -593,7 +593,7 @@ public class TestFSTs extends LuceneTestCase {
             }
           }
 
-          // NOTE: comment out to profile lookup...
+          // NOTE: comment out to profile lookup... id:1449 gh:1450
           break;
         }
 
@@ -603,10 +603,10 @@ public class TestFSTs extends LuceneTestCase {
     }
   }
 
-  // TODO: try experiment: reverse terms before
+  // TODO: try experiment: reverse terms before id:1006 gh:1007
   // compressing -- how much smaller?
 
-  // TODO: can FST be used to index all internal substrings,
+  // TODO: can FST be used to index all internal substrings, id:1057 gh:1058
   // mapping to term?
 
   // java -cp ../build/codecs/classes/java:../test-framework/lib/randomizedtesting-runner-*.jar:../build/core/classes/test:../build/core/classes/test-framework:../build/core/classes/java:../build/test-framework/classes/java:../test-framework/lib/junit-4.10.jar org.apache.lucene.util.fst.TestFSTs /xold/tmp/allTerms3.txt out
@@ -1415,7 +1415,7 @@ public class TestFSTs extends LuceneTestCase {
       // 2. go thru whole treemap (slowCompletor) and check it's actually the best suggestion
       final List<Result<Long>> matches = new ArrayList<>();
 
-      // TODO: could be faster... but it's slowCompletor for a reason
+      // TODO: could be faster... but it's slowCompletor for a reason id:888 gh:889
       for (Map.Entry<String,Long> e : slowCompletor.entrySet()) {
         if (e.getKey().startsWith(prefix)) {
           //System.out.println("  consider " + e.getKey());
@@ -1536,7 +1536,7 @@ public class TestFSTs extends LuceneTestCase {
       // 2. go thru whole treemap (slowCompletor) and check it's actually the best suggestion
       final List<Result<Pair<Long,Long>>> matches = new ArrayList<>();
 
-      // TODO: could be faster... but it's slowCompletor for a reason
+      // TODO: could be faster... but it's slowCompletor for a reason id:1157 gh:1158
       for (Map.Entry<String,TwoLongs> e : slowCompletor.entrySet()) {
         if (e.getKey().startsWith(prefix)) {
           //System.out.println("  consider " + e.getKey());
@@ -1625,7 +1625,7 @@ public class TestFSTs extends LuceneTestCase {
     assertNotNull(arc);
     assertEquals(new BytesRef("m"), arc.output);
 
-    // NOTE: illegal:
+    // NOTE: illegal: id:1457 gh:1458
     arc.output.length = 0;
 
     fst.getFirstArc(arc);

@@ -56,7 +56,7 @@ public final class RollingCharBuffer {
     end = false;
   }
 
-  /* Absolute position read.  NOTE: pos must not jump
+  /* Absolute position read.  NOTE: pos must not jump id:172 gh:173
    * ahead by more than 1!  Ie, it's OK to read arbitarily
    * far back (just not prior to the last {@link
    * #freeBefore}), but NOT ok to read arbitrarily far

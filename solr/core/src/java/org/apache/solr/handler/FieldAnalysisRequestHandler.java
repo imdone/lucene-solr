@@ -144,7 +144,7 @@ public class FieldAnalysisRequestHandler extends AnalysisRequestHandlerBase {
 
     Iterable<ContentStream> streams = req.getContentStreams();
     if (streams != null) {
-      // NOTE: Only the first content stream is currently processed
+      // NOTE: Only the first content stream is currently processed id:1800 gh:1801
       for (ContentStream stream : streams) {
         Reader reader = null;
         try {

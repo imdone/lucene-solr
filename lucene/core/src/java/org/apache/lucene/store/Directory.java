@@ -83,7 +83,7 @@ public abstract class Directory implements Closeable {
    * changes to the index, to prevent a machine/OS crash
    * from corrupting the index.
    * <br>
-   * NOTE: Clients may call this method for same files over
+   * NOTE: Clients may call this method for same files over id:680 gh:681
    * and over again, so some impls might optimize for that.
    * For other impls the operation can be a noop, for various
    * reasons.

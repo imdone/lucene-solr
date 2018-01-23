@@ -99,7 +99,7 @@ public final class AnalysisSPILoader<S extends AbstractAnalysisFactory> {
       // this allows to place services before others in classpath to make 
       // them used instead of others
       //
-      // TODO: Should we disallow duplicate names here?
+      // TODO: Should we disallow duplicate names here? id:51 gh:52
       // Allowing it may get confusing on collisions, as different packages
       // could contain same factory class, which is a naming bug!
       // When changing this be careful to allow reload()!

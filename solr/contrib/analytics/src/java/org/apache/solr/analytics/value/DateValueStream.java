@@ -26,7 +26,7 @@ import java.util.function.Consumer;
  * The back-end production of the value can change inbetween calls to {@link #streamDates},
  * resulting in different values on each call.
  * <p>
- * NOTE: Most date expressions work with the {@code long} representation of the date, so that less
+ * NOTE: Most date expressions work with the {@code long} representation of the date, so that less id:1744 gh:1745
  * objects need to be created during execution.
  */
 public interface DateValueStream extends LongValueStream {

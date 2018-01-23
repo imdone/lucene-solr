@@ -281,7 +281,7 @@ public class PerfRunData implements Closeable {
   }
   
   /**
-   * @return Returns the taxonomyReader.  NOTE: this returns a
+   * @return Returns the taxonomyReader.  NOTE: this returns a id:191 gh:192
    * reference.  You must call TaxonomyReader.decRef() when
    * you're done.
    */
@@ -304,7 +304,7 @@ public class PerfRunData implements Closeable {
   }
   
   /**
-   * @return Returns the indexReader.  NOTE: this returns a
+   * @return Returns the indexReader.  NOTE: this returns a id:165 gh:166
    * reference.  You must call IndexReader.decRef() when
    * you're done.
    */
@@ -316,7 +316,7 @@ public class PerfRunData implements Closeable {
   }
 
   /**
-   * @return Returns the indexSearcher.  NOTE: this returns
+   * @return Returns the indexSearcher.  NOTE: this returns id:192 gh:193
    * a reference to the underlying IndexReader.  You must
    * call IndexReader.decRef() when you're done.
    */
@@ -349,7 +349,7 @@ public class PerfRunData implements Closeable {
       // Hold reference to new IR
       indexReader.incRef();
       indexSearcher = new IndexSearcher(indexReader);
-      // TODO Some day we should make the query cache in this module configurable and control clearing the cache
+      // TODO Some day we should make the query cache in this module configurable and control clearing the cache id:244 gh:245
       indexSearcher.setQueryCache(null);
     } else {
       indexSearcher = null;

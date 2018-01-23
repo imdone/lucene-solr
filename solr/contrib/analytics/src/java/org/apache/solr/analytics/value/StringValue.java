@@ -31,7 +31,7 @@ public interface StringValue extends StringValueStream, AnalyticsValue {
   /**
    * Get the String representation of the current value.
    * <p>
-   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}.
+   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}. id:1746 gh:1747
    * 
    * @return the current value
    */

@@ -72,7 +72,7 @@ final class LatLonPointInPolygonQuery extends Query {
     }
     this.field = field;
     this.polygons = polygons.clone();
-    // TODO: we could also compute the maximal inner bounding box, to make relations faster to compute?
+    // TODO: we could also compute the maximal inner bounding box, to make relations faster to compute? id:1175 gh:1176
   }
 
   @Override

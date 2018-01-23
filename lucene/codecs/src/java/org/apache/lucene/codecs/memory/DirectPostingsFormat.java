@@ -48,7 +48,7 @@ import org.apache.lucene.util.automaton.CompiledAutomaton;
 import org.apache.lucene.util.automaton.RunAutomaton;
 import org.apache.lucene.util.automaton.Transition;
 
-// TODO:
+// TODO: id:282 gh:283
 //   - build depth-N prefix hash?
 //   - or: longer dense skip lists than just next byte?
 
@@ -81,7 +81,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
   //private static final boolean DEBUG = true;
 
-  // TODO: allow passing/wrapping arbitrary postings format?
+  // TODO: allow passing/wrapping arbitrary postings format? id:400 gh:401
 
   public DirectPostingsFormat() {
     this(DEFAULT_MIN_SKIP_COUNT, DEFAULT_LOW_FREQ_CUTOFF);
@@ -209,7 +209,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
     }
 
-    // TODO: maybe specialize into prx/no-prx/no-frq cases?
+    // TODO: maybe specialize into prx/no-prx/no-frq cases? id:381 gh:382
     private static final class HighFreqTerm extends TermAndSkip {
 
       private static final long BASE_RAM_BYTES_USED = RamUsageEstimator.shallowSizeOfInstance(HighFreqTerm.class);
@@ -274,7 +274,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
     private final long sumDocFreq;
     private int skipCount;
 
-    // TODO: maybe make a separate builder?  These are only
+    // TODO: maybe make a separate builder?  These are only id:292 gh:293
     // used during load:
     private int count;
     private int[] sameCounts = new int[10];
@@ -764,7 +764,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
       @Override
       public SeekStatus seekCeil(BytesRef term) {
-        // TODO: we should use the skip pointers; should be
+        // TODO: we should use the skip pointers; should be id:279 gh:280
         // faster than bin search; we should also hold
         // & reuse current state so seeking forwards is
         // faster
@@ -787,7 +787,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
       @Override
       public boolean seekExact(BytesRef term) {
-        // TODO: we should use the skip pointers; should be
+        // TODO: we should use the skip pointers; should be id:285 gh:286
         // faster than bin search; we should also hold
         // & reuse current state so seeking forwards is
         // faster
@@ -844,10 +844,10 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
       @Override
       public PostingsEnum postings(PostingsEnum reuse, int flags) throws IOException {
-        // TODO: implement reuse
+        // TODO: implement reuse id:405 gh:406
         // it's hairy!
 
-        // TODO: the logic of which enum impl to choose should be refactored to be simpler...
+        // TODO: the logic of which enum impl to choose should be refactored to be simpler... id:384 gh:385
         if (PostingsEnum.featureRequested(flags, PostingsEnum.POSITIONS)) {
 
           if (terms[termOrd] instanceof LowFreqTerm) {
@@ -1361,7 +1361,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
           } else {
             // Run the non-indexed tail of this term:
 
-            // TODO: add assert that we don't inc too many times
+            // TODO: add assert that we don't inc too many times id:294 gh:295
 
             if (compiledAutomaton.commonSuffixRef != null) {
               //System.out.println("suffix " + compiledAutomaton.commonSuffixRef.utf8ToString());
@@ -1452,10 +1452,10 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
       @Override
       public PostingsEnum postings(PostingsEnum reuse, int flags) {
-        // TODO: implement reuse
+        // TODO: implement reuse id:281 gh:282
         // it's hairy!
 
-        // TODO: the logic of which enum impl to choose should be refactored to be simpler...
+        // TODO: the logic of which enum impl to choose should be refactored to be simpler... id:290 gh:291
         if (hasPos && PostingsEnum.featureRequested(flags, PostingsEnum.POSITIONS)) {
           if (terms[termOrd] instanceof LowFreqTerm) {
             final LowFreqTerm term = ((LowFreqTerm) terms[termOrd]);
@@ -1518,7 +1518,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
       return this;
     }
 
-    // TODO: can do this w/o setting members?
+    // TODO: can do this w/o setting members? id:410 gh:411
 
     @Override
     public int nextDoc() {
@@ -1591,7 +1591,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
       return this;
     }
 
-    // TODO: can do this w/o setting members?
+    // TODO: can do this w/o setting members? id:387 gh:388
     @Override
     public int nextDoc() {
       upto += 2;
@@ -1675,7 +1675,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
       return this;
     }
 
-    // TODO: can do this w/o setting members?
+    // TODO: can do this w/o setting members? id:299 gh:300
     @Override
     public int nextDoc() {
       upto += 2 + freq*posMult;
@@ -1692,7 +1692,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
     @Override
     public int docID() {
-      // TODO: store docID member?
+      // TODO: store docID member? id:283 gh:284
       if (upto < 0) {
         return -1;
       } else if (upto < postings.length) {
@@ -1704,7 +1704,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
     @Override
     public int freq() {
-      // TODO: can I do postings[upto+1]?
+      // TODO: can I do postings[upto+1]? id:295 gh:296
       return freq;
     }
 
@@ -1737,7 +1737,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
     @Override
     public long cost() {
-      // TODO: could do a better estimate
+      // TODO: could do a better estimate id:416 gh:417
       return postings.length / 2;
     }
   }
@@ -1870,7 +1870,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
 
     @Override
     public long cost() {
-      // TODO: could do a better estimate
+      // TODO: could do a better estimate id:390 gh:391
       return postings.length / 2;
     }
   }
@@ -2049,7 +2049,7 @@ public final class DirectPostingsFormat extends PostingsFormat {
     }
   }
 
-  // TODO: specialize offsets and not
+  // TODO: specialize offsets and not id:302 gh:303
   private final static class HighFreqPostingsEnum extends PostingsEnum {
     private int[] docIDs;
     private int[] freqs;

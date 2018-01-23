@@ -37,7 +37,7 @@ public class ConfigSetsAPITest extends SolrCloudTestCase {
     CollectionAdminRequest.createCollection("test_configset_delete", "conf1", 1, 1)
         .processAndWait(cluster.getSolrClient(), DEFAULT_TIMEOUT);
 
-    // TODO - check exception response!
+    // TODO - check exception response! id:2252 gh:2253
     ConfigSetAdminRequest.Delete deleteConfigRequest = new ConfigSetAdminRequest.Delete();
     deleteConfigRequest.setConfigSetName("conf1");
     expectThrows(SolrException.class, () -> {

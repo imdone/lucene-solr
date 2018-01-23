@@ -232,7 +232,7 @@ public final class SynonymQuery extends Query {
   }
 
   private long getMaxFreq(IndexOptions indexOptions, long ttf, long df) {
-    // TODO: store the max term freq?
+    // TODO: store the max term freq? id:588 gh:589
     if (indexOptions.compareTo(IndexOptions.DOCS) <= 0) {
       // omitTFAP field, tf values are implicitly 1.
       return 1;

@@ -181,7 +181,7 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
     MockAnalyzer analyzer = new MockAnalyzer(random());
     analyzer.setMaxTokenLength(TestUtil.nextInt(random(), 1, IndexWriter.MAX_TERM_LENGTH));
 
-    // TODO: remove randomness
+    // TODO: remove randomness id:187 gh:188
     IndexWriterConfig conf = new IndexWriterConfig(analyzer);
     conf.setMergePolicy(mp);
     conf.setUseCompoundFile(false);
@@ -477,7 +477,7 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
       "6.6.2-nocfs"
   };
 
-  // TODO: on 6.0.0 release, gen the single segment indices and add here:
+  // TODO: on 6.0.0 release, gen the single segment indices and add here: id:238 gh:239
   final static String[] oldSingleSegmentNames = {
   };
 
@@ -1109,7 +1109,7 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
     LogByteSizeMergePolicy mp = new LogByteSizeMergePolicy();
     mp.setNoCFSRatio(doCFS ? 1.0 : 0.0);
     mp.setMaxCFSSegmentSizeMB(Double.POSITIVE_INFINITY);
-    // TODO: remove randomness
+    // TODO: remove randomness id:182 gh:183
     IndexWriterConfig conf = new IndexWriterConfig(new MockAnalyzer(random()))
       .setMaxBufferedDocs(10).setMergePolicy(NoMergePolicy.INSTANCE);
     IndexWriter writer = new IndexWriter(dir, conf);
@@ -1127,7 +1127,7 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
       // open fresh writer so we get no prx file in the added segment
       mp = new LogByteSizeMergePolicy();
       mp.setNoCFSRatio(doCFS ? 1.0 : 0.0);
-      // TODO: remove randomness
+      // TODO: remove randomness id:186 gh:187
       conf = new IndexWriterConfig(new MockAnalyzer(random()))
         .setMaxBufferedDocs(10).setMergePolicy(NoMergePolicy.INSTANCE);
       writer = new IndexWriter(dir, conf);
@@ -1205,7 +1205,7 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
     customType4.setStoreTermVectorOffsets(true);
     customType4.setIndexOptions(IndexOptions.DOCS_AND_FREQS);
     doc.add(new Field("content6", "here is more content with aaa aaa aaa", customType4));
-    // TODO: 
+    // TODO: id:158 gh:159
     //   index different norms types via similarity (we use a random one currently?!)
     //   remove any analyzer randomness, explicitly add payloads for certain fields.
     writer.addDocument(doc);
@@ -1393,7 +1393,7 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
           args.add("-delete-prior-commits");
         }
         if (random().nextBoolean()) {
-          // TODO: need to better randomize this, but ...
+          // TODO: need to better randomize this, but ... id:189 gh:190
           //  - LuceneTestCase.FS_DIRECTORIES is private
           //  - newFSDirectory returns BaseDirectoryWrapper
           //  - BaseDirectoryWrapper doesn't expose delegate
@@ -1503,7 +1503,7 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
     TestUtil.unzip(getDataInputStream(moreTermsIndex), oldIndexDir);
     Directory dir = newFSDirectory(oldIndexDir);
     verifyUsesDefaultCodec(dir, moreTermsIndex);
-    // TODO: more tests
+    // TODO: more tests id:241 gh:242
     TestUtil.checkIndex(dir);
     dir.close();
   }
@@ -1611,7 +1611,7 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
       assertNotNull("Sorted index index " + name + " not found", resource);
       TestUtil.unzip(resource, path);
 
-      // TODO: more tests
+      // TODO: more tests id:188 gh:189
       Directory dir = newFSDirectory(path);
 
       DirectoryReader reader = DirectoryReader.open(dir);

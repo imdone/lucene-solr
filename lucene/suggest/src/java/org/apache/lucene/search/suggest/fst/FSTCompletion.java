@@ -30,11 +30,11 @@ import org.apache.lucene.util.fst.FST.Arc;
  * @lucene.experimental
  */
 
-// TODO: we could store exact weights as outputs from the FST (int4 encoded
+// TODO: we could store exact weights as outputs from the FST (int4 encoded id:1422 gh:1423
 // floats). This would provide exact outputs from this method and to some
 // degree allowed post-sorting on a more fine-grained weight.
 
-// TODO: support for Analyzers (infix suggestions, synonyms?)
+// TODO: support for Analyzers (infix suggestions, synonyms?) id:1301 gh:1302
 
 public class FSTCompletion {
   /**

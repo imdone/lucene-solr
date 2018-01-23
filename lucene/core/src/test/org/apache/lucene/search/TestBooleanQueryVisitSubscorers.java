@@ -43,7 +43,7 @@ import org.apache.lucene.search.similarities.Similarity;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.util.LuceneTestCase;
 
-// TODO: refactor to a base class, that collects freqs from the scorer tree
+// TODO: refactor to a base class, that collects freqs from the scorer tree id:985 gh:986
 // and test all queries with it
 public class TestBooleanQueryVisitSubscorers extends LuceneTestCase {
 
@@ -71,7 +71,7 @@ public class TestBooleanQueryVisitSubscorers extends LuceneTestCase {
     writer.close();
     // we do not use newSearcher because the assertingXXX layers break
     // the toString representations we are relying on
-    // TODO: clean that up
+    // TODO: clean that up id:1023 gh:1024
     searcher = new IndexSearcher(reader);
     searcher.setSimilarity(new ClassicSimilarity());
     scorerSearcher = new ScorerIndexSearcher(reader);

@@ -478,7 +478,7 @@ public class OverseerCollectionMessageHandler implements OverseerMessageHandler,
 
   }
 
-  //TODO should we not remove in the next release ?
+  //TODO should we not remove in the next release ? id:1786 gh:1787
   private void migrateStateFormat(ClusterState state, ZkNodeProps message, NamedList results) throws Exception {
     final String collectionName = message.getStr(COLLECTION_PROP);
 
@@ -544,7 +544,7 @@ public class OverseerCollectionMessageHandler implements OverseerMessageHandler,
         Map<String,Slice> slicesMap = docCollection.getSlicesMap();
         for (Slice slice : slicesMap.values()) {
           for (Replica replica : slice.getReplicas()) {
-            // TODO: for really large clusters, we could 'index' on this
+            // TODO: for really large clusters, we could 'index' on this id:1760 gh:1761
 
             String nodeName = replica.getStr(ZkStateReader.NODE_NAME_PROP);
             String core = replica.getStr(ZkStateReader.CORE_NAME_PROP);
@@ -927,7 +927,7 @@ public class OverseerCollectionMessageHandler implements OverseerMessageHandler,
             log.debug("The task is COMPLETED, returning");
             return srsp.getSolrResponse().getResponse();
           } else if (r.equals("failed")) {
-            // TODO: Improve this. Get more information.
+            // TODO: Improve this. Get more information. id:2734 gh:2735
             log.debug("The task is FAILED, returning");
             return srsp.getSolrResponse().getResponse();
           } else if (r.equals("notfound")) {

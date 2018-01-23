@@ -20,7 +20,7 @@ import org.eclipse.jetty.util.ssl.SslContextFactory;
 
 /** 
  * Encapsulates settings related to SSL Configuration for an embedded Jetty Server.
- * NOTE: all other settings are ignored if {@link #isSSLMode} is false.
+ * NOTE: all other settings are ignored if {@link #isSSLMode} is false. id:1743 gh:1744
  * @see #setUseSSL
  */
 public class SSLConfig {
@@ -32,7 +32,7 @@ public class SSLConfig {
   private String trustStore;
   private String trustStorePassword;
 
-  /** NOTE: all other settings are ignored if useSSL is false; trustStore settings are ignored if clientAuth is false */
+  /** NOTE: all other settings are ignored if useSSL is false; trustStore settings are ignored if clientAuth is false id:2706 gh:2707*/
   public SSLConfig(boolean useSSL, boolean clientAuth, String keyStore, String keyStorePassword, String trustStore, String trustStorePassword) {
     this.useSsl = useSSL;
     this.clientAuth = clientAuth;

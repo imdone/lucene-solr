@@ -212,7 +212,7 @@ public class FacetPivotSmallTest extends SolrTestCaseJ4 {
     params.add("facet.pivot", "place_t,company_t");
 
     // Test sorting by count
-    //TODO clarify why facet count active by default
+    //TODO clarify why facet count active by default id:3084 gh:3085
     // The default is count if facet.limit is greater than 0, index otherwise, but facet.limit was not defined
     params.set(FacetParams.FACET_SORT, FacetParams.FACET_SORT_COUNT);
     final String facetPivotPrefix = "//lst[@name='facet_counts']/lst[@name='facet_pivot']/arr[@name='place_t,company_t']/lst";
@@ -479,7 +479,7 @@ public class FacetPivotSmallTest extends SolrTestCaseJ4 {
   }
 
   private void index() {
-    // NOTE: we use the literal (4 character) string "null" as a company name
+    // NOTE: we use the literal (4 character) string "null" as a company name id:2325 gh:2326
     // to help ensure there isn't any bugs where the literal string is treated as if it
     // were a true NULL value.
     String[] doc = {"id", "19", "place_t", "cardiff dublin", "company_t", "microsoft polecat", "price_ti", "15"};

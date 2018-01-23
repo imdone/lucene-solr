@@ -98,7 +98,7 @@ abstract class DocValuesFieldUpdates {
       
       @Override
       public int nextDoc() {
-        // TODO: can we do away with this first boolean?
+        // TODO: can we do away with this first boolean? id:548 gh:549
         if (first == false) {
           // Advance all sub iterators past current doc
           while (true) {
@@ -172,7 +172,7 @@ abstract class DocValuesFieldUpdates {
    * Returns an {@link Iterator} over the updated documents and their
    * values.
    */
-  // TODO: also use this for merging, instead of having to write through to disk first
+  // TODO: also use this for merging, instead of having to write through to disk first id:529 gh:530
   public abstract Iterator iterator();
 
   /** Freezes internal data structures and sorts updates by docID for efficient iteration. */

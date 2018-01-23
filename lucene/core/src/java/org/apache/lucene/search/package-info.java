@@ -47,7 +47,7 @@
  * implementation and its {@link org.apache.lucene.search.Scorer Scorer} or {@link org.apache.lucene.search.BulkScorer BulkScore}
  * instances. See the <a href="#algorithm">Algorithm</a> section for more notes on the process.
  *     <!-- FILL IN MORE HERE -->   
- *     <!-- TODO: this page over-links the same things too many times -->
+ *     <!-- TODO: this page over-links the same things too many times --> id:647 gh:648
  * 
  * 
  * <a name="query"></a>
@@ -429,7 +429,7 @@
  *         back
  *         out of Lucene (similar to Doug adding SpanQuery functionality).
  * 
- * <!-- TODO: integrate this better, it's better served as an intro than an appendix -->
+ * <!-- TODO: integrate this better, it's better served as an intro than an appendix --> id:669 gh:670
  * 
  * 
  * <a name="algorithm"></a>

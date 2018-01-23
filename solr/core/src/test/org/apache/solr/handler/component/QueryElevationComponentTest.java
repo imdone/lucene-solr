@@ -588,7 +588,7 @@ public class QueryElevationComponentTest extends SolrTestCaseJ4 {
       req.close(); req = new LocalSolrQueryRequest(h.getCore(), new MapSolrParams(args));
       assertQ("All four should make it", req
           , "//*[@numFound='4']"
-          // NOTE REVERSED doc[X] indices
+          // NOTE REVERSED doc[X] indices id:2326 gh:2327
           , "//result/doc[4]/str[@name='id'][.='a']"
           , "//result/doc[3]/str[@name='id'][.='x']"
           , "//result/doc[2]/str[@name='id'][.='c']"

@@ -54,7 +54,7 @@ import java.util.Map;
 /**
  * Distributed tests of deep paging using {@link CursorMark} and {@link CursorMarkParams#CURSOR_MARK_PARAM}.
  * 
- * NOTE: this class Reuses some utilities from {@link CursorPagingTest} that assume the same schema and configs.
+ * NOTE: this class Reuses some utilities from {@link CursorPagingTest} that assume the same schema and configs. id:2183 gh:2184
  *
  * @see CursorPagingTest 
  */
@@ -236,7 +236,7 @@ public class DistribCursorPagingTest extends AbstractFullDistribZkTestBase {
     assertEquals("no more docs, but cursorMark has changed", 
                  cursorMark, assertHashNextCursorMark(rsp));
     
-    // NOTE: because field stats and queryNorms can vary amongst shards,
+    // NOTE: because field stats and queryNorms can vary amongst shards, id:3048 gh:3049
     //       not all "obvious" score based sorts can be iterated cleanly.
     //       queries that seem like they should result in an obvious "tie" score 
     //       between two documents (and would tie in a single node case) may actually

@@ -81,7 +81,7 @@ public class PayloadCheckQParserPlugin extends QParserPlugin {
 
         PayloadEncoder encoder = null;
         String e = PayloadUtils.getPayloadEncoder(ft);
-        if ("float".equals(e)) {    // TODO: centralize this string->PayloadEncoder logic (see DelimitedPayloadTokenFilterFactory)
+        if ("float".equals(e)) {    // TODO: centralize this string->PayloadEncoder logic (see DelimitedPayloadTokenFilterFactory) id:2047 gh:2045
           encoder = new FloatEncoder();
         } else if ("integer".equals(e)) {
           encoder = new IntegerEncoder();

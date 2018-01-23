@@ -403,7 +403,7 @@ public abstract class FieldComparator<T> {
     }
   }
 
-  /** Sorts by descending relevance.  NOTE: if you are
+  /** Sorts by descending relevance.  NOTE: if you are id:840 gh:841
    *  sorting only by descending relevance and then
    *  secondarily by ascending docID, performance is faster
    *  using {@link TopScoreDocCollector} directly (which {@link
@@ -517,7 +517,7 @@ public abstract class FieldComparator<T> {
 
     @Override
     public LeafFieldComparator getLeafComparator(LeafReaderContext context) {
-      // TODO: can we "map" our docIDs to the current
+      // TODO: can we "map" our docIDs to the current id:733 gh:734
       // reader? saves having to then subtract on every
       // compare call
       this.docBase = context.docBase;

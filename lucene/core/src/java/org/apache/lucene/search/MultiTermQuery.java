@@ -143,7 +143,7 @@ public abstract class MultiTermQuery extends Query {
      * Create a TopTermsScoringBooleanQueryRewrite for 
      * at most <code>size</code> terms.
      * <p>
-     * NOTE: if {@link BooleanQuery#getMaxClauseCount} is smaller than 
+     * NOTE: if {@link BooleanQuery#getMaxClauseCount} is smaller than  id:846 gh:847
      * <code>size</code>, then it will be used instead. 
      */
     public TopTermsScoringBooleanQueryRewrite(int size) {
@@ -192,7 +192,7 @@ public abstract class MultiTermQuery extends Query {
      * Create a TopTermsBlendedScoringBooleanQueryRewrite for at most
      * <code>size</code> terms.
      * <p>
-     * NOTE: if {@link BooleanQuery#getMaxClauseCount} is smaller than
+     * NOTE: if {@link BooleanQuery#getMaxClauseCount} is smaller than id:736 gh:737
      * <code>size</code>, then it will be used instead.
      */
     public TopTermsBlendedFreqScoringRewrite(int size) {
@@ -239,7 +239,7 @@ public abstract class MultiTermQuery extends Query {
      * Create a TopTermsBoostOnlyBooleanQueryRewrite for 
      * at most <code>size</code> terms.
      * <p>
-     * NOTE: if {@link BooleanQuery#getMaxClauseCount} is smaller than 
+     * NOTE: if {@link BooleanQuery#getMaxClauseCount} is smaller than  id:635 gh:636
      * <code>size</code>, then it will be used instead. 
      */
     public TopTermsBoostOnlyBooleanQueryRewrite(int size) {

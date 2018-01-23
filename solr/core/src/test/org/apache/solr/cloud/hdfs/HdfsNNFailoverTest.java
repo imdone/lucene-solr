@@ -70,7 +70,7 @@ public class HdfsNNFailoverTest extends BasicDistributedZkTest {
     
     waitForRecoveriesToFinish(COLLECTION, false);
     
-    // TODO:  SOLR-7360 Enable HDFS NameNode failover testing. 
+    // TODO: SOLR-7360 Enable HDFS NameNode failover testing.  id:2308 gh:2309
 //    dfsCluster.transitionToStandby(0);
 //    dfsCluster.transitionToActive(1);
   }

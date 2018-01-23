@@ -158,7 +158,7 @@ class MemoryDocValuesProducer extends DocValuesProducer {
         throw new CorruptIndexException("Format versions mismatch: meta=" + version + ", data=" + version2, data);
       }
       
-      // NOTE: data file is too costly to verify checksum against all the bytes on open,
+      // NOTE: data file is too costly to verify checksum against all the bytes on open, id:424 gh:424
       // but for now we at least verify proper structure of the checksum footer: which looks
       // for FOOTER_MAGIC + algorithmID. This is cheap and can detect some forms of corruption
       // such as file truncation.
@@ -817,7 +817,7 @@ class MemoryDocValuesProducer extends DocValuesProducer {
       if (in.seekCeil(text) == null) {
         return SeekStatus.END;
       } else if (term().equals(text)) {
-        // TODO: add SeekStatus to FSTEnum like in https://issues.apache.org/jira/browse/LUCENE-3729
+        // TODO: add SeekStatus to FSTEnum like in https://issues.apache.org/jira/browse/LUCENE-3729 id:306 gh:307
         // to remove this comparision?
         return SeekStatus.FOUND;
       } else {
@@ -836,12 +836,12 @@ class MemoryDocValuesProducer extends DocValuesProducer {
 
     @Override
     public void seekExact(long ord) throws IOException {
-      // TODO: would be better to make this simpler and faster.
+      // TODO: would be better to make this simpler and faster. id:291 gh:292
       // but we dont want to introduce a bug that corrupts our enum state!
       bytesReader.setPosition(0);
       fst.getFirstArc(firstArc);
       IntsRef output = Util.getByOutput(fst, ord, bytesReader, firstArc, scratchArc, scratchInts);
-      // TODO: we could do this lazily, better to try to push into FSTEnum though?
+      // TODO: we could do this lazily, better to try to push into FSTEnum though? id:319 gh:320
       in.seekExact(Util.toBytesRef(output, new BytesRefBuilder()));
     }
 

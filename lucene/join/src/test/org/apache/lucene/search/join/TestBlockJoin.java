@@ -501,7 +501,7 @@ public class TestBlockJoin extends LuceneTestCase {
 
   private Sort getRandomSort(String prefix, int numFields) {
     final List<SortField> sortFields = new ArrayList<>();
-    // TODO: sometimes sort by score; problem is scores are
+    // TODO: sometimes sort by score; problem is scores are id:1551 gh:1552
     // not comparable across the two indices
     // sortFields.add(SortField.FIELD_SCORE);
     if (random().nextBoolean()) {
@@ -535,7 +535,7 @@ public class TestBlockJoin extends LuceneTestCase {
     final boolean doDeletes = random().nextBoolean();
     final List<Integer> toDelete = new ArrayList<>();
 
-    // TODO: parallel star join, nested join cases too!
+    // TODO: parallel star join, nested join cases too! id:1056 gh:1057
     final RandomIndexWriter w = new RandomIndexWriter(random(), dir);
     final RandomIndexWriter joinW = new RandomIndexWriter(random(), joinDir);
     for(int parentDocID=0;parentDocID<numParentDocs;parentDocID++) {
@@ -1462,7 +1462,7 @@ public class TestBlockJoin extends LuceneTestCase {
       fullQuery.add(new BooleanClause(jobQuery, Occur.MUST));
       fullQuery.add(new BooleanClause(resumeQuery, Occur.MUST));
 
-      TopDocs hits = s.search(fullQuery.build(), 100); // NOTE: totally possible that we'll get no matches
+      TopDocs hits = s.search(fullQuery.build(), 100); // NOTE: totally possible that we'll get no matches id:1174 gh:1175
 
       for (ScoreDoc sd : hits.scoreDocs) {
         // since we're looking for children of jobs, all results must be qualifications

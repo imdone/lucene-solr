@@ -48,7 +48,7 @@ public class DateRangePrefixTree extends NumberRangePrefixTree {
 
     There are no doubt other reasons but those two were hard fought lessons here.
 
-    TODO Improvements:
+    TODO Improvements: id:1201 gh:1202
     * Make max precision configurable (i.e. to SECOND).
     * Make min & max year span configurable. Use that to remove pointless top levels of the SPT.
         If year span is > 10k, then add 1k year level. If year span is > 10k of 1k levels, add 1M level.
@@ -170,7 +170,7 @@ public class DateRangePrefixTree extends NumberRangePrefixTree {
     // if using GregorianCalendar and we're after the "Gregorian change date" then we'll compute
     //  the sub-cells ourselves more efficiently without the need to construct a Calendar.
     cmp = gregorianChangeDateLV != null ? comparePrefix(lv, gregorianChangeDateLV) : -1;
-    //TODO consider also doing fast-path if field is <= hours even if before greg change date
+    //TODO consider also doing fast-path if field is <= hours even if before greg change date id:1501 gh:1502
     if (cmp >= 0) {
       int result = fastSubCells(lv);
       assert result == slowSubCells(lv) : "fast/slow numSubCells inconsistency";
@@ -209,7 +209,7 @@ public class DateRangePrefixTree extends NumberRangePrefixTree {
   private int slowSubCells(UnitNRShape lv) {
     int field = FIELD_BY_LEVEL[lv.getLevel()+1];
     //short-circuit optimization (GregorianCalendar assumptions)
-    if (field == -1 || field == Calendar.YEAR || field >= Calendar.HOUR_OF_DAY)//TODO make configurable
+    if (field == -1 || field == Calendar.YEAR || field >= Calendar.HOUR_OF_DAY)//TODO make configurable id:1668 gh:1669
       return super.getNumSubCells(lv);
     Calendar cal = toCalendar(lv);//somewhat heavyweight op; ideally should be stored on UnitNRShape somehow
     return cal.getActualMaximum(field) - cal.getActualMinimum(field) + 1;
@@ -459,7 +459,7 @@ public class DateRangePrefixTree extends NumberRangePrefixTree {
       if (lastOffset < offset)
         return cal;
 
-      //NOTE: We aren't validating separator chars, and we unintentionally accept leading +/-.
+      //NOTE: We aren't validating separator chars, and we unintentionally accept leading +/-. id:1439 gh:1440
       // The str.substring()'s hopefully get optimized to be stack-allocated.
 
       //month:

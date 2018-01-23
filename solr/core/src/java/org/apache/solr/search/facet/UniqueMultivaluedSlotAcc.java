@@ -33,7 +33,7 @@ class UniqueMultivaluedSlotAcc extends UniqueSlotAcc implements UnInvertedField.
     SolrIndexSearcher searcher = fcontext.qcontext.searcher();
     uif = UnInvertedField.getUnInvertedField(field.getName(), searcher);
     docToTerm = uif.new DocToTerm();
-    fcontext.qcontext.addCloseHook(this);  // TODO: find way to close accumulators instead of using close hook?
+    fcontext.qcontext.addCloseHook(this);  // TODO: find way to close accumulators instead of using close hook? id:2751 gh:2752
     nTerms = uif.numTerms();
   }
 

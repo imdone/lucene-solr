@@ -75,7 +75,7 @@ class Zipper {
         Map<String,Object> child = peeker.next();
         assert child==current: "peeker should be right but "+current+" != " + child;
         log.trace("yeild child {} entry {}",relation, current);
-        return child;// TODO it's for one->many for many->one it should be just peek() 
+        return child;// TODO it's for one->many for many->one it should be just peek()  id:1498 gh:1499
       }else{
         if(cmp<0){ // child belongs to 10th and parent is 20th, skip for the next one
           Map<String,Object> child = peeker.next();

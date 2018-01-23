@@ -38,7 +38,7 @@ public class RemoteQueryErrorTest extends SolrCloudTestCase {
         .configure();
   }
 
-  // TODO add test for CloudSolrClient as well
+  // TODO add test for CloudSolrClient as well id:2868 gh:2869
 
   @Test
   public void test() throws Exception {

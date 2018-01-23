@@ -111,7 +111,7 @@ public class TestRandomDVFaceting extends SolrTestCaseJ4 {
     types.add(new FldType("missing_s",new IRange(0,0), new SVal('a','b',1,1)));
     types.add(new FldType("missing_ss",new IRange(0,0), new SVal('a','b',1,1)));
 
-    // TODO: doubles, multi-floats, ints with precisionStep>0, booleans
+    // TODO: doubles, multi-floats, ints with precisionStep>0, booleans id:2850 gh:2851
   }
 
   void addMoreDocs(int ndocs) throws Exception {
@@ -175,7 +175,7 @@ public class TestRandomDVFaceting extends SolrTestCaseJ4 {
     }
   }
 
-  // NOTE: dv is not a "real" facet.method. when we see it, we facet on the dv field (*_dv)
+  // NOTE: dv is not a "real" facet.method. when we see it, we facet on the dv field (*_dv) id:2251 gh:2252
   // but alias the result back as if we faceted on the regular indexed field for comparisons.
   List<String> multiValuedMethods = Arrays.asList(new String[]{"enum","fc","dv","uif"});
   List<String> singleValuedMethods = Arrays.asList(new String[]{"enum","fc","fcs","dv","uif"});
@@ -187,7 +187,7 @@ public class TestRandomDVFaceting extends SolrTestCaseJ4 {
       Random rand = random();
       boolean validate = validateResponses;
       ModifiableSolrParams params = params("facet","true", "wt","json", "indent","true", "omitHeader","true");
-      params.add("q","*:*");  // TODO: select subsets
+      params.add("q","*:*");  // TODO: select subsets id:2169 gh:2168
       params.add("rows","0");
 
       SchemaField sf = req.getSchema().getField(ftype.fname);
@@ -245,7 +245,7 @@ public class TestRandomDVFaceting extends SolrTestCaseJ4 {
         params.add("facet.missing", "true");
       }
 
-      // TODO: randomly add other facet params
+      // TODO: randomly add other facet params id:3036 gh:3037
       String facet_field = ftype.fname;
 
       List<String> methods = multiValued ? multiValuedMethods : singleValuedMethods;

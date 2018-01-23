@@ -203,7 +203,7 @@ final class IndexedDISI extends DocIdSetIterator {
       @Override
       boolean advanceWithinBlock(IndexedDISI disi, int target) throws IOException {
         final int targetInBlock = target & 0xFFFF;
-        // TODO: binary search
+        // TODO: binary search id:523 gh:524
         for (; disi.index < disi.nextBlockIndex;) {
           int doc = Short.toUnsignedInt(disi.slice.readShort());
           disi.index++;
@@ -218,7 +218,7 @@ final class IndexedDISI extends DocIdSetIterator {
       @Override
       boolean advanceExactWithinBlock(IndexedDISI disi, int target) throws IOException {
         final int targetInBlock = target & 0xFFFF;
-        // TODO: binary search
+        // TODO: binary search id:507 gh:508
         if (target == disi.doc) {
           return disi.exists;
         }

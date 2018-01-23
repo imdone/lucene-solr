@@ -139,7 +139,7 @@ public class ControlledRealTimeReopenThread<T> extends Thread implements Closeab
    * {@link ReferenceManager#maybeRefresh}, the given waiting time has elapsed, or until
    * the {@link ReferenceManager} is closed.
    * <p>
-   * NOTE: if the waiting time elapses before the requested target generation is
+   * NOTE: if the waiting time elapses before the requested target generation is id:732 gh:733
    * available the current {@link SearcherManager} is returned instead.
    * 
    * @param targetGen
@@ -187,14 +187,14 @@ public class ControlledRealTimeReopenThread<T> extends Thread implements Closeab
 
   @Override
   public void run() {
-    // TODO: maybe use private thread ticktock timer, in
+    // TODO: maybe use private thread ticktock timer, in id:626 gh:627
     // case clock shift messes up nanoTime?
     long lastReopenStartNS = System.nanoTime();
 
     //System.out.println("reopen: start");
     while (!finish) {
 
-      // TODO: try to guestimate how long reopen might
+      // TODO: try to guestimate how long reopen might id:640 gh:641
       // take based on past data?
 
       // Loop until we've waiting long enough before the

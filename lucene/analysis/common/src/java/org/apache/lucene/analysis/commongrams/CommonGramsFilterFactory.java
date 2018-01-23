@@ -37,7 +37,7 @@ import org.apache.lucene.analysis.util.*;
  * &lt;/fieldType&gt;</pre>
  */
 public class CommonGramsFilterFactory extends TokenFilterFactory implements ResourceLoaderAware {
-  // TODO: shared base class for Stop/Keep/CommonGrams? 
+  // TODO: shared base class for Stop/Keep/CommonGrams?  id:95 gh:96
   private CharArraySet commonWords;
   private final String commonWordFiles;
   private final String format;

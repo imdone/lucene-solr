@@ -398,7 +398,7 @@ public class SolrResourceLoader implements ResourceLoader,Closeable
     InputStream is = classLoader.getResourceAsStream(resource.replace(File.separatorChar, '/'));
 
     // This is a hack just for tests (it is not done in ZKResourceLoader)!
-    // TODO can we nuke this?
+    // TODO can we nuke this? id:1777 gh:1778
     if (is == null && System.getProperty("jetty.testMode") != null) {
       is = classLoader.getResourceAsStream(("conf/" + resource).replace(File.separatorChar, '/'));
     }
@@ -609,7 +609,7 @@ public class SolrResourceLoader implements ResourceLoader,Closeable
     }
 
     if (!live) {
-      //TODO: Does SolrCoreAware make sense here since in a multi-core context
+      //TODO: Does SolrCoreAware make sense here since in a multi-core context id:2752 gh:2753
       // which core are we talking about ?
       if( obj instanceof ResourceLoaderAware ) {
         assertAwareCompatibility( ResourceLoaderAware.class, obj );
@@ -666,7 +666,7 @@ public class SolrResourceLoader implements ResourceLoader,Closeable
         waitingForResources.add( (ResourceLoaderAware)obj );
       }
       if (obj instanceof SolrInfoBean){
-        //TODO: Assert here?
+        //TODO: Assert here? id:1836 gh:1837
         infoMBeans.add((SolrInfoBean) obj);
       }
     }

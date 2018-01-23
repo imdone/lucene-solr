@@ -31,7 +31,7 @@ import org.apache.lucene.util.Accountable;
 import org.apache.lucene.util.Accountables;
 import org.apache.lucene.util.IOUtils;
 
-// TODO
+// TODO id:868 gh:869
 //   - let subclass dictate policy...?
 //   - rename to MergeCacheingDir?  NRTCachingDir
 
@@ -197,7 +197,7 @@ public class NRTCachingDirectory extends FilterDirectory implements Accountable 
    *  to the delegate and then closes the delegate. */
   @Override
   public void close() throws IOException {
-    // NOTE: technically we shouldn't have to do this, ie,
+    // NOTE: technically we shouldn't have to do this, ie, id:756 gh:757
     // IndexWriter should have sync'd all files, but we do
     // it for defensive reasons... or in case the app is
     // doing something custom (creating outputs directly w/o

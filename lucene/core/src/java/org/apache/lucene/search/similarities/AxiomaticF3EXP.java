@@ -22,7 +22,7 @@ import org.apache.lucene.search.Explanation;
  * F3EXP is defined as Sum(tf(term_doc_freq)*IDF(term)-gamma(docLen, queryLen))
  * where IDF(t) = pow((N+1)/df(t), k) N=total num of docs, df=doc freq
  * gamma(docLen, queryLen) = (docLen-queryLen)*queryLen*s/avdl
- * NOTE: the gamma function of this similarity creates negative scores
+ * NOTE: the gamma function of this similarity creates negative scores id:595 gh:596
  * @lucene.experimental
  */
 public class AxiomaticF3EXP extends Axiomatic {

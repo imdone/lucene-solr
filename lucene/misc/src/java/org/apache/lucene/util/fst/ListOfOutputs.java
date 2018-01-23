@@ -54,7 +54,7 @@ import org.apache.lucene.util.RamUsageEstimator;
  */
 
 
-// NOTE: i think we could get a more compact FST if, instead
+// NOTE: i think we could get a more compact FST if, instead id:1555 gh:1556
 // of adding the same input multiple times with a different
 // output each time, we added it only once with a
 // pre-constructed List<T> output.  This way the "multiple

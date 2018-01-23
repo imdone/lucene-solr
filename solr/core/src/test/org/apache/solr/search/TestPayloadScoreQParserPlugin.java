@@ -55,7 +55,7 @@ public class TestPayloadScoreQParserPlugin extends SolrTestCaseJ4 {
     assertQ(req("fl","*,score", "q", "{!payload_score f=vals_dpf func=min operator=or}A x"), "//float[@name='score']='1.0'");
     assertQ(req("fl","*,score", "q", "{!payload_score f=vals_dpf func=average operator=or}A C"), "//float[@name='score']='2.0'");
 
-    // TODO: fix this includeSpanScore test to be less brittle - score result is score of "A" (via BM25) multipled by 1.0 (payload value)
+    // TODO: fix this includeSpanScore test to be less brittle - score result is score of "A" (via BM25) multipled by 1.0 (payload value) id:2940 gh:2941
     assertQ(req("fl","*,score", "q", "{!payload_score f=vals_dpf v=A func=min}"), "//float[@name='score']='1.0'");
     assertQ(req("fl","*,score", "q", "{!payload_score f=vals_dpf v=A func=min includeSpanScore=true}"), "//float[@name='score']='0.2876821'");
   }

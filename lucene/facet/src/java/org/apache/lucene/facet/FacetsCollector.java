@@ -224,7 +224,7 @@ public class FacetsCollector extends SimpleCollector implements Collector {
       TopDocsCollector<?> hitsCollector;
       if (sort != null) {
         if (after != null && !(after instanceof FieldDoc)) {
-          // TODO: if we fix type safety of TopFieldDocs we can
+          // TODO: if we fix type safety of TopFieldDocs we can id:1018 gh:1019
           // remove this
           throw new IllegalArgumentException("after must be a FieldDoc; got " + after);
         }
@@ -234,7 +234,7 @@ public class FacetsCollector extends SimpleCollector implements Collector {
                                                  fillFields,
                                                  doDocScores,
                                                  doMaxScore,
-                                                 true); // TODO: can we disable exact hit counts
+                                                 true); // TODO: can we disable exact hit counts id:1069 gh:1070
       } else {
         hitsCollector = TopScoreDocCollector.create(n, after, true);
       }

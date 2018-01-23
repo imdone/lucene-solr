@@ -234,7 +234,7 @@ public class RulesTest extends SolrCloudTestCase {
         .process(cluster.getSolrClient());
 
 
-    // TODO: Make a MODIFYCOLLECTION SolrJ class
+    // TODO: Make a MODIFYCOLLECTION SolrJ class id:2243 gh:2244
     ModifiableSolrParams p = new ModifiableSolrParams();
     p.add("collection", rulesColl);
     p.add("action", "MODIFYCOLLECTION");

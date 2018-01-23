@@ -149,7 +149,7 @@ public abstract class SegmentingTokenizerBase extends Tokenizer {
     iterator.setText(wrapper);
   }
   
-  // TODO: refactor to a shared readFully somewhere
+  // TODO: refactor to a shared readFully somewhere id:53 gh:54
   // (NGramTokenizer does this too):
   /** commons-io's readFully, but without bugs if offset != 0 */
   private static int read(Reader input, char[] buffer, int offset, int length) throws IOException {

@@ -266,7 +266,7 @@ public class SpellCheckComponentTest extends SolrTestCaseJ4 {
     spellchecker.add(AbstractLuceneSpellChecker.INDEX_DIR, "spellchecker1");
     args.add("spellchecker", spellchecker);
 
-    // TODO: this is really fragile and error prone - find a higher level way to test this.
+    // TODO: this is really fragile and error prone - find a higher level way to test this. id:3085 gh:3086
     SpellCheckComponent checker = new SpellCheckComponent();
     checker.init(args);
     checker.inform(h.getCore());
@@ -318,7 +318,7 @@ public class SpellCheckComponentTest extends SolrTestCaseJ4 {
             ,"/spellcheck/suggestions/[1]/suggestion==[{'word':'document','freq':2}]"
         );
 
-        //TODO:  how do we make this into a 1-liner using "assertQ()" ???
+        //TODO: how do we make this into a 1-liner using "assertQ()" ??? id:2328 gh:2329
         SolrCore core = h.getCore();
         SearchComponent speller = core.getSearchComponent("spellcheck");
         assertTrue("speller is null and it shouldn't be", speller != null);

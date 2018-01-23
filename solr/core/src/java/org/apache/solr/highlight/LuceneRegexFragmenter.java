@@ -31,7 +31,7 @@ import org.apache.lucene.search.highlight.Fragmenter;
  * Fragmenter that tries to produce snippets that "look" like a regular 
  * expression.
  *
- * NOTE: the default for <code>maxAnalyzedChars</code> is much lower for this 
+ * NOTE: the default for <code>maxAnalyzedChars</code> is much lower for this  id:2673 gh:2674
  * fragmenter.  After this limit is exhausted, fragments are produced in the
  * same way as <code>GapFragmenter</code>
  */

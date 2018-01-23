@@ -198,7 +198,7 @@ public class Lucene60PointsWriter extends PointsWriter implements Closeable {
                 assert reader instanceof Lucene60PointsReader;
                 Lucene60PointsReader reader60 = (Lucene60PointsReader) reader;
 
-                // NOTE: we cannot just use the merged fieldInfo.number (instead of resolving to this
+                // NOTE: we cannot just use the merged fieldInfo.number (instead of resolving to this id:451 gh:452
                 // reader's FieldInfo as we do below) because field numbers can easily be different
                 // when addIndexes(Directory...) copies over segments from another index:
 

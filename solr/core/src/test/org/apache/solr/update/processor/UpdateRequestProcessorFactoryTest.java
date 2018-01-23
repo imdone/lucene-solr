@@ -97,7 +97,7 @@ public class UpdateRequestProcessorFactoryTest extends SolrTestCaseJ4 {
     // level is at least "INFO" otherwise the factory won't even produce a processor and all our assertions
     // are for nought.  (see LogUpdateProcessorFactory.getInstance)
     //
-    // TODO: maybe create a new mock Processor w/ @RunAlways annot if folks feel requiring INFO is evil.
+    // TODO: maybe create a new mock Processor w/ @RunAlways annot if folks feel requiring INFO is evil. id:2397 gh:2398
     assertTrue("Tests must be run with INFO level logging "+
                "otherwise LogUpdateProcessor isn't used and can't be tested.", log.isInfoEnabled());
     

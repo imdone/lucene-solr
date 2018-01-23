@@ -188,7 +188,7 @@ public class TestStressRecovery extends TestRTGBase {
 
                 Long returnedVersion = deleteAndGetVersion(Integer.toString(id), params("_version_",Long.toString(-version), DISTRIB_UPDATE_PARAM,FROM_LEADER));
 
-                // TODO: returning versions for these types of updates is redundant
+                // TODO: returning versions for these types of updates is redundant id:2952 gh:2953
                 // but if we do return, they had better be equal
                 if (returnedVersion != null) {
                   assertEquals(-version, returnedVersion.longValue());
@@ -209,7 +209,7 @@ public class TestStressRecovery extends TestRTGBase {
 
                 Long returnedVersion = deleteByQueryAndGetVersion("id:"+Integer.toString(id), params("_version_",Long.toString(-version), DISTRIB_UPDATE_PARAM,FROM_LEADER));
 
-                // TODO: returning versions for these types of updates is redundant
+                // TODO: returning versions for these types of updates is redundant id:2362 gh:2363
                 // but if we do return, they had better be equal
                 if (returnedVersion != null) {
                   assertEquals(-version, returnedVersion.longValue());
@@ -323,7 +323,7 @@ public class TestStressRecovery extends TestRTGBase {
 
             if (rand.nextInt(100) < percentGetLatestVersions) {
               getLatestVersions();
-              // TODO: some sort of validation that the latest version is >= to the latest version we added?
+              // TODO: some sort of validation that the latest version is >= to the latest version we added? id:2394 gh:2395
             }
 
           } catch (Throwable e) {

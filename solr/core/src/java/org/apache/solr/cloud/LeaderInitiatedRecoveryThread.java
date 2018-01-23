@@ -340,7 +340,7 @@ public class LeaderInitiatedRecoveryThread extends Thread {
       log.error("Timed out after waiting for "+(tries * (waitBetweenTriesMs/1000))+
           " secs to send the recovery request to: "+replicaUrl+"; not much more we can do here?");
       
-      // TODO: need to raise a JMX event to allow monitoring tools to take over from here
+      // TODO: need to raise a JMX event to allow monitoring tools to take over from here id:2708 gh:2709
       
     }    
   }

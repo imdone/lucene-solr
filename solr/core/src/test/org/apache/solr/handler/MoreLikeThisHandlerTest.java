@@ -31,7 +31,7 @@ import org.junit.Test;
 
 
 /**
- * TODO -- this needs to actually test the results/query etc
+ * TODO -- this needs to actually test the results/query etc id:2314 gh:2315
  */
 public class MoreLikeThisHandlerTest extends SolrTestCaseJ4 {
 

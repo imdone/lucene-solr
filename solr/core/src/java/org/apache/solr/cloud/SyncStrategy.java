@@ -171,7 +171,7 @@ public class SyncStrategy {
     }
     
     // if we can't reach a replica for sync, we still consider the overall sync a success
-    // TODO: as an assurance, we should still try and tell the sync nodes that we couldn't reach
+    // TODO: as an assurance, we should still try and tell the sync nodes that we couldn't reach id:1808 gh:1809
     // to recover once more?
     // Fingerprinting here is off because the we currently rely on having at least one of the nodes return "true", and if replicas are out-of-sync
     // we still need to pick one as leader.  A followup sync from the replica to the new leader (with fingerprinting on) should then fail and
@@ -185,7 +185,7 @@ public class SyncStrategy {
                         int nUpdates) {
     
     // sync everyone else
-    // TODO: we should do this in parallel at least
+    // TODO: we should do this in parallel at least id:2631 gh:2632
     List<ZkCoreNodeProps> nodes = zkController
         .getZkStateReader()
         .getReplicaProps(collection, shardId,
@@ -238,7 +238,7 @@ public class SyncStrategy {
   
   private boolean handleResponse(ShardResponse srsp) {
     NamedList<Object> response = srsp.getSolrResponse().getResponse();
-    // TODO: why does this return null sometimes?
+    // TODO: why does this return null sometimes? id:1776 gh:1777
     if (response == null) {
       return false;
     }

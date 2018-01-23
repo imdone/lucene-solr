@@ -71,7 +71,7 @@ public class LRUStatsCache extends ExactStatsCache {
   
   @Override
   public void init(PluginInfo info) {
-    // TODO: make this configurable via PluginInfo
+    // TODO: make this configurable via PluginInfo id:2077 gh:2078
     lruCacheInitArgs.put("size", "100");
     currentGlobalTermStats.init(lruCacheInitArgs, null, null);
   }

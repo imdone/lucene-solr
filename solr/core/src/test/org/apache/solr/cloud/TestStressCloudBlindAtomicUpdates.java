@@ -105,7 +105,7 @@ public class TestStressCloudBlindAtomicUpdates extends SolrCloudTestCase {
   
   @BeforeClass
   private static void createMiniSolrCloudCluster() throws Exception {
-    // NOTE: numDocsToCheck uses atLeast, so nightly & multiplier are alreayd a factor in index size
+    // NOTE: numDocsToCheck uses atLeast, so nightly & multiplier are alreayd a factor in index size id:2292 gh:2293
     // no need to redundently factor them in here as well
     DOC_ID_INCR = TestUtil.nextInt(random(), 1, 7);
     
@@ -248,7 +248,7 @@ public class TestStressCloudBlindAtomicUpdates extends SolrCloudTestCase {
     
     // seed the index & keep track of what docs exist and with what values
     for (int id = 0; id < numDocsInIndex; id++) {
-      // NOTE: the field we're mutating is a long, but we seed with a random int,
+      // NOTE: the field we're mutating is a long, but we seed with a random int, id:2214 gh:2215
       // and we will inc/dec by random smaller ints, to ensure we never over/under flow
       final int initValue = random().nextInt();
       SolrInputDocument doc = doc(f("id",""+id), f(numericFieldName, initValue));
@@ -440,7 +440,7 @@ public class TestStressCloudBlindAtomicUpdates extends SolrCloudTestCase {
   public static SolrInputField f(String fieldName, Object... values) {
     SolrInputField f = new SolrInputField(fieldName);
     f.setValue(values);
-    // TODO: soooooooooo stupid (but currently neccessary because atomic updates freak out
+    // TODO: soooooooooo stupid (but currently neccessary because atomic updates freak out id:3068 gh:3069
     // if the Map with the "inc" operation is inside of a collection - even if it's the only "value") ...
     if (1 == values.length) {
       f.setValue(values[0]);

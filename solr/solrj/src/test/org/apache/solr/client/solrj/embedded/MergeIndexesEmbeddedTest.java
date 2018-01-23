@@ -30,7 +30,7 @@ public class MergeIndexesEmbeddedTest extends MergeIndexesExampleTestBase {
 
   @Override
   public void setUp() throws Exception {
-    // TODO: fix this test to use MockDirectoryFactory
+    // TODO: fix this test to use MockDirectoryFactory id:2469 gh:2470
     System.clearProperty("solr.directoryFactory");
     super.setUp();
   }

@@ -200,7 +200,7 @@ public final class MultiFields extends Fields {
    * Expert: construct a new MultiFields instance directly.
    * @lucene.internal
    */
-  // TODO: why is this public?
+  // TODO: why is this public? id:589 gh:590
   public MultiFields(Fields[] subs, ReaderSlice[] subSlices) {
     this.subs = subs;
     this.subSlices = subSlices;
@@ -257,7 +257,7 @@ public final class MultiFields extends Fields {
   /** Call this to get the (merged) FieldInfos for a
    *  composite reader. 
    *  <p>
-   *  NOTE: the returned field numbers will likely not
+   *  NOTE: the returned field numbers will likely not id:530 gh:531
    *  correspond to the actual field numbers in the underlying
    *  readers, and codec metadata ({@link FieldInfo#getAttribute(String)}
    *  will be unavailable.
@@ -273,7 +273,7 @@ public final class MultiFields extends Fields {
   /** Call this to get the (merged) FieldInfos representing the
    *  set of indexed fields <b>only</b> for a composite reader. 
    *  <p>
-   *  NOTE: the returned field numbers will likely not
+   *  NOTE: the returned field numbers will likely not id:727 gh:728
    *  correspond to the actual field numbers in the underlying
    *  readers, and codec metadata ({@link FieldInfo#getAttribute(String)}
    *  will be unavailable.

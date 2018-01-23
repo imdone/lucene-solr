@@ -42,7 +42,7 @@ import org.apache.lucene.search.suggest.Lookup;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.util.BytesRef;
 
-// TODO:
+// TODO: id:1226 gh:1227
 // - allow to use the search score
 
 /**
@@ -91,7 +91,7 @@ public class BlendedInfixSuggester extends AnalyzingInfixSuggester {
     POSITION_RECIPROCAL,
     /** weight/pow(1+position, exponent) */
     POSITION_EXPONENTIAL_RECIPROCAL
-    // TODO:
+    // TODO: id:1537 gh:1538
     //SCORE
   }
 
@@ -203,7 +203,7 @@ public class BlendedInfixSuggester extends AnalyzingInfixSuggester {
       long weight = (Long) fd.fields[0];
 
       // This will just be null if app didn't pass payloads to build():
-      // TODO: maybe just stored fields?  they compress...
+      // TODO: maybe just stored fields?  they compress... id:2552 gh:2553
       BinaryDocValues payloadsDV = MultiDocValues.getBinaryValues(searcher.getIndexReader(), "payloads");
 
       BytesRef payload;

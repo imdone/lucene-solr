@@ -32,7 +32,7 @@ import org.apache.lucene.index.LeafReader;
 import org.apache.lucene.index.SegmentCommitInfo;
 import org.apache.lucene.index.SegmentReader;
 
-// TODO: or ... replica node can do merging locally?  tricky to keep things in sync, when one node merges more slowly than others...
+// TODO: or ... replica node can do merging locally?  tricky to keep things in sync, when one node merges more slowly than others... id:1386 gh:1387
 
 class PreCopyMergedSegmentWarmer implements IndexReaderWarmer {
 

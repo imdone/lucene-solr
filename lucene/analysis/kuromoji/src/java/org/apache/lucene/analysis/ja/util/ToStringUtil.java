@@ -252,7 +252,7 @@ public class ToStringUtil {
   /**
    * Romanize katakana with modified hepburn
    */
-  // TODO: now that this is used by readingsfilter and not just for
+  // TODO: now that this is used by readingsfilter and not just for id:150 gh:151
   // debugging, fix this to really be a scheme that works best with IMEs
   public static void getRomanization(Appendable builder, CharSequence s) throws IOException {
     final int len = s.length();
@@ -913,7 +913,7 @@ public class ToStringUtil {
           builder.append("da");
           break;
         case 'ヂ':
-          // TODO: investigate all this
+          // TODO: investigate all this id:149 gh:150
           if (ch2 == 'ョ' && ch3 == 'ウ') {
             builder.append("jō");
             i += 2;

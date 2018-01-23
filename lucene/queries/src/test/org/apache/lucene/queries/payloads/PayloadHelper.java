@@ -110,12 +110,12 @@ public class PayloadHelper {
    * @param numDocs The num docs to add
    * @return An IndexSearcher
    */
-  // TODO: randomize
+  // TODO: randomize id:968 gh:969
   public IndexSearcher setUp(Random random, Similarity similarity, int numDocs) throws IOException {
     Directory directory = new MockDirectoryWrapper(random, new RAMDirectory());
     PayloadAnalyzer analyzer = new PayloadAnalyzer();
 
-    // TODO randomize this
+    // TODO randomize this id:1353 gh:1354
     IndexWriter writer = new IndexWriter(directory, new IndexWriterConfig(
         analyzer).setSimilarity(similarity));
     // writer.infoStream = System.out;

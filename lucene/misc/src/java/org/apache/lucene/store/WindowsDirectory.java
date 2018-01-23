@@ -104,7 +104,7 @@ public class WindowsDirectory extends FSDirectory {
 
     @Override
     public synchronized void close() throws IOException {
-      // NOTE: we synchronize and track "isOpen" because Lucene sometimes closes IIs twice!
+      // NOTE: we synchronize and track "isOpen" because Lucene sometimes closes IIs twice! id:1338 gh:1339
       if (!isClone && isOpen) {
         WindowsDirectory.close(fd);
         isOpen = false;

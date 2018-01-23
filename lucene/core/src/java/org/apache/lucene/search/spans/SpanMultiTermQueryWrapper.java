@@ -109,7 +109,7 @@ public class SpanMultiTermQueryWrapper<Q extends MultiTermQuery> extends SpanQue
   public String toString(String field) {
     StringBuilder builder = new StringBuilder();
     builder.append("SpanMultiTermQueryWrapper(");
-    // NOTE: query.toString must be placed in a temp local to avoid compile errors on Java 8u20
+    // NOTE: query.toString must be placed in a temp local to avoid compile errors on Java 8u20 id:597 gh:598
     // see https://bugs.openjdk.java.net/browse/JDK-8056984?page=com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab
     String queryStr = query.toString(field);
     builder.append(queryStr);

@@ -40,7 +40,7 @@ import java.util.Properties;
  */
 public class TestSolrCoreProperties extends SolrJettyTestBase {
 
-  // TODO these properties files don't work with configsets
+  // TODO these properties files don't work with configsets id:3038 gh:3039
 
   @BeforeClass
   public static void beforeTest() throws Exception {

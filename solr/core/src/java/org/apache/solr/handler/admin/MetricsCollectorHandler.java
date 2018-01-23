@@ -157,7 +157,7 @@ public class MetricsCollectorHandler extends RequestHandlerBase {
         return;
       }
       doc.remove(MetricUtils.METRIC_NAME);
-      // XXX we could modify keys by using this original registry name
+      // XXX we could modify keys by using this original registry name id:2767 gh:2768
       doc.remove(SolrReporter.REGISTRY_ID);
       String groupId = (String)doc.getFieldValue(SolrReporter.GROUP_ID);
       if (groupId == null) {

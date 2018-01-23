@@ -129,7 +129,7 @@ public class TestBoolean2 extends LuceneTestCase {
       singleSegmentDirectory = newDirectory();
     }
 
-    // TODO: this test does not need to be doing this crazy stuff. please improve it!
+    // TODO: this test does not need to be doing this crazy stuff. please improve it! id:1132 gh:1133
     for (String fileName : directory.listAll()) {
       if (fileName.startsWith("extra")) {
         continue;
@@ -265,7 +265,7 @@ public class TestBoolean2 extends LuceneTestCase {
     bigSearcher.search(query, collector);
     hits2 = collector.topDocs().scoreDocs; 
 
-    // NOTE: just comparing results, not vetting against expDocNrs
+    // NOTE: just comparing results, not vetting against expDocNrs id:1295 gh:1296
     // since we have dups in bigSearcher
     CheckHits.checkEqual(query, hits1, hits2);
       

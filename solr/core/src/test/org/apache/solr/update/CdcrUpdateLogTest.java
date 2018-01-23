@@ -41,7 +41,7 @@ public class CdcrUpdateLogTest extends SolrTestCaseJ4 {
 
   private static int timeout = 60;  // acquire timeout in seconds.  change this to a huge number when debugging to prevent threads from advancing.
 
-  // TODO: fix this test to not require FSDirectory
+  // TODO: fix this test to not require FSDirectory id:2969 gh:2970
   static String savedFactory;
 
   @BeforeClass

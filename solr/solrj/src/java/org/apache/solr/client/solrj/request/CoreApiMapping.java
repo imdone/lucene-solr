@@ -53,7 +53,7 @@ public class CoreApiMapping {
     REQUESTSYNCSHARD(PER_CORE_COMMANDS, POST, CoreAdminAction.REQUESTSYNCSHARD, "request-sync-shard", null),
     REQUESTBUFFERUPDATES(PER_CORE_COMMANDS, POST, CoreAdminAction.REQUESTBUFFERUPDATES, "request-buffer-updates", null),
     REQUESTAPPLYUPDATES(PER_CORE_COMMANDS, POST, CoreAdminAction.REQUESTAPPLYUPDATES, "request-apply-updates", null),
-    REQUESTSTATUS(PER_CORE_COMMANDS, GET, CoreAdminAction.REQUESTSTATUS, "request-status", null),/*TODO*/
+    REQUESTSTATUS(PER_CORE_COMMANDS, GET, CoreAdminAction.REQUESTSTATUS, "request-status", null),/*TODO id:2446 gh:2447*/
     OVERSEEROP(NODEAPIS, POST, CoreAdminAction.OVERSEEROP, "overseer-op", null),
     REJOINLEADERELECTION(NODEAPIS, POST, CoreAdminAction.REJOINLEADERELECTION, "rejoin-leader-election", null),
     INVOKE(NODEINVOKE, GET, CoreAdminAction.INVOKE,"invoke",  null),

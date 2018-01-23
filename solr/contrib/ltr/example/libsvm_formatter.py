@@ -45,7 +45,7 @@ class LibSvmFormatter:
     def convertLibSvmModelToLtrModel(self,libSvmModelLocation,outputFile,modelName,featureStoreName):
         with open(libSvmModelLocation, 'r') as inFile:
             with open(outputFile,'w') as convertedOutFile:
-                # TODO: use json module instead of direct write
+                # TODO: use json module instead of direct write id:2623 gh:2624
                 convertedOutFile.write('{\n\t"class":"org.apache.solr.ltr.model.LinearModel",\n')
                 convertedOutFile.write('\t"store": "' + str(featureStoreName) + '",\n')
                 convertedOutFile.write('\t"name": "' + str(modelName) + '",\n')

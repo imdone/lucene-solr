@@ -58,7 +58,7 @@ final class DefaultIndexingChain extends DocConsumer {
   // Writes stored fields
   final StoredFieldsConsumer storedFieldsConsumer;
 
-  // NOTE: I tried using Hash Map<String,PerField>
+  // NOTE: I tried using Hash Map<String,PerField> id:471 gh:472
   // but it was ~2% slower on Wiki and Geonames with Java
   // 1.7.0_25:
   private PerField[] fieldHash = new PerField[2];
@@ -117,7 +117,7 @@ final class DefaultIndexingChain extends DocConsumer {
   @Override
   public Sorter.DocMap flush(SegmentWriteState state) throws IOException, AbortingException {
 
-    // NOTE: caller (DocumentsWriterPerThread) handles
+    // NOTE: caller (DocumentsWriterPerThread) handles id:546 gh:547
     // aborting on any exception from this method
     Sorter.DocMap sortMap = maybeSortSegment(state);
     int maxDoc = state.segmentInfo.maxDoc();
@@ -254,7 +254,7 @@ final class DefaultIndexingChain extends DocConsumer {
         }
       }
 
-      // TODO: catch missing DV fields here?  else we have
+      // TODO: catch missing DV fields here?  else we have id:526 gh:527
       // null/"" depending on how docs landed in segments?
       // but we can't detect all cases, and we should leave
       // this behavior undefined. dv is not "schemaless": it's column-stride.
@@ -375,7 +375,7 @@ final class DefaultIndexingChain extends DocConsumer {
 
     long fieldGen = nextFieldGen++;
 
-    // NOTE: we need two passes here, in case there are
+    // NOTE: we need two passes here, in case there are id:399 gh:400
     // multi-valued fields, because we must process all
     // instances of a given field at once, since the
     // analyzer is free to reuse TokenStream across fields
@@ -629,7 +629,7 @@ final class DefaultIndexingChain extends DocConsumer {
     return fp;
   }
 
-  /** NOTE: not static: accesses at least docState, termsHash. */
+  /** NOTE: not static: accesses at least docState, termsHash. id:398 gh:399*/
   private final class PerField implements Comparable<PerField> {
 
     final int indexCreatedVersionMajor;
@@ -802,7 +802,7 @@ final class DefaultIndexingChain extends DocConsumer {
         // trigger streams to perform end-of-stream operations
         stream.end();
 
-        // TODO: maybe add some safety? then again, it's already checked 
+        // TODO: maybe add some safety? then again, it's already checked  id:475 gh:476
         // when we come back around to the field...
         invertState.position += invertState.posIncrAttribute.getPositionIncrement();
         invertState.offset += invertState.offsetAttribute.endOffset();

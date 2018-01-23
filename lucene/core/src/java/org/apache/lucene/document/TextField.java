@@ -45,7 +45,7 @@ public final class TextField extends Field {
     TYPE_STORED.freeze();
   }
 
-  // TODO: add sugar for term vectors...?
+  // TODO: add sugar for term vectors...? id:532 gh:533
 
   /** Creates a new un-stored TextField with Reader value. 
    * @param name field name

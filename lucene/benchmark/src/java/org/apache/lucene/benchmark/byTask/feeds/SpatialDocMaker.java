@@ -95,12 +95,12 @@ public class SpatialDocMaker extends DocMaker {
 
   protected SpatialStrategy makeSpatialStrategy(final Config config, Map<String, String> configMap,
                                                 SpatialContext ctx) {
-    //TODO once strategies have factories, we could use them here.
+    //TODO once strategies have factories, we could use them here. id:207 gh:208
     final String strategyName = config.get("spatial.strategy", "rpt");
     switch (strategyName) {
       case "rpt": return makeRPTStrategy(SPATIAL_FIELD, config, configMap, ctx);
       case "composite": return makeCompositeStrategy(config, configMap, ctx);
-      //TODO add more as-needed
+      //TODO add more as-needed id:246 gh:247
       default: throw new IllegalStateException("Unknown spatial.strategy: " + strategyName);
     }
   }
@@ -152,7 +152,7 @@ public class SpatialDocMaker extends DocMaker {
       //new round; we need to re-initialize
       strategy = makeSpatialStrategy(config);
       spatialStrategyCache.put(config.getRoundNumber(), strategy);
-      //TODO remove previous round config?
+      //TODO remove previous round config? id:209 gh:210
       shapeConverter = makeShapeConverter(strategy, config, "doc.spatial.");
       System.out.println("Spatial Strategy: " + strategy);
     }
@@ -221,7 +221,7 @@ public class SpatialDocMaker extends DocMaker {
     if (shapeStr != null && shapeStr.length() > 0) {
       try {
         return strategy.getSpatialContext().readShapeFromWkt(shapeStr);
-      } catch (Exception e) {//InvalidShapeException TODO
+      } catch (Exception e) {//InvalidShapeException TODO id:210 gh:211
         System.err.println("Shape "+name+" wasn't parseable: "+e+"  (skipping it)");
         return null;
       }
@@ -231,7 +231,7 @@ public class SpatialDocMaker extends DocMaker {
 
   @Override
   public Document makeDocument(int size) throws Exception {
-    //TODO consider abusing the 'size' notion to number of shapes per document
+    //TODO consider abusing the 'size' notion to number of shapes per document id:214 gh:215
     throw new UnsupportedOperationException();
   }
 }

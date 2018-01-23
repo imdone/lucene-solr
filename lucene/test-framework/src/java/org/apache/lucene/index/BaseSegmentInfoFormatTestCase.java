@@ -41,7 +41,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * Abstract class to do basic tests for si format.
- * NOTE: This test focuses on the si impl, nothing else.
+ * NOTE: This test focuses on the si impl, nothing else. id:1595 gh:1596
  * The [stretch] goal is for this test to be
  * so thorough in testing a new si format that if this
  * test passes, then all Lucene/Solr tests should also pass.  Ie,

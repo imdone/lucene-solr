@@ -396,7 +396,7 @@ public class TestSQLHandler extends AbstractFullDistribZkTestBase {
       tuple = tuples.get(6);
       assertEquals("8", tuple.get("id"));
 
-      // TODO requires different Calcite SQL conformance level
+      // TODO requires different Calcite SQL conformance level id:2908 gh:2909
       // Not Equals !=
 //      sParams = mapParams(CommonParams.QT, "/sql",
 //          "stmt", "select id from collection1 where id != 1 order by id asc limit 10");
@@ -547,7 +547,7 @@ public class TestSQLHandler extends AbstractFullDistribZkTestBase {
       assert(tuple.getLong("Field_i") == 7);
       assert(tuple.get("Str_s").equals("a"));
 
-      // TODO get sum(Field_i) as named one
+      // TODO get sum(Field_i) as named one id:2316 gh:2317
       sParams = mapParams(CommonParams.QT, "/sql",
           "stmt", "select Str_s, sum(Field_i) from collection1 where id='(1 8)' group by Str_s having (sum(Field_i) = 7 OR sum(Field_i) = 60) order by sum(Field_i) desc");
 

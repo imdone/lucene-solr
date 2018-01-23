@@ -179,7 +179,7 @@ public class StatsStream extends TupleStream implements Expressible  {
     
     StreamExplanation child = new StreamExplanation(getStreamNodeId() + "-datastore");
     child.setFunctionName(String.format(Locale.ROOT, "solr (worker ? of ?)")); 
-      // TODO: fix this so we know the # of workers - check with Joel about a Stat's ability to be in a
+      // TODO: fix this so we know the # of workers - check with Joel about a Stat's ability to be in a id:2513 gh:2514
       // parallel stream.
     
     child.setImplementingClass("Solr/Lucene");

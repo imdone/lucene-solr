@@ -404,17 +404,17 @@ public class TestUAX29URLEmailTokenizer extends BaseTokenStreamTestCase {
         new String[] {"mailto", "test@example.org"},
         new String[] { "<ALPHANUM>", "<EMAIL>" });
 
-    // TODO: Support full mailto: scheme URIs. See RFC 6068: http://tools.ietf.org/html/rfc6068
+    // TODO: Support full mailto: scheme URIs. See RFC 6068: http://tools.ietf.org/html/rfc6068 id:103 gh:104
     BaseTokenStreamTestCase.assertAnalyzesTo
         (a,  "mailto:personA@example.com,personB@example.com?cc=personC@example.com"
            + "&subject=Subjectivity&body=Corpusivity%20or%20something%20like%20that",
          new String[] { "mailto",
                         "personA@example.com",
-                        // TODO: recognize ',' address delimiter. Also, see examples of ';' delimiter use at: http://www.mailto.co.uk/
+                        // TODO: recognize ',' address delimiter. Also, see examples of ';' delimiter use at: http://www.mailto.co.uk/ id:106 gh:107
                         ",personB@example.com",
-                        "?cc=personC@example.com", // TODO: split field keys/values
+                        "?cc=personC@example.com", // TODO: split field keys/values id:104 gh:105
                         "subject", "Subjectivity",
-                        "body", "Corpusivity", "20or", "20something","20like", "20that" }, // TODO: Hex decoding + re-tokenization
+                        "body", "Corpusivity", "20or", "20something","20like", "20that" }, // TODO: Hex decoding + re-tokenization id:151 gh:152
          new String[] { "<ALPHANUM>",
                         "<EMAIL>",
                         "<EMAIL>",

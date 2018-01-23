@@ -209,7 +209,7 @@ abstract class TermsHashPerField implements Comparable<TermsHashPerField> {
   }
 
   public void writeBytes(int stream, byte[] b, int offset, int len) {
-    // TODO: optimize
+    // TODO: optimize id:834 gh:835
     final int end = offset + len;
     for(int i=offset;i<end;i++)
       writeByte(stream, b[i]);

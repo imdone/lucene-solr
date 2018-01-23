@@ -130,7 +130,7 @@ public class CloudConfig {
     private static final int DEFAULT_CREATE_COLLECTION_ACTIVE_WAIT = 30;  // 30 seconds
     private static final boolean DEFAULT_CREATE_COLLECTION_CHECK_LEADER_ACTIVE = false; 
  
-    // TODO: tune defaults
+    // TODO: tune defaults id:1792 gh:1793
     private static final int DEFAULT_AUTO_REPLICA_FAILOVER_WAIT_AFTER_EXPIRATION = 30000;
 
     private String zkHost = System.getProperty("zkHost");

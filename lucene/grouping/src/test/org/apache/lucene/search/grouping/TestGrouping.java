@@ -67,7 +67,7 @@ import org.apache.lucene.util.TestUtil;
 import org.apache.lucene.util.mutable.MutableValue;
 import org.apache.lucene.util.mutable.MutableValueStr;
 
-// TODO
+// TODO id:1093 gh:1094
 //   - should test relevance sort too
 //   - test null
 //   - test ties
@@ -325,7 +325,7 @@ public class TestGrouping extends LuceneTestCase {
         BytesRef groupValue = mvalGd.groupValue.exists() ? ((MutableValueStr) mvalGd.groupValue).value.get() : null;
         groups.add(new GroupDocs<>(Float.NaN, mvalGd.maxScore, mvalGd.totalHits, mvalGd.scoreDocs, groupValue, mvalGd.groupSortValues));
       }
-      // NOTE: currenlty using diamond operator on MergedIterator (without explicit Term class) causes
+      // NOTE: currenlty using diamond operator on MergedIterator (without explicit Term class) causes id:928 gh:930
       // errors on Eclipse Compiler (ecj) used for javadoc lint
       return new TopGroups<BytesRef>(mvalTopGroups.groupSort, mvalTopGroups.withinGroupSort, mvalTopGroups.totalHitCount, mvalTopGroups.totalGroupedHitCount, groups.toArray(new GroupDocs[groups.size()]), Float.NaN);
     }
@@ -462,7 +462,7 @@ public class TestGrouping extends LuceneTestCase {
 
     //System.out.println("TEST: slowGrouping");
     for(GroupDoc d : groupDocs) {
-      // TODO: would be better to filter by searchTerm before sorting!
+      // TODO: would be better to filter by searchTerm before sorting! id:1294 gh:1295
       if (!d.content.startsWith(searchTerm)) {
         continue;
       }
@@ -722,7 +722,7 @@ public class TestGrouping extends LuceneTestCase {
           group.setStringValue(groupDoc.group.utf8ToString());
           idvGroupField.setBytesValue(BytesRef.deepCopyOf(groupDoc.group));
         } else {
-          // TODO: not true
+          // TODO: not true id:1517 gh:1518
           // Must explicitly set empty string, else eg if
           // the segment has all docs missing the field then
           // we get null back instead of empty BytesRef:
@@ -1040,7 +1040,7 @@ public class TestGrouping extends LuceneTestCase {
         final AllGroupsCollector<BytesRef> allGroupsCollector2;
         final Collector c4;
         if (doAllGroups) {
-          // NOTE: must be "group" and not "group_dv"
+          // NOTE: must be "group" and not "group_dv" id:1038 gh:1039
           // (groupField) because we didn't index doc
           // values in the block index:
           allGroupsCollector2 = new AllGroupsCollector<>(new TermGroupSelector("group"));
@@ -1151,7 +1151,7 @@ public class TestGrouping extends LuceneTestCase {
   private TopGroups<BytesRef> searchShards(IndexSearcher topSearcher, ShardSearcher[] subSearchers, Query query, Sort groupSort, Sort docSort, int groupOffset, int topNGroups, int docOffset,
                                            int topNDocs, boolean getScores, boolean getMaxScores, boolean canUseIDV, boolean preFlex) throws Exception {
 
-    // TODO: swap in caching, all groups collector hereassertEquals(expected.totalHitCount, actual.totalHitCount);
+    // TODO: swap in caching, all groups collector hereassertEquals(expected.totalHitCount, actual.totalHitCount); id:1095 gh:1096
     // too...
     if (VERBOSE) {
       System.out.println("TEST: " + subSearchers.length + " shards: " + Arrays.toString(subSearchers) + " canUseIDV=" + canUseIDV);
@@ -1271,7 +1271,7 @@ public class TestGrouping extends LuceneTestCase {
         assertArrayEquals(expectedGroup.groupSortValues, actualGroup.groupSortValues);
       }
 
-      // TODO
+      // TODO id:930 gh:931
       // assertEquals(expectedGroup.maxScore, actualGroup.maxScore);
       assertEquals(expectedGroup.totalHits, actualGroup.totalHits);
 
@@ -1287,7 +1287,7 @@ public class TestGrouping extends LuceneTestCase {
         if (testScores) {
           assertEquals(expectedFD.score, actualFD.score, 0.1);
         } else {
-          // TODO: too anal for now
+          // TODO: too anal for now id:1296 gh:1297
           //assertEquals(Float.NaN, actualFD.score);
         }
         if (verifySortValues) {

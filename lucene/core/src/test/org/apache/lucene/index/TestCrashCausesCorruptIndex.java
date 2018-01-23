@@ -61,7 +61,7 @@ public class TestCrashCausesCorruptIndex extends LuceneTestCase  {
     Directory realDirectory = FSDirectory.open(path);
     CrashAfterCreateOutput crashAfterCreateOutput = new CrashAfterCreateOutput(realDirectory);
             
-    // NOTE: cannot use RandomIndexWriter because it
+    // NOTE: cannot use RandomIndexWriter because it id:789 gh:790
     // sometimes commits:
     IndexWriter indexWriter = new IndexWriter(crashAfterCreateOutput,
                                               newIndexWriterConfig(new MockAnalyzer(random())));

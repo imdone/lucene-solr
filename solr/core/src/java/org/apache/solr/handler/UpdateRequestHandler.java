@@ -61,7 +61,7 @@ public class UpdateRequestHandler extends ContentStreamHandlerBase implements Pe
 
   public static final String VERSION = "version";
 
-  // NOTE: This constant is for use with the <add> XML tag, not the HTTP param with same name
+  // NOTE: This constant is for use with the <add> XML tag, not the HTTP param with same name id:1807 gh:1808
   public static final String COMMIT_WITHIN = "commitWithin";
 
   Map<String,ContentStreamLoader> loaders = null;

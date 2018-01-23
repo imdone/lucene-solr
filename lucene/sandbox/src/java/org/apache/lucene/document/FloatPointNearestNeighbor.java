@@ -209,7 +209,7 @@ public class FloatPointNearestNeighbor {
     // System.out.println("NEAREST: readers=" + readers + " liveDocs=" + liveDocs + " origin: " + Arrays.toString(origin));
 
     // Holds closest collected points seen so far:
-    // TODO: if we used lucene's PQ we could just updateTop instead of poll/offer:
+    // TODO: if we used lucene's PQ we could just updateTop instead of poll/offer: id:1456 gh:1456
     final PriorityQueue<NearestHit> hitQueue = new PriorityQueue<>(topN, (a, b) -> {
       // sort by opposite distance natural order
       int cmp = Double.compare(a.distanceSquared, b.distanceSquared);
@@ -246,7 +246,7 @@ public class FloatPointNearestNeighbor {
       Cell cell = cellQueue.poll();
       // System.out.println("  visit " + cell);
 
-      // TODO: if we replace approxBestDistance with actualBestDistance, we can put an opto here to break once this "best" cell is fully outside of the hitQueue bottom's radius:
+      // TODO: if we replace approxBestDistance with actualBestDistance, we can put an opto here to break once this "best" cell is fully outside of the hitQueue bottom's radius: id:1624 gh:1626
       BKDReader reader = readers.get(cell.readerIndex);
 
       if (cell.index.isLeafNode()) {

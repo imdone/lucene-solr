@@ -244,7 +244,7 @@ public class DebugComponentTest extends SolrTestCaseJ4 {
   }
 
   //
-  // NOTE: String representations are not meant to be exact or backward compatible.
+  // NOTE: String representations are not meant to be exact or backward compatible. id:2258 gh:2259
   // For example, foo:bar^3, foo:bar^3.0 and (foo:bar)^3 are equivalent.  Use your
   // judgement when modifying these tests.
   //

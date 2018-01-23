@@ -290,7 +290,7 @@ public class LukeRequestHandler extends RequestHandlerBase
 
       f.add( "value", (ftype==null)?null:ftype.toExternal( field ) );
 
-      // TODO: this really should be "stored"
+      // TODO: this really should be "stored" id:2765 gh:2766
       f.add( "internal", field.stringValue() );  // may be a binary number
 
       BytesRef bytes = field.binaryValue();
@@ -300,7 +300,7 @@ public class LukeRequestHandler extends RequestHandlerBase
       if (!ftype.isPointField()) {
         Term t = new Term(field.name(), ftype!=null ? ftype.storedToIndexed(field) : field.stringValue());
         f.add( "docFreq", t.text()==null ? 0 : reader.docFreq( t ) ); // this can be 0 for non-indexed fields
-      }// TODO: Calculate docFreq for point fields
+      }// TODO: Calculate docFreq for point fields id:1849 gh:1850
 
       // If we have a term vector, return that
       if( field.fieldType().storeTermVectors() ) {
@@ -574,7 +574,7 @@ public class LukeRequestHandler extends RequestHandlerBase
     indexInfo.add("deletedDocs", reader.maxDoc() - reader.numDocs());
     indexInfo.add("indexHeapUsageBytes", getIndexHeapUsed(reader));
 
-    indexInfo.add("version", reader.getVersion());  // TODO? Is this different then: IndexReader.getCurrentVersion( dir )?
+    indexInfo.add("version", reader.getVersion());  // TODO ? Is this different then: IndexReader.getCurrentVersion( dir )? id:2652 gh:2653
     indexInfo.add("segmentCount", reader.leaves().size());
     indexInfo.add("current", closeSafe( reader::isCurrent));
     indexInfo.add("hasDeletions", reader.hasDeletions() );
@@ -732,7 +732,7 @@ public class LukeRequestHandler extends RequestHandlerBase
         _buckets[idx] = buckets[idx];
       }
     }
-    // TODO? should this be a list or a map?
+    // TODO ? should this be a list or a map? id:1811 gh:1812
     public NamedList<Integer> toNamedList()
     {
       NamedList<Integer> nl = new NamedList<>();

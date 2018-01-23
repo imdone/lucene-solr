@@ -71,7 +71,7 @@ public abstract class HashBasedRouter extends DocRouter {
   public Collection<Slice> getSearchSlicesSingle(String shardKey, SolrParams params, DocCollection collection) {
     if (shardKey == null) {
       // search across whole collection
-      // TODO: this may need modification in the future when shard splitting could cause an overlap
+      // TODO: this may need modification in the future when shard splitting could cause an overlap id:2525 gh:2526
       return collection.getActiveSlices();
     }
 

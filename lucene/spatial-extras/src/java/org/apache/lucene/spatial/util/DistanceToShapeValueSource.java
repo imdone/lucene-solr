@@ -41,7 +41,7 @@ public class DistanceToShapeValueSource extends DoubleValuesSource {
   private final double multiplier;
   private final DistanceCalculator distCalc;
 
-  //TODO if DoubleValues returns NaN; will things be ok?
+  //TODO if DoubleValues returns NaN; will things be ok? id:1207 gh:1208
   private final double nullValue;
 
   public DistanceToShapeValueSource(ShapeValuesSource shapeValueSource, Point queryPoint,

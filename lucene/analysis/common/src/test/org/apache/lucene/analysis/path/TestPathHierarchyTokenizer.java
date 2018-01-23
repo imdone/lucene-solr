@@ -225,7 +225,7 @@ public class TestPathHierarchyTokenizer extends BaseTokenStreamTestCase {
         return new TokenStreamComponents(tokenizer, tokenizer);
       }    
     };
-    // TODO: properly support positionLengthAttribute
+    // TODO: properly support positionLengthAttribute id:93 gh:94
     checkRandomData(random(), a, 1000*RANDOM_MULTIPLIER, 20, false, false);
     a.close();
   }
@@ -240,7 +240,7 @@ public class TestPathHierarchyTokenizer extends BaseTokenStreamTestCase {
         return new TokenStreamComponents(tokenizer, tokenizer);
       }    
     };
-    // TODO: properly support positionLengthAttribute
+    // TODO: properly support positionLengthAttribute id:144 gh:145
     checkRandomData(random, a, 100*RANDOM_MULTIPLIER, 1027, false, false);
     a.close();
   }

@@ -850,7 +850,7 @@ public abstract class FieldType extends FieldProperties {
    *
    */
   public Query getRangeQuery(QParser parser, SchemaField field, String part1, String part2, boolean minInclusive, boolean maxInclusive) {
-    // TODO: change these all to use readableToIndexed/bytes instead (e.g. for unicode collation)
+    // TODO: change these all to use readableToIndexed/bytes instead (e.g. for unicode collation) id:2023 gh:2024
     final BytesRef miValue = part1 == null ? null : new BytesRef(toInternal(part1));
     final BytesRef maxValue = part2 == null ? null : new BytesRef(toInternal(part2));
     if (field.hasDocValues() && !field.indexed()) {
@@ -889,7 +889,7 @@ public abstract class FieldType extends FieldProperties {
   /** @lucene.experimental  */
   public Query getSetQuery(QParser parser, SchemaField field, Collection<String> externalVals) {
     if (!field.indexed()) {
-      // TODO: if the field isn't indexed, this feels like the wrong query type to use?
+      // TODO: if the field isn't indexed, this feels like the wrong query type to use? id:1897 gh:1898
       BooleanQuery.Builder builder = new BooleanQuery.Builder();
       for (String externalVal : externalVals) {
         Query subq = getFieldQuery(parser, field, externalVal);

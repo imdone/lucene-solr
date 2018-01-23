@@ -545,7 +545,7 @@ public final class BKDReader extends PointValues implements Accountable {
       if (state.index.nodeExists()) {
         visitDocIDs(state.in, state.index.getLeafBlockFP(), state.visitor);
       }
-      // TODO: we can assert that the first value here in fact matches what the index claimed?
+      // TODO: we can assert that the first value here in fact matches what the index claimed? id:739 gh:740
     } else {
       state.index.pushLeft();
       addAll(state, grown);
@@ -700,7 +700,7 @@ public final class BKDReader extends PointValues implements Accountable {
       // The cell crosses the shape boundary, or the cell fully contains the query, so we fall through and do full filtering:
     } else if (state.index.isLeafNode()) {
       
-      // TODO: we can assert that the first value here in fact matches what the index claimed?
+      // TODO: we can assert that the first value here in fact matches what the index claimed? id:938 gh:939
       
       // In the unbalanced case it's possible the left most node only has one child:
       if (state.index.nodeExists()) {

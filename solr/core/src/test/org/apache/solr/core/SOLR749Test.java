@@ -50,7 +50,7 @@ public class SOLR749Test extends SolrTestCaseJ4 {
     }
     assertU(commit());
 
-    // NOTE: we can't rely on the default lucene syntax because "FooQParser" is registered as "lucene"
+    // NOTE: we can't rely on the default lucene syntax because "FooQParser" is registered as "lucene" id:2904 gh:2905
     assertQ(req("q","{!notfoo}*:*"), "//result[@numFound=100]");
     assertQ(req("q","{!notfoo}id_i1:[* TO 49]"), "//result[@numFound=50]");
     try {

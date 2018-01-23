@@ -33,7 +33,7 @@ public interface LongValue extends LongValueStream, AnalyticsValue {
   /**
    * Get the long representation of the current value.
    * <p>
-   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}.
+   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}. id:2617 gh:2618
    * 
    * @return the current value
    */

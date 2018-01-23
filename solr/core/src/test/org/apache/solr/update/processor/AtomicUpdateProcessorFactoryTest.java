@@ -60,7 +60,7 @@ public class AtomicUpdateProcessorFactoryTest extends SolrTestCaseJ4 {
     }
   }
 
-  public void testNoUniqueIdPassed() throws Exception { //TODO
+  public void testNoUniqueIdPassed() throws Exception { //TODO id:2431 gh:2432
     AddUpdateCommand cmd = new AddUpdateCommand(new LocalSolrQueryRequest(h.getCore(),
         new ModifiableSolrParams()
             .add("processor", "atomic")

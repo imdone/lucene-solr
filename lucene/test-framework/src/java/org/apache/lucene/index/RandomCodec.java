@@ -90,7 +90,7 @@ public class RandomCodec extends AssertingCodec {
   // a little messy: randomize the default codec's parameters here.
   // with the default values, we have e,g, 1024 points in leaf nodes,
   // which is less effective for testing.
-  // TODO: improve how we randomize this...
+  // TODO: improve how we randomize this... id:1605 gh:1606
   private final int maxPointsInLeafNode;
   private final double maxMBSortInHeap;
   private final int bkdSplitRandomSeed;
@@ -179,7 +179,7 @@ public class RandomCodec extends AssertingCodec {
   public RandomCodec(Random random, Set<String> avoidCodecs) {
     this.perFieldSeed = random.nextInt();
     this.avoidCodecs = avoidCodecs;
-    // TODO: make it possible to specify min/max iterms per
+    // TODO: make it possible to specify min/max iterms per id:1387 gh:1388
     // block via CL:
     int minItemsPerBlock = TestUtil.nextInt(random, 2, 100);
     int maxItemsPerBlock = 2*(Math.max(2, minItemsPerBlock-1)) + random.nextInt(100);
@@ -195,7 +195,7 @@ public class RandomCodec extends AssertingCodec {
         new FSTOrdPostingsFormat(),
         new DirectPostingsFormat(LuceneTestCase.rarely(random) ? 1 : (LuceneTestCase.rarely(random) ? Integer.MAX_VALUE : maxItemsPerBlock),
                                  LuceneTestCase.rarely(random) ? 1 : (LuceneTestCase.rarely(random) ? Integer.MAX_VALUE : lowFreqCutoff)),
-        //TODO as a PostingsFormat which wraps others, we should allow TestBloomFilteredLucenePostings to be constructed 
+        //TODO as a PostingsFormat which wraps others, we should allow TestBloomFilteredLucenePostings to be constructed  id:1631 gh:1632
         //with a choice of concrete PostingsFormats. Maybe useful to have a generic means of marking and dealing 
         //with such "wrapper" classes?
         new TestBloomFilteredLucenePostings(),                

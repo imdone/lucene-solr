@@ -62,7 +62,7 @@ import org.slf4j.LoggerFactory;
  * </p>
  * <p>
  * A default time zone name or offset may optionally be specified for those dates
- * that don't include an explicit zone/offset.  NOTE: three-letter zone
+ * that don't include an explicit zone/offset.  NOTE: three-letter zone id:2195 gh:2196
  * designations like "EST" are not parseable (with the single exception of "UTC"),
  * because they are ambiguous.  If no default time zone is specified, UTC will be
  * used. See <a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones"

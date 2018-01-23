@@ -286,7 +286,7 @@ public class TestCoreDiscovery extends SolrTestCaseJ4 {
   // This seems like a silly test, but it hangs forever on 4.10 so let's guard against it in future. The behavior
   // has gone away with the removal of the complexity around the old-style solr.xml files.
   //
-  // NOTE: The order that cores are loaded depends upon how the core discovery is traversed. I don't think we can
+  // NOTE: The order that cores are loaded depends upon how the core discovery is traversed. I don't think we can id:2312 gh:2313
   //       make the test depend on that order, so after load just insure that the cores counts are correct.
 
   @Test

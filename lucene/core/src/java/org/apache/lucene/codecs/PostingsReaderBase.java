@@ -37,9 +37,9 @@ import org.apache.lucene.util.Accountable;
  *  time. 
  *  @lucene.experimental */
 
-// TODO: maybe move under blocktree?  but it's used by other terms dicts (e.g. Block)
+// TODO: maybe move under blocktree?  but it's used by other terms dicts (e.g. Block) id:483 gh:484
 
-// TODO: find a better name; this defines the API that the
+// TODO: find a better name; this defines the API that the id:457 gh:458
 // terms dict impls use to talk to a postings impl.
 // TermsDict + PostingsReader/WriterBase == PostingsConsumer/Producer
 public abstract class PostingsReaderBase implements Closeable, Accountable {

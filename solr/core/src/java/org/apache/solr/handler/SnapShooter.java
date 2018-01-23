@@ -200,7 +200,7 @@ public class SnapShooter {
   }
 
   private void createSnapAsync(final IndexCommit indexCommit, final int numberToKeep, Consumer<NamedList> result) {
-    //TODO should use Solr's ExecutorUtil
+    //TODO should use Solr's ExecutorUtil id:2650 gh:2651
     new Thread(() -> {
       try {
         result.accept(createSnapshot(indexCommit));

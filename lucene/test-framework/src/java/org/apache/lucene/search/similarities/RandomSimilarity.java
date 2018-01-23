@@ -68,7 +68,7 @@ public class RandomSimilarity extends PerFieldSimilarityWrapper {
   static Normalization[] NORMALIZATIONS = {
     new NormalizationH1(), new NormalizationH2(),
     new NormalizationH3(), new NormalizationZ()
-    // TODO: if we enable NoNormalization, we have to deal with
+    // TODO: if we enable NoNormalization, we have to deal with id:1405 gh:1407
     // a couple tests (e.g. TestDocBoost, TestSort) that expect length normalization
     // new Normalization.NoNormalization()
   };

@@ -88,7 +88,7 @@ public class ConjunctionSolrSpellChecker extends SolrSpellChecker {
       SolrSpellChecker c = checkers.get(i);
       String dn = c.init(config, core);
       
-      //TODO:  in the future, we could develop this further to allow
+      //TODO: in the future, we could develop this further to allow id:2123 gh:2124
       //        multiple spellcheckers with per-field dictionaries...
       if (dictionaryName != null && !dictionaryName.equals(dn)) {
         throw new IllegalArgumentException(
@@ -132,7 +132,7 @@ public class ConjunctionSolrSpellChecker extends SolrSpellChecker {
     return mergeCheckers(results, numSug);
   }
   
-  //TODO: This just interleaves the results.  In the future, we might want to let users give each checker its
+  //TODO: This just interleaves the results.  In the future, we might want to let users give each checker its id:2044 gh:2046
   //      own weight and use that in combination to score & frequency to sort the results ?
   private SpellingResult mergeCheckers(SpellingResult[] results, int numSug) {
     Map<Token, Integer> combinedTokenFrequency = new HashMap<>();

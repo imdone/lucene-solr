@@ -40,7 +40,7 @@ import org.apache.solr.util.plugin.PluginInfoInitialized;
  * </p>
  */
 public abstract class StatsCache implements PluginInfoInitialized {
-  // TODO: decouple use in response from use in request context for these keys
+  // TODO: decouple use in response from use in request context for these keys id:2758 gh:2759
   /**
    * Map of terms and {@link TermStats}.
    */

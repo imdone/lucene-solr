@@ -33,7 +33,7 @@ import org.apache.lucene.util.packed.PagedMutable;
  */
 class NumericDocValuesFieldUpdates extends DocValuesFieldUpdates {
 
-  // TODO: can't this just be NumericDocValues now?  avoid boxing the long value...
+  // TODO: can't this just be NumericDocValues now?  avoid boxing the long value... id:696 gh:697
   final static class Iterator extends DocValuesFieldUpdates.Iterator {
     private final int size;
     private final PagedGrowableWriter values;
@@ -108,7 +108,7 @@ class NumericDocValuesFieldUpdates extends DocValuesFieldUpdates {
 
     assert doc < maxDoc;
     
-    // TODO: if the Sorter interface changes to take long indexes, we can remove that limitation
+    // TODO: if the Sorter interface changes to take long indexes, we can remove that limitation id:587 gh:588
     if (size == Integer.MAX_VALUE) {
       throw new IllegalStateException("cannot support more than Integer.MAX_VALUE doc/value entries");
     }
@@ -154,7 +154,7 @@ class NumericDocValuesFieldUpdates extends DocValuesFieldUpdates {
       @Override
       protected int compare(int i, int j) {
         // increasing docID order:
-        // NOTE: we can have ties here, when the same docID was updated in the same segment, in which case we rely on sort being
+        // NOTE: we can have ties here, when the same docID was updated in the same segment, in which case we rely on sort being id:596 gh:597
         // stable and preserving original order so the last update to that docID wins
         return Integer.compare((int) docs.get(i), (int) docs.get(j));
       }

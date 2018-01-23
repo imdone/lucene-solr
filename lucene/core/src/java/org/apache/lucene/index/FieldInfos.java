@@ -166,7 +166,7 @@ public class FieldInfos implements Iterable<FieldInfo> {
    * Returns an iterator over all the fieldinfo objects present,
    * ordered by ascending field number
    */
-  // TODO: what happens if in fact a different order is used?
+  // TODO: what happens if in fact a different order is used? id:412 gh:413
   @Override
   public Iterator<FieldInfo> iterator() {
     return values.iterator();
@@ -223,7 +223,7 @@ public class FieldInfos implements Iterable<FieldInfo> {
 
     private final Map<String,FieldDimensions> dimensions;
 
-    // TODO: we should similarly catch an attempt to turn
+    // TODO: we should similarly catch an attempt to turn id:564 gh:565
     // norms back on after they were already ommitted; today
     // we silently discard the norm but this is badly trappy
     private int lowestUnassignedFieldNumber = -1;

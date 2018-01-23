@@ -95,7 +95,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
   private boolean debug = log.isDebugEnabled();
   private boolean trace = log.isTraceEnabled();
 
-  // TODO: hack
+  // TODO: hack id:2160 gh:2161
   public FileSystem getFs() {
     return null;
   }
@@ -114,7 +114,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
     }
   }
 
-  // NOTE: when adding new states make sure to keep existing numbers, because external metrics
+  // NOTE: when adding new states make sure to keep existing numbers, because external metrics id:2082 gh:2083
   // monitoring may depend on these values being stable.
   public enum State { REPLAYING(0), BUFFERING(1), APPLYING_BUFFERED(2), ACTIVE(3);
     private final int value;
@@ -391,7 +391,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
                               "Unable to use updateLog: " + e.getMessage(), e);
     }
 
-    // TODO: these startingVersions assume that we successfully recover from all non-complete tlogs.
+    // TODO: these startingVersions assume that we successfully recover from all non-complete tlogs. id:2966 gh:2967
     try (RecentUpdates startingUpdates = getRecentUpdates()) {
       startingVersions = startingUpdates.getVersions(numRecordsToKeep);
       startingOperation = startingUpdates.getLatestOperation();
@@ -521,7 +521,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
 
   public void add(AddUpdateCommand cmd, boolean clearCaches) {
     // don't log if we are replaying from another log
-    // TODO: we currently need to log to maintain correct versioning, rtg, etc
+    // TODO: we currently need to log to maintain correct versioning, rtg, etc id:2154 gh:2155
     // if ((cmd.getFlags() & UpdateCommand.REPLAY) != 0) return;
 
     synchronized (this) {
@@ -536,7 +536,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
       }
 
       if (!clearCaches) {
-        // TODO: in the future we could support a real position for a REPLAY update.
+        // TODO: in the future we could support a real position for a REPLAY update. id:2794 gh:2795
         // Only currently would be useful for RTG while in recovery mode though.
         LogPtr ptr = new LogPtr(pos, cmd.getVersion(), prevPointer);
 
@@ -785,7 +785,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
       }
       if (prevTlog != null) {
         // if we made it through the commit, write a commit command to the log
-        // TODO: check that this works to cap a tlog we were using to buffer so we don't replay on startup.
+        // TODO: check that this works to cap a tlog we were using to buffer so we don't replay on startup. id:2163 gh:2164
         prevTlog.writeCommit(cmd, operationFlags);
 
         addOldLog(prevTlog, true);
@@ -1413,7 +1413,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
               // should currently be a List<Oper,Ver,Doc/Id>
               List entry = (List)o;
 
-              // TODO: refactor this out so we get common error handling
+              // TODO: refactor this out so we get common error handling id:2085 gh:2086
               int opAndFlags = (Integer)entry.get(UpdateLog.FLAGS_IDX);
               if (latestOperation == 0) {
                 latestOperation = opAndFlags;
@@ -1508,7 +1508,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
       }
     }
 
-    // TODO: what if I hand out a list of updates, then do an update, then hand out another list (and
+    // TODO: what if I hand out a list of updates, then do an update, then hand out another list (and id:2968 gh:2969
     // one of the updates I originally handed out fell off the list).  Over-request?
     return new RecentUpdates(logList);
 
@@ -1725,7 +1725,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
           tlogReader = translog.getReader(recoveryInfo.positionOfStart);
         }
 
-        // NOTE: we don't currently handle a core reload during recovery.  This would cause the core
+        // NOTE: we don't currently handle a core reload during recovery.  This would cause the core id:2156 gh:2157
         // to change underneath us.
 
         UpdateRequestProcessorChain processorChain = req.getCore().getUpdateProcessingChain(null);
@@ -1761,7 +1761,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
                 // block to prevent new adds, but don't immediately unlock since
                 // we could be starved from ever completing recovery.  Only unlock
                 // after we've finished this recovery.
-                // NOTE: our own updates won't be blocked since the thread holding a write lock can
+                // NOTE: our own updates won't be blocked since the thread holding a write lock can id:2796 gh:2797
                 // lock a read lock.
                 versionInfo.blockUpdates();
                 finishing = true;
@@ -1842,7 +1842,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
             } else if (state == State.APPLYING_BUFFERED) {
               applyingBufferedOpsMeter.mark();
             } else {
-              // XXX should not happen?
+              // XXX should not happen? id:2165 gh:2166
             }
           } catch (IOException ex) {
             recoveryInfo.errors++;
@@ -1989,7 +1989,7 @@ public class UpdateLog implements PluginInfoInitialized, SolrMetricProducer {
         try {
           Files.delete(f.toPath());
         } catch (IOException cause) {
-          // NOTE: still throws SecurityException as before.
+          // NOTE: still throws SecurityException as before. id:2089 gh:2090
           log.error("Could not remove tlog file:" + f, cause);
         }
       }

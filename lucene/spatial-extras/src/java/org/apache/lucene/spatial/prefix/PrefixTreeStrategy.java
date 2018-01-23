@@ -147,7 +147,7 @@ public abstract class PrefixTreeStrategy extends SpatialStrategy {
   }
 
   public Field[] createIndexableFields(Shape shape, int detailLevel) {
-    //TODO re-use TokenStream LUCENE-5776: Subclass Field, put cell iterator there, override tokenStream()
+    //TODO re-use TokenStream LUCENE-5776: Subclass Field, put cell iterator there, override tokenStream() id:1493 gh:1494
     Iterator<Cell> cells = createCellIteratorToIndex(shape, detailLevel, null);
     CellToBytesRefIterator cellToBytesRefIterator = newCellToBytesRefIterator();
     cellToBytesRefIterator.reset(cells);
@@ -166,7 +166,7 @@ public abstract class PrefixTreeStrategy extends SpatialStrategy {
     if (pointsOnly && !isPointShape(shape)) {
       throw new IllegalArgumentException("pointsOnly is true yet a " + shape.getClass() + " is given for indexing");
     }
-    return grid.getTreeCellIterator(shape, detailLevel);//TODO should take a re-use iterator
+    return grid.getTreeCellIterator(shape, detailLevel);//TODO should take a re-use iterator id:1662 gh:1663
   }
 
   /* Indexed, tokenized, not stored. */

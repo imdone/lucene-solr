@@ -189,7 +189,7 @@ public class GraphQuery extends Query {
         // Increment how far we have gone in the frontier.
         currentDepth++;
         // if we are at the max level we don't need the graph terms collector.
-        // TODO validate that the join case works properly.
+        // TODO validate that the join case works properly. id:2115 gh:2116
         if (maxDepth != -1 && currentDepth >= maxDepth) {
           // if we've reached the max depth, don't worry about collecting edges.
           fromSet = fromSearcher.getDocSetBits(frontierQuery);

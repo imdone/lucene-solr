@@ -145,7 +145,7 @@ public class UnInvertedField extends DocTermOrds {
         deState = new SolrIndexSearcher.DocsEnumState();
         deState.fieldName = field;
         deState.liveDocs = searcher.getSlowAtomicReader().getLiveDocs();
-        deState.termsEnum = te;  // TODO: check for MultiTermsEnum in SolrIndexSearcher could now fail?
+        deState.termsEnum = te;  // TODO: check for MultiTermsEnum in SolrIndexSearcher could now fail? id:2009 gh:2010
         deState.postingsEnum = postingsEnum;
         deState.minSetSizeCached = maxTermDocFreq;
       }
@@ -189,7 +189,7 @@ public class UnInvertedField extends DocTermOrds {
     final String prefix = TrieField.getMainValuePrefix(searcher.getSchema().getFieldType(field));
     this.searcher = searcher;
     try {
-      // TODO: it's wasteful to create one of these each time
+      // TODO: it's wasteful to create one of these each time id:2747 gh:2748
       // but DocTermOrds will throw an exception if it thinks the field has doc values (which is faked by UnInvertingReader)
       LeafReader r = SlowCompositeReaderWrapper.wrap(searcher.getRawReader());
       uninvert(r, r.getLiveDocs(), prefix == null ? null : new BytesRef(prefix));
@@ -326,7 +326,7 @@ public class UnInvertedField extends DocTermOrds {
     if (doNegative) {
       FixedBitSet bs = ((BitDocSet) docs).getBits().clone();
       bs.flip(0, maxDoc);
-      // TODO: when iterator across negative elements is available, use that
+      // TODO: when iterator across negative elements is available, use that id:2107 gh:2108
       // instead of creating a new bitset and inverting.
       docs = new BitDocSet(bs, maxDoc - baseSize);
       // simply negating will mean that we have deleted docs in the set.
@@ -335,11 +335,11 @@ public class UnInvertedField extends DocTermOrds {
 
     // For the biggest terms, do straight set intersections
     for (TopTerm tt : bigTerms.values()) {
-      // TODO: counts could be deferred if sorting by index order
+      // TODO: counts could be deferred if sorting by index order id:2028 gh:2029
       counts.incrementCount(tt.termNum, searcher.numDocs(tt.termQuery, docs));
     }
 
-    // TODO: we could short-circuit counting altogether for sorted faceting
+    // TODO: we could short-circuit counting altogether for sorted faceting id:2919 gh:2920
     // where we already have enough terms from the bigTerms
 
     if (termInstances > 0) {
@@ -388,7 +388,7 @@ public class UnInvertedField extends DocTermOrds {
       }
     }
 
-    /*** TODO - future optimization to handle allBuckets
+    /*** TODO - future optimization to handle allBuckets id:2011 gh:2012
     if (processor.allBucketsSlot >= 0) {
       int all = 0;  // overflow potential
       for (int i=0; i<numTermsInField; i++) {
@@ -411,7 +411,7 @@ public class UnInvertedField extends DocTermOrds {
   }
 
   // called from FieldFacetProcessor
-  // TODO: do a callback version that can be specialized!
+  // TODO: do a callback version that can be specialized! id:2749 gh:2750
   public void collectDocsGeneric(FacetFieldProcessorByArrayUIF processor) throws IOException {
     use.incrementAndGet();
 
@@ -448,7 +448,7 @@ public class UnInvertedField extends DocTermOrds {
       int adjustedMax = 0;
 
 
-      // TODO: handle facet.prefix here!!!
+      // TODO: handle facet.prefix here!!! id:2109 gh:2110
 
       DocIterator iter = docs.iterator();
       while (iter.hasNext()) {

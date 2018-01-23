@@ -193,7 +193,7 @@ public class AddUpdateCommand extends UpdateCommand implements Iterable<Document
         for (SolrInputDocument sdoc : all) {
           sdoc.setField(IndexSchema.ROOT_FIELD_NAME, idField);
           if(isVersion) sdoc.setField(CommonParams.VERSION_FIELD, version);
-          // TODO: if possible concurrent modification exception (if SolrInputDocument not cloned and is being forwarded to replicas)
+          // TODO: if possible concurrent modification exception (if SolrInputDocument not cloned and is being forwarded to replicas) id:2059 gh:2060
           // then we could add this field to the generated lucene document instead.
         }
 

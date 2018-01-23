@@ -222,7 +222,7 @@ public class ExtractingRequestHandlerTest extends SolrTestCaseJ4 {
     assertTrue("handler is null and it shouldn't be", handler != null);
     try {
       ignoreException("unknown field 'a'");
-      ignoreException("unknown field 'meta'");  // TODO: should this exception be happening?
+      ignoreException("unknown field 'meta'");  // TODO: should this exception be happening? id:2622 gh:2623
       loadLocal("extraction/simple.html",
       "literal.id","simple2",
       "lowernames", "true",
@@ -299,7 +299,7 @@ public class ExtractingRequestHandlerTest extends SolrTestCaseJ4 {
               "fmap.X-Parsed-By", "ignored_parser",
               "fmap.Last-Modified", "extractedDate"
       );
-      // TODO: original author did not specify why an exception should be thrown... how to fix?
+      // TODO: original author did not specify why an exception should be thrown... how to fix? id:1757 gh:1758
       // assertTrue("Exception should have been thrown", false);
     } catch (SolrException e) {
       //nothing to see here, move along
@@ -750,7 +750,7 @@ public class ExtractingRequestHandlerTest extends SolrTestCaseJ4 {
                               
     LocalSolrQueryRequest req = (LocalSolrQueryRequest) req(args);
     try {
-      // TODO: stop using locally defined streams once stream.file and
+      // TODO: stop using locally defined streams once stream.file and id:1733 gh:1734
       // stream.body work everywhere
       List<ContentStream> cs = new ArrayList<>();
       cs.add(new ContentStreamBase.FileStream(getFile(filename)));

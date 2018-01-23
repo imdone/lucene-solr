@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
  *  DELETE, VERSION, ID_BYTES
  *  DELETE_BY_QUERY, VERSION, String
  *
- *  TODO: keep two files, one for [operation, version, id] and the other for the actual
+ *  TODO: keep two files, one for [operation, version, id] and the other for the actual id:2962 gh:2963
  *  document data.  That way we could throw away document log files more readily
  *  while retaining the smaller operation log files longer (and we can retrieve
  *  the stored fields from the latest documents from the index).
@@ -416,7 +416,7 @@ public class TransactionLog implements Closeable {
       }
 
     } catch (IOException e) {
-      // TODO: reset our file pointer back to "pos", the start of this record.
+      // TODO: reset our file pointer back to "pos", the start of this record. id:2149 gh:2150
       throw new SolrException(SolrException.ErrorCode.SERVER_ERROR, "Error logging add", e);
     }
   }
@@ -515,7 +515,7 @@ public class TransactionLog implements Closeable {
     try {
       // make sure any unflushed buffer has been flushed
       synchronized (this) {
-        // TODO: optimize this by keeping track of what we have flushed up to
+        // TODO: optimize this by keeping track of what we have flushed up to id:2790 gh:2791
         fos.flushBuffer();
         /***
          System.out.println("###flushBuffer to " + fos.size() + " raf.length()=" + raf.length() + " pos="+pos);
@@ -596,7 +596,7 @@ public class TransactionLog implements Closeable {
         try {
           Files.deleteIfExists(tlogFile.toPath());
         } catch (IOException e) {
-          // TODO: should this class care if a file couldnt be deleted?
+          // TODO: should this class care if a file couldnt be deleted? id:2158 gh:2159
           // this just emulates previous behavior, where only SecurityException would be handled.
         }
       }
@@ -849,7 +849,7 @@ public class TransactionLog implements Closeable {
       fis.seek(prevPos);
       nextLength = fis.readInt();     // this is the length of the *next* record (i.e. closer to the beginning)
 
-      // TODO: optionally skip document data
+      // TODO: optionally skip document data id:2079 gh:2080
       Object o = codec.readVal(fis);
 
       // assert fis.position() == prevPos + 4 + thisLength;  // this is only true if we read all the data (and we currently skip reading SolrInputDocument

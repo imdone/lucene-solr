@@ -150,7 +150,7 @@ public class TestPerfTasksLogic extends BenchmarkTestCase {
     CountingSearchTestTask.numSearches = 0;
     execBenchmark(algLines);
 
-    // NOTE: cannot assert this, because on a super-slow
+    // NOTE: cannot assert this, because on a super-slow id:301 gh:302
     // system, it could be after waiting 0.5 seconds that
     // the search threads hadn't yet succeeded in starting
     // up and then they start up and do no searching:

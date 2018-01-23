@@ -82,7 +82,7 @@ public interface TaxonomyWriter extends Closeable, TwoPhaseCommit {
    * ordinal), an ArrayIndexOutOfBoundsException is thrown. However, it is
    * expected that getParent will only be called for ordinals which are
    * already known to be in the taxonomy.
-   * TODO (Facet): instead of a getParent(ordinal) method, consider having a
+   * TODO (Facet): instead of a getParent(ordinal) method, consider having a id:1500 gh:1501
    * <P>
    * getCategory(categorypath, prefixlen) which is similar to addCategory
    * except it doesn't add new categories; This method can be used to get

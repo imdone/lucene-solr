@@ -60,7 +60,7 @@ public final class MockAnalyzer extends Analyzer {
    */
   public MockAnalyzer(Random random, CharacterRunAutomaton runAutomaton, boolean lowerCase, CharacterRunAutomaton filter) {
     super(PER_FIELD_REUSE_STRATEGY);
-    // TODO: this should be solved in a different way; Random should not be shared (!).
+    // TODO: this should be solved in a different way; Random should not be shared (!). id:1576 gh:1577
     this.random = new Random(random.nextLong());
     this.runAutomaton = runAutomaton;
     this.lowerCase = lowerCase;

@@ -21,7 +21,7 @@ import java.util.Set;
 import org.apache.lucene.codecs.Codec;
 
 
-// TODO: maybe we should test this with mocks, but it's easy
+// TODO: maybe we should test this with mocks, but it's easy id:1002 gh:1003
 // enough to test the basics via Codec
 public class TestNamedSPILoader extends LuceneTestCase {
   

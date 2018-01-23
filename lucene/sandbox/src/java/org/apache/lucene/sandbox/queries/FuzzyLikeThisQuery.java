@@ -66,7 +66,7 @@ import org.apache.lucene.util.automaton.LevenshteinAutomata;
  */
 public class FuzzyLikeThisQuery extends Query
 {
-  // TODO: generalize this query (at least it should not reuse this static sim!
+  // TODO: generalize this query (at least it should not reuse this static sim! id:1139 gh:1140
   // a better way might be to convert this into multitermquery rewrite methods.
   // the rewrite method can 'average' the TermStates's term statistics (docfreq,totalTermFreq)
   // provided to TermQuery, so that the general idea is agnostic to any scoring system...
@@ -326,7 +326,7 @@ public class FuzzyLikeThisQuery extends Query
             bq.add(termVariants.build(), BooleanClause.Occur.SHOULD);          // add to query
           }
       }
-    //TODO possible alternative step 3 - organize above booleans into a new layer of field-based
+    //TODO possible alternative step 3 - organize above booleans into a new layer of field-based id:1326 gh:1327
     // booleans with a minimum-should-match of NumFields-1?
     return bq.build();
   }

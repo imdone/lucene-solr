@@ -76,7 +76,7 @@ public class CompositeVerifyQuery extends Query {
 
   @Override
   public String toString(String field) {
-    //TODO verify this looks good
+    //TODO verify this looks good id:1189 gh:1190
     return getClass().getSimpleName() + "(" + indexQuery.toString(field) + ", " + predicateValueSource + ")";
   }
 

@@ -39,7 +39,7 @@ class FindHyperlinks(HTMLParser):
     self.printed = False
 
   def handle_starttag(self, tag, attrs):
-    # NOTE: I don't think 'a' should be in here. But try debugging 
+    # NOTE: I don't think 'a' should be in here. But try debugging  id:3 gh:4
     # NumericRangeQuery.html. (Could be javadocs bug, it's a generic type...)
     if tag not in ('link', 'meta', 'frame', 'br', 'hr', 'p', 'li', 'img', 'col', 'a'):
       self.stack.append(tag)
@@ -110,7 +110,7 @@ def parse(baseURL, html):
     parser.feed(html)
     parser.close()
   except:
-    # TODO: Python's html.parser is now always lenient, which is no good for us: we want correct HTML in our javadocs
+    # TODO: Python's html.parser is now always lenient, which is no good for us: we want correct HTML in our javadocs id:4 gh:5
     parser.printFile()
     print('  WARNING: failed to parse %s:' % baseURL)
     traceback.print_exc(file=sys.stdout)
@@ -170,7 +170,7 @@ def checkAll(dirName):
 
       origLink = link
 
-      # TODO: use urlparse?
+      # TODO: use urlparse? id:5 gh:6
       idx = link.find('#')
       if idx != -1:
         anchor = link[idx+1:]
@@ -185,7 +185,7 @@ def checkAll(dirName):
       if idx != -1:
         link = link[:idx]
         
-      # TODO: normalize path sep for windows...
+      # TODO: normalize path sep for windows... id:6 gh:7
       if link.startswith('http://') or link.startswith('https://'):
         # don't check external links
 

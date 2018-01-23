@@ -51,7 +51,7 @@ public class TestNoDeletionPolicy extends LuceneTestCase {
     // Ensures that all methods of IndexDeletionPolicy are
     // overridden/implemented. That's important to ensure that NoDeletionPolicy 
     // overrides everything, so that no unexpected behavior/error occurs.
-    // NOTE: even though IndexDeletionPolicy is an interface today, and so all
+    // NOTE: even though IndexDeletionPolicy is an interface today, and so all id:820 gh:821
     // methods must be implemented by NoDeletionPolicy, this test is important
     // in case one day IDP becomes an abstract class.
     for (Method m : NoDeletionPolicy.class.getMethods()) {

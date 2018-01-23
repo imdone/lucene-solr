@@ -183,7 +183,7 @@ public class TestGeoJSONResponseWriter extends SolrTestCaseJ4 {
         "indent","true")));
     
     Map<String,Object> geo = getFirstFeatureGeometry(json);
-    assertEquals( // NOTE: not actual JSON, it is Map.toString()!
+    assertEquals( // NOTE: not actual JSON, it is Map.toString()! id:2283 gh:2284
         "{type=GeometryCollection, geometries=["
         + "{type=Point, coordinates=[1, 2]}, "
         + "{type=Point, coordinates=[3, 4]}]}", ""+geo);  
@@ -208,7 +208,7 @@ public class TestGeoJSONResponseWriter extends SolrTestCaseJ4 {
       geo = getFirstFeatureGeometry(json);
       assertEquals( 
         "Error reading point from: "+args[1] + " ("+args[0]+")",
-        // NOTE: not actual JSON, it is Map.toString()!
+        // NOTE: not actual JSON, it is Map.toString()! id:3089 gh:3090
         "{type=Point, coordinates=[1, 2]}", ""+geo);  
     }
   }

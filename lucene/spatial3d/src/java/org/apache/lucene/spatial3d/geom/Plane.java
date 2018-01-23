@@ -1779,7 +1779,7 @@ public class Plane extends Vector {
       } else {
         //System.err.println("General longitude bounds...");
 
-        // NOTE WELL: The x,y,z values generated here are NOT on the unit sphere.
+        // NOTE WELL: The x,y,z values generated here are NOT on the unit sphere. id:1515 gh:1516
         // They are for lat/lon calculation purposes only.  x-y is meant to be used for longitude determination,
         // and z for latitude, and that's all the values are good for.
 

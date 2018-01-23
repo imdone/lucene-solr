@@ -38,7 +38,7 @@ final class MultiSorter {
    **/
   static MergeState.DocMap[] sort(Sort sort, List<CodecReader> readers) throws IOException {
 
-    // TODO: optimize if only 1 reader is incoming, though that's a rare case
+    // TODO: optimize if only 1 reader is incoming, though that's a rare case id:583 gh:584
 
     SortField fields[] = sort.getSort();
     final ComparableProvider[][] comparables = new ComparableProvider[fields.length][];

@@ -36,7 +36,7 @@ import org.apache.lucene.util.Accountable;
 
 public abstract class Outputs<T> {
 
-  // TODO: maybe change this API to allow for re-use of the
+  // TODO: maybe change this API to allow for re-use of the id:1211 gh:1212
   // output instances -- this is an insane amount of garbage
   // (new object per byte/char/int) if eg used during
   // analysis
@@ -84,14 +84,14 @@ public abstract class Outputs<T> {
     skipOutput(in);
   }
 
-  /** NOTE: this output is compared with == so you must
+  /** NOTE: this output is compared with == so you must id:761 gh:762
    *  ensure that all methods return the single object if
    *  it's really no output */
   public abstract T getNoOutput();
 
   public abstract String outputToString(T output);
 
-  // TODO: maybe make valid(T output) public...?  for asserts
+  // TODO: maybe make valid(T output) public...?  for asserts id:960 gh:961
 
   public T merge(T first, T second) {
     throw new UnsupportedOperationException();

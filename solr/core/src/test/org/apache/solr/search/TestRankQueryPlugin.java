@@ -250,7 +250,7 @@ public class TestRankQueryPlugin extends QParserPlugin {
             continue;
             // make which duplicate is used deterministic based on shard
             // if (prevShard.compareTo(srsp.shard) >= 0) {
-            //  TODO: remove previous from priority queue
+            //  TODO: remove previous from priority queue id:2942 gh:2943
             //  continue;
             // }
           }
@@ -305,7 +305,7 @@ public class TestRankQueryPlugin extends QParserPlugin {
 
       // save these results in a private area so we can access them
       // again when retrieving stored fields.
-      // TODO: use ResponseBuilder (w/ comments) or the request context?
+      // TODO: use ResponseBuilder (w/ comments) or the request context? id:2349 gh:2350
       rb.resultIds = resultIds;
       rb.setResponseDocs(responseDocs);
 
@@ -336,7 +336,7 @@ public class TestRankQueryPlugin extends QParserPlugin {
       // currently have an option to return sort field values.  Because of this, we
       // take the documents given and re-derive the sort values.
       //
-      // TODO: See SOLR-5595
+      // TODO: See SOLR-5595 id:2380 gh:2381
       boolean fsv = req.getParams().getBool(ResponseBuilder.FIELD_SORT_VALUES,false);
       if(fsv){
         NamedList<Object[]> sortVals = new NamedList<>(); // order is important for the sort fields
@@ -572,7 +572,7 @@ public class TestRankQueryPlugin extends QParserPlugin {
             continue;
             // make which duplicate is used deterministic based on shard
             // if (prevShard.compareTo(srsp.shard) >= 0) {
-            //  TODO: remove previous from priority queue
+            //  TODO: remove previous from priority queue id:3097 gh:3098
             //  continue;
             // }
           }
@@ -623,7 +623,7 @@ public class TestRankQueryPlugin extends QParserPlugin {
 
       // save these results in a private area so we can access them
       // again when retrieving stored fields.
-      // TODO: use ResponseBuilder (w/ comments) or the request context?
+      // TODO: use ResponseBuilder (w/ comments) or the request context? id:2352 gh:2353
       rb.resultIds = resultIds;
       rb.setResponseDocs(responseDocs);
 

@@ -113,7 +113,7 @@ public final class CharSequenceOutputs extends Outputs<CharsRef> {
   public void write(CharsRef prefix, DataOutput out) throws IOException {
     assert prefix != null;
     out.writeVInt(prefix.length);
-    // TODO: maybe UTF8?
+    // TODO: maybe UTF8? id:871 gh:872
     for(int idx=0;idx<prefix.length;idx++) {
       out.writeVInt(prefix.chars[prefix.offset+idx]);
     }

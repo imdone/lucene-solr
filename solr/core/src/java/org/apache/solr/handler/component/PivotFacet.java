@@ -44,7 +44,7 @@ public class PivotFacet extends FacetBase {
    */
   public static final String REFINE_PARAM = "fpt";
   
-  // TODO: is this really needed? can't we just loop over 0<=i<rb.shards.length ?
+  // TODO: is this really needed? can't we just loop over 0<=i<rb.shards.length ? id:2777 gh:2778
   public final BitSet knownShards = new BitSet();
   
   private final Map<Integer, List<PivotFacetValue>> queuedRefinements = new HashMap<>();

@@ -76,7 +76,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MoreLikeThisHandler extends RequestHandlerBase  
 {
-  // Pattern is thread safe -- TODO? share this with general 'fl' param
+  // Pattern is thread safe -- TODO ? share this with general 'fl' param id:1785 gh:1786
   private static final Pattern splitList = Pattern.compile(",| ");
 
   private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -249,7 +249,7 @@ public class MoreLikeThisHandler extends RequestHandlerBase
           dbgQuery = true;
           dbgResults = true;
         }
-        // TODO resolve duplicated code with DebugComponent.  Perhaps it should be added to doStandardDebug?
+        // TODO resolve duplicated code with DebugComponent.  Perhaps it should be added to doStandardDebug? id:2761 gh:2762
         if (dbg == true) {
           try {
             NamedList<Object> dbgInfo = SolrPluginUtils.doStandardDebug(req, q, mlt.getRawMLTQuery(), mltDocs.docList, dbgQuery, dbgResults);
@@ -321,7 +321,7 @@ public class MoreLikeThisHandler extends RequestHandlerBase
             "MoreLikeThis requires at least one similarity field: "+MoreLikeThisParams.SIMILARITY_FIELDS );
       }
       
-      this.mlt = new MoreLikeThis( reader ); // TODO -- after LUCENE-896, we can use , searcher.getSimilarity() );
+      this.mlt = new MoreLikeThis( reader ); // TODO -- after LUCENE-896, we can use , searcher.getSimilarity() ); id:1845 gh:1846
       mlt.setFieldNames(fields);
       mlt.setAnalyzer( searcher.getSchema().getIndexAnalyzer() );
       

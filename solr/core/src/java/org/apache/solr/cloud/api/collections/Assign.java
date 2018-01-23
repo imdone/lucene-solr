@@ -136,7 +136,7 @@ public class Assign {
     Map<String, Slice> sliceMap = collection != null ? collection.getActiveSlicesMap() : null;
 
 
-    // TODO: now that we create shards ahead of time, is this code needed?  Esp since hash ranges aren't assigned when creating via this method?
+    // TODO: now that we create shards ahead of time, is this code needed?  Esp since hash ranges aren't assigned when creating via this method? id:1756 gh:1757
 
     if (sliceMap == null) {
       return "shard1";
@@ -148,7 +148,7 @@ public class Assign {
       return "shard" + (shardIdNames.size() + 1);
     }
 
-    // TODO: don't need to sort to find shard with fewest replicas!
+    // TODO: don't need to sort to find shard with fewest replicas! id:2720 gh:2721
 
     // else figure out which shard needs more replicas
     final Map<String, Integer> map = new HashMap<>();
@@ -168,7 +168,7 @@ public class Assign {
   }
 
   private static String buildSolrCoreName(String collectionName, String shard, Replica.Type type, int replicaNum) {
-    // TODO: Adding the suffix is great for debugging, but may be an issue if at some point we want to support a way to change replica type
+    // TODO: Adding the suffix is great for debugging, but may be an issue if at some point we want to support a way to change replica type id:1820 gh:1821
     return String.format(Locale.ROOT, "%s_%s_replica_%s%s", collectionName, shard, type.name().substring(0,1).toLowerCase(Locale.ROOT), replicaNum);
   }
 
@@ -211,7 +211,7 @@ public class Assign {
   }
 
   public static List<String> getLiveOrLiveAndCreateNodeSetList(final Set<String> liveNodes, final ZkNodeProps message, final Random random) {
-    // TODO: add smarter options that look at the current number of cores per
+    // TODO: add smarter options that look at the current number of cores per id:2635 gh:2636
     // node?
     // for now we just go random (except when createNodeSet and createNodeSet.shuffle=false are passed in)
 
@@ -350,7 +350,7 @@ public class Assign {
     List l = (List) coll.get(DocCollection.RULE);
     List<ReplicaPosition> replicaPositions = null;
     if (l != null) {
-      // TODO: make it so that this method doesn't require access to CC
+      // TODO: make it so that this method doesn't require access to CC id:1784 gh:1785
       replicaPositions = getNodesViaRules(clusterState, shard, nrtReplicas, cloudManager, coll, createNodeList, l);
     }
     String policyName = coll.getStr(POLICY);

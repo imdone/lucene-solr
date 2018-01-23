@@ -1,6 +1,6 @@
 // see toc.js and toc.html
 
-// NOTE: toc.html is only include if :page-toc: is true, so it's safe to do this document.ready unconditionally
+// NOTE: toc.html is only include if :page-toc: is true, so it's safe to do this document.ready unconditionally id:2418 gh:2419
 function do_tocs(page_toc_levels) {
   $( document ).ready(function() {
 
@@ -17,7 +17,7 @@ function do_tocs(page_toc_levels) {
     $('.section-toc').each(function() {
       // toc() needs a selector string, so we'll build one by fetching the id of the nearest header
       // that comes before us, then use to make a selector for all sub headers in the same section
-      // NOTE: this depends a lot of the particular structure of HTML asciidoctor generates
+      // NOTE: this depends a lot of the particular structure of HTML asciidoctor generates id:2454 gh:2455
       header = $(this).closest("div:has(:header:first-child)").children(":header").first();
       selector = "#" + header.attr("id") + " ~ * :header";
       $(this).toc({ minimumHeaders: 2, listType: 'ul', showSpeed: 0, headers: selector });

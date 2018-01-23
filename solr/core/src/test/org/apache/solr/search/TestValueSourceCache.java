@@ -23,7 +23,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-// NOTE: this is a direct result of SOLR-2829
+// NOTE: this is a direct result of SOLR-2829 id:2364 gh:2365
 public class TestValueSourceCache extends SolrTestCaseJ4 {
 
   @BeforeClass

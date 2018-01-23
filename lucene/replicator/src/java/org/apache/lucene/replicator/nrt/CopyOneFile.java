@@ -45,7 +45,7 @@ public class CopyOneFile implements Closeable {
     this.name = name;
     this.dest = dest;
     this.buffer = buffer;
-    // TODO: pass correct IOCtx, e.g. seg total size
+    // TODO: pass correct IOCtx, e.g. seg total size id:1098 gh:1099
     out = dest.createTempOutput(name, "copy", IOContext.DEFAULT);
     tmpName = out.getName();
 
@@ -118,7 +118,7 @@ public class CopyOneFile implements Closeable {
       in.readBytes(buffer, 0, toCopy);
       out.writeBytes(buffer, 0, toCopy);
 
-      // TODO: rsync will fsync a range of the file; maybe we should do that here for large files in case we crash/killed
+      // TODO: rsync will fsync a range of the file; maybe we should do that here for large files in case we crash/killed id:1246 gh:1246
       bytesCopied += toCopy;
     }
 

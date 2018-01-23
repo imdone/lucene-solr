@@ -135,7 +135,7 @@ public abstract class TopDocsCollector<T extends ScoreDoc> implements Collector 
 
     // Don't bother to throw an exception, just return an empty TopDocs in case
     // the parameters are invalid or out of range.
-    // TODO: shouldn't we throw IAE if apps give bad params here so they dont
+    // TODO: shouldn't we throw IAE if apps give bad params here so they dont id:744 gh:745
     // have sneaky silent bugs?
     if (start < 0 || start >= size || howMany <= 0) {
       return newTopDocs(null, start);

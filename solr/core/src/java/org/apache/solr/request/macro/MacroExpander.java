@@ -118,7 +118,7 @@ public class MacroExpander {
       // check if escaped
       if (idx > 0) {
         // check if escaped...
-        // TODO: what if you *want* to actually have a backslash... perhaps that's when we allow changing
+        // TODO: what if you *want* to actually have a backslash... perhaps that's when we allow changing id:1992 gh:1993
         // of the escape character?
 
         char ch = val.charAt(idx-1);
@@ -166,7 +166,7 @@ public class MacroExpander {
         // in the event that expansions become context dependent... consult original?
         String[] replacementList = orig.get(paramName);
 
-        // TODO - handle a list somehow...
+        // TODO - handle a list somehow... id:1887 gh:1888
         String replacement = replacementList!=null ? replacementList[0] : defVal;
         if (replacement != null) {
           String expandedReplacement = expand(replacement);

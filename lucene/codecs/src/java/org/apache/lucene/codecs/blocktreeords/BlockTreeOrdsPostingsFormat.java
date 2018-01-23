@@ -41,7 +41,7 @@ public class BlockTreeOrdsPostingsFormat extends PostingsFormat {
    * Fixed packed block size, number of integers encoded in 
    * a single packed block.
    */
-  // NOTE: must be multiple of 64 because of PackedInts long-aligned encoding/decoding
+  // NOTE: must be multiple of 64 because of PackedInts long-aligned encoding/decoding id:239 gh:240
   public final static int BLOCK_SIZE = 128;
 
   /** Creates {@code Lucene41PostingsFormat} with default

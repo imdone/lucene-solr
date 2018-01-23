@@ -249,7 +249,7 @@ public class ClusteringComponent extends SearchComponent implements SolrCoreAwar
         boolean useDocSet = params.getBool(ClusteringParams.USE_DOC_SET, false);
         NamedList<?> nl = null;
 
-        // TODO: This likely needs to be made into a background task that runs in an executor
+        // TODO: This likely needs to be made into a background task that runs in an executor id:1692 gh:1693
         if (useDocSet == true) {
           nl = engine.cluster(rb.getResults().docSet, params);
         } else {
@@ -331,7 +331,7 @@ public class ClusteringComponent extends SearchComponent implements SolrCoreAwar
       if (engine != null) {
         checkAvailable(name, engine);
         SolrDocumentList solrDocList = (SolrDocumentList) rb.rsp.getResponse();
-        // TODO: Currently, docIds is set to null in distributed environment.
+        // TODO: Currently, docIds is set to null in distributed environment. id:2618 gh:2619
         // This causes CarrotParams.PRODUCE_SUMMARY doesn't work.
         // To work CarrotParams.PRODUCE_SUMMARY under distributed mode, we can choose either one of:
         // (a) In each shard, ClusteringComponent produces summary and finishStage()

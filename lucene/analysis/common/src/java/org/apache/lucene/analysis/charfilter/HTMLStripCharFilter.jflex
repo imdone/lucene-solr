@@ -56,7 +56,7 @@ import org.apache.lucene.analysis.util.OpenStringBuilder;
 //    [4a] NameChar      ::= NameStartChar | "-" | "." | [0-9] | [...]
 //    [5]  Name          ::= NameStartChar (NameChar)*
 //
-// From UAX #31: Unicode Identifier and Pattern Syntax
+// From UAX #31: Unicode Identifier and Pattern Syntax id:13 gh:14
 // <http://unicode.org/reports/tr31/>:
 //
 //    D1. Default Identifier Syntax

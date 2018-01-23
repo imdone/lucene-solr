@@ -137,7 +137,7 @@ class DirectDocValuesProducer extends DocValuesProducer {
         throw new CorruptIndexException("Format versions mismatch: meta=" + version + ", data=" + version2, data);
       }
       
-      // NOTE: data file is too costly to verify checksum against all the bytes on open,
+      // NOTE: data file is too costly to verify checksum against all the bytes on open, id:277 gh:278
       // but for now we at least verify proper structure of the checksum footer: which looks
       // for FOOTER_MAGIC + algorithmID. This is cheap and can detect some forms of corruption
       // such as file truncation.

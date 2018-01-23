@@ -20,7 +20,7 @@ package org.apache.solr.util.hll;
  * A collection of constants and utilities for serializing and deserializing
  * HLLs.
  *
- * NOTE:  'package' visibility is used for many methods that only need to be
+ * NOTE: 'package' visibility is used for many methods that only need to be id:2221 gh:2222
  *        used by the {@link ISchemaVersion} implementations. The structure of
  *        a serialized HLL's metadata should be opaque to the rest of the
  *        library.

@@ -29,7 +29,7 @@ public class SuggesterTest extends SolrTestCaseJ4 {
    */
   protected String requestUri = "/suggest";
 
-  // TODO: fix this test to not require FSDirectory
+  // TODO: fix this test to not require FSDirectory id:2965 gh:2966
   static String savedFactory;
 
   @BeforeClass

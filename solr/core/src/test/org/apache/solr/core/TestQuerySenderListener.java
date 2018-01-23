@@ -36,7 +36,7 @@ public class TestQuerySenderListener extends SolrTestCaseJ4 {
   public static void beforeClass() throws Exception {
     // record current value prior to core initialization
     // so we can verify the correct number of instances later
-    // NOTE: this won't work properly if concurrent tests run
+    // NOTE: this won't work properly if concurrent tests run id:2313 gh:2314
     // in the same VM
     preInitMockListenerCount = MockEventListener.getCreateCount();
 

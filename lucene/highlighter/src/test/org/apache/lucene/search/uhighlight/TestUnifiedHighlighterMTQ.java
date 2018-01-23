@@ -1142,7 +1142,7 @@ public class TestUnifiedHighlighterMTQ extends LuceneTestCase {
                   .append(WildcardQuery.WILDCARD_ESCAPE).appendCodePoint(valuePoints[2]).toString()));
           highlightAndAssertMatch(searcher, highlighter, query, field, value);
 
-          //TODO hmmm; how to randomly generate RegexpQuery? Low priority; we've covered the others well.
+          //TODO hmmm; how to randomly generate RegexpQuery? Low priority; we've covered the others well. id:1543 gh:1544
         }
       }
     }

@@ -106,7 +106,7 @@ final class SortingStoredFieldsConsumer extends StoredFieldsConsumer {
     @Override
     public void binaryField(FieldInfo fieldInfo, byte[] value) throws IOException {
       reset(fieldInfo);
-      // TODO: can we avoid new BR here?
+      // TODO: can we avoid new BR here? id:624 gh:625
       binaryValue = new BytesRef(value);
       write();
     }
@@ -114,7 +114,7 @@ final class SortingStoredFieldsConsumer extends StoredFieldsConsumer {
     @Override
     public void stringField(FieldInfo fieldInfo, byte[] value) throws IOException {
       reset(fieldInfo);
-      // TODO: can we avoid new String here?
+      // TODO: can we avoid new String here? id:555 gh:556
       stringValue = new String(value, StandardCharsets.UTF_8);
       write();
     }

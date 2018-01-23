@@ -1364,7 +1364,7 @@ public class TestGeo3DPoint extends LuceneTestCase {
       Cell cell = new Cell(minPackedValue, maxPackedValue);
       //System.out.println("compare: " + cell);
 
-      // TODO: this is a bit hacky, having to reverse-engineer where we are in the BKD tree's recursion ... but it's the lesser evil vs e.g.
+      // TODO: this is a bit hacky, having to reverse-engineer where we are in the BKD tree's recursion ... but it's the lesser evil vs e.g. id:1812 gh:1813
       // polluting this visitor API, or implementing this "under the hood" in BKDReader instead?
       if (firstPhase) {
 

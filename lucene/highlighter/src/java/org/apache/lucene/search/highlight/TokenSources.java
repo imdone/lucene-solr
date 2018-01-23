@@ -186,7 +186,7 @@ public class TokenSources {
       // highlighters require offsets, so we insist here.
     }
 
-    return new TokenStreamFromTermVector(tpv, -1); // TODO propagate maxStartOffset; see LUCENE-6445
+    return new TokenStreamFromTermVector(tpv, -1); // TODO propagate maxStartOffset; see LUCENE-6445 id:1039 gh:1040
   }
 
   /**

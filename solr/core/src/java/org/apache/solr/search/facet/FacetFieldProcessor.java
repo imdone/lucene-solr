@@ -49,7 +49,7 @@ abstract class FacetFieldProcessor extends FacetProcessor<FacetField> {
 
   Map<String,AggValueSource> deferredAggs;  // null if none
 
-  // TODO: push any of this down to base class?
+  // TODO: push any of this down to base class? id:2067 gh:2068
 
   //
   // For sort="x desc", collectAcc would point to "x", and sortAcc would also point to "x".
@@ -162,7 +162,7 @@ abstract class FacetFieldProcessor extends FacetProcessor<FacetField> {
       AggValueSource sortAgg = freq.getFacetStats().get(freq.sortVariable);
       if (sortAgg != null) {
         collectAcc = sortAgg.createSlotAcc(fcontext, numDocs, numSlots);
-        collectAcc.key = freq.sortVariable; // TODO: improve this
+        collectAcc.key = freq.sortVariable; // TODO: improve this id:2004 gh:2005
       }
       sortAcc = collectAcc;
       deferredAggs = new HashMap<>(freq.getFacetStats());
@@ -173,7 +173,7 @@ abstract class FacetFieldProcessor extends FacetProcessor<FacetField> {
       deferredAggs = null;
     }
 
-    boolean needOtherAccs = freq.allBuckets;  // TODO: use for missing too...
+    boolean needOtherAccs = freq.allBuckets;  // TODO: use for missing too... id:2889 gh:2890
 
     if (!needOtherAccs) {
       // we may need them later, but we don't want to create them now
@@ -338,7 +338,7 @@ abstract class FacetFieldProcessor extends FacetProcessor<FacetField> {
     }
 
     if (freq.missing) {
-      // TODO: it would be more efficient to build up a missing DocSet if we need it here anyway.
+      // TODO: it would be more efficient to build up a missing DocSet if we need it here anyway. id:1979 gh:1980
       SimpleOrderedMap<Object> missingBucket = new SimpleOrderedMap<>();
       fillBucket(missingBucket, getFieldMissingQuery(fcontext.searcher, freq.field), null, false, null);
       res.add("missing", missingBucket);
@@ -408,7 +408,7 @@ abstract class FacetFieldProcessor extends FacetProcessor<FacetField> {
 
     // if no subFacets, we only need a DocSet
     // otherwise we need more?
-    // TODO: save something generic like "slotNum" in the context and use that to implement things like filter exclusion if necessary?
+    // TODO: save something generic like "slotNum" in the context and use that to implement things like filter exclusion if necessary? id:2725 gh:2726
     // Hmmm, but we need to look up some stuff anyway (for the label?)
     // have a method like "DocSet applyConstraint(facet context, DocSet parent)"
     // that's needed for domain changing things like joins anyway???
@@ -416,7 +416,7 @@ abstract class FacetFieldProcessor extends FacetProcessor<FacetField> {
     if (otherAccs != null) {
       // do acc at a time (traversing domain each time) or do all accs for each doc?
       for (SlotAcc acc : otherAccs) {
-        acc.reset(); // TODO: only needed if we previously used for allBuckets or missing
+        acc.reset(); // TODO: only needed if we previously used for allBuckets or missing id:2069 gh:2070
         acc.collect(subDomain, 0);
         acc.setValues(target, 0);
       }
@@ -590,7 +590,7 @@ abstract class FacetFieldProcessor extends FacetProcessor<FacetField> {
     @Override
     public void reset() {
       // reset should be called on underlying accs
-      // TODO: but in case something does need to be done here, should we require this method to be called but do nothing for now?
+      // TODO: but in case something does need to be done here, should we require this method to be called but do nothing for now? id:2006 gh:2007
       throw new UnsupportedOperationException();
     }
 
@@ -631,7 +631,7 @@ abstract class FacetFieldProcessor extends FacetProcessor<FacetField> {
     List<SimpleOrderedMap> bucketList = new ArrayList<>( leaves.size() + skip.size() + partial.size() );
     res.add("buckets", bucketList);
 
-    // TODO: an alternate implementations can fill all accs at once
+    // TODO: an alternate implementations can fill all accs at once id:2891 gh:2892
     createAccs(-1, 1);
 
     for (Object bucketVal : leaves) {
@@ -682,7 +682,7 @@ abstract class FacetFieldProcessor extends FacetProcessor<FacetField> {
     FieldType ft = sf.getType();
     bucketVal = ft.toNativeType(bucketVal);  // refinement info passed in as JSON will cause int->long and float->double
     bucket.add("val", bucketVal);
-    // String internal = ft.toInternal( tobj.toString() );  // TODO - we need a better way to get from object to query...
+    // String internal = ft.toInternal( tobj.toString() );  // TODO - we need a better way to get from object to query... id:1981 gh:1982
 
     Query domainQ = ft.getFieldQuery(null, sf, bucketVal.toString());
 

@@ -45,7 +45,7 @@ import org.apache.lucene.util.BytesRef;
  * as 64-bit integer values, you may need to cast to {@code double} for your use.
  * @lucene.experimental
  */
-// TODO: actually add missing cross-checks to guarantee TermStatistics is in bounds of CollectionStatistics,
+// TODO: actually add missing cross-checks to guarantee TermStatistics is in bounds of CollectionStatistics, id:643 gh:644
 // otherwise many similarity functions will implode.
 public class TermStatistics {
   private final BytesRef term;

@@ -75,7 +75,7 @@ import static org.apache.lucene.search.DocIdSetIterator.NO_MORE_DOCS;
 
 /**
  * Abstract class to do basic tests for a docvalues format.
- * NOTE: This test focuses on the docvalues impl, nothing else.
+ * NOTE: This test focuses on the docvalues impl, nothing else. id:1351 gh:1352
  * The [stretch] goal is for this test to be
  * so thorough in testing a new DocValuesFormat that if this
  * test passes, then all Lucene/Solr tests should also pass.  Ie,

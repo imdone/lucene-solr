@@ -152,8 +152,8 @@ public class FuzzyCompletionQuery extends PrefixCompletionQuery {
       utf8automaton = Operations.determinize(utf8automaton, maxDeterminizedStates);
       automaton = utf8automaton;
     }
-    // TODO Accumulating all refs is bad, because the resulting set may be very big.
-    // TODO Better iterate over automaton again inside FuzzyCompletionWeight?
+    // TODO Accumulating all refs is bad, because the resulting set may be very big. id:1233 gh:1234
+    // TODO Better iterate over automaton again inside FuzzyCompletionWeight? id:1550 gh:1551
     return new FuzzyCompletionWeight(this, automaton, refs);
   }
 
@@ -168,7 +168,7 @@ public class FuzzyCompletionQuery extends PrefixCompletionQuery {
       } else {
         int ints[] = new int[string.length - nonFuzzyPrefix];
         System.arraycopy(string.ints, string.offset + nonFuzzyPrefix, ints, 0, ints.length);
-        // TODO: maybe add alphaMin to LevenshteinAutomata,
+        // TODO: maybe add alphaMin to LevenshteinAutomata, id:2562 gh:2563
         // and pass 1 instead of 0?  We probably don't want
         // to allow the trailing dedup bytes to be
         // edited... but then 0 byte is "in general" allowed
@@ -191,7 +191,7 @@ public class FuzzyCompletionQuery extends PrefixCompletionQuery {
       // multiple paths: this is really scary! is it slow?
       // maybe we should not do this and throw UOE?
       Automaton a = Operations.union(subs);
-      // TODO: we could call toLevenshteinAutomata() before det?
+      // TODO: we could call toLevenshteinAutomata() before det? id:1531 gh:1532
       // this only happens if you have multiple paths anyway (e.g. synonyms)
       return Operations.determinize(a, maxDeterminizedStates);
     }
@@ -269,7 +269,7 @@ public class FuzzyCompletionQuery extends PrefixCompletionQuery {
 
     @Override
     protected void setNextMatch(IntsRef pathPrefix) {
-      // NOTE: the last letter of the matched prefix for the exact
+      // NOTE: the last letter of the matched prefix for the exact id:1414 gh:1415
       // match never makes it through here
       // so an exact match and a match with only a edit at the
       // end is boosted the same

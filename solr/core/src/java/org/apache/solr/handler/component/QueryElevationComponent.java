@@ -215,7 +215,7 @@ public class QueryElevationComponent extends SearchComponent implements SolrCore
           // check if using ZooKeeper
           ZkController zkController = core.getCoreContainer().getZkController();
           if (zkController != null) {
-            // TODO : shouldn't have to keep reading the config name when it has been read before
+            // TODO : shouldn't have to keep reading the config name when it has been read before id:1944 gh:1945
             exists = zkController.configFileExists(zkController.getZkStateReader().readConfigName(core.getCoreDescriptor().getCloudDescriptor().getCollectionName()), f);
           } else {
             File fC = new File(core.getResourceLoader().getConfigDir(), f);

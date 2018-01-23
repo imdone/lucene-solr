@@ -185,7 +185,7 @@ public class  TestDemoExpressions extends LuceneTestCase {
     doTestLotsOfBindings(Byte.MAX_VALUE-1);
     doTestLotsOfBindings(Byte.MAX_VALUE);
     doTestLotsOfBindings(Byte.MAX_VALUE+1);
-    // TODO: ideally we'd test > Short.MAX_VALUE too, but compilation is currently recursive.
+    // TODO: ideally we'd test > Short.MAX_VALUE too, but compilation is currently recursive. id:892 gh:893
     // so if we want to test such huge expressions, we need to instead change parser to use an explicit Stack
   }
   

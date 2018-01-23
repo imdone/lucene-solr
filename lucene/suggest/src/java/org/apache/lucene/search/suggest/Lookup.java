@@ -148,7 +148,7 @@ public abstract class Lookup implements Accountable {
    * A {@link PriorityQueue} collecting a fixed size of high priority {@link LookupResult}
    */
   public static final class LookupPriorityQueue extends PriorityQueue<LookupResult> {
-  // TODO: should we move this out of the interface into a utility class?
+  // TODO: should we move this out of the interface into a utility class? id:1524 gh:1525
     /**
      * Creates a new priority queue of the specified size.
      */

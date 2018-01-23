@@ -108,7 +108,7 @@ public class DistributedFacetPivotLargeTest extends BaseDistributedSearchTestCas
     // assertPivot("special_s", null, docNumber - 5, pivots.get(0)); // 5 docs w/special_s
     // assertEquals(pivots.toString(), 1, pivots.get(0).getPivot());
     // assertPivot("bogus_s", null, docNumber, pivots.get(0).getPivot().get(0));
-    // // TODO: some asserts on company results
+    // // TODO: some asserts on company results id:3081 gh:3082
 
     // basic check w/ default sort, limit, & mincount==0
     rsp = query( "q", "*:*",
@@ -195,7 +195,7 @@ public class DistributedFacetPivotLargeTest extends BaseDistributedSearchTestCas
     //                      "f.place_s.facet.offset", "40",
     //                      FacetParams.FACET_PIVOT_MINCOUNT,"0",
     //                      "facet.pivot", "place_s,company_t") );
-    // // TODO: more asserts
+    // // TODO: more asserts id:2319 gh:2320
     //
     //
     // really trivial demonstration of the above problem
@@ -632,7 +632,7 @@ public class DistributedFacetPivotLargeTest extends BaseDistributedSearchTestCas
     firstCompany = firstPlace.getPivot().get(0);
     assertPivot("company_t", "microsoft", 2, firstCompany);
 
-    // TODO test "company_t,special_s" as well
+    // TODO test "company_t,special_s" as well id:2912 gh:2913
 
 
     // refine on SPECIAL empty string & facet.missing
@@ -878,7 +878,7 @@ public class DistributedFacetPivotLargeTest extends BaseDistributedSearchTestCas
     assertEquals("FIELD: " + actual.toString(), field, actual.getField());
     assertEquals("VALUE: " + actual.toString(), value, actual.getValue());
     assertEquals("COUNT: " + actual.toString(), count, actual.getCount());
-    // TODO: add arg && assert on number of kids
+    // TODO: add arg && assert on number of kids id:2320 gh:2321
     //assertEquals("#KIDS: " + actual.toString(), numKids, actual.getPivot().size());
   }
 

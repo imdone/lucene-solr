@@ -669,7 +669,7 @@ public class TestPseudoReturnFields extends SolrTestCaseJ4 {
         assertQ(p.toString(),
                 req(p, "qt","/get","id",id, "wt","xml")
                 
-                ,"//doc/int[@name='[docid]']" // TODO
+                ,"//doc/int[@name='[docid]']" // TODO id:2347 gh:2348
                 ,"//doc/float[@name='abs(val_i)'][.='1.0']"
                 ,"//doc/int[@name='x_alias'][.=10]"
                 // RTG: [explain] and score should be missing (ignored)
@@ -683,7 +683,7 @@ public class TestPseudoReturnFields extends SolrTestCaseJ4 {
   public void testAugmentersGlobsExplicitAndScoreOhMy() throws Exception {
     Random random = random();
 
-    // NOTE: 'ssto' is the missing one
+    // NOTE: 'ssto' is the missing one id:2377 gh:2378
     final List<String> fl = Arrays.asList
       ("id","[docid]","[explain]","score","val_*","subj*");
     
@@ -717,7 +717,7 @@ public class TestPseudoReturnFields extends SolrTestCaseJ4 {
   public void testAugmentersGlobsExplicitAndScoreOhMyRTG() throws Exception {
     Random random = random();
 
-    // NOTE: 'ssto' is the missing one
+    // NOTE: 'ssto' is the missing one id:3096 gh:3097
     final List<String> fl = Arrays.asList
       ("id","[explain]","score","val_*","subj*","abs(val_i)","[docid]");
     

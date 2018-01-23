@@ -22,7 +22,7 @@ import org.apache.solr.common.params.ModifiableSolrParams;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-// TODO: Assert against expected parsed query for different min/maxidf values.
+// TODO: Assert against expected parsed query for different min/maxidf values. id:2376 gh:2377
 public class SimpleMLTQParserTest extends SolrTestCaseJ4 {
 
   @BeforeClass

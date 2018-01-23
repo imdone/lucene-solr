@@ -241,7 +241,7 @@ public class PointVectorStrategy extends SpatialStrategy {
       return new ConstantScoreQuery(bqBuilder.build());
     } else {
       throw new UnsupportedOperationException("Only Rectangles and Circles are currently supported, " +
-          "found [" + shape.getClass() + "]");//TODO
+          "found [" + shape.getClass() + "]");//TODO id:2815 gh:2816
     }
   }
 
@@ -283,7 +283,7 @@ public class PointVectorStrategy extends SpatialStrategy {
     } else if (legacyNumericFieldType != null) {// todo remove legacy numeric support in 7.0
       return LegacyNumericRangeQuery.newDoubleRange(fieldName, legacyNumericFieldType.numericPrecisionStep(), min, max, true, true);//inclusive
     }
-    //TODO try doc-value range query?
+    //TODO try doc-value range query? id:1898 gh:1899
     throw new UnsupportedOperationException("An index is required for this operation.");
   }
 }

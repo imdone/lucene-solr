@@ -224,7 +224,7 @@ public class FuzzySuggesterTest extends LuceneTestCase {
     Directory tempDir = getDirectory();
     FuzzySuggester suggester = new FuzzySuggester(tempDir, "fuzzy",a, a, options, 256, -1, true, 1, true, 1, 3, false);
     suggester.build(new InputArrayIterator(keys));
-    // TODO: would be nice if "ab " would allow the test to
+    // TODO: would be nice if "ab " would allow the test to id:1565 gh:1566
     // pass, and more generally if the analyzer can know
     // that the user's current query has ended at a word, 
     // but, analyzers don't produce SEP tokens!
@@ -649,7 +649,7 @@ public class FuzzySuggesterTest extends LuceneTestCase {
         for(int token=0;token < numTokens;token++) {
           String s;
           while (true) {
-            // TODO: would be nice to fix this slowCompletor/comparator to
+            // TODO: would be nice to fix this slowCompletor/comparator to id:2574 gh:2575
             // use full range, but we might lose some coverage too...
             s = TestUtil.randomSimpleString(random());
             if (s.length() > 0) {
@@ -775,14 +775,14 @@ public class FuzzySuggesterTest extends LuceneTestCase {
       }
       TokenStreamToAutomaton tokenStreamToAutomaton = suggester.getTokenStreamToAutomaton();
 
-      // NOTE: not great that we ask the suggester to give
+      // NOTE: not great that we ask the suggester to give id:1600 gh:1601
       // us the "answer key" (ie maybe we have a bug in
       // suggester.toLevA ...) ... but testRandom2() fixes
       // this:
       Automaton automaton = suggester.convertAutomaton(suggester.toLevenshteinAutomata(suggester.toLookupAutomaton(analyzedKey)));
       assertTrue(automaton.isDeterministic());
 
-      // TODO: could be faster... but it's slowCompletor for a reason
+      // TODO: could be faster... but it's slowCompletor for a reason id:1428 gh:1429
       BytesRefBuilder spare = new BytesRefBuilder();
       for (TermFreqPayload2 e : slowCompletor) {
         spare.copyChars(e.analyzedForm);
@@ -913,7 +913,7 @@ public class FuzzySuggesterTest extends LuceneTestCase {
               }
               return builder.toString();
             }
-            // NOTE: fall through to delete:
+            // NOTE: fall through to delete: id:1308 gh:1310
           case 2:
             // Delete input[i]
             for (int j = i+1; j < input.length; j++) {
@@ -933,7 +933,7 @@ public class FuzzySuggesterTest extends LuceneTestCase {
             return builder.toString();
           case 0:
             // Insert random byte.
-            // NOTE: can only use ascii here so that, in
+            // NOTE: can only use ascii here so that, in id:1568 gh:1569
             // UTF8 byte space it's still a single
             // insertion:
             // bytes 0x1e and 0x1f are reserved
@@ -990,8 +990,8 @@ public class FuzzySuggesterTest extends LuceneTestCase {
     int maxEdits = random().nextBoolean() ? 1 : 2;
     int prefixLen = random().nextInt(4);
     boolean transpositions = random().nextBoolean();
-    // TODO: test graph analyzers
-    // TODO: test exactFirst / preserveSep permutations
+    // TODO: test graph analyzers id:2575 gh:2576
+    // TODO: test exactFirst / preserveSep permutations id:1604 gh:1605
     Directory tempDir = getDirectory();
     FuzzySuggester suggest = new FuzzySuggester(tempDir, "fuzzy", a, a, 0, 256, -1, true, maxEdits, transpositions, prefixLen, prefixLen, false);
 
@@ -1133,7 +1133,7 @@ public class FuzzySuggesterTest extends LuceneTestCase {
     }
   }
 
-  // NOTE: copied from
+  // NOTE: copied from id:1430 gh:1431
   // modules/suggest/src/java/org/apache/lucene/search/spell/LuceneLevenshteinDistance.java
   // and tweaked to return the edit distance not the float
   // lucene measure
@@ -1146,7 +1146,7 @@ public class FuzzySuggesterTest extends LuceneTestCase {
     int n;
     int d[][]; // cost array
     
-    // NOTE: if we cared, we could 3*m space instead of m*n space, similar to 
+    // NOTE: if we cared, we could 3*m space instead of m*n space, similar to  id:1312 gh:1313
     // what LevenshteinDistance does, except cycling thru a ring of three 
     // horizontal cost arrays... but this comparator is never actually used by 
     // DirectSpellChecker, it's only used for merging results from multiple shards 

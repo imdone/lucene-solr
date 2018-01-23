@@ -54,7 +54,7 @@ import org.apache.lucene.util.BytesRef;
  * index, so that they may be returned with hits on the document.
  *
  * <p>
- * NOTE: the field type is an {@link IndexableFieldType}.  Making changes
+ * NOTE: the field type is an {@link IndexableFieldType}.  Making changes id:380 gh:381
  * to the state of the IndexableFieldType will impact any
  * Field it is used in.  It is strongly recommended that no
  * changes be made after Field instantiation.
@@ -219,7 +219,7 @@ public class Field implements IndexableField {
     this.name = name;
   }
 
-  // TODO: allow direct construction of int, long, float, double value too..?
+  // TODO: allow direct construction of int, long, float, double value too..? id:379 gh:380
 
   /**
    * Create field with String value.

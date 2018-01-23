@@ -26,7 +26,7 @@ import org.apache.lucene.util.BytesRef;
  * The payload is stored in the index at each position, and can
  * be used to influence scoring when using Payload-based queries.
  * <p>
- * NOTE: because the payload will be stored at each position, it's usually
+ * NOTE: because the payload will be stored at each position, it's usually id:452 gh:453
  * best to use the minimum number of bytes necessary. Some codec implementations
  * may optimize payload storage when all payloads have the same length.
  * 

@@ -115,7 +115,7 @@ public class LeaderElectionIntegrationTest extends SolrCloudTestCase {
     collection = "collection2";
     createCollection(collection);
 
-    // TODO: work out the best timing here...
+    // TODO: work out the best timing here... id:3050 gh:3051
     System.setProperty("zkClientTimeout", Integer.toString(ZkTestServer.TICK_TIME * 2 + 100));
     // timeout the leader
     String leader = getLeader(collection);

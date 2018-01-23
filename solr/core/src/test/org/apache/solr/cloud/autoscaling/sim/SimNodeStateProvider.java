@@ -80,7 +80,7 @@ public class SimNodeStateProvider implements NodeStateProvider {
 
   /**
    * Set node values.
-   * NOTE: if values contain 'nodeRole' key then /roles.json is updated.
+   * NOTE: if values contain 'nodeRole' key then /roles.json is updated. id:2305 gh:2306
    * @param node node id
    * @param values values.
    */
@@ -97,7 +97,7 @@ public class SimNodeStateProvider implements NodeStateProvider {
 
   /**
    * Set a node value, replacing any previous value.
-   * NOTE: if key is 'nodeRole' then /roles.json is updated.
+   * NOTE: if key is 'nodeRole' then /roles.json is updated. id:2898 gh:2899
    * @param node node id
    * @param key property name
    * @param value property value
@@ -116,7 +116,7 @@ public class SimNodeStateProvider implements NodeStateProvider {
 
   /**
    * Add a node value, creating a list of values if necessary.
-   * NOTE: if key is 'nodeRole' then /roles.json is updated.
+   * NOTE: if key is 'nodeRole' then /roles.json is updated. id:2306 gh:2307
    * @param node node id
    * @param key property name
    * @param value property value.
@@ -282,7 +282,7 @@ public class SimNodeStateProvider implements NodeStateProvider {
       return Collections.emptyMap();
     }
     Map<String, Map<String, List<ReplicaInfo>>> res = new HashMap<>();
-    // TODO: probably needs special treatment for "metrics:solr.core..." tags
+    // TODO: probably needs special treatment for "metrics:solr.core..." tags id:2236 gh:2238
     for (ReplicaInfo r : replicas) {
       Map<String, List<ReplicaInfo>> perCollection = res.computeIfAbsent(r.getCollection(), s -> new HashMap<>());
       List<ReplicaInfo> perShard = perCollection.computeIfAbsent(r.getShard(), s -> new ArrayList<>());

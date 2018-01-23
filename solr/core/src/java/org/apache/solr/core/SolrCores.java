@@ -465,7 +465,7 @@ class SolrCores implements Observer {
     List<CoreDescriptor> cds = Lists.newArrayList();
     synchronized (modifyLock) {
       for (String coreName : getAllCoreNames()) {
-        // TODO: This null check is a bit suspicious - it seems that
+        // TODO: This null check is a bit suspicious - it seems that id:1797 gh:1798
         // getAllCoreNames might return deleted cores as well?
         CoreDescriptor cd = getCoreDescriptor(coreName);
         if (cd != null)

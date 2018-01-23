@@ -64,7 +64,7 @@ public class TestSortRescorer extends LuceneTestCase {
     
     reader = iw.getReader();
     searcher = new IndexSearcher(reader);
-    // TODO: fix this test to not be so flaky and use newSearcher
+    // TODO: fix this test to not be so flaky and use newSearcher id:1146 gh:1147
     searcher.setSimilarity(new ClassicSimilarity());
     iw.close();
   }

@@ -98,7 +98,7 @@ public class TestAllAnalyzersHaveFactories extends LuceneTestCase {
   
   // these are oddly-named (either the actual analyzer, or its factory)
   // they do actually have factories.
-  // TODO: clean this up!
+  // TODO: clean this up! id:122 gh:123
   private static final Set<Class<?>> oddlyNamedComponents = Collections.newSetFromMap(new IdentityHashMap<Class<?>,Boolean>());
   static {
     Collections.<Class<?>>addAll(oddlyNamedComponents,
@@ -156,7 +156,7 @@ public class TestAllAnalyzersHaveFactories extends LuceneTestCase {
           }
           assertSame(c, instance.create().getClass());
         } catch (IllegalArgumentException e) {
-          // TODO: For now pass because some factories have not yet a default config that always works
+          // TODO: For now pass because some factories have not yet a default config that always works id:185 gh:186
         }
       } else if (TokenFilter.class.isAssignableFrom(c)) {
         String clazzName = c.getSimpleName();
@@ -176,7 +176,7 @@ public class TestAllAnalyzersHaveFactories extends LuceneTestCase {
             assertSame(c, createdClazz);
           }
         } catch (IllegalArgumentException e) {
-          // TODO: For now pass because some factories have not yet a default config that always works
+          // TODO: For now pass because some factories have not yet a default config that always works id:64 gh:65
         }
       } else if (CharFilter.class.isAssignableFrom(c)) {
         String clazzName = c.getSimpleName();
@@ -196,7 +196,7 @@ public class TestAllAnalyzersHaveFactories extends LuceneTestCase {
             assertSame(c, createdClazz);
           }
         } catch (IllegalArgumentException e) {
-          // TODO: For now pass because some factories have not yet a default config that always works
+          // TODO: For now pass because some factories have not yet a default config that always works id:65 gh:66
         }
       }
     }
