@@ -95,11 +95,11 @@ public class ZkShardTerms implements AutoCloseable{
   /**
    * Ensure that leader's term is higher than some replica's terms
    * @param leader coreNodeName of leader
-   * @param replicasInLowerTerms set of replicas in which their terms should be lower than leader's term
+   * @param replicasNeedingRecovery set of replicas in which their terms should be lower than leader's term
    */
-  public void ensureTermsIsHigher(String leader, Set<String> replicasInLowerTerms) {
+  public void ensureTermsIsHigher(String leader, Set<String> replicasNeedingRecovery) {
     Terms newTerms;
-    while( (newTerms = terms.increaseTerms(leader, replicasInLowerTerms)) != null) {
+    while( (newTerms = terms.increaseTerms(leader, replicasNeedingRecovery)) != null) {
       if (forceSaveTerms(newTerms)) return;
     }
   }
@@ -368,12 +368,12 @@ public class ZkShardTerms implements AutoCloseable{
     }
 
     /**
-     * Return a new {@link Terms} in which term of {@code leader} is higher than {@code replicasInLowerTerms}
+     * Return a new {@link Terms} in which term of {@code leader} is higher than {@code replicasNeedingRecovery}
      * @param leader coreNodeName of leader
-     * @param replicasInLowerTerms set of replicas in which their terms should be lower than leader's term
-     * @return null if term of {@code leader} is already higher than {@code replicasInLowerTerms}
+     * @param replicasNeedingRecovery set of replicas in which their terms should be lower than leader's term
+     * @return null if term of {@code leader} is already higher than {@code replicasNeedingRecovery}
      */
-    Terms increaseTerms(String leader, Set<String> replicasInLowerTerms) {
+    Terms increaseTerms(String leader, Set<String> replicasNeedingRecovery) {
       if (!values.containsKey(leader)) {
         throw new SolrException(SolrException.ErrorCode.SERVER_ERROR, "Can not find leader's term " + leader);
       }
@@ -384,9 +384,9 @@ public class ZkShardTerms implements AutoCloseable{
       HashMap<String, Long> newValues = new HashMap<>(values);
       long leaderTerm = newValues.get(leader);
       for (String replica : newValues.keySet()) {
-        if (replicasInLowerTerms.contains(replica)) foundReplicasInLowerTerms = true;
+        if (replicasNeedingRecovery.contains(replica)) foundReplicasInLowerTerms = true;
         if (Objects.equals(newValues.get(replica), leaderTerm)) {
-          if(replicasInLowerTerms.contains(replica)) {
+          if(replicasNeedingRecovery.contains(replica)) {
             changed = true;
           } else {
             newValues.put(replica, leaderTerm+1);
@@ -394,7 +394,7 @@ public class ZkShardTerms implements AutoCloseable{
         }
       }
 
-      // We should skip the optimization if there are no replicasInLowerTerms present in local terms,
+      // We should skip the optimization if there are no replicasNeedingRecovery present in local terms,
       // this may indicate that the current value is stale
       if (!changed && foundReplicasInLowerTerms) return null;
       return new Terms(newValues, version);
