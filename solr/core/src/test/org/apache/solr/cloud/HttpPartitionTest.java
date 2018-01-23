@@ -62,6 +62,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.apache.solr.common.cloud.Replica.State.DOWN;
+import static org.apache.solr.common.cloud.Replica.State.RECOVERING;
+
 /**
  * Simulates HTTP partitions between a leader and replica but the replica does
  * not lose its ZooKeeper connection.
@@ -124,6 +127,8 @@ public class HttpPartitionTest extends AbstractFullDistribZkTestBase {
     waitForThingsToLevelOut(30000);
 
     testLeaderInitiatedRecoveryCRUD();
+
+    testDoRecoveryOnRestart();
 
     // Tests that if we set a minRf that's not satisfied, no recovery is requested, but if minRf is satisfied,
     // recovery is requested
@@ -188,10 +193,10 @@ public class HttpPartitionTest extends AbstractFullDistribZkTestBase {
       }
     };
 
-    zkController.updateLeaderInitiatedRecoveryState(testCollectionName, shardId, notLeader.getName(), Replica.State.DOWN, cd, true);
+    zkController.updateLeaderInitiatedRecoveryState(testCollectionName, shardId, notLeader.getName(), DOWN, cd, true);
     Map<String,Object> lirStateMap = zkController.getLeaderInitiatedRecoveryStateObject(testCollectionName, shardId, notLeader.getName());
     assertNotNull(lirStateMap);
-    assertSame(Replica.State.DOWN, Replica.State.getState((String) lirStateMap.get(ZkStateReader.STATE_PROP)));
+    assertSame(DOWN, Replica.State.getState((String) lirStateMap.get(ZkStateReader.STATE_PROP)));
 
     // test old non-json format handling
     SolrZkClient zkClient = zkController.getZkClient();
@@ -199,8 +204,60 @@ public class HttpPartitionTest extends AbstractFullDistribZkTestBase {
     zkClient.setData(znodePath, "down".getBytes(StandardCharsets.UTF_8), true);
     lirStateMap = zkController.getLeaderInitiatedRecoveryStateObject(testCollectionName, shardId, notLeader.getName());
     assertNotNull(lirStateMap);
-    assertSame(Replica.State.DOWN, Replica.State.getState((String) lirStateMap.get(ZkStateReader.STATE_PROP)));
+    assertSame(DOWN, Replica.State.getState((String) lirStateMap.get(ZkStateReader.STATE_PROP)));
     zkClient.delete(znodePath, -1, false);
+
+    // try to clean up
+    attemptCollectionDelete(cloudClient, testCollectionName);
+  }
+
+  private void testDoRecoveryOnRestart() throws Exception {
+    String testCollectionName = "collDoRecoveryOnRestart";
+    try {
+      // Inject pausing in recovery op, hence the replica won't be able to finish recovery
+      System.setProperty("solr.cloud.wait-for-updates-with-stale-state-pause", String.valueOf(Integer.MAX_VALUE));
+
+      createCollection(testCollectionName, "conf1", 1, 2, 1);
+      cloudClient.setDefaultCollection(testCollectionName);
+
+      sendDoc(1, 2);
+
+      JettySolrRunner leaderJetty = getJettyOnPort(getReplicaPort(getShardLeader(testCollectionName, "shard1", 1000)));
+      List<Replica> notLeaders =
+          ensureAllReplicasAreActive(testCollectionName, "shard1", 1, 2, maxWaitSecsToSeeAllActive);
+      assertDocsExistInAllReplicas(notLeaders, testCollectionName, 1, 1);
+
+      SocketProxy proxy0 = getProxyForReplica(notLeaders.get(0));
+      SocketProxy leaderProxy = getProxyForReplica(getShardLeader(testCollectionName, "shard1", 1000));
+
+      proxy0.close();
+      leaderProxy.close();
+
+      // indexing during a partition
+      int achievedRf = sendDoc(2, 1, leaderJetty);
+      assertEquals("Unexpected achieved replication factor", 1, achievedRf);
+      try (ZkShardTerms zkShardTerms = new ZkShardTerms(testCollectionName, "shard1", cloudClient.getZkStateReader().getZkClient())) {
+        assertFalse(zkShardTerms.canBecomeLeader(notLeaders.get(0).getName()));
+      }
+      waitForState(testCollectionName, notLeaders.get(0).getName(), DOWN, 10000);
+
+      // heal partition
+      proxy0.reopen();
+      leaderProxy.reopen();
+
+      waitForState(testCollectionName, notLeaders.get(0).getName(), RECOVERING, 10000);
+
+      System.clearProperty("solr.cloud.wait-for-updates-with-stale-state-pause");
+      JettySolrRunner notLeaderJetty = getJettyOnPort(getReplicaPort(notLeaders.get(0)));
+      notLeaderJetty.stop();
+      //DOWNNODE will bring replica into DOWN state
+      waitForState(testCollectionName, notLeaders.get(0).getName(), DOWN, 10000);
+      notLeaderJetty.start();
+      ensureAllReplicasAreActive(testCollectionName, "shard1", 1, 2, 100);
+      assertDocsExistInAllReplicas(notLeaders, testCollectionName, 1, 2);
+    } finally {
+      System.clearProperty("solr.cloud.wait-for-updates-with-stale-state-pause");
+    }
 
     // try to clean up
     attemptCollectionDelete(cloudClient, testCollectionName);
@@ -314,7 +371,7 @@ public class HttpPartitionTest extends AbstractFullDistribZkTestBase {
     // indexing during a partition
     sendDoc(2, null, leaderJetty);
     // replica should publish itself as DOWN if the network is not healed after some amount time
-    waitForDownState(testCollectionName, notLeader.getName(), 10000);
+    waitForState(testCollectionName, notLeader.getName(), DOWN, 10000);
     
     proxy.reopen();
     leaderProxy.reopen();
@@ -394,7 +451,7 @@ public class HttpPartitionTest extends AbstractFullDistribZkTestBase {
     attemptCollectionDelete(cloudClient, testCollectionName);
   }
 
-  private void waitForDownState(String collection, String replicaName, long ms) throws KeeperException, InterruptedException {
+  private void waitForState(String collection, String replicaName, Replica.State state, long ms) throws KeeperException, InterruptedException {
     TimeOut timeOut = new TimeOut(ms, TimeUnit.MILLISECONDS, TimeSource.CURRENT_TIME);
     Replica.State replicaState = Replica.State.ACTIVE;
     while (!timeOut.hasTimedOut()) {
@@ -405,10 +462,10 @@ public class HttpPartitionTest extends AbstractFullDistribZkTestBase {
       Slice slice = slices.iterator().next();
       Replica partitionedReplica = slice.getReplica(replicaName);
       replicaState = partitionedReplica.getState();
-      if (replicaState == Replica.State.DOWN) return;
+      if (replicaState == state) return;
     }
-    assertEquals("The partitioned replica did not published it self as down",
-        Replica.State.DOWN, replicaState);
+    assertEquals("Timeout waiting for state "+ state +" of replica " + replicaName + ", current state " + replicaState,
+        state, replicaState);
   }
 
   protected void testRf3() throws Exception {
