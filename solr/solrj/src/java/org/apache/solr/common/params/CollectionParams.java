@@ -112,7 +112,7 @@ public interface CollectionParams {
     // but the overseer is aware of these tasks
     MOCK_COLL_TASK(false, LockLevel.COLLECTION),
     MOCK_SHARD_TASK(false, LockLevel.SHARD),
-    //TODO when we have a node level lock use it here
+    //TODO when we have a node level lock use it here id:2529 gh:2530
     REPLACENODE(true, LockLevel.NONE),
     DELETENODE(true, LockLevel.NONE),
     MOCK_REPLICA_TASK(false, LockLevel.REPLICA)

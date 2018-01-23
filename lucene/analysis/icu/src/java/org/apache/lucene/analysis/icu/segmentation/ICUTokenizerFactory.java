@@ -123,7 +123,7 @@ public class ICUTokenizerFactory extends TokenizerFactory implements ResourceLoa
             return super.getBreakIterator(script);
           }
         }
-        // TODO: we could also allow codes->types mapping
+        // TODO: we could also allow codes->types mapping id:128 gh:129
       };
     }
   }

@@ -60,7 +60,7 @@ public abstract class PointInSetQuery extends Query {
   /** 
    * Iterator of encoded point values.
    */
-  // TODO: if we want to stream, maybe we should use jdk stream class?
+  // TODO: if we want to stream, maybe we should use jdk stream class? id:648 gh:649
   public static abstract class Stream implements BytesRefIterator {
     @Override
     public abstract BytesRef next();
@@ -138,7 +138,7 @@ public abstract class PointInSetQuery extends Query {
           values.intersect(new MergePointVisitor(sortedPackedPoints, result));
 
         } else {
-          // NOTE: this is naive implementation, where for each point we re-walk the KD tree to intersect.  We could instead do a similar
+          // NOTE: this is naive implementation, where for each point we re-walk the KD tree to intersect.  We could instead do a similar id:578 gh:579
           // optimization as the 1D case, but I think it'd mean building a query-time KD tree so we could efficiently intersect against the
           // index, which is probably tricky!
           SinglePointVisitor visitor = new SinglePointVisitor(result);
@@ -226,7 +226,7 @@ public abstract class PointInSetQuery extends Query {
         }
 
         if (cmpMin == 0 && cmpMax == 0) {
-          // NOTE: we only hit this if we are on a cell whose min and max values are exactly equal to our point,
+          // NOTE: we only hit this if we are on a cell whose min and max values are exactly equal to our point, id:848 gh:849
           // which can easily happen if many (> 1024) docs share this one value
           return Relation.CELL_INSIDE_QUERY;
         } else {
@@ -302,7 +302,7 @@ public abstract class PointInSetQuery extends Query {
       if (crosses) {
         return Relation.CELL_CROSSES_QUERY;
       } else {
-        // NOTE: we only hit this if we are on a cell whose min and max values are exactly equal to our point,
+        // NOTE: we only hit this if we are on a cell whose min and max values are exactly equal to our point, id:737 gh:738
         // which can easily happen if many docs share this one value
         return Relation.CELL_INSIDE_QUERY;
       }

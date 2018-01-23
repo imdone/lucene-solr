@@ -578,7 +578,7 @@ public abstract class SolrTestCaseJ4 extends LuceneTestCase {
     numOpens = SolrIndexSearcher.numOpens.getAndSet(0);
     numCloses = SolrIndexSearcher.numCloses.getAndSet(0);
     if (numOpens != 0 || numCloses != 0) {
-      // NOTE: some other tests don't use this base class and hence won't reset the counts.
+      // NOTE: some other tests don't use this base class and hence won't reset the counts. id:2538 gh:2539
       log.warn("startTrackingSearchers: numOpens="+numOpens+" numCloses="+numCloses);
       numOpens = numCloses = 0;
     }
@@ -865,7 +865,7 @@ public abstract class SolrTestCaseJ4 extends LuceneTestCase {
   /** Validates a query matches some XPath test expressions and closes the query */
   public static void assertQ(String message, SolrQueryRequest req, String... tests) {
     try {
-      String m = (null == message) ? "" : message + " "; // TODO log 'm' !!!
+      String m = (null == message) ? "" : message + " "; // TODO log 'm' !!! id:3144 gh:3145
       //since the default (standard) response format is now JSON
       //need to explicitly request XML since this class uses XPath
       ModifiableSolrParams xmlWriterTypeParams = new ModifiableSolrParams(req.getParams());
@@ -1186,7 +1186,7 @@ public abstract class SolrTestCaseJ4 extends LuceneTestCase {
     LinkedHashMap ret = new LinkedHashMap();
     for (int i=0; i<params.length; i+=2) {
       Object o = ret.put(params[i], params[i+1]);
-      // TODO: handle multi-valued map?
+      // TODO: handle multi-valued map? id:2478 gh:2479
     }
     return ret;
   }

@@ -166,7 +166,7 @@ $.Autocompleter = function(input, options) {
       onChange(0, true);
     }
   }).bind("search", function() {
-    // TODO why not just specifying both arguments?
+    // TODO why not just specifying both arguments? id:2981 gh:2982
     var fn = (arguments.length > 1) ? arguments[1] : null;
     function findValueCallback(q, data) {
       var result;
@@ -583,7 +583,7 @@ $.Autocompleter.Select = function (options, input, select, config) {
     }).click(function(event) {
       $(target(event)).addClass(CLASSES.ACTIVE);
       select();
-      // TODO provide option to avoid setting focus again after selection? useful for cleanup-on-focus
+      // TODO provide option to avoid setting focus again after selection? useful for cleanup-on-focus id:2409 gh:2410
       input.focus();
       return false;
     }).mousedown(function() {

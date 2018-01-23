@@ -393,7 +393,7 @@ public class TestStressInPlaceUpdates extends AbstractFullDistribZkTestBase {
                 assertEquals(msg + " ...intVal and longVal in solr doc are internally (modulo) inconsistent w/eachother",
                              0, (longVal % intVal));
 
-                // NOTE: when foundVersion is greater then the version read from the model,
+                // NOTE: when foundVersion is greater then the version read from the model, id:2293 gh:2294
                 // it's not possible to make any assertions about the field values in solr relative to the
                 // field values in the model -- ie: we can *NOT* assert expected.longFieldVal <= doc.longVal
                 //
@@ -469,7 +469,7 @@ public class TestStressInPlaceUpdates extends AbstractFullDistribZkTestBase {
       // what we can do however, is commit all completed updates, and *then* compare solr search results
       // against the (new) committed model....
       
-      waitForThingsToLevelOut(30); // NOTE: this does an automatic commit for us & ensures replicas are up to date
+      waitForThingsToLevelOut(30); // NOTE: this does an automatic commit for us & ensures replicas are up to date id:2886 gh:2887
       committedModel = new HashMap<>(model);
 
       // first, prune the model of any docs that have negative versions

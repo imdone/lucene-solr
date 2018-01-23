@@ -486,7 +486,7 @@ public class HttpPartitionTest extends AbstractFullDistribZkTestBase {
         cloudClient.getZkStateReader().getLeaderRetry(testCollectionName, "shard1");
     assertEquals(expectedNewLeaderCoreNodeName, currentLeader.getName());
 
-    // TODO: This test logic seems to be timing dependent and fails on Jenkins
+    // TODO: This test logic seems to be timing dependent and fails on Jenkins id:2185 gh:2186
     // need to come up with a better approach
     log.info("Sending doc 2 to old leader "+leader.getName());
     try ( HttpSolrClient leaderSolr = getHttpSolrClient(leader, testCollectionName)) {

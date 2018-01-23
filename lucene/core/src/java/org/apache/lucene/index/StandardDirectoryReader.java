@@ -94,7 +94,7 @@ public final class StandardDirectoryReader extends DirectoryReader {
     boolean success = false;
     try {
       for (int i = 0; i < numSegments; i++) {
-        // NOTE: important that we use infos not
+        // NOTE: important that we use infos not id:720 gh:721
         // segmentInfos here, so that we are passing the
         // actual instance of SegmentInfoPerCommit in
         // IndexWriter's segmentInfos:
@@ -220,7 +220,7 @@ public final class StandardDirectoryReader extends DirectoryReader {
     return new StandardDirectoryReader(directory, newReaders, null, infos, false, false);
   }
 
-  // TODO: move somewhere shared if it's useful elsewhere
+  // TODO: move somewhere shared if it's useful elsewhere id:617 gh:618
   private static void decRefWhileHandlingException(SegmentReader[] readers) {
     for(SegmentReader reader : readers) {
       if (reader != null) {
@@ -419,7 +419,7 @@ public final class StandardDirectoryReader extends DirectoryReader {
       generation = infos.getGeneration();
       segmentCount = infos.size();
 
-      // NOTE: we intentionally do not incRef this!  Else we'd need to make IndexCommit Closeable...
+      // NOTE: we intentionally do not incRef this!  Else we'd need to make IndexCommit Closeable... id:632 gh:633
       this.reader = reader;
     }
 

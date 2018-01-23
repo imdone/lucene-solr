@@ -405,10 +405,10 @@ public abstract class LuceneTestCase extends Assert {
 
   public static final boolean TEST_ASSERTS_ENABLED = systemPropertyAsBoolean("tests.asserts", true);
 
-  /** TODO: javadoc? */
+  /** TODO: javadoc? id:1409 gh:1410*/
   public static final String DEFAULT_LINE_DOCS_FILE = "europarl.lines.txt.gz";
 
-  /** TODO: javadoc? */
+  /** TODO: javadoc? id:1661 gh:1662*/
   public static final String JENKINS_LARGE_LINE_DOCS_FILE = "enwiki.random.lines.txt";
 
   /** Gets the codec to run tests with. */
@@ -604,7 +604,7 @@ public abstract class LuceneTestCase extends Assert {
       .around(new TestRuleAssertionsRequired())
       .around(new TestRuleLimitSysouts(suiteFailureMarker))
       .around(tempFilesCleanupRule = new TestRuleTemporaryFilesCleanup(suiteFailureMarker));
-    // TODO LUCENE-7595: Java 9 does not allow to look into runtime classes, so we have to fix the RAM usage checker!
+    // TODO LUCENE-7595: Java 9 does not allow to look into runtime classes, so we have to fix the RAM usage checker! id:2607 gh:2608
     if (!Constants.JRE_IS_MINIMUM_JAVA9) {
       r = r.around(new StaticFieldsInvariantRule(STATIC_LEAK_THRESHOLD, true) {
         @Override
@@ -638,7 +638,7 @@ public abstract class LuceneTestCase extends Assert {
           "user.language",
           "user.timezone",
           
-          // TODO: these should, ideally, be moved to Solr's base class.
+          // TODO: these should, ideally, be moved to Solr's base class. id:1726 gh:1727
           "solr.directoryFactory",
           "solr.solr.home",
           "solr.data.dir"
@@ -1483,7 +1483,7 @@ public abstract class LuceneTestCase extends Assert {
     return newType;
   }
 
-  // TODO: if we can pull out the "make term vector options
+  // TODO: if we can pull out the "make term vector options id:1642 gh:1643
   // consistent across all instances of the same field name"
   // write-once schema sort of helper class then we can
   // remove the sync here.  We can also fold the random
@@ -1507,7 +1507,7 @@ public abstract class LuceneTestCase extends Assert {
       return createField(name, value, type);
     }
 
-    // TODO: once all core & test codecs can index
+    // TODO: once all core & test codecs can index id:1411 gh:1412
     // offsets, sometimes randomly turn on offsets if we are
     // already indexing positions...
 
@@ -1541,7 +1541,7 @@ public abstract class LuceneTestCase extends Assert {
     newType.freeze();
     fieldToType.put(name, newType);
 
-    // TODO: we need to do this, but smarter, ie, most of
+    // TODO: we need to do this, but smarter, ie, most of id:1664 gh:1665
     // the time we set the same value for a given field but
     // sometimes (rarely) we change it up:
     /*
@@ -1730,12 +1730,12 @@ public abstract class LuceneTestCase extends Assert {
     return r;
   }
 
-  /** TODO: javadoc */
+  /** TODO: javadoc id:2608 gh:2609*/
   public static IOContext newIOContext(Random random) {
     return newIOContext(random, IOContext.DEFAULT);
   }
 
-  /** TODO: javadoc */
+  /** TODO: javadoc id:1728 gh:1729*/
   public static IOContext newIOContext(Random random, IOContext oldContext) {
     final int randomNumDocs = random.nextInt(4192);
     final int size = random.nextInt(512) * randomNumDocs;
@@ -1855,10 +1855,10 @@ public abstract class LuceneTestCase extends Assert {
           Rethrow.rethrow(e);
         }
       }
-      // TODO: this whole check is a coverage hack, we should move it to tests for various filterreaders.
+      // TODO: this whole check is a coverage hack, we should move it to tests for various filterreaders. id:1644 gh:1645
       // ultimately whatever you do will be checkIndex'd at the end anyway. 
       if (random.nextInt(500) == 0 && r instanceof LeafReader) {
-        // TODO: not useful to check DirectoryReader (redundant with checkindex)
+        // TODO: not useful to check DirectoryReader (redundant with checkindex) id:1413 gh:1414
         // but maybe sometimes run this on the other crazy readers maybeWrapReader creates?
         try {
           TestUtil.checkReader(r);
@@ -2015,7 +2015,7 @@ public abstract class LuceneTestCase extends Assert {
         String re = AutomatonTestUtil.randomRegexp(random());
         CompiledAutomaton automaton = new CompiledAutomaton(new RegExp(re, RegExp.NONE).toAutomaton());
         if (automaton.type == CompiledAutomaton.AUTOMATON_TYPE.NORMAL) {
-          // TODO: test start term too
+          // TODO: test start term too id:1667 gh:1668
           TermsEnum leftIntersection = leftTerms.intersect(automaton, null);
           TermsEnum rightIntersection = rightTerms.intersect(automaton, null);
           assertTermsEnumEquals(info, leftReader, leftIntersection, rightIntersection, rarely());
@@ -2347,7 +2347,7 @@ public abstract class LuceneTestCase extends Assert {
       Document leftDoc = leftReader.document(i);
       Document rightDoc = rightReader.document(i);
       
-      // TODO: I think this is bogus because we don't document what the order should be
+      // TODO: I think this is bogus because we don't document what the order should be id:2609 gh:2610
       // from these iterators, etc. I think the codec/IndexReader should be free to order this stuff
       // in whatever way it wants (e.g. maybe it packs related fields together or something)
       // To fix this, we sort the fields in both documents by name, but
@@ -2381,7 +2381,7 @@ public abstract class LuceneTestCase extends Assert {
     assertEquals(info, leftField.binaryValue(), rightField.binaryValue());
     assertEquals(info, leftField.stringValue(), rightField.stringValue());
     assertEquals(info, leftField.numericValue(), rightField.numericValue());
-    // TODO: should we check the FT at all?
+    // TODO: should we check the FT at all? id:1730 gh:1731
   }
   
   /** 
@@ -2416,7 +2416,7 @@ public abstract class LuceneTestCase extends Assert {
     assertEquals(info, leftFields, rightFields);
 
     for (String field : leftFields) {
-      // TODO: clean this up... very messy
+      // TODO: clean this up... very messy id:1646 gh:1647
       {
         NumericDocValues leftValues = MultiDocValues.getNumericValues(leftReader, field);
         NumericDocValues rightValues = MultiDocValues.getNumericValues(rightReader, field);
@@ -2540,7 +2540,7 @@ public abstract class LuceneTestCase extends Assert {
     }
   }
   
-  // TODO: this is kinda stupid, we don't delete documents in the test.
+  // TODO: this is kinda stupid, we don't delete documents in the test. id:1415 gh:1416
   public void assertDeletedDocsEquals(String info, IndexReader leftReader, IndexReader rightReader) throws IOException {
     assert leftReader.numDeletedDocs() == rightReader.numDeletedDocs();
     Bits leftBits = MultiFields.getLiveDocs(leftReader);
@@ -2563,7 +2563,7 @@ public abstract class LuceneTestCase extends Assert {
     FieldInfos leftInfos = MultiFields.getMergedFieldInfos(leftReader);
     FieldInfos rightInfos = MultiFields.getMergedFieldInfos(rightReader);
     
-    // TODO: would be great to verify more than just the names of the fields!
+    // TODO: would be great to verify more than just the names of the fields! id:1673 gh:1674
     TreeSet<String> left = new TreeSet<>();
     TreeSet<String> right = new TreeSet<>();
     

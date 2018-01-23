@@ -26,7 +26,7 @@ import org.apache.lucene.store.DataOutput;
 import org.apache.lucene.util.Accountable;
 import org.apache.lucene.util.RamUsageEstimator;
 
-// TODO: merge with PagedBytes, except PagedBytes doesn't
+// TODO: merge with PagedBytes, except PagedBytes doesn't id:946 gh:947
 // let you read while writing which FST needs
 
 class BytesStore extends DataOutput implements Accountable {
@@ -456,7 +456,7 @@ class BytesStore extends DataOutput implements Accountable {
 
       @Override
       public void setPosition(long pos) {
-        // NOTE: a little weird because if you
+        // NOTE: a little weird because if you id:786 gh:787
         // setPosition(0), the next byte you read is
         // bytes[0] ... but I would expect bytes[-1] (ie,
         // EOF)...?

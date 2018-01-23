@@ -46,5 +46,5 @@ public class TestICUNormalizer2CharFilterFactory extends BaseTokenStreamTestCase
     assertTrue(expected.getMessage().contains("Unknown parameters"));
   }
   
-  // TODO: add tests for different forms
+  // TODO: add tests for different forms id:159 gh:160
 }

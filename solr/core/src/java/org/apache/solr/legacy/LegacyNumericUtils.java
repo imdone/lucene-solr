@@ -428,7 +428,7 @@ public final class LegacyNumericUtils {
     @SuppressWarnings("fallthrough")
     public SeekStatus seekCeil(BytesRef term) throws IOException {
 
-      // NOTE: This is not general!!  It only handles YES
+      // NOTE: This is not general!!  It only handles YES id:1867 gh:1868
       // and END, because that's all we need for the numeric
       // case here
 

@@ -300,7 +300,7 @@ public abstract class FSDirectory extends BaseDirectory {
 
   @Override
   public void syncMetaData() throws IOException {
-    // TODO: to improve listCommits(), IndexFileDeleter could call this after deleting segments_Ns
+    // TODO: to improve listCommits(), IndexFileDeleter could call this after deleting segments_Ns id:602 gh:603
     ensureOpen();
     IOUtils.fsync(directory, true);
     maybeDeletePendingFiles();
@@ -348,7 +348,7 @@ public abstract class FSDirectory extends BaseDirectory {
   public synchronized void deletePendingFiles() throws IOException {
     if (pendingDeletes.isEmpty() == false) {
 
-      // TODO: we could fix IndexInputs from FSDirectory subclasses to call this when they are closed?
+      // TODO: we could fix IndexInputs from FSDirectory subclasses to call this when they are closed? id:866 gh:867
 
       // Clone the set since we mutate it in privateDeleteFile:
       for(String name : new HashSet<>(pendingDeletes)) {
@@ -376,7 +376,7 @@ public abstract class FSDirectory extends BaseDirectory {
       // We were asked to delete a non-existent file:
       pendingDeletes.remove(name);
       if (isPendingDelete && Constants.WINDOWS) {
-        // TODO: can we remove this OS-specific hacky logic?  If windows deleteFile is buggy, we should instead contain this workaround in
+        // TODO: can we remove this OS-specific hacky logic?  If windows deleteFile is buggy, we should instead contain this workaround in id:754 gh:755
         // a WindowsFSDirectory ...
         // LUCENE-6684: we suppress this check for Windows, since a file could be in a confusing "pending delete" state, failing the first
         // delete attempt with access denied and then apparently falsely failing here when we try ot delete it again, with NSFE/FNFE
@@ -388,11 +388,11 @@ public abstract class FSDirectory extends BaseDirectory {
       // file handle against it.  We record this in pendingDeletes and
       // try again later.
 
-      // TODO: this is hacky/lenient (we don't know which IOException this is), and
+      // TODO: this is hacky/lenient (we don't know which IOException this is), and id:657 gh:658
       // it should only happen on filesystems that can do this, so really we should
       // move this logic to WindowsDirectory or something
 
-      // TODO: can/should we do if (Constants.WINDOWS) here, else throw the exc?
+      // TODO: can/should we do if (Constants.WINDOWS) here, else throw the exc? id:683 gh:684
       // but what about a Linux box with a CIFS mount?
       pendingDeletes.add(name);
     }

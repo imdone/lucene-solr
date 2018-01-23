@@ -96,7 +96,7 @@ public class PreAnalyzedField extends TextField implements HasImplicitIndexAnaly
 
   /**
    * Overridden to return an analyzer consisting of a {@link PreAnalyzedTokenizer}.
-   * NOTE: If an index analyzer is specified in the schema, it will be ignored.
+   * NOTE: If an index analyzer is specified in the schema, it will be ignored. id:1905 gh:1906
    */
   @Override
   public Analyzer getIndexAnalyzer() {
@@ -309,7 +309,7 @@ public class PreAnalyzedField extends TextField implements HasImplicitIndexAnaly
       
       AttributeSource.State state = it.next();
       restoreState(state.clone());
-      // TODO: why can't I lookup the OffsetAttribute up in ctor instead?
+      // TODO: why can't I lookup the OffsetAttribute up in ctor instead? id:2853 gh:2854
       lastEndOffset = addAttribute(OffsetAttribute.class).endOffset();
       return true;
     }

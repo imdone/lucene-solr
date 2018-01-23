@@ -82,7 +82,7 @@ public final class FieldInvertState {
     lastPosition = 0;
   }
   
-  // TODO: better name?
+  // TODO: better name? id:660 gh:661
   /**
    * Sets attributeSource to a new instance.
    */

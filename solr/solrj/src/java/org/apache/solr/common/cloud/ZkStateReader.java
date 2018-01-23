@@ -165,7 +165,7 @@ public class ZkStateReader implements Closeable {
 
   /**
    * Get current {@link AutoScalingConfig}.
-   * @return current configuration from <code>autoscaling.json</code>. NOTE:
+   * @return current configuration from <code>autoscaling.json</code>. NOTE: id:2527 gh:2528
    * this data is retrieved from ZK on each call.
    */
   public AutoScalingConfig getAutoScalingConfig() throws KeeperException, InterruptedException {
@@ -175,7 +175,7 @@ public class ZkStateReader implements Closeable {
   /**
    * Get current {@link AutoScalingConfig}.
    * @param watcher optional {@link Watcher} to set on a znode to watch for config changes.
-   * @return current configuration from <code>autoscaling.json</code>. NOTE:
+   * @return current configuration from <code>autoscaling.json</code>. NOTE: id:3135 gh:3136
    * this data is retrieved from ZK on each call.
    */
   public AutoScalingConfig getAutoScalingConfig(Watcher watcher) throws KeeperException, InterruptedException {
@@ -643,7 +643,7 @@ public class ZkStateReader implements Closeable {
     @Override
     public DocCollection get() {
       gets.incrementAndGet();
-      // TODO: consider limited caching
+      // TODO: consider limited caching id:2460 gh:2461
       return getCollectionLive(ZkStateReader.this, collName);
     }
 
@@ -801,7 +801,7 @@ public class ZkStateReader implements Closeable {
   
   public List<ZkCoreNodeProps> getReplicaProps(String collection, String shardId, String thisCoreNodeName,
       Replica.State mustMatchStateFilter, Replica.State mustNotMatchStateFilter) {
-    //TODO: We don't need all these getReplicaProps method overloading. Also, it's odd that the default is to return replicas of type TLOG and NRT only
+    //TODO: We don't need all these getReplicaProps method overloading. Also, it's odd that the default is to return replicas of type TLOG and NRT only id:3007 gh:3008
     return getReplicaProps(collection, shardId, thisCoreNodeName, mustMatchStateFilter, null, EnumSet.of(Replica.Type.TLOG,  Replica.Type.NRT));
   }
   
@@ -943,7 +943,7 @@ public class ZkStateReader implements Closeable {
 
   /**
    * Returns the baseURL corresponding to a given node's nodeName --
-   * NOTE: does not (currently) imply that the nodeName (or resulting
+   * NOTE: does not (currently) imply that the nodeName (or resulting id:2459 gh:2460
    * baseURL) exists in the cluster.
    * @lucene.experimental
    */

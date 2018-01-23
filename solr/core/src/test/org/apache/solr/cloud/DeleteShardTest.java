@@ -39,7 +39,7 @@ import org.junit.Test;
 
 public class DeleteShardTest extends SolrCloudTestCase {
 
-  // TODO: Custom hash slice deletion test
+  // TODO: Custom hash slice deletion test id:2862 gh:2863
 
   @BeforeClass
   public static void setupCluster() throws Exception {
@@ -86,7 +86,7 @@ public class DeleteShardTest extends SolrCloudTestCase {
 
     CloudSolrClient client = cluster.getSolrClient();
 
-    // TODO can this be encapsulated better somewhere?
+    // TODO can this be encapsulated better somewhere? id:2266 gh:2267
     DistributedQueue inQueue = Overseer.getStateUpdateQueue(client.getZkStateReader().getZkClient());
     Map<String, Object> propMap = new HashMap<>();
     propMap.put(Overseer.QUEUE_OPERATION, OverseerAction.UPDATESHARDSTATE.toLower());

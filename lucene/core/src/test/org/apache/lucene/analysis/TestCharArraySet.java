@@ -87,7 +87,7 @@ public class TestCharArraySet extends LuceneTestCase {
       assertTrue(set.contains(TEST_STOP_WORDS[i]));
   }
   
-  // TODO: break this up into simpler test methods, vs "telling a story"
+  // TODO: break this up into simpler test methods, vs "telling a story" id:967 gh:968
   public void testModifyOnUnmodifiable(){
     CharArraySet set=new CharArraySet(10, true);
     set.addAll(Arrays.asList(TEST_STOP_WORDS));

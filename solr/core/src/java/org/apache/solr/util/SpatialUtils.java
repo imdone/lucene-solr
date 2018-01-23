@@ -42,7 +42,7 @@ public class SpatialUtils {
     if (c == '[' || c == '{') {
       return parseRectangeSolrException(geomStr, ctx);
     }
-    //TODO parse a raw point?
+    //TODO parse a raw point? id:2223 gh:2224
     try {
       return ctx.readShapeFromWkt(geomStr);
     } catch (ParseException e) {
@@ -64,7 +64,7 @@ public class SpatialUtils {
     //note we don't do generic whitespace, just a literal space char detection
     try {
       double x, y;
-      str = str.trim();//TODO use findIndexNotSpace instead?
+      str = str.trim();//TODO use findIndexNotSpace instead? id:2126 gh:2127
       int commaIdx = str.indexOf(',');
       if (commaIdx == -1) {
         //  "x y" format

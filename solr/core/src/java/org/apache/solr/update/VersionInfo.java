@@ -199,8 +199,8 @@ public class VersionInfo {
    * Returns null if no document can be found in the index for the given id.
    */
   public Long getVersionFromIndex(BytesRef idBytes) {
-    // TODO: we could cache much of this and invalidate during a commit.
-    // TODO: most DocValues classes are threadsafe - expose which.
+    // TODO: we could cache much of this and invalidate during a commit. id:2170 gh:2171
+    // TODO: most DocValues classes are threadsafe - expose which. id:2094 gh:2095
 
     RefCounted<SolrIndexSearcher> newestSearcher = ulog.uhandler.core.getRealtimeSearcher();
     try {
@@ -246,7 +246,7 @@ public class VersionInfo {
     ValueSource vs = versionField.getType().getValueSource(versionField, null);
     Map funcContext = ValueSource.newContext(searcher);
     vs.createWeight(funcContext, searcher);
-    // TODO: multi-thread this
+    // TODO: multi-thread this id:2972 gh:2973
     for (LeafReaderContext ctx : searcher.getTopReaderContext().leaves()) {
       int maxDoc = ctx.reader().maxDoc();
       FunctionValues fv = vs.getValues(funcContext, ctx);
@@ -292,7 +292,7 @@ public class VersionInfo {
     }
     final Object maxObj = versionField.getType().toObject(versionField, new BytesRef(maxBytes));
     if (null == maxObj || ! ( maxObj instanceof Number) ) {
-      // HACK: aparently nothing asserts that the FieldType is numeric (let alone a Long???)
+      // HACK: aparently nothing asserts that the FieldType is numeric (let alone a Long???) id:2161 gh:2162
       log.error("Unable to convert MAX byte[] from Points for {} in index", versionFieldName);
       return 0L;
     }

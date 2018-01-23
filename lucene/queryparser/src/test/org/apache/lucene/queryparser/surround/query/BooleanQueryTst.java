@@ -55,7 +55,7 @@ public class BooleanQueryTst {
   
   public void setVerbose(boolean verbose) {this.verbose = verbose;}
 
-  class TestCollector extends SimpleCollector { // FIXME: use check hits from Lucene tests
+  class TestCollector extends SimpleCollector { // FIXME: use check hits from Lucene tests id:1584 gh:1585
     int totalMatched;
     boolean[] encountered;
     private Scorer scorer = null;

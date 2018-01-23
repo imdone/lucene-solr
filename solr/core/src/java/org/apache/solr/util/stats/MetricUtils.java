@@ -343,7 +343,7 @@ public class MetricUtils {
   }
 
   /**
-   * Convert an instance of {@link Histogram}. NOTE: it's assumed that histogram contains non-time
+   * Convert an instance of {@link Histogram}. NOTE: it's assumed that histogram contains non-time id:2842 gh:2843
    * based values that don't require unit conversion.
    * @param name metric name
    * @param histogram an instance of {@link Histogram}

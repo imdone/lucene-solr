@@ -54,7 +54,7 @@ import org.apache.lucene.util.NamedThreadFactory;
 import org.apache.lucene.util.PrintStreamInfoStream;
 import org.apache.lucene.util.TestUtil;
 
-// TODO
+// TODO id:2598 gh:2599
 //   - mix in forceMerge, addIndexes
 //   - randomly mix in non-congruent docs
 
@@ -130,7 +130,7 @@ public abstract class ThreadedIndexingAndSearchingTestCase extends LuceneTestCas
       threads[thread] = new Thread() {
           @Override
           public void run() {
-            // TODO: would be better if this were cross thread, so that we make sure one thread deleting anothers added docs works:
+            // TODO: would be better if this were cross thread, so that we make sure one thread deleting anothers added docs works: id:1707 gh:1708
             final List<String> toDeleteIDs = new ArrayList<>();
             final List<SubDocs> toDeleteSubDocs = new ArrayList<>();
             while(System.currentTimeMillis() < stopTime && !failed.get()) {
@@ -328,7 +328,7 @@ public abstract class ThreadedIndexingAndSearchingTestCase extends LuceneTestCas
     // silly starting guess:
     final AtomicInteger totTermCount = new AtomicInteger(100);
 
-    // TODO: we should enrich this to do more interesting searches
+    // TODO: we should enrich this to do more interesting searches id:1613 gh:1614
     for(int thread=0;thread<searchThreads.length;thread++) {
       searchThreads[thread] = new Thread() {
           @Override

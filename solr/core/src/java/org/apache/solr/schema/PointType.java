@@ -70,7 +70,7 @@ public class PointType extends CoordinateFieldType implements SpatialQueryable {
     String externalVal = value.toString();
     String[] point = parseCommaSeparatedList(externalVal, dimension);
 
-    // TODO: this doesn't currently support polyFields as sub-field types
+    // TODO: this doesn't currently support polyFields as sub-field types id:1903 gh:1904
     List<IndexableField> f = new ArrayList<>((dimension*2)+1);
 
     if (field.indexed()) {
@@ -146,7 +146,7 @@ public class PointType extends CoordinateFieldType implements SpatialQueryable {
   @Override
   public Query getFieldQuery(QParser parser, SchemaField field, String externalVal) {
     String[] p1 = parseCommaSeparatedList(externalVal, dimension);
-    //TODO: should we assert that p1.length == dimension?
+    //TODO: should we assert that p1.length == dimension? id:2851 gh:2852
     BooleanQuery.Builder bq = new BooleanQuery.Builder();
     for (int i = 0; i < dimension; i++) {
       SchemaField sf = subField(field, i, schema);
@@ -186,7 +186,7 @@ public class PointType extends CoordinateFieldType implements SpatialQueryable {
     IndexSchema schema = parser.getReq().getSchema();
 
     if (dimension == 1){
-      //TODO: Handle distance measures
+      //TODO: Handle distance measures id:1941 gh:1942
       String lower = String.valueOf(point[0] - options.distance);
       String upper = String.valueOf(point[0] + options.distance);
       SchemaField subSF = subField(options.field, 0, schema);
@@ -194,7 +194,7 @@ public class PointType extends CoordinateFieldType implements SpatialQueryable {
       return subSF.getType().getRangeQuery(parser, subSF, lower, upper, true, true);
     } else {
       BooleanQuery.Builder tmp = new BooleanQuery.Builder();
-      //TODO: Handle distance measures, as this assumes Euclidean
+      //TODO: Handle distance measures, as this assumes Euclidean id:2695 gh:2696
       double[] ur = vectorBoxCorner(point, null, options.distance, true);
       double[] ll = vectorBoxCorner(point, null, options.distance, false);
       for (int i = 0; i < ur.length; i++) {
@@ -246,7 +246,7 @@ public class PointType extends CoordinateFieldType implements SpatialQueryable {
    * @throws SolrException if the dimension specified does not match the number found
    */
   public static String[] parseCommaSeparatedList(String externalVal, int dimension) throws SolrException {
-    //TODO: Should we support sparse vectors?
+    //TODO: Should we support sparse vectors? id:2031 gh:2032
     String[] out = new String[dimension];
     int idx = externalVal.indexOf(',');
     int end = idx;

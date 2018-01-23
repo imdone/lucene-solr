@@ -136,7 +136,7 @@ public final class ArabicAnalyzer extends StopwordAnalyzerBase {
     result = new DecimalDigitFilter(result);
     // the order here is important: the stopword list is not normalized!
     result = new StopFilter(result, stopwords);
-    // TODO maybe we should make ArabicNormalization filter also KeywordAttribute aware?!
+    // TODO maybe we should make ArabicNormalization filter also KeywordAttribute aware?! id:14 gh:15
     result = new ArabicNormalizationFilter(result);
     if(!stemExclusionSet.isEmpty()) {
       result = new SetKeywordMarkerFilter(result, stemExclusionSet);

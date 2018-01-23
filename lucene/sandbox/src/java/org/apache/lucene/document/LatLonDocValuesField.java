@@ -145,7 +145,7 @@ public class LatLonDocValuesField extends Field {
    */
   public static Query newSlowBoxQuery(String field, double minLatitude, double maxLatitude, double minLongitude, double maxLongitude) {
     // exact double values of lat=90.0D and lon=180.0D must be treated special as they are not represented in the encoding
-    // and should not drag in extra bogus junk! TODO: should encodeCeil just throw ArithmeticException to be less trappy here?
+    // and should not drag in extra bogus junk! TODO: should encodeCeil just throw ArithmeticException to be less trappy here? id:1310 gh:1311
     if (minLatitude == 90.0) {
       // range cannot match as 90.0 can never exist
       return new MatchNoDocsQuery("LatLonDocValuesField.newBoxQuery with minLatitude=90.0");

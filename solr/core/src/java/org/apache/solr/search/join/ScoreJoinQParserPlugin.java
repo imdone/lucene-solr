@@ -276,7 +276,7 @@ public class ScoreJoinQParserPlugin extends QParserPlugin {
     if (container.isZooKeeperAware()) {
       ZkController zkController = container.getZkController();
       final String resolved = resolveAlias(fromIndex, zkController);
-      // TODO DWS: no need for this since later, clusterState.getCollection will throw a reasonable error
+      // TODO DWS: no need for this since later, clusterState.getCollection will throw a reasonable error id:2756 gh:2757
       if (!zkController.getClusterState().hasCollection(resolved)) {
         throw new SolrException(SolrException.ErrorCode.BAD_REQUEST,
             "SolrCloud join: Collection '" + fromIndex + "' not found!");

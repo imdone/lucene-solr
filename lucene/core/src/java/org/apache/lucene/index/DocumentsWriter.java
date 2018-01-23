@@ -106,7 +106,7 @@ final class DocumentsWriter implements Closeable, Accountable {
 
   private final AtomicInteger numDocsInRAM = new AtomicInteger(0);
 
-  // TODO: cut over to BytesRefHash in BufferedDeletes
+  // TODO: cut over to BytesRefHash in BufferedDeletes id:403 gh:403
   volatile DocumentsWriterDeleteQueue deleteQueue;
   private final DocumentsWriterFlushQueue ticketQueue = new DocumentsWriterFlushQueue();
   /*
@@ -138,7 +138,7 @@ final class DocumentsWriter implements Closeable, Accountable {
   }
   
   synchronized long deleteQueries(final Query... queries) throws IOException {
-    // TODO why is this synchronized?
+    // TODO why is this synchronized? id:401 gh:402
     final DocumentsWriterDeleteQueue deleteQueue = this.deleteQueue;
     long seqNo = deleteQueue.addDelete(queries);
     flushControl.doOnDelete();
@@ -153,11 +153,11 @@ final class DocumentsWriter implements Closeable, Accountable {
     lastSeqNo = seqNo;
   }
 
-  // TODO: we could check w/ FreqProxTermsWriter: if the
+  // TODO: we could check w/ FreqProxTermsWriter: if the id:478 gh:479
   // term doesn't exist, don't bother buffering into the
   // per-DWPT map (but still must go into the global map)
   synchronized long deleteTerms(final Term... terms) throws IOException {
-    // TODO why is this synchronized?
+    // TODO why is this synchronized? id:653 gh:654
     final DocumentsWriterDeleteQueue deleteQueue = this.deleteQueue;
     long seqNo = deleteQueue.addDelete(terms);
     flushControl.doOnDelete();

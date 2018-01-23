@@ -32,7 +32,7 @@ import org.apache.lucene.util.Counter;
  * @lucene.experimental
  */
 public class BufferedInputIterator implements InputIterator {
-  // TODO keep this for now
+  // TODO keep this for now id:1476 gh:1477
   /** buffered term entries */
   protected BytesRefArray entries = new BytesRefArray(Counter.newCounter());
   /** buffered payload entries */

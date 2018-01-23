@@ -121,7 +121,7 @@ public final class SimpleFSLockFactory extends FSLockFactory {
         return;
       }
       try {
-        // NOTE: unlike NativeFSLockFactory, we can potentially delete someone else's
+        // NOTE: unlike NativeFSLockFactory, we can potentially delete someone else's id:873 gh:874
         // lock if things have gone wrong. we do best-effort check (ensureValid) to
         // avoid doing this.
         try {

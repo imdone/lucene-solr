@@ -63,7 +63,7 @@ import org.slf4j.LoggerFactory;
  * an {@link JavaBinCodec.ObjectResolver} object that knows how to work with the unsupported class.
  * This allows {@link JavaBinCodec} to be used to marshall/unmarshall arbitrary content.
  * <p>
- * NOTE -- {@link JavaBinCodec} instances cannot be reused for more than one marshall or unmarshall operation.
+ * NOTE -- {@link JavaBinCodec} instances cannot be reused for more than one marshall or unmarshall operation. id:3137 gh:3138
  */
 public class JavaBinCodec implements PushWriter {
 

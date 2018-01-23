@@ -28,7 +28,7 @@ package org.apache.solr.schema;
  * </pre>
  * In theory, classes deriving from this should be able to do things like represent a point, a polygon, a line, etc.
  * <br>
- * NOTE: There can only be one sub Field Type.
+ * NOTE: There can only be one sub Field Type. id:2843 gh:2844
  *
  */
 public abstract class CoordinateFieldType extends AbstractSubTypeFieldType {

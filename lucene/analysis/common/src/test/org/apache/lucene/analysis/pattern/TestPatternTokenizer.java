@@ -101,7 +101,7 @@ public class TestPatternTokenizer extends BaseTokenStreamTestCase
   }
   
   /** 
-   * TODO: rewrite tests not to use string comparison.
+   * TODO: rewrite tests not to use string comparison. id:96 gh:97
    */
   private static String tsToString(TokenStream in) throws IOException {
     StringBuilder out = new StringBuilder();
@@ -148,7 +148,7 @@ public class TestPatternTokenizer extends BaseTokenStreamTestCase
 
   // LUCENE-6814
   public void testHeapFreedAfterClose() throws Exception {
-    // TODO: can we move this to BaseTSTC to catch other "hangs onto heap"ers?
+    // TODO: can we move this to BaseTSTC to catch other "hangs onto heap"ers? id:97 gh:98
 
     // Build a 1MB string:
     StringBuilder b = new StringBuilder();

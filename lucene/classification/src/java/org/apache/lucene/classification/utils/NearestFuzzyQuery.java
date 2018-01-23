@@ -267,7 +267,7 @@ public class NearestFuzzyQuery extends Query {
         bq.add(termVariants.build(), BooleanClause.Occur.SHOULD);          // add to query
       }
     }
-    //TODO possible alternative step 3 - organize above booleans into a new layer of field-based
+    //TODO possible alternative step 3 - organize above booleans into a new layer of field-based id:227 gh:228
     // booleans with a minimum-should-match of NumFields-1?
     return bq.build();
   }

@@ -74,7 +74,7 @@ public class AssignTest extends SolrTestCaseJ4 {
     );
     when(zkClient.getData(anyString(), any(), any(), anyBoolean())).then(invocation ->
         zkClientData.get(invocation.getArgument(0)));
-    // TODO: fix this to be independent of ZK
+    // TODO: fix this to be independent of ZK id:3072 gh:3073
     ZkDistribStateManager stateManager = new ZkDistribStateManager(zkClient);
     String nodeName = Assign.assignCoreNodeName(stateManager, new DocCollection("collection1", new HashMap<>(), new HashMap<>(), DocRouter.DEFAULT));
     assertEquals("core_node1", nodeName);
@@ -105,7 +105,7 @@ public class AssignTest extends SolrTestCaseJ4 {
         for (String c : collections) {
           zkClient.makePath("/collections/"+c, true);
         }
-        // TODO: fix this to be independent of ZK
+        // TODO: fix this to be independent of ZK id:2301 gh:2302
         ZkDistribStateManager stateManager = new ZkDistribStateManager(zkClient);
         List<Future<?>> futures = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
@@ -139,7 +139,7 @@ public class AssignTest extends SolrTestCaseJ4 {
     server.run();
     try (SolrZkClient zkClient = new SolrZkClient(server.getZkAddress(), 10000)) {
       zkClient.makePath("/", true);
-      // TODO: fix this to be independent of ZK
+      // TODO: fix this to be independent of ZK id:2894 gh:2895
       ZkDistribStateManager stateManager = new ZkDistribStateManager(zkClient);
       Map<String, Slice> slices = new HashMap<>();
       slices.put("shard1", new Slice("shard1", new HashMap<>(), null));

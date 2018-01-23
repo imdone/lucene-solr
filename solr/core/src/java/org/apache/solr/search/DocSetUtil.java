@@ -257,8 +257,8 @@ public class DocSetUtil {
   }
 
   public static void collectSortedDocSet(DocSet docs, IndexReader reader, Collector collector) throws IOException {
-    // TODO add SortedDocSet sub-interface and take that.
-    // TODO collectUnsortedDocSet: iterate segment, then all docSet per segment.
+    // TODO add SortedDocSet sub-interface and take that. id:1913 gh:1914
+    // TODO collectUnsortedDocSet: iterate segment, then all docSet per segment. id:2861 gh:2862
 
     final List<LeafReaderContext> leaves = reader.leaves();
     final Iterator<LeafReaderContext> ctxIt = leaves.iterator();

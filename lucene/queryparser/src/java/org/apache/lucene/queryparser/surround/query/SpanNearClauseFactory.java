@@ -68,7 +68,7 @@ import org.apache.lucene.search.spans.SpanTermQuery;
 /**
  * Factory for {@link SpanOrQuery}
  */
-public class SpanNearClauseFactory { // FIXME: rename to SpanClauseFactory
+public class SpanNearClauseFactory { // FIXME: rename to SpanClauseFactory id:1086 gh:1087
   public SpanNearClauseFactory(IndexReader reader, String fieldName, BasicQueryFactory qf) {
     this.reader = reader;
     this.fieldName = fieldName;

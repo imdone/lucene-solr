@@ -59,7 +59,7 @@ public class ShardRequest {
   /** may be null */
   public String nodeName;
 
-  // TODO: one could store a list of numbers to correlate where returned docs
+  // TODO: one could store a list of numbers to correlate where returned docs id:1876 gh:1877
   // go in the top-level response rather than looking up by id...
   // this would work well if we ever transitioned to using internal ids and
   // didn't require a uniqueId

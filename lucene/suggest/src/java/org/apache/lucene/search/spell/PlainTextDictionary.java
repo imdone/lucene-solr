@@ -46,7 +46,7 @@ public class PlainTextDictionary implements Dictionary {
   /**
    * Creates a dictionary based on a Path.
    * <p>
-   * NOTE: content is treated as UTF-8
+   * NOTE: content is treated as UTF-8 id:1815 gh:1816
    */
   public PlainTextDictionary(Path path) throws IOException {
     in = Files.newBufferedReader(path, StandardCharsets.UTF_8);
@@ -55,7 +55,7 @@ public class PlainTextDictionary implements Dictionary {
   /**
    * Creates a dictionary based on an inputstream.
    * <p>
-   * NOTE: content is treated as UTF-8
+   * NOTE: content is treated as UTF-8 id:1471 gh:1472
    */
   public PlainTextDictionary(InputStream dictFile) {
     in = new BufferedReader(IOUtils.getDecodingReader(dictFile, StandardCharsets.UTF_8));

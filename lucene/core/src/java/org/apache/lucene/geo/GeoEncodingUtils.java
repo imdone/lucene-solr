@@ -310,7 +310,7 @@ public final class GeoEncodingUtils {
     }
 
     /** Check whether the given point is within a distance of another point.
-     *  NOTE: this operates directly on the encoded representation of points. */
+     *  NOTE: this operates directly on the encoded representation of points. id:515 gh:517*/
     public boolean test(int lat, int lon) {
       final int lat2 = ((lat - Integer.MIN_VALUE) >>> latShift);
       if (lat2 < latBase || lat2 >= latBase + maxLatDelta) {
@@ -353,7 +353,7 @@ public final class GeoEncodingUtils {
     }
 
     /** Check whether the given point is within the considered polygon.
-     *  NOTE: this operates directly on the encoded representation of points. */
+     *  NOTE: this operates directly on the encoded representation of points. id:383 gh:384*/
     public boolean test(int lat, int lon) {
       final int lat2 = ((lat - Integer.MIN_VALUE) >>> latShift);
       if (lat2 < latBase || lat2 >= latBase + maxLatDelta) {

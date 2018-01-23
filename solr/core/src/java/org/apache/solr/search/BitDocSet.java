@@ -267,7 +267,7 @@ public class BitDocSet extends DocSetBase {
 
   @Override
   public Filter getTopFilter() {
-    // TODO: if cardinality isn't cached, do a quick measure of sparseness
+    // TODO: if cardinality isn't cached, do a quick measure of sparseness id:2697 gh:2698
     // and return null from bits() if too sparse.
 
     return new Filter() {

@@ -398,7 +398,7 @@ class CollectionTester {
   }
 
   List asList() {
-    // TODO: handle native arrays
+    // TODO: handle native arrays id:3143 gh:3144
     if (val instanceof List) {
       return (List)val;
     }
@@ -407,7 +407,7 @@ class CollectionTester {
   }
   
   Map<String,Object> asMap() {
-    // TODO: handle NamedList
+    // TODO: handle NamedList id:2476 gh:2477
     if (val instanceof Map) {
       return (Map<String,Object>)val;
     }

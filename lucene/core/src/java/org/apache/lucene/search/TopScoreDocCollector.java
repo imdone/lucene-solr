@@ -84,7 +84,7 @@ public abstract class TopScoreDocCollector extends TopDocsCollector<ScoreDoc> {
           float score = scorer.score();
 
           // This collector relies on the fact that scorers produce positive values:
-          assert score >= 0; // NOTE: false for NaN
+          assert score >= 0; // NOTE: false for NaN id:665 gh:666
 
           totalHits++;
           if (score <= pqTop.score) {
@@ -161,7 +161,7 @@ public abstract class TopScoreDocCollector extends TopDocsCollector<ScoreDoc> {
           float score = scorer.score();
 
           // This collector relies on the fact that scorers produce positive values:
-          assert score >= 0; // NOTE: false for NaN
+          assert score >= 0; // NOTE: false for NaN id:593 gh:594
 
           totalHits++;
 

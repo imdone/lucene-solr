@@ -97,7 +97,7 @@ public class MockDirectoryWrapper extends BaseDirectoryWrapper {
   // additionally: provides debugging information in case you leave one open
   private Map<Closeable,Exception> openFileHandles = Collections.synchronizedMap(new IdentityHashMap<Closeable,Exception>());
 
-  // NOTE: we cannot initialize the Map here due to the
+  // NOTE: we cannot initialize the Map here due to the id:1406 gh:1408
   // order in which our constructor actually does this
   // member initialization vs when it calls super.  It seems
   // like super is called, then our members are initialized:
@@ -259,7 +259,7 @@ public class MockDirectoryWrapper extends BaseDirectoryWrapper {
       // hack
       long size = 0;
       for (String file : in.listAll()) {
-        // hack 2: see TODO in ExtrasFS (ideally it would always return 0 byte
+        // hack 2: see TODO in ExtrasFS (ideally it would always return 0 byte id:1655 gh:1656
         // size for extras it creates, even though the size of non-regular files is not defined)
         if (!file.startsWith("extra")) {
           size += in.fileLength(file);
@@ -314,7 +314,7 @@ public class MockDirectoryWrapper extends BaseDirectoryWrapper {
     
   private synchronized void _corruptFiles(Collection<String> files) throws IOException {
 
-    // TODO: we should also mess with any recent file renames, file deletions, if
+    // TODO: we should also mess with any recent file renames, file deletions, if id:2605 gh:2607
     // syncMetaData was not called!!
     
     // Must make a copy because we change the incoming unsyncedFiles
@@ -803,7 +803,7 @@ public class MockDirectoryWrapper extends BaseDirectoryWrapper {
     return size;
   }
 
-  // NOTE: This is off by default; see LUCENE-5574
+  // NOTE: This is off by default; see LUCENE-5574 id:1722 gh:1723
   private boolean assertNoUnreferencedFilesOnClose;
 
   public void setAssertNoUnrefencedFilesOnClose(boolean v) {
@@ -865,7 +865,7 @@ public class MockDirectoryWrapper extends BaseDirectoryWrapper {
           TestUtil.checkIndex(this, getCrossCheckTermVectorsOnClose(), true, null);
         }
           
-        // TODO: factor this out / share w/ TestIW.assertNoUnreferencedFiles
+        // TODO: factor this out / share w/ TestIW.assertNoUnreferencedFiles id:1636 gh:1637
         if (assertNoUnreferencedFilesOnClose) {
           System.out.println("MDW: now assert no unref'd files at close");
 
@@ -1047,7 +1047,7 @@ public class MockDirectoryWrapper extends BaseDirectoryWrapper {
   public synchronized Lock obtainLock(String name) throws IOException {
     maybeYield();
     return super.obtainLock(name);
-    // TODO: consider mocking locks, but not all the time, can hide bugs
+    // TODO: consider mocking locks, but not all the time, can hide bugs id:1407 gh:1406
   }
   
   /** Use this when throwing fake {@code IOException},

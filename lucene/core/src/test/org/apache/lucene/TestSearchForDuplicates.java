@@ -57,7 +57,7 @@ public class TestSearchForDuplicates extends LuceneTestCase {
   /** This test compares search results when using and not using compound
    *  files.
    *
-   *  TODO: There is rudimentary search result validation as well, but it is
+   *  TODO: There is rudimentary search result validation as well, but it is id:1239 gh:1240
    *        simply based on asserting the output observed in the old test case,
    *        without really knowing if the output is correct. Someone needs to
    *        validate this output and make any changes to the checkHits method.

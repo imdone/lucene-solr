@@ -78,7 +78,7 @@ public class FirstPassGroupingCollector<T> extends SimpleCollector {
       throw new IllegalArgumentException("topNGroups must be >= 1 (got " + topNGroups + ")");
     }
 
-    // TODO: allow null groupSort to mean "by relevance",
+    // TODO: allow null groupSort to mean "by relevance", id:1036 gh:1037
     // and specialize it?
 
     this.topNGroups = topNGroups;
@@ -195,7 +195,7 @@ public class FirstPassGroupingCollector<T> extends SimpleCollector {
     if (isCompetitive(doc) == false)
       return;
 
-    // TODO: should we add option to mean "ignore docs that
+    // TODO: should we add option to mean "ignore docs that id:1091 gh:1092
     // don't have the group field" (instead of stuffing them
     // under null group)?
     groupSelector.advanceTo(doc);
@@ -285,7 +285,7 @@ public class FirstPassGroupingCollector<T> extends SimpleCollector {
     }
 
     // Remove before updating the group since lookup is done via comparators
-    // TODO: optimize this
+    // TODO: optimize this id:925 gh:926
 
     final CollectedSearchGroup<T> prevLast;
     if (orderedGroups != null) {

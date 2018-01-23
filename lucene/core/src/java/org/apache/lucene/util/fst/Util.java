@@ -44,7 +44,7 @@ public final class Util {
    *  input is not accepted. */
   public static<T> T get(FST<T> fst, IntsRef input) throws IOException {
 
-    // TODO: would be nice not to alloc this on every lookup
+    // TODO: would be nice not to alloc this on every lookup id:800 gh:801
     final FST.Arc<T> arc = fst.getFirstArc(new FST.Arc<T>());
 
     final BytesReader fstReader = fst.getBytesReader();
@@ -65,7 +65,7 @@ public final class Util {
     }
   }
 
-  // TODO: maybe a CharsRef version for BYTE2
+  // TODO: maybe a CharsRef version for BYTE2 id:887 gh:888
 
   /** Looks up the output for this input, or null if the
    *  input is not accepted */
@@ -74,7 +74,7 @@ public final class Util {
 
     final BytesReader fstReader = fst.getBytesReader();
 
-    // TODO: would be nice not to alloc this on every lookup
+    // TODO: would be nice not to alloc this on every lookup id:1222 gh:1223
     final FST.Arc<T> arc = fst.getFirstArc(new FST.Arc<T>());
 
     // Accumulate output as we go
@@ -109,7 +109,7 @@ public final class Util {
 
     final BytesReader in = fst.getBytesReader();
 
-    // TODO: would be nice not to alloc this on every lookup
+    // TODO: would be nice not to alloc this on every lookup id:763 gh:764
     FST.Arc<Long> arc = fst.getFirstArc(new FST.Arc<Long>());
     
     FST.Arc<Long> scratchArc = new FST.Arc<>();
@@ -423,11 +423,11 @@ public final class Util {
       final BytesReader fstReader = fst.getBytesReader();
       final T NO_OUTPUT = fst.outputs.getNoOutput();
 
-      // TODO: we could enable FST to sorting arcs by weight
+      // TODO: we could enable FST to sorting arcs by weight id:962 gh:963
       // as it freezes... can easily do this on first pass
       // (w/o requiring rewrite)
 
-      // TODO: maybe we should make an FST.INPUT_TYPE.BYTE0.5!?
+      // TODO: maybe we should make an FST.INPUT_TYPE.BYTE0.5!? id:802 gh:804
       // (nibbles)
       int rejectCount = 0;
 
@@ -505,7 +505,7 @@ public final class Util {
           assert foundZero;
 
           if (queue != null) {
-            // TODO: maybe we can save this copyFrom if we
+            // TODO: maybe we can save this copyFrom if we id:889 gh:890
             // are more clever above... eg on finding the
             // first NO_OUTPUT arc we'd switch to using
             // scratchArc
@@ -905,7 +905,7 @@ public final class Util {
     scratch.grow(input.length);
     for(int i=0;i<input.length;i++) {
       int value = input.ints[i+input.offset];
-      // NOTE: we allow -128 to 255
+      // NOTE: we allow -128 to 255 id:1231 gh:1232
       assert value >= Byte.MIN_VALUE && value <= 255: "value " + value + " doesn't fit into byte";
       scratch.setByteAt(i, (byte) value);
     }
@@ -935,14 +935,14 @@ public final class Util {
    */
   public static <T> Arc<T> readCeilArc(int label, FST<T> fst, Arc<T> follow,
       Arc<T> arc, BytesReader in) throws IOException {
-    // TODO maybe this is a useful in the FST class - we could simplify some other code like FSTEnum?
+    // TODO maybe this is a useful in the FST class - we could simplify some other code like FSTEnum? id:765 gh:766
     if (label == FST.END_LABEL) {
       if (follow.isFinal()) {
         if (follow.target <= 0) {
           arc.flags = FST.BIT_LAST_ARC;
         } else {
           arc.flags = 0;
-          // NOTE: nextArc is a node (not an address!) in this case:
+          // NOTE: nextArc is a node (not an address!) in this case: id:964 gh:965
           arc.nextArc = follow.target;
         }
         arc.output = follow.nextFinalOutput;
@@ -997,7 +997,7 @@ public final class Util {
 
     while (true) {
       // System.out.println("  non-bs cycle");
-      // TODO: we should fix this code to not have to create
+      // TODO: we should fix this code to not have to create id:804 gh:805
       // object for the output of every arc we scan... only
       // for the matching arc, if found
       if (arc.label >= label) {

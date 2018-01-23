@@ -161,7 +161,7 @@ public class PeerSync implements SolrMetricProducer {
     
     uhandler = core.getUpdateHandler();
     ulog = uhandler.getUpdateLog();
-    // TODO: close
+    // TODO: close id:2955 gh:2956
     shardHandlerFactory = (HttpShardHandlerFactory) core.getCoreContainer().getShardHandlerFactory();
     shardHandler = shardHandlerFactory.getShardHandler(client);
 
@@ -197,7 +197,7 @@ public class PeerSync implements SolrMetricProducer {
       myURL = zkController.getBaseUrl();
     }
 
-    // TODO: core name turns up blank in many tests - find URL if cloud enabled?
+    // TODO: core name turns up blank in many tests - find URL if cloud enabled? id:2138 gh:2139
     return "PeerSync: core="+uhandler.core.getName()+ " url="+myURL +" ";
   }
 
@@ -446,7 +446,7 @@ public class PeerSync implements SolrMetricProducer {
 
     if (srsp.getException() != null) {
 
-      // TODO: look at this more thoroughly - we don't want
+      // TODO: look at this more thoroughly - we don't want id:2784 gh:2785
       // to fail on connection exceptions, but it may make sense
       // to determine this based on the number of fails
       //
@@ -476,10 +476,10 @@ public class PeerSync implements SolrMetricProducer {
         return true;
       }
       
-      // TODO: we should return the above information so that when we can request a recovery through zookeeper, we do
+      // TODO: we should return the above information so that when we can request a recovery through zookeeper, we do id:2150 gh:2151
       // that for these nodes
       
-      // TODO: at least log???
+      // TODO: at least log??? id:2070 gh:2071
       // srsp.getException().printStackTrace(System.out);
      
       log.warn(msg() + " exception talking to " + srsp.getShardAddress() + ", failed", srsp.getException());
@@ -578,7 +578,7 @@ public class PeerSync implements SolrMetricProducer {
       }
     }
 
-    // TODO, do we really need to hold on to all the ranges we requested 
+    // TODO , do we really need to hold on to all the ranges we requested  id:2957 gh:2958
     // keeping track of totalRequestedUpdates should suffice for verification
     sreq.requestedRanges = rangesToRequest;
     sreq.totalRequestedUpdates = totalRequestedVersions;
@@ -611,7 +611,7 @@ public class PeerSync implements SolrMetricProducer {
   private boolean handleVersions(ShardResponse srsp) {
     // we retrieved the last N updates from the replica
     List<Long> otherVersions = (List<Long>)srsp.getSolrResponse().getResponse().get("versions");
-    // TODO: how to handle short lists?
+    // TODO: how to handle short lists? id:2141 gh:2142
 
     SyncShardRequest sreq = (SyncShardRequest) srsp.getShardRequest();
     sreq.reportedVersions =  otherVersions;
@@ -675,7 +675,7 @@ public class PeerSync implements SolrMetricProducer {
 
       if (ourUpdateSet.contains(otherVersion) || requestedUpdateSet.contains(otherVersion)) {
         // we either have this update, or already requested it
-        // TODO: what if the shard we previously requested this from returns failure (because it goes
+        // TODO: what if the shard we previously requested this from returns failure (because it goes id:2786 gh:2787
         // down)
         continue;
       }
@@ -684,7 +684,7 @@ public class PeerSync implements SolrMetricProducer {
       requestedUpdateSet.add(otherVersion);
     }
 
-    // TODO, do we really need to hold on to all the version numbers we requested.
+    // TODO , do we really need to hold on to all the version numbers we requested. id:2153 gh:2154
     // keeping track of totalRequestedUpdates should suffice for verification 
     sreq.requestedUpdates = toRequest;
     sreq.totalRequestedUpdates = toRequest.size();
@@ -865,7 +865,7 @@ public class PeerSync implements SolrMetricProducer {
 
     }
     catch (IOException e) {
-      // TODO: should this be handled separately as a problem with us?
+      // TODO: should this be handled separately as a problem with us? id:2073 gh:2074
       // I guess it probably already will by causing replication to be kicked off.
       sreq.updateException = e;
       log.error(msg() + "Error applying updates from " + sreq.shards + " ,update=" + o, e);

@@ -30,7 +30,7 @@ import static org.apache.solr.search.facet.FacetRequest.RefineMethod.SIMPLE;
 public abstract class FacetMerger {
   public abstract void merge(Object facetResult, Context mcontext);
 
-  // FIXME
+  // FIXME id:1985 gh:1986
   //  public abstract Map<String,Object> getRefinement(Context mcontext);
   public Map<String,Object> getRefinement(Context mcontext) {
     return null;
@@ -52,7 +52,7 @@ public abstract class FacetMerger {
 
     Object root;  // per-shard response
     int maxBucket;  // the current max bucket across all bucket types... incremented as we encounter more
-    int shardNum = -1;  // TODO: keep same mapping across multiple phases...
+    int shardNum = -1;  // TODO: keep same mapping across multiple phases... id:2728 gh:2729
     boolean bucketWasMissing;
 
     public void newShard(String shard) {

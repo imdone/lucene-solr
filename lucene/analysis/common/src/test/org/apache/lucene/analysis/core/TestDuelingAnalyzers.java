@@ -183,7 +183,7 @@ public class TestDuelingAnalyzers extends BaseTokenStreamTestCase {
   }
   
   // we only check a few core attributes here.
-  // TODO: test other things
+  // TODO: test other things id:66 gh:67
   public void assertEquals(String s, TokenStream left, TokenStream right) throws Exception {
     left.reset();
     right.reset();
@@ -209,7 +209,7 @@ public class TestDuelingAnalyzers extends BaseTokenStreamTestCase {
     right.close();
   }
   
-  // TODO: maybe push this out to _TestUtil or LuceneTestCase and always use it instead?
+  // TODO: maybe push this out to _TestUtil or LuceneTestCase and always use it instead? id:126 gh:127
   private static Reader newStringReader(String s) {
     Random random = random();
     Reader r = new StringReader(s);

@@ -49,7 +49,7 @@ public abstract class IndexOutput extends DataOutput implements Closeable {
 
   /** Returns the name used to create this {@code IndexOutput}.  This is especially useful when using
    * {@link Directory#createTempOutput}. */
-  // TODO: can we somehow use this as the default resource description or something?
+  // TODO: can we somehow use this as the default resource description or something? id:604 gh:605
   public String getName() {
     return name;
   }

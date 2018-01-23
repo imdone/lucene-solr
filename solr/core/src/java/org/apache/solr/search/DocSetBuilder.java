@@ -184,13 +184,13 @@ public final class DocSetBuilder {
         bitSet.and(filter);
       }
       return new BitDocSet(bitSet);
-      // TODO - if this set will be cached, should we make it smaller if it's below DocSetUtil.smallSetSize?
+      // TODO - if this set will be cached, should we make it smaller if it's below DocSetUtil.smallSetSize? id:1949 gh:1950
     } else {
       LSBRadixSorter sorter = new LSBRadixSorter();
       sorter.sort(PackedInts.bitsRequired(maxDoc - 1), buffer, pos);
       final int l = dedup(buffer, pos, filter);
       assert l <= pos;
-      return new SortedIntDocSet(buffer, l);  // TODO: have option to not shrink in the future if it will be a temporary set
+      return new SortedIntDocSet(buffer, l);  // TODO: have option to not shrink in the future if it will be a temporary set id:2700 gh:2701
     }
   }
 
@@ -207,7 +207,7 @@ public final class DocSetBuilder {
       if (filter != null) {
         l = dedup(buffer, pos, filter);
       }
-      return new SortedIntDocSet(buffer, l);  // TODO: have option to not shrink in the future if it will be a temporary set
+      return new SortedIntDocSet(buffer, l);  // TODO: have option to not shrink in the future if it will be a temporary set id:2039 gh:2040
     }
   }
 

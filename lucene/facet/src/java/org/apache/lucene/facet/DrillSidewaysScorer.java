@@ -158,7 +158,7 @@ class DrillSidewaysScorer extends BulkScorer {
       }
       LeafCollector failedCollector = null;
       for (DocsAndCost dim : dims) {
-        // TODO: should we sort this 2nd dimension of
+        // TODO: should we sort this 2nd dimension of id:894 gh:895
         // docsEnums from most frequent to least?
         if (dim.approximation.docID() < docID) {
           dim.approximation.advance(docID);
@@ -188,7 +188,7 @@ class DrillSidewaysScorer extends BulkScorer {
 
       collectDocID = docID;
 
-      // TODO: we could score on demand instead since we are
+      // TODO: we could score on demand instead since we are id:1261 gh:1262
       // daat here:
       collectScore = baseScorer.score();
 
@@ -214,7 +214,7 @@ class DrillSidewaysScorer extends BulkScorer {
     //  System.out.println("  doDrillDownAdvanceScoring");
     //}
 
-    // TODO: maybe a class like BS, instead of parallel arrays
+    // TODO: maybe a class like BS, instead of parallel arrays id:1469 gh:1470
     int[] filledSlots = new int[CHUNK];
     int[] docIDs = new int[CHUNK];
     float[] scores = new float[CHUNK];
@@ -277,7 +277,7 @@ class DrillSidewaysScorer extends BulkScorer {
             missingDims[slot] = 0;
             counts[slot] = 1;
           } else {
-            // TODO: single-valued dims will always be true
+            // TODO: single-valued dims will always be true id:1013 gh:1013
             // below; we could somehow specialize
             if (missingDims[slot] >= 1) {
               missingDims[slot] = 2;
@@ -329,7 +329,7 @@ class DrillSidewaysScorer extends BulkScorer {
           //}
           docIDs[slot0] = -1;
 
-          // TODO: we could jump slot0 forward to the
+          // TODO: we could jump slot0 forward to the id:1065 gh:1066
           // baseDocID ... but we'd need to set docIDs for
           // intervening slots to -1
         }
@@ -345,7 +345,7 @@ class DrillSidewaysScorer extends BulkScorer {
         continue;
       }
       
-      // TODO: factor this out & share w/ union scorer,
+      // TODO: factor this out & share w/ union scorer, id:896 gh:897
       // except we start from dim=2 instead:
       for (int dim=2;dim<numDims;dim++) {
         //if (DEBUG) {
@@ -358,7 +358,7 @@ class DrillSidewaysScorer extends BulkScorer {
           if (docIDs[slot] == docID
               && counts[slot] >= dim
               && (dc.twoPhase == null || dc.twoPhase.matches())) {
-            // TODO: single-valued dims will always be true
+            // TODO: single-valued dims will always be true id:1265 gh:1266
             // below; we could somehow specialize
             if (missingDims[slot] >= dim) {
               //if (DEBUG) {
@@ -374,7 +374,7 @@ class DrillSidewaysScorer extends BulkScorer {
             }
           }
 
-          // TODO: sometimes use advance?
+          // TODO: sometimes use advance? id:1474 gh:1475
           docID = dc.approximation.nextDoc();
         }
       }
@@ -413,7 +413,7 @@ class DrillSidewaysScorer extends BulkScorer {
     final int maxDoc = context.reader().maxDoc();
     final int numDims = dims.length;
 
-    // TODO: maybe a class like BS, instead of parallel arrays
+    // TODO: maybe a class like BS, instead of parallel arrays id:1015 gh:1016
     int[] filledSlots = new int[CHUNK];
     int[] docIDs = new int[CHUNK];
     float[] scores = new float[CHUNK];
@@ -422,7 +422,7 @@ class DrillSidewaysScorer extends BulkScorer {
 
     docIDs[0] = -1;
 
-    // NOTE: this is basically a specialized version of
+    // NOTE: this is basically a specialized version of id:1067 gh:1068
     // BooleanScorer, to the minShouldMatch=N-1 case, but
     // carefully tracking which dimension failed to match
 
@@ -504,7 +504,7 @@ class DrillSidewaysScorer extends BulkScorer {
               && counts[slot] >= dim
               && (dc.twoPhase == null || dc.twoPhase.matches())) {
             // This doc is still in the running...
-            // TODO: single-valued dims will always be true
+            // TODO: single-valued dims will always be true id:898 gh:899
             // below; we could somehow specialize
             if (missingDims[slot] >= dim) {
               //if (DEBUG) {
@@ -526,7 +526,7 @@ class DrillSidewaysScorer extends BulkScorer {
       // Collect:
       //System.out.println("  now collect: " + filledCount + " hits");
       for (int i=0;i<filledCount;i++) {
-        // NOTE: This is actually in-order collection,
+        // NOTE: This is actually in-order collection, id:1267 gh:1268
         // because we only accept docs originally returned by
         // the baseScorer (ie that Scorer is AND'd)
         int slot = filledSlots[i];
@@ -563,7 +563,7 @@ class DrillSidewaysScorer extends BulkScorer {
       drillDownLeafCollector.collect(collectDocID);
     }
 
-    // TODO: we could "fix" faceting of the sideways counts
+    // TODO: we could "fix" faceting of the sideways counts id:1479 gh:1480
     // to do this "union" (of the drill down hits) in the
     // end instead:
 

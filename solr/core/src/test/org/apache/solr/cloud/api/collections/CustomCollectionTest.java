@@ -115,7 +115,7 @@ public class CustomCollectionTest extends SolrCloudTestCase {
     new UpdateRequest()
         .add("id", "66", _ROUTE_, "x")
         .commit(cluster.getSolrClient(), collection);
-    // TODO - the local state is cached and causes the request to fail with 'unknown shard'
+    // TODO - the local state is cached and causes the request to fail with 'unknown shard' id:2229 gh:2230
     // assertEquals(1, cluster.getSolrClient().query(collection, new SolrQuery("*:*").setParam(_ROUTE_, "x")).getResults().getNumFound());
 
   }

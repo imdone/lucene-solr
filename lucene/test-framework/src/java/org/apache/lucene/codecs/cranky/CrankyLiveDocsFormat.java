@@ -61,7 +61,7 @@ class CrankyLiveDocsFormat extends LiveDocsFormat {
 
   @Override
   public void files(SegmentCommitInfo info, Collection<String> files) throws IOException {
-    // TODO: is this called only from write? if so we should throw exception!
+    // TODO: is this called only from write? if so we should throw exception! id:1594 gh:1595
     delegate.files(info, files);
   }
 }

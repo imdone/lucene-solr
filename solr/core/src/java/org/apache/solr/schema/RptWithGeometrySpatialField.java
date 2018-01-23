@@ -52,7 +52,7 @@ public class RptWithGeometrySpatialField extends AbstractSpatialFieldType<Compos
     Map<String, String> origArgs = new HashMap<>(args); // clone so we can feed it to an aggregated field type
     super.init(schema, origArgs);
 
-    //TODO Move this check to a call from AbstractSpatialFieldType.createFields() so the type can declare
+    //TODO Move this check to a call from AbstractSpatialFieldType.createFields() so the type can declare id:1943 gh:1944
     // if it supports multi-valued or not. It's insufficient here; we can't see if you set multiValued on the field.
     if (isMultiValued()) {
       throw new SolrException(SolrException.ErrorCode.SERVER_ERROR, "Not capable of multiValued: " + getTypeName());
@@ -171,7 +171,7 @@ public class RptWithGeometrySpatialField extends AbstractSpatialFieldType<Compos
           } else {
             //optimize shape on a cache hit if possible. This must be thread-safe and it is.
             if (shape instanceof JtsGeometry) {
-              ((JtsGeometry) shape).index(); // TODO would be nice if some day we didn't have to cast
+              ((JtsGeometry) shape).index(); // TODO would be nice if some day we didn't have to cast id:2696 gh:2697
             }
           }
           return shape;

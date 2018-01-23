@@ -183,7 +183,7 @@ public class MultiThreadedOCPTest extends AbstractFullDistribZkTestBase {
           }
           assertNotSame("We have a failed SPLITSHARD task", RequestStatusState.FAILED, state);
         }
-        // TODO: REQUESTSTATUS might come back with more than 1 running tasks over multiple calls.
+        // TODO: REQUESTSTATUS might come back with more than 1 running tasks over multiple calls. id:2866 gh:2867
         // The only way to fix this is to support checking of multiple requestids in a single REQUESTSTATUS task.
         
         assertTrue("Mutual exclusion failed. Found more than one task running for the same collection", runningTasks < 2);

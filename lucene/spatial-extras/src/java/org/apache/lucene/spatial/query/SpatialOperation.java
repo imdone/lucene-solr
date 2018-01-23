@@ -43,7 +43,7 @@ import java.util.Map;
  * @lucene.experimental
  */
 public abstract class SpatialOperation implements Serializable {
-  //TODO rename to SpatialPredicate. Use enum?  LUCENE-5771
+  //TODO rename to SpatialPredicate. Use enum?  LUCENE-5771 id:1505 gh:1506
 
   // Private registry
   private static final Map<String, SpatialOperation> registry = new HashMap<>();//has aliases

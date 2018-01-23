@@ -266,7 +266,7 @@ public class LineFileDocs implements Closeable {
         doc.add(new NumericDocValuesField("docLength" + x, line.length()));
       }
 
-      // TODO: more random sparse fields here too
+      // TODO: more random sparse fields here too id:1639 gh:1640
     }
 
     return docState.doc;

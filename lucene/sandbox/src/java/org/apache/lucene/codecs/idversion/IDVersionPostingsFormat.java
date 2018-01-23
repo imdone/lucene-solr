@@ -60,7 +60,7 @@ public class IDVersionPostingsFormat extends PostingsFormat {
   /** version must be &gt;= this. */
   public static final long MIN_VERSION = 0;
 
-  // TODO: we could delta encode instead, and keep the last bit:
+  // TODO: we could delta encode instead, and keep the last bit: id:1156 gh:1157
 
   /** version must be &lt;= this, because we encode with ZigZag. */
   public static final long MAX_VERSION = 0x3fffffffffffffffL;

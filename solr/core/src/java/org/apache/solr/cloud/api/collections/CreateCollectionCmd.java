@@ -400,7 +400,7 @@ public class CreateCollectionCmd implements OverseerCollectionMessageHandler.Cmd
         try {
           Map<String,Object> collectionProps = new HashMap<>();
 
-          // TODO: if collection.configName isn't set, and there isn't already a conf in zk, just use that?
+          // TODO: if collection.configName isn't set, and there isn't already a conf in zk, just use that? id:1821 gh:1822
           String defaultConfigName = System.getProperty(ZkController.COLLECTION_PARAM_PREFIX + ZkController.CONFIGNAME_PROP, collection);
 
           if (params.size() > 0) {

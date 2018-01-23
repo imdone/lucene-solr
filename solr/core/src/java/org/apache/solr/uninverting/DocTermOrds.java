@@ -153,7 +153,7 @@ public class DocTermOrds implements Accountable {
   protected long sizeOfIndexedStrings;
 
   /** Holds the indexed (by default every 128th) terms. */
-  // TODO: This seems like an obvious candidate for using BytesRefArray extended with binarySearch
+  // TODO: This seems like an obvious candidate for using BytesRefArray extended with binarySearch id:2093 gh:2094
   // This would save heap space as well as avoid a lot of small Objects (BytesRefs).
   // This would also increase data locality for binarySearch lookups, potentially making it faster.
   protected BytesRef[] indexedTermsArray = new BytesRef[0];
@@ -174,7 +174,7 @@ public class DocTermOrds implements Accountable {
    * Normally, docValues should be used in preference to DocTermOrds. */
   protected boolean checkForDocValues = true;
 
-  // TODO: Why is indexedTermsArray not part of this?
+  // TODO: Why is indexedTermsArray not part of this? id:2770 gh:2771
   /** Returns total bytes used. */
   @Override
   public long ramBytesUsed() {
@@ -199,7 +199,7 @@ public class DocTermOrds implements Accountable {
     this(reader, liveDocs, field, null, Integer.MAX_VALUE);
   }
   
-  // TODO: instead of all these ctors and options, take termsenum!
+  // TODO: instead of all these ctors and options, take termsenum! id:2134 gh:2134
 
   /** Inverts only terms starting w/ prefix */
   public DocTermOrds(LeafReader reader, Bits liveDocs, String field, BytesRef termPrefix) throws IOException {
@@ -246,7 +246,7 @@ public class DocTermOrds implements Accountable {
    *  used when creating this class 
    */
   public TermsEnum getOrdTermsEnum(LeafReader reader) throws IOException {
-    // NOTE: see LUCENE-6529 before attempting to optimize this method to
+    // NOTE: see LUCENE-6529 before attempting to optimize this method to id:2053 gh:2055
     // return a TermsEnum directly from the reader if it already supports ord().
 
     assert null != indexedTermsArray;
@@ -354,7 +354,7 @@ public class DocTermOrds implements Accountable {
         sizeOfIndexedStrings += t.length;
         BytesRef indexedTerm = new BytesRef();
         indexedTermsBytes.copy(t, indexedTerm);
-        // TODO: really should 1) strip off useless suffix,
+        // TODO: really should 1) strip off useless suffix, id:2943 gh:2944
         // and 2) use FST not array/PagedBytes
         indexedTerms.add(indexedTerm);
       }
@@ -394,7 +394,7 @@ public class DocTermOrds implements Accountable {
               // We avoid a doubling strategy to lower memory usage.
               // this faceting method isn't for docs with many terms.
               // In hotspot, objects have 2 words of overhead, then fields, rounded up to a 64-bit boundary.
-              // TODO: figure out what array lengths we can round up to w/o actually using more memory
+              // TODO: figure out what array lengths we can round up to w/o actually using more memory id:2096 gh:2097
               // (how much space does a byte[] take up?  Is data preceded by a 32 bit length only?
               // It should be safe to round up to the nearest 32 bits in any case.
               int newLen = (newend + 3) & 0xfffffffc;  // 4 byte alignment

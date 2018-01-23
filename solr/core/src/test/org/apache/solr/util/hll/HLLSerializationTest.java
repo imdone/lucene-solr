@@ -52,7 +52,7 @@ public class HLLSerializationTest extends LuceneTestCase {
       randoms.add(random.nextLong());
     }
     
-    // NOTE: log2m<=16 was chosen as the max log2m parameter so that the test
+    // NOTE: log2m<=16 was chosen as the max log2m parameter so that the test id:2404 gh:2405
     //       completes in a reasonable amount of time. Not much is gained by
     //       testing larger values
     final int maxLog2m = 16;

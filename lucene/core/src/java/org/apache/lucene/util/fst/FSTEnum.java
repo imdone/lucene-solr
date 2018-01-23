@@ -111,7 +111,7 @@ abstract class FSTEnum<T> {
     pushFirst();
   }
 
-  // TODO: should we return a status here (SEEK_FOUND / SEEK_NOT_FOUND /
+  // TODO: should we return a status here (SEEK_FOUND / SEEK_NOT_FOUND / id:881 gh:882
   // SEEK_END)?  saves the eq check above?
 
   /** Seeks to smallest term that's &gt;= target. */
@@ -119,7 +119,7 @@ abstract class FSTEnum<T> {
 
     //System.out.println("    advance len=" + target.length + " curlen=" + current.length);
 
-    // TODO: possibly caller could/should provide common
+    // TODO: possibly caller could/should provide common id:1204 gh:1205
     // prefix length?  ie this work may be redundant if
     // caller is in fact intersecting against its own
     // automaton
@@ -168,7 +168,7 @@ abstract class FSTEnum<T> {
           }
         }
 
-        // NOTE: this code is dup'd w/ the code below (in
+        // NOTE: this code is dup'd w/ the code below (in id:757 gh:758
         // the outer else clause):
         if (found) {
           // Match
@@ -254,12 +254,12 @@ abstract class FSTEnum<T> {
     }
   }
 
-  // TODO: should we return a status here (SEEK_FOUND / SEEK_NOT_FOUND /
+  // TODO: should we return a status here (SEEK_FOUND / SEEK_NOT_FOUND / id:956 gh:957
   // SEEK_END)?  saves the eq check above?
   /** Seeks to largest term that's &lt;= target. */
   protected void doSeekFloor() throws IOException {
 
-    // TODO: possibly caller could/should provide common
+    // TODO: possibly caller could/should provide common id:796 gh:797
     // prefix length?  ie this work may be redundant if
     // caller is in fact intersecting against its own
     // automaton
@@ -307,7 +307,7 @@ abstract class FSTEnum<T> {
           }
         }
 
-        // NOTE: this code is dup'd w/ the code below (in
+        // NOTE: this code is dup'd w/ the code below (in id:883 gh:884
         // the outer else clause):
         if (found) {
           // Match -- recurse
@@ -328,7 +328,7 @@ abstract class FSTEnum<T> {
         } else if (high == -1) {
           //System.out.println("  before first");
           // Very first arc is after our target
-          // TODO: if each arc could somehow read the arc just
+          // TODO: if each arc could somehow read the arc just id:1208 gh:1209
           // before, we can save this re-scan.  The ceil case
           // doesn't need this because it reads the next arc
           // instead:
@@ -375,7 +375,7 @@ abstract class FSTEnum<T> {
           arc = fst.readFirstTargetArc(arc, getArc(upto), fstReader);
           targetLabel = getTargetLabel();
         } else if (arc.label > targetLabel) {
-          // TODO: if each arc could somehow read the arc just
+          // TODO: if each arc could somehow read the arc just id:759 gh:760
           // before, we can save this re-scan.  The ceil case
           // doesn't need this because it reads the next arc
           // instead:
@@ -419,7 +419,7 @@ abstract class FSTEnum<T> {
   /** Seeks to exactly target term. */
   protected boolean doSeekExact() throws IOException {
 
-    // TODO: possibly caller could/should provide common
+    // TODO: possibly caller could/should provide common id:958 gh:959
     // prefix length?  ie this work may be redundant if
     // caller is in fact intersecting against its own
     // automaton

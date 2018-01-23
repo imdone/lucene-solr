@@ -231,7 +231,7 @@ public class TestComputePlanAction extends SimSolrCloudTestCase {
     TriggerEvent triggerEvent = eventRef.get();
     assertNotNull(triggerEvent);
     assertEquals(TriggerEventType.NODELOST, triggerEvent.getEventType());
-    // TODO assertEquals(stoppedNodeName, triggerEvent.getProperty(TriggerEvent.NODE_NAME));
+    // TODO assertEquals(stoppedNodeName, triggerEvent.getProperty(TriggerEvent.NODE_NAME)); id:3075 gh:3076
 
     Map context = actionContextPropsRef.get();
     assertNotNull(context);

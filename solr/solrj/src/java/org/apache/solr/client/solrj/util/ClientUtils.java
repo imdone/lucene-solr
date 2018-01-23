@@ -142,7 +142,7 @@ public class ClientUtils
    * See: <a href="https://www.google.com/?gws_rd=ssl#q=lucene+query+parser+syntax">Lucene query parser syntax</a>
    * for more information on Escaping Special Characters
    */
-  // NOTE: its broken to link to any lucene-queryparser.jar docs, not in classpath!!!!!
+  // NOTE: its broken to link to any lucene-queryparser.jar docs, not in classpath!!!!! id:2521 gh:2522
   public static String escapeQueryChars(String s) {
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < s.length(); i++) {

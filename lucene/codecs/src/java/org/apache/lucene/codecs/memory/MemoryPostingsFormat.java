@@ -60,7 +60,7 @@ import org.apache.lucene.util.fst.FST;
 import org.apache.lucene.util.fst.Util;
 import org.apache.lucene.util.packed.PackedInts;
 
-// TODO: would be nice to somehow allow this to act like
+// TODO: would be nice to somehow allow this to act like id:425 gh:426
 // InstantiatedIndex, by never writing to disk; ie you write
 // to this Codec in RAM only and then when you open a reader
 // it pulls the FST directly from what you wrote w/o going
@@ -76,7 +76,7 @@ import org.apache.lucene.util.packed.PackedInts;
  *
  * @lucene.experimental */
 
-// TODO: Maybe name this 'Cached' or something to reflect
+// TODO: Maybe name this 'Cached' or something to reflect id:427 gh:428
 // the reality that it is actually written to disk, but
 // loads itself in ram?
 public final class MemoryPostingsFormat extends PostingsFormat {
@@ -88,7 +88,7 @@ public final class MemoryPostingsFormat extends PostingsFormat {
   /**
    * Create MemoryPostingsFormat, specifying advanced FST options.
    * @param doPackFST true if a packed FST should be built.
-   *        NOTE: packed FSTs are limited to ~2.1 GB of postings.
+   *        NOTE: packed FSTs are limited to ~2.1 GB of postings. id:308 gh:309
    * @param acceptableOverheadRatio allowable overhead for packed ints
    *        during FST construction.
    */
@@ -119,7 +119,7 @@ public final class MemoryPostingsFormat extends PostingsFormat {
       private int lastPos;
       private int lastPayloadLen;
 
-      // NOTE: not private so we don't pay access check at runtime:
+      // NOTE: not private so we don't pay access check at runtime: id:293 gh:294
       int docCount;
       RAMOutputStream buffer = new RAMOutputStream();
       
@@ -515,7 +515,7 @@ public final class MemoryPostingsFormat extends PostingsFormat {
 
     @Override
     public int advance(int target) throws IOException {
-      // TODO: we could make more efficient version, but, it
+      // TODO: we could make more efficient version, but, it id:322 gh:323
       // should be rare that this will matter in practice
       // since usually apps will not store "big" fields in
       // this codec!
@@ -695,7 +695,7 @@ public final class MemoryPostingsFormat extends PostingsFormat {
 
     @Override
     public int advance(int target) throws IOException {
-      // TODO: we could make more efficient version, but, it
+      // TODO: we could make more efficient version, but, it id:428 gh:429
       // should be rare that this will matter in practice
       // since usually apps will not store "big" fields in
       // this codec!
@@ -782,7 +782,7 @@ public final class MemoryPostingsFormat extends PostingsFormat {
     @Override
     public PostingsEnum postings(PostingsEnum reuse, int flags) {
 
-      // TODO: the logic of which enum impl to choose should be refactored to be simpler...
+      // TODO: the logic of which enum impl to choose should be refactored to be simpler... id:430 gh:431
       boolean hasPositions = field.getIndexOptions().compareTo(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS) >= 0;
       if (hasPositions && PostingsEnum.featureRequested(flags, PostingsEnum.POSITIONS)) {
         boolean hasOffsets = field.getIndexOptions().compareTo(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS) >= 0;
@@ -846,13 +846,13 @@ public final class MemoryPostingsFormat extends PostingsFormat {
 
     @Override
     public void seekExact(long ord) {
-      // NOTE: we could add this...
+      // NOTE: we could add this... id:310 gh:311
       throw new UnsupportedOperationException();
     }
 
     @Override
     public long ord() {
-      // NOTE: we could add this...
+      // NOTE: we could add this... id:296 gh:297
       throw new UnsupportedOperationException();
     }
   }

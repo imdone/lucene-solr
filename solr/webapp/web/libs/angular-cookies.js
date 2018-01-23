@@ -93,7 +93,7 @@ angular.module('ngCookies', ['ng']).
       runEval = true;
 
       //at the end of each eval, push cookies
-      //TODO: this should happen before the "delayed" watches fire, because if some cookies are not
+      //TODO: this should happen before the "delayed" watches fire, because if some cookies are not id:2546 gh:2547
       //      strings or browser refuses to store some cookies, we update the model in the push fn.
       $rootScope.$watch(push);
 

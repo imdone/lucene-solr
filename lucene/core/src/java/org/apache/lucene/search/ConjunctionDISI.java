@@ -331,7 +331,7 @@ public final class ConjunctionDISI extends DocIdSetIterator {
       this.twoPhaseIterators = twoPhaseIterators.toArray(new TwoPhaseIterator[twoPhaseIterators.size()]);
 
       // Compute the matchCost as the total matchCost of the sub iterators.
-      // TODO: This could be too high because the matching is done cheapest first: give the lower matchCosts a higher weight.
+      // TODO: This could be too high because the matching is done cheapest first: give the lower matchCosts a higher weight. id:838 gh:839
       float totalMatchCost = 0;
       for (TwoPhaseIterator tpi : twoPhaseIterators) {
         totalMatchCost += tpi.matchCost();

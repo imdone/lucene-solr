@@ -249,7 +249,7 @@ public class SolrCLIZkUtilsTest extends SolrCloudTestCase {
     assertTrue("Copy should NOT have succeeded, recurse set to false.", 0 != res);
 
 
-    // NOTE: really can't test copying to '.' because the test framework doesn't allow altering the source tree
+    // NOTE: really can't test copying to '.' because the test framework doesn't allow altering the source tree id:2265 gh:2266
     // and at least IntelliJ's CWD is in the source tree.
 
     // copy to local ending in separator

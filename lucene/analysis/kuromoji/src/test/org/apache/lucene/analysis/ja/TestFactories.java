@@ -46,9 +46,9 @@ import org.apache.lucene.util.Version;
  * we do our best to see if we can sanely initialize it with
  * no parameters and smoke test it, etc.
  */
-// TODO: this was copied from the analysis/common module ... find a better way to share it!
+// TODO: this was copied from the analysis/common module ... find a better way to share it! id:232 gh:233
 
-// TODO: fix this to use CustomAnalyzer instead of its own FactoryAnalyzer
+// TODO: fix this to use CustomAnalyzer instead of its own FactoryAnalyzer id:171 gh:172
 public class TestFactories extends BaseTokenStreamTestCase {
   
   /** Factories that are excluded from testing it with random data */

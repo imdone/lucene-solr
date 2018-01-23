@@ -103,7 +103,7 @@ public class TestStemmerOverrideFilter extends BaseTokenStreamTestCase {
         // Make sure we don't try to add two inputs that vary only by case:
         String seenInputValue;
         if (ignoreCase) {
-          // TODO: can we simply use inputValue.toLowerCase(Locale.ROOT)???
+          // TODO: can we simply use inputValue.toLowerCase(Locale.ROOT)??? id:87 gh:88
           char[] buffer = inputValue.toCharArray();
           CharacterUtils.toLowerCase(buffer, 0, buffer.length);
           seenInputValue = buffer.toString();

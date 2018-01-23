@@ -65,7 +65,7 @@ public class TSTLookup extends Lookup {
     this.tempFileNamePrefix = tempFileNamePrefix;
   }
   
-  // TODO: Review if this comparator is really needed for TST to work correctly!!!
+  // TODO: Review if this comparator is really needed for TST to work correctly!!! id:1544 gh:1545
 
   /** TST uses UTF-16 sorting, so we need a suitable BytesRef comparator to do this. */
   private final static Comparator<BytesRef> utf8SortedAsUTF16SortOrder = (a, b) -> {
@@ -88,7 +88,7 @@ public class TSTLookup extends Lookup {
         // have to carefully fixup the bytes at the
         // difference to match UTF16's sort order:
         
-        // NOTE: instead of moving supplementary code points (0xee and 0xef) to the unused 0xfe and 0xff, 
+        // NOTE: instead of moving supplementary code points (0xee and 0xef) to the unused 0xfe and 0xff,  id:1425 gh:1426
         // we move them to the unused 0xfc and 0xfd [reserved for future 6-byte character sequences]
         // this reserves 0xff for preflex's term reordering (surrogate dance), and if unicode grows such
         // that 6-byte sequences are needed we have much bigger problems anyway.
@@ -142,7 +142,7 @@ public class TSTLookup extends Lookup {
    */
   public boolean add(CharSequence key, Object value) {
     autocomplete.insert(root, key, value, 0);
-    // XXX we don't know if a new node was created
+    // XXX we don't know if a new node was created id:1304 gh:1305
     return true;
   }
 

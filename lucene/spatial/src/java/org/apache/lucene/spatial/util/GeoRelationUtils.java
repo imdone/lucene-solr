@@ -27,7 +27,7 @@ public class GeoRelationUtils {
 
   /**
    * Determine if a bbox (defined by minLat, maxLat, minLon, maxLon) contains the provided point (defined by lat, lon)
-   * NOTE: this is a basic method that does not handle dateline or pole crossing. Unwrapping must be done before
+   * NOTE: this is a basic method that does not handle dateline or pole crossing. Unwrapping must be done before id:1460 gh:1461
    * calling this method.
    */
   public static boolean pointInRectPrecise(final double lat, final double lon,

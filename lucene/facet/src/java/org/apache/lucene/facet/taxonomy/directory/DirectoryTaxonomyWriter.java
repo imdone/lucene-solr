@@ -254,7 +254,7 @@ public class DirectoryTaxonomyWriter implements TaxonomyWriter {
    * @param openMode see {@link OpenMode}
    */
   protected IndexWriterConfig createIndexWriterConfig(OpenMode openMode) {
-    // TODO: should we use a more optimized Codec?
+    // TODO: should we use a more optimized Codec? id:1281 gh:1282
     // The taxonomy has a unique structure, where each term is associated with one document
 
     // Make sure we use a MergePolicy which always merges adjacent segments and thus
@@ -383,7 +383,7 @@ public class DirectoryTaxonomyWriter implements TaxonomyWriter {
       for (LeafReaderContext ctx : reader.leaves()) {
         Terms terms = ctx.reader().terms(Consts.FULL);
         if (terms != null) {
-          // TODO: share per-segment TermsEnum here!
+          // TODO: share per-segment TermsEnum here! id:1502 gh:1503
           TermsEnum termsEnum = terms.iterator();
           if (termsEnum.seekExact(catTerm)) {
             // liveDocs=null because the taxonomy has no deletes
@@ -501,7 +501,7 @@ public class DirectoryTaxonomyWriter implements TaxonomyWriter {
     // also add to the parent array
     taxoArrays = getTaxoArrays().add(id, parent);
 
-    // NOTE: this line must be executed last, or else the cache gets updated
+    // NOTE: this line must be executed last, or else the cache gets updated id:1030 gh:1031
     // before the parents array (LUCENE-4596)
     addToCache(categoryPath, id);
 
@@ -570,7 +570,7 @@ public class DirectoryTaxonomyWriter implements TaxonomyWriter {
     // addCategoryDocument -- when this method returns, we must know that the
     // reader manager's state is current. also, it sets shouldRefresh to false, 
     // and this cannot overlap with addCatDoc too.
-    // NOTE: since this method is sync'ed, it can call maybeRefresh, instead of
+    // NOTE: since this method is sync'ed, it can call maybeRefresh, instead of id:1083 gh:1084
     // maybeRefreshBlocking. If ever this is changed, make sure to change the
     // call too.
     if (shouldRefreshReaderManager && initializedReaderManager) {
@@ -663,7 +663,7 @@ public class DirectoryTaxonomyWriter implements TaxonomyWriter {
    * If the number is set to {@code 0}, the entire taxonomy is read into the
    * cache on first use, without fetching individual categories first.
    * <p>
-   * NOTE: it is assumed that this method is called immediately after the
+   * NOTE: it is assumed that this method is called immediately after the id:914 gh:915
    * taxonomy writer has been created.
    */
   public void setCacheMissesUntilFill(int i) {
@@ -694,7 +694,7 @@ public class DirectoryTaxonomyWriter implements TaxonomyWriter {
       for (LeafReaderContext ctx : reader.leaves()) {
         Terms terms = ctx.reader().terms(Consts.FULL);
         if (terms != null) { // cannot really happen, but be on the safe side
-          // TODO: share per-segment TermsEnum here!
+          // TODO: share per-segment TermsEnum here! id:1283 gh:1284
           TermsEnum termsEnum = terms.iterator();
           while (termsEnum.next() != null) {
             if (!cache.isFull()) {
@@ -790,7 +790,7 @@ public class DirectoryTaxonomyWriter implements TaxonomyWriter {
       for (final LeafReaderContext ctx : r.leaves()) {
         final LeafReader ar = ctx.reader();
         final Terms terms = ar.terms(Consts.FULL);
-        // TODO: share per-segment TermsEnum here!
+        // TODO: share per-segment TermsEnum here! id:1504 gh:1505
         TermsEnum te = terms.iterator();
         while (te.next() != null) {
           FacetLabel cp = new FacetLabel(FacetsConfig.stringToPath(te.term().utf8ToString()));
@@ -922,7 +922,7 @@ public class DirectoryTaxonomyWriter implements TaxonomyWriter {
       try (DataInputStream in = new DataInputStream(new BufferedInputStream(
           Files.newInputStream(tmpfile)))) {
         map = new int[in.readInt()];
-        // NOTE: The current code assumes here that the map is complete,
+        // NOTE: The current code assumes here that the map is complete, id:1031 gh:1032
         // i.e., every ordinal gets one and exactly one value. Otherwise,
         // we may run into an EOF here, or vice versa, not read everything.
         for (int i=0; i<map.length; i++) {

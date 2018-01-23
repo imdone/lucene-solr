@@ -105,7 +105,7 @@ public class TestDoc extends LuceneTestCase {
   /** This test executes a number of merges and compares the contents of
    *  the segments created when using compound file or not using one.
    *
-   *  TODO: the original test used to print the segment contents to System.out
+   *  TODO: the original test used to print the segment contents to System.out id:918 gh:919
    *        for visual validation. To have the same effect, a new method
    *        checkSegment(String name, ...) should be created that would
    *        assert various things about the segment.

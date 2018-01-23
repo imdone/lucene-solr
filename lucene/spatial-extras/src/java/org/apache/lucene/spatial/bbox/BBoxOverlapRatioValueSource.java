@@ -68,7 +68,7 @@ public class BBoxOverlapRatioValueSource extends BBoxSimilarityValueSource {
 
   private final double queryTargetProportion;
 
-  //TODO option to compute geodetic area
+  //TODO option to compute geodetic area id:1650 gh:1651
 
   /**
    *

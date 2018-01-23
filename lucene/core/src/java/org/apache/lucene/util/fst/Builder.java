@@ -24,7 +24,7 @@ import org.apache.lucene.util.IntsRef;
 import org.apache.lucene.util.IntsRefBuilder;
 import org.apache.lucene.util.fst.FST.INPUT_TYPE; // javadoc
 
-// TODO: could we somehow stream an FST to disk while we
+// TODO: could we somehow stream an FST to disk while we id:944 gh:945
 // build it?
 
 /**
@@ -69,7 +69,7 @@ public class Builder<T> {
 
   private final IntsRefBuilder lastInput = new IntsRefBuilder();
 
-  // NOTE: cutting this over to ArrayList instead loses ~6%
+  // NOTE: cutting this over to ArrayList instead loses ~6% id:783 gh:784
   // in build performance on 9.8M Wikipedia terms; so we
   // left this as an array:
   // current "frontier"
@@ -242,7 +242,7 @@ public class Builder<T> {
           // until the 'distinguished edge', ie we keep only the
           // 'divergent' part of the FST. if my parent, about to be
           // compiled, has inputCount 1 then we are already past the
-          // distinguished edge.  NOTE: this only works if
+          // distinguished edge.  NOTE: this only works if id:816 gh:817
           // the FST outputs are not "compressible" (simple
           // ords ARE compressible).
           doPrune = true;
@@ -509,7 +509,7 @@ public class Builder<T> {
     public T nextFinalOutput;
   }
 
-  // NOTE: not many instances of Node or CompiledNode are in
+  // NOTE: not many instances of Node or CompiledNode are in id:1191 gh:1192
   // memory while the FST is being built; it's only the
   // current "frontier":
 
@@ -534,7 +534,7 @@ public class Builder<T> {
     final Builder<T> owner;
     public int numArcs;
     public Arc<T>[] arcs;
-    // TODO: instead of recording isFinal/output on the
+    // TODO: instead of recording isFinal/output on the id:747 gh:748
     // node, maybe we should use -1 arc to mean "end" (like
     // we do when reading the FST).  Would simplify much
     // code here...

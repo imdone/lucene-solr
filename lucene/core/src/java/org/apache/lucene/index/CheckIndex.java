@@ -868,7 +868,7 @@ public final class CheckIndex implements Closeable {
           int cmp = 0;
 
           for (int i = 0; i < comparators.length; i++) {
-            // TODO: would be better if copy() didnt cause a term lookup in TermOrdVal & co,
+            // TODO: would be better if copy() didnt cause a term lookup in TermOrdVal & co, id:389 gh:390
             // the segments are always the same here...
             comparators[i].copy(0, docID-1);
             comparators[i].setBottom(0);
@@ -1210,7 +1210,7 @@ public final class CheckIndex implements Closeable {
    * searcher is optional, to verify with queries. Can be null.
    */
   private static Status.TermIndexStatus checkFields(Fields fields, Bits liveDocs, int maxDoc, FieldInfos fieldInfos, boolean doPrint, boolean isVectors, PrintStream infoStream, boolean verbose) throws IOException {
-    // TODO: we should probably return our own stats thing...?!
+    // TODO: we should probably return our own stats thing...?! id:466 gh:467
     long startNS;
     if (doPrint) {
       startNS = System.nanoTime();
@@ -1233,7 +1233,7 @@ public final class CheckIndex implements Closeable {
       lastField = field;
       
       // check that the field is in fieldinfos, and is indexed.
-      // TODO: add a separate test to check this for different reader impls
+      // TODO: add a separate test to check this for different reader impls id:540 gh:541
       FieldInfo fieldInfo = fieldInfos.fieldInfo(field);
       if (fieldInfo == null) {
         throw new RuntimeException("fieldsEnum inconsistent with fieldInfos, no fieldInfos for: " + field);
@@ -1242,7 +1242,7 @@ public final class CheckIndex implements Closeable {
         throw new RuntimeException("fieldsEnum inconsistent with fieldInfos, isIndexed == false for: " + field);
       }
       
-      // TODO: really the codec should not return a field
+      // TODO: really the codec should not return a field id:522 gh:523
       // from FieldsEnum if it has no Terms... but we do
       // this today:
       // assert fields.terms(field) != null;
@@ -1539,7 +1539,7 @@ public final class CheckIndex implements Closeable {
                 if (hasOffsets) {
                   int startOffset = postings.startOffset();
                   int endOffset = postings.endOffset();
-                  // NOTE: we cannot enforce any bounds whatsoever on vectors... they were a free-for-all before?
+                  // NOTE: we cannot enforce any bounds whatsoever on vectors... they were a free-for-all before? id:393 gh:394
                   // but for offsets in the postings lists these checks are fine: they were always enforced by IndexWriter
                   if (!isVectors) {
                     if (startOffset < 0) {
@@ -1755,7 +1755,7 @@ public final class CheckIndex implements Closeable {
    */
   public static Status.TermIndexStatus testPostings(CodecReader reader, PrintStream infoStream, boolean verbose, boolean failFast) throws IOException {
 
-    // TODO: we should go and verify term vectors match, if
+    // TODO: we should go and verify term vectors match, if id:392 gh:393
     // crossCheckTermVectors is on...
 
     Status.TermIndexStatus status;
@@ -2215,7 +2215,7 @@ public final class CheckIndex implements Closeable {
     if (bdv.docID() != -1) {
       throw new RuntimeException("binary dv iterator for field: " + fieldName + " should start at docID=-1, but got " + bdv.docID());
     }
-    // TODO: we could add stats to DVs, e.g. total doc count w/ a value for this field
+    // TODO: we could add stats to DVs, e.g. total doc count w/ a value for this field id:469 gh:470
     while ((doc = bdv.nextDoc()) != NO_MORE_DOCS) {
       BytesRef value = bdv.binaryValue();
       value.isValid();
@@ -2334,7 +2334,7 @@ public final class CheckIndex implements Closeable {
     if (ndv.docID() != -1) {
       throw new RuntimeException("dv iterator for field: " + fieldName + " should start at docID=-1, but got " + ndv.docID());
     }
-    // TODO: we could add stats to DVs, e.g. total doc count w/ a value for this field
+    // TODO: we could add stats to DVs, e.g. total doc count w/ a value for this field id:543 gh:544
     while ((doc = ndv.nextDoc()) != NO_MORE_DOCS) {
       ndv.longValue();
     }
@@ -2403,7 +2403,7 @@ public final class CheckIndex implements Closeable {
       final Bits liveDocs = reader.getLiveDocs();
 
       final Fields postingsFields;
-      // TODO: testTermsIndex
+      // TODO: testTermsIndex id:524 gh:525
       if (crossCheckTermVectors) {
         postingsFields = reader.getPostingsReader().getMergeInstance();
       } else {
@@ -2420,7 +2420,7 @@ public final class CheckIndex implements Closeable {
           // are not corrupt:
           Fields tfv = vectorsReader.get(j);
           
-          // TODO: can we make a IS(FIR) that searches just
+          // TODO: can we make a IS(FIR) that searches just id:396 gh:397
           // this term vector... to pass for searcher?
           
           if (tfv != null) {
@@ -2507,7 +2507,7 @@ public final class CheckIndex implements Closeable {
                         // sure they don't throw exc:
                         final int startOffset = postings.startOffset();
                         final int endOffset = postings.endOffset();
-                        // TODO: these are too anal...?
+                        // TODO: these are too anal...? id:395 gh:396
                         /*
                         if (endOffset < startOffset) {
                         throw new RuntimeException("vector startOffset=" + startOffset + " is > endOffset=" + endOffset);

@@ -386,7 +386,7 @@ public class TokenSourcesTest extends BaseTokenStreamTestCase {
       if (storeTermVectorPositions && positionsIncrements[i] != 0) {
         continue;
       }
-      //TODO should RandomTokenStream ensure endOffsets for tokens at same position and same startOffset are greater
+      //TODO should RandomTokenStream ensure endOffsets for tokens at same position and same startOffset are greater id:1319 gh:1320
       // than previous token's endOffset?  That would increase the testable possibilities.
       if (startOffsets[i] == startOffsets[i-1]) {
         if (VERBOSE)

@@ -73,7 +73,7 @@ final class NodeHash<T> {
     final int PRIME = 31;
     //System.out.println("hash unfrozen");
     long h = 0;
-    // TODO: maybe if number of arcs is high we can safely subsample?
+    // TODO: maybe if number of arcs is high we can safely subsample? id:885 gh:887
     for(int arcIdx=0;arcIdx<node.numArcs;arcIdx++) {
       final Builder.Arc<T> arc = node.arcs[arcIdx];
       //System.out.println("  label=" + arc.label + " target=" + ((Builder.CompiledNode) arc.target).node + " h=" + h + " output=" + fst.outputs.outputToString(arc.output) + " isFinal?=" + arc.isFinal);

@@ -43,7 +43,7 @@ import org.junit.BeforeClass;
 /**
  * Primarily a test of parsing and serialization of the CursorMark values.
  *
- * NOTE: this class Reuses some utilities from {@link CursorPagingTest} that assume the same schema and configs.
+ * NOTE: this class Reuses some utilities from {@link CursorPagingTest} that assume the same schema and configs. id:3093 gh:3094
  *
  * @see CursorPagingTest 
  */

@@ -392,7 +392,7 @@ abstract class PointSetQuery extends Query implements DocSetProducer {
   /**
    * Iterator of encoded point values.
    */
-  // TODO: if we want to stream, maybe we should use jdk stream class?
+  // TODO: if we want to stream, maybe we should use jdk stream class? id:2865 gh:2866
   public static abstract class Stream implements BytesRefIterator {
     @Override
     public abstract BytesRef next();
@@ -716,7 +716,7 @@ abstract class PointSetQuery extends Query implements DocSetProducer {
       if (crosses) {
         return PointValues.Relation.CELL_CROSSES_QUERY;
       } else {
-        // NOTE: we only hit this if we are on a cell whose min and max values are exactly equal to our point,
+        // NOTE: we only hit this if we are on a cell whose min and max values are exactly equal to our point, id:1955 gh:1956
         // which can easily happen if many docs share this one value
         return PointValues.Relation.CELL_INSIDE_QUERY;
       }

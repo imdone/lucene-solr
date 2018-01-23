@@ -116,7 +116,7 @@ public class TestLTRReRankingPipeline extends LuceneTestCase {
     doc.add(newStringField("id", "0", Field.Store.YES));
     doc.add(newTextField("field", "wizard the the the the the oz",
         Field.Store.NO));
-    doc.add(newStringField("final-score", "F", Field.Store.YES)); // TODO: change to numeric field
+    doc.add(newStringField("final-score", "F", Field.Store.YES)); // TODO: change to numeric field id:1735 gh:1736
 
     w.addDocument(doc);
     doc = new Document();
@@ -124,7 +124,7 @@ public class TestLTRReRankingPipeline extends LuceneTestCase {
     // 1 extra token, but wizard and oz are close;
     doc.add(newTextField("field", "wizard oz the the the the the the",
         Field.Store.NO));
-    doc.add(newStringField("final-score", "T", Field.Store.YES)); // TODO: change to numeric field
+    doc.add(newStringField("final-score", "T", Field.Store.YES)); // TODO: change to numeric field id:1602 gh:1603
     w.addDocument(doc);
 
     final IndexReader r = w.getReader();

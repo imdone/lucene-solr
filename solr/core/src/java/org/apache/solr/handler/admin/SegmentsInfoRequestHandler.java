@@ -100,7 +100,7 @@ public class SegmentsInfoRequestHandler extends RequestHandlerBase {
       MergeSpecification findMerges = mp.findMerges(MergeTrigger.EXPLICIT, infos, indexWriter);
       if (findMerges != null && findMerges.merges != null && findMerges.merges.size() > 0) {
         for (OneMerge merge : findMerges.merges) {
-          //TODO: add merge grouping
+          //TODO: add merge grouping id:1923 gh:1924
           for (SegmentCommitInfo mergeSegmentInfo : merge.segments) {
             result.add(mergeSegmentInfo.info.name);
           }

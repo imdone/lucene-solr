@@ -28,7 +28,7 @@ import java.util.LinkedHashSet;
 public class CloudSolrClientMultiConstructorTest extends LuceneTestCase {
   
   /*
-   * NOTE: If you only include one String argument, it will NOT use the
+   * NOTE: If you only include one String argument, it will NOT use the id:2472 gh:2473
    * constructor with the variable argument list, which is the one that
    * we are testing here.
    */

@@ -354,7 +354,7 @@ class SimpleGeoJSONPolygonParser {
           b.append('\\');
           upto++;
         } else {
-          // TODO: allow \n, \t, etc.???
+          // TODO: allow \n, \t, etc.??? id:517 gh:518
           throw newParseException("unsupported string escape character \\" + ch);
         }
       } else {

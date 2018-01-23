@@ -85,7 +85,7 @@ public class IndexSearcher {
 
   final IndexReader reader; // package private for testing!
   
-  // NOTE: these members might change in incompatible ways
+  // NOTE: these members might change in incompatible ways id:567 gh:568
   // in the next release
   protected final IndexReaderContext readerContext;
   protected final List<LeafReaderContext> leafContexts;
@@ -155,7 +155,7 @@ public class IndexSearcher {
   /** Runs searches for each segment separately, using the
    *  provided ExecutorService.  IndexSearcher will not
    *  close/awaitTermination this ExecutorService on
-   *  close; you must do so, eventually, on your own.  NOTE:
+   *  close; you must do so, eventually, on your own.  NOTE: id:842 gh:843
    *  if you are using {@link NIOFSDirectory}, do not use
    *  the shutdownNow method of ExecutorService as this uses
    *  Thread.interrupt under-the-hood which can silently
@@ -173,7 +173,7 @@ public class IndexSearcher {
    * Given a non-<code>null</code> {@link ExecutorService} this method runs
    * searches for each segment separately, using the provided ExecutorService.
    * IndexSearcher will not close/awaitTermination this ExecutorService on
-   * close; you must do so, eventually, on your own. NOTE: if you are using
+   * close; you must do so, eventually, on your own. NOTE: if you are using id:734 gh:735
    * {@link NIOFSDirectory}, do not use the shutdownNow method of
    * ExecutorService as this uses Thread.interrupt under-the-hood which can
    * silently close file descriptors (see <a
@@ -482,7 +482,7 @@ public class IndexSearcher {
   public TopFieldDocs searchAfter(ScoreDoc after, Query query, int numHits, Sort sort,
       boolean doDocScores, boolean doMaxScore) throws IOException {
     if (after != null && !(after instanceof FieldDoc)) {
-      // TODO: if we fix type safety of TopFieldDocs we can
+      // TODO: if we fix type safety of TopFieldDocs we can id:630 gh:631
       // remove this
       throw new IllegalArgumentException("after must be a FieldDoc; got " + after);
     }
@@ -504,7 +504,7 @@ public class IndexSearcher {
       @Override
       public TopFieldCollector newCollector() throws IOException {
         final boolean fillFields = true;
-        // TODO: don't pay the price for accurate hit counts by default
+        // TODO: don't pay the price for accurate hit counts by default id:644 gh:645
         return TopFieldCollector.create(rewrittenSort, cappedNumHits, after, fillFields, doDocScores, doMaxScore, true);
       }
 
@@ -590,7 +590,7 @@ public class IndexSearcher {
    * {@link LeafCollector#collect(int)} is called for every document. <br>
    * 
    * <p>
-   * NOTE: this method executes the searches on all given leaves exclusively.
+   * NOTE: this method executes the searches on all given leaves exclusively. id:571 gh:572
    * To search across all the searchers leaves use {@link #leafContexts}.
    * 
    * @param leaves 
@@ -605,7 +605,7 @@ public class IndexSearcher {
   protected void search(List<LeafReaderContext> leaves, Weight weight, Collector collector)
       throws IOException {
 
-    // TODO: should we make this
+    // TODO: should we make this id:844 gh:845
     // threaded...?  the Collector could be sync'd?
     // always use single thread:
     for (LeafReaderContext ctx : leaves) { // search each subreader

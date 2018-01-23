@@ -61,7 +61,7 @@ import org.apache.lucene.util.PriorityQueue;
  *
  * @lucene.internal
  */
-// TODO rename to SpanHighlighting ?
+// TODO rename to SpanHighlighting ? id:1101 gh:1102
 public class PhraseHelper {
 
   public static final PhraseHelper NONE = new PhraseHelper(new MatchAllDocsQuery(), "_ignored_",
@@ -93,7 +93,7 @@ public class PhraseHelper {
     positionInsensitiveTerms = new HashSet<>();
     spanQueries = new HashSet<>();
 
-    // TODO Have toSpanQuery(query) Function as an extension point for those with custom Query impls
+    // TODO Have toSpanQuery(query) Function as an extension point for those with custom Query impls id:937 gh:938
 
     boolean[] mustRewriteHolder = {false}; // boolean wrapped in 1-ary array so it's mutable from inner class
 
@@ -142,7 +142,7 @@ public class PhraseHelper {
         if (clazz.isAssignableFrom(MultiTermQuery.class)) {
           return true; //We do MTQ processing separately in MultiTermHighlighting.java
         }
-        return true; //TODO set to false and provide a hook to customize certain queries.
+        return true; //TODO set to false and provide a hook to customize certain queries. id:1303 gh:1304
       }
 
       // called on Query types that are NOT position sensitive, e.g. TermQuery
@@ -158,7 +158,7 @@ public class PhraseHelper {
       protected void extractWeightedSpanTerms(Map<String, WeightedSpanTerm> terms, SpanQuery spanQuery,
                                               float boost) throws IOException {
         // if this span query isn't for this field, skip it.
-        Set<String> fieldNameSet = new HashSet<>();//TODO reuse.  note: almost always size 1
+        Set<String> fieldNameSet = new HashSet<>();//TODO reuse.  note: almost always size 1 id:1529 gh:1530
         collectSpanQueryFields(spanQuery, fieldNameSet);
         for (String spanField : fieldNameSet) {
           if (!fieldMatcher.test(spanField)) {
@@ -215,7 +215,7 @@ public class PhraseHelper {
   /** Given the internal SpanQueries, produce a number of OffsetsEnum into the {@code results} param. */
   public void createOffsetsEnumsForSpans(LeafReader leafReader, int docId, List<OffsetsEnum> results) throws IOException {
     leafReader = new SingleFieldWithOffsetsFilterLeafReader(leafReader, fieldName);
-    //TODO avoid searcher and do what it does to rewrite & get weight?
+    //TODO avoid searcher and do what it does to rewrite & get weight? id:1042 gh:1043
     IndexSearcher searcher = new IndexSearcher(leafReader);
     searcher.setQueryCache(null);
 
@@ -258,7 +258,7 @@ public class PhraseHelper {
     OffsetSpanCollector spanCollector = new OffsetSpanCollector();
     while (spansPriorityQueue.size() > 0) {
       Spans spans = spansPriorityQueue.top();
-      //TODO limit to a capped endOffset length somehow so we can break this loop early
+      //TODO limit to a capped endOffset length somehow so we can break this loop early id:1105 gh:1106
       spans.collect(spanCollector);
 
       if (spans.nextStartPosition() == Spans.NO_MORE_POSITIONS) {
@@ -286,7 +286,7 @@ public class PhraseHelper {
 
     @Override
     public FieldInfos getFieldInfos() {
-      throw new UnsupportedOperationException();//TODO merge them
+      throw new UnsupportedOperationException();//TODO merge them id:939 gh:940
     }
 
     @Override
@@ -348,7 +348,7 @@ public class PhraseHelper {
   }
 
   private static class SpanCollectedOffsetsEnum extends OffsetsEnum {
-    // TODO perhaps optionally collect (and expose) payloads?
+    // TODO perhaps optionally collect (and expose) payloads? id:1307 gh:1309
     private final BytesRef term;
     private final int[] startOffsets;
     private final int[] endOffsets;

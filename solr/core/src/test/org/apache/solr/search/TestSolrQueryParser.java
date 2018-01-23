@@ -259,7 +259,7 @@ public class TestSolrQueryParser extends SolrTestCaseJ4 {
       }
 
       // large relevancy query should use BooleanQuery
-      // TODO: we may decide that string fields shouldn't have relevance in the future... change to a text field w/o a stop filter if so
+      // TODO: we may decide that string fields shouldn't have relevance in the future... change to a text field w/o a stop filter if so id:2390 gh:2391
       qParser = QParser.getParser("foo_s:(a b c d e f g h i j k l m n o p q r s t u v w x y z)", req);
       qParser.setParams(params);
       q = qParser.getQuery();
@@ -580,7 +580,7 @@ public class TestSolrQueryParser extends SolrTestCaseJ4 {
 
       sb.append(otherStuff).append(" ");
 
-      int nClauses = r.nextInt(maxClauses) + 1;  // TODO: query parse can't parse () for some reason???
+      int nClauses = r.nextInt(maxClauses) + 1;  // TODO: query parse can't parse () for some reason??? id:3101 gh:3102
 
       for (int c = 0; c<nClauses; c++) {
         String termString = String.format(Locale.US, format, r.nextInt(maxTerm));
@@ -609,7 +609,7 @@ public class TestSolrQueryParser extends SolrTestCaseJ4 {
         parser.setIsFilter(isFilter);
         Query q = parser.getQuery();
         if (rewrite) {
-          // TODO: do rewrite
+          // TODO: do rewrite id:2360 gh:2361
         }
         ret += q.getClass().hashCode(); // use the query somehow
       }

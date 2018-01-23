@@ -112,7 +112,7 @@ public class ChaosMonkeyShardSplitTest extends ShardSplitTest {
 
       CloudJettyRunner deadJetty = leaderJetty;
 
-      // TODO: Check total docs ?
+      // TODO: Check total docs ? id:2248 gh:2249
       // long cloudClientDocs = cloudClient.query(new
       // SolrQuery("*:*")).getResults().getNumFound();
 
@@ -128,7 +128,7 @@ public class ChaosMonkeyShardSplitTest extends ShardSplitTest {
       waitTillRecovered();
 
       // Kill the overseer
-      // TODO: Actually kill the Overseer instance
+      // TODO: Actually kill the Overseer instance id:2860 gh:2861
       killer = new OverseerRestarter(zkServer.getZkAddress());
       killerThread = new Thread(killer);
       killerThread.start();
@@ -251,7 +251,7 @@ public class ChaosMonkeyShardSplitTest extends ShardSplitTest {
     ZkStateReader reader = new ZkStateReader(zkClient);
     LeaderElector overseerElector = new LeaderElector(zkClient);
     UpdateShardHandler updateShardHandler = new UpdateShardHandler(UpdateShardHandlerConfig.DEFAULT);
-    // TODO: close Overseer
+    // TODO: close Overseer id:2262 gh:2263
     Overseer overseer = new Overseer(new HttpShardHandlerFactory().getShardHandler(), updateShardHandler, "/admin/cores",
         reader, null, new CloudConfig.CloudConfigBuilder("127.0.0.1", 8983, "solr").build());
     overseer.close();

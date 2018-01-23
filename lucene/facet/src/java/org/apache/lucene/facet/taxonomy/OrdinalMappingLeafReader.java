@@ -90,7 +90,7 @@ public class OrdinalMappingLeafReader extends FilterLeafReader {
     @Override
     public BytesRef binaryValue() {
       try {
-        // NOTE: this isn't quite koscher, because in general
+        // NOTE: this isn't quite koscher, because in general id:1079 gh:1080
         // multiple threads can call BinaryDV.get which would
         // then conflict on the single ordinals instance, but
         // because this impl is only used for merging, we know

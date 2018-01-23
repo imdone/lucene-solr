@@ -46,7 +46,7 @@ class PointValuesWriter {
     packedBytesLength = fieldInfo.getPointDimensionCount() * fieldInfo.getPointNumBytes();
   }
 
-  // TODO: if exactly the same value is added to exactly the same doc, should we dedup?
+  // TODO: if exactly the same value is added to exactly the same doc, should we dedup? id:544 gh:545
   public void addPackedValue(int docID, BytesRef value) {
     if (value == null) {
       throw new IllegalArgumentException("field=" + fieldInfo.name + ": point value must not be null");

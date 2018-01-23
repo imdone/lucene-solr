@@ -181,7 +181,7 @@ public class ClusterState implements JSONWriter.Writable {
       if(coll == null) continue;// this collection go tremoved in between, skip
       for (Slice slice : coll.getSlices()) {
         for (Replica replica : slice.getReplicas()) {
-          // TODO: for really large clusters, we could 'index' on this
+          // TODO: for really large clusters, we could 'index' on this id:2450 gh:2451
           String rnodeName = replica.getStr(ZkStateReader.NODE_NAME_PROP);
           String rcore = replica.getStr(ZkStateReader.CORE_NAME_PROP);
           if (nodeName.equals(rnodeName) && coreName.equals(rcore)) {
@@ -242,7 +242,7 @@ public class ClusterState implements JSONWriter.Writable {
     return new ClusterState( liveNodes, collections,version);
   }
 
-  // TODO move to static DocCollection.loadFromMap
+  // TODO move to static DocCollection.loadFromMap id:2523 gh:2524
   private static DocCollection collectionFromObjects(String name, Map<String, Object> objs, Integer version, String znode) {
     Map<String,Object> props;
     Map<String,Slice> slices;

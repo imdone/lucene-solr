@@ -147,7 +147,7 @@ public abstract class RSLPStemmerBase {
    * A rule with a set of exceptional suffixes.
    */
   protected static class RuleWithSuffixExceptions extends Rule {
-    // TODO: use a more efficient datastructure: automaton?
+    // TODO: use a more efficient datastructure: automaton? id:113 gh:114
     protected final char[][] exceptions;
     
     public RuleWithSuffixExceptions(String suffix, int min, String replacement,
@@ -243,7 +243,7 @@ public abstract class RSLPStemmerBase {
    * @return a Map containing the named Steps in this description.
    */
   protected static Map<String,Step> parse(Class<? extends RSLPStemmerBase> clazz, String resource) {
-    // TODO: this parser is ugly, but works. use a jflex grammar instead.
+    // TODO: this parser is ugly, but works. use a jflex grammar instead. id:160 gh:161
     try {
       InputStream is = clazz.getResourceAsStream(resource);
       LineNumberReader r = new LineNumberReader(new InputStreamReader(is, StandardCharsets.UTF_8));

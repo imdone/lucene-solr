@@ -145,7 +145,7 @@ public class SynonymGraphFilterFactory extends TokenFilterFactory implements Res
       } else if (format.equals("wordnet")) {
         formatClass = WordnetSynonymParser.class.getName();
       }
-      // TODO: expose dedup as a parameter?
+      // TODO: expose dedup as a parameter? id:117 gh:118
       map = loadSynonyms(loader, formatClass, true, a);
     } catch (ParseException e) {
       throw new IOException("Error parsing synonyms file:", e);

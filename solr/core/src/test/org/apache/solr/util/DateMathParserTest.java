@@ -379,7 +379,7 @@ public class DateMathParserTest extends LuceneTestCase {
    * is an identify function
    */
   public void testRoundTrip() throws Exception {
-    // NOTE: the 2nd arg is what the round trip result looks like (may be null if same as input)
+    // NOTE: the 2nd arg is what the round trip result looks like (may be null if same as input) id:2434 gh:2435
 
     assertParseFormatEquals("1995-12-31T23:59:59.999666Z",  "1995-12-31T23:59:59.999Z"); // beyond millis is truncated
     assertParseFormatEquals("1995-12-31T23:59:59.999Z",     "1995-12-31T23:59:59.999Z");

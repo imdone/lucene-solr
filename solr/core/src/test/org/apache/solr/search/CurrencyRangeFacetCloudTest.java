@@ -50,7 +50,7 @@ public class CurrencyRangeFacetCloudTest extends SolrCloudTestCase {
   private static String FIELD = null; // randomized
 
   private static final List<String> STR_VALS = Arrays.asList("x0", "x1", "x2");
-  // NOTE: in our test conversions EUR uses an asynetric echange rate
+  // NOTE: in our test conversions EUR uses an asynetric echange rate id:2342 gh:2343
   // these are the equivilent values relative to:                                USD        EUR        GBP
   private static final List<String> VALUES = Arrays.asList("10.00,USD",     // 10.00,USD  25.00,EUR   5.00,GBP
                                                            "15.00,EUR",     //  7.50,USD  15.00,EUR   7.50,GBP
@@ -104,7 +104,7 @@ public class CurrencyRangeFacetCloudTest extends SolrCloudTestCase {
       // (regardless of the any asymetric echanges ranges, or the currency used for the 'gap') because the
       // start & end are always in USD.
       //
-      // NOTE:
+      // NOTE: id:2934 gh:2935
       //  - 0,1,2 are the *input* start,gap,end
       //  - 3,4,5 are the *normalized* start,gap,end expected in the response
       for (List<String> args : Arrays.asList(// default currency is USD
@@ -380,7 +380,7 @@ public class CurrencyRangeFacetCloudTest extends SolrCloudTestCase {
           assertEquals("bucket #" + i + " foo num buckets", 2, foo_buckets.size());
           assertEquals("bucket #" + i + " foo top term", (0==i ? "x2" : "x0"), foo_buckets.get(0).get("val"));
           assertEqualsHACK("bucket #" + i + " foo top count", 2, foo_buckets.get(0).get("count"));
-          // NOTE: we can't make any assertions about the 2nd val..
+          // NOTE: we can't make any assertions about the 2nd val.. id:2341 gh:2342
           // our limit + randomized sharding could result in either remaining term being picked.
           // but for eiter term, the count should be exactly the same...
           assertEqualsHACK("bucket #" + i + " foo 2nd count", 1, foo_buckets.get(1).get("count"));
@@ -471,7 +471,7 @@ public class CurrencyRangeFacetCloudTest extends SolrCloudTestCase {
   }
 
   /**
-   * HACK to work around SOLR-11775.
+   * HACK to work around SOLR-11775. id:2361 gh:2362
    * Asserts that the 'actual' argument is a (non-null) Number, then compares it's 'longValue' to the 'expected' argument
    */
   private static void assertEqualsHACK(String msg, long expected, Object actual) {

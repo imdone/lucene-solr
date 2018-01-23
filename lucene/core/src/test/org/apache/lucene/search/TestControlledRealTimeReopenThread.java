@@ -281,7 +281,7 @@ public class TestControlledRealTimeReopenThread extends ThreadedIndexingAndSearc
 
   @Override
   protected void releaseSearcher(IndexSearcher s) throws Exception {
-    // NOTE: a bit iffy... technically you should release
+    // NOTE: a bit iffy... technically you should release id:1136 gh:1135
     // against the same SearcherManager you acquired from... but
     // both impls just decRef the underlying reader so we
     // can get away w/ cheating:

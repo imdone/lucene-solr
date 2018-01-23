@@ -27,7 +27,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * Wraps a whitespace tokenizer with a filter that sets
  * the first token, and odd tokens to posinc=1, and all others
- * to 0, encoding the position as pos: XXX in the payload.
+ * to 0, encoding the position as pos: XXX in the payload. id:1666 gh:1667
  **/
 public final class MockPayloadAnalyzer extends Analyzer {
 

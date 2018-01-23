@@ -277,7 +277,7 @@ public class SimpleTextTermVectorsReader extends TermVectorsReader {
 
     @Override
     public TermsEnum iterator() throws IOException {
-      // TODO: reuse
+      // TODO: reuse id:444 gh:445
       return new SimpleTVTermsEnum(terms);
     }
 
@@ -288,7 +288,7 @@ public class SimpleTextTermVectorsReader extends TermVectorsReader {
 
     @Override
     public long getSumTotalTermFreq() throws IOException {
-      // TODO: make it constant-time
+      // TODO: make it constant-time id:323 gh:324
       long ttf = 0;
       TermsEnum iterator = iterator();
       for (BytesRef b = iterator.next(); b != null; b = iterator.next()) {
@@ -397,14 +397,14 @@ public class SimpleTextTermVectorsReader extends TermVectorsReader {
       if (PostingsEnum.featureRequested(flags, PostingsEnum.POSITIONS)) {
         SimpleTVPostings postings = current.getValue();
         if (postings.positions != null || postings.startOffsets != null) {
-          // TODO: reuse
+          // TODO: reuse id:309 gh:310
           SimpleTVPostingsEnum e = new SimpleTVPostingsEnum();
           e.reset(postings.positions, postings.startOffsets, postings.endOffsets, postings.payloads);
           return e;
         }
       }
 
-      // TODO: reuse
+      // TODO: reuse id:339 gh:340
       SimpleTVDocsEnum e = new SimpleTVDocsEnum();
       e.reset(PostingsEnum.featureRequested(flags, PostingsEnum.FREQS) == false ? 1 : current.getValue().freq);
       return e;

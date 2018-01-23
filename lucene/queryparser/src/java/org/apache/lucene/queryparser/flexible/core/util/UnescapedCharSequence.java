@@ -112,7 +112,7 @@ public final class UnescapedCharSequence implements CharSequence {
    * @return a escaped String
    */
   public String toStringEscaped(char[] enabledChars) {
-    // TODO: non efficient implementation, refactor this code
+    // TODO: non efficient implementation, refactor this code id:1569 gh:1570
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < this.length(); i++) {
       if (this.chars[i] == '\\') {

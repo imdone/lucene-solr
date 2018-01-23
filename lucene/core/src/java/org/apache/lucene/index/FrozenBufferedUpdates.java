@@ -52,7 +52,7 @@ import org.apache.lucene.util.RamUsageEstimator;
  */
 class FrozenBufferedUpdates {
 
-  /* NOTE: we now apply this frozen packet immediately on creation, yet this process is heavy, and runs
+  /* NOTE: we now apply this frozen packet immediately on creation, yet this process is heavy, and runs id:417 gh:418
    * in multiple threads, and this compression is sizable (~8.3% of the original size), so it's important
    * we run this before applying the deletes/updates. */
 
@@ -113,13 +113,13 @@ class FrozenBufferedUpdates {
       upto++;
     }
 
-    // TODO if a Term affects multiple fields, we could keep the updates key'd by Term
+    // TODO if a Term affects multiple fields, we could keep the updates key'd by Term id:569 gh:570
     // so that it maps to all fields it affects, sorted by their docUpto, and traverse
     // that Term only once, applying the update to all fields that still need to be
     // updated.
     numericDVUpdates = freezeNumericDVUpdates(updates.numericUpdates);
     
-    // TODO if a Term affects multiple fields, we could keep the updates key'd by Term
+    // TODO if a Term affects multiple fields, we could keep the updates key'd by Term id:664 gh:665
     // so that it maps to all fields it affects, sorted by their docUpto, and traverse
     // that Term only once, applying the update to all fields that still need to be
     // updated. 
@@ -139,7 +139,7 @@ class FrozenBufferedUpdates {
 
   private byte[] freezeNumericDVUpdates(Map<String,LinkedHashMap<Term,NumericDocValuesUpdate>> numericDVUpdates)
     throws IOException {
-    // TODO: we could do better here, e.g. collate the updates by field
+    // TODO: we could do better here, e.g. collate the updates by field id:545 gh:546
     // so if you are updating 2 fields interleaved we don't keep writing the field strings
 
     RAMOutputStream out = new RAMOutputStream();
@@ -181,7 +181,7 @@ class FrozenBufferedUpdates {
 
   private byte[] freezeBinaryDVUpdates(Map<String,LinkedHashMap<Term,BinaryDocValuesUpdate>> binaryDVUpdates)
     throws IOException {
-    // TODO: we could do better here, e.g. collate the updates by field
+    // TODO: we could do better here, e.g. collate the updates by field id:490 gh:491
     // so if you are updating 2 fields interleaved we don't keep writing the field strings
 
     RAMOutputStream out = new RAMOutputStream();
@@ -499,7 +499,7 @@ class FrozenBufferedUpdates {
     TermsEnum termsEnum = null;
     PostingsEnum postingsEnum = null;
 
-    // TODO: we can process the updates per DV field, from last to first so that
+    // TODO: we can process the updates per DV field, from last to first so that id:440 gh:441
     // if multiple terms affect same document for the same field, we add an update
     // only once (that of the last term). To do that, we can keep a bitset which
     // marks which documents have already been updated. So e.g. if term T1
@@ -549,7 +549,7 @@ class FrozenBufferedUpdates {
         limit = Integer.MAX_VALUE;
       }
         
-      // TODO: we traverse the terms in update order (not term order) so that we
+      // TODO: we traverse the terms in update order (not term order) so that we id:573 gh:574
       // apply the updates in the correct order, i.e. if two terms udpate the
       // same document, the last one that came in wins, irrespective of the
       // terms lexical order.
@@ -559,7 +559,7 @@ class FrozenBufferedUpdates {
       // which will get same docIDUpto, yet will still need to respect the order
       // those updates arrived.
 
-      // TODO: we could at least *collate* by field?
+      // TODO: we could at least *collate* by field? id:666 gh:667
 
       // This is the field used to resolve to docIDs, e.g. an "id" field, not the doc values field we are updating!
       if ((code & 1) != 0) {
@@ -571,7 +571,7 @@ class FrozenBufferedUpdates {
         }
       }
 
-      // TODO: can we avoid boxing here w/o fully forking this method?
+      // TODO: can we avoid boxing here w/o fully forking this method? id:547 gh:548
       Object value;
       if (isNumeric) {
         value = Long.valueOf(in.readZLong());
@@ -763,7 +763,7 @@ class FrozenBufferedUpdates {
           if (termsEnum != null) {
             int cmp = delTerm.compareTo(readerTerm);
             if (cmp < 0) {
-              // TODO: can we advance across del terms here?
+              // TODO: can we advance across del terms here? id:492 gh:493
               // move to next del term
               continue;
             } else if (cmp == 0) {
@@ -776,7 +776,7 @@ class FrozenBufferedUpdates {
                 readerTerm = termsEnum.term();
                 continue;
               } else {
-                // TODO: can we advance to next field in deleted terms?
+                // TODO: can we advance to next field in deleted terms? id:442 gh:443
                 // no more terms in this segment
                 termsEnum = null;
                 continue;
@@ -791,7 +791,7 @@ class FrozenBufferedUpdates {
             int docID;
             while ((docID = postingsEnum.nextDoc()) != DocIdSetIterator.NO_MORE_DOCS) {
 
-              // NOTE: there is no limit check on the docID
+              // NOTE: there is no limit check on the docID id:576 gh:577
               // when deleting by Term (unlike by Query)
               // because on flush we apply all Term deletes to
               // each segment.  So all Term deleting here is

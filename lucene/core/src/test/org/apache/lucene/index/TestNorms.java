@@ -64,7 +64,7 @@ public class TestNorms extends LuceneTestCase {
     dir.close();
   }
   
-  // TODO: create a testNormsNotPresent ourselves by adding/deleting/merging docs
+  // TODO: create a testNormsNotPresent ourselves by adding/deleting/merging docs id:1011 gh:1012
 
   public void buildIndex(Directory dir) throws IOException {
     Random random = random();

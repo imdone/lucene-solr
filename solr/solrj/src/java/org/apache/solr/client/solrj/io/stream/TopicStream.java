@@ -252,7 +252,7 @@ public class TopicStream extends CloudSolrStream implements Expressible  {
       // child 1 is a datastore so add it at this point
       StreamExplanation child = new StreamExplanation(getStreamNodeId() + "-datastore");
       child.setFunctionName(String.format(Locale.ROOT, "solr (%s)", collection)); 
-        // TODO: fix this so we know the # of workers - check with Joel about a Topic's ability to be in a
+        // TODO: fix this so we know the # of workers - check with Joel about a Topic's ability to be in a id:2443 gh:2444
         // parallel stream.
       
       child.setImplementingClass("Solr/Lucene");

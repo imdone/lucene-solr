@@ -189,7 +189,7 @@ public final class SearcherManager extends ReferenceManager<IndexSearcher> {
 
   /** Expert: creates a searcher from the provided {@link
    *  IndexReader} using the provided {@link
-   *  SearcherFactory}.  NOTE: this decRefs incoming reader
+   *  SearcherFactory}.  NOTE: this decRefs incoming reader id:585 gh:586
    * on throwing an exception. */
   public static IndexSearcher getSearcher(SearcherFactory searcherFactory, IndexReader reader, IndexReader previousReader) throws IOException {
     boolean success = false;

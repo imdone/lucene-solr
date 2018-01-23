@@ -1630,7 +1630,7 @@ function assertNotHasOwnProperty(name, context) {
  * @param {boolean} [bindFnToScope=true]
  * @returns {Object} value as accessible by path
  */
-//TODO(misko): this function needs to be removed
+//TODO (misko): this function needs to be removed id:3150 gh:3151
 function getter(obj, path, bindFnToScope) {
   if (!path) return obj;
   var keys = path.split('.');
@@ -1656,7 +1656,7 @@ function getter(obj, path, bindFnToScope) {
  * @returns {jqLite} jqLite collection containing the nodes
  */
 function getBlockNodes(nodes) {
-  // TODO(perf): just check if all items in `nodes` are siblings and if they are return the original
+  // TODO (perf): just check if all items in `nodes` are siblings and if they are return the original id:2495 gh:2496
   //             collection, otherwise update the original collection.
   var node = nodes[0];
   var endNode = nodes[nodes.length - 1];
@@ -2972,7 +2972,7 @@ forEach({
         return this;
       } else {
         // we are a read, so read the first child.
-        // TODO: do we still need this?
+        // TODO: do we still need this? id:3037 gh:3038
         var value = fn.$dv;
         // Only if we have $dv do we iterate over all, otherwise it is just the first element.
         var jj = (value === undefined) ? Math.min(nodeCount, 1) : nodeCount;
@@ -3036,7 +3036,7 @@ function createEventHandler(element, events) {
     }
   };
 
-  // TODO: this is a hack for angularMocks/clearDataCache that makes it possible to deregister all
+  // TODO: this is a hack for angularMocks/clearDataCache that makes it possible to deregister all id:2487 gh:2488
   //       events on `element`
   eventHandler.elem = element;
   return eventHandler;
@@ -3750,7 +3750,7 @@ function annotate(fn, strictDi, name) {
  * which lets you specify whether the {@link ng.$log $log} service will log debug messages to the
  * console or not.
  *
- * @param {string} name The name of the instance. NOTE: the provider will be available under `name +
+ * @param {string} name The name of the instance. NOTE: the provider will be available under `name + id:2548 gh:2549
                         'Provider'` key.
  * @param {(Object|function())} provider If the provider is:
  *
@@ -4912,7 +4912,7 @@ function Browser(window, document, $log, $sniffer) {
   var outstandingRequestCount = 0;
   var outstandingRequestCallbacks = [];
 
-  // TODO(vojta): remove this temporary api
+  // TODO (vojta): remove this temporary api id:3151 gh:3152
   self.$$completeOutstandingRequest = completeOutstandingRequest;
   self.$$incOutstandingRequestCount = function() { outstandingRequestCount++; };
 
@@ -4945,7 +4945,7 @@ function Browser(window, document, $log, $sniffer) {
   /**
    * @private
    * Note: this method is used only by scenario runner
-   * TODO(vojta): prefix this method with $$ ?
+   * TODO (vojta): prefix this method with $$ ? id:2497 gh:2498
    * @param {function()} callback Function that will be called when no outstanding request
    */
   self.notifyWhenNoOutstandingRequests = function(callback) {
@@ -5024,7 +5024,7 @@ function Browser(window, document, $log, $sniffer) {
    * location.href/location.replace is used.
    * Returns its own instance to allow chaining
    *
-   * NOTE: this api is intended for use only by the $location service. Please use the
+   * NOTE: this api is intended for use only by the $location service. Please use the id:3039 gh:3040
    * {@link ng.$location $location service} to change url.
    *
    * @param {string} url New url (when used as setter)
@@ -5150,14 +5150,14 @@ function Browser(window, document, $log, $sniffer) {
    *
    * The listener gets called with new url as parameter.
    *
-   * NOTE: this api is intended for use only by the $location service. Please use the
+   * NOTE: this api is intended for use only by the $location service. Please use the id:2488 gh:2489
    * {@link ng.$location $location service} to monitor url changes in angular apps.
    *
    * @param {function(string)} listener Listener function to be called when url changes.
    * @return {function(string)} Returns the registered listener fn - handy if the fn is anonymous.
    */
   self.onUrlChange = function(callback) {
-    // TODO(vojta): refactor to use node's syntax for events
+    // TODO (vojta): refactor to use node's syntax for events id:2549 gh:2550
     if (!urlChangeInit) {
       // We listen on both (hashchange/popstate) when available, as some browsers (e.g. Opera)
       // don't fire popstate when user change the address bar and don't fire hashchange when url
@@ -6325,7 +6325,7 @@ function $TemplateCacheProvider() {
 
                 // compile the new DOM and link it to the current
                 // scope.
-                // NOTE: we only compile .childNodes so that
+                // NOTE: we only compile .childNodes so that id:3152 gh:3153
                 // we don't get into infinite loop compiling ourselves
                 $compile(element.contents())(scope);
               }
@@ -6731,7 +6731,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
        * @param {string=} attrName Optional none normalized name. Defaults to key.
        */
       $set: function(key, value, writeAttr, attrName) {
-        // TODO: decide whether or not to throw an error if "class"
+        // TODO: decide whether or not to throw an error if "class" id:2500 gh:2501
         //is set through this function since it may cause $updateClass to
         //become unstable.
 
@@ -6980,7 +6980,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     }
 
     function detectNamespaceForChildElements(parentElement) {
-      // TODO: Make this detect MathML as well...
+      // TODO: Make this detect MathML as well... id:3041 gh:3042
       var node = parentElement && parentElement[0];
       if (!node) {
         return 'html';
@@ -7596,7 +7596,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         }
 
         if (controllerDirectives) {
-          // TODO: merge `controllers` and `elementControllers` into single object.
+          // TODO: merge `controllers` and `elementControllers` into single object. id:2490 gh:2491
           controllers = {};
           elementControllers = {};
           forEach(controllerDirectives, function(directive) {
@@ -8188,7 +8188,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         parent.replaceChild(newNode, firstElementToRemove);
       }
 
-      // TODO(perf): what's this document fragment for? is it needed? can we at least reuse it?
+      // TODO (perf): what's this document fragment for? is it needed? can we at least reuse it? id:2551 gh:2552
       var fragment = document.createDocumentFragment();
       fragment.appendChild(firstElementToRemove);
 
@@ -9752,7 +9752,7 @@ function $HttpBackendProvider() {
 }
 
 function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDocument) {
-  // TODO(vojta): fix the signature
+  // TODO (vojta): fix the signature id:3153 gh:3154
   return function(method, url, post, callback, headers, timeout, withCredentials, responseType) {
     $browser.$$incOutstandingRequestCount();
     url = url || $browser.url();
@@ -11107,7 +11107,7 @@ forEach([LocationHashbangInHtml5Url, LocationHashbangUrl, LocationHtml5Url], fun
    * Change the history state object when called with one parameter and return `$location`.
    * The state object is later passed to `pushState` or `replaceState`.
    *
-   * NOTE: This method is supported only in HTML5 mode and only in browsers supporting
+   * NOTE: This method is supported only in HTML5 mode and only in browsers supporting id:2503 gh:2504
    * the HTML5 History API (i.e. methods `pushState` and `replaceState`). If you need to support
    * older browsers (like IE9 or Android < 4.0), don't use this method.
    *
@@ -11336,7 +11336,7 @@ function $LocationProvider() {
     }
 
     $rootElement.on('click', function(event) {
-      // TODO(vojta): rewrite link when opening in new tab/window (in legacy browser)
+      // TODO (vojta): rewrite link when opening in new tab/window (in legacy browser) id:3043 gh:3044
       // currently we open nice url link and redirect then
 
       if (!html5Mode.rewriteLinks || event.ctrlKey || event.metaKey || event.which == 2) return;
@@ -12114,7 +12114,7 @@ Parser.prototype = {
         statements.push(this.filterChain());
       if (!this.expect(';')) {
         // optimize for the common case where there is only one statement.
-        // TODO(size): maybe we should not support multiple statements?
+        // TODO (size): maybe we should not support multiple statements? id:2491 gh:2492
         return (statements.length === 1)
             ? statements[0]
             : function $parseStatements(self, locals) {
@@ -12711,7 +12711,7 @@ function $ParseProvider() {
         if (!input.constant) {
           if (input.inputs) {
             collectExpressionInputs(input.inputs, list);
-          } else if (list.indexOf(input) === -1) { // TODO(perf) can we do better?
+          } else if (list.indexOf(input) === -1) { // TODO (perf) can we do better? id:2553 gh:2554
             list.push(input);
           }
         }
@@ -12729,7 +12729,7 @@ function $ParseProvider() {
       if (typeof newValue === 'object') {
 
         // attempt to convert the value to a primitive type
-        // TODO(docs): add a note to docs that by implementing valueOf even objects and arrays can
+        // TODO (docs): add a note to docs that by implementing valueOf even objects and arrays can id:3154 gh:3155
         //             be cheaply dirty-checked
         newValue = getValueOf(newValue);
 
@@ -15568,7 +15568,7 @@ function $SceProvider() {
    *     This function should return the a value that is safe to use in the context specified by
    *     contextEnum or throw and exception otherwise.
    *
-   * NOTE: This contract deliberately does NOT state that values returned by trustAs() must be
+   * NOTE: This contract deliberately does NOT state that values returned by trustAs() must be id:2506 gh:2507
    * opaque or wrapped in some holder object.  That happens to be an implementation detail.  For
    * instance, an implementation could maintain a registry of all trusted objects by context.  In
    * such a case, trustAs() would return the same object that was passed in.  getTrusted() would
@@ -16269,7 +16269,7 @@ function $TimeoutProvider() {
   }];
 }
 
-// NOTE:  The usage of window and document instead of $window and $document here is
+// NOTE: The usage of window and document instead of $window and $document here is id:3045 gh:3046
 // deliberate.  This service depends on the specific behavior of anchor nodes created by the
 // browser (resolving and parsing URLs) that is unlikely to be provided by mock objects and
 // cause us to break tests.  In addition, when the browser resolves a URL for XHR, it
@@ -19901,7 +19901,7 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
         val = parseFloat(val, 10);
       }
       minVal = isNumber(val) && !isNaN(val) ? val : undefined;
-      // TODO(matsko): implement validateLater to reduce number of validations
+      // TODO (matsko): implement validateLater to reduce number of validations id:2493 gh:2494
       ctrl.$validate();
     });
   }
@@ -19917,7 +19917,7 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
         val = parseFloat(val, 10);
       }
       maxVal = isNumber(val) && !isNaN(val) ? val : undefined;
-      // TODO(matsko): implement validateLater to reduce number of validations
+      // TODO (matsko): implement validateLater to reduce number of validations id:2555 gh:2556
       ctrl.$validate();
     });
   }
@@ -20982,7 +20982,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
     var modelValue = ngModelGet($scope);
 
     // if scope model value and ngModel value are out of sync
-    // TODO(perf): why not move this to the action fn?
+    // TODO (perf): why not move this to the action fn? id:3155 gh:3156
     if (modelValue !== ctrl.$modelValue) {
       ctrl.$modelValue = ctrl.$$rawModelValue = modelValue;
 
@@ -24352,7 +24352,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
   var ngRepeatMinErr = minErr('ngRepeat');
 
   var updateScope = function(scope, index, valueIdentifier, value, keyIdentifier, key, arrayLength) {
-    // TODO(perf): generate setters to shave off ~40ms or 1-1.5%
+    // TODO (perf): generate setters to shave off ~40ms or 1-1.5% id:2509 gh:2510
     scope[valueIdentifier] = value;
     if (keyIdentifier) scope[keyIdentifier] = key;
     scope.$index = index;
@@ -24559,7 +24559,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
                 var endNode = ngRepeatEndComment.cloneNode(false);
                 clone[clone.length++] = endNode;
 
-                // TODO(perf): support naked previousNode in `enter` to avoid creation of jqLite wrapper?
+                // TODO (perf): support naked previousNode in `enter` to avoid creation of jqLite wrapper? id:3047 gh:3048
                 $animate.enter(clone, null, jqLite(previousNode));
                 previousNode = endNode;
                 // Note: We only need the first/last node of the cloned nodes.
@@ -25760,7 +25760,7 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
             }
             return toDisplay;
           } else if (values) {
-            // TODO: Add a test for this case
+            // TODO: Add a test for this case id:2494 gh:2495
             toDisplay = {};
             for (var prop in values) {
               if (values.hasOwnProperty(prop)) {

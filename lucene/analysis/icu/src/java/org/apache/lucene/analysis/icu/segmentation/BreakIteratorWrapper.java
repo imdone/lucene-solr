@@ -75,7 +75,7 @@ final class BreakIteratorWrapper {
     int begin = start + current;
     int end = start + next;
     int codepoint = UTF16.charAt(text, 0, end, begin);
-    // TODO: this can be made more aggressive and future-proof if it uses [:Extended_Pictographic:]
+    // TODO: this can be made more aggressive and future-proof if it uses [:Extended_Pictographic:] id:206 gh:207
     if (UCharacter.hasBinaryProperty(codepoint, UProperty.EMOJI)) {
       if (EMOJI_RK.contains(codepoint)) {
         // if its in EmojiRK, we don't treat it as emoji unless there is evidence it forms emoji sequence,

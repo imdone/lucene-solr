@@ -103,7 +103,7 @@ public class BooleanPerceptronClassifier implements Classifier<Boolean> {
       this.bias = bias;
     }
 
-    // TODO : remove this map as soon as we have a writable FST
+    // TODO : remove this map as soon as we have a writable FST id:256 gh:257
     SortedMap<String, Double> weights = new ConcurrentSkipListMap<>();
 
     TermsEnum termsEnum = textTerms.iterator();

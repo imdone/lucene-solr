@@ -196,7 +196,7 @@ class StatementImpl implements Statement {
       this.currentResultSet = null;
     }
 
-    // TODO Add logic when update statements are added to JDBC.
+    // TODO Add logic when update statements are added to JDBC. id:2510 gh:2511
     this.currentSQL = sql;
     return true;
   }
@@ -210,7 +210,7 @@ class StatementImpl implements Statement {
   public int getUpdateCount() throws SQLException {
     checkClosed();
 
-    // TODO Add logic when update statements are added to JDBC.
+    // TODO Add logic when update statements are added to JDBC. id:3128 gh:3129
     return -1;
   }
 

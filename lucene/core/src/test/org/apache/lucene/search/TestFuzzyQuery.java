@@ -642,7 +642,7 @@ public class TestFuzzyQuery extends LuceneTestCase {
     int n;
     int d[][]; // cost array
     
-    // NOTE: if we cared, we could 3*m space instead of m*n space, similar to 
+    // NOTE: if we cared, we could 3*m space instead of m*n space, similar to  id:1027 gh:1028
     // what LevenshteinDistance does, except cycling thru a ring of three 
     // horizontal cost arrays... but this comparator is never actually used by 
     // DirectSpellChecker, it's only used for merging results from multiple shards 

@@ -327,7 +327,7 @@ public class RandomSpatialOpFuzzyPrefixTreeTest extends StrategyTestCase {
       switch (randomInt(10)) {
         case 0: queryShape = randomPoint(); break;
 // LUCENE-5549
-//TODO debug: -Dtests.method=testWithin -Dtests.multiplier=3 -Dtests.seed=5F5294CE2E075A3E:AAD2F0F79288CA64
+//TODO debug: -Dtests.method=testWithin -Dtests.multiplier=3 -Dtests.seed=5F5294CE2E075A3E:AAD2F0F79288CA64 id:1454 gh:1455
 //        case 1:case 2:case 3:
 //          if (!indexedAtLeastOneShapePair) { // avoids ShapePair.relate(ShapePair), which isn't reliable
 //            queryShape = randomShapePairRect(!biasContains);//invert biasContains for query side
@@ -377,7 +377,7 @@ public class RandomSpatialOpFuzzyPrefixTreeTest extends StrategyTestCase {
           if (operation == SpatialOperation.Intersects) {
             indexedShapeCompare = indexedShapesGS.get(id);
             queryShapeCompare = queryShapeGS;
-            //TODO Unfortunately, grid-snapping both can result in intersections that otherwise
+            //TODO Unfortunately, grid-snapping both can result in intersections that otherwise id:1374 gh:1375
             // wouldn't happen when the grids are adjacent. Not a big deal but our test is just a
             // bit more lenient.
           } else if (operation == SpatialOperation.Contains) {

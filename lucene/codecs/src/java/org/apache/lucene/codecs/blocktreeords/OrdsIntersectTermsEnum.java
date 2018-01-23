@@ -32,7 +32,7 @@ import org.apache.lucene.util.automaton.CompiledAutomaton;
 import org.apache.lucene.util.automaton.RunAutomaton;
 import org.apache.lucene.util.fst.FST;
 
-// NOTE: cannot seek!
+// NOTE: cannot seek! id:265 gh:266
 final class OrdsIntersectTermsEnum extends TermsEnum {
   final IndexInput in;
 
@@ -53,7 +53,7 @@ final class OrdsIntersectTermsEnum extends TermsEnum {
 
   private BytesRef savedStartTerm;
       
-  // TODO: in some cases we can filter by length?  eg
+  // TODO: in some cases we can filter by length?  eg id:270 gh:271
   // regexp foo*bar must be at least length 6 bytes
   public OrdsIntersectTermsEnum(OrdsFieldReader fr, CompiledAutomaton compiled, BytesRef startTerm) throws IOException {
     // if (DEBUG) {
@@ -77,7 +77,7 @@ final class OrdsIntersectTermsEnum extends TermsEnum {
       fstReader = fr.index.getBytesReader();
     }
 
-    // TODO: if the automaton is "smallish" we really
+    // TODO: if the automaton is "smallish" we really id:245 gh:246
     // should use the terms index to seek at least to
     // the initial term and likely to subsequent terms
     // (or, maybe just fallback to ATE for such cases).
@@ -162,7 +162,7 @@ final class OrdsIntersectTermsEnum extends TermsEnum {
     Output output = currentFrame.outputPrefix;
     while (idx < f.prefix) {
       final int target = term.bytes[idx] & 0xff;
-      // TODO: we could be more efficient for the next()
+      // TODO: we could be more efficient for the next() id:364 gh:365
       // case by using current arc as starting point,
       // passed to findTargetArc
       arc = fr.index.findTargetArc(target, arc, getArc(1+idx), fstReader);
@@ -183,7 +183,7 @@ final class OrdsIntersectTermsEnum extends TermsEnum {
     return term;
   }
 
-  // TODO: do we need ord() here?  OrdsIntersectTermsEnumFrame tracks termOrd but it may be buggy!
+  // TODO: do we need ord() here?  OrdsIntersectTermsEnumFrame tracks termOrd but it may be buggy! id:249 gh:250
 
   @Override
   public int docFreq() throws IOException {
@@ -214,7 +214,7 @@ final class OrdsIntersectTermsEnum extends TermsEnum {
     return state;
   }
 
-  // NOTE: specialized to only doing the first-time
+  // NOTE: specialized to only doing the first-time id:267 gh:268
   // seek, but we could generalize it to allow
   // arbitrary seekExact/Ceil.  Note that this is a
   // seekFloor!
@@ -403,7 +403,7 @@ final class OrdsIntersectTermsEnum extends TermsEnum {
         }
       }
 
-      // TODO: maybe we should do the same linear test
+      // TODO: maybe we should do the same linear test id:272 gh:273
       // that AutomatonTermsEnum does, so that if we
       // reach a part of the automaton where .* is
       // "temporarily" accepted, we just blindly .next()

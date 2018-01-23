@@ -69,7 +69,7 @@ public class DocValuesFacets {
     FieldType ft = schemaField.getType();
     NamedList<Integer> res = new NamedList<>();
     
-    // TODO: remove multiValuedFieldCache(), check dv type / uninversion type?
+    // TODO: remove multiValuedFieldCache(), check dv type / uninversion type? id:1906 gh:1907
     final boolean multiValued = schemaField.multiValued() || ft.multiValuedFieldCache();
 
     final SortedSetDocValues si; // for term lookups only
@@ -165,7 +165,7 @@ public class DocValuesFacets {
         missingCount = counts[0];
       }
 
-      // IDEA: we could also maintain a count of "other"... everything that fell outside
+      // IDEA: we could also maintain a count of "other"... everything that fell outside id:2681 gh:2682
       // of the top 'N'
 
       int off=offset;
@@ -180,7 +180,7 @@ public class DocValuesFacets {
         for (int i=(startTermIndex==-1)?1:0; i<nTerms; i++) {
           int c = counts[i];
           if (c>min) {
-            // NOTE: we use c>min rather than c>=min as an optimization because we are going in
+            // NOTE: we use c>min rather than c>=min as an optimization because we are going in id:1982 gh:1983
             // index order, so we already know that the keys are ordered.  This can be very
             // important if a lot of the counts are repeated (like zero counts would be).
 

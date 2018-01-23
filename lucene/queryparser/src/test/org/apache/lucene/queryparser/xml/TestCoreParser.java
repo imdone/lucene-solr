@@ -45,7 +45,7 @@ public class TestCoreParser extends LuceneTestCase {
   private static CoreParserTestIndexData indexData;
 
   protected Analyzer newAnalyzer() {
-    // TODO: rewrite test (this needs to set QueryParser.enablePositionIncrements, too, for work with CURRENT):
+    // TODO: rewrite test (this needs to set QueryParser.enablePositionIncrements, too, for work with CURRENT): id:1586 gh:1587
     return new MockAnalyzer(random(), MockTokenizer.WHITESPACE, true, MockTokenFilter.ENGLISH_STOPSET);
   }
 

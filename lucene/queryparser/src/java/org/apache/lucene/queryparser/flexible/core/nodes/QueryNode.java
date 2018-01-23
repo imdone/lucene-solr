@@ -29,7 +29,7 @@ import java.util.Map;
 public interface QueryNode {
 
   /** convert to a query string understood by the query parser */
-  // TODO: this interface might be changed in the future
+  // TODO: this interface might be changed in the future id:1220 gh:1221
   public CharSequence toQueryString(EscapeQuerySyntax escapeSyntaxParser);
 
   /** for printing */

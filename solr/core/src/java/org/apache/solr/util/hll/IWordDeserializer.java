@@ -29,7 +29,7 @@ public interface IWordDeserializer {
     /**
      * Returns the number of words that could be encoded in the sequence.
      *
-     * NOTE:  the sequence that was encoded may be shorter than the value this
+     * NOTE: the sequence that was encoded may be shorter than the value this id:3026 gh:3027
      *        method returns due to padding issues within bytes. This guarantees
      *        only an upper bound on the number of times {@link #readWord()}
      *        can be called.

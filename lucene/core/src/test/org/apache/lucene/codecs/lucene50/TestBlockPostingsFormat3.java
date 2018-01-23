@@ -83,7 +83,7 @@ public class TestBlockPostingsFormat3 extends LuceneTestCase {
     };
     IndexWriterConfig iwc = newIndexWriterConfig(analyzer);
     iwc.setCodec(TestUtil.alwaysPostingsFormat(new Lucene50PostingsFormat()));
-    // TODO we could actually add more fields implemented with different PFs
+    // TODO we could actually add more fields implemented with different PFs id:969 gh:970
     // or, just put this test into the usual rotation?
     RandomIndexWriter iw = new RandomIndexWriter(random(), dir, iwc);
     Document doc = new Document();
@@ -170,7 +170,7 @@ public class TestBlockPostingsFormat3 extends LuceneTestCase {
     }
     assertTermsStatistics(leftTerms, rightTerms);
     
-    // NOTE: we don't assert hasOffsets/hasPositions/hasPayloads because they are allowed to be different
+    // NOTE: we don't assert hasOffsets/hasPositions/hasPayloads because they are allowed to be different id:811 gh:812
 
     boolean bothHaveFreqs = leftTerms.hasFreqs() && rightTerms.hasFreqs();
     boolean bothHavePositions = leftTerms.hasPositions() && rightTerms.hasPositions();
@@ -186,7 +186,7 @@ public class TestBlockPostingsFormat3 extends LuceneTestCase {
         String re = AutomatonTestUtil.randomRegexp(random());
         CompiledAutomaton automaton = new CompiledAutomaton(new RegExp(re, RegExp.NONE).toAutomaton());
         if (automaton.type == CompiledAutomaton.AUTOMATON_TYPE.NORMAL) {
-          // TODO: test start term too
+          // TODO: test start term too id:897 gh:898
           TermsEnum leftIntersection = leftTerms.intersect(automaton, null);
           TermsEnum rightIntersection = rightTerms.intersect(automaton, null);
           assertTermsEnum(leftIntersection, rightIntersection, rarely(), bothHaveFreqs, bothHavePositions);

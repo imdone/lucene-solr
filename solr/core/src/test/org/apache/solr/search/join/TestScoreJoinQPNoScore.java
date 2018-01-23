@@ -71,7 +71,7 @@ public class TestScoreJoinQPNoScore extends SolrTestCaseJ4 {
 
     assertU(commit());
 
-    // test debugging TODO no debug in JoinUtil
+    // test debugging TODO no debug in JoinUtil id:2963 gh:2964
   //  assertJQ(req("q","{!join from=dept_ss to=dept_id_s"+whateverScore()+"}title_s:MTS", "fl","id", "debugQuery","true")
   //      ,"/debug/join/{!join from=dept_ss to=dept_id_s"+whateverScore()+"}title_s:MTS=={'_MATCH_':'fromSetSize,toSetSize', 'fromSetSize':2, 'toSetSize':3}"
   //  );

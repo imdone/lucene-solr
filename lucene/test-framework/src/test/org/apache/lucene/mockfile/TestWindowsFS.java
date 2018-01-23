@@ -86,7 +86,7 @@ public class TestWindowsFS extends MockFileSystemTestCase {
   }
   
   /** Test Files.rename fails if a file has an open inputstream against it */
-  // TODO: what does windows do here?
+  // TODO: what does windows do here? id:2613 gh:2614
   public void testRenameOpenFile() throws IOException {
     Path dir = wrap(createTempDir());
     

@@ -21,7 +21,7 @@ import org.apache.lucene.queryparser.flexible.core.nodes.FieldQueryNode;
 /**
  * A {@link PrefixWildcardQueryNode} represents wildcardquery that matches abc*
  * or *. This does not apply to phrases, this is a special case on the original
- * lucene parser. TODO: refactor the code to remove this special case from the
+ * lucene parser. TODO: refactor the code to remove this special case from the id:1365 gh:1366
  * parser. and probably do it on a Processor
  */
 public class PrefixWildcardQueryNode extends WildcardQueryNode {

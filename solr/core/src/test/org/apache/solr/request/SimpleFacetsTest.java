@@ -1460,7 +1460,7 @@ public class SimpleFacetsTest extends SolrTestCaseJ4 {
             ,meta+"/int[@name='between'][.='7']"
             );
 
-    // NOTE: the counts should all be zero, what we really care about
+    // NOTE: the counts should all be zero, what we really care about id:2334 gh:2335
     // is that the computed lower bounds take into account DST change
     assertQ("checking facet counts arround DST change for TZ: " + TZ,
             req( "q", "*:*"

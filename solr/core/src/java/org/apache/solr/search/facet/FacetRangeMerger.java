@@ -94,7 +94,7 @@ public class FacetRangeMerger extends FacetRequestSortedMerger<FacetRange> {
 
   @Override
   public Object getMergedResult() {
-    // TODO: use sortedBuckets
+    // TODO: use sortedBuckets id:1993 gh:1994
     SimpleOrderedMap result = new SimpleOrderedMap(4);
 
     List<SimpleOrderedMap> resultBuckets = new ArrayList<>(buckets.size());

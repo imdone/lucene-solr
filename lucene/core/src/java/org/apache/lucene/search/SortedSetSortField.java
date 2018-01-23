@@ -59,7 +59,7 @@ public class SortedSetSortField extends SortField {
    * @param reverse True if natural order should be reversed.
    * @param selector custom selector type for choosing the sort value from the set.
    * <p>
-   * NOTE: selectors other than {@link SortedSetSelector.Type#MIN} require optional codec support.
+   * NOTE: selectors other than {@link SortedSetSelector.Type#MIN} require optional codec support. id:654 gh:655
    */
   public SortedSetSortField(String field, boolean reverse, SortedSetSelector.Type selector) {
     super(field, SortField.Type.CUSTOM, reverse);

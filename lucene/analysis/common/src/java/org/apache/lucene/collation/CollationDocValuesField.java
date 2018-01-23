@@ -40,13 +40,13 @@ public final class CollationDocValuesField extends Field {
   /**
    * Create a new ICUCollationDocValuesField.
    * <p>
-   * NOTE: you should not create a new one for each document, instead
+   * NOTE: you should not create a new one for each document, instead id:59 gh:60
    * just make one and reuse it during your indexing process, setting
    * the value via {@link #setStringValue(String)}.
    * @param name field name
    * @param collator Collator for generating collation keys.
    */
-  // TODO: can we make this trap-free? maybe just synchronize on the collator
+  // TODO: can we make this trap-free? maybe just synchronize on the collator id:60 gh:61
   // instead? 
   public CollationDocValuesField(String name, Collator collator) {
     super(name, SortedDocValuesField.TYPE);

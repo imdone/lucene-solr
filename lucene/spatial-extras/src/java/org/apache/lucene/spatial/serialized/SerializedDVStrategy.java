@@ -66,7 +66,7 @@ public class SerializedDVStrategy extends SpatialStrategy {
   /**
    * A cache heuristic for the buf size based on the last shape size.
    */
-  //TODO do we make this non-volatile since it's merely a heuristic?
+  //TODO do we make this non-volatile since it's merely a heuristic? id:1671 gh:1672
   private volatile int indexLastBufSize = 8 * 1024;//8KB default on first run
 
   /**
@@ -101,7 +101,7 @@ public class SerializedDVStrategy extends SpatialStrategy {
 
   @Override
   public DoubleValuesSource makeDistanceValueSource(Point queryPoint, double multiplier) {
-    //TODO if makeShapeValueSource gets lifted to the top; this could become a generic impl.
+    //TODO if makeShapeValueSource gets lifted to the top; this could become a generic impl. id:1447 gh:1448
     return new DistanceToShapeValueSource(makeShapeValueSource(), queryPoint, multiplier, ctx);
   }
 
@@ -118,7 +118,7 @@ public class SerializedDVStrategy extends SpatialStrategy {
 
   /**
    * Provides access to each shape per document
-   */ //TODO raise to SpatialStrategy
+   */ //TODO raise to SpatialStrategy id:1370 gh:1371
   public ShapeValuesSource makeShapeValueSource() {
     return new ShapeDocValueSource(getFieldName(), ctx.getBinaryCodec());
   }

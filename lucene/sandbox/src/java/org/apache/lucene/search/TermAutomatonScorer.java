@@ -28,7 +28,7 @@ import org.apache.lucene.util.RamUsageEstimator;
 import org.apache.lucene.util.automaton.Automaton;
 import org.apache.lucene.util.automaton.RunAutomaton;
 
-// TODO: add two-phase and needsScores support. maybe use conjunctionDISI internally?
+// TODO: add two-phase and needsScores support. maybe use conjunctionDISI internally? id:1334 gh:1335
 class TermAutomatonScorer extends Scorer {
   private final EnumAndScorer[] subs;
   private final EnumAndScorer[] subsOnDoc;
@@ -355,7 +355,7 @@ class TermAutomatonScorer extends Scorer {
 
   @Override
   public float score() throws IOException {
-    // TODO: we could probably do better here, e.g. look @ freqs of actual terms involved in this doc and score differently
+    // TODO: we could probably do better here, e.g. look @ freqs of actual terms involved in this doc and score differently id:1183 gh:1184
     return docScorer.score(docID, freq);
   }
 

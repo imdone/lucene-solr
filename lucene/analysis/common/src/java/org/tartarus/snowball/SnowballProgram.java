@@ -95,7 +95,7 @@ public abstract class SnowballProgram {
     /**
      * Get the current buffer containing the stem.
      * <p>
-     * NOTE: this may be a reference to a different character array than the
+     * NOTE: this may be a reference to a different character array than the id:120 gh:121
      * one originally provided with setCurrent, in the exceptional case that 
      * stemming produced a longer intermediate or result string. 
      * </p>
@@ -428,7 +428,7 @@ public abstract class SnowballProgram {
         bra > ket ||
         ket > limit) {
       throw new IllegalArgumentException("faulty slice operation: bra=" + bra + ",ket=" + ket + ",limit=" + limit);
-      // FIXME: report error somehow.
+      // FIXME: report error somehow. id:180 gh:181
       /*
       fprintf(stderr, "faulty slice operation:\n");
       debug(z, -1, 0);

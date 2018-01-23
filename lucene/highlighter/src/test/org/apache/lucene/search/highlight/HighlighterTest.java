@@ -2204,7 +2204,7 @@ public class HighlighterTest extends BaseTokenStreamTestCase implements Formatte
 // ========== BEGIN TEST SUPPORTING CLASSES
 // ========== THESE LOOK LIKE, WITH SOME MORE EFFORT THESE COULD BE
 // ========== MADE MORE GENERALLY USEFUL.
-// TODO - make synonyms all interchangeable with each other and produce
+// TODO - make synonyms all interchangeable with each other and produce id:945 gh:946
 // a version that does hyponyms - the "is a specialised type of ...."
 // so that car = audi, bmw and volkswagen but bmw != audi so different
 // behaviour to synonyms

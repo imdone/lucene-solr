@@ -260,13 +260,13 @@ public class CollectionsHandler extends RequestHandlerBase implements Permission
 
   public static long DEFAULT_COLLECTION_OP_TIMEOUT = 180*1000;
 
-  //TODO rename to submitToOverseerRPC
+  //TODO rename to submitToOverseerRPC id:1787 gh:1788
   public void handleResponse(String operation, ZkNodeProps m,
                               SolrQueryResponse rsp) throws KeeperException, InterruptedException {
     handleResponse(operation, m, rsp, DEFAULT_COLLECTION_OP_TIMEOUT);
   }
 
-  //TODO rename to submitToOverseerRPC
+  //TODO rename to submitToOverseerRPC id:2763 gh:2764
   public SolrResponse handleResponse(String operation, ZkNodeProps m,
       SolrQueryResponse rsp, long timeout) throws KeeperException, InterruptedException {
     if (!m.containsKey(QUEUE_OPERATION)) {
@@ -492,7 +492,7 @@ public class CollectionsHandler extends RequestHandlerBase implements Permission
     }),
     SPLITSHARD_OP(SPLITSHARD, DEFAULT_COLLECTION_OP_TIMEOUT * 5, true, (req, rsp, h) -> {
       String name = req.getParams().required().get(COLLECTION_PROP);
-      // TODO : add support for multiple shards
+      // TODO : add support for multiple shards id:1847 gh:1848
       String shard = req.getParams().get(SHARD_ID_PROP);
       String rangesStr = req.getParams().get(CoreAdminParams.RANGES);
       String splitKey = req.getParams().get("split.key");
@@ -1045,7 +1045,7 @@ public class CollectionsHandler extends RequestHandlerBase implements Permission
     }
     
     if (response.getResponse().get("failure") != null) {
-      // TODO: we should not wait for Replicas we know failed
+      // TODO: we should not wait for Replicas we know failed id:2651 gh:2652
     }
     
     String replicaNotAlive = null;

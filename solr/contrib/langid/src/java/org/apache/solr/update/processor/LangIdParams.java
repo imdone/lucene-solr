@@ -51,7 +51,7 @@ public interface LangIdParams {
   int MAX_FIELD_VALUE_CHARS_DEFAULT = 10000;
   int MAX_TOTAL_CHARS_DEFAULT = 20000;
 
-  // TODO: This default threshold accepts even "uncertain" detections. 
+  // TODO: This default threshold accepts even "uncertain" detections.  id:1596 gh:1597
   // Increase &langid.threshold above 0.5 to return only certain detections
   Double DOCID_THRESHOLD_DEFAULT = 0.5;
 }

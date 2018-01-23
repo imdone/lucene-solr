@@ -449,7 +449,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       boolean success = false;
       synchronized (fullFlushLock) {
         try {
-          // TODO: should we somehow make this available in the returned NRT reader?
+          // TODO: should we somehow make this available in the returned NRT reader? id:502 gh:503
           long seqNo = docWriter.flushAllThreads();
           if (seqNo < 0) {
             anyChanges = true;
@@ -471,10 +471,10 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
 
           synchronized(this) {
 
-            // NOTE: we cannot carry doc values updates in memory yet, so we always must write them through to disk and re-open each
+            // NOTE: we cannot carry doc values updates in memory yet, so we always must write them through to disk and re-open each id:503 gh:504
             // SegmentReader:
 
-            // TODO: we could instead just clone SIS and pull/incref readers in sync'd block, and then do this w/o IW's lock?
+            // TODO: we could instead just clone SIS and pull/incref readers in sync'd block, and then do this w/o IW's lock? id:705 gh:705
             // Must do this sync'd on IW to prevent a merge from completing at the last second and failing to write its DV updates:
             readerPool.writeAllDocValuesUpdates();
 
@@ -755,7 +755,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
         // called again:
         it.remove();
 
-        // NOTE: it is allowed that these decRefs do not
+        // NOTE: it is allowed that these decRefs do not id:672 gh:673
         // actually close the SRs; this happens when a
         // near real-time reader is kept open after the
         // IndexWriter instance is closed:
@@ -810,7 +810,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
 
     public synchronized boolean anyChanges() {
       for (ReadersAndUpdates rld : readerMap.values()) {
-        // NOTE: we don't check for pending deletes because deletes carry over in RAM to NRT readers
+        // NOTE: we don't check for pending deletes because deletes carry over in RAM to NRT readers id:561 gh:562
         if (rld.getNumDVUpdates() != 0) {
           return true;
         }
@@ -1033,7 +1033,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
         }
 
         if (reader.segmentInfos.getLastGeneration() == 0) {  
-          // TODO: maybe we could allow this?  It's tricky...
+          // TODO: maybe we could allow this?  It's tricky... id:508 gh:509
           throw new IllegalArgumentException("index must already have an initial commit to open from reader");
         }
 
@@ -1103,7 +1103,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       pendingNumDocs.set(segmentInfos.totalMaxDoc());
 
       // start with previous field numbers, but new FieldInfos
-      // NOTE: this is correct even for an NRT reader because we'll pull FieldInfos even for the un-committed segments:
+      // NOTE: this is correct even for an NRT reader because we'll pull FieldInfos even for the un-committed segments: id:506 gh:507
       globalFieldNumberMap = getFieldNumberMap();
 
       validateIndexSort();
@@ -1189,7 +1189,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
 
   // reads latest field infos for the commit
   // this is used on IW init and addIndexes(Dir) to create/update the global field map.
-  // TODO: fix tests abusing this method!
+  // TODO: fix tests abusing this method! id:708 gh:709
   static FieldInfos readFieldInfos(SegmentCommitInfo si) throws IOException {
     Codec codec = si.info.getCodec();
     FieldInfosFormat reader = codec.fieldInfosFormat();
@@ -1584,7 +1584,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       
     final SegmentCommitInfo info = ((SegmentReader) reader).getSegmentInfo();
 
-    // TODO: this is a slow linear search, but, number of
+    // TODO: this is a slow linear search, but, number of id:675 gh:676
     // segments should be contained unless something is
     // seriously wrong w/ the index, so it should be a minor
     // cost:
@@ -2061,7 +2061,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       for(final MergePolicy.OneMerge merge  : pendingMerges) {
         merge.maxNumSegments = maxNumSegments;
         if (merge.info != null) {
-          // TODO: explain why this is sometimes still null
+          // TODO: explain why this is sometimes still null id:565 gh:566
           segmentsToMerge.put(merge.info, Boolean.TRUE);
         }
       }
@@ -2069,7 +2069,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       for (final MergePolicy.OneMerge merge: runningMerges) {
         merge.maxNumSegments = maxNumSegments;
         if (merge.info != null) {
-          // TODO: explain why this is sometimes still null
+          // TODO: explain why this is sometimes still null id:513 gh:514
           segmentsToMerge.put(merge.info, Boolean.TRUE);
         }
       }
@@ -2110,7 +2110,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       // complete
       ensureOpen();
     }
-    // NOTE: in the ConcurrentMergeScheduler case, when
+    // NOTE: in the ConcurrentMergeScheduler case, when id:509 gh:510
     // doWait is false, we can return immediately while
     // background threads accomplish the merging
   }
@@ -2193,7 +2193,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       }
     }
 
-    // NOTE: in the ConcurrentMergeScheduler case, when
+    // NOTE: in the ConcurrentMergeScheduler case, when id:711 gh:712
     // doWait is false, we can return immediately while
     // background threads accomplish the merging
   }
@@ -2475,7 +2475,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
    * </p>
    * 
    * <p>
-   * NOTE: this method is much faster than using deleteDocuments( new
+   * NOTE: this method is much faster than using deleteDocuments( new id:678 gh:679
    * MatchAllDocsQuery() ). Yet, this method also has different semantics
    * compared to {@link #deleteDocuments(Query...)} since internal
    * data-structures are cleared as well as all segment information is
@@ -2487,7 +2487,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
    * </p>
    * 
    * <p>
-   * NOTE: this method will forcefully abort all merges in progress. If other
+   * NOTE: this method will forcefully abort all merges in progress. If other id:568 gh:569
    * threads are running {@link #forceMerge}, {@link #addIndexes(CodecReader[])}
    * or {@link #forceMergeDeletes} methods, they may receive
    * {@link MergePolicy.MergeAbortedException}s.
@@ -2715,7 +2715,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       checkpoint();
 
       if (packet != null && packet.any() && sortMap != null) {
-        // TODO: not great we do this heavyish op while holding IW's monitor lock,
+        // TODO: not great we do this heavyish op while holding IW's monitor lock, id:516 gh:515
         // but it only applies if you are using sorted indices and updating doc values:
         ReadersAndUpdates rld = readerPool.get(newSegment, true);
         rld.sortMap = sortMap;
@@ -2760,7 +2760,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       } finally {
         if (success == false) {
           // Release all previously acquired locks:
-          // TODO: addSuppressed? it could be many...
+          // TODO: addSuppressed? it could be many... id:512 gh:513
           IOUtils.closeWhileHandlingException(locks);
         }
       }
@@ -2863,7 +2863,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
             Sort segmentIndexSort = info.info.getIndexSort();
 
             if (indexSort != null && segmentIndexSort != null && indexSort.equals(segmentIndexSort) == false) {
-              // TODO: we could make this smarter, e.g. if the incoming indexSort is congruent with our sort ("starts with") then it's OK
+              // TODO: we could make this smarter, e.g. if the incoming indexSort is congruent with our sort ("starts with") then it's OK id:715 gh:717
               throw new IllegalArgumentException("cannot change index sort from " + segmentIndexSort + " to " + indexSort);
             }
 
@@ -3017,7 +3017,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
 
       final IOContext context = new IOContext(new MergeInfo(Math.toIntExact(numDocs), -1, false, UNBOUNDED_MAX_MERGE_SEGMENTS));
 
-      // TODO: somehow we should fix this merge so it's
+      // TODO: somehow we should fix this merge so it's id:681 gh:682
       // abortable so that IW.close(false) is able to stop it
       TrackingDirectoryWrapper trackingDir = new TrackingDirectoryWrapper(directory);
 
@@ -3059,7 +3059,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       if (useCompoundFile) {
         Collection<String> filesToDelete = infoPerCommit.files();
         TrackingDirectoryWrapper trackingCFSDir = new TrackingDirectoryWrapper(directory);
-        // TODO: unlike merge, on exception we arent sniping any trash cfs files here?
+        // TODO: unlike merge, on exception we arent sniping any trash cfs files here? id:570 gh:571
         // createCompoundFile tries to cleanup, but it might not always be able to...
         try {
           createCompoundFile(infoStream, trackingCFSDir, info, context);
@@ -3502,7 +3502,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
               infoStream.message("IW", "commit: done writing segments file \"" + committedSegmentsFileName + "\"");
             }
 
-            // NOTE: don't use this.checkpoint() here, because
+            // NOTE: don't use this.checkpoint() here, because id:558 gh:559
             // we do not want to increment changeCount:
             deleter.checkpoint(pendingCommit, true);
 
@@ -3576,7 +3576,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
    */
   final void flush(boolean triggerMerge, boolean applyAllDeletes) throws IOException {
 
-    // NOTE: this method cannot be sync'd because
+    // NOTE: this method cannot be sync'd because id:518 gh:519
     // maybeMerge() in turn calls mergeScheduler.merge which
     // in turn can take a long time to run and we don't want
     // to hold the lock for that.  In the case of
@@ -4253,7 +4253,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
       return;
     }
 
-    // TODO: in the non-pool'd case this is somewhat
+    // TODO: in the non-pool'd case this is somewhat id:717 gh:716
     // wasteful, because we open these readers, close them,
     // and then open them again for merging.  Maybe  we
     // could pre-pool them somehow in that case...
@@ -4263,7 +4263,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
     }
 
     // Must move the pending doc values updates to disk now, else the newly merged segment will not see them:
-    // TODO: we could fix merging to pull the merged DV iterator so we don't have to move these updates to disk first, i.e. just carry them
+    // TODO: we could fix merging to pull the merged DV iterator so we don't have to move these updates to disk first, i.e. just carry them id:684 gh:685
     // in memory:
     readerPool.writeDocValuesUpdatesForMerge(merge.segments);
     
@@ -4572,7 +4572,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
         }
       }
 
-      // TODO: ideally we would freeze merge.info here!!
+      // TODO: ideally we would freeze merge.info here!! id:572 gh:573
       // because any changes after writing the .si will be
       // lost... 
 
@@ -4667,7 +4667,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
   }
 
   private synchronized void doWait() {
-    // NOTE: the callers of this method should in theory
+    // NOTE: the callers of this method should in theory id:582 gh:583
     // be able to do simply wait(), but, as a defense
     // against thread timing hazards where notifyAll()
     // fails to be called, we wait for at most 1 second
@@ -4980,14 +4980,14 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
    *  be deleted the next time commit() is called.
    */
   public synchronized void deleteUnusedFiles() throws IOException {
-    // TODO: should we remove this method now that it's the Directory's job to retry deletions?  Except, for the super expert IDP use case
+    // TODO: should we remove this method now that it's the Directory's job to retry deletions?  Except, for the super expert IDP use case id:521 gh:522
     // it's still needed?
     ensureOpen(false);
     deleter.revisitPolicy();
   }
 
   /**
-   * NOTE: this method creates a compound file for all files returned by
+   * NOTE: this method creates a compound file for all files returned by id:719 gh:720
    * info.files(). While, generally, this may include separate norms and
    * deletion files, this SegmentInfo must not reference such files when this
    * method is called, because they are not allowed within a compound file.
@@ -5032,7 +5032,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
    * Cleans up residuals from a segment that could not be entirely flushed due to an error
    */
   synchronized final void flushFailed(SegmentInfo info) throws IOException {
-    // TODO: this really should be a tragic
+    // TODO: this really should be a tragic id:687 gh:688
     Collection<String> files;
     try {
       files = info.files();

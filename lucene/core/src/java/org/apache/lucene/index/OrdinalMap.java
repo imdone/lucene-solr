@@ -41,8 +41,8 @@ import org.apache.lucene.util.packed.PackedLongValues;
  *
  * @lucene.internal */
 public class OrdinalMap implements Accountable {
-  // TODO: we could also have a utility method to merge Terms[] and use size() as a weight when we need it
-  // TODO: use more efficient packed ints structures?
+  // TODO: we could also have a utility method to merge Terms[] and use size() as a weight when we need it id:538 gh:539
+  // TODO: use more efficient packed ints structures? id:809 gh:810
 
   private static class TermsEnumIndex {
     public final static TermsEnumIndex[] EMPTY_ARRAY = new TermsEnumIndex[0];
@@ -245,7 +245,7 @@ public class OrdinalMap implements Accountable {
         // are skipped), which can happen e.g. with a FilteredTermsEnum:
         assert segmentOrds[segmentIndex] <= segmentOrd;
 
-        // TODO: we could specialize this case (the while loop is not needed when the ords
+        // TODO: we could specialize this case (the while loop is not needed when the ords id:700 gh:701
         // are compact)
         do {
           ordDeltas[segmentIndex].add(delta);
@@ -362,7 +362,7 @@ public class OrdinalMap implements Accountable {
     resources.add(Accountables.namedAccountable("global ord deltas", globalOrdDeltas));
     resources.add(Accountables.namedAccountable("first segments", firstSegments));
     resources.add(Accountables.namedAccountable("segment map", segmentMap));
-    // TODO: would be nice to return actual child segment deltas too, but the optimizations are confusing
+    // TODO: would be nice to return actual child segment deltas too, but the optimizations are confusing id:590 gh:591
     return resources;
   }
 }

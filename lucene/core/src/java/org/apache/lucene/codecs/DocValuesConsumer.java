@@ -786,7 +786,7 @@ public abstract class DocValuesConsumer implements Closeable {
                       });
   }
   
-  // TODO: seek-by-ord to nextSetBit
+  // TODO: seek-by-ord to nextSetBit id:477 gh:478
   static class BitsFilteredTermsEnum extends FilteredTermsEnum {
     final LongBitSet liveTerms;
     

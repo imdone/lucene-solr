@@ -59,7 +59,7 @@ import org.apache.lucene.search.TermQuery;
  */
 public class CommonTermsQuery extends Query {
   /*
-   * TODO maybe it would make sense to abstract this even further and allow to
+   * TODO maybe it would make sense to abstract this even further and allow to id:1062 gh:1063
    * rewrite to dismax rather than boolean. Yet, this can already be subclassed
    * to do so.
    */

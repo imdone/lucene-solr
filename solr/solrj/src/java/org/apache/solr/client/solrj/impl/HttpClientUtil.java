@@ -96,7 +96,7 @@ public class HttpClientUtil {
   
   public static final String SYS_PROP_CHECK_PEER_NAME = "solr.ssl.checkPeerName";
   
-  // * NOTE* The following params configure the default request config and this
+  // * NOTE * The following params configure the default request config and this id:3126 gh:3127
   // is overridden by SolrJ clients. Use the setters on the SolrJ clients to
   // to configure these settings if that is the intent.
   

@@ -178,7 +178,7 @@ public abstract class BaseTokenStreamTestCase extends LuceneTestCase {
     final Map<Integer,Integer> posToStartOffset = new HashMap<>();
     final Map<Integer,Integer> posToEndOffset = new HashMap<>();
 
-    // TODO: would be nice to be able to assert silly duplicated tokens are not created, but a number of cases do this "legitimately": LUCENE-7622
+    // TODO: would be nice to be able to assert silly duplicated tokens are not created, but a number of cases do this "legitimately": LUCENE-7622 id:1432 gh:1433
 
     ts.reset();
     int pos = -1;
@@ -505,7 +505,7 @@ public abstract class BaseTokenStreamTestCase extends LuceneTestCase {
     final RandomIndexWriter iw;
     final CountDownLatch latch;
 
-    // NOTE: not volatile because we don't want the tests to
+    // NOTE: not volatile because we don't want the tests to id:1315 gh:1316
     // add memory barriers (ie alter how threads
     // interact)... so this is just "best effort":
     public boolean failed;
@@ -679,7 +679,7 @@ public abstract class BaseTokenStreamTestCase extends LuceneTestCase {
             }
           }
         } catch (Throwable t) {
-          // TODO: really we should pass a random seed to
+          // TODO: really we should pass a random seed to id:1572 gh:1573
           // checkAnalysisConsistency then print it here too:
           System.err.println("TEST FAIL: useCharFilter=" + useCharFilter + " text='" + escape(text) + "'");
           Rethrow.rethrow(t);
@@ -710,7 +710,7 @@ public abstract class BaseTokenStreamTestCase extends LuceneTestCase {
       } else if (c >= 0x20 && c < 0x80) {
         sb.append((char) c);
       } else {
-        // TODO: we can make ascii easier to read if we
+        // TODO: we can make ascii easier to read if we id:2577 gh:2578
         // don't escape...
         sb.append(String.format(Locale.ROOT, "\\u%04x", c));
       }
@@ -784,7 +784,7 @@ public abstract class BaseTokenStreamTestCase extends LuceneTestCase {
           reader = evilReader;
 
           try {
-            // NOTE: some Tokenizers go and read characters
+            // NOTE: some Tokenizers go and read characters id:1657 gh:1658
             // when you call .setReader(Reader), eg
             // PatternTokenizer.  This is a bit
             // iffy... (really, they should only
@@ -922,7 +922,7 @@ public abstract class BaseTokenStreamTestCase extends LuceneTestCase {
     }
 
     a.normalize("dummy", text);
-    // TODO: what can we do besides testing that the above method does not throw?
+    // TODO: what can we do besides testing that the above method does not throw? id:1436 gh:1437
 
     if (field != null) {
       reader = new StringReader(text);

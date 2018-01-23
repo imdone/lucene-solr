@@ -49,7 +49,7 @@ import org.apache.lucene.util.OfflineSorter;
 import org.apache.lucene.util.PriorityQueue;
 import org.apache.lucene.util.StringHelper;
 
-// TODO
+// TODO id:779 gh:780
 //   - allow variable length byte[] (across docs and dims), but this is quite a bit more hairy
 //   - we could also index "auto-prefix terms" here, and use better compression, and maybe only use for the "fully contained" case so we'd
 //     only index docIDs
@@ -276,7 +276,7 @@ public class BKDWriter implements Closeable {
       heapPointWriter.append(packedValue, pointCount, docID);
     }
 
-    // TODO: we could specialize for the 1D case:
+    // TODO: we could specialize for the 1D case: id:710 gh:711
     if (pointCount == 0) {
       System.arraycopy(packedValue, 0, minPackedValue, 0, packedBytesLength);
       System.arraycopy(packedValue, 0, maxPackedValue, 0, packedBytesLength);
@@ -700,7 +700,7 @@ public class BKDWriter implements Closeable {
     }
   }
 
-  // TODO: there must be a simpler way?
+  // TODO: there must be a simpler way? id:1180 gh:1181
   private void rotateToTree(int nodeID, int offset, int count, byte[] index, List<byte[]> leafBlockStartValues) {
     //System.out.println("ROTATE: nodeID=" + nodeID + " offset=" + offset + " count=" + count + " bpd=" + bytesPerDim + " index.length=" + index.length);
     if (count == 1) {
@@ -731,7 +731,7 @@ public class BKDWriter implements Closeable {
           System.arraycopy(leafBlockStartValues.get(rootOffset), 0, index, nodeID*(1+bytesPerDim)+1, bytesPerDim);
           //System.out.println("  index[" + nodeID + "] = blockStartValues[" + rootOffset + "]");
 
-          // TODO: we could optimize/specialize, when we know it's simply fully balanced binary tree
+          // TODO: we could optimize/specialize, when we know it's simply fully balanced binary tree id:741 gh:742
           // under here, to save this while loop on each recursion
 
           // Recurse left
@@ -749,7 +749,7 @@ public class BKDWriter implements Closeable {
     }
   }
 
-  // TODO: if we fixed each partition step to just record the file offset at the "split point", we could probably handle variable length
+  // TODO: if we fixed each partition step to just record the file offset at the "split point", we could probably handle variable length id:940 gh:941
   // encoding and not have our own ByteSequencesReader/Writer
 
   /** Sort the heap writer by the specified dim */
@@ -931,7 +931,7 @@ public class BKDWriter implements Closeable {
   public long finish(IndexOutput out) throws IOException {
     // System.out.println("\nBKDTreeWriter.finish pointCount=" + pointCount + " out=" + out + " heapWriter=" + heapPointWriter);
 
-    // TODO: specialize the 1D case?  it's much faster at indexing time (no partitioning on recurse...)
+    // TODO: specialize the 1D case?  it's much faster at indexing time (no partitioning on recurse...) id:780 gh:781
 
     // Catch user silliness:
     if (heapPointWriter == null && tempInput == null) {
@@ -969,7 +969,7 @@ public class BKDWriter implements Closeable {
 
     checkMaxLeafNodeCount(numLeaves);
 
-    // NOTE: we could save the 1+ here, to use a bit less heap at search time, but then we'd need a somewhat costly check at each
+    // NOTE: we could save the 1+ here, to use a bit less heap at search time, but then we'd need a somewhat costly check at each id:712 gh:713
     // step of the recursion to recompute the split dim:
 
     // Indexed by nodeID, but first (root) nodeID is 1.  We do 1+ because the lead byte at each recursion says which dim we split on.
@@ -1224,7 +1224,7 @@ public class BKDWriter implements Closeable {
 
   private long getLeftMostLeafBlockFP(long[] leafBlockFPs, int nodeID) {
     int nodeIDIn = nodeID;
-    // TODO: can we do this cheaper, e.g. a closed form solution instead of while loop?  Or
+    // TODO: can we do this cheaper, e.g. a closed form solution instead of while loop?  Or id:1182 gh:1183
     // change the recursion while packing the index to return this left-most leaf block FP
     // from each recursion instead?
     //
@@ -1332,7 +1332,7 @@ public class BKDWriter implements Closeable {
   @Override
   public void close() throws IOException {
     if (tempInput != null) {
-      // NOTE: this should only happen on exception, e.g. caller calls close w/o calling finish:
+      // NOTE: this should only happen on exception, e.g. caller calls close w/o calling finish: id:743 gh:744
       try {
         tempInput.close();
       } finally {
@@ -1365,7 +1365,7 @@ public class BKDWriter implements Closeable {
   private Error verifyChecksum(Throwable priorException, PointWriter writer) throws IOException {
     assert priorException != null;
 
-    // TODO: we could improve this, to always validate checksum as we recurse, if we shared left and
+    // TODO: we could improve this, to always validate checksum as we recurse, if we shared left and id:942 gh:943
     // right reader after recursing to children, and possibly within recursed children,
     // since all together they make a single pass through the file.  But this is a sizable re-org,
     // and would mean leaving readers (IndexInputs) open for longer:
@@ -1388,7 +1388,7 @@ public class BKDWriter implements Closeable {
 
     // Read the split value, then mark all ords in the right tree (larger than the split value):
 
-    // TODO: find a way to also checksum this reader?  If we changed to markLeftTree, and scanned the final chunk, it could work?
+    // TODO: find a way to also checksum this reader?  If we changed to markLeftTree, and scanned the final chunk, it could work? id:781 gh:782
     try (PointReader reader = source.writer.getReader(source.start + source.count - rightCount, rightCount)) {
       boolean result = reader.next();
       assert result: "rightCount=" + rightCount + " source.count=" + source.count + " source.writer=" + source.writer;
@@ -1703,7 +1703,7 @@ public class BKDWriter implements Closeable {
       assert count > 0: "nodeID=" + nodeID + " leafNodeOffset=" + leafNodeOffset;
       writeLeafBlockDocs(out, heapSource.docIDs, Math.toIntExact(source.start), count);
 
-      // TODO: minor opto: we don't really have to write the actual common prefixes, because BKDReader on recursing can regenerate it for us
+      // TODO: minor opto: we don't really have to write the actual common prefixes, because BKDReader on recursing can regenerate it for us id:714 gh:715
       // from the index, much like how terms dict does so from the FST:
 
       // Write the common prefixes:
@@ -1813,7 +1813,7 @@ public class BKDWriter implements Closeable {
         }
       }
 
-      // TODO: we could "tail recurse" here?  have our parent discard its refs as we recurse right?
+      // TODO: we could "tail recurse" here?  have our parent discard its refs as we recurse right? id:1187 gh:1188
       // Recurse on right tree:
       build(2*nodeID+1, leafNodeOffset, rightSlices,
             ordBitSet, out,

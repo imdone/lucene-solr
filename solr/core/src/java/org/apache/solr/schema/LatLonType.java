@@ -66,7 +66,7 @@ public class LatLonType extends AbstractSubTypeFieldType implements SpatialQuery
   @Override
   protected void init(IndexSchema schema, Map<String, String> args) {
     super.init(schema, args);
-    //TODO: refactor this, as we are creating the suffix cache twice, since the super.init does it too
+    //TODO: refactor this, as we are creating the suffix cache twice, since the super.init does it too id:2849 gh:2850
     createSuffixCache(3);//we need three extra fields: one for the storage field, two for the lat/lon
   }
 
@@ -291,7 +291,7 @@ class LatLonValueSource extends VectorValueSource {
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-// TODO: recast as a value source that doesn't have to match all docs
+// TODO: recast as a value source that doesn't have to match all docs id:1939 gh:1940
 
 class SpatialDistanceQuery extends ExtendedQueryBase implements PostFilter {
   String origField;
@@ -409,7 +409,7 @@ class SpatialDistanceQuery extends ExtendedQueryBase implements PostFilter {
 
       if (!calcDist) return true;
 
-      // TODO: test for internal box where we wouldn't need to calculate the distance
+      // TODO: test for internal box where we wouldn't need to calculate the distance id:2694 gh:2695
 
       return dist(lat, lon) <= dist;
     }

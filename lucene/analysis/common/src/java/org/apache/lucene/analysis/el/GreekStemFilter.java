@@ -34,7 +34,7 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
  * the {@link KeywordAttribute} before this {@link TokenStream}.
  * </p>
  * <p>
- * NOTE: Input is expected to be casefolded for Greek (including folding of final
+ * NOTE: Input is expected to be casefolded for Greek (including folding of final id:98 gh:99
  * sigma to sigma), and with diacritics removed. This can be achieved by using 
  * either {@link GreekLowerCaseFilter} or ICUFoldingFilter before GreekStemFilter.
  * @lucene.experimental

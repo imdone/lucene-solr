@@ -88,7 +88,7 @@ class MergeIndexesOp implements CoreAdminHandler.CoreAdminOp {
             }
             Directory dir = dirFactory.get(dirNames[i], DirectoryFactory.DirContext.DEFAULT, core.getSolrConfig().indexConfig.lockType);
             dirsToBeReleased.put(dir, markAsDone);
-            // TODO: why doesn't this use the IR factory? what is going on here?
+            // TODO: why doesn't this use the IR factory? what is going on here? id:1805 gh:1806
             readersToBeClosed.add(DirectoryReader.open(dir));
           }
         }

@@ -362,7 +362,7 @@ public class TestMultiPhraseQuery extends LuceneTestCase {
     MultiPhraseQuery.Builder mpqb = new MultiPhraseQuery.Builder();
     //mpq.setSlop(1);
 
-    // NOTE: not great that if we do the else clause here we
+    // NOTE: not great that if we do the else clause here we id:1138 gh:1139
     // get different scores!  MultiPhraseQuery counts that
     // phrase as occurring twice per doc (it should be 1, I
     // think?).  This is because MultipleTermPositions is able to

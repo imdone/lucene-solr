@@ -163,7 +163,7 @@ public abstract class QParser {
    * Returns the resulting query from this QParser, calling parse() only the
    * first time and caching the Query result. <em>A null return is possible!</em>
    */
-  //TODO never return null; standardize the semantics
+  //TODO never return null; standardize the semantics id:2049 gh:2050
   public Query getQuery() throws SyntaxError {
     if (query==null) {
       query=parse();
@@ -206,7 +206,7 @@ public abstract class QParser {
     }
   }
 
-  // TODO: replace with a SolrParams that defaults to checking localParams first?
+  // TODO: replace with a SolrParams that defaults to checking localParams first? id:1924 gh:1925
   // ideas..
   //   create params that satisfy field-specific overrides
   //   overrideable syntax $x=foo  (set global for limited scope) (invariants & security?)
@@ -230,7 +230,7 @@ public abstract class QParser {
       defaultType = localParams.get(QueryParsing.DEFTYPE);
     }
     QParser nestedParser = getParser(q, defaultType, getReq());
-    nestedParser.flags = this.flags;  // TODO: this would be better passed in to the constructor... change to a ParserContext object?
+    nestedParser.flags = this.flags;  // TODO: this would be better passed in to the constructor... change to a ParserContext object? id:2871 gh:2872
     nestedParser.recurseCount = recurseCount;
     recurseCount--;
     return nestedParser;
@@ -347,7 +347,7 @@ public abstract class QParser {
       if (val != null) {
         // val was directly specified in localParams via v=<something> or v=$arg
         valFollowedParams = false;
-        //TODO if remainder of query string after '}' is non-empty, then what? Throw error? Fall back to lucene QParser?
+        //TODO if remainder of query string after '}' is non-empty, then what? Throw error? Fall back to lucene QParser? id:1961 gh:1962
       } else {
         // use the remainder of the string as the value
         valFollowedParams = true;

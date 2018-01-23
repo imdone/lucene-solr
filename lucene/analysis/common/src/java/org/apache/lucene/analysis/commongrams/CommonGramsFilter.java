@@ -87,11 +87,11 @@ public final class CommonGramsFilter extends TokenFilter {
    * of common words also output a bigram with position increment 0 and
    * type="gram"
    *
-   * TODO:Consider adding an option to not emit unigram stopwords
+   * TODO: Consider adding an option to not emit unigram stopwords id:17 gh:18
    * as in CDL XTF BigramStopFilter, CommonGramsQueryFilter would need to be
    * changed to work with this.
    *
-   * TODO: Consider optimizing for the case of three
+   * TODO: Consider optimizing for the case of three id:18 gh:19
    * commongrams i.e "man of the year" normally produces 3 bigrams: "man-of",
    * "of-the", "the-year" but with proper management of positions we could
    * eliminate the middle bigram "of-the"and save a disk seek and a whole set of

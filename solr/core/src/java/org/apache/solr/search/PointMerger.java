@@ -216,7 +216,7 @@ public class PointMerger {
 
     @Override
     public void visit(int docID, byte[] packedValue) throws IOException {
-      // TODO: handle filter or deleted documents?
+      // TODO: handle filter or deleted documents? id:1921 gh:1922
       int v = IntPoint.decodeDimension(packedValue, 0);
       if (v < last) return;
 
@@ -279,7 +279,7 @@ public class PointMerger {
 
     @Override
     public void visit(int docID, byte[] packedValue) throws IOException {
-      // TODO: handle filter or deleted documents?
+      // TODO: handle filter or deleted documents? id:2869 gh:2870
       long v = LongPoint.decodeDimension(packedValue, 0);
       if (v < last) return;
 
@@ -342,7 +342,7 @@ public class PointMerger {
 
     @Override
     public void visit(int docID, byte[] packedValue) throws IOException {
-      // TODO: handle filter or deleted documents?
+      // TODO: handle filter or deleted documents? id:1959 gh:1960
       float v = FloatPoint.decodeDimension(packedValue, 0);
       if (v < last) return;
 
@@ -405,7 +405,7 @@ public class PointMerger {
 
     @Override
     public void visit(int docID, byte[] packedValue) throws IOException {
-      // TODO: handle filter or deleted documents?
+      // TODO: handle filter or deleted documents? id:2709 gh:2710
       double v = DoublePoint.decodeDimension(packedValue, 0);
       if (v < last) return;
 

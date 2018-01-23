@@ -65,7 +65,7 @@ public class HdfsUpdateLog extends UpdateLog {
     this.confDir = confDir;
   }
   
-  // HACK
+  // HACK id:2782 gh:2783
   // while waiting for HDFS-3107, instead of quickly
   // dropping, we slowly apply
   // This is somewhat brittle, but current usage
@@ -237,7 +237,7 @@ public class HdfsUpdateLog extends UpdateLog {
           "Unable to use updateLog: " + e.getMessage(), e);
     }
     
-    // TODO: these startingVersions assume that we successfully recover from all
+    // TODO: these startingVersions assume that we successfully recover from all id:2148 gh:2149
     // non-complete tlogs.
     try (RecentUpdates startingUpdates = getRecentUpdates()) {
       startingVersions = startingUpdates.getVersions(getNumRecordsToKeep());

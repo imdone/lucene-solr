@@ -270,7 +270,7 @@ public class FacetsConfig {
         } else {
           type = "bytes";
         }
-        // NOTE: not thread safe, but this is just best effort:
+        // NOTE: not thread safe, but this is just best effort: id:900 gh:901
         String curType = assocDimTypes.get(indexFieldName);
         if (curType == null) {
           assocDimTypes.put(indexFieldName, type);
@@ -381,7 +381,7 @@ public class FacetsConfig {
       int upto = 0;
       String indexFieldName = ent.getKey();
       for(AssociationFacetField field : ent.getValue()) {
-        // NOTE: we don't add parents for associations
+        // NOTE: we don't add parents for associations id:1269 gh:1270
         checkTaxoWriter(taxoWriter);
         FacetLabel label = new FacetLabel(field.dim, field.path);
         int ordinal = taxoWriter.addCategory(label);

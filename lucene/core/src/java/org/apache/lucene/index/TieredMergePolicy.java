@@ -67,7 +67,7 @@ import java.util.Set;
  *  @lucene.experimental
  */
 
-// TODO
+// TODO id:725 gh:726
 //   - we could try to take into account whether a large
 //     merge is already running (under CMS) and then bias
 //     ourselves towards picking smaller merges if so (or,
@@ -113,7 +113,7 @@ public class TieredMergePolicy extends MergePolicy {
     return maxMergeAtOnce;
   }
 
-  // TODO: should addIndexes do explicit merging, too?  And,
+  // TODO: should addIndexes do explicit merging, too?  And, id:621 gh:622
   // if user calls IW.maybeMerge "explicitly"
 
   /** Maximum number of segments to be merged at a time,
@@ -401,7 +401,7 @@ public class TieredMergePolicy extends MergePolicy {
 
             if (totAfterMergeBytes + segBytes > maxMergedSegmentBytes) {
               hitTooLarge = true;
-              // NOTE: we continue, so that we can try
+              // NOTE: we continue, so that we can try id:636 gh:637
               // "packing" smaller segments into this merge
               // to see if we can get closer to the max
               // size; this in general is not perfect since

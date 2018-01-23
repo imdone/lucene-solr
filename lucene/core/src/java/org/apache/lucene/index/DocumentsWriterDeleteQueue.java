@@ -150,7 +150,7 @@ final class DocumentsWriterDeleteQueue implements Accountable {
      */
     slice.sliceTail = termNode;
     assert slice.sliceHead != slice.sliceTail : "slice head and tail must differ after add";
-    tryApplyGlobalSlice(); // TODO doing this each time is not necessary maybe
+    tryApplyGlobalSlice(); // TODO doing this each time is not necessary maybe id:531 gh:532
     // we can do it just every n times or so?
 
     return seqNo;

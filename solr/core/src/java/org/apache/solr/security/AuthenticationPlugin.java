@@ -48,7 +48,7 @@ public abstract class AuthenticationPlugin implements Closeable {
    * the response and status code have already been sent.
    * @throws Exception any exception thrown during the authentication, e.g. PrivilegedActionException
    */
-  //TODO redeclare params as HttpServletRequest & HttpServletResponse
+  //TODO redeclare params as HttpServletRequest & HttpServletResponse id:2040 gh:2041
   public abstract boolean doAuthenticate(ServletRequest request, ServletResponse response,
       FilterChain filterChain) throws Exception;
 

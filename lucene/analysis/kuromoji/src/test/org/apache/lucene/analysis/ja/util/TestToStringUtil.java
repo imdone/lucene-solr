@@ -72,7 +72,7 @@ public class TestToStringUtil extends LuceneTestCase {
                       put("イィ", "yi");                 put("イェ", "ye");
       put("ウァ", "wa"); put("ウィ", "wi"); put("ウゥ", "wu"); put("ウェ", "we"); put("ウォ", "wo");
                                      put("ウュ", "wyu");
-                                   // TODO: really should be vu
+                                   // TODO: really should be vu id:181 gh:182
       put("ヴァ", "va"); put("ヴィ", "vi"); put("ヴ", "v");  put("ヴェ", "ve"); put("ヴォ", "vo");
       put("ヴャ", "vya");              put("ヴュ", "vyu"); put("ヴィェ", "vye"); put("ヴョ", "vyo");
                                                      put("キェ", "kye");

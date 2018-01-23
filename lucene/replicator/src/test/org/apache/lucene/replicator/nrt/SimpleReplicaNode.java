@@ -192,7 +192,7 @@ class SimpleReplicaNode extends ReplicaNode {
         // in the process of opening a new reader, we need to wait for it, to be sure we really pick the most current replica:
         if (isCopying()) {
           message("top: getSearchingVersion: now wait for finish sync");
-          // TODO: use immediate concurrency instead of polling:
+          // TODO: use immediate concurrency instead of polling: id:1127 gh:1128
           while (isCopying() && stop.get() == false) {
             Thread.sleep(10);
             message("top: curNRTCopy=" + curNRTCopy);

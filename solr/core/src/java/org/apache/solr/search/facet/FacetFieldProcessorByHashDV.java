@@ -146,7 +146,7 @@ class FacetFieldProcessorByHashDV extends FacetFieldProcessor {
   }
 
   /** A hack instance of Calc for Term ordinals in DocValues. */
-  // TODO consider making FacetRangeProcessor.Calc facet top level; then less of a hack?
+  // TODO consider making FacetRangeProcessor.Calc facet top level; then less of a hack? id:2727 gh:2728
   private class TermOrdCalc extends FacetRangeProcessor.Calc {
 
     IntFunction<BytesRef> lookupOrdFunction; // set in collectDocs()!
@@ -224,7 +224,7 @@ class FacetFieldProcessorByHashDV extends FacetFieldProcessor {
       calc = new TermOrdCalc(); // kind of a hack
     }
 
-    // TODO: Use the number of indexed terms, if present, as an estimate!
+    // TODO: Use the number of indexed terms, if present, as an estimate! id:2075 gh:2076
     //    Even for NumericDocValues, we could check for a terms index for an estimate.
     //    Our estimation should aim high to avoid expensive rehashes.
 
@@ -333,7 +333,7 @@ class FacetFieldProcessorByHashDV extends FacetFieldProcessor {
   private void collectDocs() throws IOException {
     if (calc instanceof TermOrdCalc) { // Strings
 
-      // TODO support SortedSetDocValues
+      // TODO support SortedSetDocValues id:2010 gh:2011
       SortedDocValues globalDocValues = FieldUtil.getSortedDocValues(fcontext.qcontext, sf, null);
       ((TermOrdCalc)calc).lookupOrdFunction = ord -> {
         try {
@@ -473,7 +473,7 @@ class FacetFieldProcessorByHashDV extends FacetFieldProcessor {
       }
     };
 
-    // NOTE: resizing isn't strictly necessary for missing/allBuckets... we could just set the new slot directly
+    // NOTE: resizing isn't strictly necessary for missing/allBuckets... we could just set the new slot directly id:2895 gh:2896
     if (collectAcc != null) {
       collectAcc.resize(resizer);
     }

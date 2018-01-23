@@ -261,7 +261,7 @@ public class StandardSyntaxParser implements SyntaxParser, StandardSyntaxParserC
 //          q = new ModifierQueryNode(q, mods);
 //         }
 //          clauses.add(q);
-//        //TODO: figure out what to do with AND and ORs
+//        //TODO: figure out what to do with AND and ORs id:1080 gh:1081
 //   }
 //   )*
 //     {

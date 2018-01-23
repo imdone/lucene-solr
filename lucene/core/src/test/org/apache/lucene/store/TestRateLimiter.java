@@ -89,7 +89,7 @@ public final class TestRateLimiter extends LuceneTestCase {
     long endNS = System.nanoTime();
     double actualMBPerSec = (totBytes.get()/1024/1024.)/((endNS-startNS)/1000000000.0);
 
-    // TODO: this may false trip .... could be we can only assert that it never exceeds the max, so slow jenkins doesn't trip:
+    // TODO: this may false trip .... could be we can only assert that it never exceeds the max, so slow jenkins doesn't trip: id:882 gh:883
     double ratio = actualMBPerSec/targetMBPerSec;
 
     // Only enforce that it wasn't too fast; if machine is bogged down (can't schedule threads / sleep properly) then it may falsely be too slow:

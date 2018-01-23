@@ -32,7 +32,7 @@ public interface BooleanValue extends BooleanValueStream, AnalyticsValue {
   /**
    * Get the boolean representation of the current value.
    * <p>
-   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}.
+   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}. id:1486 gh:1487
    * 
    * @return the current value
    */

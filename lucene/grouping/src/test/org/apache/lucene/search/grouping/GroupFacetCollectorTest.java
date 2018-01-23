@@ -611,7 +611,7 @@ public class GroupFacetCollectorTest extends AbstractGroupingTestCase {
         groupDc.setBytesValue(new BytesRef(groupValue));
         group.setStringValue(groupValue);
       } else {
-        // TODO: not true
+        // TODO: not true id:1037 gh:1038
         // DV cannot have missing values:
         groupDc.setBytesValue(new BytesRef());
       }

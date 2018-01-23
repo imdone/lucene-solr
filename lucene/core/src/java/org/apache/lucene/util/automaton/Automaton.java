@@ -34,7 +34,7 @@ import org.apache.lucene.util.Sorter;
 
 
 
-// TODO
+// TODO id:773 gh:773
 //   - could use packed int arrays instead
 //   - could encode dest w/ delta from to?
 
@@ -333,7 +333,7 @@ public class Automaton implements Accountable {
     }
   }
 
-  // TODO: add finish() to shrink wrap the arrays?
+  // TODO: add finish() to shrink wrap the arrays? id:693 gh:694
 
   /** How many states this automaton has. */
   public int getNumStates() {
@@ -579,7 +579,7 @@ public class Automaton implements Accountable {
   /** Returns the dot (graphviz) representation of this automaton.
    *  This is extremely useful for visualizing the automaton. */
   public String toDot() {
-    // TODO: breadth first search so we can get layered output...
+    // TODO: breadth first search so we can get layered output... id:1158 gh:1159
 
     StringBuilder b = new StringBuilder();
     b.append("digraph Automaton {\n");
@@ -668,7 +668,7 @@ public class Automaton implements Accountable {
     assert label >= 0;
     int trans = states[2*state];
     int limit = trans + 3*states[2*state+1];
-    // TODO: we could do bin search; transitions are sorted
+    // TODO: we could do bin search; transitions are sorted id:723 gh:724
     while (trans < limit) {
       int dest = transitions[trans];
       int min = transitions[trans+1];
@@ -890,7 +890,7 @@ public class Automaton implements Accountable {
 
   @Override
   public long ramBytesUsed() {
-    // TODO: BitSet RAM usage (isAccept.size()/8) isn't fully accurate...
+    // TODO: BitSet RAM usage (isAccept.size()/8) isn't fully accurate... id:929 gh:928
     return RamUsageEstimator.NUM_BYTES_OBJECT_HEADER + RamUsageEstimator.sizeOf(states) + RamUsageEstimator.sizeOf(transitions) +
       RamUsageEstimator.NUM_BYTES_OBJECT_HEADER + (isAccept.size() / 8) + RamUsageEstimator.NUM_BYTES_OBJECT_REF +
       2 * RamUsageEstimator.NUM_BYTES_OBJECT_REF +

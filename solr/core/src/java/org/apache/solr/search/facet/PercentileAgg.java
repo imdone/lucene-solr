@@ -115,7 +115,7 @@ public class PercentileAgg extends SimpleAggValueSource {
 
       AVLTreeDigest digest = digests[slotNum];
       if (digest == null) {
-        digests[slotNum] = digest = new AVLTreeDigest(100);   // TODO: make compression configurable
+        digests[slotNum] = digest = new AVLTreeDigest(100);   // TODO: make compression configurable id:2915 gh:2916
       }
 
       digest.add(val);

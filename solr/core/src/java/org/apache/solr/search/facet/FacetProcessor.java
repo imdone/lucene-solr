@@ -49,7 +49,7 @@ public abstract class FacetProcessor<FacetRequestT extends FacetRequest>  {
   FacetContext fcontext;
   FacetRequestT freq;
 
-  DocSet filter;  // additional filters specified by "filter"  // TODO: do these need to be on the context to support recomputing during multi-select?
+  DocSet filter;  // additional filters specified by "filter"  // TODO: do these need to be on the context to support recomputing during multi-select? id:2013 gh:2014
   LinkedHashMap<String,SlotAcc> accMap;
   SlotAcc[] accs;
   CountSlotAcc countAcc;
@@ -92,7 +92,7 @@ public abstract class FacetProcessor<FacetRequestT extends FacetRequest>  {
     if (freq.domain.filters == null || freq.domain.filters.isEmpty()) return;
 
     List<Query> qlist = new ArrayList<>(freq.domain.filters.size());
-    // TODO: prevent parsing filters each time!
+    // TODO: prevent parsing filters each time! id:2899 gh:2900
     for (Object rawFilter : freq.domain.filters) {
       if (rawFilter instanceof String) {
         QParser parser = null;
@@ -177,7 +177,7 @@ public abstract class FacetProcessor<FacetRequestT extends FacetRequest>  {
       return;
     }
 
-    // TODO: somehow remove responsebuilder dependency
+    // TODO: somehow remove responsebuilder dependency id:1989 gh:1990
     ResponseBuilder rb = SolrRequestInfo.getRequestInfo().getResponseBuilder();
     Map tagMap = (Map) rb.req.getContext().get("tags");
     if (tagMap == null) {
@@ -220,7 +220,7 @@ public abstract class FacetProcessor<FacetRequestT extends FacetRequest>  {
     }
 
     // now walk back up the context tree
-    // TODO: we lose parent exclusions...
+    // TODO: we lose parent exclusions... id:2730 gh:2731
     for (FacetContext curr = fcontext; curr != null; curr = curr.parent) {
       if (curr.filter != null) {
         qlist.add( curr.filter );
@@ -244,7 +244,7 @@ public abstract class FacetProcessor<FacetRequestT extends FacetRequest>  {
     boolean appliedFilters = false;
     if (!(freq.domain.toChildren || freq.domain.toParent)) return appliedFilters;
 
-    // TODO: avoid query parsing per-bucket somehow...
+    // TODO: avoid query parsing per-bucket somehow... id:2084 gh:2085
     String parentStr = freq.domain.parents;
     Query parentQuery;
     try {

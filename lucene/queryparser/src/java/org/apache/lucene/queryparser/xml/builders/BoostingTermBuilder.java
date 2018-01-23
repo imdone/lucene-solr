@@ -37,7 +37,7 @@ public class BoostingTermBuilder extends SpanBuilderBase {
     String fieldName = DOMUtils.getAttributeWithInheritanceOrFail(e, "fieldName");
     String value = DOMUtils.getNonBlankTextOrFail(e);
 
-    // TODO make function and decoder pluggable somehow?
+    // TODO make function and decoder pluggable somehow? id:1373 gh:1374
     SpanQuery btq = new PayloadScoreQuery(new SpanTermQuery(new Term(fieldName, value)),
         new AveragePayloadFunction(), PayloadDecoder.FLOAT_DECODER);
     btq = new SpanBoostQuery(btq, DOMUtils.getAttribute(e, "boost", 1.0f));

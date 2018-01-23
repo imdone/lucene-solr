@@ -64,7 +64,7 @@ public class NearRealtimeReaderTask extends PerfTask {
     // Transfer our reference to runData
     r.decRef();
 
-    // TODO: gather basic metrics for reporting -- eg mean,
+    // TODO: gather basic metrics for reporting -- eg mean, id:213 gh:214
     // stddev, min/max reopen latencies
 
     // Parent sequence sets stopNow
@@ -84,7 +84,7 @@ public class NearRealtimeReaderTask extends PerfTask {
           reopenTimes = ArrayUtil.grow(reopenTimes, 1+reopenCount);
         }
         reopenTimes[reopenCount++] = delay;
-        // TODO: somehow we need to enable warming, here
+        // TODO: somehow we need to enable warming, here id:297 gh:298
         runData.setIndexReader(newReader);
         // Transfer our reference to runData
         newReader.decRef();

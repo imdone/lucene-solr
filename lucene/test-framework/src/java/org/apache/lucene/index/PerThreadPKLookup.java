@@ -90,5 +90,5 @@ public class PerThreadPKLookup {
     return -1;
   }
 
-  // TODO: add reopen method to carry over re-used enums...?
+  // TODO: add reopen method to carry over re-used enums...? id:2595 gh:2596
 }

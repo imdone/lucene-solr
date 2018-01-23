@@ -364,7 +364,7 @@ public class TestSuggestField extends LuceneTestCase {
         expected = deduped;
       }
 
-      // TODO: re-enable this, except something is buggy about tie breaks at the topN threshold now:
+      // TODO: re-enable this, except something is buggy about tie breaks at the topN threshold now: id:1570 gh:1571
       //int topN = TestUtil.nextInt(random(), 1, docCount+10);
       int topN = docCount;
       

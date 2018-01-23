@@ -259,6 +259,6 @@ public class TestModelManagerPersistence extends TestRerankBase {
     assertJQ(ManagedFeatureStore.REST_END_POINT + "/" + FS_NAME,
              "/features/==[]");
 
-    // NOTE: we don't test the persistence of the deletion here because it's tested in testFilePersistence
+    // NOTE: we don't test the persistence of the deletion here because it's tested in testFilePersistence id:1737 gh:1738
   }
 }

@@ -287,7 +287,7 @@ public class IndexFetcher {
     params.set(CommonParams.QT, ReplicationHandler.PATH);
     QueryRequest req = new QueryRequest(params);
 
-    // TODO modify to use shardhandler
+    // TODO modify to use shardhandler id:1781 gh:1782
     try (HttpSolrClient client = new Builder(masterUrl)
         .withHttpClient(myHttpClient)
         .withConnectionTimeout(connTimeout)
@@ -312,7 +312,7 @@ public class IndexFetcher {
     params.set(CommonParams.QT, ReplicationHandler.PATH);
     QueryRequest req = new QueryRequest(params);
 
-    // TODO modify to use shardhandler
+    // TODO modify to use shardhandler id:2757 gh:2758
     try (HttpSolrClient client = new HttpSolrClient.Builder(masterUrl)
         .withHttpClient(myHttpClient)
         .withConnectionTimeout(connTimeout)
@@ -393,7 +393,7 @@ public class IndexFetcher {
         if (!replica.getCoreUrl().equals(masterUrl)) {
           masterUrl = replica.getCoreUrl();
           LOG.info("Updated masterUrl to {}", masterUrl);
-          // TODO: Do we need to set forceReplication = true?
+          // TODO: Do we need to set forceReplication = true? id:1840 gh:1841
         } else {
           LOG.debug("masterUrl didn't change");
         }
@@ -419,7 +419,7 @@ public class IndexFetcher {
       LOG.info("Master's generation: " + latestGeneration);
       LOG.info("Master's version: " + latestVersion);
 
-      // TODO: make sure that getLatestCommit only returns commit points for the main index (i.e. no side-car indexes)
+      // TODO: make sure that getLatestCommit only returns commit points for the main index (i.e. no side-car indexes) id:2648 gh:2649
       IndexCommit commit = solrCore.getDeletionPolicy().getLatestCommit();
       if (commit == null) {
         // Presumably the IndexWriter hasn't been opened yet, and hence the deletion policy hasn't been updated with commit points
@@ -465,7 +465,7 @@ public class IndexFetcher {
         return IndexFetchResult.MASTER_VERSION_ZERO;
       }
 
-      // TODO: Should we be comparing timestamps (across machines) here?
+      // TODO: Should we be comparing timestamps (across machines) here? id:1802 gh:1803
       if (!forceReplication && IndexDeletionPolicyWrapper.getCommitTimestamp(commit) == latestVersion) {
         //master and slave are already in sync just return
         LOG.info("Slave in sync with master.");
@@ -1424,7 +1424,7 @@ public class IndexFetcher {
   List<Map<String, Object>> getTlogFilesDownloaded() {
     //make a copy first because it can be null later
     List<Map<String, Object>> tmp = tlogFilesDownloaded;
-    // NOTE: it's safe to make a copy of a SynchronizedCollection(ArrayList)
+    // NOTE: it's safe to make a copy of a SynchronizedCollection(ArrayList) id:1783 gh:1784
     return tmp == null ? Collections.EMPTY_LIST : new ArrayList<>(tmp);
   }
 
@@ -1438,7 +1438,7 @@ public class IndexFetcher {
   List<Map<String, Object>> getConfFilesDownloaded() {
     //make a copy first because it can be null later
     List<Map<String, Object>> tmp = confFilesDownloaded;
-    // NOTE: it's safe to make a copy of a SynchronizedCollection(ArrayList)
+    // NOTE: it's safe to make a copy of a SynchronizedCollection(ArrayList) id:2759 gh:2760
     return tmp == null ? Collections.EMPTY_LIST : new ArrayList<>(tmp);
   }
 
@@ -1453,7 +1453,7 @@ public class IndexFetcher {
     return tmp == null ? Collections.EMPTY_LIST : new ArrayList<>(tmp);
   }
 
-  // TODO: currently does not reflect conf files
+  // TODO: currently does not reflect conf files id:1842 gh:1843
   Map<String, Object> getCurrentFile() {
     Map<String, Object> tmp = currentFile;
     DirectoryFileFetcher tmpFileFetcher = dirFileFetcher;
@@ -1708,7 +1708,7 @@ public class IndexFetcher {
       NamedList response;
       InputStream is = null;
 
-      // TODO use shardhandler
+      // TODO use shardhandler id:2649 gh:2650
       try (HttpSolrClient client = new Builder(masterUrl)
           .withHttpClient(myHttpClient)
           .withResponseParser(null)
@@ -1820,7 +1820,7 @@ public class IndexFetcher {
     params.set("slave", false);
     params.set(CommonParams.QT, ReplicationHandler.PATH);
 
-    // TODO use shardhandler
+    // TODO use shardhandler id:1804 gh:1805
     try (HttpSolrClient client = new HttpSolrClient.Builder(masterUrl)
         .withHttpClient(myHttpClient)
         .withConnectionTimeout(connTimeout)

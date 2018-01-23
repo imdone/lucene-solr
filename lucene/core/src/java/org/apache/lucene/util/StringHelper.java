@@ -304,7 +304,7 @@ public abstract class StringHelper {
   /** Generates a non-cryptographic globally unique id. */
   public static byte[] randomId() {
 
-    // NOTE: we don't use Java's UUID.randomUUID() implementation here because:
+    // NOTE: we don't use Java's UUID.randomUUID() implementation here because: id:1151 gh:1152
     //
     //   * It's overkill for our usage: it tries to be cryptographically
     //     secure, whereas for this use we don't care if someone can
@@ -377,7 +377,7 @@ public abstract class StringHelper {
    *  big-endian unsigned values.  Returns positive int if a &gt; b,
    *  negative int if a &lt; b and 0 if a == b */
   public static int compare(int count, byte[] a, int aOffset, byte[] b, int bOffset) {
-    // TODO: dedup this w/ BytesRef.compareTo?
+    // TODO: dedup this w/ BytesRef.compareTo? id:629 gh:630
     for(int i=0;i<count;i++) {
       int cmp = (a[aOffset+i]&0xff) - (b[bOffset+i]&0xff);
       if (cmp != 0) {

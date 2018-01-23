@@ -48,7 +48,7 @@ class SortedDocValuesTermsEnum extends TermsEnum {
       if (currentOrd == values.getValueCount()) {
         return SeekStatus.END;
       } else {
-        // TODO: hmm can we avoid this "extra" lookup?:
+        // TODO: hmm can we avoid this "extra" lookup?: id:826 gh:827
         scratch.copyBytes(values.lookupOrd(currentOrd));
         return SeekStatus.NOT_FOUND;
       }

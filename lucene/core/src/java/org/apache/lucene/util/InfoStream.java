@@ -25,7 +25,7 @@ import java.io.Closeable;
  * Debugging API for Lucene classes such as {@link IndexWriter} 
  * and {@link SegmentInfos}.
  * <p>
- * NOTE: Enabling infostreams may cause performance degradation
+ * NOTE: Enabling infostreams may cause performance degradation id:913 gh:914
  * in some components.
  * 
  * @lucene.internal 

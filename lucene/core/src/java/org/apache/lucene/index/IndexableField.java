@@ -23,7 +23,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.util.BytesRef;
 
-// TODO: how to handle versioning here...?
+// TODO: how to handle versioning here...? id:721 gh:722
 
 /** Represents a single field for indexing.  IndexWriter
  *  consumes Iterable&lt;IndexableField&gt; as a document.

@@ -373,7 +373,7 @@ public class SimClusterStateProvider implements ClusterStateProvider {
     if (replicaInfo.getCore() == null) {
       throw new Exception("Missing core: " + replicaInfo);
     }
-    // XXX replica info is not supposed to have this as a variable
+    // XXX replica info is not supposed to have this as a variable id:2304 gh:2305
     replicaInfo.getVariables().remove(ZkStateReader.SHARD_ID_PROP);
     if (replicaInfo.getName() == null) {
       throw new Exception("Missing name: " + replicaInfo);
@@ -763,7 +763,7 @@ public class SimClusterStateProvider implements ClusterStateProvider {
 
     opDelay(collection, CollectionParams.CollectionAction.MOVEREPLICA.name());
 
-    // TODO: for now simulate moveNormalReplica sequence, where we first add new replica and then delete the old one
+    // TODO: for now simulate moveNormalReplica sequence, where we first add new replica and then delete the old one id:2232 gh:2233
 
     String newSolrCoreName = Assign.buildSolrCoreName(stateManager, coll, slice.getName(), replica.getType());
     String coreNodeName = Assign.assignCoreNodeName(stateManager, coll);

@@ -54,7 +54,7 @@ import static org.apache.lucene.search.suggest.document.CompletionPostingsFormat
  * into memory the first time it is requested via {@link #terms(String)}.
  * </p>
  * <p>
- * NOTE: Only the footer is validated for Completion dictionary (.lkp) and not the checksum due
+ * NOTE: Only the footer is validated for Completion dictionary (.lkp) and not the checksum due id:1525 gh:1526
  * to random access pattern and checksum validation being too costly at instantiation
  * </p>
  *
@@ -129,7 +129,7 @@ final class CompletionFieldsProducer extends FieldsProducer {
   @Override
   public void checkIntegrity() throws IOException {
     delegateFieldsProducer.checkIntegrity();
-    // TODO: checkIntegrity should checksum the dictionary and index
+    // TODO: checkIntegrity should checksum the dictionary and index id:1410 gh:1411
   }
 
   @Override

@@ -49,7 +49,7 @@ import org.apache.lucene.util.IOUtils;
  * exclusion list is empty by default.
  * </p>
  */
-// TODO: extend StopwordAnalyzerBase
+// TODO: extend StopwordAnalyzerBase id:30 gh:31
 public final class DutchAnalyzer extends Analyzer {
   
   /** File containing default Dutch stopwords. */

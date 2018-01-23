@@ -126,7 +126,7 @@ public class FunctionQParser extends QParser {
   }
   
   /*
-   * TODO: Doc
+   * TODO: Doc id:1953 gh:1954
    */
   public String parseId() throws SyntaxError {
     String value = parseArg();
@@ -238,7 +238,7 @@ public class FunctionQParser extends QParser {
   }
   
   /*
-   * TODO: Doc
+   * TODO: Doc id:2703 gh:2704
    */
   public Query parseNestedQuery() throws SyntaxError {
     Query nestedQuery;
@@ -268,7 +268,7 @@ public class FunctionQParser extends QParser {
           // value here is *after* the local params... ask the parser.
           sub = subQuery(qs, null);
           // int subEnd = sub.findEnd(')');
-          // TODO.. implement functions to find the end of a nested query
+          // TODO .. implement functions to find the end of a nested query id:2043 gh:2044
           throw new SyntaxError("Nested local params must have value in v parameter.  got '" + qs + "'");
         }
       } else {

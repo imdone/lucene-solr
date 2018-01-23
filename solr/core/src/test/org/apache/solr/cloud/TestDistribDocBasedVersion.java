@@ -343,7 +343,7 @@ public class TestDistribDocBasedVersion extends AbstractFullDistribZkTestBase {
   }
 
 
-  // TODO: refactor some of this stuff into the SolrJ client... it should be easier to use
+  // TODO: refactor some of this stuff into the SolrJ client... it should be easier to use id:3064 gh:3065
   void doDBQ(String q, String... reqParams) throws Exception {
     UpdateRequest req = new UpdateRequest();
     req.deleteByQuery(q);

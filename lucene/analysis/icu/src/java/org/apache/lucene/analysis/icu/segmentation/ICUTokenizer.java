@@ -31,7 +31,7 @@ import com.ibm.icu.lang.UCharacter;
 import com.ibm.icu.text.BreakIterator;
 
 /**
- * Breaks text into words according to UAX #29: Unicode Text Segmentation
+ * Breaks text into words according to UAX #29: Unicode Text Segmentation id:157 gh:158
  * (http://www.unicode.org/reports/tr29/)
  * <p>
  * Words are broken across script boundaries, then segmented according to
@@ -176,7 +176,7 @@ public final class ICUTokenizer extends Tokenizer {
     breaker.setText(buffer, 0, Math.max(0, usableLength));
   }
 
-  // TODO: refactor to a shared readFully somewhere
+  // TODO: refactor to a shared readFully somewhere id:211 gh:212
   // (NGramTokenizer does this too):
   /** commons-io's readFully, but without bugs if offset != 0 */
   private static int read(Reader input, char[] buffer, int offset, int length) throws IOException {

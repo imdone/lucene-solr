@@ -160,7 +160,7 @@ abstract class FacetRequestSortedMerger<FacetRequestT extends FacetRequestSorted
 
     boolean thisMissing = mcontext.bucketWasMissing(); // Was this whole facet missing (i.e. inside a bucket that was missing)?
 
-    // TODO: add information in sub-shard response about dropped buckets (i.e. not all returned due to limit)
+    // TODO: add information in sub-shard response about dropped buckets (i.e. not all returned due to limit) id:2739 gh:2740
     // If we know we've seen all the buckets from a shard, then we don't have to add to leafBuckets or partialBuckets, only skipBuckets
     boolean isCommandPartial = freq.returnsPartial();
     boolean returnedAllBuckets = !isCommandPartial && !thisMissing;  // did the shard return all of the possible buckets?
@@ -230,9 +230,9 @@ abstract class FacetRequestSortedMerger<FacetRequestT extends FacetRequestSorted
 
     }
 
-    // TODO: what if we don't need to refine any variable buckets, but we do need to contribute to numBuckets, missing, allBuckets, etc...
+    // TODO: what if we don't need to refine any variable buckets, but we do need to contribute to numBuckets, missing, allBuckets, etc... id:2098 gh:2099
     // because we were "partial".  That will be handled at a higher level (i.e. we'll be in someone's missing bucket?)
-    // TODO: test with a sub-facet with a limit of 0 and something like a missing bucket
+    // TODO: test with a sub-facet with a limit of 0 and something like a missing bucket id:2020 gh:2021
     if (leafBuckets != null || partialBuckets != null || skipBuckets != null) {
       refinement = new HashMap<>(3);
       if (leafBuckets != null) refinement.put("_l",leafBuckets);

@@ -116,7 +116,7 @@ public abstract class DocTermsIndexDocValues extends FunctionValues {
 
   @Override
   public ValueSourceScorer getRangeScorer(LeafReaderContext readerContext, String lowerVal, String upperVal, boolean includeLower, boolean includeUpper) throws IOException {
-    // TODO: are lowerVal and upperVal in indexed form or not?
+    // TODO: are lowerVal and upperVal in indexed form or not? id:1558 gh:1559
     lowerVal = lowerVal == null ? null : toTerm(lowerVal);
     upperVal = upperVal == null ? null : toTerm(upperVal);
 
@@ -192,7 +192,7 @@ public abstract class DocTermsIndexDocValues extends FunctionValues {
     };
   }
 
-  // TODO: why?
+  // TODO: why? id:1066 gh:1067
   static SortedDocValues open(LeafReaderContext context, String field) throws IOException {
     try {
       return DocValues.getSorted(context.reader(), field);

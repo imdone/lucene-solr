@@ -133,7 +133,7 @@ public class TestMultiTermConstantScore extends BaseTestRangeFilter {
 
   @Test
   public void testEqualScores() throws IOException {
-    // NOTE: uses index build in *this* setUp
+    // NOTE: uses index build in *this* setUp id:1305 gh:1306
 
     IndexSearcher search = newSearcher(reader);
 
@@ -169,7 +169,7 @@ public class TestMultiTermConstantScore extends BaseTestRangeFilter {
 
   @Test // Test for LUCENE-5245: Empty MTQ rewrites should have a consistent norm, so always need to return a CSQ!
   public void testEqualScoresWhenNoHits() throws IOException {
-    // NOTE: uses index build in *this* setUp
+    // NOTE: uses index build in *this* setUp id:991 gh:992
 
     IndexSearcher search = newSearcher(reader);
 
@@ -215,7 +215,7 @@ public class TestMultiTermConstantScore extends BaseTestRangeFilter {
 
   @Test
   public void testBooleanOrderUnAffected() throws IOException {
-    // NOTE: uses index build in *this* setUp
+    // NOTE: uses index build in *this* setUp id:1029 gh:1030
 
     IndexSearcher search = newSearcher(reader);
 
@@ -245,7 +245,7 @@ public class TestMultiTermConstantScore extends BaseTestRangeFilter {
 
   @Test
   public void testRangeQueryId() throws IOException {
-    // NOTE: uses index build in *super* setUp
+    // NOTE: uses index build in *super* setUp id:867 gh:868
 
     IndexReader reader = signedIndexReader;
     IndexSearcher search = newSearcher(reader);
@@ -377,7 +377,7 @@ public class TestMultiTermConstantScore extends BaseTestRangeFilter {
 
   @Test
   public void testRangeQueryRand() throws IOException {
-    // NOTE: uses index build in *super* setUp
+    // NOTE: uses index build in *super* setUp id:1140 gh:1141
 
     IndexReader reader = signedIndexReader;
     IndexSearcher search = newSearcher(reader);

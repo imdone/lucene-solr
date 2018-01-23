@@ -145,7 +145,7 @@ public final class SpanNotQuery extends SpanQuery {
 
         @Override
         protected AcceptStatus accept(Spans candidate) throws IOException {
-          // TODO: this logic is ugly and sneaky, can we clean it up?
+          // TODO: this logic is ugly and sneaky, can we clean it up? id:862 gh:863
           int doc = candidate.docID();
           if (doc > excludeSpans.docID()) {
             // catch up 'exclude' to the current doc

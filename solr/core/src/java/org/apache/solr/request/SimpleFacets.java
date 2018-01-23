@@ -193,7 +193,7 @@ public class SimpleFacets {
     SolrParams required = new RequiredSolrParams(params);
 
     // remove local params unless it's a query
-    if (type != FacetParams.FACET_QUERY) { // TODO Cut over to an Enum here
+    if (type != FacetParams.FACET_QUERY) { // TODO Cut over to an Enum here id:2684 gh:2685
       facetValue = localParams.get(CommonParams.VALUE);
     }
 
@@ -306,8 +306,8 @@ public class SimpleFacets {
   }
 
   public void getFacetQueryCount(ParsedParams parsed, NamedList<Integer> res) throws SyntaxError, IOException {
-    // TODO: slight optimization would prevent double-parsing of any localParams
-    // TODO: SOLR-7753
+    // TODO: slight optimization would prevent double-parsing of any localParams id:1988 gh:1988
+    // TODO: SOLR-7753 id:1883 gh:1884
     Query qobj = QParser.getParser(parsed.facetValue, req).getQuery();
 
     if (qobj == null) {
@@ -571,7 +571,7 @@ public class SimpleFacets {
 
             FacetProcessor fproc = FacetProcessor.createProcessor(rb.req, topLevel, // rb.getResults().docSet
                                                                     docs );
-            //TODO do we handle debug?  Should probably already be handled by the legacy code
+            //TODO do we handle debug?  Should probably already be handled by the legacy code id:2831 gh:2832
             fproc.process();
 
             //Go through the response to build the expected output for SimpleFacets
@@ -659,7 +659,7 @@ public class SimpleFacets {
            top-level reader */
          method = FacetMethod.FCS;
        } else {
-         // TODO: default to per-segment or not?
+         // TODO: default to per-segment or not? id:1914 gh:1915
          method = FacetMethod.FC;
        }
      }
@@ -972,7 +972,7 @@ public class SimpleFacets {
     if (terms != null) {
       termsEnum = terms.iterator();
 
-      // TODO: OPT: if seek(ord) is supported for this termsEnum, then we could use it for
+      // TODO: OPT: if seek(ord) is supported for this termsEnum, then we could use it for id:2685 gh:2686
       // facet.offset when sorting by index order.
 
       if (prefixTermBytes != null) {
@@ -1026,9 +1026,9 @@ public class SimpleFacets {
             } else {
               // iterate over TermDocs to calculate the intersection
 
-              // TODO: specialize when base docset is a bitset or hash set (skipDocs)?  or does it matter for this?
-              // TODO: do this per-segment for better efficiency (MultiDocsEnum just uses base class impl)
-              // TODO: would passing deleted docs lead to better efficiency over checking the fastForRandomSet?
+              // TODO: specialize when base docset is a bitset or hash set (skipDocs)?  or does it matter for this? id:1990 gh:1991
+              // TODO: do this per-segment for better efficiency (MultiDocsEnum just uses base class impl) id:1885 gh:1886
+              // TODO: would passing deleted docs lead to better efficiency over checking the fastForRandomSet? id:2833 gh:2834
               postingsEnum = termsEnum.postings(postingsEnum, PostingsEnum.NONE);
               c = 0;
 

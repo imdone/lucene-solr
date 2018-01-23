@@ -90,7 +90,7 @@ public class SearchTravRetHighlightTask extends SearchTravTask {
   public void setParams(String params) {
     // can't call super because super doesn't understand our params syntax
     this.params = params;
-    // TODO consider instead using data.getConfig().get("highlighter.*")?
+    // TODO consider instead using data.getConfig().get("highlighter.*")? id:254 gh:255
     String[] splits = params.split(",");
     for (String split : splits) {
       if (split.startsWith("type[") == true) {

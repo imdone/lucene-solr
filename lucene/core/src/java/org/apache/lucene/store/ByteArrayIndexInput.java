@@ -138,13 +138,13 @@ public final class ByteArrayIndexInput extends IndexInput {
     throw new RuntimeException("Invalid vLong detected (negative values disallowed)");
   }
 
-  // NOTE: AIOOBE not EOF if you read too much
+  // NOTE: AIOOBE not EOF if you read too much id:864 gh:865
   @Override
   public byte readByte() {
     return bytes[pos++];
   }
 
-  // NOTE: AIOOBE not EOF if you read too much
+  // NOTE: AIOOBE not EOF if you read too much id:752 gh:753
   @Override
   public void readBytes(byte[] b, int offset, int len) {
     System.arraycopy(bytes, pos, b, offset, len);

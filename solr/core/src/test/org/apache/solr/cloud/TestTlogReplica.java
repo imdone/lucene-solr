@@ -235,7 +235,7 @@ public class TestTlogReplica extends SolrCloudTestCase {
     
     TimeOut t = new TimeOut(REPLICATION_TIMEOUT_SECS, TimeUnit.SECONDS, TimeSource.NANO_TIME);
     for (Replica r:s.getReplicas(EnumSet.of(Replica.Type.TLOG))) {
-      //TODO: assert replication < REPLICATION_TIMEOUT_SECS
+      //TODO: assert replication < REPLICATION_TIMEOUT_SECS id:2295 gh:2296
       try (HttpSolrClient tlogReplicaClient = getHttpSolrClient(r.getCoreUrl())) {
         while (true) {
           try {

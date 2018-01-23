@@ -70,7 +70,7 @@ public class ClusterStateUpdateTest extends SolrCloudTestCase  {
 
     String host = zkController2.getHostName();
     
-    // slight pause - TODO: takes an oddly long amount of time to schedule tasks
+    // slight pause - TODO: takes an oddly long amount of time to schedule tasks id:3046 gh:3047
     // with almost no delay ...
     ClusterState clusterState2 = null;
     Map<String,Slice> slices = null;

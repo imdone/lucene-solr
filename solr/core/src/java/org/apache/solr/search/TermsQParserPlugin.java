@@ -102,7 +102,7 @@ public class TermsQParserPlugin extends QParserPlugin {
         String separator = localParams.get(SEPARATOR, ",");
         String qstr = localParams.get(QueryParsing.V);//never null
         Method method = Method.valueOf(localParams.get(METHOD, Method.termsFilter.name()));
-        //TODO pick the default method based on various heuristics from benchmarks
+        //TODO pick the default method based on various heuristics from benchmarks id:1994 gh:1995
 
         //if space then split on all whitespace & trim, otherwise strictly interpret
         final boolean sepIsSpace = separator.equals(" ");

@@ -33,10 +33,10 @@ import java.util.Map;
  */
 public class WindowsFS extends HandleTrackingFS {
   final Map<Object,Integer> openFiles = new HashMap<>();
-  // TODO: try to make this as realistic as possible... it depends e.g. how you
+  // TODO: try to make this as realistic as possible... it depends e.g. how you id:1616 gh:1617
   // open files, if you map them, etc, if you can delete them (Uwe knows the rules)
   
-  // TODO: add case-insensitivity
+  // TODO: add case-insensitivity id:1400 gh:1401
   
   /**
    * Create a new instance, wrapping the delegate filesystem to

@@ -34,8 +34,8 @@ import org.apache.lucene.util.Accountables;
 import org.apache.lucene.util.RamUsageEstimator;
 
 /** Encapsulates multiple producers when there are docvalues updates as one producer */
-// TODO: try to clean up close? no-op?
-// TODO: add shared base class (also used by per-field-pf?) to allow "punching thru" to low level producer?
+// TODO: try to clean up close? no-op? id:709 gh:710
+// TODO: add shared base class (also used by per-field-pf?) to allow "punching thru" to low level producer? id:605 gh:606
 class SegmentDocValuesProducer extends DocValuesProducer {
   
   private static final long LONG_RAM_BYTES_USED = RamUsageEstimator.shallowSizeOfInstance(Long.class);

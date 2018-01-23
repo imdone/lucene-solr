@@ -161,7 +161,7 @@ public final class MultiPostingsEnum extends PostingsEnum {
     return current.getPayload();
   }
 
-  // TODO: implement bulk read more efficiently than super
+  // TODO: implement bulk read more efficiently than super id:694 gh:695
   /** Holds a {@link PostingsEnum} along with the
    *  corresponding {@link ReaderSlice}. */
   public final static class EnumWithSlice {

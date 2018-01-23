@@ -291,7 +291,7 @@ public final class TestUtil {
     if (output == null) {
       output = new ByteArrayOutputStream(1024);
     }
-    // TODO: actually use the dir's locking, unless test uses a special method?
+    // TODO: actually use the dir's locking, unless test uses a special method? id:1704 gh:1705
     // some tests e.g. exception tests become much more complicated if they have to close the writer
     try (CheckIndex checker = new CheckIndex(dir, NoLockFactory.INSTANCE.obtainLock(dir, "bogus"))) {
       checker.setCrossCheckTermVectors(crossCheckTermVectors);
@@ -876,7 +876,7 @@ public final class TestUtil {
    *  default codecs and formats, but always writes in the specified
    *  format. */
   public static Codec alwaysPostingsFormat(final PostingsFormat format) {
-    // TODO: we really need for postings impls etc to announce themselves
+    // TODO: we really need for postings impls etc to announce themselves id:1418 gh:1419
     // (and maybe their params, too) to infostream on flush and merge.
     // otherwise in a real debugging situation we won't know whats going on!
     if (LuceneTestCase.VERBOSE) {
@@ -894,7 +894,7 @@ public final class TestUtil {
    *  default codecs and formats, but always writes in the specified
    *  format. */
   public static Codec alwaysDocValuesFormat(final DocValuesFormat format) {
-    // TODO: we really need for docvalues impls etc to announce themselves
+    // TODO: we really need for docvalues impls etc to announce themselves id:1676 gh:1677
     // (and maybe their params, too) to infostream on flush and merge.
     // otherwise in a real debugging situation we won't know whats going on!
     if (LuceneTestCase.VERBOSE) {
@@ -936,7 +936,7 @@ public final class TestUtil {
     switch (r.nextInt(2)) {
       case 0: return new LuceneFixedGap();
       case 1: return new BlockTreeOrdsPostingsFormat();
-      // TODO: these don't actually support ords!
+      // TODO: these don't actually support ords! id:2611 gh:2612
       //case 2: return new FSTOrdPostingsFormat();
       default: throw new AssertionError();
     }
@@ -949,7 +949,7 @@ public final class TestUtil {
     return new Lucene70DocValuesFormat();
   }
 
-  // TODO: generalize all 'test-checks-for-crazy-codecs' to
+  // TODO: generalize all 'test-checks-for-crazy-codecs' to id:1734 gh:1735
   // annotations (LUCENE-3489)
   public static String getPostingsFormat(String field) {
     return getPostingsFormat(Codec.getDefault(), field);
@@ -977,7 +977,7 @@ public final class TestUtil {
     }
   }
 
-  // TODO: remove this, push this test to Lucene40/Lucene42 codec tests
+  // TODO: remove this, push this test to Lucene40/Lucene42 codec tests id:1708 gh:1709
   public static boolean fieldSupportsHugeBinaryDocValues(String field) {
     String dvFormat = getDocValuesFormat(field);
     if (dvFormat.equals("Lucene40") || dvFormat.equals("Lucene42") || dvFormat.equals("Memory")) {
@@ -1060,10 +1060,10 @@ public final class TestUtil {
     }
   }
 
-  // NOTE: this is likely buggy, and cannot clone fields
+  // NOTE: this is likely buggy, and cannot clone fields id:1421 gh:1422
   // with tokenStreamValues, etc.  Use at your own risk!!
 
-  // TODO: is there a pre-existing way to do this!!!
+  // TODO: is there a pre-existing way to do this!!! id:1679 gh:1680
   public static Document cloneDocument(Document doc1) {
     final Document doc2 = new Document();
     for(IndexableField f : doc1.getFields()) {
@@ -1116,7 +1116,7 @@ public final class TestUtil {
 
   // Returns a PostingsEnum with random features available
   public static PostingsEnum docs(Random random, TermsEnum termsEnum, PostingsEnum reuse, int flags) throws IOException {
-    // TODO: simplify this method? it would be easier to randomly either use the flags passed, or do the random selection,
+    // TODO: simplify this method? it would be easier to randomly either use the flags passed, or do the random selection, id:2612 gh:2613
     // FREQS should be part fo the random selection instead of outside on its own?
     if (random.nextBoolean()) {
       if (random.nextBoolean()) {

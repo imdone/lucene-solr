@@ -120,7 +120,7 @@ public class DistribDocExpirationUpdateProcessorTest extends SolrCloudTestCase {
     assertEquals("somehow we missed some cores?", 
                  initIndexVersions.size(), coresCompared);
 
-    // TODO: above logic verifies that deleteByQuery happens on all nodes, and ...
+    // TODO: above logic verifies that deleteByQuery happens on all nodes, and ... id:2256 gh:2257
     // doesn't affect searcher re-open on shards w/o expired docs ... can we also verify 
     // that *only* one node is sending the deletes ?
     // (ie: no flood of redundant deletes?)

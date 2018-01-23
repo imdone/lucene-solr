@@ -317,7 +317,7 @@ public class CheckHits {
                                        boolean deep,
                                        Explanation expl) {
     float value = expl.getValue().floatValue();
-    // TODO: clean this up if we use junit 5 (the assert message is costly)
+    // TODO: clean this up if we use junit 5 (the assert message is costly) id:2600 gh:2601
     try {
       Assert.assertEquals(score, value, 0d);
     } catch (Exception e) {
@@ -327,7 +327,7 @@ public class CheckHits {
     if (!deep) return;
 
     Explanation detail[] = expl.getDetails();
-    // TODO: can we improve this entire method? it's really geared to work only with TF/IDF
+    // TODO: can we improve this entire method? it's really geared to work only with TF/IDF id:1711 gh:1712
     if (expl.getDescription().endsWith("computed from:")) {
       return; // something more complicated.
     }
@@ -370,7 +370,7 @@ public class CheckHits {
             }
           }
         }
-        // TODO: this is a TERRIBLE assertion!!!!
+        // TODO: this is a TERRIBLE assertion!!!! id:1619 gh:1620
         if (false == (productOf || sumOf || maxOf || computedOf || maxTimesOthers)) {
           Assert.fail(
               q+": multi valued explanation description=\""+descr
@@ -393,7 +393,7 @@ public class CheckHits {
             // easy since ReqOptSumScorer casts some intermediate
             // contributions to the score to a float before doing another sum.
             // So we introduce some (reasonable) leniency.
-            // TODO: remove this leniency
+            // TODO: remove this leniency id:1401 gh:1402
             maxError += Math.ulp(dval) * 2;
           }
         }
@@ -410,7 +410,7 @@ public class CheckHits {
           Assert.assertTrue("should never get here!", computedOf);
           combined = value;
         }
-        // TODO: clean this up if we use junit 5 (the assert message is costly)
+        // TODO: clean this up if we use junit 5 (the assert message is costly) id:1647 gh:1648
         try {
           Assert.assertEquals(combined, value, maxError);
         } catch (Exception e) {
@@ -461,7 +461,7 @@ public class CheckHits {
    * Asserts that the score explanation for every document matching a
    * query corresponds with the true score.
    *
-   * NOTE: this HitCollector should only be used with the Query and Searcher
+   * NOTE: this HitCollector should only be used with the Query and Searcher id:2601 gh:2602
    * specified at when it is constructed.
    *
    * @see CheckHits#verifyExplanation

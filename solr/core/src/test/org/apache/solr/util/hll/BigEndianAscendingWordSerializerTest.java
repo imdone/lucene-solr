@@ -138,7 +138,7 @@ public class BigEndianAscendingWordSerializerTest extends LuceneTestCase {
      */
     @Test
     public void smokeTestProbabilisticParams() {
-        // XXX: revisit this
+        // XXX: revisit this id:2978 gh:2979
         final int shortWordLength = 5;
         {// Should work on an empty sequence, with no padding.
             final BigEndianAscendingWordSerializer serializer =
@@ -229,7 +229,7 @@ public class BigEndianAscendingWordSerializerTest extends LuceneTestCase {
      */
     @Test
     public void smokeTestSparseParams() {
-        // XXX: revisit
+        // XXX: revisit id:2400 gh:2401
         final int shortWordLength = 17;
         {// Should work on an empty sequence, with no padding.
             final BigEndianAscendingWordSerializer serializer =

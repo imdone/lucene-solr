@@ -115,7 +115,7 @@ public class TermRangeQuery extends AutomatonQuery {
       buffer.append(":");
     }
     buffer.append(includeLower ? '[' : '{');
-    // TODO: all these toStrings for queries should just output the bytes, it might not be UTF-8!
+    // TODO: all these toStrings for queries should just output the bytes, it might not be UTF-8! id:742 gh:743
     buffer.append(lowerTerm != null ? ("*".equals(Term.toString(lowerTerm)) ? "\\*" : Term.toString(lowerTerm))  : "*");
     buffer.append(" TO ");
     buffer.append(upperTerm != null ? ("*".equals(Term.toString(upperTerm)) ? "\\*" : Term.toString(upperTerm)) : "*");

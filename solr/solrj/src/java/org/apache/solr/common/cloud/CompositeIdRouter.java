@@ -77,7 +77,7 @@ public class CompositeIdRouter extends HashBasedRouter {
   public Collection<Slice> getSearchSlicesSingle(String shardKey, SolrParams params, DocCollection collection) {
     if (shardKey == null) {
       // search across whole collection
-      // TODO: this may need modification in the future when shard splitting could cause an overlap
+      // TODO: this may need modification in the future when shard splitting could cause an overlap id:3133 gh:3134
       return collection.getActiveSlices();
     }
     String id = shardKey;

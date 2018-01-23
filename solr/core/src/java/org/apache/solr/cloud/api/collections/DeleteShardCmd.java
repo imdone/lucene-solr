@@ -74,7 +74,7 @@ public class DeleteShardCmd implements OverseerCollectionMessageHandler.Cmd {
         "No shard with name " + sliceId + " exists for collection " + collectionName);
 
     // For now, only allow for deletions of Inactive slices or custom hashes (range==null).
-    // TODO: Add check for range gaps on Slice deletion
+    // TODO: Add check for range gaps on Slice deletion id:2636 gh:2637
     final Slice.State state = slice.getState();
     if (!(slice.getRange() == null || state == Slice.State.INACTIVE || state == Slice.State.RECOVERY
         || state == Slice.State.CONSTRUCTION) || state == Slice.State.RECOVERY_FAILED) {

@@ -52,7 +52,7 @@ import org.apache.lucene.util.fst.PositiveIntOutputs;
 import org.apache.lucene.util.fst.Util;
 
 /*
-  TODO:
+  TODO: id:1130 gh:1131
   
     - Currently there is a one-to-one mapping of indexed
       term to term block, but we could decouple the two, ie,
@@ -334,7 +334,7 @@ public final class VersionBlockTreeTermsWriter extends FieldsConsumer {
 
       long maxVersionIndex = maxVersion;
 
-      // TODO: try writing the leading vLong in MSB order
+      // TODO: try writing the leading vLong in MSB order id:1262 gh:1263
       // (opposite of what Lucene does today), for better
       // outputs sharing in the FST
       scratchBytes.writeVLong(encodeOutput(fp, hasTerms, isFloor));
@@ -387,7 +387,7 @@ public final class VersionBlockTreeTermsWriter extends FieldsConsumer {
       */
     }
 
-    // TODO: maybe we could add bulk-add method to
+    // TODO: maybe we could add bulk-add method to id:1166 gh:1167
     // Builder?  Takes FST and unions it w/ current
     // FST.
     private void append(Builder<Pair<BytesRef,Long>> builder, FST<Pair<BytesRef,Long>> subIndex, IntsRefBuilder scratchIntsRef) throws IOException {
@@ -572,7 +572,7 @@ public final class VersionBlockTreeTermsWriter extends FieldsConsumer {
       // }
 
       // 1st pass: pack term suffix bytes into byte[] blob
-      // TODO: cutover to bulk int codec... simple64?
+      // TODO: cutover to bulk int codec... simple64? id:1455 gh:1457
 
       // We optimize the leaf block case (block has only terms), writing a more
       // compact format in this case:
@@ -643,7 +643,7 @@ public final class VersionBlockTreeTermsWriter extends FieldsConsumer {
             suffixWriter.writeBytes(term.termBytes, prefixLength, suffix);
             assert floorLeadLabel == -1 || (term.termBytes[prefixLength] & 0xff) >= floorLeadLabel;
 
-            // TODO: now that terms dict "sees" these longs,
+            // TODO: now that terms dict "sees" these longs, id:1621 gh:1622
             // we can explore better column-stride encodings
             // to encode all long[0]s for this block at
             // once, all long[1]s, etc., e.g. using
@@ -694,7 +694,7 @@ public final class VersionBlockTreeTermsWriter extends FieldsConsumer {
         assert subIndices.size() != 0;
       }
 
-      // TODO: we could block-write the term suffix pointers;
+      // TODO: we could block-write the term suffix pointers; id:1131 gh:1132
       // this would take more space but would enable binary
       // search on lookup
 
@@ -731,7 +731,7 @@ public final class VersionBlockTreeTermsWriter extends FieldsConsumer {
     /** Writes one term's worth of postings. */
     public void write(BytesRef text, TermsEnum termsEnum) throws IOException {
       BlockTermState state = postingsWriter.writeTerm(text, termsEnum, docsSeen);
-      // TODO: LUCENE-5693: we don't need this check if we fix IW to not send deleted docs to us on flush:
+      // TODO: LUCENE-5693: we don't need this check if we fix IW to not send deleted docs to us on flush: id:1264 gh:1265
       if (state != null && ((IDVersionPostingsWriter) postingsWriter).lastDocID != -1) {
         assert state.docFreq != 0;
         assert fieldInfo.getIndexOptions() == IndexOptions.DOCS || state.totalTermFreq >= state.docFreq: "postingsWriter=" + postingsWriter;
@@ -788,7 +788,7 @@ public final class VersionBlockTreeTermsWriter extends FieldsConsumer {
     public void finish() throws IOException {
       if (numTerms > 0) {
 
-        // TODO: if pending.size() is already 1 with a non-zero prefix length
+        // TODO: if pending.size() is already 1 with a non-zero prefix length id:1170 gh:1171
         // we can save writing a "degenerate" root block, but we have to
         // fix all the places that assume the root block's prefix is the empty string:
         writeBlocks(0, pending.size());

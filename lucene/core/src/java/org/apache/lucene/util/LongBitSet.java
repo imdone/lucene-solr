@@ -123,7 +123,7 @@ public final class LongBitSet {
     return bits;
   }
 
-  /** Returns number of set bits.  NOTE: this visits every
+  /** Returns number of set bits.  NOTE: this visits every id:699 gh:700
    *  long in the backing bits array, and the result is not
    *  internally cached!
    */

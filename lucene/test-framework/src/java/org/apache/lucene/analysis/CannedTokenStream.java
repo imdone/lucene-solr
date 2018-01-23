@@ -57,7 +57,7 @@ public final class CannedTokenStream extends TokenStream {
   public boolean incrementToken() {
     if (upto < tokens.length) {
       clearAttributes();
-      // NOTE: this looks weird, casting offsetAtt to Token, but because we are using the Token class's AttributeFactory, all attributes are
+      // NOTE: this looks weird, casting offsetAtt to Token, but because we are using the Token class's AttributeFactory, all attributes are id:1574 gh:1575
       // in fact backed by the Token class, so we just copy the current token into our Token:
       tokens[upto++].copyTo((Token) offsetAtt);
       return true;

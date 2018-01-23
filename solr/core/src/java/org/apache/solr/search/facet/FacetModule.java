@@ -58,7 +58,7 @@ public class FacetModule extends SearchComponent {
 
 
   public FacetComponentState getFacetComponentState(ResponseBuilder rb) {
-    // TODO: put a map on ResponseBuilder?
+    // TODO: put a map on ResponseBuilder? id:2078 gh:2079
     // rb.componentInfo.get(FacetComponentState.class);
     return (FacetComponentState) rb.req.getContext().get(FacetComponentState.class);
   }
@@ -284,7 +284,7 @@ public class FacetModule extends SearchComponent {
         // System.err.println("REFINE FACET RESULT FROM SHARD = " + facet);
         // call merge again with a diff flag set on the context???
         facetState.mcontext.root = facet;
-        facetState.mcontext.setShard(shardRsp.getShard());  // TODO: roll newShard into setShard?
+        facetState.mcontext.setShard(shardRsp.getShard());  // TODO: roll newShard into setShard? id:2012 gh:2013
         facetState.merger.merge(facet , facetState.mcontext);
         return;
       }
@@ -303,7 +303,7 @@ public class FacetModule extends SearchComponent {
     if (facetState == null) return;
 
     if (facetState.merger != null) {
-      // TODO: merge any refinements
+      // TODO: merge any refinements id:2897 gh:2898
       rb.rsp.add("facets", facetState.merger.getMergedResult());
     }
   }
@@ -320,7 +320,7 @@ public class FacetModule extends SearchComponent {
 }
 
 
-// TODO: perhaps factor out some sort of root/parent facet object that doesn't depend
+// TODO: perhaps factor out some sort of root/parent facet object that doesn't depend id:1987 gh:1989
 // on stuff like ResponseBuilder, but contains request parameters,
 // root filter lists (for filter exclusions), etc?
 class FacetComponentState {
@@ -431,7 +431,7 @@ abstract class FacetBucketMerger<FacetRequestT extends FacetRequest> extends Fac
   @Override
   public Map<String, Object> getRefinement(Context mcontext) {
     Collection<String> refineTags = mcontext.getSubsWithRefinement(freq);
-    return null; // FIXME
+    return null; // FIXME id:2729 gh:2730
   }
 
   // do subs...
@@ -487,7 +487,7 @@ class FacetQueryMerger extends FacetBucketMerger<FacetQuery> {
 
   @Override
   public void finish(Context mcontext) {
-    // FIXME we need to propagate!!!
+    // FIXME we need to propagate!!! id:2081 gh:2082
   }
 
   @Override

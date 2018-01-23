@@ -337,7 +337,7 @@ public class GeoTestUtil {
       // Iterate out along one spoke until we hone in on the point that's nearly exactly radiusMeters from the center:
       while (true) {
 
-        // TODO: we could in fact cross a pole?  Just do what surpriseMePolygon does?
+        // TODO: we could in fact cross a pole?  Just do what surpriseMePolygon does? id:1607 gh:1608
         double lat = centerLat + y * factor;
         GeoUtils.checkLatitude(lat);
         double lon = centerLon + x * factor;

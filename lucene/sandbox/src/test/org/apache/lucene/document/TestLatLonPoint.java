@@ -20,7 +20,7 @@ import org.apache.lucene.util.LuceneTestCase;
 
 /**
  * Simple tests for {@link LatLonPoint}
- * TODO: move this lone test and remove class?
+ * TODO: move this lone test and remove class? id:1340 gh:1341
  * */
 public class TestLatLonPoint extends LuceneTestCase {
 

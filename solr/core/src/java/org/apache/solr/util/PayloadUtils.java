@@ -47,7 +47,7 @@ import org.apache.solr.search.PayloadScoreQParserPlugin;
 public class PayloadUtils {
 
   public static String getPayloadEncoder(FieldType fieldType) {
-    // TODO: support custom payload encoding fields too somehow - maybe someone has a custom component that encodes payloads as floats
+    // TODO: support custom payload encoding fields too somehow - maybe someone has a custom component that encodes payloads as floats id:2824 gh:2825
     String encoder = null;
     Analyzer a = fieldType.getIndexAnalyzer();
     if (a instanceof TokenizerChain) {
@@ -84,7 +84,7 @@ public class PayloadUtils {
     }
     // encoder could be "identity" at this point, in the case of DelimitedTokenFilterFactory encoder="identity"
 
-    // TODO: support pluggable payload decoders?
+    // TODO: support pluggable payload decoders? id:2217 gh:2218
 
     return decoder;
   }

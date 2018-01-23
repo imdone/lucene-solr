@@ -36,7 +36,7 @@ public class TestSegmentReader extends LuceneTestCase {
   private Document testDoc = new Document();
   private SegmentReader reader = null;
   
-  //TODO: Setup the reader w/ multiple documents
+  //TODO: Setup the reader w/ multiple documents id:1122 gh:1123
   @Override
   public void setUp() throws Exception {
     super.setUp();
@@ -147,7 +147,7 @@ public class TestSegmentReader extends LuceneTestCase {
     PostingsEnum positions = MultiFields.getTermPositionsEnum(reader,
                                                                       DocHelper.TEXT_FIELD_1_KEY,
                                                                       new BytesRef("field"));
-    // NOTE: prior rev of this test was failing to first
+    // NOTE: prior rev of this test was failing to first id:1291 gh:1292
     // call next here:
     assertTrue(positions.nextDoc() != DocIdSetIterator.NO_MORE_DOCS);
     assertTrue(positions.docID() == 0);
@@ -155,7 +155,7 @@ public class TestSegmentReader extends LuceneTestCase {
   }    
   
   public void testNorms() throws IOException {
-    //TODO: Not sure how these work/should be tested
+    //TODO: Not sure how these work/should be tested id:980 gh:981
 /*
     try {
       byte [] norms = reader.norms(DocHelper.TEXT_FIELD_1_KEY);

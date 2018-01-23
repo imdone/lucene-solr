@@ -16,7 +16,7 @@
  */
 package org.apache.lucene.search.suggest.analyzing;
 
-// TODO
+// TODO id:1227 gh:1228
 //   - test w/ syns
 //   - add pruning of low-freq ngrams?
 
@@ -224,7 +224,7 @@ public class FreeTextSuggester extends Lookup implements Accountable {
     if (grams == 1) {
       return other;
     } else {
-      // TODO: use ShingleAnalyzerWrapper?
+      // TODO: use ShingleAnalyzerWrapper? id:1539 gh:1540
       // Tack on ShingleFilter to the end, to generate token ngrams:
       return new AnalyzerWrapper(other.getReuseStrategy()) {
         @Override
@@ -269,7 +269,7 @@ public class FreeTextSuggester extends Lookup implements Accountable {
     IndexWriter writer = new IndexWriter(dir, iwc);
 
     FieldType ft = new FieldType(TextField.TYPE_NOT_STORED);
-    // TODO: if only we had IndexOptions.TERMS_ONLY...
+    // TODO: if only we had IndexOptions.TERMS_ONLY... id:2554 gh:2555
     ft.setIndexOptions(IndexOptions.DOCS_AND_FREQS);
     ft.setOmitNorms(true);
     ft.freeze();
@@ -445,7 +445,7 @@ public class FreeTextSuggester extends Lookup implements Accountable {
       while(ts.incrementToken()) {
         BytesRef tokenBytes = termBytesAtt.getBytesRef();
         sawRealToken |= tokenBytes.length > 0;
-        // TODO: this is somewhat iffy; today, ShingleFilter
+        // TODO: this is somewhat iffy; today, ShingleFilter id:1519 gh:1520
         // sets posLen to the gram count; maybe we should make
         // a separate dedicated att for this?
         int gramCount = posLenAtt.getPositionLength();
@@ -531,7 +531,7 @@ public class FreeTextSuggester extends Lookup implements Accountable {
         
         //System.out.println("try " + (gram+1) + " gram token=" + token.utf8ToString());
         
-        // TODO: we could add fuzziness here
+        // TODO: we could add fuzziness here id:1403 gh:1404
         // match the prefix portion exactly
         //Pair<Long,BytesRef> prefixOutput = null;
         Long prefixOutput = null;
@@ -549,7 +549,7 @@ public class FreeTextSuggester extends Lookup implements Accountable {
           continue;
         }
         
-        // TODO: we could do this division at build time, and
+        // TODO: we could do this division at build time, and id:1228 gh:1229
         // bake it into the FST?
         
         // Denominator for computing scores from current
@@ -703,7 +703,7 @@ public class FreeTextSuggester extends Lookup implements Accountable {
     return (int)(Long.MAX_VALUE - output);
   }
   
-  // NOTE: copied from WFSTCompletionLookup & tweaked
+  // NOTE: copied from WFSTCompletionLookup & tweaked id:1542 gh:1543
   private Long lookupPrefix(FST<Long> fst, FST.BytesReader bytesReader,
                             BytesRef scratch, Arc<Long> arc) throws /*Bogus*/IOException {
 

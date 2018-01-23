@@ -45,7 +45,7 @@ public class TriggerEventQueue {
   private final DistributedQueue delegate;
 
   public TriggerEventQueue(SolrCloudManager cloudManager, String triggerName, Stats stats) throws IOException {
-    // TODO: collect stats
+    // TODO: collect stats id:2740 gh:2741
     this.delegate = cloudManager.getDistributedQueueFactory().makeQueue(ZkStateReader.SOLR_AUTOSCALING_EVENTS_PATH + "/" + triggerName);
     this.triggerName = triggerName;
     this.timeSource = cloudManager.getTimeSource();

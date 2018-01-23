@@ -96,7 +96,7 @@ public class SoftAutoCommitTest extends SolrTestCaseJ4 {
   
   public void testSoftAndHardCommitMaxDocs() throws Exception {
 
-    // NOTE WHEN READING THIS TEST...
+    // NOTE WHEN READING THIS TEST... id:2971 gh:2972
     // The maxDocs settings on the CommitTrackers are the "upper bound"
     // of how many docs can be added with out doing a commit.
     // That means they are one less then the actual number of docs that will trigger a commit.
@@ -443,7 +443,7 @@ public class SoftAutoCommitTest extends SolrTestCaseJ4 {
     final long maxTimeMillis = MILLISECONDS.convert(postLastNanos - preFirstNanos, NANOSECONDS);
     log.info("maxTimeMillis: {}ns - {}ns == {}ms", postLastNanos, preFirstNanos, maxTimeMillis);
     
-    // NOTE: explicitly using truncated division of longs to round down
+    // NOTE: explicitly using truncated division of longs to round down id:2389 gh:2390
     // even if evenly divisible, need +1 to account for possible "last" commit triggered by "last" doc
     final long maxExpectedSoft = 1L + (maxTimeMillis / softCommitWaitMillis);
     final long maxExpectedHard = 1L + (maxTimeMillis / hardCommitWaitMillis);

@@ -523,7 +523,7 @@ public class FieldCacheImpl implements FieldCache {
       return new BitsEntry(u.docsWithField);
     }
     
-    // TODO: it is dumb that uninverting code is duplicated here in this method!!
+    // TODO: it is dumb that uninverting code is duplicated here in this method!! id:2055 gh:2057
     private BitsEntry createValuePostings(LeafReader reader, String field) throws IOException {
       final int maxDoc = reader.maxDoc();
 
@@ -550,7 +550,7 @@ public class FieldCacheImpl implements FieldCache {
           }
 
           docs = termsEnum.postings(docs, PostingsEnum.NONE);
-          // TODO: use bulk API
+          // TODO: use bulk API id:2945 gh:2947
           while (true) {
             final int docID = docs.nextDoc();
             if (docID == DocIdSetIterator.NO_MORE_DOCS) {
@@ -625,7 +625,7 @@ public class FieldCacheImpl implements FieldCache {
     private final Bits docsWithField;
     private final String field;
 
-    public LongsFromArray(String field, PackedInts.Reader values, long minValue, Bits docsWithField) { // TODO: accept null docsWithField?
+    public LongsFromArray(String field, PackedInts.Reader values, long minValue, Bits docsWithField) { // TODO: accept null docsWithField? id:2099 gh:2100
       this.field = field;
       this.values = values;
       this.minValue = minValue;
@@ -920,7 +920,7 @@ public class FieldCacheImpl implements FieldCache {
 
       int startTermsBPV;
 
-      // TODO: use Uninvert?
+      // TODO: use Uninvert? id:2774 gh:2775
       if (terms != null) {
         // Try for coarse estimate for number of bits; this
         // should be an underestimate most of the time, which
@@ -944,7 +944,7 @@ public class FieldCacheImpl implements FieldCache {
 
       int termOrd = 0;
 
-      // TODO: use Uninvert?
+      // TODO: use Uninvert? id:2140 gh:2141
 
       if (terms != null) {
         final TermsEnum termsEnum = terms.iterator();
@@ -1068,7 +1068,7 @@ public class FieldCacheImpl implements FieldCache {
     }
   }
 
-  // TODO: this if DocTermsIndex was already created, we
+  // TODO: this if DocTermsIndex was already created, we id:2057 gh:2058
   // should share it...
   public BinaryDocValues getTerms(LeafReader reader, String field) throws IOException {
     return getTerms(reader, field, PackedInts.FAST);
@@ -1108,7 +1108,7 @@ public class FieldCacheImpl implements FieldCache {
     protected Accountable createValue(LeafReader reader, CacheKey key)
         throws IOException {
 
-      // TODO: would be nice to first check if DocTermsIndex
+      // TODO: would be nice to first check if DocTermsIndex id:2947 gh:2945
       // was already cached for this field and then return
       // that instead, to avoid insanity
 
@@ -1193,7 +1193,7 @@ public class FieldCacheImpl implements FieldCache {
     }
   }
 
-  // TODO: this if DocTermsIndex was already created, we
+  // TODO: this if DocTermsIndex was already created, we id:2127 gh:2128
   // should share it...
   public SortedSetDocValues getDocTermOrds(LeafReader reader, String field, BytesRef prefix) throws IOException {
     // not a general purpose filtering mechanism...

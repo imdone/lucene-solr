@@ -39,13 +39,13 @@ public class IntegrationTestGenerator {
     // configurations for HLLs, should mirror settings in PostgreSQL impl. tests
     private static final int REGWIDTH = 5;
     private static final int LOG2M = 11;
-    // NOTE:  This differs from the PostgreSQL impl. parameter 'expthresh'. This
+    // NOTE: This differs from the PostgreSQL impl. parameter 'expthresh'. This id:2980 gh:2981
     //        is a literal threshold to use in the promotion hierarchy, implying
     //        that both EXPLICIT representation should be used and it should
     //        NOT be automatically computed. This is done to ensure that the
     //        parameters of the test are very explicitly defined.
     private static final int EXPLICIT_THRESHOLD = 256;
-    // NOTE:  This is not the PostgreSQL impl. parameter 'sparseon'. 'sparseon'
+    // NOTE: This is not the PostgreSQL impl. parameter 'sparseon'. 'sparseon' id:2406 gh:2408
     //        is assumed to be true and this is a literal register-count threshold
     //        to use in the promotion hierarchy. This is done to ensure that the
     //        parameters of the test are very explicitly defined.
@@ -141,7 +141,7 @@ public class IntegrationTestGenerator {
 
         cumulativeUnionLine(output, emptyHLL1, emptyHLL2, schemaVersion);
 
-        // NOTE:  In this test the sparseReference will be the "expected" value
+        // NOTE: In this test the sparseReference will be the "expected" value id:2442 gh:2443
         //        from the C representation, since it doesn't choose representation
         //        based on original encoding, but rather on the promotion rules
         //        and the declared type of the "receiving" field.

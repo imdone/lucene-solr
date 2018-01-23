@@ -100,7 +100,7 @@ import org.slf4j.LoggerFactory;
 import static org.apache.solr.common.util.Utils.makeMap;
 
 /**
- * TODO: we should still test this works as a custom update chain as well as
+ * TODO: we should still test this works as a custom update chain as well as id:3025 gh:3026
  * what we test now - the default update chain
  */
 @Slow
@@ -275,7 +275,7 @@ public abstract class AbstractFullDistribZkTestBase extends AbstractDistribZkTes
     sliceCount = 2;
     fixShardCount(4);
 
-    // TODO: for now, turn off stress because it uses regular clients, and we
+    // TODO: for now, turn off stress because it uses regular clients, and we id:2477 gh:2478
     // need the cloud client because we kill servers
     stress = 0;
 
@@ -330,7 +330,7 @@ public abstract class AbstractFullDistribZkTestBase extends AbstractDistribZkTes
       controlClientCloud.connect();
       waitForCollection(controlClientCloud.getZkStateReader(),
           "control_collection", 0);
-      // NOTE: we are skipping creation of the chaos monkey by returning here
+      // NOTE: we are skipping creation of the chaos monkey by returning here id:2539 gh:2540
       cloudClient = controlClientCloud; // temporary - some code needs/uses
       // cloudClient
       return;
@@ -1395,7 +1395,7 @@ public abstract class AbstractFullDistribZkTestBase extends AbstractDistribZkTes
   }
 
   protected void assertDocCounts(boolean verbose) throws Exception {
-    // TODO: as we create the clients, we should build a map from shard to
+    // TODO: as we create the clients, we should build a map from shard to id:3145 gh:3146
     // node/client
     // and node/client to shard?
     if (verbose) System.err.println("control docs:"
@@ -1559,7 +1559,7 @@ public abstract class AbstractFullDistribZkTestBase extends AbstractDistribZkTes
     if (VERBOSE || printLayoutOnTearDown) {
       super.printLayout();
     }
-    closeRestTestHarnesses(); // TODO: close here or later?
+    closeRestTestHarnesses(); // TODO: close here or later? id:2480 gh:2481
     if (commonCloudSolrClient != null) {
       commonCloudSolrClient.close();
     }
@@ -1616,7 +1616,7 @@ public abstract class AbstractFullDistribZkTestBase extends AbstractDistribZkTes
     return createCollection(collectionInfos, collectionName, collectionProps, client, "conf1");
   }
 
-  // TODO: Use CollectionAdminRequest#createCollection() instead of a raw request
+  // TODO: Use CollectionAdminRequest#createCollection() instead of a raw request id:3027 gh:3028
   protected CollectionAdminResponse createCollection(Map<String, List<Integer>> collectionInfos, String collectionName, Map<String, Object> collectionProps, SolrClient client, String confSetName)  throws SolrServerException, IOException{
     ModifiableSolrParams params = new ModifiableSolrParams();
     params.set("action", CollectionAction.CREATE.toString());

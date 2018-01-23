@@ -47,11 +47,11 @@ import org.apache.lucene.util.Version;
  * we do our best to see if we can sanely initialize it with
  * no parameters and smoke test it, etc.
  */
-// TODO: move this, TestRandomChains, and TestAllAnalyzersHaveFactories
+// TODO: move this, TestRandomChains, and TestAllAnalyzersHaveFactories id:190 gh:191
 // to an integration test module that sucks in all analysis modules.
 // currently the only way to do this is via eclipse etc (LUCENE-3974)
 
-// TODO: fix this to use CustomAnalyzer instead of its own FactoryAnalyzer
+// TODO: fix this to use CustomAnalyzer instead of its own FactoryAnalyzer id:67 gh:68
 public class TestFactories extends BaseTokenStreamTestCase {
   
   /** Factories that are excluded from testing it with random data */

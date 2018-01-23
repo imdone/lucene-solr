@@ -65,7 +65,7 @@ public class DocumentBuilder {
     }
     for (IndexableField f : field.getType().createFields(field, val)) {
       if (f != null) { // null fields are not added
-        // HACK: workaround for SOLR-9809
+        // HACK: workaround for SOLR-9809 id:2780 gh:2781
         // even though at this point in the code we know the field is single valued and DV only
         // TrieField.createFields() may still return (usless) IndexableField instances that are not
         // NumericDocValuesField instances.
@@ -108,7 +108,7 @@ public class DocumentBuilder {
    * extra Map&lt;&gt; checking for multiple values.  For more discussion, see:
    * http://www.nabble.com/Re%3A-svn-commit%3A-r547493---in--lucene-solr-trunk%3A-.--src-java-org-apache-solr-common--src-java-org-apache-solr-schema--src-java-org-apache-solr-update--src-test-org-apache-solr-common--tf3931539.html
    * 
-   * TODO: /!\ NOTE /!\ This semantics of this function are still in flux.  
+   * TODO: /!\ NOTE /!\ This semantics of this function are still in flux.   id:2146 gh:2147
    * Something somewhere needs to be able to fill up a SolrDocument from
    * a lucene document - this is one place that may happen.  It may also be
    * moved to an independent function

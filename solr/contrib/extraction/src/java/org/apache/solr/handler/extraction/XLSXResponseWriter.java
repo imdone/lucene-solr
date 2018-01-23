@@ -300,7 +300,7 @@ class XLSXWriter extends TextResponseWriter {
     // nothing
   }
 
-  //NOTE: a document cannot currently contain another document
+  //NOTE: a document cannot currently contain another document id:1700 gh:1701
   List tmpList;
   @Override
   public void writeSolrDocument(String name, SolrDocument doc, ReturnFields returnFields, int idx ) throws IOException {

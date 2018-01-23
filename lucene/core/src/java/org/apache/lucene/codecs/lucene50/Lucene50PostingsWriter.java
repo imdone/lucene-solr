@@ -158,7 +158,7 @@ public final class Lucene50PostingsWriter extends PushPostingsWriterBase {
     docDeltaBuffer = new int[MAX_DATA_SIZE];
     freqBuffer = new int[MAX_DATA_SIZE];
 
-    // TODO: should we try skipping every 2/4 blocks...?
+    // TODO: should we try skipping every 2/4 blocks...? id:369 gh:370
     skipWriter = new Lucene50SkipWriter(MAX_SKIP_LEVELS,
                                         BLOCK_SIZE, 
                                         state.segmentInfo.maxDoc(),
@@ -238,7 +238,7 @@ public final class Lucene50PostingsWriter extends PushPostingsWriterBase {
       if (writeFreqs) {
         forUtil.writeBlock(freqBuffer, encoded, docOut);
       }
-      // NOTE: don't set docBufferUpto back to 0 here;
+      // NOTE: don't set docBufferUpto back to 0 here; id:449 gh:450
       // finishDoc will do so (because it needs to see that
       // the block was filled so it can save skip data)
     }
@@ -324,7 +324,7 @@ public final class Lucene50PostingsWriter extends PushPostingsWriterBase {
     IntBlockTermState state = (IntBlockTermState) _state;
     assert state.docFreq > 0;
 
-    // TODO: wasteful we are counting this (counting # docs
+    // TODO: wasteful we are counting this (counting # docs id:519 gh:520
     // for this term) in two places?
     assert state.docFreq == docCount: state.docFreq + " vs " + docCount;
     
@@ -363,7 +363,7 @@ public final class Lucene50PostingsWriter extends PushPostingsWriterBase {
         lastPosBlockOffset = -1;
       }
       if (posBufferUpto > 0) {       
-        // TODO: should we send offsets/payloads to
+        // TODO: should we send offsets/payloads to id:504 gh:505
         // .pay...?  seems wasteful (have to store extra
         // vLong for low (< BLOCK_SIZE) DF terms = vast vast
         // majority)
@@ -462,7 +462,7 @@ public final class Lucene50PostingsWriter extends PushPostingsWriterBase {
 
   @Override
   public void close() throws IOException {
-    // TODO: add a finish() at least to PushBase? DV too...?
+    // TODO: add a finish() at least to PushBase? DV too...? id:372 gh:373
     boolean success = false;
     try {
       if (docOut != null) {

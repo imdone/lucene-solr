@@ -245,8 +245,8 @@ public class StatsField {
       } else {
         // we have a non trivial request to compute stats over a query (or function)
 
-        // NOTE we could use QParser.getParser(...) here, but that would redundently
-        // reparse everything.  ( TODO: refactor a common method in QParser ?)
+        // NOTE we could use QParser.getParser(...) here, but that would redundently id:1880 gh:1881
+        // reparse everything.  ( TODO: refactor a common method in QParser ?) id:2668 gh:2669
         QParserPlugin qplug = rb.req.getCore().getQueryPlugin(parserName);
         QParser qp =  qplug.createParser(localParams.get(QueryParsing.V), 
                                          localParams, params, rb.req);
@@ -419,7 +419,7 @@ public class StatsField {
     if (null != schemaField && !schemaField.getType().isPointField()
         && (schemaField.multiValued() || schemaField.getType().multiValuedFieldCache())) {
 
-      // TODO: should this also be used for single-valued string fields? (should work fine)
+      // TODO: should this also be used for single-valued string fields? (should work fine) id:1956 gh:1957
       return DocValuesStats.getCounts(searcher, this, base, facets);
     } else {
       // either a single valued field we pull from FieldCache, or an explicit
@@ -599,7 +599,7 @@ public class StatsField {
   public static final class HllOptions {
     final HashFunction hasher;
     
-    // NOTE: this explanation linked to from the java-hll jdocs...
+    // NOTE: this explanation linked to from the java-hll jdocs... id:1850 gh:1851
     // https://github.com/aggregateknowledge/postgresql-hll/blob/master/README.markdown#explanation-of-parameters-and-tuning
     // ..if i'm understanding the regwidth chart correctly, a value of 6 should be a enough
     // to support any max cardinality given that we're always dealing with hashes and 
@@ -646,11 +646,11 @@ public class StatsField {
         // for 32bit values, we can adjust our default regwidth down a bit
         regwidth--;
 
-        // NOTE: EnumField uses LegacyNumericType.INT, and in theory we could be super conservative
+        // NOTE: EnumField uses LegacyNumericType.INT, and in theory we could be super conservative id:2799 gh:2800
         // with it, but there's no point - just let the EXPLICIT HLL handle it
       }
 
-      // TODO: we could attempt additional reductions in the default regwidth based on index
+      // TODO: we could attempt additional reductions in the default regwidth based on index id:1882 gh:1883
       // statistics -- but thta doesn't seem worth the effort.  for tiny indexes, the 
       // EXPLICIT and SPARSE HLL representations have us nicely covered, and in general we don't 
       // want to be too aggresive about lowering regwidth or we could really poor results if 
@@ -705,7 +705,7 @@ public class StatsField {
 
       if (null == hasher) {
         // if this is a function, or a non Long field, pre-hashed is invalid
-        // NOTE: we ignore hashableNumType - it's LONG for non numerics like Strings
+        // NOTE: we ignore hashableNumType - it's LONG for non numerics like Strings id:2669 gh:2670
         if (null == field || !(NumberType.LONG.equals(field.getType().getNumberType()) || NumberType.DATE.equals(field.getType().getNumberType()))) { 
           throw new SolrException(ErrorCode.BAD_REQUEST, "hllPreHashed is only supported with Long based fields");
         }
@@ -731,7 +731,7 @@ public class StatsField {
       // some nasty impacts on response time as it gets larger - particularly in distrib requests.
       // Merging large SPARSE HLLs is much much slower then merging FULL HLLs with the same num docs
       //
-      // TODO: add more tunning options for this.
+      // TODO: add more tunning options for this. id:1958 gh:1959
       return new HLL(getLog2m(), getRegwidth(), -1 /* auto explict threshold */,
                      false /* no sparse representation */, HLLType.EMPTY);
                      

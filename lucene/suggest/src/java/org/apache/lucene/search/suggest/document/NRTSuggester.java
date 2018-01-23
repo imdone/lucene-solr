@@ -52,7 +52,7 @@ import static org.apache.lucene.search.suggest.document.NRTSuggester.PayLoadProc
  *   <li>Output: Pair&lt;Long, BytesRef&gt; containing weight, surface form and docID</li>
  * </ul>
  * <p>
- * NOTE:
+ * NOTE: id:1236 gh:1237
  * <ul>
  *   <li>having too many deletions or using a very restrictive filter can make the search inadmissible due to
  *     over-pruning of potential paths. See {@link CompletionScorer#accept(int, Bits)}</li>
@@ -92,7 +92,7 @@ public final class NRTSuggester implements Accountable {
   /**
    * Maximum queue depth for TopNSearcher
    *
-   * NOTE: value should be <= Integer.MAX_VALUE
+   * NOTE: value should be <= Integer.MAX_VALUE id:1552 gh:1553
    */
   private static final long MAX_TOP_N_QUEUE_SIZE = 5000;
 

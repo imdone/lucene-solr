@@ -327,7 +327,7 @@ final class MinShouldMatchSumScorer extends Scorer {
 
   @Override
   public float maxScore() {
-    // TODO: implement but be careful about floating-point errors.
+    // TODO: implement but be careful about floating-point errors. id:646 gh:647
     return Float.POSITIVE_INFINITY;
   }
 

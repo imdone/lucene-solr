@@ -78,12 +78,12 @@ public abstract class DocRouter {
     routerMap.put(PlainIdRouter.NAME, plain);
     routerMap.put(CompositeIdRouter.NAME, DEFAULT_NAME.equals(CompositeIdRouter.NAME) ? DEFAULT : new CompositeIdRouter());
     routerMap.put(ImplicitDocRouter.NAME, new ImplicitDocRouter());
-    // NOTE: careful that the map keys (the static .NAME members) are filled in by making them final
+    // NOTE: careful that the map keys (the static .NAME members) are filled in by making them final id:3003 gh:3004
   }
 
 
   // Hash ranges can't currently "wrap" - i.e. max must be greater or equal to min.
-  // TODO: ranges may not be all contiguous in the future (either that or we will
+  // TODO: ranges may not be all contiguous in the future (either that or we will id:2453 gh:2454
   // need an extra class to model a collection of ranges)
   public static class Range implements JSONWriter.Writable, Comparable<Range> {
     public int min;  // inclusive

@@ -198,7 +198,7 @@ public class TestPointFields extends SolrTestCaseJ4 {
       assertTrue(r, regexToTest.remove(r));
       String field = r.replace("*", "number");
 
-      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField
+      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField id:2291 gh:2292
       // covers this in more depth
       doTestPointFieldSort(field, sequential);
       doTestPointFieldSort(field, randomInts);
@@ -336,7 +336,7 @@ public class TestPointFields extends SolrTestCaseJ4 {
     doTestFieldNotIndexed("number_p_i_ni_mv", ints);
   }
   
-  //TODO MV SORT?
+  //TODO MV SORT? id:3091 gh:3092
   @Test
   public void testIntPointFieldMultiValuedFacetField() throws Exception {
     doTestPointFieldMultiValuedFacetField("number_p_i_mv", "number_p_i_mv_dv", getSequentialStringArrayWithInts(20));
@@ -618,7 +618,7 @@ public class TestPointFields extends SolrTestCaseJ4 {
       assertTrue(r, regexToTest.remove(r));
       String field = r.replace("*", "number");
       
-      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField
+      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField id:2340 gh:2341
       // covers this in more depth
       doTestPointFieldSort(field, sequential);
       doTestPointFieldSort(field, randomDoubles);
@@ -1041,7 +1041,7 @@ public class TestPointFields extends SolrTestCaseJ4 {
       assertTrue(r, regexToTest.remove(r));
       String field = r.replace("*", "number");
 
-      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField
+      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField id:2932 gh:2933
       // covers this in more depth
       doTestPointFieldSort(field, sequential);
       doTestPointFieldSort(field, randomFloats);
@@ -1415,7 +1415,7 @@ public class TestPointFields extends SolrTestCaseJ4 {
       assertTrue(r, regexToTest.remove(r));
       String field = r.replace("*", "number");
 
-      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField
+      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField id:2339 gh:2338
       // covers this in more depth
       doTestPointFieldSort(field, vals);
       doTestPointFieldSort(field, randomLongs);
@@ -1775,7 +1775,7 @@ public class TestPointFields extends SolrTestCaseJ4 {
       assertTrue(r, regexToTest.remove(r));
       String field = r.replace("*", "number");
 
-      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField
+      // NOTE: only testing one value per doc here, but TestMinMaxOnMultiValuedField id:2356 gh:2357
       // covers this in more depth
       doTestPointFieldSort(field, sequential);
       doTestPointFieldSort(field, randomDates);

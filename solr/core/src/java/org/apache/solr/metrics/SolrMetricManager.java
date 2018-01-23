@@ -363,7 +363,7 @@ public class SolrMetricManager {
 
   /**
    * Return set of existing registry names that match a regex pattern
-   * @param patterns regex patterns. NOTE: users need to make sure that patterns that
+   * @param patterns regex patterns. NOTE: users need to make sure that patterns that id:2677 gh:2678
    *                 don't start with a wildcard use the full registry name starting with
    *                 {@link #REGISTRY_NAME_PREFIX}
    * @return set of existing registry names where at least one pattern matched.
@@ -467,7 +467,7 @@ public class SolrMetricManager {
 
   /**
    * Swap registries. This is useful eg. during
-   * {@link org.apache.solr.core.SolrCore} rename or swap operations. NOTE:
+   * {@link org.apache.solr.core.SolrCore} rename or swap operations. NOTE: id:1974 gh:1975
    * this operation is not supported for shared registries.
    * @param registry1 source registry
    * @param registry2 target registry. Note: when used after core rename the target registry doesn't

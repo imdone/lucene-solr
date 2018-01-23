@@ -73,7 +73,7 @@ public class TestDocsAndPositions extends LuceneTestCase {
         final int advance = docsAndPosEnum.advance(random().nextInt(leafReaderContext.reader().maxDoc()));
         do {
           String msg = "Advanced to: " + advance + " current doc: "
-              + docsAndPosEnum.docID(); // TODO: + " usePayloads: " + usePayload;
+              + docsAndPosEnum.docID(); // TODO: + " usePayloads: " + usePayload; id:994 gh:995
           assertEquals(msg, 4, docsAndPosEnum.freq());
           assertEquals(msg, 0, docsAndPosEnum.nextPosition());
           assertEquals(msg, 4, docsAndPosEnum.freq());
@@ -173,7 +173,7 @@ public class TestDocsAndPositions extends LuceneTestCase {
           for (int j = 0; j < howMany; j++) {
             assertEquals("iteration: " + i + " initDoc: " + initDoc + " doc: "
                 + docID + " base: " + leafReaderContext.docBase
-                + " positions: " + Arrays.toString(pos) /* TODO: + " usePayloads: "
+                + " positions: " + Arrays.toString(pos) /* TODO: + " usePayloads: " id:835 gh:836
                 + usePayload*/, pos[j].intValue(), docsAndPosEnum.nextPosition());
           }
 
@@ -314,7 +314,7 @@ public class TestDocsAndPositions extends LuceneTestCase {
         } else {
           initDoc = docsAndPosEnum.advance(random().nextInt(maxDoc));
         }
-        String msg = "Iteration: " + i + " initDoc: " + initDoc; // TODO: + " payloads: " + usePayload;
+        String msg = "Iteration: " + i + " initDoc: " + initDoc; // TODO: + " payloads: " + usePayload; id:921 gh:922
         assertEquals(howMany / 2, docsAndPosEnum.freq());
         for (int j = 0; j < howMany; j += 2) {
           assertEquals("position missmatch index: " + j + " with freq: "

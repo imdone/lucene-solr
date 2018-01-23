@@ -29,7 +29,7 @@ import org.apache.lucene.store.Directory; // javadoc
 import org.apache.lucene.store.IOContext.Context;
 import org.apache.lucene.util.SuppressForbidden;
 
-// TODO
+// TODO id:1178 gh:1179
 //   - newer Linux kernel versions (after 2.6.29) have
 //     improved MADV_SEQUENTIAL (and hopefully also
 //     FADV_SEQUENTIAL) interaction with the buffer
@@ -69,7 +69,7 @@ import org.apache.lucene.util.SuppressForbidden;
  */
 public class NativeUnixDirectory extends FSDirectory {
 
-  // TODO: this is OS dependent, but likely 512 is the LCD
+  // TODO: this is OS dependent, but likely 512 is the LCD id:955 gh:956
   private final static long ALIGN = 512;
   private final static long ALIGN_NOT_MASK = ~(ALIGN-1);
   
@@ -207,7 +207,7 @@ public class NativeUnixDirectory extends FSDirectory {
 
     //@Override
     //public void setLength() throws IOException {
-    //   TODO -- how to impl this?  neither FOS nor
+    //   TODO -- how to impl this?  neither FOS nor id:1335 gh:1336
     //   FileChannel provides an API?
     //}
 
@@ -233,7 +233,7 @@ public class NativeUnixDirectory extends FSDirectory {
       buffer.clear();
       //System.out.println("dump: done");
 
-      // TODO: the case where we'd seek'd back, wrote an
+      // TODO: the case where we'd seek'd back, wrote an id:1554 gh:1555
       // entire buffer, we must here read the next buffer;
       // likely Lucene won't trip on this since we only
       // write smallish amounts on seeking back
@@ -361,7 +361,7 @@ public class NativeUnixDirectory extends FSDirectory {
 
     @Override
     public byte readByte() throws IOException {
-      // NOTE: we don't guard against EOF here... ie the
+      // NOTE: we don't guard against EOF here... ie the id:1060 gh:1061
       // "final" buffer will typically be filled to less
       // than bufferSize
       if (bufferPos == bufferSize) {
@@ -423,7 +423,7 @@ public class NativeUnixDirectory extends FSDirectory {
 
     @Override
     public IndexInput slice(String sliceDescription, long offset, long length) throws IOException {
-      // TODO: is this the right thing to do?
+      // TODO: is this the right thing to do? id:1184 gh:1185
       return BufferedIndexInput.wrap(sliceDescription, this, offset, length);
     }
   }

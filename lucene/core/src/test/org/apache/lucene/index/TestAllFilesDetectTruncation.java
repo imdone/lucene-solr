@@ -105,7 +105,7 @@ public class TestAllFilesDetectTruncation extends LuceneTestCase {
       }
 
       try {
-        // NOTE: we .close so that if the test fails (truncation not detected) we don't also get all these confusing errors about open files:
+        // NOTE: we .close so that if the test fails (truncation not detected) we don't also get all these confusing errors about open files: id:1255 gh:1256
         DirectoryReader.open(dirCopy).close();
         fail("truncation not detected after removing " + lostBytes + " bytes out of " + victimLength + " for file " + victim);
       } catch (CorruptIndexException | EOFException e) {

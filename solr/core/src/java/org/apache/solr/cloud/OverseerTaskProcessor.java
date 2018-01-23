@@ -182,7 +182,7 @@ public class OverseerTaskProcessor implements Runnable, Closeable {
       }
     }
 
-    // TODO: Make maxThreads configurable.
+    // TODO: Make maxThreads configurable. id:1747 gh:1748
 
     this.tpe = new ExecutorUtil.MDCAwareThreadPoolExecutor(5, MAX_PARALLEL_TASKS, 0L, TimeUnit.MILLISECONDS,
         new SynchronousQueue<Runnable>(),

@@ -16,9 +16,9 @@
  */
 package org.apache.solr.update;
 
-// TODO: make inner?
-// TODO: store the highest possible in the index on a commit (but how to not block adds?)
-// TODO: could also store highest possible in the transaction log after a commit.
+// TODO: make inner? id:2970 gh:2971
+// TODO: store the highest possible in the index on a commit (but how to not block adds?) id:2159 gh:2160
+// TODO: could also store highest possible in the transaction log after a commit. id:2798 gh:2799
 // Or on a new index, just scan "version" for the max?
 /** @lucene.internal */
 public class VersionBucket {

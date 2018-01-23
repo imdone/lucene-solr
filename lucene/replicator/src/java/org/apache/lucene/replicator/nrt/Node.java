@@ -215,7 +215,7 @@ public abstract class Node implements Closeable {
         return null;
       }
 
-      // NOTE: checksum is redundant w/ footer, but we break it out separately because when the bits cross the wire we need direct access to
+      // NOTE: checksum is redundant w/ footer, but we break it out separately because when the bits cross the wire we need direct access to id:1121 gh:1122
       // checksum when copying to catch bit flips:
       result = new FileMetaData(header, footer, length, checksum);
     }

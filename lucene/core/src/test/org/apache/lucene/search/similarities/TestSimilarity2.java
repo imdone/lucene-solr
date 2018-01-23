@@ -61,7 +61,7 @@ public class TestSimilarity2 extends LuceneTestCase {
     sims.add(new AxiomaticF2LOG());
     sims.add(new AxiomaticF3EXP(0.25f, 3));
     sims.add(new AxiomaticF3LOG(0.25f, 3));
-    // TODO: not great that we dup this all with TestSimilarityBase
+    // TODO: not great that we dup this all with TestSimilarityBase id:1148 gh:1149
     for (BasicModel basicModel : TestSimilarityBase.BASIC_MODELS) {
       for (AfterEffect afterEffect : TestSimilarityBase.AFTER_EFFECTS) {
         for (Normalization normalization : TestSimilarityBase.NORMALIZATIONS) {

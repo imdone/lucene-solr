@@ -26,7 +26,7 @@ import org.apache.lucene.store.MockDirectoryWrapper;
 import org.apache.lucene.util.LuceneTestCase.SuppressCodecs;
 import org.junit.Before;
 
-// TODO
+// TODO id:1286 gh:1287
 //   - mix in forceMerge, addIndexes
 //   - randomoly mix in non-congruent docs
 

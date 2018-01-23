@@ -151,7 +151,7 @@ public abstract class BaseSolrResource extends ServerResource {
     public SolrOutputRepresentation() {
       // No normalization, in case of a custom media type
       super(MediaType.valueOf(contentType));
-      // TODO: For now, don't send the Vary: header, but revisit if/when content negotiation is added
+      // TODO: For now, don't send the Vary: header, but revisit if/when content negotiation is added id:1891 gh:1892
       getDimensions().clear();
     }
     
@@ -173,7 +173,7 @@ public abstract class BaseSolrResource extends ServerResource {
     
     handleException(log);
     
-    // TODO: should status=0 (success?) be left as-is in the response header?
+    // TODO: should status=0 (success?) be left as-is in the response header? id:2839 gh:2840
     SolrCore.postDecorateResponse(null, solrRequest, solrResponse);
     addDeprecatedWarning();
 

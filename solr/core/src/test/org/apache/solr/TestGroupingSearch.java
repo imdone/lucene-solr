@@ -823,7 +823,7 @@ public class TestGroupingSearch extends SolrTestCaseJ4 {
         }
 
         int randomPercentage = random().nextInt(101);
-        // TODO: create a random filter too
+        // TODO: create a random filter too id:2233 gh:2234
         SolrQueryRequest req = req("group","true","wt","json","indent","true", "echoParams","all", "q","{!func}score_f", "group.field",groupField
             ,sortStr==null ? "nosort":"sort", sortStr ==null ? "": sortStr
             ,(groupSortStr == null || groupSortStr == sortStr) ? "noGroupsort":"group.sort", groupSortStr==null ? "": groupSortStr

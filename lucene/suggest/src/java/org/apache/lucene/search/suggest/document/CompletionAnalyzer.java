@@ -30,7 +30,7 @@ import org.apache.lucene.util.automaton.Operations;
  * Can be used to index {@link SuggestField} and {@link ContextSuggestField}
  * and as a query analyzer to {@link PrefixCompletionQuery} amd {@link FuzzyCompletionQuery}
  * <p>
- * NOTE: In most cases, index and query analyzer should have same values for {@link #preservePositionIncrements()}
+ * NOTE: In most cases, index and query analyzer should have same values for {@link #preservePositionIncrements()} id:2558 gh:2559
  * and {@link #preserveSep()}
  *
  * @lucene.experimental

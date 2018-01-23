@@ -247,7 +247,7 @@ public class MultiPhraseQuery extends Query {
         return null;
       }
 
-      // TODO: move this check to createWeight to happen earlier to the user?
+      // TODO: move this check to createWeight to happen earlier to the user? id:575 gh:576
       if (fieldTerms.hasPositions() == false) {
         throw new IllegalStateException("field \"" + field + "\" was indexed without position data;" +
             " cannot run MultiPhraseQuery (phrase=" + getQuery() + ")");

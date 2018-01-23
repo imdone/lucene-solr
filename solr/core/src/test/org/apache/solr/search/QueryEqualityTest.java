@@ -370,7 +370,7 @@ public class QueryEqualityTest extends SolrTestCaseJ4 {
                                "myField","foo_i",
                                "myInner","product(4,foo_i)");
     try {
-      // NOTE: unlike most queries, frange defaultsto cost==100
+      // NOTE: unlike most queries, frange defaultsto cost==100 id:2366 gh:2367
       assertQueryEquals("frange", req, 
                         "{!frange l=0.2 h=20.4}sum(4,5)",
                         "{!frange l=0.2 h=20.4 cost=100}sum(4,5)",
@@ -725,7 +725,7 @@ public class QueryEqualityTest extends SolrTestCaseJ4 {
       for (final String type : new String[]{"docfreq","termfreq",
                                             "totaltermfreq","ttf",
                                             "idf","tf"}) {
-        // NOTE: these functions takes a field *name* not a field(..) source
+        // NOTE: these functions takes a field *name* not a field(..) source id:3094 gh:3095
         assertFuncEquals(req,
                          type + "('field_t','my term')",
                          type + "(field_t,'my term')",
@@ -966,7 +966,7 @@ public class QueryEqualityTest extends SolrTestCaseJ4 {
     assertFuncEquals("threadid()", "threadid()");
   }
   
-  // TODO: more tests
+  // TODO: more tests id:2346 gh:2347
   public void testQueryMaxScore() throws Exception {
     assertQueryEquals("maxscore", "{!maxscore}A OR B OR C",
                       "A OR B OR C");
@@ -1014,7 +1014,7 @@ public class QueryEqualityTest extends SolrTestCaseJ4 {
 
 
   /**
-   * NOTE: defType is not only used to pick the parser, but also to record 
+   * NOTE: defType is not only used to pick the parser, but also to record  id:2938 gh:2939
    * the parser being tested for coverage sanity checking
    * @see #testParserCoverage
    * @see #assertQueryEquals
@@ -1030,7 +1030,7 @@ public class QueryEqualityTest extends SolrTestCaseJ4 {
   }
 
   /**
-   * NOTE: defType is not only used to pick the parser, but, if non-null it is 
+   * NOTE: defType is not only used to pick the parser, but, if non-null it is  id:2345 gh:2346
    * also to record the parser being tested for coverage sanity checking
    *
    * @see QueryUtils#check

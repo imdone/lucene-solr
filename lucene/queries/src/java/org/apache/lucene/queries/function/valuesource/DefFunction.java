@@ -121,7 +121,7 @@ public class DefFunction extends MultiFunction {
 
       @Override
       public ValueFiller getValueFiller() {
-        // TODO: need ValueSource.type() to determine correct type
+        // TODO: need ValueSource.type() to determine correct type id:1347 gh:1348
         return super.getValueFiller();
       }
     };

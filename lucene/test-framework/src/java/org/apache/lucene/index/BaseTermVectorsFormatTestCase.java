@@ -177,8 +177,8 @@ public abstract class BaseTermVectorsFormatTestCase extends BaseIndexFileFormatT
 
   }
 
-  // TODO: use CannedTokenStream?
-  // TODO: pull out and make top-level-utility, separate from TermVectors
+  // TODO: use CannedTokenStream? id:1368 gh:1369
+  // TODO: pull out and make top-level-utility, separate from TermVectors id:1625 gh:1627
   /** Produces a random TokenStream based off of provided terms. */
   public static class RandomTokenStream extends TokenStream {
 

@@ -29,7 +29,7 @@ import org.apache.lucene.search.Query;
  * unique query terms found. This class uses the {@link QueryTermExtractor}
  * class to process determine the query terms and their boosts to be used.
  */
-// TODO: provide option to boost score of fragments near beginning of document
+// TODO: provide option to boost score of fragments near beginning of document id:1520 gh:1521
 // based on fragment.getFragNum()
 public class QueryTermScorer implements Scorer {
   

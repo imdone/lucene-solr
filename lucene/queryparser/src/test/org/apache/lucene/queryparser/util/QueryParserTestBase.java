@@ -56,7 +56,7 @@ import org.junit.BeforeClass;
 /**
  * Base Test class for QueryParser subclasses
  */
-// TODO: it would be better to refactor the parts that are specific really
+// TODO: it would be better to refactor the parts that are specific really id:1094 gh:1095
 // to the core QP and subclass/use the parts that are not in the flexible QP
 public abstract class QueryParserTestBase extends LuceneTestCase {
   
@@ -342,7 +342,7 @@ public abstract class QueryParserTestBase extends LuceneTestCase {
     assertQueryEquals("türm term term", new MockAnalyzer(random()), "türm term term");
     assertQueryEquals("ümlaut", new MockAnalyzer(random()), "ümlaut");
 
-    // FIXME: enhance MockAnalyzer to be able to support this
+    // FIXME: enhance MockAnalyzer to be able to support this id:1244 gh:1245
     // it must no longer extend CharTokenizer
     //assertQueryEquals("\"\"", new KeywordAnalyzer(), "");
     //assertQueryEquals("foo:\"\"", new KeywordAnalyzer(), "foo:");
@@ -528,7 +528,7 @@ public abstract class QueryParserTestBase extends LuceneTestCase {
     
     assertQueryEquals("drop AND stop AND roll", qpAnalyzer, "+drop +roll");
 
-// TODO: Re-enable once flexible standard parser gets multi-word synonym support
+// TODO: Re-enable once flexible standard parser gets multi-word synonym support id:1119 gh:1120
 //    assertQueryEquals("term phrase term", qpAnalyzer,
 //                      "term phrase1 phrase2 term");
     assertQueryEquals("term AND NOT phrase term", qpAnalyzer,
@@ -546,7 +546,7 @@ public abstract class QueryParserTestBase extends LuceneTestCase {
     
     CommonQueryParserConfiguration cqpc = getParserConfig(qpAnalyzer);
     setDefaultOperatorAND(cqpc);
-// TODO: Re-enable once flexible standard parser gets multi-word synonym support
+// TODO: Re-enable once flexible standard parser gets multi-word synonym support id:1382 gh:1383
 //    assertQueryEquals(cqpc, "field", "term phrase term",
 //        "+term +phrase1 +phrase2 +term");
     assertQueryEquals(cqpc, "field", "phrase",

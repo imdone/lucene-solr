@@ -520,7 +520,7 @@ public class TestIndexWriterWithThreads extends LuceneTestCase {
      thread2.join();
      
      // ensure the directory is closed if we hit the timeout and throw assume
-     // TODO: can we improve this in LuceneTestCase? I dont know what the logic would be...
+     // TODO: can we improve this in LuceneTestCase? I dont know what the logic would be... id:849 gh:850
      try {
        assumeFalse("aborting test: timeout obtaining lock", thread1.failure instanceof LockObtainFailedException);
        assumeFalse("aborting test: timeout obtaining lock", thread2.failure instanceof LockObtainFailedException);

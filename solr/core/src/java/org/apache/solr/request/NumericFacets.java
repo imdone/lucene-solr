@@ -163,7 +163,7 @@ final class NumericFacets {
   public static NamedList<Integer> getCounts(SolrIndexSearcher searcher, DocSet docs, String fieldName, int offset, int limit, int mincount, boolean missing, String sort) throws IOException {
     final SchemaField sf = searcher.getSchema().getField(fieldName);
     if (sf.multiValued()) {
-      // TODO: evaluate using getCountsMultiValued for singleValued numerics with SingletonSortedNumericDocValues
+      // TODO: evaluate using getCountsMultiValued for singleValued numerics with SingletonSortedNumericDocValues id:1879 gh:1880
       return getCountsMultiValued(searcher, docs, fieldName, offset, limit, mincount, missing, sort);
     }
     return getCountsSingleValue(searcher, docs, fieldName, offset, limit, mincount, missing, sort);
@@ -202,7 +202,7 @@ final class NumericFacets {
             longs = DocValues.getNumeric(ctx.reader(), fieldName);
             break;
           case FLOAT:
-            // TODO: this bit flipping should probably be moved to tie-break in the PQ comparator
+            // TODO: this bit flipping should probably be moved to tie-break in the PQ comparator id:2827 gh:2828
             longs = new FilterNumericDocValues(DocValues.getNumeric(ctx.reader(), fieldName)) {
               @Override
               public long longValue() throws IOException {
@@ -213,7 +213,7 @@ final class NumericFacets {
             };
             break;
           case DOUBLE:
-            // TODO: this bit flipping should probably be moved to tie-break in the PQ comparator
+            // TODO: this bit flipping should probably be moved to tie-break in the PQ comparator id:1910 gh:1911
             longs = new FilterNumericDocValues(DocValues.getNumeric(ctx.reader(), fieldName)) {
               @Override
               public long longValue() throws IOException {
@@ -492,7 +492,7 @@ final class NumericFacets {
     }
     
     for (Entry entry : counts) {
-      result.add(bitsToStringValue(ft, entry.bits), entry.count); // TODO: convert to correct value
+      result.add(bitsToStringValue(ft, entry.bits), entry.count); // TODO: convert to correct value id:2683 gh:2684
     }
     
     // Once facet.mincount=0 is supported we'll need to add logic similar to the SingleValue case, but obtaining values

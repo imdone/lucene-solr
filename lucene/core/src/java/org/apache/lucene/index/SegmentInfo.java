@@ -42,7 +42,7 @@ import org.apache.lucene.util.Version;
  */
 public final class SegmentInfo {
   
-  // TODO: remove these from this class, for now this is the representation
+  // TODO: remove these from this class, for now this is the representation id:613 gh:614
   /** Used by some member fields to mean not present (e.g.,
    *  norms, deletions). */
   public static final int NO = -1;          // e.g. no norms; no deletes;
@@ -161,7 +161,7 @@ public final class SegmentInfo {
     return maxDoc;
   }
 
-  // NOTE: leave package private
+  // NOTE: leave package private id:552 gh:553
   void setMaxDoc(int maxDoc) {
     if (this.maxDoc != -1) {
       throw new IllegalStateException("maxDoc was already set: this.maxDoc=" + this.maxDoc + " vs maxDoc=" + maxDoc);
@@ -211,7 +211,7 @@ public final class SegmentInfo {
       s.append(']');
     }
 
-    // TODO: we could append toString of attributes() here?
+    // TODO: we could append toString of attributes() here? id:824 gh:825
 
     return s.toString();
   }

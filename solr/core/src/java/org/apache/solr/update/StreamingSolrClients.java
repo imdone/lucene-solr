@@ -69,7 +69,7 @@ public class StreamingSolrClients {
     String url = getFullUrl(req.node.getUrl());
     ConcurrentUpdateSolrClient client = solrClients.get(url);
     if (client == null) {
-      // NOTE: increasing to more than 1 threadCount for the client could cause updates to be reordered
+      // NOTE: increasing to more than 1 threadCount for the client could cause updates to be reordered id:2076 gh:2077
       // on a greater scale since the current behavior is to only increase the number of connections/Runners when
       // the queue is more than half full.
       client = new ErrorReportingConcurrentUpdateSolrClient.Builder(url, req, errors)

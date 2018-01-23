@@ -108,7 +108,7 @@ public class RandomIndexWriter implements Closeable {
   }
       
   private RandomIndexWriter(Random r, Directory dir, IndexWriterConfig c, boolean closeAnalyzer) throws IOException {
-    // TODO: this should be solved in a different way; Random should not be shared (!).
+    // TODO: this should be solved in a different way; Random should not be shared (!). id:2596 gh:2597
     this.r = new Random(r.nextLong());
     w = mockIndexWriter(dir, c, r);
     flushAt = TestUtil.nextInt(r, 10, 1000);
@@ -134,7 +134,7 @@ public class RandomIndexWriter implements Closeable {
     LuceneTestCase.maybeChangeLiveIndexWriterConfig(r, w.getConfig());
     long seqNo;
     if (r.nextInt(5) == 3) {
-      // TODO: maybe, we should simply buffer up added docs
+      // TODO: maybe, we should simply buffer up added docs id:1703 gh:1704
       // (but we need to clone them), and only when
       // getReader, commit, etc. are called, we do an
       // addDocuments?  Would be better testing.
@@ -431,7 +431,7 @@ public class RandomIndexWriter implements Closeable {
   /**
    * Forces a forceMerge.
    * <p>
-   * NOTE: this should be avoided in tests unless absolutely necessary,
+   * NOTE: this should be avoided in tests unless absolutely necessary, id:1608 gh:1609
    * as it will result in less test coverage.
    * @see IndexWriter#forceMerge(int)
    */

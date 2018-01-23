@@ -229,7 +229,7 @@ public class UpdateLogTest extends SolrTestCaseJ4 {
    *   converted into actual values that just need to be written. 
    * </p>
    * <p>
-   * NOTE: For test simplicity, the Solr input document must include the <code>_version_</code> field.
+   * NOTE: For test simplicity, the Solr input document must include the <code>_version_</code> field. id:2975 gh:2975
    * </p>
    *
    * @param ulog The UpdateLog to apply a delete against
@@ -251,7 +251,7 @@ public class UpdateLogTest extends SolrTestCaseJ4 {
    * Helper method to construct an <code>AddUpdateCommand</code> for a <code>SolrInputDocument</code> 
    * in the context of the specified <code>SolrQueryRequest</code>. 
    *
-   * NOTE: For test simplicity, the Solr input document must include the <code>_version_</code> field.
+   * NOTE: For test simplicity, the Solr input document must include the <code>_version_</code> field. id:2395 gh:2396
    */ 
   public static AddUpdateCommand buildAddUpdateCommand(final SolrQueryRequest req, final SolrInputDocument sdoc) {
     AddUpdateCommand cmd = new AddUpdateCommand(req);

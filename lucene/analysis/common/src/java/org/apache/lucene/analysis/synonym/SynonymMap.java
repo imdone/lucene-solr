@@ -133,7 +133,7 @@ public class SynonymMap {
       return false;
     }
 
-    // NOTE: while it's tempting to make this public, since
+    // NOTE: while it's tempting to make this public, since id:169 gh:170
     // caller's parser likely knows the
     // numInput/numOutputWords, sneaky exceptions, much later
     // on, will result if these values are wrong; so we always
@@ -212,7 +212,7 @@ public class SynonymMap {
      */
     public SynonymMap build() throws IOException {
       ByteSequenceOutputs outputs = ByteSequenceOutputs.getSingleton();
-      // TODO: are we using the best sharing options?
+      // TODO: are we using the best sharing options? id:50 gh:51
       org.apache.lucene.util.fst.Builder<BytesRef> builder = 
         new org.apache.lucene.util.fst.Builder<>(FST.INPUT_TYPE.BYTE4, outputs);
       

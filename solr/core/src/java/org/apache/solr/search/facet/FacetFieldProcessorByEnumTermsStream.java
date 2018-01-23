@@ -166,7 +166,7 @@ class FacetFieldProcessorByEnumTermsStream extends FacetFieldProcessor implement
 
       termsEnum = terms.iterator();
 
-      // TODO: OPT: if seek(ord) is supported for this termsEnum, then we could use it for
+      // TODO: OPT: if seek(ord) is supported for this termsEnum, then we could use it for id:2893 gh:2894
       // facet.offset when sorting by index order.
 
       if (startTermBytes != null) {
@@ -334,7 +334,7 @@ class FacetFieldProcessorByEnumTermsStream extends FacetFieldProcessor implement
           processSubs(bucket, bucketQuery, termSet, false, null);
         }
 
-        // TODO... termSet needs to stick around for streaming sub-facets?
+        // TODO ... termSet needs to stick around for streaming sub-facets? id:1983 gh:1984
 
         return bucket;
 

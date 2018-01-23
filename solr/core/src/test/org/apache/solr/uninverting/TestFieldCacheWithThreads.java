@@ -43,7 +43,7 @@ import org.apache.lucene.util.BytesRef;
 import org.apache.lucene.util.LuceneTestCase;
 import org.apache.lucene.util.TestUtil;
 
-// TODO: what happened to this test... its not actually uninverting?
+// TODO: what happened to this test... its not actually uninverting? id:3110 gh:3111
 public class TestFieldCacheWithThreads extends LuceneTestCase {
 
   public void test() throws Exception {
@@ -157,7 +157,7 @@ public class TestFieldCacheWithThreads extends LuceneTestCase {
     int numDocs = 0;
     final List<BytesRef> docValues = new ArrayList<>();
 
-    // TODO: deletions
+    // TODO: deletions id:2386 gh:2387
     while (numDocs < NUM_DOCS) {
       final String s;
       if (random.nextBoolean()) {

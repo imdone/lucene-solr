@@ -48,7 +48,7 @@ import com.codahale.metrics.MetricFilter;
  *   to 0 disables the reporter.</li>
  *   <li>filter - (optional multiple str) regex expression(s) matching selected metrics to be reported.</li>
  * </ul>
- * NOTE: this reporter uses predefined "shard" group, and it's always created even if explicit configuration
+ * NOTE: this reporter uses predefined "shard" group, and it's always created even if explicit configuration id:1900 gh:1901
  * is missing. Default configuration uses filters defined in {@link #DEFAULT_FILTERS}.
  * <p>Example configuration:</p>
  * <pre>

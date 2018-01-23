@@ -161,7 +161,7 @@ public class TrieField extends NumericFieldType {
 
   @Override
   public SortField getSortField(SchemaField field, boolean reverse) {
-    // NOTE: can't use getNumericSort because our multivalued case is special: we use SortedSet
+    // NOTE: can't use getNumericSort because our multivalued case is special: we use SortedSet id:2855 gh:2856
 
     if (field.multiValued()) {
       MultiValueSelector selector = field.type.getDefaultMultiValueSelectorForSort(field, reverse);
@@ -364,7 +364,7 @@ public class TrieField extends NumericFieldType {
 
   @Override
   public String readableToIndexed(String val) {
-    // TODO: Numeric should never be handled as String, that may break in future lucene versions! Change to use BytesRef for term texts!
+    // TODO: Numeric should never be handled as String, that may break in future lucene versions! Change to use BytesRef for term texts! id:1945 gh:1946
     final BytesRefBuilder bytes = new BytesRefBuilder();
     readableToIndexed(val, bytes);
     return bytes.get().utf8ToString();

@@ -142,7 +142,7 @@ public class WFSTCompletionTest extends LuceneTestCase {
     for (int i = 0; i < numWords; i++) {
       String s;
       while (true) {
-        // TODO: would be nice to fix this slowCompletor/comparator to
+        // TODO: would be nice to fix this slowCompletor/comparator to id:2576 gh:2577
         // use full range, but we might lose some coverage too...
         s = TestUtil.randomSimpleString(random());
         if (!slowCompletor.containsKey(s)) {
@@ -172,7 +172,7 @@ public class WFSTCompletionTest extends LuceneTestCase {
       // 2. go thru whole treemap (slowCompletor) and check it's actually the best suggestion
       final List<LookupResult> matches = new ArrayList<>();
 
-      // TODO: could be faster... but it's slowCompletor for a reason
+      // TODO: could be faster... but it's slowCompletor for a reason id:1629 gh:1630
       for (Map.Entry<String,Long> e : slowCompletor.entrySet()) {
         if (e.getKey().startsWith(prefix)) {
           matches.add(new LookupResult(e.getKey(), e.getValue().longValue()));

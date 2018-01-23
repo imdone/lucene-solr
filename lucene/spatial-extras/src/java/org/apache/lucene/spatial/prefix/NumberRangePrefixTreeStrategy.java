@@ -147,7 +147,7 @@ public class NumberRangePrefixTreeStrategy extends RecursivePrefixTreeStrategy {
 
   /** Facet response information */
   public static class Facets {
-    //TODO consider a variable-level structure -- more general purpose.
+    //TODO consider a variable-level structure -- more general purpose. id:1659 gh:1660
 
     public Facets(int detailLevel) {
       this.detailLevel = detailLevel;

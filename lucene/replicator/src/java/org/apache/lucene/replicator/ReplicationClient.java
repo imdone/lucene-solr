@@ -225,7 +225,7 @@ public class ReplicationClient implements Closeable {
             out = dir.createOutput(file.fileName, IOContext.DEFAULT);
             copyBytes(out, in);
             cpFiles.add(file.fileName);
-            // TODO add some validation, on size / checksum
+            // TODO add some validation, on size / checksum id:1120 gh:1121
           } finally {
             IOUtils.close(in, out);
           }

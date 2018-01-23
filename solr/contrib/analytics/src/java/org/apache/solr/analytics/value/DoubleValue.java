@@ -32,7 +32,7 @@ public interface DoubleValue extends DoubleValueStream, AnalyticsValue {
   /**
    * Get the double representation of the current value.
    * <p>
-   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}.
+   * NOTE: The value returned is not valid unless calling {@link #exists()} afterwards returns {@code TRUE}. id:1719 gh:1720
    * 
    * @return the current value
    */

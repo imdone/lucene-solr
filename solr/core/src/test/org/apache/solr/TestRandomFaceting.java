@@ -99,7 +99,7 @@ public class TestRandomFaceting extends SolrTestCaseJ4 {
     types.add(new FldType("missing_s1",new IRange(0,0), new SVal('a','b',1,1)));
     types.add(new FldType("missing_ss",new IRange(0,0), new SVal('a','b',1,1)));
 
-    // TODO: doubles, multi-floats, ints with precisionStep>0, booleans
+    // TODO: doubles, multi-floats, ints with precisionStep>0, booleans id:2235 gh:2237
     types.add(new FldType("small_tf",ZERO_ONE, new FVal(-4,5)));
     assert trieFields.matcher("small_tf").matches();
     assert !trieFields.matcher("small_f").matches();
@@ -188,7 +188,7 @@ public class TestRandomFaceting extends SolrTestCaseJ4 {
     try {
       Random rand = random();
       ModifiableSolrParams params = params("facet","true", "wt","json", "indent","true", "omitHeader","true");
-      params.add("q","*:*");  // TODO: select subsets
+      params.add("q","*:*");  // TODO: select subsets id:2852 gh:2853
       params.add("rows","0");
 
       SchemaField sf = req.getSchema().getField(ftype.fname);
@@ -235,7 +235,7 @@ public class TestRandomFaceting extends SolrTestCaseJ4 {
         params.add("facet.enum.cache.minDf",""+ rand.nextInt(indexSize));
       }
       
-      // TODO: randomly add other facet params
+      // TODO: randomly add other facet params id:2253 gh:2254
       String key = ftype.fname;
       String facet_field = ftype.fname;
       if (random().nextBoolean()) {
@@ -250,7 +250,7 @@ public class TestRandomFaceting extends SolrTestCaseJ4 {
       for (String method : methods) {
         for (boolean exists : new boolean[]{false, true}) {
           // params.add("facet.field", "{!key="+method+"}" + ftype.fname);
-          // TODO: allow method to be passed on local params?
+          // TODO: allow method to be passed on local params? id:2171 gh:2172
           if (method!=null) {
             params.set("facet.method", method);
           } else {

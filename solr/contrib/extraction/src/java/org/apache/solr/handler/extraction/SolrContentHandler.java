@@ -125,7 +125,7 @@ public class SolrContentHandler extends DefaultHandler implements ExtractingPara
    * @see #addLiterals()
    */
   public SolrInputDocument newDocument() {
-    //handle the literals from the params. NOTE: This MUST be called before the others in order for literals to override other values
+    //handle the literals from the params. NOTE: This MUST be called before the others in order for literals to override other values id:1591 gh:1592
     addLiterals();
 
     //handle the metadata extracted from the document

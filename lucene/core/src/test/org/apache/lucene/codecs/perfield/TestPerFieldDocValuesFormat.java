@@ -80,7 +80,7 @@ public class TestPerFieldDocValuesFormat extends BaseDocValuesFormatTestCase {
   }
   
   // just a simple trivial test
-  // TODO: we should come up with a test that somehow checks that segment suffix
+  // TODO: we should come up with a test that somehow checks that segment suffix id:971 gh:972
   // is respected by all codec apis (not just docvalues and postings)
   public void testTwoFieldsTwoFormats() throws IOException {
     Analyzer analyzer = new MockAnalyzer(random());

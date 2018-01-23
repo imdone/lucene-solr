@@ -42,7 +42,7 @@ public class TestSetOnce extends LuceneTestCase {
       } catch (InterruptedException e) {
         // ignore
       } catch (RuntimeException e) {
-        // TODO: change exception type
+        // TODO: change exception type id:884 gh:885
         // expected.
         success = false;
       }

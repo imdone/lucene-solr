@@ -183,7 +183,7 @@ public class TestStressReorder extends TestRTGBase {
 
                 Long returnedVersion = deleteAndGetVersion(Integer.toString(id), params("_version_",Long.toString(-version), DISTRIB_UPDATE_PARAM,FROM_LEADER));
 
-                // TODO: returning versions for these types of updates is redundant
+                // TODO: returning versions for these types of updates is redundant id:3102 gh:3103
                 // but if we do return, they had better be equal
                 if (returnedVersion != null) {
                   assertEquals(-version, returnedVersion.longValue());
@@ -204,7 +204,7 @@ public class TestStressReorder extends TestRTGBase {
 
                 Long returnedVersion = deleteByQueryAndGetVersion("id:"+Integer.toString(id), params("_version_",Long.toString(-version), DISTRIB_UPDATE_PARAM,FROM_LEADER));
 
-                // TODO: returning versions for these types of updates is redundant
+                // TODO: returning versions for these types of updates is redundant id:2363 gh:2364
                 // but if we do return, they had better be equal
                 if (returnedVersion != null) {
                   assertEquals(-version, returnedVersion.longValue());

@@ -142,7 +142,7 @@ public class SignificantTermsQParserPlugin extends QParserPlugin {
       rb.rsp.add("docFreq", outFreq);
       rb.rsp.add("queryDocFreq", outQueryFreq);
 
-      //TODO: Use a priority queue
+      //TODO: Use a priority queue id:1963 gh:1964
       TreeSet<TermWithScore> topTerms = new TreeSet<>();
 
       Terms terms = ((SolrIndexSearcher)searcher).getSlowAtomicReader().terms(field);

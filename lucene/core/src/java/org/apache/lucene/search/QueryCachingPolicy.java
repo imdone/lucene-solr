@@ -28,7 +28,7 @@ import java.io.IOException;
  * @see LRUQueryCache
  * @lucene.experimental
  */
-// TODO: add APIs for integration with IndexWriter.IndexReaderWarmer
+// TODO: add APIs for integration with IndexWriter.IndexReaderWarmer id:650 gh:651
 public interface QueryCachingPolicy {
 
   /** A simple policy that caches all the provided filters on all segments. */

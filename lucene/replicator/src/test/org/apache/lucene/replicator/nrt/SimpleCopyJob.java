@@ -133,7 +133,7 @@ class SimpleCopyJob extends CopyJob {
                                totBytesCopied,
                                copiedFiles.size()));
 
-    // NOTE: if any of the files we copied overwrote a file in the current commit point, we (ReplicaNode) removed the commit point up
+    // NOTE: if any of the files we copied overwrote a file in the current commit point, we (ReplicaNode) removed the commit point up id:1390 gh:1391
     // front so that the commit is not corrupt.  This way if we hit exc here, or if we crash here, we won't leave a corrupt commit in
     // the index:
     for(Map.Entry<String,String> ent : copiedFiles.entrySet()) {
@@ -144,7 +144,7 @@ class SimpleCopyJob extends CopyJob {
         dest.message("rename file " + tmpFileName + " to " + fileName);
       }
 
-      // NOTE: if this throws exception, then some files have been moved to their true names, and others are leftover .tmp files.  I don't
+      // NOTE: if this throws exception, then some files have been moved to their true names, and others are leftover .tmp files.  I don't id:1597 gh:1598
       // think heroic exception handling is necessary (no harm will come, except some leftover files),  nor warranted here (would make the
       // code more complex, for the exceptional cases when something is wrong w/ your IO system):
       dest.dir.rename(tmpFileName, fileName);

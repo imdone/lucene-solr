@@ -164,10 +164,10 @@ public class ShowFileRequestHandler extends RequestHandlerBase
         if (fchildren.size() > 0) {
           fileInfo.add("directory", true);
         } else {
-          // TODO? content type
+          // TODO ? content type id:1809 gh:1810
           fileInfo.add("size", f.length());
         }
-        // TODO: ?
+        // TODO: ? id:2769 gh:2770
         // fileInfo.add( "modified", new Date( f.lastModified() ) );
       }
       rsp.add("files", files);
@@ -228,7 +228,7 @@ public class ShowFileRequestHandler extends RequestHandlerBase
           fileInfo.add( "directory", true ); 
         }
         else {
-          // TODO? content type
+          // TODO ? content type id:1853 gh:1854
           fileInfo.add( "size", f.length() );
         }
         fileInfo.add( "modified", new Date( f.lastModified() ) );
@@ -324,7 +324,7 @@ public class ShowFileRequestHandler extends RequestHandlerBase
     final SolrResourceLoader loader = req.getCore().getResourceLoader();
     File configdir = new File( loader.getConfigDir() );
     if (!configdir.exists()) {
-      // TODO: maybe we should just open it this way to start with?
+      // TODO: maybe we should just open it this way to start with? id:2654 gh:2655
       try {
         configdir = new File( loader.getClassLoader().getResource(loader.getConfigDir()).toURI() );
       } catch (URISyntaxException e) {

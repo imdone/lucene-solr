@@ -46,7 +46,7 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
   /*
    * Make sure IndexWriter cleans up on hitting a disk
    * full exception in addDocument.
-   * TODO: how to do this on windows with FSDirectory?
+   * TODO: how to do this on windows with FSDirectory? id:845 gh:846
    */
   public void testAddDocumentOnDiskFull() throws IOException {
 
@@ -138,10 +138,10 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
     }
   }
 
-  // TODO: make @Nightly variant that provokes more disk
+  // TODO: make @Nightly variant that provokes more disk id:1104 gh:1105
   // fulls
 
-  // TODO: have test fail if on any given top
+  // TODO: have test fail if on any given top id:1282 gh:1283
   // iter there was not a single IOE hit
 
   /*
@@ -557,7 +557,7 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
     dir.close();
   }
   
-  // TODO: these are also in TestIndexWriter... add a simple doc-writing method
+  // TODO: these are also in TestIndexWriter... add a simple doc-writing method id:814 gh:815
   // like this to LuceneTestCase?
   private void addDoc(IndexWriter writer) throws IOException {
     Document doc = new Document();

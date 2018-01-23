@@ -191,7 +191,7 @@ class ReqOptSumScorer extends Scorer {
 
   @Override
   public float score() throws IOException {
-    // TODO: sum into a double and cast to float if we ever send required clauses to BS1
+    // TODO: sum into a double and cast to float if we ever send required clauses to BS1 id:850 gh:851
     int curDoc = reqScorer.docID();
     float score = reqScorer.score();
 

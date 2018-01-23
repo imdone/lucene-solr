@@ -40,7 +40,7 @@ import org.junit.BeforeClass;
 
 /**
  * Abstract class to do basic tests for a similarity.
- * NOTE: This test focuses on the similarity impl, nothing else.
+ * NOTE: This test focuses on the similarity impl, nothing else. id:1630 gh:1631
  * The [stretch] goal is for this test to be
  * so thorough in testing a new Similarity that if this
  * test passes, then all Lucene/Solr tests should also pass.  Ie,

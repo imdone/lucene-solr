@@ -84,7 +84,7 @@ public class MockDirectoryFactory extends EphemeralDirectoryFactory {
   
   @Override
   public boolean isAbsolute(String path) {
-    // TODO: kind of a hack - we don't know what the delegate is, so
+    // TODO: kind of a hack - we don't know what the delegate is, so id:2482 gh:2483
     // we treat it as file based since this works on most ephem impls
     return new File(path).isAbsolute();
   }

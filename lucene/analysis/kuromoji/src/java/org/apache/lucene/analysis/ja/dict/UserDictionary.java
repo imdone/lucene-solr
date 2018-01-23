@@ -85,7 +85,7 @@ public final class UserDictionary implements Dictionary {
   private UserDictionary(List<String[]> featureEntries) throws IOException {
 
     int wordId = CUSTOM_DICTIONARY_WORD_ID_OFFSET;
-    // TODO: should we allow multiple segmentations per input 'phrase'?
+    // TODO: should we allow multiple segmentations per input 'phrase'? id:164 gh:165
     // the old treemap didn't support this either, and i'm not sure if it's needed/useful?
 
     Collections.sort(featureEntries, new Comparator<String[]>() {
@@ -145,7 +145,7 @@ public final class UserDictionary implements Dictionary {
    * @return array of {wordId, position, length}
    */
   public int[][] lookup(char[] chars, int off, int len) throws IOException {
-    // TODO: can we avoid this treemap/toIndexArray?
+    // TODO: can we avoid this treemap/toIndexArray? id:145 gh:146
     TreeMap<Integer, int[]> result = new TreeMap<>(); // index, [length, length...]
     boolean found = false; // true if we found any results
 
@@ -231,22 +231,22 @@ public final class UserDictionary implements Dictionary {
   
   @Override
   public String getBaseForm(int wordId, char surface[], int off, int len) {
-    return null; // TODO: add support?
+    return null; // TODO: add support? id:146 gh:147
   }
   
   @Override
   public String getPronunciation(int wordId, char surface[], int off, int len) {
-    return null; // TODO: add support?
+    return null; // TODO: add support? id:175 gh:176
   }
   
   @Override
   public String getInflectionType(int wordId) {
-    return null; // TODO: add support?
+    return null; // TODO: add support? id:229 gh:230
   }
 
   @Override
   public String getInflectionForm(int wordId) {
-    return null; // TODO: add support?
+    return null; // TODO: add support? id:168 gh:169
   }
   
   private String[] getAllFeaturesArray(int wordId) {

@@ -136,7 +136,7 @@ public class SliceMutator {
     Replica oldLeader = slice.getLeader();
     final Map<String, Replica> newReplicas = new LinkedHashMap<>();
     for (Replica replica : slice.getReplicas()) {
-      // TODO: this should only be calculated once and cached somewhere?
+      // TODO: this should only be calculated once and cached somewhere? id:2640 gh:2641
       String coreURL = ZkCoreNodeProps.getCoreUrl(replica.getStr(ZkStateReader.BASE_URL_PROP), replica.getStr(ZkStateReader.CORE_NAME_PROP));
 
       if (replica == oldLeader && !coreURL.equals(leaderUrl)) {

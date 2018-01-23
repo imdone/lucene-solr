@@ -104,7 +104,7 @@ public class RoaringDocIdSet extends DocIdSet {
 
     /**
      * Add a new doc-id to this builder.
-     * NOTE: doc ids must be added in order.
+     * NOTE: doc ids must be added in order. id:922 gh:923
      */
     public Builder add(int docId) {
       if (docId <= lastDocId) {

@@ -151,7 +151,7 @@ public class TestCloudPseudoReturnFields extends SolrCloudTestCase {
     assertEquals(1.0F, doc.getFieldValue("score"));
     assertEquals(""+doc, 2, doc.size()); // no value for val2_ss or val_ss ... yet...
     
-    // TODO: update this test & TestPseudoReturnFields to index docs using a (multivalued) "val_ss" instead of "ssto"
+    // TODO: update this test & TestPseudoReturnFields to index docs using a (multivalued) "val_ss" instead of "ssto" id:2197 gh:2198
     //
     // that way we can first sanity check a single value in a multivalued field is returned correctly
     // as a "List" of one element, *AND* then we could be testing that a (single valued) psuedo-field correctly
@@ -198,7 +198,7 @@ public class TestCloudPseudoReturnFields extends SolrCloudTestCase {
         assertTrue(fl + " => " + doc, doc.getFieldValue("id") instanceof String);
         assertTrue(fl + " => " + doc, doc.getFieldValue("val_i") instanceof Integer);
         assertTrue(fl + " => " + doc, doc.getFieldValue("subject") instanceof String);
-        assertTrue(fl + " => " + doc, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String>
+        assertTrue(fl + " => " + doc, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String> id:3060 gh:3061
       }
     }
   }
@@ -212,7 +212,7 @@ public class TestCloudPseudoReturnFields extends SolrCloudTestCase {
         assertTrue(fl + " => " + doc, doc.getFieldValue("id") instanceof String);
         assertTrue(fl + " => " + doc, doc.getFieldValue("val_i") instanceof Integer);
         assertTrue(fl + " => " + doc, doc.getFieldValue("subject") instanceof String);
-        assertTrue(fl + " => " + doc, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String>
+        assertTrue(fl + " => " + doc, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String> id:2275 gh:2276
         
       }
     }
@@ -243,7 +243,7 @@ public class TestCloudPseudoReturnFields extends SolrCloudTestCase {
         assertTrue(fl + " => " + doc, doc.getFieldValue("score") instanceof Float);
         assertTrue(fl + " => " + doc, doc.getFieldValue("val_i") instanceof Integer);
         assertTrue(fl + " => " + doc, doc.getFieldValue("subject") instanceof String);
-        assertTrue(fl + " => " + doc, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String>
+        assertTrue(fl + " => " + doc, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String> id:2876 gh:2877
       }
     }
   }
@@ -257,7 +257,7 @@ public class TestCloudPseudoReturnFields extends SolrCloudTestCase {
         assertTrue(fl + " => " + doc, doc.getFieldValue("id") instanceof String);
         assertTrue(fl + " => " + doc, doc.getFieldValue("val_i") instanceof Integer);
         assertTrue(fl + " => " + doc, doc.getFieldValue("subject") instanceof String);
-        assertTrue(fl + " => " + doc, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String>
+        assertTrue(fl + " => " + doc, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String> id:2284 gh:2285
       }
     }
   }
@@ -432,7 +432,7 @@ public class TestCloudPseudoReturnFields extends SolrCloudTestCase {
         assertEquals(msg, 3, doc.size());
         assertTrue(msg, doc.getFieldValue("val_i") instanceof Integer);
         assertTrue(msg, doc.getFieldValue("subject") instanceof String); 
-        assertTrue(msg, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String>
+        assertTrue(msg, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String> id:2200 gh:2201
         assertEquals(msg, "X", doc.getFieldValue("ssto"));
       }
     }
@@ -457,8 +457,8 @@ public class TestCloudPseudoReturnFields extends SolrCloudTestCase {
         assertTrue(msg, doc.getFieldValue("val_i") instanceof Integer);
         assertEquals(msg, 1, doc.getFieldValue("val_i"));
         assertTrue(msg, doc.getFieldValue("subject") instanceof String); 
-        // NOTE: 'subject' is diff between two docs
-        assertTrue(msg, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String>
+        // NOTE: 'subject' is diff between two docs id:3062 gh:3063
+        assertTrue(msg, doc.getFieldValue("ssto") instanceof String); // TODO: val_ss: List<String> id:2278 gh:2279
         assertEquals(msg, "X", doc.getFieldValue("ssto"));
       }
     }
@@ -723,7 +723,7 @@ public class TestCloudPseudoReturnFields extends SolrCloudTestCase {
   public void testAugmentersGlobsExplicitAndScoreOhMy() throws Exception {
     Random random = random();
 
-    // NOTE: 'ssto' is the missing one
+    // NOTE: 'ssto' is the missing one id:2878 gh:2879
     final List<String> fl = Arrays.asList
       ("id","[docid]","[explain]","score","val_*","subj*");
     
@@ -758,7 +758,7 @@ public class TestCloudPseudoReturnFields extends SolrCloudTestCase {
   public void testAugmentersGlobsExplicitAndScoreOhMyRTG() throws Exception {
     Random random = random();
 
-    // NOTE: 'ssto' is the missing one
+    // NOTE: 'ssto' is the missing one id:2286 gh:2287
     final List<String> fl = Arrays.asList
       ("id","[docid]","[explain]","score","val_*","subj*");
     

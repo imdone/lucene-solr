@@ -62,7 +62,7 @@ public @interface RandomizeSSL {
    * Actual Odds used for randomization may be higher depending on runner options such as 
    * <code>tests.multiplier</code> or <code>tests.nightly</code>
    * <p>
-   * NOTE: clientAuth is useless unless ssl is also in used, but we randomize it independently
+   * NOTE: clientAuth is useless unless ssl is also in used, but we randomize it independently id:3148 gh:3149
    * just in case it might find bugs in our test/ssl client code (ie: attempting to use
    * SSL w/client cert to non-ssl servers)
    * </p>

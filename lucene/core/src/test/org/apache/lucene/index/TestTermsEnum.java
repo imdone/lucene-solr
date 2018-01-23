@@ -243,7 +243,7 @@ public class TestTermsEnum extends LuceneTestCase {
 
     for(int iter=0;iter<10*RANDOM_MULTIPLIER;iter++) {
 
-      // TODO: can we also test infinite As here...?
+      // TODO: can we also test infinite As here...? id:983 gh:984
 
       // From the random terms, pick some ratio and compile an
       // automaton:

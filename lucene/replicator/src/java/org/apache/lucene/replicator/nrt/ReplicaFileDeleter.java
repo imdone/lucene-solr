@@ -30,7 +30,7 @@ import org.apache.lucene.index.IndexFileNames;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.IOContext;
 
-// TODO: can we factor/share with IFD: this is doing exactly the same thing, but on the replica side
+// TODO: can we factor/share with IFD: this is doing exactly the same thing, but on the replica side id:1123 gh:1124
 
 class ReplicaFileDeleter {
   private final Map<String,Integer> refCounts = new HashMap<String,Integer>();
@@ -85,7 +85,7 @@ class ReplicaFileDeleter {
 
     delete(toDelete);
 
-    // TODO: this local IR could incRef files here, like we do now with IW's NRT readers ... then we can assert this again:
+    // TODO: this local IR could incRef files here, like we do now with IW's NRT readers ... then we can assert this again: id:1388 gh:1389
 
     // we can't assert this, e.g a search can be running when we switch to a new NRT point, holding a previous IndexReader still open for
     // a bit:

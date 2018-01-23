@@ -49,7 +49,7 @@ public class OverseerModifyCollectionTest extends SolrCloudTestCase {
     CollectionAdminRequest.createCollection(collName, "conf1", 1, 2)
         .process(cluster.getSolrClient());
 
-    // TODO create a modifyCollection() method on CollectionAdminRequest
+    // TODO create a modifyCollection() method on CollectionAdminRequest id:2272 gh:2273
     ModifiableSolrParams p1 = new ModifiableSolrParams();
     p1.add("collection", collName);
     p1.add("action", "MODIFYCOLLECTION");

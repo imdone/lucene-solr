@@ -75,7 +75,7 @@ public class TestDuelingCodecs extends LuceneTestCase {
     rightAnalyzer.setMaxTokenLength(maxTermLength);
 
     // but these can be different
-    // TODO: this turns this into a really big test of Multi*, is that what we want?
+    // TODO: this turns this into a really big test of Multi*, is that what we want? id:1272 gh:1273
     IndexWriterConfig leftConfig = newIndexWriterConfig(leftAnalyzer);
     leftConfig.setCodec(leftCodec);
     // preserve docids
@@ -112,7 +112,7 @@ public class TestDuelingCodecs extends LuceneTestCase {
     // primary source for our data is from linefiledocs, it's realistic.
     LineFileDocs lineFileDocs = new LineFileDocs(random);
 
-    // TODO: we should add other fields that use things like docs&freqs but omit positions,
+    // TODO: we should add other fields that use things like docs&freqs but omit positions, id:801 gh:802
     // because linefiledocs doesn't cover all the possibilities.
     for (int i = 0; i < numdocs; i++) {
       Document document = lineFileDocs.nextDoc();

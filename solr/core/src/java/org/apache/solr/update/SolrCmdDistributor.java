@@ -107,7 +107,7 @@ public class SolrCmdDistributor implements Closeable {
   }
 
   private void doRetriesIfNeeded() {
-    // NOTE: retries will be forwards to a single url
+    // NOTE: retries will be forwards to a single url id:2959 gh:2960
     
     List<Error> errors = new ArrayList<>(this.errors);
     errors.addAll(clients.getErrors());
@@ -420,7 +420,7 @@ public class SolrCmdDistributor implements Closeable {
     public int statusCode = -1;
 
     /**
-     * NOTE: This is the request that happened to be executed when this error was <b>triggered</b> the error, 
+     * NOTE: This is the request that happened to be executed when this error was <b>triggered</b> the error,  id:2145 gh:2146
      * but because of how {@link StreamingSolrClients} uses {@link ConcurrentUpdateSolrClient} it might not 
      * actaully be the request that <b>caused</b> the error -- multiple requests are merged &amp; processed as 
      * a sequential batch.

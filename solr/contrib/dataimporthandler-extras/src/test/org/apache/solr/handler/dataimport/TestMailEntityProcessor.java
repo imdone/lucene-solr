@@ -39,7 +39,7 @@ import java.util.Map;
  * Test for MailEntityProcessor. The tests are marked as ignored because we'd need a mail server (real or mocked) for
  * these to work.
  *
- * TODO: Find a way to make the tests actually test code
+ * TODO: Find a way to make the tests actually test code id:1494 gh:1495
  *
  *
  * @see org.apache.solr.handler.dataimport.MailEntityProcessor

@@ -32,7 +32,7 @@ import static org.apache.lucene.search.spans.SpanTestUtil.*;
  */
 public class TestSpanSearchEquivalence extends SearchEquivalenceTestBase {
   
-  // TODO: we could go a little crazy for a lot of these,
+  // TODO: we could go a little crazy for a lot of these, id:1327 gh:1328
   // but these are just simple minimal cases in case something 
   // goes horribly wrong. Put more intense tests elsewhere.
 

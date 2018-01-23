@@ -227,7 +227,7 @@ public abstract class SolrQueryParserBase extends QueryBuilder {
     this.flags = parser.getFlags();
     this.defaultField = defaultField;
     setAnalyzer(schema.getQueryAnalyzer());
-    // TODO in 8.0(?) remove this.  Prior to 7.2 we defaulted to allowing sub-query parsing by default
+    // TODO in 8.0(?) remove this.  Prior to 7.2 we defaulted to allowing sub-query parsing by default id:1873 gh:1874
     if (!parser.getReq().getCore().getSolrConfig().luceneMatchVersion.onOrAfter(Version.LUCENE_7_2_0)) {
       setAllowSubQueryParsing(true);
     } // otherwise defaults to false
@@ -294,7 +294,7 @@ public abstract class SolrQueryParserBase extends QueryBuilder {
    * Set to true if phrase queries will be automatically generated
    * when the analyzer returns more than one term from whitespace
    * delimited text.
-   * NOTE: this behavior may not be suitable for all languages.
+   * NOTE: this behavior may not be suitable for all languages. id:2821 gh:2822
    * <p>
    * Set to false if phrase queries should only be generated when
    * surrounded by double quotes.
@@ -726,7 +726,7 @@ public abstract class SolrQueryParserBase extends QueryBuilder {
       fieldValues = entry.getValue();
       FieldType ft = sfield.getType();
 
-      // TODO: pull more of this logic out to FieldType?  We would need to be able to add clauses to our existing booleanBuilder.
+      // TODO: pull more of this logic out to FieldType?  We would need to be able to add clauses to our existing booleanBuilder. id:1904 gh:1905
       int termCount = fieldValues.stream().mapToInt(RawQuery::getTermCount).sum();
       if ((sfield.indexed() && termCount < TERMS_QUERY_THRESHOLD) || termCount == 1) {
         // use boolean query instead
@@ -1194,7 +1194,7 @@ public abstract class SolrQueryParserBase extends QueryBuilder {
       Term term = new Term(field, termStr);
       // fsa representing the query
       Automaton automaton = WildcardQuery.toAutomaton(term);
-      // TODO: we should likely use the automaton to calculate shouldReverse, too.
+      // TODO: we should likely use the automaton to calculate shouldReverse, too. id:2680 gh:2681
       if (factory.shouldReverse(termStr)) {
         automaton = Operations.concatenate(automaton, Automata.makeChar(factory.getMarkerChar()));
         automaton = Operations.reverse(automaton);

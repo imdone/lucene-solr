@@ -36,7 +36,7 @@ import java.io.IOException;
  * @see PostingsReaderBase
  * @lucene.experimental
  */
-// TODO: find a better name; this defines the API that the
+// TODO: find a better name; this defines the API that the id:340 gh:341
 // terms dict impls use to talk to a postings impl.
 // TermsDict + PostingsReader/WriterBase == FieldsProducer/Consumer
 public abstract class PostingsWriterBase implements Closeable {
@@ -69,7 +69,7 @@ public abstract class PostingsWriterBase implements Closeable {
    * increases when a new term is consumed. {@code out} is used to write generic
    * bytes, which are not monotonic.
    *
-   * NOTE: sometimes long[] might contain "don't care" values that are unused, e.g. 
+   * NOTE: sometimes long[] might contain "don't care" values that are unused, e.g.  id:326 gh:327
    * the pointer to postings list may not be defined for some terms but is defined
    * for others, if it is designed to inline  some postings data in term dictionary.
    * In this case, the postings writer should always use the last value, so that each
@@ -81,7 +81,7 @@ public abstract class PostingsWriterBase implements Closeable {
    * Sets the current field for writing, and returns the
    * fixed length of long[] metadata (which is fixed per
    * field), called when the writing switches to another field. */
-  // TODO: better name?
+  // TODO: better name? id:418 gh:419
   public abstract int setField(FieldInfo fieldInfo);
 
   @Override

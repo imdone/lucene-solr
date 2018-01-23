@@ -391,7 +391,7 @@ public abstract class CollectionAdminRequest<T extends CollectionAdminResponse> 
     private String[] rule , snitch;
 
     /** Constructor intended for typical use cases */
-    protected Create(String collection, String config, Integer numShards, Integer numNrtReplicas, Integer numTlogReplicas, Integer numPullReplicas) { // TODO: maybe add other constructors
+    protected Create(String collection, String config, Integer numShards, Integer numNrtReplicas, Integer numTlogReplicas, Integer numPullReplicas) { // TODO: maybe add other constructors id:2995 gh:2996
       this(collection, config, null, numShards, null, numNrtReplicas, numTlogReplicas, numPullReplicas);
     }
 
@@ -402,7 +402,7 @@ public abstract class CollectionAdminRequest<T extends CollectionAdminResponse> 
     
     private Create(String collection, String config, String routerName, Integer numShards, String shards, Integer numNrtReplicas, Integer  numTlogReplicas, Integer numPullReplicas) {
       super(CollectionAction.CREATE, SolrIdentifierValidator.validateCollectionName(collection));
-      // NOTE: there's very little we can assert about the args because nothing but "collection" is required by the server
+      // NOTE: there's very little we can assert about the args because nothing but "collection" is required by the server id:2441 gh:2442
       if ((null != shards) && (null != numShards)) {
         throw new IllegalArgumentException("Can not specify both a numShards and a list of shards");
       }
@@ -886,7 +886,7 @@ public abstract class CollectionAdminRequest<T extends CollectionAdminResponse> 
     }
     public Restore setProperties(Properties properties) { this.properties = properties; return this;}
 
-    // TODO support rule, snitch
+    // TODO support rule, snitch id:2516 gh:2517
 
     @Override
     public SolrParams getParams() {
@@ -1594,7 +1594,7 @@ public abstract class CollectionAdminRequest<T extends CollectionAdminResponse> 
       ModifiableSolrParams params = new ModifiableSolrParams(super.getParams());
 
       // AsyncCollectionSpecificAdminRequest uses 'name' rather than 'collection'
-      // TODO - deal with this inconsistency
+      // TODO - deal with this inconsistency id:3130 gh:3131
       params.remove(CoreAdminParams.NAME);
       params.set(ZkStateReader.COLLECTION_PROP, this.collection);
 

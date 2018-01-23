@@ -152,7 +152,7 @@ public class ChaosMonkeyNothingIsSafeTest extends AbstractFullDistribZkTestBase 
         searchThread.start();
       }
       
-      // TODO: we only do this sometimes so that we can sometimes compare against control,
+      // TODO: we only do this sometimes so that we can sometimes compare against control, id:2858 gh:2859
       // it's currently hard to know what requests failed when using ConcurrentSolrUpdateServer
       boolean runFullThrottle = random().nextBoolean();
       if (runFullThrottle) {
@@ -211,7 +211,7 @@ public class ChaosMonkeyNothingIsSafeTest extends AbstractFullDistribZkTestBase 
       
       commit();
       
-      // TODO: assert we didnt kill everyone
+      // TODO: assert we didnt kill everyone id:2259 gh:2260
       
       zkStateReader.updateLiveNodes();
       assertTrue(zkStateReader.getClusterState().getLiveNodes().size() > 0);

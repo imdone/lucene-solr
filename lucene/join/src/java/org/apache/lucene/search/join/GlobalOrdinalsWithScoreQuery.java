@@ -208,7 +208,7 @@ final class GlobalOrdinalsWithScoreQuery extends Query {
 
         @Override
         public float matchCost() {
-          return 100; // TODO: use cost of values.getOrd() and collector.score()
+          return 100; // TODO: use cost of values.getOrd() and collector.score() id:1052 gh:1053
         }
       };
     }
@@ -245,7 +245,7 @@ final class GlobalOrdinalsWithScoreQuery extends Query {
 
         @Override
         public float matchCost() {
-          return 100; // TODO: use cost.getOrd() of values and collector.score()
+          return 100; // TODO: use cost.getOrd() of values and collector.score() id:1168 gh:1169
         }
       };
     }

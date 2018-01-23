@@ -59,7 +59,7 @@ public final class MinFieldValueUpdateProcessorFactory extends FieldValueSubsetU
   public Collection pickSubset(Collection values) {
     Collection result = values;
     try {
-      // NOTE: the extra cast to Object is needed to prevent compile
+      // NOTE: the extra cast to Object is needed to prevent compile id:2812 gh:2814
       // errors on Eclipse Compiler (ecj) used for javadoc lint
       result = Collections.singletonList((Object) Collections.min(values));
     } catch (ClassCastException e) {

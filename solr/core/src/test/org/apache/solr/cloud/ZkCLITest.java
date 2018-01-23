@@ -49,7 +49,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: This test would be a lot faster if it used a solrhome with fewer config
+// TODO: This test would be a lot faster if it used a solrhome with fewer config id:2299 gh:2300
 // files - there are a lot of them to upload
 public class ZkCLITest extends SolrTestCaseJ4 {
   private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

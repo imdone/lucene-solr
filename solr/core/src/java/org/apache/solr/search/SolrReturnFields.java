@@ -136,7 +136,7 @@ public class SolrReturnFields extends ReturnFields {
       renameFields = rename.asShallowMap();
     }
     if( !_wantsAllFields && !globs.isEmpty() ) {
-      // TODO??? need to fill up the fields with matching field names in the index
+      // TODO ??? need to fill up the fields with matching field names in the index id:2717 gh:2718
       // and add them to okFieldNames?
       // maybe just get all fields?
       // this would disable field selection optimization... i think that is OK
@@ -435,7 +435,7 @@ public class SolrReturnFields extends ReturnFields {
       return true;
     }
     for( String s : globs ) {
-      // TODO something better?
+      // TODO something better? id:2056 gh:2054
       if( FilenameUtils.wildcardMatch(name, s) ) {
         okFieldNames.add(name); // Don't calculate it again
         return true;

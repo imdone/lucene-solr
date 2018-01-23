@@ -461,7 +461,7 @@ public class DefaultSolrHighlighter extends SolrHighlighter implements PluginInf
     if (schemaField == null) {
       fieldHighlights = null;
     } else if (schemaField.getType() instanceof org.apache.solr.schema.TrieField) {
-      // TODO: highlighting numeric fields is broken (Lucene) - so we disable them until fixed (see LUCENE-3080)!
+      // TODO: highlighting numeric fields is broken (Lucene) - so we disable them until fixed (see LUCENE-3080)! id:1859 gh:1860
       fieldHighlights = null;
     } else if (useFastVectorHighlighter(params, schemaField)) {
       if (fvhContainer.fieldQuery == null) {
@@ -692,7 +692,7 @@ public class DefaultSolrHighlighter extends SolrHighlighter implements PluginInf
    * point to allow adding other metadata like the absolute offsets or scores.
    */
   protected Object getResponseForFragments(List<TextFragment> frags, SolrQueryRequest req) {
-    // TODO: we can include score and position information in output as snippet attributes
+    // TODO: we can include score and position information in output as snippet attributes id:2807 gh:2808
     ArrayList<String> fragTexts = new ArrayList<>();
     for (TextFragment fragment : frags) {
       fragTexts.add(fragment.toString());
@@ -791,7 +791,7 @@ public class DefaultSolrHighlighter extends SolrHighlighter implements PluginInf
  */
 final class TokenOrderingFilter extends TokenFilter {
   private final int windowSize;
-  private final LinkedList<OrderedToken> queue = new LinkedList<>(); //TODO replace with Deque, Array impl
+  private final LinkedList<OrderedToken> queue = new LinkedList<>(); //TODO replace with Deque, Array impl id:1890 gh:1891
   private boolean done=false;
   private final OffsetAttribute offsetAtt = addAttribute(OffsetAttribute.class);
 

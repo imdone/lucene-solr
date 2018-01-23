@@ -27,7 +27,7 @@ public interface AnalyticsValue extends AnalyticsValueStream {
   /**
    * Check whether the current value exists.
    * <br>
-   * NOTE: The result of this method is only guaranteed after any {@code get<Type>()} method is called.
+   * NOTE: The result of this method is only guaranteed after any {@code get<Type>()} method is called. id:1717 gh:1718
    * 
    * @return whether the current value exists
    */

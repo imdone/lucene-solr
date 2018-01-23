@@ -365,7 +365,7 @@ public abstract class BaseDirectoryTestCase extends LuceneTestCase {
     dir.close();
   }
   
-  // TODO: fold in some of the testing of o.a.l.index.TestIndexInput in here!
+  // TODO: fold in some of the testing of o.a.l.index.TestIndexInput in here! id:1653 gh:1654
   public void testChecksum() throws Exception {
     CRC32 expected = new CRC32();
     int numBytes = random().nextInt(20000);
@@ -734,13 +734,13 @@ public abstract class BaseDirectoryTestCase extends LuceneTestCase {
   }
   
   // this test backdoors the directory via the filesystem. so it must actually use the filesystem
-  // TODO: somehow change this test to 
+  // TODO: somehow change this test to  id:2604 gh:2605
   public void testFsyncDoesntCreateNewFiles() throws Exception {
     Path path = createTempDir("nocreate");
     Directory fsdir = getDirectory(path);
     
     // this test backdoors the directory via the filesystem. so it must be an FSDir (for now)
-    // TODO: figure a way to test this better/clean it up. E.g. we should be testing for FileSwitchDir,
+    // TODO: figure a way to test this better/clean it up. E.g. we should be testing for FileSwitchDir, id:1720 gh:1721
     // if it's using two FSdirs and so on
     if (fsdir instanceof FSDirectory == false) {
       fsdir.close();

@@ -35,7 +35,7 @@ public final class ConnectionCostsWriter {
   private final int forwardSize;
   private final int backwardSize;
   /**
-   * Constructor for building. TODO: remove write access
+   * Constructor for building. TODO: remove write access id:155 gh:156
    */
   public ConnectionCostsWriter(int forwardSize, int backwardSize) {
     this.forwardSize = forwardSize;

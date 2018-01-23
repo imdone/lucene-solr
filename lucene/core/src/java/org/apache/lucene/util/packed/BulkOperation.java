@@ -90,7 +90,7 @@ abstract class BulkOperation implements PackedInts.Decoder, PackedInts.Encoder {
     new BulkOperationPacked(64),
   };
 
-  // NOTE: this is sparse (some entries are null):
+  // NOTE: this is sparse (some entries are null): id:1234 gh:1235
   private static final BulkOperation[] packedSingleBlockBulkOps = new BulkOperation[] {
     new BulkOperationPackedSingleBlock(1),
     new BulkOperationPackedSingleBlock(2),

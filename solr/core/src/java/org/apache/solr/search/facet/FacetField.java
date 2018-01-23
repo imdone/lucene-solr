@@ -83,7 +83,7 @@ public class FacetField extends FacetRequestSorted {
         case "uif": return UIF;
         case "dvhash": return DVHASH;
         case "enum": return ENUM;
-        case "stream": return STREAM; // TODO replace with enum?
+        case "stream": return STREAM; // TODO replace with enum? id:2062 gh:2063
         case "smart": return SMART;
         default:
           throw new SolrException(SolrException.ErrorCode.BAD_REQUEST, "Unknown FacetField method " + method);
@@ -119,11 +119,11 @@ public class FacetField extends FacetRequestSorted {
       if (mincount == 0) {
         throw new SolrException(SolrException.ErrorCode.BAD_REQUEST,
             "Numeric fields do not support facet mincount=0; try indexing as terms");
-        // TODO if indexed=true then we could add support
+        // TODO if indexed=true then we could add support id:2000 gh:2001
       }
     }
 
-    // TODO auto-pick ENUM/STREAM SOLR-9351 when index asc and DocSet cardinality is *not* much smaller than term cardinality
+    // TODO auto-pick ENUM/STREAM SOLR-9351 when index asc and DocSet cardinality is *not* much smaller than term cardinality id:2885 gh:2886
     if (method == FacetMethod.ENUM) {// at the moment these two are the same
       method = FacetMethod.STREAM;
     }
@@ -132,11 +132,11 @@ public class FacetField extends FacetRequestSorted {
       return new FacetFieldProcessorByEnumTermsStream(fcontext, this, sf);
     }
 
-    // TODO if method=UIF and not single-valued numerics then simply choose that now? TODO add FieldType.getDocValuesType()
+    // TODO if method=UIF and not single-valued numerics then simply choose that now? TODO add FieldType.getDocValuesType() id:1975 gh:1976
 
     if (!multiToken) {
       if (mincount > 0 && prefix == null && (ntype != null || method == FacetMethod.DVHASH)) {
-        // TODO can we auto-pick for strings when term cardinality is much greater than DocSet cardinality?
+        // TODO can we auto-pick for strings when term cardinality is much greater than DocSet cardinality? id:2723 gh:2724
         //   or if we don't know cardinality but DocSet size is very small
         return new FacetFieldProcessorByHashDV(fcontext, this, sf);
       } else if (ntype == null) {

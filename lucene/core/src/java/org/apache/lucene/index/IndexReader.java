@@ -163,7 +163,7 @@ public abstract class IndexReader implements Closeable {
 
   /** Expert: returns the current refCount for this reader */
   public final int getRefCount() {
-    // NOTE: don't ensureOpen, so that callers can see
+    // NOTE: don't ensureOpen, so that callers can see id:670 gh:671
     // refCount is 0 (reader is closed)
     return refCount.get();
   }
@@ -352,7 +352,7 @@ public abstract class IndexReader implements Closeable {
    * @throws CorruptIndexException if the index is corrupt
    * @throws IOException if there is a low-level IO error
    */
-  // TODO: we need a separate StoredField, so that the
+  // TODO: we need a separate StoredField, so that the id:556 gh:557
   // Document returned here contains that class not
   // IndexableField
   public final Document document(int docID) throws IOException {

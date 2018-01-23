@@ -58,7 +58,7 @@ public class SpatialPointVectorFieldType extends AbstractSpatialFieldType<PointV
     if( fieldType == null ) {
       throw new RuntimeException( "Can not find number field: "+ numberFieldName);
     }
-    //TODO support other numeric types in the future
+    //TODO support other numeric types in the future id:2033 gh:2034
     if( !(fieldType instanceof TrieDoubleField) ) {
       throw new RuntimeException( "field type must be TrieDoubleField: "+ fieldType);
     }
@@ -86,7 +86,7 @@ public class SpatialPointVectorFieldType extends AbstractSpatialFieldType<PointV
 
   @Override
   protected PointVectorStrategy newSpatialStrategy(String fieldName) {
-    // TODO update to how BBoxField does things
+    // TODO update to how BBoxField does things id:1907 gh:1908
     if (this.getNumberType() != null) {
       // create strategy based on legacy numerics
       // todo remove in 7.0

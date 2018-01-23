@@ -84,7 +84,7 @@ public class SolrSynonymParser extends SynonymMap.Parser {
         continue; // ignore empty lines and comments
       }
       
-      // TODO: we could process this more efficiently.
+      // TODO: we could process this more efficiently. id:38 gh:39
       String sides[] = split(line, "=>");
       if (sides.length > 1) { // explicit mapping
         if (sides.length != 2) {

@@ -52,7 +52,7 @@ public class TestStressIndexing2 extends LuceneTestCase {
   public void testRandomIWReader() throws Throwable {
     Directory dir = newMaybeVirusCheckingDirectory();
     
-    // TODO: verify equals using IW.getReader
+    // TODO: verify equals using IW.getReader id:857 gh:858
     DocsAndWriter dw = indexRandomIWReader(5, 3, 100, dir);
     DirectoryReader reader = dw.writer.getReader();
     dw.writer.commit();
@@ -272,7 +272,7 @@ public class TestStressIndexing2 extends LuceneTestCase {
 
   private static void printDocs(DirectoryReader r) throws Throwable {
     for(LeafReaderContext ctx : r.leaves()) {
-      // TODO: improve this
+      // TODO: improve this id:1129 gh:1130
       LeafReader sub = ctx.reader();
       Bits liveDocs = sub.getLiveDocs();
       System.out.println("  " + ((SegmentReader) sub).getSegmentInfo());

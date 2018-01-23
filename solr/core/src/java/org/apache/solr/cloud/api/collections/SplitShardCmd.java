@@ -272,7 +272,7 @@ public class SplitShardCmd implements OverseerCollectionMessageHandler.Cmd {
       // look at the replication factor and see if it matches reality
       // if it does not, find best nodes to create more cores
 
-      // TODO: Have replication factor decided in some other way instead of numShards for the parent
+      // TODO: Have replication factor decided in some other way instead of numShards for the parent id:1763 gh:1764
 
       int repFactor = parentSlice.getReplicas().size();
 
@@ -280,19 +280,19 @@ public class SplitShardCmd implements OverseerCollectionMessageHandler.Cmd {
       // add our new cores to existing nodes serving the least number of cores
       // but (for now) require that each core goes on a distinct node.
 
-      // TODO: add smarter options that look at the current number of cores per
+      // TODO: add smarter options that look at the current number of cores per id:2738 gh:2739
       // node?
       // for now we just go random
       Set<String> nodes = clusterState.getLiveNodes();
       List<String> nodeList = new ArrayList<>(nodes.size());
       nodeList.addAll(nodes);
 
-      // TODO: Have maxShardsPerNode param for this operation?
+      // TODO: Have maxShardsPerNode param for this operation? id:1824 gh:1826
 
       // Remove the node that hosts the parent shard for replica creation.
       nodeList.remove(nodeName);
 
-      // TODO: change this to handle sharding a slice into > 2 sub-shards.
+      // TODO: change this to handle sharding a slice into > 2 sub-shards. id:2639 gh:2640
 
       List<ReplicaPosition> replicaPositions = Assign.identifyNodes(ocmh.cloudManager,
           clusterState,

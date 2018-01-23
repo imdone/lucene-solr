@@ -92,7 +92,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
       // all of our checks should work with all of these params
       // ie: with or w/o these excluded filters, results should be the same.
       SolrParams[] baseParamsSet = new SolrParams[] {
-        // NOTE: doTestFieldStatisticsResult needs the full list of possible tags to exclude
+        // NOTE: doTestFieldStatisticsResult needs the full list of possible tags to exclude id:2920 gh:2921
         params("stats.field", f, "stats", "true"),
         params("stats.field", "{!ex=fq1,fq2}"+f, "stats", "true",
                "fq", "{!tag=fq1}-id_i:[0 TO 2]", 
@@ -228,7 +228,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
       }) {
       
       assertQ("test statistics over field specified as a function: " + param,
-              // NOTE: baseParams aren't used, we're looking at the function
+              // NOTE: baseParams aren't used, we're looking at the function id:2327 gh:2328
               req("q", "*:*", "stats", "true", "stats.calcdistinct", "true",
                   "fq", "{!tag=key_ex_tag}-id:4", 
                   "stats.field", param)
@@ -250,7 +250,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
     // now get stats over a non-trivial function on our (single) field
     String func = "product(2, " + f + ")";
     assertQ("test function statistics & key override", 
-            // NOTE: baseParams aren't used, we're looking at the function
+            // NOTE: baseParams aren't used, we're looking at the function id:2273 gh:2274
             req("q", "*:*", "stats", "true", "stats.calcdistinct", "true",
                 "fq", "{!tag=key_ex_tag}-id:4", 
                 "stats.field", "{!func key="+key+" ex=key_ex_tag}"+func)
@@ -269,7 +269,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
 
     // simple cardinality over a numeric field
     assertQ("test function statistics & key override", 
-            // NOTE: baseParams aren't used, we're looking only at the cardinality
+            // NOTE: baseParams aren't used, we're looking only at the cardinality id:3086 gh:3087
             req("q", "*:*", "stats", "true",
                 "fq", "{!tag=key_ex_tag}-id:4", 
                 "stats.field", "{!key="+key+" cardinality=true}"+f)
@@ -333,7 +333,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
               , "//double[@name='stddev'][.='90.15634568163611']"
               );
       
-      // TODO: why are there 3 identical requests below?
+      // TODO: why are there 3 identical requests below? id:2330 gh:2331
       
       assertQ("test statistics values", 
               req(baseParams, "q", "*:*", "stats.calcdistinct", "true", "stats.facet", "active_s")
@@ -560,7 +560,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
       }) {
       
       assertQ("test statistics over field specified as a function: " + param,
-              // NOTE: baseParams aren't used, we're looking at the function
+              // NOTE: baseParams aren't used, we're looking at the function id:2922 gh:2923
               req("q", "*:*", "stats", "true", "stats.calcdistinct", "true",
                   "fq", "{!tag=key_ex_tag}-id:4", 
                   "stats.field", param)
@@ -764,7 +764,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
             
             );
 
-    // NOTE: empty set percentiles covered in testPercentiles()
+    // NOTE: empty set percentiles covered in testPercentiles() id:2329 gh:2330
 
     assertQ("test cardinality of missing"
             , req("q", "*:*", "stats", "true", "stats.field", "{!cardinality=true}active_i")
@@ -1426,7 +1426,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
         // even if we go out of our way to exclude the dependent stats, 
         // the shard should return them since they are a dependency for the requested stat
         if (!stat.equals(perShardDep)){
-          // NOTE: this only works because all the cases where there are distribDeps
+          // NOTE: this only works because all the cases where there are distribDeps id:2277 gh:2278
           // beyond a self dependency are simple true/false options
           exclude.append(perShardDep + "=false ");
         }
@@ -1686,7 +1686,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
     assertEquals("HLL Changed definition min for log2m, " + 
                  "need to note in upgrade instructions and maybe adjust accuracy hueristic",
                  4, HLL.MINIMUM_LOG2M_PARAM);
-    // NOTE: https://github.com/aggregateknowledge/java-hll/issues/14
+    // NOTE: https://github.com/aggregateknowledge/java-hll/issues/14 id:3087 gh:3088
     assertEquals("HLL Changed definition max for log2m, " + 
                  "need to note in upgrade instructions and maybe adjust accuracy hueristic",
                  30, HLL.MAXIMUM_LOG2M_PARAM);
@@ -1877,7 +1877,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
   // simple percentiles test
   public void testPercentiles() throws Exception {
     
-    // NOTE: deliberately not in numeric order
+    // NOTE: deliberately not in numeric order id:2332 gh:2333
     String percentiles = "10.0,99.9,1.0,2.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,98.0,99.0";
     List <String> percentilesList = StrUtils.splitSmart(percentiles, ',');
     
@@ -1967,7 +1967,7 @@ public class StatsComponentTest extends SolrTestCaseJ4 {
     private final Stat[] all;
     private final Combinations intCombos;
     public StatSetCombinations(int comboSize, EnumSet<Stat> universe) {
-      // NOTE: should not need to sort, EnumSet uses natural ordering
+      // NOTE: should not need to sort, EnumSet uses natural ordering id:2924 gh:2926
       all = universe.toArray(new Stat[universe.size()]);
       intCombos = new Combinations(all.length, comboSize);
     }

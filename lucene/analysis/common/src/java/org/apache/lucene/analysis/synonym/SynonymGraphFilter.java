@@ -37,10 +37,10 @@ import org.apache.lucene.util.CharsRefBuilder;
 import org.apache.lucene.util.RollingBuffer;
 import org.apache.lucene.util.fst.FST;
 
-// TODO: maybe we should resolve token -> wordID then run
+// TODO: maybe we should resolve token -> wordID then run id:116 gh:117
 // FST on wordIDs, for better perf?
  
-// TODO: a more efficient approach would be Aho/Corasick's
+// TODO: a more efficient approach would be Aho/Corasick's id:166 gh:167
 // algorithm
 // http://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_string_matching_algorithm
 // It improves over the current approach here
@@ -217,7 +217,7 @@ public final class SynonymGraphFilter extends TokenFilter {
       assert liveToken;
       liveToken = false;
 
-      // NOTE: no need to change posInc since it's relative, i.e. whatever
+      // NOTE: no need to change posInc since it's relative, i.e. whatever id:44 gh:45
       // node our output is upto will just increase by the incoming posInc.
       // We also don't need to change posLen, but only because we cannot
       // consume a graph, so the incoming token can never span a future
@@ -443,7 +443,7 @@ public final class SynonymGraphFilter extends TokenFilter {
     // How many synonyms we will insert over this match:
     final int count = code >>> 1;
 
-    // TODO: we could encode this instead into the FST:
+    // TODO: we could encode this instead into the FST: id:46 gh:47
 
     // 1st pass: count how many new nodes we need
     List<List<String>> paths = new ArrayList<>();
@@ -470,7 +470,7 @@ public final class SynonymGraphFilter extends TokenFilter {
 
     // 2nd pass: buffer tokens for the graph fragment
 
-    // NOTE: totalPathNodes will be 0 in the case where the matched
+    // NOTE: totalPathNodes will be 0 in the case where the matched id:48 gh:49
     // input is a single token and all outputs are also a single token
 
     // We "spawn" a side-path for each of the outputs for this matched

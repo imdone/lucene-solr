@@ -32,7 +32,7 @@ abstract class FieldTermIterator implements BytesRefIterator {
   abstract String field();
 
   /** Del gen of the current term. */
-  // TODO: this is really per-iterator not per term, but when we use MergedPrefixCodedTermsIterator we need to know which iterator we are on
+  // TODO: this is really per-iterator not per term, but when we use MergedPrefixCodedTermsIterator we need to know which iterator we are on id:539 gh:540
   abstract long delGen();
 }
 

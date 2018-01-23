@@ -51,7 +51,7 @@ public abstract class SortedSetDocValues extends DocValuesIterator {
    */
   public abstract long nextOrd() throws IOException;
 
-  // TODO: should we have a docValueCount, like SortedNumeric?
+  // TODO: should we have a docValueCount, like SortedNumeric? id:612 gh:613
   
   /** Retrieves the value for the specified ordinal. The returned
    * {@link BytesRef} may be re-used across calls to lookupOrd so make sure to

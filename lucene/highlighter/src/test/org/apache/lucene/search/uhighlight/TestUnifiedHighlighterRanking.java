@@ -54,7 +54,7 @@ public class TestUnifiedHighlighterRanking extends LuceneTestCase {
    * indexes a bunch of gibberish, and then highlights top(n).
    * asserts that top(n) highlights is a subset of top(n+1) up to some max N
    */
-  // TODO: this only tests single-valued fields. we should also index multiple values per field!
+  // TODO: this only tests single-valued fields. we should also index multiple values per field! id:1051 gh:1052
   public void testRanking() throws Exception {
     // number of documents: we will check each one
     final int numDocs = atLeast(100);

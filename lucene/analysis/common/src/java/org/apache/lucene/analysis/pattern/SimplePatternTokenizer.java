@@ -37,7 +37,7 @@ import org.apache.lucene.util.automaton.RegExp;
  * @lucene.experimental
  */
 
-// TODO: the matcher here is naive and does have N^2 adversarial cases that are unlikely to arise in practice, e.g. if the pattern is
+// TODO: the matcher here is naive and does have N^2 adversarial cases that are unlikely to arise in practice, e.g. if the pattern is id:33 gh:34
 // aaaaaaaaaab and the input is aaaaaaaaaaa, the work we do here is N^2 where N is the number of a's.  This is because on failing to match
 // a token, we skip one character forward and try again.  A better approach would be to compile something like this regexp
 // instead: .* | <pattern>, because that automaton would not "forget" all the as it had already seen, and would be a single pass
@@ -52,7 +52,7 @@ public final class SimplePatternTokenizer extends Tokenizer {
 
   private final CharacterRunAutomaton runDFA;
 
-  // TODO: we could likely use a single rolling buffer instead of two separate char buffers here.  We could also use PushBackReader but I
+  // TODO: we could likely use a single rolling buffer instead of two separate char buffers here.  We could also use PushBackReader but I id:111 gh:112
   // suspect it's slowish:
 
   private char[] pendingChars = new char[8];

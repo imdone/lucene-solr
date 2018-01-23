@@ -66,7 +66,7 @@ function processAdd(cmd) {
         break;
     }
 
-    // TODO: error handling needed?   What if there is no slash?
+    // TODO: error handling needed?   What if there is no slash? id:3118 gh:3119
     if(doc_type) { doc.setField("doc_type", doc_type); }
     doc.setField("content_type_type_s", ct_type);
     doc.setField("content_type_subtype_s", ct_subtype);

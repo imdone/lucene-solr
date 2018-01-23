@@ -347,7 +347,7 @@ public class CdcrUpdateLog extends UpdateLog {
       if (newestLogsOnStartup.size() >= 2) break;
     }
 
-    // TODO: these startingVersions assume that we successfully recover from all non-complete tlogs.
+    // TODO: these startingVersions assume that we successfully recover from all non-complete tlogs. id:2778 gh:2779
     UpdateLog.RecentUpdates startingUpdates = getRecentUpdates();
     long latestVersion = startingUpdates.getMaxRecentVersion();
     try {

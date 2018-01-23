@@ -106,7 +106,7 @@ class NormValuesWriter {
                                });
   }
 
-  // TODO: norms should only visit docs that had a field indexed!!
+  // TODO: norms should only visit docs that had a field indexed!! id:730 gh:731
   
   // iterates over the values we have in ram
   private static class BufferedNorms extends NumericDocValues {

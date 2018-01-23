@@ -42,9 +42,9 @@ import org.apache.lucene.util.TestUtil;
 import org.apache.lucene.util.Version;
 import org.junit.BeforeClass;
 
-// TODO: test multiple codecs here?
+// TODO: test multiple codecs here? id:981 gh:982
 
-// TODO
+// TODO id:823 gh:824
 //   - test across fields
 //   - fix this test to run once for all codecs
 //   - make more docs per term, to test > 1 level skipping
@@ -84,7 +84,7 @@ public class TestCodecs extends LuceneTestCase {
     public FieldData(final String name, final FieldInfos.Builder fieldInfos, final TermData[] terms, final boolean omitTF, final boolean storePayloads) {
       this.omitTF = omitTF;
       this.storePayloads = storePayloads;
-      // TODO: change this test to use all three
+      // TODO: change this test to use all three id:905 gh:906
       fieldInfo = fieldInfos.getOrAdd(name);
       if (omitTF) {
         fieldInfo.setIndexOptions(IndexOptions.DOCS);
@@ -449,7 +449,7 @@ public class TestCodecs extends LuceneTestCase {
           if (random().nextInt(3) == 1) {
             final PostingsEnum postings;
             if (!field.omitTF) {
-              // TODO: we should randomize which postings features are available, but
+              // TODO: we should randomize which postings features are available, but id:1257 gh:1259
               // need to coordinate this with the checks below that rely on such features
               postings = termsEnum.postings(null, PostingsEnum.ALL);
             } else {

@@ -283,7 +283,7 @@ public class TestRandomFlRTGCloud extends SolrCloudTestCase {
   private void assertUpdate(final SolrInputDocument[] knownDocs, final int[] docIds) throws IOException, SolrServerException {
     
     for (final int docId : docIds) {
-      // TODO: this method should also do some atomic update operations (ie: "inc" and "set")
+      // TODO: this method should also do some atomic update operations (ie: "inc" and "set") id:2290 gh:2291
       // (but make sure to eval the updates locally as well before modifying knownDocs)
       knownDocs[docId] = addRandomDocument(docId);
     }
@@ -341,7 +341,7 @@ public class TestRandomFlRTGCloud extends SolrCloudTestCase {
    */
   private void assertRTG(final SolrInputDocument[] knownDocs, final int[] docIds) throws IOException, SolrServerException {
     final SolrClient client = getRandClient(random());
-    // NOTE: not using SolrClient.getById or getByIds because we want to force choice of "id" vs "ids" params
+    // NOTE: not using SolrClient.getById or getByIds because we want to force choice of "id" vs "ids" params id:2211 gh:2212
     final ModifiableSolrParams params = params("qt","/get");
     
     // random fq -- nothing fancy, secondary concern for our test
@@ -402,7 +402,7 @@ public class TestRandomFlRTGCloud extends SolrCloudTestCase {
     assertEquals("num docs mismatch: " + params + " => " + docsToExpect + " vs " + docs,
                  docsToExpect.size(), docs.size());
     
-    // NOTE: RTG makes no garuntees about the order docs will be returned in when multi requested
+    // NOTE: RTG makes no garuntees about the order docs will be returned in when multi requested id:3067 gh:3066
     for (SolrDocument actual : docs) {
       try {
         int actualId = assertParseInt("id", actual.getFirstValue("id"));
@@ -748,7 +748,7 @@ public class TestRandomFlRTGCloud extends SolrCloudTestCase {
    */
   private static class SubQueryValidator implements FlValidator {
 
-    // HACK to work around SOLR-9396...
+    // HACK to work around SOLR-9396... id:2287 gh:2288
     // 
     // we're using "id" (and only "id") in the subquery.q as a workarround limitation in
     // "$rows.foo" parsing -- it only works reliably if "foo" is in fl, so we only use "$rows.id",

@@ -141,7 +141,7 @@ public class JoinQParserPlugin extends QParserPlugin {
 class JoinQuery extends Query {
   String fromField;
   String toField;
-  String fromIndex; // TODO: name is missleading here compared to JoinQParserPlugin usage - here it must be a core name
+  String fromIndex; // TODO: name is missleading here compared to JoinQParserPlugin usage - here it must be a core name id:2867 gh:2868
   Query q;
   long fromCoreOpenTime;
 
@@ -264,7 +264,7 @@ class JoinQuery extends Query {
           dbg.add("smallSetsDeferred", smallSetsDeferred);
           dbg.add("toSetDocsAdded", resultListDocs);
 
-          // TODO: perhaps synchronize  addDebug in the future...
+          // TODO: perhaps synchronize  addDebug in the future... id:1957 gh:1958
           rb.addDebug(dbg, "join", JoinQuery.this.toString());
         }
 

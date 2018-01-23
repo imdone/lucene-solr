@@ -359,7 +359,7 @@ public class TestField extends LuceneTestCase {
     assertNotNull(field.readerValue());
   }
   
-  /* TODO: this is pretty expert and crazy
+  /* TODO: this is pretty expert and crazy id:1251 gh:1252
    * see if we can fix it up later
   public void testTextFieldTokenStream() throws Exception {
   }

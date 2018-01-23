@@ -135,8 +135,8 @@ public class VelocityResponseWriterTest extends SolrTestCaseJ4 {
         SolrParamResourceLoader.TEMPLATE_PARAM_PREFIX+"t", "$!response.star(\"response overridden??\")")));
 
     // Custom tools can also have a SolrCore-arg constructor because they are instantiated with SolrCore.createInstance
-    // TODO: do we really need to support this?  no great loss, as a custom tool could take a SolrCore object as a parameter to
-    // TODO: any method, so one could do $mytool.my_method($request.core)
+    // TODO: do we really need to support this?  no great loss, as a custom tool could take a SolrCore object as a parameter to id:2704 gh:2705
+    // TODO: any method, so one could do $mytool.my_method($request.core) id:1799 gh:1800
     // I'm currently inclined to make this feature undocumented/unsupported, as we may want to instantiate classes
     // in a different manner that only supports no-arg constructors, commented (passing) test case out
 //    assertEquals("collection1", h.query(req("q","*:*", "wt","velocityWithCustomTools",VelocityResponseWriter.TEMPLATE,"t",

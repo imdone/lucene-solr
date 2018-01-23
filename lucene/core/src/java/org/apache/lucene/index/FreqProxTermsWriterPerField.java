@@ -22,7 +22,7 @@ import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.PayloadAttribute;
 import org.apache.lucene.util.BytesRef;
 
-// TODO: break into separate freq and prox writers as
+// TODO: break into separate freq and prox writers as id:489 gh:490
 // codecs; make separate container (tii/tis/skip/*) that can
 // be configured as any number of files 1..N
 final class FreqProxTermsWriterPerField extends TermsHashPerField {

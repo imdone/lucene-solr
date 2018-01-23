@@ -34,7 +34,7 @@ public class LongToEnglishContentSource extends ContentSource{
   public void close() throws IOException {
   }
 
-  // TODO: we could take param to specify locale...
+  // TODO: we could take param to specify locale... id:193 gh:194
   private final RuleBasedNumberFormat rnbf = new RuleBasedNumberFormat(Locale.ROOT,
                                                                        RuleBasedNumberFormat.SPELLOUT);
   @Override

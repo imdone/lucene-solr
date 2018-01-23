@@ -172,7 +172,7 @@ public class IndexAndTaxonomyReplicationHandler implements ReplicationHandler {
     }
     
     // Cleanup the index directory from old and unused index files.
-    // NOTE: we don't use IndexWriter.deleteUnusedFiles here since it may have
+    // NOTE: we don't use IndexWriter.deleteUnusedFiles here since it may have id:1096 gh:1097
     // side-effects, e.g. if it hits sudden IO errors while opening the index
     // (and can end up deleting the entire index). It is not our job to protect
     // against those errors, app will probably hit them elsewhere.

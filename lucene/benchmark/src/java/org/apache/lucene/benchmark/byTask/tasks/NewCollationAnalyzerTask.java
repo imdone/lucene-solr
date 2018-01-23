@@ -101,7 +101,7 @@ public class NewCollationAnalyzerTask extends PerfTask {
       String key = expr.nextToken();
       String value = expr.nextToken();
       // for now we only support the "impl" parameter.
-      // TODO: add strength, decomposition, etc
+      // TODO: add strength, decomposition, etc id:218 gh:219
       if (key.equals("impl")) {
         if (value.equalsIgnoreCase("icu"))
           impl = Implementation.ICU;

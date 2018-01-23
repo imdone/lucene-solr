@@ -254,12 +254,12 @@ public class PackedQuadPrefixTree extends QuadPrefixTree {
     @Override
     public int compareToNoLeaf(Cell fromCell) {
       PackedQuadCell b = (PackedQuadCell) fromCell;
-      //TODO clear last bit without the condition
+      //TODO clear last bit without the condition id:1443 gh:1444
       final long thisTerm = (((0x1L)&term) == 0x1L) ? term-1 : term;
       final long fromTerm = (((0x1L)&b.term) == 0x1L) ? b.term-1 : b.term;
       final int result = Long.compareUnsigned(thisTerm, fromTerm);
       assert Math.signum(result)
-          == Math.signum(compare(longToByteArray(thisTerm, new byte[8]), 0, 8, longToByteArray(fromTerm, new byte[8]), 0, 8)); // TODO remove
+          == Math.signum(compare(longToByteArray(thisTerm, new byte[8]), 0, 8, longToByteArray(fromTerm, new byte[8]), 0, 8)); // TODO remove id:1366 gh:1367
       return result;
     }
 

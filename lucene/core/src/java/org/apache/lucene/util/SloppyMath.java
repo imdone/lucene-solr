@@ -195,7 +195,7 @@ public class SloppyMath {
   }
   
   // haversin
-  // TODO: remove these for java 9, they fixed Math.toDegrees()/toRadians() to work just like this.
+  // TODO: remove these for java 9, they fixed Math.toDegrees()/toRadians() to work just like this. id:770 gh:771
   public static final double TO_RADIANS = Math.PI / 180D;
   public static final double TO_DEGREES = 180D / Math.PI;
 

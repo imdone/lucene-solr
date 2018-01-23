@@ -63,7 +63,7 @@ public class DefaultICUTokenizerConfig extends ICUTokenizerConfig {
   // is only triggered when kind = WORD, but kind = LINE by default and we have no non-evil way to change it)
   private static final BreakIterator cjkBreakIterator = BreakIterator.getWordInstance(ULocale.ROOT);
 
-  // TODO: if the wrong version of the ICU jar is used, loading these data files may give a strange error.
+  // TODO: if the wrong version of the ICU jar is used, loading these data files may give a strange error. id:124 gh:125
   // maybe add an explicit check? http://icu-project.org/apiref/icu4j/com/ibm/icu/util/VersionInfo.html
 
   // the same as ROOT, except no dictionary segmentation for cjk
@@ -72,7 +72,7 @@ public class DefaultICUTokenizerConfig extends ICUTokenizerConfig {
   private static final RuleBasedBreakIterator myanmarSyllableIterator = 
     readBreakIterator("MyanmarSyllable.brk");
   
-  // TODO: deprecate this boolean? you only care if you are doing super-expert stuff...
+  // TODO: deprecate this boolean? you only care if you are doing super-expert stuff... id:125 gh:126
   private final boolean cjkAsWords;
   private final boolean myanmarAsWords;
   

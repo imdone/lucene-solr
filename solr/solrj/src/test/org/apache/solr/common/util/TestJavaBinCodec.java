@@ -126,7 +126,7 @@ public class TestJavaBinCodec extends SolrTestCaseJ4 {
 
     types.add(new byte[] {1,2,3,4,5});
 
-    // TODO?
+    // TODO ? id:2474 gh:2475
     // List<String> list = new ArrayList<String>();
     // list.add("one");
     // types.add(list.iterator());

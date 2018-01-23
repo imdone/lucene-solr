@@ -353,7 +353,7 @@ abstract class ByteBufferIndexInput extends IndexInput implements RandomAccessIn
       buffer.position(0);
     }
     
-    // TODO: investigate optimizing readByte() & Co?
+    // TODO: investigate optimizing readByte() & Co? id:655 gh:656
     
     @Override
     public void seek(long pos) throws IOException {

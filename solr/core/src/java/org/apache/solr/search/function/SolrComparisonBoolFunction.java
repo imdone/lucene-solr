@@ -44,7 +44,7 @@ public class SolrComparisonBoolFunction extends ComparisonBoolFunction {
 
   @Override
   public boolean compare(int doc, FunctionValues lhs, FunctionValues rhs) throws IOException {
-    // TODO consider a separate FunctionValues impl, one for Long, one for Double
+    // TODO consider a separate FunctionValues impl, one for Long, one for Double id:2753 gh:2754
     // performs the safest possible numeric comparison, if both lhs and rhs are Longs, then
     // we perform a Long comparison to avoid the issues with precision when casting to doubles
     boolean lhsAnInt = (lhs instanceof LongDocValues || lhs instanceof IntDocValues);

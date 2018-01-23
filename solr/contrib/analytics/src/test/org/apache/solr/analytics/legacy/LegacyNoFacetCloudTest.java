@@ -243,7 +243,7 @@ public class LegacyNoFacetCloudTest extends LegacyAbstractAnalyticsCloudTest {
     Double doubleTest = (Double)calculateNumberStat(doubleTestStart, "median");
     assertEquals(responseStr, doubleResult,doubleTest);
     
-    // TODO: Add test for date median
+    // TODO: Add test for date median id:1721 gh:1722
   }
   
   @Test

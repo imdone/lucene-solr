@@ -34,7 +34,7 @@ abstract class LegacyPrefixTree extends SpatialPrefixTree {
   public double getDistanceForLevel(int level) {
     if (level < 1 || level > getMaxLevels())
       throw new IllegalArgumentException("Level must be in 1 to maxLevels range");
-    //TODO cache for each level
+    //TODO cache for each level id:1203 gh:1204
     Cell cell = getCell(ctx.getWorldBounds().getCenter(), level);
     Rectangle bbox = cell.getShape().getBoundingBox();
     double width = bbox.getWidth();

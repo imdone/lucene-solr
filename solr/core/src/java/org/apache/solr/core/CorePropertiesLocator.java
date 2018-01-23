@@ -71,7 +71,7 @@ public class CorePropertiesLocator implements CoresLocator {
     }
   }
 
-  // TODO, this isn't atomic!  If we crash in the middle of a rename, we
+  // TODO , this isn't atomic!  If we crash in the middle of a rename, we id:1828 gh:1829
   // could end up with two cores with identical names, in which case one of
   // them won't start up.  Are we happy with this?
 

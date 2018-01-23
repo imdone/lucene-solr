@@ -129,7 +129,7 @@ public class SearcherLifetimeManager implements Closeable {
 
   private volatile boolean closed;
 
-  // TODO: we could get by w/ just a "set"; need to have
+  // TODO: we could get by w/ just a "set"; need to have id:639 gh:640
   // Tracker hash by its version and have compareTo(Long)
   // compare to its version
   private final ConcurrentHashMap<Long,SearcherTracker> searchers = new ConcurrentHashMap<>();
@@ -154,7 +154,7 @@ public class SearcherLifetimeManager implements Closeable {
    *  the token is returned. */
   public long record(IndexSearcher searcher) throws IOException {
     ensureOpen();
-    // TODO: we don't have to use IR.getVersion to track;
+    // TODO: we don't have to use IR.getVersion to track; id:652 gh:653
     // could be risky (if it's buggy); we could get better
     // bug isolation if we assign our own private ID:
     final long version = ((DirectoryReader) searcher.getIndexReader()).getVersion();

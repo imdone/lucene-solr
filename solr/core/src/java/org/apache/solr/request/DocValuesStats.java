@@ -77,7 +77,7 @@ public class DocValuesStats {
       SchemaField facetSchemaField = searcher.getSchema().getField(facetField);
       facetStats[upto++] = new FieldFacetStats(searcher, facetSchemaField, statsField);
     }
-    // TODO: remove multiValuedFieldCache(), check dv type / uninversion type?
+    // TODO: remove multiValuedFieldCache(), check dv type / uninversion type? id:1877 gh:1878
     final boolean multiValued = schemaField.multiValued() || ft.multiValuedFieldCache();
 
     SortedSetDocValues si; // for term lookups only

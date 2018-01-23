@@ -373,7 +373,7 @@ public final class SolrCore implements SolrInfoBean, SolrMetricProducer, Closeab
 
   // This is guaranteed to return a string or throw an exception.
   //
-  // NOTE: Not finding the index.properties file is normal.
+  // NOTE: Not finding the index.properties file is normal. id:1832 gh:1833
   //
   // We return dataDir/index if there is an index.properties file with no value for "index"
   // See SOLR-11687
@@ -601,7 +601,7 @@ public final class SolrCore implements SolrInfoBean, SolrMetricProducer, Closeab
   final List<SolrEventListener> newSearcherListeners = new ArrayList<>();
 
   /**
-   * NOTE: this function is not thread safe.  However, it is safe to call within the
+   * NOTE: this function is not thread safe.  However, it is safe to call within the id:2644 gh:2646
    * <code>inform( SolrCore core )</code> function for <code>SolrCoreAware</code> classes.
    * Outside <code>inform</code>, this could potentially throw a ConcurrentModificationException
    *
@@ -613,7 +613,7 @@ public final class SolrCore implements SolrInfoBean, SolrMetricProducer, Closeab
   }
 
   /**
-   * NOTE: this function is not thread safe.  However, it is safe to call within the
+   * NOTE: this function is not thread safe.  However, it is safe to call within the id:1796 gh:1797
    * <code>inform( SolrCore core )</code> function for <code>SolrCoreAware</code> classes.
    * Outside <code>inform</code>, this could potentially throw a ConcurrentModificationException
    *
@@ -625,7 +625,7 @@ public final class SolrCore implements SolrInfoBean, SolrMetricProducer, Closeab
   }
 
   /**
-   * NOTE: this function is not thread safe.  However, it is safe to call within the
+   * NOTE: this function is not thread safe.  However, it is safe to call within the id:1775 gh:1776
    * <code>inform( SolrCore core )</code> function for <code>SolrCoreAware</code> classes.
    * Outside <code>inform</code>, this could potentially throw a ConcurrentModificationException
    *
@@ -2439,7 +2439,7 @@ public final class SolrCore implements SolrInfoBean, SolrMetricProducer, Closeab
         // a searcher may have been warming asynchronously while the core was being closed.
         // if this happens, just close the searcher.
         if (isClosed()) {
-          // NOTE: this should not happen now - see close() for details.
+          // NOTE: this should not happen now - see close() for details. id:2750 gh:2751
           // *BUT* if we left it enabled, this could still happen before
           // close() stopped the executor - so disable this test for now.
           log.error("Ignoring searcher register on closed core:" + newSearcher);
@@ -2495,7 +2495,7 @@ public final class SolrCore implements SolrInfoBean, SolrMetricProducer, Closeab
       requestLog.debug(rsp.getToLogAsString(logid));
     }
 
-    // TODO: this doesn't seem to be working correctly and causes problems with the example server and distrib (for example /spell)
+    // TODO: this doesn't seem to be working correctly and causes problems with the example server and distrib (for example /spell) id:1834 gh:1835
     // if (req.getParams().getBool(ShardParams.IS_SHARD,false) && !(handler instanceof SearchHandler))
     //   throw new SolrException(SolrException.ErrorCode.BAD_REQUEST,"isShard is only acceptable with search handlers");
 
@@ -2542,7 +2542,7 @@ public final class SolrCore implements SolrInfoBean, SolrMetricProducer, Closeab
   /** Put status, QTime, and possibly request handler and params, in the response header */
   public static void postDecorateResponse
       (SolrRequestHandler handler, SolrQueryRequest req, SolrQueryResponse rsp) {
-    // TODO should check that responseHeader has not been replaced by handler
+    // TODO should check that responseHeader has not been replaced by handler id:2645 gh:2645
     NamedList<Object> responseHeader = rsp.getResponseHeader();
     final int qtime=(int)(req.getRequestTimer().getTime());
     int status = 0;

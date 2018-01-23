@@ -238,7 +238,7 @@ public class ContainsPrefixTreeQuery extends AbstractPrefixTreeQuery {
 
   /** A hash based mutable set of docIds. If this were Solr code then we might
    * use a combination of HashDocSet and SortedIntDocSet instead. */
-  // TODO use DocIdSetBuilder?
+  // TODO use DocIdSetBuilder? id:1352 gh:1353
   private static class SmallDocSet extends DocIdSet implements Bits {
 
     private final SentinelIntSet intSet;
@@ -270,7 +270,7 @@ public class ContainsPrefixTreeQuery extends AbstractPrefixTreeQuery {
       return intSet.size();
     }
 
-    /** NOTE: modifies and returns either "this" or "other" */
+    /** NOTE: modifies and returns either "this" or "other" id:1194 gh:1195*/
     public SmallDocSet union(SmallDocSet other) {
       SmallDocSet bigger;
       SmallDocSet smaller;

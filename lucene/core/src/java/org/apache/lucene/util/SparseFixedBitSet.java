@@ -416,7 +416,7 @@ public class SparseFixedBitSet extends BitSet implements Bits, Accountable {
     checkUnpositioned(it);
     // The goal here is to try to take advantage of the ordering of documents
     // to build the data-structure more efficiently
-    // NOTE: this heavily relies on the fact that shifts are mod 64
+    // NOTE: this heavily relies on the fact that shifts are mod 64 id:685 gh:686
     final int firstDoc = it.nextDoc();
     if (firstDoc == DocIdSetIterator.NO_MORE_DOCS) {
       return;

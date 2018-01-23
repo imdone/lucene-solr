@@ -192,7 +192,7 @@ public class TestTopDocsMerge extends LuceneTestCase {
       w.close();
     }
 
-    // NOTE: sometimes reader has just one segment, which is
+    // NOTE: sometimes reader has just one segment, which is id:998 gh:999
     // important to test
     final IndexSearcher searcher = newSearcher(reader);
     final IndexReaderContext ctx = searcher.getTopReaderContext();
@@ -234,7 +234,7 @@ public class TestTopDocsMerge extends LuceneTestCase {
     int numIters = atLeast(300); 
     for(int iter=0;iter<numIters;iter++) {
 
-      // TODO: custom FieldComp...
+      // TODO: custom FieldComp... id:1048 gh:1049
       final Query query = new TermQuery(new Term("text", tokens[random().nextInt(tokens.length)]));
 
       final Sort sort;

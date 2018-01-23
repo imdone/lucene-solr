@@ -924,11 +924,11 @@ public class CoreContainer {
 
     CoreDescriptor cd = new CoreDescriptor(coreName, instancePath, parameters, getContainerProperties(), isZooKeeperAware());
 
-    // TODO: There's a race here, isn't there?
+    // TODO: There's a race here, isn't there? id:2742 gh:2743
     // Since the core descriptor is removed when a core is unloaded, it should never be anywhere when a core is created.
     if (getAllCoreNames().contains(coreName)) {
       log.warn("Creating a core with existing name is not allowed");
-      // TODO: Shouldn't this be a BAD_REQUEST?
+      // TODO: Shouldn't this be a BAD_REQUEST? id:1826 gh:1827
       throw new SolrException(ErrorCode.SERVER_ERROR, "Core with name '" + coreName + "' already exists.");
     }
 
@@ -1252,7 +1252,7 @@ public class CoreContainer {
     // in tests particularly. Theoretically, there should be _no_ way to create a CoreDescriptor in the new world
     // of core discovery without writing the core.properties file out first.
     //
-    // TODO: remove core.properties from the conf directory in test files, it's in a bad place there anyway.
+    // TODO: remove core.properties from the conf directory in test files, it's in a bad place there anyway. id:2641 gh:2642
     if (ret == null) {
       oldDesc.loadExtraProperties(); // there may be changes to extra properties that we need to pick up.
       return oldDesc;
@@ -1294,7 +1294,7 @@ public class CoreContainer {
           DocCollection docCollection = getZkController().getClusterState().getCollection(cd.getCollectionName());
           Replica replica = docCollection.getReplica(cd.getCloudDescriptor().getCoreNodeName());
           assert replica != null;
-          if (replica.getType() == Replica.Type.TLOG) { //TODO: needed here?
+          if (replica.getType() == Replica.Type.TLOG) { //TODO: needed here? id:1793 gh:1794
             getZkController().stopReplicationFromLeader(core.getName());
             if (!cd.getCloudDescriptor().isLeader()) {
               getZkController().startReplicationFromLeader(newCore.getName(), true);
@@ -1603,7 +1603,7 @@ public class CoreContainer {
    * Gets a solr core descriptor for a core that is not loaded. Note that if the caller calls this on a
    * loaded core, the unloaded descriptor will be returned.
    *
-   * @param cname - name of the unloaded core descriptor to load. NOTE:
+   * @param cname - name of the unloaded core descriptor to load. NOTE: id:1769 gh:1770
    * @return a coreDescriptor. May return null
    */
   public CoreDescriptor getUnloadedCoreDescriptor(String cname) {

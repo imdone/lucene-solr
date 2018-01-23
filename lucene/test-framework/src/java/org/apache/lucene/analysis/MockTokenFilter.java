@@ -72,7 +72,7 @@ public final class MockTokenFilter extends TokenFilter {
   
   @Override
   public boolean incrementToken() throws IOException {
-    // TODO: fix me when posInc=false, to work like FilteringTokenFilter in that case and not return
+    // TODO: fix me when posInc=false, to work like FilteringTokenFilter in that case and not return id:1442 gh:1443
     // initial token with posInc=0 ever
     
     // return the first non-stop word found

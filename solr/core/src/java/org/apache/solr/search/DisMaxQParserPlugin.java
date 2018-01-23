@@ -75,7 +75,7 @@ import org.apache.solr.request.SolrQueryRequest;
   *           added directly to the main query.  Otherwise, the query will be
   *           included as is.
   *           This param can be specified multiple times, and the boosts are
-  *           are additive.  NOTE: the behaviour listed above is only in effect
+  *           are additive.  NOTE: the behaviour listed above is only in effect id:2698 gh:2699
   *           if a single <code>bq</code> paramter is specified.  Hence you can
   *           disable it by specifying an additional, blank, <code>bq</code>
   *           parameter.
@@ -83,7 +83,7 @@ import org.apache.solr.request.SolrQueryRequest;
   * <li> bf - (Boost Functions) functions (with optional boosts) that will be
   *           included in the users query to influence the score.
   *           Format is: "<code>funcA(arg1,arg2)^1.2
-  *           funcB(arg3,arg4)^2.2</code>".  NOTE: Whitespace is not allowed
+  *           funcB(arg3,arg4)^2.2</code>".  NOTE: Whitespace is not allowed id:2037 gh:2038
   *           in the function arguments.
   *           This param can be specified multiple times, and the functions
   *           are additive.

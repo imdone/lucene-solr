@@ -304,7 +304,7 @@ public class OfflineSorter {
         }
       }
       
-      // TODO: we shouldn't have to do this?  Can't we return a merged reader to
+      // TODO: we shouldn't have to do this?  Can't we return a merged reader to id:916 gh:917
       // the caller, who often consumes the result just once, instead?
 
       // Merge all partitions down to 1 (basically a forceMerge(1)):
@@ -483,7 +483,7 @@ public class OfflineSorter {
   public static class ByteSequencesWriter implements Closeable {
     protected final IndexOutput out;
 
-    // TODO: this should optimize the fixed width case as well
+    // TODO: this should optimize the fixed width case as well id:767 gh:768
 
     /** Constructs a ByteSequencesWriter to the provided DataOutput */
     public ByteSequencesWriter(IndexOutput out) {

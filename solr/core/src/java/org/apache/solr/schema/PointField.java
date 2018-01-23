@@ -75,7 +75,7 @@ public abstract class PointField extends NumericFieldType {
   public static boolean TEST_HACK_IGNORE_USELESS_TRIEFIELD_ARGS = false;
   
   /** 
-   * NOTE: This method can be removed completely when
+   * NOTE: This method can be removed completely when id:2029 gh:2030
    * {@link #TEST_HACK_IGNORE_USELESS_TRIEFIELD_ARGS} is removed 
    */
   @Override

@@ -170,7 +170,7 @@ public class SortedSetDocValuesFacetCounts extends Facets {
       it = ConjunctionDISI.intersectIterators(Arrays.asList(hits.bits.iterator(), segValues));
     }
 
-    // TODO: yet another option is to count all segs
+    // TODO: yet another option is to count all segs id:1024 gh:1025
     // first, only in seg-ord space, and then do a
     // merge-sort-PQ in the end to only "resolve to
     // global" those seg ords that can compete, if we know
@@ -239,7 +239,7 @@ public class SortedSetDocValuesFacetCounts extends Facets {
 
     OrdinalMap ordinalMap;
 
-    // TODO: is this right?  really, we need a way to
+    // TODO: is this right?  really, we need a way to id:1077 gh:1078
     // verify that this ordinalMap "matches" the leaves in
     // matchingDocs...
     if (dv instanceof MultiDocValues.MultiSortedSetDocValues && matchingDocs.size() > 1) {
@@ -270,7 +270,7 @@ public class SortedSetDocValuesFacetCounts extends Facets {
 
     OrdinalMap ordinalMap;
 
-    // TODO: is this right?  really, we need a way to
+    // TODO: is this right?  really, we need a way to id:908 gh:909
     // verify that this ordinalMap "matches" the leaves in
     // matchingDocs...
     if (dv instanceof MultiDocValues.MultiSortedSetDocValues) {

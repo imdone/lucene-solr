@@ -274,7 +274,7 @@ public class MultiFieldQueryParser extends QueryParser
   }
   
   /** Creates a multifield query */
-  // TODO: investigate more general approach by default, e.g. DisjunctionMaxQuery?
+  // TODO: investigate more general approach by default, e.g. DisjunctionMaxQuery? id:1564 gh:1565
   protected Query getMultiFieldQuery(List<Query> queries) throws ParseException {
     if (queries.isEmpty()) {
       return null; // all clause words were filtered away by the analyzer.

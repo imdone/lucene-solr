@@ -170,7 +170,7 @@ public class FilterPath implements Path {
     return wrap(delegate.relativize(toDelegate(other)));
   }
 
-  // TODO: should these methods not expose delegate result directly?
+  // TODO: should these methods not expose delegate result directly? id:1640 gh:1641
   // it could allow code to "escape" the sandbox... 
 
   @Override
@@ -196,7 +196,7 @@ public class FilterPath implements Path {
   @Override
   @SuppressForbidden(reason = "Abstract API requires to use java.io.File")
   public File toFile() {
-    // TODO: should we throw exception here?
+    // TODO: should we throw exception here? id:2599 gh:2600
     return delegate.toFile();
   }
 

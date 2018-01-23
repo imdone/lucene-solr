@@ -119,7 +119,7 @@ a.no_icon:after
 }
 
 /* indent extra nav levels
-   TODO: is there any easy way to do this that just incrementally applies to anything below sb-level2?
+   TODO: is there any easy way to do this that just incrementally applies to anything below sb-level2? id:2451 gh:2452
          ...w/o assuming sb-level4 is as deep as we go?
 */
 ul#mysidebar li.sb-level3 a {

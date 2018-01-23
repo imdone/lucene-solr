@@ -175,7 +175,7 @@ public class SimDistribStateManager implements DistribStateManager {
       for (Watcher w : currentWatchers) {
         w.process(new WatchedEvent(Watcher.Event.EventType.NodeDeleted, Watcher.Event.KeeperState.SyncConnected, n.path));
       }
-      // TODO: not sure if it's correct to recurse and fire watches???
+      // TODO: not sure if it's correct to recurse and fire watches??? id:3074 gh:3075
       Set<String> kids = new HashSet<>(n.children.keySet());
       for (String kid : kids) {
         n.removeChild(kid, -1);

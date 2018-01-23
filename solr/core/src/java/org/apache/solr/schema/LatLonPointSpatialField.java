@@ -51,11 +51,11 @@ import org.locationtech.spatial4j.shape.Shape;
  * first is based on Lucene's "Points" API, which is a BKD Index.  This field type is strictly limited to
  * coordinates in lat/lon decimal degrees.  The accuracy is about a centimeter.
  */
-// TODO once LLP & LLDVF are out of Lucene Sandbox, we should be able to javadoc reference them.
+// TODO once LLP & LLDVF are out of Lucene Sandbox, we should be able to javadoc reference them. id:1899 gh:1900
 public class LatLonPointSpatialField extends AbstractSpatialFieldType implements SchemaAware {
   private IndexSchema schema;
 
-  // TODO handle polygons
+  // TODO handle polygons id:2847 gh:2848
 
   @Override
   protected void checkSupportsDocValues() { // we support DocValues
@@ -68,11 +68,11 @@ public class LatLonPointSpatialField extends AbstractSpatialFieldType implements
 
   @Override
   protected SpatialStrategy newSpatialStrategy(String fieldName) {
-    SchemaField schemaField = schema.getField(fieldName); // TODO change AbstractSpatialFieldType so we get schemaField?
+    SchemaField schemaField = schema.getField(fieldName); // TODO change AbstractSpatialFieldType so we get schemaField? id:1935 gh:1936
     return new LatLonPointSpatialStrategy(ctx, fieldName, schemaField.indexed(), schemaField.hasDocValues());
   }
 
-  // TODO move to Lucene-spatial-extras once LatLonPoint & LatLonDocValuesField moves out of sandbox
+  // TODO move to Lucene-spatial-extras once LatLonPoint & LatLonDocValuesField moves out of sandbox id:2693 gh:2694
   public static class LatLonPointSpatialStrategy extends SpatialStrategy {
 
     private final boolean indexed; // for query/filter
@@ -146,7 +146,7 @@ public class LatLonPointSpatialField extends AbstractSpatialFieldType implements
         throw new UnsupportedOperationException("Shape " + shape.getClass() + " is not supported by " + getClass());
       }
 //      } else if (shape instanceof LucenePolygonShape) {
-//        // TODO support multi-polygon
+//        // TODO support multi-polygon id:2027 gh:2028
 //        Polygon poly = ((LucenePolygonShape)shape).lucenePolygon;
 //        return LatLonPoint.newPolygonQuery(getFieldName(), poly);
     }
@@ -172,7 +172,7 @@ public class LatLonPointSpatialField extends AbstractSpatialFieldType implements
         throw new UnsupportedOperationException("Shape " + shape.getClass() + " is not supported by " + getClass());
       }
 //      } else if (shape instanceof LucenePolygonShape) {
-//        // TODO support multi-polygon
+//        // TODO support multi-polygon id:1901 gh:1902
 //        Polygon poly = ((LucenePolygonShape)shape).lucenePolygon;
 //        return LatLonPoint.newPolygonQuery(getFieldName(), poly);
     }

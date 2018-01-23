@@ -49,7 +49,7 @@ import org.apache.lucene.util.TimeUnits;
 
 import com.carrotsearch.randomizedtesting.annotations.TimeoutSuite;
 
-// NOTE: SimpleText codec will consume very large amounts of
+// NOTE: SimpleText codec will consume very large amounts of id:785 gh:786
 // disk (but, should run successfully).  Best to run w/
 // -Dtests.codec=<current codec>, and w/ plenty of RAM, eg:
 //

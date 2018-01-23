@@ -220,7 +220,7 @@ public class CoreDescriptor {
     loadExtraProperties();
     buildSubstitutableProperties();
 
-    // TODO maybe make this a CloudCoreDescriptor subclass?
+    // TODO maybe make this a CloudCoreDescriptor subclass? id:2744 gh:2745
     if (isZooKeeperAware) {
       cloudDesc = new CloudDescriptor(name, coreProperties, this);
     }

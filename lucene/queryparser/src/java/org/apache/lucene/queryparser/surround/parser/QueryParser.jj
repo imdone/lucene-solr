@@ -188,16 +188,16 @@ PARSER_END(QueryParser)
 /* ***************** */
 
 <*> TOKEN : {
-  <#_NUM_CHAR:   ["0"-"9"] >
-| <#_TERM_CHAR: /* everything except whitespace and operators */
+  <#_NUM_CHAR: ["0"-"9"] > id:1369 gh:1370
+| <#_TERM_CHAR: /* everything except whitespace and operators */ id:1575 gh:1576
     ( ~[ " ", "\t", "\n", "\r",
           ",", "?", "*", "(", ")", ":", "^", "\""]
      ) >
-| <#_WHITESPACE: ( " " | "\t" | "\n" | "\r" ) >
-| <#_STAR:       "*" > /* term truncation */
-| <#_ONE_CHAR:   "?" > /* precisely one character in a term */
+| <#_WHITESPACE: ( " " | "\t" | "\n" | "\r" ) > id:1084 gh:1085
+| <#_STAR: "*" > /* term truncation */ id:1235 gh:1236
+| <#_ONE_CHAR: "?" > /* precisely one character in a term */ id:1102 gh:1103
 /* 2..99 prefix for distance operators */
-| <#_DISTOP_NUM: ((["2"-"9"](["0"-"9"])?) | ("1" ["0"-"9"]))> 
+| <#_DISTOP_NUM: ((["2"-"9"](["0"-"9"])?) | ("1" ["0"-"9"]))>  id:1371 gh:1372
 }
 
 <DEFAULT> SKIP : {

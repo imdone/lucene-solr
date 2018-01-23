@@ -82,7 +82,7 @@ public class ValueSourceAugmenter extends DocTransformer
 
     try {
 
-      // TODO: calculate this stuff just once across diff functions
+      // TODO: calculate this stuff just once across diff functions id:1997 gh:1998
       int idx = ReaderUtil.subIndex(docid, readerContexts);
       LeafReaderContext rcontext = readerContexts.get(idx);
       FunctionValues values = valueSource.getValues(fcontext, rcontext);

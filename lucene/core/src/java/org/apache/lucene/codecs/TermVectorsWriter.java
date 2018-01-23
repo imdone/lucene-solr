@@ -114,10 +114,10 @@ public abstract class TermVectorsWriter implements Closeable {
    * but subclasses can override this if they want to efficiently write 
    * all the positions, then all the offsets, for example.
    * <p>
-   * NOTE: This API is extremely expert and subject to change or removal!!!
+   * NOTE: This API is extremely expert and subject to change or removal!!! id:328 gh:329
    * @lucene.internal
    */
-  // TODO: we should probably nuke this and make a more efficient 4.x format
+  // TODO: we should probably nuke this and make a more efficient 4.x format id:421 gh:422
   // PreFlex-RW could then be slow and buffer (it's only used in tests...)
   public void addProx(int numProx, DataInput positions, DataInput offsets) throws IOException {
     int position = 0;
@@ -214,7 +214,7 @@ public abstract class TermVectorsWriter implements Closeable {
         break;
       }
 
-      // NOTE: it's very important to first assign to vectors then pass it to
+      // NOTE: it's very important to first assign to vectors then pass it to id:486 gh:487
       // termVectorsWriter.addAllDocVectors; see LUCENE-1282
       Fields vectors;
       if (sub.reader == null) {
@@ -240,7 +240,7 @@ public abstract class TermVectorsWriter implements Closeable {
 
     int numFields = vectors.size();
     if (numFields == -1) {
-      // count manually! TODO: Maybe enforce that Fields.size() returns something valid?
+      // count manually! TODO: Maybe enforce that Fields.size() returns something valid? id:461 gh:462
       numFields = 0;
       for (final Iterator<String> it = vectors.iterator(); it.hasNext(); ) {
         it.next();

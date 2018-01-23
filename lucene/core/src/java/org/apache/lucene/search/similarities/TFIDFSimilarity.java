@@ -534,7 +534,7 @@ public abstract class TFIDFSimilarity extends Similarity {
     
     public TFIDFScorer(String field, float boost, Explanation idf, float[] normTable) {
       super(field);
-      // TODO: Validate?
+      // TODO: Validate? id:673 gh:674
       this.idf = idf;
       this.boost = boost;
       this.queryWeight = boost * idf.getValue().floatValue();

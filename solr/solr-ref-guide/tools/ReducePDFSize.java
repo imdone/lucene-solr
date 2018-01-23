@@ -64,7 +64,7 @@ public class ReducePDFSize {
           try {
             bytes = new PDStream(stream).toByteArray();
           } catch (IOException ex) {
-            // NOTE: original example code from PDFBox just logged & "continue;"d here, 'skipping' this stream.
+            // NOTE: original example code from PDFBox just logged & "continue;"d here, 'skipping' this stream. id:2987 gh:2988
             // If this type of failure ever happens, we can (perhaps) consider (re)ignoring this type of failure?
             //
             // IIUC then that will leave the original (non-decoded / non-flated) stream in place?

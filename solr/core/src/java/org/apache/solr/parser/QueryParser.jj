@@ -97,15 +97,15 @@ TOKEN_MGR_DECLS : {
 /* ***************** */
 
 <*> TOKEN : {
-  <#_NUM_CHAR:        ["0"-"9"] >
-| <#_ESCAPED_CHAR:    "\\" ~[] >  // every character that follows a backslash is considered as an escaped character
-| <#_TERM_START_CHAR: ( ~[ " ", "\t", "\n", "\r", "\u3000", "+", "-", "!", "(", ")", ":", "^",
+  <#_NUM_CHAR: ["0"-"9"] > id:2678 gh:2679
+| <#_ESCAPED_CHAR: "\\" ~[] >  // every character that follows a backslash is considered as an escaped character id:1976 gh:1977
+| <#_TERM_START_CHAR: ( ~[ " ", "\t", "\n", "\r", "\u3000", "+", "-", "!", "(", ")", ":", "^", id:1871 gh:1872
                            "[", "]", "\"", "{", "}", "~", "*", "?", "\\", "/" ]
                         | <_ESCAPED_CHAR> ) >
-| <#_TERM_CHAR:       ( <_TERM_START_CHAR> | <_ESCAPED_CHAR> | "-" | "+" | "/" | "!") >
-| <#_WHITESPACE:      ( " " | "\t" | "\n" | "\r" | "\u3000") >
-| <#_QUOTED_CHAR:     ( ~[ "\"", "\\" ] | <_ESCAPED_CHAR> ) >
-| <#_SQUOTED_CHAR:    ( ~[ "'", "\\" ] | <_ESCAPED_CHAR> ) >
+| <#_TERM_CHAR: ( <_TERM_START_CHAR> | <_ESCAPED_CHAR> | "-" | "+" | "/" | "!") > id:2819 gh:2820
+| <#_WHITESPACE: ( " " | "\t" | "\n" | "\r" | "\u3000") > id:1902 gh:1903
+| <#_QUOTED_CHAR: ( ~[ "\"", "\\" ] | <_ESCAPED_CHAR> ) > id:2679 gh:2680
+| <#_SQUOTED_CHAR: ( ~[ "'", "\\" ] | <_ESCAPED_CHAR> ) > id:1978 gh:1979
 }
 
 <DEFAULT, COMMENT> SKIP : {

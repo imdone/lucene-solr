@@ -94,7 +94,7 @@ public class TestIndexWriterOutOfFileDescriptors extends LuceneTestCase {
         }
         w = null;
 
-        // NOTE: This is O(N^2)!  Only enable for temporary debugging:
+        // NOTE: This is O(N^2)!  Only enable for temporary debugging: id:1108 gh:1109
         //dir.setRandomIOExceptionRateOnOpen(0.0);
         //_TestUtil.checkIndex(dir);
         //dir.setRandomIOExceptionRateOnOpen(rate);
@@ -127,7 +127,7 @@ public class TestIndexWriterOutOfFileDescriptors extends LuceneTestCase {
           ioe.printStackTrace();
         }
         if (w != null) {
-          // NOTE: leave random IO exceptions enabled here,
+          // NOTE: leave random IO exceptions enabled here, id:1284 gh:1285
           // to verify that rollback does not try to write
           // anything:
           w.rollback();

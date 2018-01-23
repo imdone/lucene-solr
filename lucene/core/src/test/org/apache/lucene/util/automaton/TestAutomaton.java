@@ -780,7 +780,7 @@ public class TestAutomaton extends LuceneTestCase {
           if (VERBOSE) {
             System.out.println("  op=optional");
           }
-          // NOTE: This can add a dead state:
+          // NOTE: This can add a dead state: id:1055 gh:1056
           a = Operations.optional(a);
           terms.add(new BytesRef());
         }

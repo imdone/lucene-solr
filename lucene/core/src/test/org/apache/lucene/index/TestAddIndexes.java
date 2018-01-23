@@ -646,7 +646,7 @@ public class TestAddIndexes extends LuceneTestCase {
     dir2.close();
   }
 
-  // TODO: these are also in TestIndexWriter... add a simple doc-writing method
+  // TODO: these are also in TestIndexWriter... add a simple doc-writing method id:821 gh:822
   // like this to LuceneTestCase?
   private void addDoc(IndexWriter writer) throws IOException
   {

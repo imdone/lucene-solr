@@ -288,7 +288,7 @@ public class BasicDistributedZkTest extends AbstractFullDistribZkTestBase {
 
     query(false, new Object[] {"q","*:*", "sort",i1+" desc", "stats", "true", "stats.field", i1});
 
-    /*** TODO: the failure may come back in "exception"
+    /*** TODO: the failure may come back in "exception" id:2856 gh:2857
     try {
       // test error produced for field that is invalid for schema
       query("q","*:*", "rows",100, "facet","true", "facet.field",invalidField, "facet.mincount",2);
@@ -360,7 +360,7 @@ public class BasicDistributedZkTest extends AbstractFullDistribZkTestBase {
 
     waitForDocCount(before, 30000, "deleteByQuery commitWithin did not work");
 
-    // TODO: This test currently fails because debug info is obtained only
+    // TODO: This test currently fails because debug info is obtained only id:2257 gh:2258
     // on shards with matches.
     // query("q","matchesnothing","fl","*,score", "debugQuery", "true");
 
@@ -611,7 +611,7 @@ public class BasicDistributedZkTest extends AbstractFullDistribZkTestBase {
   @Override
   protected CollectionAdminResponse createCollection(Map<String, List<Integer>> collectionInfos,
                                                      String collectionName, String configSetName, int numShards, int numReplicas, int maxShardsPerNode, SolrClient client, String createNodeSetStr) throws SolrServerException, IOException {
-    // TODO: Use CollectionAdminRequest for this test
+    // TODO: Use CollectionAdminRequest for this test id:2176 gh:2177
     ModifiableSolrParams params = new ModifiableSolrParams();
     params.set("action", CollectionAction.CREATE.toString());
 
@@ -724,7 +724,7 @@ public class BasicDistributedZkTest extends AbstractFullDistribZkTestBase {
     }
     unIgnoreException("version conflict");
 
-    // TODO: test deletes.  SolrJ needs a good way to pass version for delete...
+    // TODO: test deletes.  SolrJ needs a good way to pass version for delete... id:3042 gh:3043
 
     sd =  sdoc("id", 1000, "foo_i",5);
     clients.get(0).add(sd);
@@ -818,7 +818,7 @@ public class BasicDistributedZkTest extends AbstractFullDistribZkTestBase {
     
     //printLayout();
     
-   // TODO: enable when we don't falsely get slice1...
+   // TODO: enable when we don't falsely get slice1... id:2245 gh:2246
    // solrj.getZkStateReader().getLeaderUrl(oneInstanceCollection2, "slice1", 30000);
    // solrj.getZkStateReader().getLeaderUrl(oneInstanceCollection2, "slice2", 30000);
     client2.add(getDoc(id, "1")); 

@@ -90,7 +90,7 @@ import org.apache.lucene.util.NumericUtils;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
-// TODO: add separate docvalues test
+// TODO: add separate docvalues test id:1350 gh:1351
 /**
  * barebones tests for function queries.
  */
@@ -285,7 +285,7 @@ public class TestValueSources extends LuceneTestCase {
     assertHits(new FunctionQuery(new JoinDocFreqValueSource("string", "text")), 
                new float[] { 2f, 0f });
 
-    // TODO: what *should* the rules be for exist() ?
+    // TODO: what *should* the rules be for exist() ? id:1562 gh:1563
   }
   
   public void testLinearFloat() throws Exception {
@@ -466,7 +466,7 @@ public class TestValueSources extends LuceneTestCase {
         new ConstValueSource(11f))),
         new float[] { 3f, 11f });
     
-    // TODO: what *should* the rules be for exist() ?
+    // TODO: what *should* the rules be for exist() ? id:1070 gh:1071
     // ((source exists && source in range && target exists) OR (source not in range && default exists)) ?
   }
   

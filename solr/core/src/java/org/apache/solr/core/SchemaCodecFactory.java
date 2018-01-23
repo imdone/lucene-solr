@@ -59,7 +59,7 @@ public class SchemaCodecFactory extends CodecFactory implements SolrCoreAware {
   private volatile SolrCore core;
   
   
-  // TODO: we need to change how solr does this?
+  // TODO: we need to change how solr does this? id:1830 gh:1831
   // rather than a string like "Direct" you need to be able to pass parameters
   // and everything to a field in the schema, e.g. we should provide factories for 
   // the Lucene's core formats (Memory, Direct, ...) and such.

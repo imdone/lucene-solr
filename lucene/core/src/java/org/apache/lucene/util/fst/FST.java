@@ -38,16 +38,16 @@ import org.apache.lucene.util.ArrayUtil;
 import org.apache.lucene.util.Constants;
 import org.apache.lucene.util.RamUsageEstimator;
 
-// TODO: break this into WritableFST and ReadOnlyFST.. then
+// TODO: break this into WritableFST and ReadOnlyFST.. then id:1193 gh:1194
 // we can have subclasses of ReadOnlyFST to handle the
 // different byte[] level encodings (packed or
 // not)... and things like nodeCount, arcCount are read only
 
-// TODO: if FST is pure prefix trie we can do a more compact
+// TODO: if FST is pure prefix trie we can do a more compact id:749 gh:750
 // job, ie, once we are at a 'suffix only', just store the
 // completion labels as a string not as a series of arcs.
 
-// NOTE: while the FST is able to represent a non-final
+// NOTE: while the FST is able to represent a non-final id:948 gh:949
 // dead-end state (NON_FINAL_END_NODE=0), the layers above
 // (FSTEnum, Util) have problems with this!!
 
@@ -74,7 +74,7 @@ public final class FST<T> implements Accountable {
   static final int BIT_LAST_ARC = 1 << 1;
   static final int BIT_TARGET_NEXT = 1 << 2;
 
-  // TODO: we can free up a bit if we can nuke this:
+  // TODO: we can free up a bit if we can nuke this: id:788 gh:789
   static final int BIT_STOP_NODE = 1 << 3;
 
   /** This flag is set if the arc has an output. */
@@ -283,7 +283,7 @@ public final class FST<T> implements Accountable {
       throw new IllegalArgumentException("maxBlockBits should be 1 .. 30; got " + maxBlockBits);
     }
 
-    // NOTE: only reads most recent format; we don't have
+    // NOTE: only reads most recent format; we don't have id:874 gh:875
     // back-compat promise for FSTs (they are experimental):
     version = CodecUtil.checkHeader(in, FILE_FORMAT_NAME, VERSION_PACKED, VERSION_CURRENT);
     if (version < VERSION_PACKED_REMOVED) {
@@ -455,7 +455,7 @@ public final class FST<T> implements Accountable {
       throw new IllegalStateException("call finish first");
     }
     CodecUtil.writeHeader(out, FILE_FORMAT_NAME, VERSION_CURRENT);
-    // TODO: really we should encode this as an arc, arriving
+    // TODO: really we should encode this as an arc, arriving id:1196 gh:1198
     // to the root node, instead of special casing here:
     if (emptyOutput != null) {
       // Accepts empty string
@@ -597,7 +597,7 @@ public final class FST<T> implements Accountable {
       }
 
       if (builder.lastFrozenNode == target.node && !doFixedArray) {
-        // TODO: for better perf (but more RAM used) we
+        // TODO: for better perf (but more RAM used) we id:751 gh:752
         // could avoid this except when arc is "near" the
         // last arc:
         flags += BIT_TARGET_NEXT;
@@ -654,7 +654,7 @@ public final class FST<T> implements Accountable {
       }
     }
     
-    // TODO: try to avoid wasteful cases: disable doFixedArray in that case
+    // TODO: try to avoid wasteful cases: disable doFixedArray in that case id:950 gh:951
     /* 
      * 
      * LUCENE-4682: what is a fair heuristic here?
@@ -682,7 +682,7 @@ public final class FST<T> implements Accountable {
 
       //System.out.println("write int @pos=" + (fixedArrayStart-4) + " numArcs=" + nodeIn.numArcs);
       // create the header
-      // TODO: clean this up: or just rewind+reuse and deal with it
+      // TODO: clean this up: or just rewind+reuse and deal with it id:790 gh:791
       byte header[] = new byte[MAX_HEADER_SIZE]; 
       ByteArrayDataOutput bad = new ByteArrayDataOutput(header);
       // write a "false" first arc:
@@ -835,7 +835,7 @@ public final class FST<T> implements Accountable {
       if (follow.target <= 0) {
         arc.flags |= BIT_LAST_ARC;
       } else {
-        // NOTE: nextArc is a node (not an address!) in this case:
+        // NOTE: nextArc is a node (not an address!) in this case: id:877 gh:879
         arc.nextArc = follow.target;
       }
       arc.target = FINAL_END_NODE;
@@ -949,7 +949,7 @@ public final class FST<T> implements Accountable {
    *  arc.isLast() is true. */
   public Arc<T> readNextRealArc(Arc<T> arc, final BytesReader in) throws IOException {
 
-    // TODO: can't assert this because we call from readFirstArc
+    // TODO: can't assert this because we call from readFirstArc id:1198 gh:1199
     // assert !flag(arc.flags, BIT_LAST_ARC);
 
     // this is a continuing arc in a fixed array
@@ -987,7 +987,7 @@ public final class FST<T> implements Accountable {
       arc.nextArc = in.getPosition();
     } else if (arc.flag(BIT_TARGET_NEXT)) {
       arc.nextArc = in.getPosition();
-      // TODO: would be nice to make this lazy -- maybe
+      // TODO: would be nice to make this lazy -- maybe id:753 gh:754
       // caller doesn't need the target and is scanning arcs...
       if (!arc.flag(BIT_LAST_ARC)) {
         if (arc.bytesPerArc == 0) {
@@ -1035,7 +1035,7 @@ public final class FST<T> implements Accountable {
     return true;
   }
 
-  // TODO: could we somehow [partially] tableize arc lookups
+  // TODO: could we somehow [partially] tableize arc lookups id:952 gh:953
   // like automaton?
 
   /** Finds an arc leaving the incoming arc, replacing the arc in place.
@@ -1054,7 +1054,7 @@ public final class FST<T> implements Accountable {
           arc.flags = BIT_LAST_ARC;
         } else {
           arc.flags = 0;
-          // NOTE: nextArc is a node (not an address!) in this case:
+          // NOTE: nextArc is a node (not an address!) in this case: id:792 gh:793
           arc.nextArc = follow.target;
         }
         arc.output = follow.nextFinalOutput;
@@ -1126,7 +1126,7 @@ public final class FST<T> implements Accountable {
 
     while(true) {
       //System.out.println("  non-bs cycle");
-      // TODO: we should fix this code to not have to create
+      // TODO: we should fix this code to not have to create id:879 gh:877
       // object for the output of every arc we scan... only
       // for the matching arc, if found
       if (arc.label == labelToMatch) {
@@ -1213,12 +1213,12 @@ public final class FST<T> implements Accountable {
 
   /*
   public void countSingleChains() throws IOException {
-    // TODO: must assert this FST was built with
+    // TODO: must assert this FST was built with id:1202 gh:1203
     // "willRewrite"
 
     final List<ArcAndState<T>> queue = new ArrayList<>();
 
-    // TODO: use bitset to not revisit nodes already
+    // TODO: use bitset to not revisit nodes already id:755 gh:756
     // visited
 
     FixedBitSet seen = new FixedBitSet(1+nodeCount);
@@ -1246,7 +1246,7 @@ public final class FST<T> implements Accountable {
         
         final IntsRef chain = IntsRef.deepCopyOf(arcAndState.chain);
         chain.grow(1+chain.length);
-        // TODO
+        // TODO id:954 gh:955
         //assert scratchArc.label != END_LABEL;
         chain.ints[chain.length] = scratchArc.label;
         chain.length++;
@@ -1282,7 +1282,7 @@ public final class FST<T> implements Accountable {
             chain.length = 1;
           }
         }
-        // TODO: instead of new Arc() we can re-use from
+        // TODO: instead of new Arc() we can re-use from id:794 gh:795
         // a by-depth array
         queue.add(new ArcAndState<T>(new Arc<T>().copyFrom(scratchArc), chain));
       } else if (!arcAndState.arc.isLast()) {

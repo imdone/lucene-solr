@@ -98,7 +98,7 @@ public class TestIndexFileDeleter extends LuceneTestCase {
     }
     */
 
-    // TODO: fix this test better
+    // TODO: fix this test better id:997 gh:998
     String ext = ".liv";
     
     // Create a bogus separate del file for a
@@ -123,7 +123,7 @@ public class TestIndexFileDeleter extends LuceneTestCase {
 
     // Create a bogus cfs file shadowing a non-cfs segment:
     
-    // TODO: assert is bogus (relies upon codec-specific filenames)
+    // TODO: assert is bogus (relies upon codec-specific filenames) id:837 gh:838
     assertTrue(slowFileExists(dir, "_3.fdt") || slowFileExists(dir, "_3.fld"));
     
     String cfsFiles3[] = si3.getCodec() instanceof SimpleTextCodec ? new String[] { "_3.scf" } : new String[] { "_3.cfs", "_3.cfe" };
@@ -256,7 +256,7 @@ public class TestIndexFileDeleter extends LuceneTestCase {
   
   public void testSegmentsInflation() throws IOException {
     MockDirectoryWrapper dir = newMockDirectory();
-    dir.setCheckIndexOnClose(false); // TODO: allow falling back more than one commit
+    dir.setCheckIndexOnClose(false); // TODO: allow falling back more than one commit id:927 gh:929
     
     // empty commit
     new IndexWriter(dir, new IndexWriterConfig(null)).close();   
@@ -345,7 +345,7 @@ public class TestIndexFileDeleter extends LuceneTestCase {
   
   public void testTrashyFile() throws IOException {
     MockDirectoryWrapper dir = newMockDirectory();
-    dir.setCheckIndexOnClose(false); // TODO: maybe handle such trash better elsewhere...
+    dir.setCheckIndexOnClose(false); // TODO: maybe handle such trash better elsewhere... id:1274 gh:1275
     
     // empty commit
     new IndexWriter(dir, new IndexWriterConfig(null)).close();   

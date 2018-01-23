@@ -50,7 +50,7 @@ public class QueryContext extends IdentityHashMap implements Closeable {
   public QueryContext(IndexSearcher searcher) {
     this.searcher = searcher instanceof SolrIndexSearcher ? (SolrIndexSearcher)searcher : null;
     indexSearcher = searcher;
-    this.put("searcher", searcher); // see ValueSource.newContext()  // TODO: move check to "get"?
+    this.put("searcher", searcher); // see ValueSource.newContext()  // TODO: move check to "get"? id:2050 gh:2051
   }
 
 

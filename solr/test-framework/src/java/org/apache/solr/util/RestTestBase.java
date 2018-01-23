@@ -119,7 +119,7 @@ abstract public class RestTestBase extends SolrJettyTestBase {
 
       String response = restTestHarness.query(request);
 
-      // TODO: should the facet handling below be converted to parse the URL?
+      // TODO: should the facet handling below be converted to parse the URL? id:2489 gh:2490
       /*
       if (req.getParams().getBool("facet", false)) {
         // add a test to ensure that faceting did not throw an exception

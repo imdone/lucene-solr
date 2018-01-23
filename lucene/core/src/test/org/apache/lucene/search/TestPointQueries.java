@@ -1396,7 +1396,7 @@ public class TestPointQueries extends LuceneTestCase {
     IOUtils.close(r, dir);
   }
 
-  // TODO: in the future, if there is demand for real usage, we can "graduate" this test-only query factory as IntPoint.newMultiSetQuery or
+  // TODO: in the future, if there is demand for real usage, we can "graduate" this test-only query factory as IntPoint.newMultiSetQuery or id:1309 gh:1308
   // something (and same for other XXXPoint classes):
   private static Query newMultiDimIntSetQuery(String field, final int numDims, int... valuesIn) throws IOException {
     if (valuesIn.length % numDims != 0) {

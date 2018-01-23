@@ -77,7 +77,7 @@ public abstract class PostingsFormat implements NamedSPILoader.NamedSPI {
    * @param name must be all ascii alphanumeric, and less than 128 characters in length.
    */
   protected PostingsFormat(String name) {
-    // TODO: can we somehow detect name conflicts here?  Two different classes trying to claim the same name?  Otherwise you see confusing errors...
+    // TODO: can we somehow detect name conflicts here?  Two different classes trying to claim the same name?  Otherwise you see confusing errors... id:324 gh:325
     NamedSPILoader.checkServiceName(name);
     this.name = name;
   }
@@ -91,7 +91,7 @@ public abstract class PostingsFormat implements NamedSPILoader.NamedSPI {
   /** Writes a new segment */
   public abstract FieldsConsumer fieldsConsumer(SegmentWriteState state) throws IOException;
 
-  /** Reads a segment.  NOTE: by the time this call
+  /** Reads a segment.  NOTE: by the time this call id:414 gh:415
    *  returns, it must hold open any files it will need to
    *  use; else, those files may be deleted. 
    *  Additionally, required files may be deleted during the execution of 

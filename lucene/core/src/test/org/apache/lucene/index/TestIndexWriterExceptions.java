@@ -838,7 +838,7 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
     }
   }
 
-  // TODO: these are also in TestIndexWriter... add a simple doc-writing method
+  // TODO: these are also in TestIndexWriter... add a simple doc-writing method id:1003 gh:1004
   // like this to LuceneTestCase?
   private void addDoc(IndexWriter writer) throws IOException
   {
@@ -1663,7 +1663,7 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
     dir.close();
   }
   
-  // TODO: we could also check isValid, to catch "broken" bytesref values, might be too much?
+  // TODO: we could also check isValid, to catch "broken" bytesref values, might be too much? id:843 gh:844
   
   static class UOEDirectory extends RAMDirectory {
     boolean doFail = false;
@@ -1837,7 +1837,7 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
     IndexWriterConfig iwc = new IndexWriterConfig(null);
     iwc.setInfoStream(evilInfoStream);
     IndexWriter iw = new IndexWriter(dir, iwc);
-    // TODO: cutover to RandomIndexWriter.mockIndexWriter?
+    // TODO: cutover to RandomIndexWriter.mockIndexWriter? id:1045 gh:1046
     iw.enableTestPoints = true;
     Document doc = new Document();
     for (int i = 0; i < 10; i++) {

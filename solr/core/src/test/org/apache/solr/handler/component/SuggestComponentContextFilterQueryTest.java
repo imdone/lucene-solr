@@ -239,7 +239,7 @@ public class SuggestComponentContextFilterQueryTest extends SolrTestCaseJ4 {
         "//lst[@name='suggest']/lst[@name='suggest_blended_infix_suggester']/lst[@name='examp']/int[@name='numFound'][.='0']");
   }
 
-  @Ignore// TODO: SOLR-7964
+  @Ignore// TODO: SOLR-7964 id:2331 gh:2332
   @Test
   public void testContextFilterWithHighlight() throws Exception {
     assertQ(req("qt", rh,

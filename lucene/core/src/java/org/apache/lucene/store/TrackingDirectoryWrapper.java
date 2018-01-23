@@ -68,7 +68,7 @@ public final class TrackingDirectoryWrapper extends FilterDirectory {
     }
   }
 
-  /** NOTE: returns a copy of the created files. */
+  /** NOTE: returns a copy of the created files. id:760 gh:761*/
   public Set<String> getCreatedFiles() {
     return new HashSet<>(createdFileNames);
   }

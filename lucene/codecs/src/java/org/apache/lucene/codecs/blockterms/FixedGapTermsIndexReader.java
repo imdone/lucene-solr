@@ -45,7 +45,7 @@ import org.apache.lucene.util.packed.MonotonicBlockPackedReader;
  */
 public class FixedGapTermsIndexReader extends TermsIndexReaderBase {
 
-  // NOTE: long is overkill here, but we use this in a
+  // NOTE: long is overkill here, but we use this in a id:259 gh:260
   // number of places to multiply out the actual ord, and we
   // will overflow int during those multiplies.  So to avoid
   // having to upgrade each multiple to long in multiple
@@ -98,7 +98,7 @@ public class FixedGapTermsIndexReader extends TermsIndexReaderBase {
       //System.out.println("FGR: init seg=" + segment + " div=" + indexDivisor + " nF=" + numFields);
       for(int i=0;i<numFields;i++) {
         final int field = in.readVInt();
-        final long numIndexTerms = in.readVInt(); // TODO: change this to a vLong if we fix writer to support > 2B index terms
+        final long numIndexTerms = in.readVInt(); // TODO: change this to a vLong if we fix writer to support > 2B index terms id:264 gh:265
         if (numIndexTerms < 0) {
           throw new CorruptIndexException("invalid numIndexTerms: " + numIndexTerms, in);
         }

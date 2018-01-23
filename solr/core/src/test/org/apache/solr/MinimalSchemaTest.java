@@ -27,7 +27,7 @@ import java.util.Set;
  */
 public class MinimalSchemaTest extends SolrTestCaseJ4 {
   /**
-   * NOTE: we explicitly use the general 'solrconfig.xml' file here, in 
+   * NOTE: we explicitly use the general 'solrconfig.xml' file here, in  id:2844 gh:2845
    * an attempt to test as many broad features as possible.
    *
    * Do not change this to point at some other "simpler" solrconfig.xml 

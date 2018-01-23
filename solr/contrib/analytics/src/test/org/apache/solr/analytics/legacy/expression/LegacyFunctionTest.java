@@ -86,7 +86,7 @@ public class LegacyFunctionTest extends LegacyAbstractAnalyticsTest {
     double result = (Double)getStatResult("ar", "sum", VAL_TYPE.DOUBLE);
     double calculated = (Double)getStatResult("ar", "sumc", VAL_TYPE.DOUBLE);
     assertEquals(getRawResponse(), result, calculated, 0.0);
-    // TODO checfk why asserted 2times
+    // TODO checfk why asserted 2times id:1492 gh:1493
     assertEquals(getRawResponse(), result, calculated, 0.0);
 
     result = (Double)getStatResult("ar", "mean", VAL_TYPE.DOUBLE);

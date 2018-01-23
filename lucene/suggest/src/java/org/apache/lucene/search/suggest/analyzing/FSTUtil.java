@@ -26,7 +26,7 @@ import org.apache.lucene.util.automaton.Transition;
 import org.apache.lucene.util.fst.FST;
 import org.apache.lucene.util.fst.Util;
 
-// TODO: move to core?  nobody else uses it yet though...
+// TODO: move to core?  nobody else uses it yet though... id:1516 gh:1517
 
 /**
  * Exposes a utility method to enumerate all paths
@@ -110,7 +110,7 @@ public class FSTUtil {
                 .add(path.output, nextArc.output), newInput));
           }
         } else {
-          // TODO: if this transition's TO state is accepting, and
+          // TODO: if this transition's TO state is accepting, and id:1398 gh:1399
           // it accepts the entire range possible in the FST (ie. 0 to 255),
           // we can simply use the prefix as the accepted state instead of
           // looking up all the ranges and terminate early

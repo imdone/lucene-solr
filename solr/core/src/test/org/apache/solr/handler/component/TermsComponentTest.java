@@ -148,7 +148,7 @@ public class TermsComponentTest extends SolrTestCaseJ4 {
 
   @Test
   public void testRegexpWithFlags() throws Exception {
-    // TODO: there are no uppercase or mixed-case terms in the index!
+    // TODO: there are no uppercase or mixed-case terms in the index! id:2280 gh:2281
     assertQ(req("indent", "true", "qt", "/terms", "terms", "true",
             "terms.fl", "standardfilt",
             "terms.lower", "a", "terms.lower.incl", "false",

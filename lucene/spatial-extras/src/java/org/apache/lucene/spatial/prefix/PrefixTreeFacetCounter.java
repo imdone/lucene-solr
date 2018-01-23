@@ -110,10 +110,10 @@ public class PrefixTreeFacetCounter {
 
     //scanLevel is an optimization knob of AbstractVisitingPrefixTreeFilter. It's unlikely
     // another scanLevel would be much faster and it tends to be a risky knob (can help a little, can hurt a ton).
-    // TODO use RPT's configured scan level?  Do we know better here?  Hard to say.
+    // TODO use RPT's configured scan level?  Do we know better here?  Hard to say. id:1433 gh:1434
     final int scanLevel = tree.getMaxLevels();
     //AbstractVisitingPrefixTreeFilter is a Lucene Filter.  We don't need a filter; we use it for its great prefix-tree
-    // traversal code.  TODO consider refactoring if/when it makes sense (more use cases than this)
+    // traversal code.  TODO consider refactoring if/when it makes sense (more use cases than this) id:1355 gh:1356
     new AbstractVisitingPrefixTreeQuery(queryShape, strategy.getFieldName(), tree, facetLevel, scanLevel) {
 
       @Override
@@ -150,7 +150,7 @@ public class PrefixTreeFacetCounter {
             // matching docs. We could do this at all levels or never but the closer we get to the facet level, the
             // higher the probability this is worthwhile. We do when docFreq == 1 because it's a cheap check, especially
             // due to "pulsing" in the codec.
-            //TODO this opt should move to VisitorTemplate (which contains an optimization TODO to this effect)
+            //TODO this opt should move to VisitorTemplate (which contains an optimization TODO to this effect) id:1197 gh:1196
             if (cell.getLevel() == facetLevel - 1 || termsEnum.docFreq() == 1) {
               if (!hasDocsAtThisTerm()) {
                 return false;

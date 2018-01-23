@@ -112,7 +112,7 @@ public  class LeaderElector {
     }
 
     // If any double-registrations exist for me, remove all but this latest one!
-    // TODO: can we even get into this state?
+    // TODO: can we even get into this state? id:1770 gh:1771
     String prefix = zkClient.getSolrZooKeeper().getSessionId() + "-" + context.id + "-";
     Iterator<String> it = seqs.iterator();
     while (it.hasNext()) {
@@ -164,7 +164,7 @@ public  class LeaderElector {
     }
   }
 
-  // TODO: get this core param out of here
+  // TODO: get this core param out of here id:1745 gh:1746
   protected void runIamLeaderProcess(final ElectionContext context, boolean weAreReplacement) throws KeeperException,
       InterruptedException, IOException {
     context.runLeaderProcess(weAreReplacement,0);

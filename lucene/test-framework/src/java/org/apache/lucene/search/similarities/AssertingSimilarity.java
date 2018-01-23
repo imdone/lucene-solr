@@ -35,7 +35,7 @@ public class AssertingSimilarity extends Similarity {
     assert state.getLength() > 0;
     assert state.getPosition() >= 0;
     assert state.getOffset() >= 0;
-    assert state.getMaxTermFrequency() >= 0; // TODO: seems to be 0 for omitTFAP? 
+    assert state.getMaxTermFrequency() >= 0; // TODO: seems to be 0 for omitTFAP?  id:2603 gh:2604
     assert state.getMaxTermFrequency() <= state.getLength();
     assert state.getNumOverlap() >= 0;
     assert state.getNumOverlap() < state.getLength();
@@ -54,7 +54,7 @@ public class AssertingSimilarity extends Similarity {
     for (TermStatistics term : termStats) {
       assert term != null;
     }
-    // TODO: check that TermStats is in bounds with respect to collection? e.g. docFreq <= maxDoc
+    // TODO: check that TermStats is in bounds with respect to collection? e.g. docFreq <= maxDoc id:1718 gh:1719
     SimScorer scorer = delegate.scorer(boost, collectionStats, termStats);
     assert scorer != null;
     return new AssertingSimScorer(scorer, boost);

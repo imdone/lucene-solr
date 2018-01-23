@@ -53,7 +53,7 @@ public class Test4GBStoredFields extends LuceneTestCase {
     iwc.setMergePolicy(newLogMergePolicy(false, 10));
     iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
 
-    // TODO: we disable "Compressing" since it likes to pick very extreme values which will be too slow for this test.
+    // TODO: we disable "Compressing" since it likes to pick very extreme values which will be too slow for this test. id:976 gh:977
     // maybe we should factor out crazy cases to ExtremeCompressing? then annotations can handle this stuff...
     if (random().nextBoolean()) {
       iwc.setCodec(CompressingCodec.reasonableInstance(random()));

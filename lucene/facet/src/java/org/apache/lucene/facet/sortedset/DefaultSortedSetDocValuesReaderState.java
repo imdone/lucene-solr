@@ -77,13 +77,13 @@ public class DefaultSortedSetDocValuesReaderState extends SortedSetDocValuesRead
     }
     valueCount = (int) dv.getValueCount();
 
-    // TODO: we can make this more efficient if eg we can be
+    // TODO: we can make this more efficient if eg we can be id:1075 gh:1076
     // "involved" when OrdinalMap is being created?  Ie see
     // each term/ord it's assigning as it goes...
     String lastDim = null;
     int startOrd = -1;
 
-    // TODO: this approach can work for full hierarchy?;
+    // TODO: this approach can work for full hierarchy?; id:906 gh:907
     // TaxoReader can't do this since ords are not in
     // "sorted order" ... but we should generalize this to
     // support arbitrary hierarchy:
@@ -142,9 +142,9 @@ public class DefaultSortedSetDocValuesReaderState extends SortedSetDocValuesRead
   /** Return top-level doc values. */
   @Override
   public SortedSetDocValues getDocValues() throws IOException {
-    // TODO: this is dup'd from slow composite reader wrapper ... can we factor it out to share?
+    // TODO: this is dup'd from slow composite reader wrapper ... can we factor it out to share? id:1275 gh:1276
     OrdinalMap map = null;
-    // TODO: why are we lazy about this?  It's better if ctor pays the cost, not first query?  Oh, but we
+    // TODO: why are we lazy about this?  It's better if ctor pays the cost, not first query?  Oh, but we id:1495 gh:1496
     // call this method from ctor, ok.  Also, we only ever store one entry in the map (for key=field) so
     // why are we using a map?
     synchronized (cachedOrdMaps) {

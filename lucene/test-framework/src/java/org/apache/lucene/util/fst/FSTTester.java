@@ -662,7 +662,7 @@ public class FSTTester<T> {
     // set according to the prune thresholds, then assert the FST
     // matches that same set.
 
-    // NOTE: Crazy RAM intensive!!
+    // NOTE: Crazy RAM intensive!! id:1424 gh:1425
 
     //System.out.println("TEST: tally prefixes");
 

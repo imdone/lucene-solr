@@ -25,7 +25,7 @@ import org.apache.lucene.util.TestUtil;
  * Tests DirectPostingsFormat
  */
 public class TestDirectPostingsFormat extends BasePostingsFormatTestCase {
-  // TODO: randomize parameters
+  // TODO: randomize parameters id:468 gh:469
   private final Codec codec = TestUtil.alwaysPostingsFormat(new DirectPostingsFormat());
 
   @Override

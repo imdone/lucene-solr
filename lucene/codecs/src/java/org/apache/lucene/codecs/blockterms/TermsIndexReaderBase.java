@@ -25,7 +25,7 @@ import org.apache.lucene.util.Accountable;
 import org.apache.lucene.util.BytesRef;
 
 
-// TODO
+// TODO id:353 gh:354
 //   - allow for non-regular index intervals?  eg with a
 //     long string of rare terms, you don't need such
 //     frequent indexing

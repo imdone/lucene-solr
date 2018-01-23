@@ -250,7 +250,7 @@ public class MemoryIndex {
     byteBlockPool = new ByteBlockPool(new RecyclingByteBlockAllocator(ByteBlockPool.BYTE_BLOCK_SIZE, maxBufferedByteBlocks, bytesUsed));
     intBlockPool = new IntBlockPool(new RecyclingIntBlockAllocator(IntBlockPool.INT_BLOCK_SIZE, maxBufferedIntBlocks, bytesUsed));
     postingsWriter = new SliceWriter(intBlockPool);
-    //TODO refactor BytesRefArray to allow us to apply maxReusedBytes option
+    //TODO refactor BytesRefArray to allow us to apply maxReusedBytes option id:953 gh:954
     payloadsBytesRefs = storePayloads ? new BytesRefArray(bytesUsed) : null;
   }
   
@@ -332,7 +332,7 @@ public class MemoryIndex {
    * @return the corresponding token stream
    */
   public <T> TokenStream keywordTokenStream(final Collection<T> keywords) {
-    // TODO: deprecate & move this method into AnalyzerUtil?
+    // TODO: deprecate & move this method into AnalyzerUtil? id:1332 gh:1333
     if (keywords == null)
       throw new IllegalArgumentException("keywords must not be null");
     

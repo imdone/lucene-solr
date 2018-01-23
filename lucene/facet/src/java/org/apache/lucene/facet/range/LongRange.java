@@ -43,7 +43,7 @@ public final class LongRange extends Range {
   /** Maximum (inclusive). */
   public final long max;
 
-  // TODO: can we require fewer args? (same for
+  // TODO: can we require fewer args? (same for id:1488 gh:1489
   // Double/FloatRange too)
 
   /** Create a LongRange. */
@@ -159,7 +159,7 @@ public final class LongRange extends Range {
 
             @Override
             public float matchCost() {
-              return 100; // TODO: use cost of range.accept()
+              return 100; // TODO: use cost of range.accept() id:1021 gh:1022
             }
           };
           return new ConstantScoreScorer(this, score(), twoPhase);

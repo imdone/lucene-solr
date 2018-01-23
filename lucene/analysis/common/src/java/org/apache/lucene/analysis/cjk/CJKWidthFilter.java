@@ -31,7 +31,7 @@ import org.apache.lucene.analysis.util.StemmerUtil;
  *   <li>Folds halfwidth Katakana variants into the equivalent kana
  * </ul>
  * <p>
- * NOTE: this filter can be viewed as a (practical) subset of NFKC/NFKD
+ * NOTE: this filter can be viewed as a (practical) subset of NFKC/NFKD id:47 gh:48
  * Unicode normalization. See the normalization support in the ICU package
  * for full normalization.
  */

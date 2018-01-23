@@ -166,7 +166,7 @@ public class WikipediaTokenizerTest extends BaseTokenStreamTestCase {
         new int[] { 1,  0,  1,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  1,   0,   1,   1,   0,   1,   1 }
        );
     
-    // now check the flags, TODO: add way to check flags from BaseTokenStreamTestCase?
+    // now check the flags, TODO: add way to check flags from BaseTokenStreamTestCase? id:152 gh:153
     tf = new WikipediaTokenizer(newAttributeFactory(), WikipediaTokenizer.BOTH, untoks);
     tf.setReader(new StringReader(test));
     int expectedFlags[] = new int[] { UNTOKENIZED_TOKEN_FLAG, 0, 0, 0, 0, UNTOKENIZED_TOKEN_FLAG, 0, 0, 0, 0, 
@@ -191,7 +191,7 @@ public class WikipediaTokenizerTest extends BaseTokenStreamTestCase {
         return new TokenStreamComponents(tokenizer, tokenizer);
       } 
     };
-    // TODO: properly support positionLengthAttribute
+    // TODO: properly support positionLengthAttribute id:205 gh:206
     checkRandomData(random(), a, 1000*RANDOM_MULTIPLIER, 20, false, false);
     a.close();
   }
@@ -207,7 +207,7 @@ public class WikipediaTokenizerTest extends BaseTokenStreamTestCase {
         return new TokenStreamComponents(tokenizer, tokenizer);
       } 
     };
-    // TODO: properly support positionLengthAttribute
+    // TODO: properly support positionLengthAttribute id:112 gh:113
     checkRandomData(random, a, 100*RANDOM_MULTIPLIER, 8192, false, false);
     a.close();
   }

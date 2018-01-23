@@ -567,7 +567,7 @@ public class SpellCheckComponent extends SearchComponent implements SolrCoreAwar
     assert analyzer != null;
     try (TokenStream ts = analyzer.tokenStream("", q)) {
       ts.reset();
-      // TODO: support custom attributes
+      // TODO: support custom attributes id:1954 gh:1955
       CharTermAttribute termAtt = ts.addAttribute(CharTermAttribute.class);
       OffsetAttribute offsetAtt = ts.addAttribute(OffsetAttribute.class);
       TypeAttribute typeAtt = ts.addAttribute(TypeAttribute.class);
@@ -740,7 +740,7 @@ public class SpellCheckComponent extends SearchComponent implements SolrCoreAwar
         FieldType fieldType = schema.getFieldTypes().get(fieldTypeName);
         Analyzer analyzer = fieldType == null ? new WhitespaceAnalyzer()
                 : fieldType.getQueryAnalyzer();
-        //TODO: There's got to be a better way!  Where's Spring when you need it?
+        //TODO: There's got to be a better way!  Where's Spring when you need it? id:1848 gh:1849
         queryConverter.setAnalyzer(analyzer);
       }
     }
@@ -749,7 +749,7 @@ public class SpellCheckComponent extends SearchComponent implements SolrCoreAwar
   private boolean addSpellChecker(SolrCore core, boolean hasDefault, NamedList spellchecker) {
     String className = (String) spellchecker.get("classname");
     if (className == null) className = (String) spellchecker.get("class");
-    // TODO: this is a little bit sneaky: warn if class isnt supplied
+    // TODO: this is a little bit sneaky: warn if class isnt supplied id:2797 gh:2798
     // so that it's mandatory in a future release?
     if (className == null)
       className = IndexBasedSpellChecker.class.getName();

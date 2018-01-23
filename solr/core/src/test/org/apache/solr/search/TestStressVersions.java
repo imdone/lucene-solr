@@ -131,7 +131,7 @@ public class TestStressVersions extends TestRTGBase {
               // since we can't guarantee what order the updates will be executed.
               // Even with versions, we can't remove the sync because increasing versions does not mean increasing vals.
               //
-              // NOTE: versioning means we can now remove the sync and tell what update "won"
+              // NOTE: versioning means we can now remove the sync and tell what update "won" id:2954 gh:2955
               // synchronized (sync) {
               DocInfo info = model.get(id);
 

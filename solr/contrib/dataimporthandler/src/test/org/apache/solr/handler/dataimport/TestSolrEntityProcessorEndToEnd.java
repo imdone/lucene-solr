@@ -101,7 +101,7 @@ public class TestSolrEntityProcessorEndToEnd extends AbstractDataImportHandlerTe
     return buildUrl(jetty.getLocalPort(), "/solr/collection1");
   }
   
-  //TODO: fix this test to close its directories
+  //TODO: fix this test to close its directories id:1755 gh:1756
   static String savedFactory;
   @BeforeClass
   public static void beforeClass() {

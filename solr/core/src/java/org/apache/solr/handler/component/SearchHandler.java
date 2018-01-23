@@ -358,7 +358,7 @@ public class SearchHandler extends RequestHandlerBase implements SolrCoreAware ,
             }
             sreq.responses = new ArrayList<>(sreq.actualShards.length); // presume we'll get a response from each shard we send to
 
-            // TODO: map from shard to address[]
+            // TODO: map from shard to address[] id:1874 gh:1875
             for (String shard : sreq.actualShards) {
               ModifiableSolrParams params = new ModifiableSolrParams(sreq.params);
               params.remove(ShardParams.SHARDS);      // not a top-level request
@@ -487,7 +487,7 @@ public class SearchHandler extends RequestHandlerBase implements SolrCoreAware ,
 }
 
 
-// TODO: generalize how a comm component can fit into search component framework
-// TODO: statics should be per-core singletons
+// TODO: generalize how a comm component can fit into search component framework id:2665 gh:2666
+// TODO: statics should be per-core singletons id:1950 gh:1951
 
 

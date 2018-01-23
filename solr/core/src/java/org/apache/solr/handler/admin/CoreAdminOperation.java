@@ -77,7 +77,7 @@ enum CoreAdminOperation implements CoreAdminOp {
     CoreContainer coreContainer = it.handler.coreContainer;
     Path instancePath = coreContainer.getCoreRootDirectory().resolve(coreName);
 
-    // TODO: Should we nuke setting odd instance paths?  They break core discovery, generally
+    // TODO: Should we nuke setting odd instance paths?  They break core discovery, generally id:1810 gh:1811
     String instanceDir = it.req.getParams().get(CoreAdminParams.INSTANCE_DIR);
     if (instanceDir == null)
       instanceDir = it.req.getParams().get("property.instanceDir");

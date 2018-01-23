@@ -50,7 +50,7 @@ public class AvgAgg extends SimpleAggValueSource {
 
     @Override
     protected double getDouble() {
-      // TODO: is it worth to try and cache?
+      // TODO: is it worth to try and cache? id:2721 gh:2722
       return num==0 ? 0.0d : sum/num;
     }
 

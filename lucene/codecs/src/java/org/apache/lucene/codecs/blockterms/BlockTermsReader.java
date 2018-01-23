@@ -120,7 +120,7 @@ public class BlockTermsReader extends FieldsProducer {
       // Have PostingsReader init itself
       postingsReader.init(in, state);
       
-      // NOTE: data file is too costly to verify checksum against all the bytes on open,
+      // NOTE: data file is too costly to verify checksum against all the bytes on open, id:258 gh:259
       // but for now we at least verify proper structure of the checksum footer: which looks
       // for FOOTER_MAGIC + algorithmID. This is cheap and can detect some forms of corruption
       // such as file truncation.
@@ -344,7 +344,7 @@ public class BlockTermsReader extends FieldsProducer {
         longs = new long[longsSize];
       }
 
-      // TODO: we may want an alternate mode here which is
+      // TODO: we may want an alternate mode here which is id:224 gh:225
       // "if you are about to return NOT_FOUND I won't use
       // the terms data from that"; eg FuzzyTermsEnum will
       // (usually) just immediately call seek again if we
@@ -450,7 +450,7 @@ public class BlockTermsReader extends FieldsProducer {
             final int cmp = (term.byteAt(common)&0xFF) - (target.bytes[target.offset + common]&0xFF);
             if (cmp < 0) {
 
-              // TODO: maybe we should store common prefix
+              // TODO: maybe we should store common prefix id:343 gh:344
               // in block header?  (instead of relying on
               // last term of previous block)
 
@@ -615,7 +615,7 @@ public class BlockTermsReader extends FieldsProducer {
           return null;
         }
 
-        // TODO: cutover to something better for these ints!  simple64?
+        // TODO: cutover to something better for these ints!  simple64? id:230 gh:231
         final int suffix = termSuffixesReader.readVInt();
         //System.out.println("  suffix=" + suffix);
 
@@ -624,7 +624,7 @@ public class BlockTermsReader extends FieldsProducer {
         termSuffixesReader.readBytes(term.bytes(), termBlockPrefix, suffix);
         state.termBlockOrd++;
 
-        // NOTE: meaningless in the non-ord case
+        // NOTE: meaningless in the non-ord case id:255 gh:256
         state.ord++;
 
         //System.out.println("  return term=" + fieldInfo.name + ":" + term.utf8ToString() + " " + term + " tbOrd=" + state.termBlockOrd);
@@ -687,7 +687,7 @@ public class BlockTermsReader extends FieldsProducer {
 
         assert ord < numTerms;
 
-        // TODO: if ord is in same terms block and
+        // TODO: if ord is in same terms block and id:260 gh:261
         // after current ord, we should avoid this seek just
         // like we do in the seek(BytesRef) case
         in.seek(indexEnum.seek(ord));
@@ -733,7 +733,7 @@ public class BlockTermsReader extends FieldsProducer {
          use. */
       private boolean nextBlock() throws IOException {
 
-        // TODO: we still lazy-decode the byte[] for each
+        // TODO: we still lazy-decode the byte[] for each id:228 gh:229
         // term (the suffix), but, if we decoded
         // all N terms up front then seeking could do a fast
         // bsearch w/in the block...
@@ -788,7 +788,7 @@ public class BlockTermsReader extends FieldsProducer {
       private void decodeMetaData() throws IOException {
         //System.out.println("BTR.decodeMetadata mdUpto=" + metaDataUpto + " vs termCount=" + state.termBlockOrd + " state=" + state);
         if (!seekPending) {
-          // TODO: cutover to random-access API
+          // TODO: cutover to random-access API id:347 gh:348
           // here.... really stupid that we have to decode N
           // wasted term metadata just to get to the N+1th
           // that we really need...
@@ -796,16 +796,16 @@ public class BlockTermsReader extends FieldsProducer {
           // lazily catch up on metadata decode:
           final int limit = state.termBlockOrd;
           boolean absolute = metaDataUpto == 0;
-          // TODO: better API would be "jump straight to term=N"???
+          // TODO: better API would be "jump straight to term=N"??? id:233 gh:234
           while (metaDataUpto < limit) {
             //System.out.println("  decode mdUpto=" + metaDataUpto);
-            // TODO: we could make "tiers" of metadata, ie,
+            // TODO: we could make "tiers" of metadata, ie, id:257 gh:258
             // decode docFreq/totalTF but don't decode postings
             // metadata; this way caller could get
             // docFreq/totalTF w/o paying decode cost for
             // postings
 
-            // TODO: if docFreq were bulk decoded we could
+            // TODO: if docFreq were bulk decoded we could id:262 gh:263
             // just skipN here:
 
             // docFreq, totalTermFreq

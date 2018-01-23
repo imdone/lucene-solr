@@ -34,6 +34,6 @@ public class StandardFilter extends TokenFilter {
   
   @Override
   public final boolean incrementToken() throws IOException {
-    return input.incrementToken(); // TODO: add some niceties for the new grammar
+    return input.incrementToken(); // TODO: add some niceties for the new grammar id:330 gh:331
   }
 }

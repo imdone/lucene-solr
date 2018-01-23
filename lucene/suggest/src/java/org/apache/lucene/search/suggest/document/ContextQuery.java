@@ -50,7 +50,7 @@ import org.apache.lucene.util.fst.Util;
  *  query.addContext("context2", 1);
  * </pre>
  * <p>
- * NOTE:
+ * NOTE: id:1412 gh:1413
  * <ul>
  *   <li>
  *    This query can be constructed with

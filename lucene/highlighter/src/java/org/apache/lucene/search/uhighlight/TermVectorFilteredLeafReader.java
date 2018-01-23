@@ -34,7 +34,7 @@ import org.apache.lucene.util.automaton.CompiledAutomaton;
  * @lucene.internal
  */
 final class TermVectorFilteredLeafReader extends FilterLeafReader {
-  // NOTE: super ("in") is baseLeafReader
+  // NOTE: super ("in") is baseLeafReader id:1532 gh:1533
 
   private final Terms filterTerms;
 
@@ -57,7 +57,7 @@ final class TermVectorFilteredLeafReader extends FilterLeafReader {
   }
 
   private static final class TermsFilteredTerms extends FilterLeafReader.FilterTerms {
-    // NOTE: super ("in") is the baseTerms
+    // NOTE: super ("in") is the baseTerms id:1044 gh:1045
 
     private final Terms filterTerms;
 
@@ -66,9 +66,9 @@ final class TermVectorFilteredLeafReader extends FilterLeafReader {
       this.filterTerms = filterTerms;
     }
 
-    //TODO delegate size() ?
+    //TODO delegate size() ? id:1111 gh:1112
 
-    //TODO delegate getMin, getMax to filterTerms
+    //TODO delegate getMin, getMax to filterTerms id:941 gh:942
 
     @Override
     public TermsEnum iterator() throws IOException {
@@ -82,10 +82,10 @@ final class TermVectorFilteredLeafReader extends FilterLeafReader {
   }
 
   private static final class TermVectorFilteredTermsEnum extends FilterLeafReader.FilterTermsEnum {
-    // NOTE: super ("in") is the filteredTermsEnum. This is different than wrappers above because we
+    // NOTE: super ("in") is the filteredTermsEnum. This is different than wrappers above because we id:1311 gh:1312
     //    navigate the terms using the filter.
 
-    //TODO: track the last term state from the term state method and do some potential optimizations
+    //TODO: track the last term state from the term state method and do some potential optimizations id:1536 gh:1537
     private final TermsEnum baseTermsEnum;
 
     TermVectorFilteredTermsEnum(TermsEnum baseTermsEnum, TermsEnum filteredTermsEnum) {
@@ -93,7 +93,7 @@ final class TermVectorFilteredLeafReader extends FilterLeafReader {
       this.baseTermsEnum = baseTermsEnum;
     }
 
-    //TODO delegate docFreq & ttf (moveToCurrentTerm() then call on full?
+    //TODO delegate docFreq & ttf (moveToCurrentTerm() then call on full? id:1047 gh:1048
 
     @Override
     public PostingsEnum postings(PostingsEnum reuse, int flags) throws IOException {

@@ -22,7 +22,7 @@ import org.apache.lucene.util.TestUtil;
 /**
  * Base class for grouping related tests.
  */
-// TODO (MvG) : The grouping tests contain a lot of code duplication. Try to move the common code to this class..
+// TODO (MvG) : The grouping tests contain a lot of code duplication. Try to move the common code to this class.. id:1513 gh:1514
 public abstract class AbstractGroupingTestCase extends LuceneTestCase {
 
   protected String generateRandomNonEmptyString() {

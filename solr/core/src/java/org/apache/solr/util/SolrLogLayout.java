@@ -104,7 +104,7 @@ public class SolrLogLayout extends Layout {
     /******
      * sb.append(" T="); sb.append(th.getName()).append(' ');
      * 
-     * // NOTE: tried creating a thread group around jetty but we seem to lose
+     * // NOTE: tried creating a thread group around jetty but we seem to lose id:2124 gh:2125
      * it and request // threads are in the normal "main" thread group
      * ThreadGroup tg = th.getThreadGroup(); while (tg != null) {
      * sb.append("(group_name=").append(tg.getName()).append(")");
@@ -113,7 +113,7 @@ public class SolrLogLayout extends Layout {
      * try { tg = tg.getParent(); } catch (Throwable e) { tg = null; } }
      ******/
     
-    // NOTE: LogRecord.getThreadID is *not* equal to Thread.getId()
+    // NOTE: LogRecord.getThreadID is *not* equal to Thread.getId() id:3012 gh:3013
     sb.append(" T");
     sb.append(th.getId());
   }
@@ -318,7 +318,7 @@ public class SolrLogLayout extends Layout {
     }
   }
   
-  // TODO: name this better... it's only for cloud tests where every core
+  // TODO: name this better... it's only for cloud tests where every core id:2203 gh:2204
   // container has just one solr server so Port/Core are fine
   public boolean shorterFormat = false;
   

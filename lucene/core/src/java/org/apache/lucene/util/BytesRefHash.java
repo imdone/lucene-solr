@@ -434,7 +434,7 @@ public final class BytesRefHash {
     hashHalfSize = newSize / 2;
   }
 
-  // TODO: maybe use long?  But our keys are typically short...
+  // TODO: maybe use long?  But our keys are typically short... id:671 gh:672
   private int doHash(byte[] bytes, int offset, int length) {
     return StringHelper.murmurhash3_x86_32(bytes, offset, length, StringHelper.GOOD_FAST_HASH_SEED);
   }
@@ -519,7 +519,7 @@ public final class BytesRefHash {
    *  memory allocation using a private {@link Counter}
    *  instance.  */
   public static class DirectBytesStartArray extends BytesStartArray {
-    // TODO: can't we just merge this w/
+    // TODO: can't we just merge this w/ id:695 gh:696
     // TrackingDirectBytesStartArray...?  Just add a ctor
     // that makes a private bytesUsed?
 

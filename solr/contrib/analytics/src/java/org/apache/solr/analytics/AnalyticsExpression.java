@@ -54,7 +54,7 @@ public class AnalyticsExpression {
   }
   
   /**
-   * NOTE: Must be called after {@link #toObject()} is called, otherwise the value is not guaranteed to be correct.
+   * NOTE: Must be called after {@link #toObject()} is called, otherwise the value is not guaranteed to be correct. id:1712 gh:1713
    * 
    * @return whether the current value of the expression exists.
    */

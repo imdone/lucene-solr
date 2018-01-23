@@ -86,7 +86,7 @@ public final class SolrRangeQuery extends ExtendedQueryBase implements DocSetPro
   @Override
   public int hashCode() {
     int hash = 0x8f2c9ba7 * (flags+1);  // avoid multiplying by 0
-    hash = hash * 29 + ((lower == null) ? 0 : lower.hashCode());  // TODO: simpler hash code here?
+    hash = hash * 29 + ((lower == null) ? 0 : lower.hashCode());  // TODO: simpler hash code here? id:1980 gh:1981
     hash = hash * 29 + ((upper == null) ? 0 : upper.hashCode());
     return hash;
   }
@@ -115,7 +115,7 @@ public final class SolrRangeQuery extends ExtendedQueryBase implements DocSetPro
       buffer.append(getField());
       buffer.append(":");
     }
-    // TODO: use our schema?
+    // TODO: use our schema? id:1875 gh:1876
     buffer.append(includeLower() ? '[' : '{');
     buffer.append(endpoint(lower));
     buffer.append(" TO ");
@@ -130,7 +130,7 @@ public final class SolrRangeQuery extends ExtendedQueryBase implements DocSetPro
     if ("*".equals(toStr)) {
       toStr = "\\*";
     }
-    // TODO: other escaping
+    // TODO: other escaping id:2823 gh:2824
     return toStr;
   }
 

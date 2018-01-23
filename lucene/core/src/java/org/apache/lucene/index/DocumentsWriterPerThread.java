@@ -366,7 +366,7 @@ class DocumentsWriterPerThread {
   // used when we hit an exception when adding a document
   void deleteDocID(int docIDUpto) {
     pendingUpdates.addDocID(docIDUpto);
-    // NOTE: we do not trigger flush here.  This is
+    // NOTE: we do not trigger flush here.  This is id:404 gh:405
     // potentially a RAM leak, if you have an app that tries
     // to add docs but every single doc always hits a
     // non-aborting exception.  Allowing a flush here gets
@@ -534,7 +534,7 @@ class DocumentsWriterPerThread {
       
       if (indexWriterConfig.getUseCompoundFile()) {
         Set<String> originalFiles = newSegment.info.files();
-        // TODO: like addIndexes, we are relying on createCompoundFile to successfully cleanup...
+        // TODO: like addIndexes, we are relying on createCompoundFile to successfully cleanup... id:480 gh:481
         indexWriter.createCompoundFile(infoStream, new TrackingDirectoryWrapper(directory), newSegment.info, context);
         filesToDelete.addAll(originalFiles);
         newSegment.info.setUseCompoundFile(true);
@@ -546,7 +546,7 @@ class DocumentsWriterPerThread {
       // above:
       codec.segmentInfoFormat().write(directory, newSegment.info, context);
 
-      // TODO: ideally we would freeze newSegment here!!
+      // TODO: ideally we would freeze newSegment here!! id:656 gh:657
       // because any changes after writing the .si will be
       // lost... 
 
@@ -559,10 +559,10 @@ class DocumentsWriterPerThread {
           infoStream.message("DWPT", "flush: write " + delCount + " deletes gen=" + flushedSegment.segmentInfo.getDelGen());
         }
 
-        // TODO: we should prune the segment if it's 100%
+        // TODO: we should prune the segment if it's 100% id:533 gh:534
         // deleted... but merge will also catch it.
 
-        // TODO: in the NRT case it'd be better to hand
+        // TODO: in the NRT case it'd be better to hand id:409 gh:410
         // this del vector over to the
         // shortly-to-be-opened SegmentReader and let it
         // carry the changes; there's no reason to use

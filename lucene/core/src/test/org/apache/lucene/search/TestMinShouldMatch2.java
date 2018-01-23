@@ -296,7 +296,7 @@ public class TestMinShouldMatch2 extends LuceneTestCase {
     }
   }
   
-  // TODO: more tests
+  // TODO: more tests id:865 gh:866
   
   // a slow min-should match scorer that uses a docvalues field.
   // later, we can make debugging easier as it can record the set of ords it currently matched

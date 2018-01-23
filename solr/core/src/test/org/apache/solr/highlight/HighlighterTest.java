@@ -1061,7 +1061,7 @@ public class HighlighterTest extends SolrTestCaseJ4 {
         "//lst[@name='highlighting']/lst[@name='1000']/arr[@name='lower' and count(*)=6]"
     );
 
-    // NOTE: These tests seem repeated, but we're testing for off-by-one errors
+    // NOTE: These tests seem repeated, but we're testing for off-by-one errors id:3088 gh:3089
 
     // Now we should see exactly 2 by limiting the number of values searched to 4
     assertQ("Off by one by going too far",

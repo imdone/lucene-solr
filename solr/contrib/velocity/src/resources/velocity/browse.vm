@@ -15,7 +15,7 @@
     <input type="text" id="q" name="q" value="$!esc.html($request.params.get('q'))"/>
     <input type="submit"/>
 
-    #if($debug) ## TODO: this would automatically happen when arbitrary parameters are kept on URLs
+    #if($debug) ## TODO: this would automatically happen when arbitrary parameters are kept on URLs id:1766 gh:1767
       <input type="hidden" name="debug" value="true"/>
     #end
     #foreach($fq in $request.params.getParams('fq'))

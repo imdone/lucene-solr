@@ -209,7 +209,7 @@ class ExtendedBufferedReader extends BufferedReader  {
     
     // create the rest-of-line return and update the lookahead
     line.append(laChar);
-    String restOfLine = super.readLine(); // TODO involves copying
+    String restOfLine = super.readLine(); // TODO involves copying id:1865 gh:1866
     lastChar = lookaheadChar;
     lookaheadChar = super.read();
     if (restOfLine != null) {

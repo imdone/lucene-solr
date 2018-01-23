@@ -21,7 +21,7 @@ import org.apache.solr.common.util.NamedList;
 
 public class ShardDoc extends FieldDoc {
   public String shard;
-  public String shardAddress;  // TODO
+  public String shardAddress;  // TODO id:1844 gh:1845
   
   public int orderInShard;
     // the position of this doc within the shard... this can be used
@@ -36,7 +36,7 @@ public class ShardDoc extends FieldDoc {
   // sort field values for *all* docs in a particular shard.
   // this doc's values are in position orderInShard
 
-  // TODO: store the SolrDocument here?
+  // TODO: store the SolrDocument here? id:2793 gh:2794
   // Store the order in the merged list for lookup when getting stored fields?
   // (other components need this ordering to store data in order, like highlighting)
   // but we shouldn't expose uniqueKey (have a map by it) until the stored-field

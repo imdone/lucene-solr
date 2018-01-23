@@ -156,7 +156,7 @@ public class HdfsDirectory extends BaseDirectory {
 
   @Override
   public void syncMetaData() throws IOException {
-    // TODO: how?
+    // TODO: how? id:2941 gh:2942
   }
 
   @Override

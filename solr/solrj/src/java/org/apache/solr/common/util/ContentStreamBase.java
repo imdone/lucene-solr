@@ -111,7 +111,7 @@ public abstract class ContentStreamBase implements ContentStream
     @Override
     public String getContentType() {
       if(contentType==null) {
-        // TODO: this is buggy... does not allow for whitespace, JSON comments, etc.
+        // TODO: this is buggy... does not allow for whitespace, JSON comments, etc. id:2531 gh:2532
         InputStream stream = null;
         try {
           stream = new FileInputStream(file);

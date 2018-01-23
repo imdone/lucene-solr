@@ -1,0 +1,124 @@
+{
+  "exclude": [
+    "^(node_modules|bower_components|\\.imdone|target|build|dist|logs|flow-typed)[\\/\\\\]?|\\.(git|svn|hg|npmignore)|\\~$|\\.(jpg|png|gif|swp|ttf|otf)$"
+  ],
+  "watcher": true,
+  "keepEmptyPriority": true,
+  "code": {
+    "include_lists": [
+      "TODO",
+      "FIXME",
+      "HACK",
+      "CHANGED",
+      "XXX",
+      "IDEA",
+      "NOTE",
+      "REVIEW",
+      "MARK",
+      "31241",
+      "31",
+      "29",
+      "_NUM_CHAR",
+      "_ESCAPED_CHAR",
+      "_TERM_START_CHAR",
+      "_TERM_CHAR",
+      "_WHITESPACE",
+      "_QUOTED_CHAR",
+      "_STAR",
+      "_ONE_CHAR",
+      "_DISTOP_NUM",
+      "_SQUOTED_CHAR"
+    ]
+  },
+  "lists": [
+    {
+      "name": "NOTE",
+      "hidden": false
+    },
+    {
+      "name": "TODO",
+      "hidden": false
+    },
+    {
+      "name": "31241",
+      "hidden": false
+    },
+    {
+      "name": "31",
+      "hidden": false
+    },
+    {
+      "name": "29",
+      "hidden": false
+    },
+    {
+      "name": "FIXME",
+      "hidden": false
+    },
+    {
+      "name": "XXX",
+      "hidden": false
+    },
+    {
+      "name": "_NUM_CHAR",
+      "hidden": false
+    },
+    {
+      "name": "_ESCAPED_CHAR",
+      "hidden": false
+    },
+    {
+      "name": "_TERM_START_CHAR",
+      "hidden": false
+    },
+    {
+      "name": "_TERM_CHAR",
+      "hidden": false
+    },
+    {
+      "name": "_WHITESPACE",
+      "hidden": false
+    },
+    {
+      "name": "_QUOTED_CHAR",
+      "hidden": false
+    },
+    {
+      "name": "_STAR",
+      "hidden": false
+    },
+    {
+      "name": "_ONE_CHAR",
+      "hidden": false
+    },
+    {
+      "name": "_DISTOP_NUM",
+      "hidden": false
+    },
+    {
+      "name": "HACK",
+      "hidden": false
+    },
+    {
+      "name": "_SQUOTED_CHAR",
+      "hidden": false
+    },
+    {
+      "name": "IDEA",
+      "hidden": false
+    }
+  ],
+  "marked": {
+    "gfm": true,
+    "tables": true,
+    "breaks": false,
+    "pedantic": false,
+    "smartLists": true,
+    "langPrefix": "language-"
+  },
+  "sync": {
+    "id": "5a6765c7dfbe3aa70869e210",
+    "name": "imdone/lucene-solr",
+    "useImdoneioForPriority": true
+  }
+}

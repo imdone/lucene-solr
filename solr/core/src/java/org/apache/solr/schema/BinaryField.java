@@ -59,7 +59,7 @@ public class BinaryField extends FieldType  {
 
   @Override
   public Type getUninversionType(SchemaField sf) {
-    // TODO: maybe just return null?
+    // TODO: maybe just return null? id:2690 gh:2691
     if (sf.multiValued()) {
       return Type.SORTED_SET_BINARY;
     } else {

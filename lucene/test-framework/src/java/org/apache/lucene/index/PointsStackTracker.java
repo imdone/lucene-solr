@@ -75,5 +75,5 @@ public class PointsStackTracker {
     stack.add(cell);
   }
 
-  // TODO: expose other details about the stack...
+  // TODO: expose other details about the stack... id:1701 gh:1702
 }

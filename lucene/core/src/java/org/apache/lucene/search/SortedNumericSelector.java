@@ -45,7 +45,7 @@ public class SortedNumericSelector {
      * Selects the maximum value in the set 
      */
     MAX,
-    // TODO: we could do MEDIAN in constant time (at most 2 lookups)
+    // TODO: we could do MEDIAN in constant time (at most 2 lookups) id:641 gh:642
   }
   
   /** 

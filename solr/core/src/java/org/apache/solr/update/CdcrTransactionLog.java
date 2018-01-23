@@ -173,7 +173,7 @@ public class CdcrTransactionLog extends TransactionLog {
       }
 
     } catch (IOException e) {
-      // TODO: reset our file pointer back to "pos", the start of this record.
+      // TODO: reset our file pointer back to "pos", the start of this record. id:2949 gh:2950
       throw new SolrException(SolrException.ErrorCode.SERVER_ERROR, "Error logging add", e);
     }
   }
@@ -360,7 +360,7 @@ public class CdcrTransactionLog extends TransactionLog {
         try {
           Files.deleteIfExists(tlogFile.toPath());
         } catch (IOException e) {
-          // TODO: should this class care if a file couldnt be deleted?
+          // TODO: should this class care if a file couldnt be deleted? id:2131 gh:2132
           // this just emulates previous behavior, where only SecurityException would be handled.
         }
       }

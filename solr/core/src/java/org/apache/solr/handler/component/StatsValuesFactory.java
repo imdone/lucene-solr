@@ -61,7 +61,7 @@ public class StatsValuesFactory {
       return new NumericStatsValues(statsField);
     }
     
-    final FieldType fieldType = sf.getType(); // TODO: allow FieldType to provide impl.
+    final FieldType fieldType = sf.getType(); // TODO: allow FieldType to provide impl. id:2801 gh:2802
     
     if (TrieDateField.class.isInstance(fieldType) || DatePointField.class.isInstance(fieldType)) {
       DateStatsValues statsValues = new DateStatsValues(statsField);
@@ -517,7 +517,7 @@ class NumericStatsValues extends AbstractStatsValues<Number> {
     // we always use the double values, because that way the response Object class is 
     // consistent regardless of whether we only have 1 value or many that we min/max
     //
-    // TODO: would be nice to have subclasses for each type of Number ... breaks backcompat
+    // TODO: would be nice to have subclasses for each type of Number ... breaks backcompat id:1884 gh:1885
 
     if (computeMin) { // nested if to encourage JIT to optimize aware final var?
       if (null != min) {

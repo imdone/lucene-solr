@@ -64,7 +64,7 @@ public class ByteUtils {
 
   /** Convert UTF8 bytes into UTF16 characters. */
   public static void UTF8toUTF16(byte[] utf8, int offset, int len, CharArr out) {
-    // TODO: do in chunks if the input is large
+    // TODO: do in chunks if the input is large id:2461 gh:2462
     out.reserve(len);
     int n = UTF8toUTF16(utf8, offset, len, out.getArray(), out.getEnd());
     out.setEnd(out.getEnd() + n);

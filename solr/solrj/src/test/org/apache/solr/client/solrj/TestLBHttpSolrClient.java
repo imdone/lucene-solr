@@ -68,7 +68,7 @@ public class TestLBHttpSolrClient extends SolrTestCaseJ4 {
   SolrInstance[] solr = new SolrInstance[3];
   CloseableHttpClient httpClient;
 
-  // TODO: fix this test to not require FSDirectory
+  // TODO: fix this test to not require FSDirectory id:3017 gh:3018
   static String savedFactory;
 
   @BeforeClass

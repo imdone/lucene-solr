@@ -41,7 +41,7 @@ public class LimitedFiniteStringsIteratorTest extends LuceneTestCase {
         // Must pass a limit because the random automaton
         // can accept MANY strings:
         getFiniteStrings(new LimitedFiniteStringsIterator(a, TestUtil.nextInt(random(), 1, 1000)));
-        // NOTE: cannot do this, because the method is not
+        // NOTE: cannot do this, because the method is not id:1004 gh:1005
         // guaranteed to detect cycles when you have a limit
         //assertTrue(Operations.isFinite(a));
       } catch (IllegalArgumentException iae) {

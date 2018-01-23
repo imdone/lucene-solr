@@ -23,7 +23,7 @@ import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionLengthAttribute;
 import org.apache.lucene.util.TestUtil;
 
-// TODO: maybe, instead to be more "natural", we should make
+// TODO: maybe, instead to be more "natural", we should make id:1579 gh:1580
 // a MockRemovesTokensTF, ideally subclassing FilteringTF
 // (in modules/analysis)
 
@@ -76,5 +76,5 @@ public final class MockHoleInjectingTokenFilter extends TokenFilter {
     }
   }
 
-  // TODO: end?
+  // TODO: end? id:2580 gh:2581
 }

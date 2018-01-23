@@ -45,7 +45,7 @@ import org.apache.lucene.util.FixedBitSet;
 import org.apache.lucene.util.IOUtils;
 import org.apache.lucene.util.RamUsageEstimator;
 
-// TODO: currently we encode all terms between two indexed
+// TODO: currently we encode all terms between two indexed id:231 gh:232
 // terms as a block; but, we could decouple the two, ie
 // allow several blocks in between two indexed terms
 
@@ -331,7 +331,7 @@ public class BlockTermsWriter extends FieldsConsumer implements Closeable {
       // 2nd pass: write suffixes, as separate byte[] blob
       for(int termCount=0;termCount<pendingCount;termCount++) {
         final int suffix = pendingTerms[termCount].term.length() - commonPrefix;
-        // TODO: cutover to better intblock codec, instead
+        // TODO: cutover to better intblock codec, instead id:350 gh:351
         // of interleaving here:
         bytesWriter.writeVInt(suffix);
         bytesWriter.writeBytes(pendingTerms[termCount].term.bytes(), commonPrefix, suffix);
@@ -341,7 +341,7 @@ public class BlockTermsWriter extends FieldsConsumer implements Closeable {
       bytesWriter.reset();
 
       // 3rd pass: write the freqs as byte[] blob
-      // TODO: cutover to better intblock codec.  simple64?
+      // TODO: cutover to better intblock codec.  simple64? id:237 gh:238
       // write prefix, suffix first:
       for(int termCount=0;termCount<pendingCount;termCount++) {
         final BlockTermState state = pendingTerms[termCount].state;

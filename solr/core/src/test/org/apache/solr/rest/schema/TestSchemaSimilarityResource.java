@@ -21,7 +21,7 @@ import org.junit.Test;
 public class TestSchemaSimilarityResource extends SolrRestletTestBase {
 
   /**
-   * NOTE: schema used by parent class doesn't define a global sim, so we get the implicit default
+   * NOTE: schema used by parent class doesn't define a global sim, so we get the implicit default id:2335 gh:2336
    * which causes the FQN of the class to be returned
    * 
    */

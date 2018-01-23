@@ -191,7 +191,7 @@ public abstract class AnalysisRequestHandlerBase extends RequestHandlerBase {
         trackerAtt.setActPosition(position);
         tokens.add(tokenStream.cloneAttributes());
       }
-      tokenStream.end(); // TODO should we capture?
+      tokenStream.end(); // TODO should we capture? id:2754 gh:2755
     } catch (IOException ioe) {
       throw new RuntimeException("Error occured while iterating over tokenstream", ioe);
     } finally {

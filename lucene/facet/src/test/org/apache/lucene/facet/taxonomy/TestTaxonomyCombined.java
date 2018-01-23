@@ -1013,7 +1013,7 @@ public class TestTaxonomyCombined extends FacetTestCase {
     dir.close();
   }
 
-//  TODO (Facet): test multiple readers, one writer. Have the multiple readers
+//  TODO (Facet): test multiple readers, one writer. Have the multiple readers id:1508 gh:1509
 //  using the same object (simulating threads) or different objects
 //  (simulating processes).
 }

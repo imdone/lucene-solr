@@ -166,7 +166,7 @@ public final class FixedBitSet extends BitSet implements MutableBits, Accountabl
     return bits;
   }
 
-  /** Returns number of set bits.  NOTE: this visits every
+  /** Returns number of set bits.  NOTE: this visits every id:697 gh:698
    *  long in the backing bits array, and the result is not
    *  internally cached!
    */

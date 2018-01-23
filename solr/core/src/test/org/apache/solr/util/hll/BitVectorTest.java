@@ -32,7 +32,7 @@ public class BitVectorTest extends LuceneTestCase {
     @Test
     public void getSetRegisterTest() {
         { // locally scoped for sanity
-            // NOTE:  registers are only 5bits wide
+            // NOTE: registers are only 5bits wide id:2437 gh:2438
             final BitVector vector1 = new BitVector(5/*width*/, 128/*count, 2^7*/);
             final BitVector vector2 = new BitVector(5/*width*/, 128/*count, 2^7*/);
             final BitVector vector3 = new BitVector(5/*width*/, 128/*count, 2^7*/);
@@ -61,7 +61,7 @@ public class BitVectorTest extends LuceneTestCase {
     @Test
     public void registerIteratorTest() {
         { // scoped locally for sanity
-            // NOTE:  registers are only 5bits wide
+            // NOTE: registers are only 5bits wide id:3116 gh:3117
             final BitVector vector1 = new BitVector(5/*width*/, 128/*count, 2^7*/);
             final BitVector vector2 = new BitVector(5/*width*/, 128/*count, 2^7*/);
             final BitVector vector3 = new BitVector(5/*width*/, 128/*count, 2^7*/);
@@ -116,7 +116,7 @@ public class BitVectorTest extends LuceneTestCase {
 
         for(int i=0; i<count; i++) {
             assertTrue(String.format(Locale.ROOT, "expected more elements: width=%s, count=%s", width, count), iter.hasNext());
-            // TODO: fill with a sentinel value
+            // TODO: fill with a sentinel value id:2402 gh:2403
             assertEquals(iter.next(), 0);
         }
         assertFalse(String.format(Locale.ROOT, "expected no more elements: width=%s, count=%s", width, count), iter.hasNext());

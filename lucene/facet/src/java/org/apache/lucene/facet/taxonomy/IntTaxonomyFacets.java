@@ -171,7 +171,7 @@ public abstract class IntTaxonomyFacets extends TaxonomyFacets {
 
     TopOrdAndIntQueue.OrdAndValue reuse = null;
 
-    // TODO: would be faster if we had a "get the following children" API?  then we
+    // TODO: would be faster if we had a "get the following children" API?  then we id:1026 gh:1027
     // can make a single pass over the hashmap
 
     if (sparseValues != null) {

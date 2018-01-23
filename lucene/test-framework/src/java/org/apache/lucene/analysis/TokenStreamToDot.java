@@ -56,7 +56,7 @@ public class TokenStreamToDot {
     in.reset();
     writeHeader();
 
-    // TODO: is there some way to tell dot that it should
+    // TODO: is there some way to tell dot that it should id:1670 gh:1671
     // make the "main path" a straight line and have the
     // non-sausage arcs not affect node placement...
 
@@ -66,7 +66,7 @@ public class TokenStreamToDot {
       final boolean isFirst = pos == -1;
       int posInc = posIncAtt.getPositionIncrement();
       if (isFirst && posInc == 0) {
-        // TODO: hmm are TS's still allowed to do this...?
+        // TODO: hmm are TS's still allowed to do this...? id:1444 gh:1445
         System.err.println("WARNING: first posInc was 0; correcting to 1");
         posInc = 1;
       }
@@ -109,7 +109,7 @@ public class TokenStreamToDot {
     in.end();
 
     if (lastEndPos != -1) {
-      // TODO: should we output any final text (from end
+      // TODO: should we output any final text (from end id:1331 gh:1332
       // offsets) on this arc...?
       writeNode(-2, null);
       writeArc(lastEndPos, -2, null, null);

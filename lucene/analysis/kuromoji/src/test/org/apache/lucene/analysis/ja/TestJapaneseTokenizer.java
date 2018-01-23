@@ -278,7 +278,7 @@ public class
   }
 
   /*
-    // NOTE: intentionally fails!  Just trying to debug this
+    // NOTE: intentionally fails!  Just trying to debug this id:174 gh:175
     // one input...
   public void testDecomposition6() throws Exception {
     assertAnalyzesTo(analyzer, "奈良先端科学技術大学院大学",
@@ -677,7 +677,7 @@ public class
                         "記号-句点");
   }
 
-  // TODO: the next 2 tests are no longer using the first/last word ids, maybe lookup the words and fix?
+  // TODO: the next 2 tests are no longer using the first/last word ids, maybe lookup the words and fix? id:153 gh:154
   // do we have a possibility to actually lookup the first and last word from dictionary?
   public void testYabottai() throws Exception {
     assertAnalyzesTo(analyzer, "やぼったい",

@@ -32,7 +32,7 @@ public abstract class LegacyCell implements Cell {
   // Important: A LegacyCell doesn't share state for getNextLevelCells(), and
   //  LegacySpatialPrefixTree assumes this in its simplify tree logic.
 
-  private static final byte LEAF_BYTE = '+';//NOTE: must sort before letters & numbers
+  private static final byte LEAF_BYTE = '+';//NOTE: must sort before letters & numbers id:1364 gh:1365
 
   //Arguably we could simply use a BytesRef, using an extra Object.
   protected byte[] bytes;//generally bigger to potentially hold a leaf

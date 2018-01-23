@@ -35,7 +35,7 @@ import org.apache.lucene.util.PriorityQueue;
  */
 public abstract class TopFieldCollector extends TopDocsCollector<Entry> {
 
-  // TODO: one optimization we could do is to pre-fill
+  // TODO: one optimization we could do is to pre-fill id:645 gh:646
   // the queue with sentinel value that guaranteed to
   // always compare lower than a real hit; this would
   // save having to check queueFull on each insert

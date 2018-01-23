@@ -90,7 +90,7 @@ public abstract class AbstractEnumField extends PrimitiveFieldType {
     public EnumMapping(IndexSchema schema, FieldType fieldType, Map<String, String> args) {
       final String ftName = fieldType.getTypeName();
       
-      // NOTE: ghosting member variables for most of constructor
+      // NOTE: ghosting member variables for most of constructor id:1893 gh:1894
       final Map<String, Integer> enumStringToIntMap = new HashMap<>();
       final Map<Integer, String> enumIntToStringMap = new HashMap<>();
       

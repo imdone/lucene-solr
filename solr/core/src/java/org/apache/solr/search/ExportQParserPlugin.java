@@ -177,7 +177,7 @@ public class ExportQParserPlugin extends QParserPlugin {
 
     @Override
     public ScoreMode scoreMode() {
-      return ScoreMode.COMPLETE; // TODO: is this the case?
+      return ScoreMode.COMPLETE; // TODO: is this the case? id:1951 gh:1952
     }
   }
 

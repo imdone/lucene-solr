@@ -69,7 +69,7 @@ public class ExtrasFS extends FilterFileSystemProvider {
     }
   }
   
-  // TODO: would be great if we overrode attributes, so file size was always zero for
+  // TODO: would be great if we overrode attributes, so file size was always zero for id:1399 gh:1400
   // our fake files. But this is tricky because its hooked into several places. 
   // Currently MDW has a hack so we don't break disk full tests.
 

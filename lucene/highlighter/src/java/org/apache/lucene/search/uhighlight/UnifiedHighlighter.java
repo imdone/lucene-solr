@@ -156,7 +156,7 @@ public class UnifiedHighlighter {
    * @param indexAnalyzer Required, even if in some circumstances it isn't used.
    */
   public UnifiedHighlighter(IndexSearcher indexSearcher, Analyzer indexAnalyzer) {
-    this.searcher = indexSearcher; //TODO: make non nullable
+    this.searcher = indexSearcher; //TODO: make non nullable id:1155 gh:1156
     this.indexAnalyzer = Objects.requireNonNull(indexAnalyzer,
         "indexAnalyzer is required"
             + " (even if in some circumstances it isn't used)");
@@ -637,7 +637,7 @@ public class UnifiedHighlighter {
     assert docIdIter.docID() == DocIdSetIterator.NO_MORE_DOCS
         || docIdIter.nextDoc() == DocIdSetIterator.NO_MORE_DOCS;
 
-    // TODO reconsider the return type; since this is an "advanced" method, lets not return a Map?  Notice the only
+    // TODO reconsider the return type; since this is an "advanced" method, lets not return a Map?  Notice the only id:943 gh:944
     //    caller simply iterates it to build another structure.
 
     // field -> object highlights parallel to docIdsIn
@@ -728,7 +728,7 @@ public class UnifiedHighlighter {
    * @return result of the {@link PassageFormatter} -- probably a String.  Might be null.
    * @throws IOException if an I/O error occurred during processing
    */
-  //TODO make content a List? and return a List? and ensure getEmptyHighlight is never invoked multiple times?
+  //TODO make content a List? and return a List? and ensure getEmptyHighlight is never invoked multiple times? id:1314 gh:1315
   public Object highlightWithoutSearcher(String field, Query query, String content, int maxPassages)
       throws IOException {
     if (this.searcher != null) {
@@ -1091,7 +1091,7 @@ public class UnifiedHighlighter {
     PHRASES,
     MULTI_TERM_QUERY,
     PASSAGE_RELEVANCY_OVER_SPEED
-    // TODO: ignoreQueryFields
-    // TODO: useQueryBoosts
+    // TODO: ignoreQueryFields id:1540 gh:1541
+    // TODO: useQueryBoosts id:1049 gh:1050
   }
 }

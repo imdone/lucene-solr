@@ -459,7 +459,7 @@ abstract public class SolrExampleTests extends SolrExampleTestsBase
         Assert.fail("should have thrown a SolrException! not: " + t);
       }
     } else if (client instanceof ErrorTrackingConcurrentUpdateSolrClient) {
-      //XXX concurrentupdatesolrserver reports errors differently
+      //XXX concurrentupdatesolrserver reports errors differently id:3015 gh:3016
       ErrorTrackingConcurrentUpdateSolrClient concurrentClient = (ErrorTrackingConcurrentUpdateSolrClient) client;
       concurrentClient.lastError = null;
       concurrentClient.add(doc);
@@ -1634,7 +1634,7 @@ abstract public class SolrExampleTests extends SolrExampleTestsBase
     doc.addField("price", oper);
     try {
       client.add(doc);
-      if(client instanceof HttpSolrClient) { //XXX concurrent client reports exceptions differently
+      if(client instanceof HttpSolrClient) { //XXX concurrent client reports exceptions differently id:2467 gh:2468
         fail("Operation should throw an exception!");
       } else {
         client.commit(); //just to be sure the client has sent the doc
@@ -1851,7 +1851,7 @@ abstract public class SolrExampleTests extends SolrExampleTestsBase
     // bespoke check - use child transformer twice in one query to get diff kids, with name field in between
     {
       q = new SolrQuery("q","level_i:0", "indent", "true");
-      // NOTE: should be impossible to have more then 7 direct kids, or more then 49 grandkids
+      // NOTE: should be impossible to have more then 7 direct kids, or more then 49 grandkids id:2534 gh:2535
       q.setFields("id", "[child parentFilter=\"level_i:0\" limit=100 childFilter=\"level_i:1\"]",
                   "name", "[child parentFilter=\"level_i:0\" limit=100 childFilter=\"level_i:2\"]");
       resp = client.query(q);
@@ -2118,7 +2118,7 @@ abstract public class SolrExampleTests extends SolrExampleTestsBase
     sdoc.addField("name", names[TestUtil.nextInt(random(), 0, names.length-1)]);
     
     if (0 < maxDepth) {
-      // NOTE: range include negative to increase odds of no kids
+      // NOTE: range include negative to increase odds of no kids id:3140 gh:3141
       int numKids = TestUtil.nextInt(random(), -2, 7);
       for(int i=0; i<numKids; i++) {
         sdoc.addChildDocument(genNestedDocuments(allDocs, thisLevel+1, maxDepth-1));

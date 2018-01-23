@@ -42,7 +42,7 @@ public class GraphQueryParser extends QParser {
     String traversalFilterS = localParams.get("traversalFilter");
     Query traversalFilter = traversalFilterS == null ? null : subQuery(traversalFilterS, null).getQuery();
 
-    // NOTE: the from/to are reversed from {!join}
+    // NOTE: the from/to are reversed from {!join} id:2036 gh:2037
     String fromField = localParams.get("from", "node_id");
     String toField = localParams.get("to", "edge_ids");
 

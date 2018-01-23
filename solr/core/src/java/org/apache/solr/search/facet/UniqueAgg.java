@@ -94,7 +94,7 @@ public class UniqueAgg extends StrAggValueSource {
 
       shardsMissingSum += unique - valsListed;
       shardsMissingMax = Math.max(shardsMissingMax, unique - valsListed);
-      // TODO: somehow get & use the count in the bucket?
+      // TODO: somehow get & use the count in the bucket? id:2030 gh:2031
     }
 
     private long getLong() {
@@ -187,8 +187,8 @@ public class UniqueAgg extends StrAggValueSource {
       map.add("unique", unique);
 
       int maxExplicit=100;
-      // TODO: make configurable
-      // TODO: share values across buckets
+      // TODO: make configurable id:2921 gh:2922
+      // TODO: share values across buckets id:2065 gh:2066
       if (unique <= maxExplicit) {
         List lst = new ArrayList( Math.min(unique, maxExplicit) );
         if (set != null) {

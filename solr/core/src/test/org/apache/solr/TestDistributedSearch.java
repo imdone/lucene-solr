@@ -62,7 +62,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * TODO? perhaps use:
+ * TODO ? perhaps use: id:3030 gh:3031
  *  http://docs.codehaus.org/display/JETTY/ServletTester
  * rather then open a real connection?
  *
@@ -239,11 +239,11 @@ public class TestDistributedSearch extends BaseDistributedSearchTestCase {
 
     // simple field facet on date fields
     rsp = query("q","*:*", "rows", 0,
-                "facet","true", "facet.limit", 1, // TODO: limit shouldn't be needed: SOLR-6386
+                "facet","true", "facet.limit", 1, // TODO: limit shouldn't be needed: SOLR-6386 id:2227 gh:2228
                 "facet.field", tdate_a);
     assertEquals(1, rsp.getFacetFields().size());
     rsp = query("q","*:*", "rows", 0,
-                "facet","true", "facet.limit", 1, // TODO: limit shouldn't be needed: SOLR-6386
+                "facet","true", "facet.limit", 1, // TODO: limit shouldn't be needed: SOLR-6386 id:2846 gh:2847
                 "facet.field", tdate_b, "facet.field", tdate_a);
     assertEquals(2, rsp.getFacetFields().size());
     
@@ -394,7 +394,7 @@ public class TestDistributedSearch extends BaseDistributedSearchTestCase {
       if (random().nextBoolean()) f = t1;  // the text field is a really interesting one to facet on (and it's multi-valued too)
 
       // we want a random query and not just *:* so we'll get zero counts in facets also
-      // TODO: do a better random query
+      // TODO: do a better random query id:2246 gh:2248
       String q = random().nextBoolean() ? "*:*" : "id:(1 3 5 7 9 11 13) OR id_i1:[100 TO " + random().nextInt(50) + "]";
 
       int nolimit = random().nextBoolean() ? -1 : 10000;  // these should be equivalent
@@ -655,7 +655,7 @@ public class TestDistributedSearch extends BaseDistributedSearchTestCase {
     // ask for arbitrary pairs of stats
     for (String stat1 : stats) {
       for (String stat2 : stats) {
-        // NOTE: stat1 might equal stat2 - good edge case to test for
+        // NOTE: stat1 might equal stat2 - good edge case to test for id:2162 gh:2163
 
         rsp = query("q","*:*", "sort",i1+" desc", "stats", "true",
                     "stats.field", "{!" + stat1 + "=true " + stat2 + "=true}" + i1);
@@ -788,7 +788,7 @@ public class TestDistributedSearch extends BaseDistributedSearchTestCase {
       assertNotNull("no stats for bogus field", s);
 
       // things we explicit expect because we asked for them
-      // NOTE: min is expected to be null even though requested because of no values
+      // NOTE: min is expected to be null even though requested because of no values id:3032 gh:3033
       assertEquals("wrong min", null, s.getMin()); 
       assertTrue("mean should be NaN", ((Double)s.getMean()).isNaN());
       assertEquals("wrong stddev", 0.0D, (Double)s.getStddev(), 0.0D );
@@ -811,7 +811,7 @@ public class TestDistributedSearch extends BaseDistributedSearchTestCase {
     // of these field+stats(s) combinations we get consistent results between the distribted 
     // request and the single node situation.
     //
-    // NOTE: percentiles excluded because it doesn't support simple 'true/false' syntax
+    // NOTE: percentiles excluded because it doesn't support simple 'true/false' syntax id:2230 gh:2231
     // (and since it doesn't work for non-numerics anyway, we aren't missing any coverage here)
     EnumSet<Stat> allStats = EnumSet.complementOf(EnumSet.of(Stat.percentiles));
 
@@ -855,7 +855,7 @@ public class TestDistributedSearch extends BaseDistributedSearchTestCase {
             FieldStatsInfo s = rsp.getFieldStatsInfo().get("k");
             assertNotNull(s);
 
-            // TODO: if we had a programatic way to determine what stats are supported 
+            // TODO: if we had a programatic way to determine what stats are supported  id:2848 gh:2849
             // by what field types, we could make more confident asserts here.
           }
         }
@@ -867,7 +867,7 @@ public class TestDistributedSearch extends BaseDistributedSearchTestCase {
                  " (adjust constant accordingly if intentional)",
                  5082, numTotalStatQueries);
 
-    /*** TODO: the failure may come back in "exception"
+    /*** TODO: the failure may come back in "exception" id:2249 gh:2250
     try {
       // test error produced for field that is invalid for schema
       query("q","*:*", "rows",100, "facet","true", "facet.field",invalidField, "facet.mincount",2);
@@ -1025,7 +1025,7 @@ public class TestDistributedSearch extends BaseDistributedSearchTestCase {
 
     // This index has the same number for every field
     
-    // TODO: This test currently fails because debug info is obtained only
+    // TODO: This test currently fails because debug info is obtained only id:2167 gh:2169
     // on shards with matches.
     // query("q","matchesnothing","fl","*,score", "debugQuery", "true");
     
@@ -1116,7 +1116,7 @@ public class TestDistributedSearch extends BaseDistributedSearchTestCase {
     for (int i = 0; i < q.length; i += 2) {
       params.add(q[i].toString(), q[i + 1].toString());
     }
-    // TODO: look into why passing true causes fails
+    // TODO: look into why passing true causes fails id:3034 gh:3035
     params.set("distrib", "false");
     final QueryResponse controlRsp = controlClient.query(params);
     // if time.allowed is specified then even a control response can return a partialResults header

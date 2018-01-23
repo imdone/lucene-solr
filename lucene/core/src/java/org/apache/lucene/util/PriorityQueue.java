@@ -50,7 +50,7 @@ public abstract class PriorityQueue<T> implements Iterable<T> {
       // We allocate 1 extra to avoid if statement in top()
       heapSize = 2;
     } else {
-      // NOTE: we add +1 because all access to heap is
+      // NOTE: we add +1 because all access to heap is id:682 gh:683
       // 1-based not 0-based.  heap[0] is unused.
       heapSize = maxSize + 1;
 

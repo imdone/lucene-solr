@@ -332,7 +332,7 @@ public class SolrDocument extends SolrDocumentBase<Object, SolrDocument> impleme
   public Set<Entry<String, Object>> entrySet() {
     return _fields.entrySet();
   }
-  //TODO: Shouldn't the input parameter here be a String?  The _fields map requires a String.
+  //TODO: Shouldn't the input parameter here be a String?  The _fields map requires a String. id:3132 gh:3133
   @Override
   public Object get(Object key) {
     return _fields.get(key);

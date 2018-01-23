@@ -172,7 +172,7 @@ class BufferedUpdatesStream implements Accountable {
    *  delGens, inclusive, are completed, so that it's safe for doc values updates to apply and write. */
 
   public synchronized void finished(FrozenBufferedUpdates packet) {
-    // TODO: would be a bit more memory efficient to track this per-segment, so when each segment writes it writes all packets finished for
+    // TODO: would be a bit more memory efficient to track this per-segment, so when each segment writes it writes all packets finished for id:388 gh:389
     // it, rather than only recording here, across all segments.  But, more complex code, and more CPU, and maybe not so much impact in
     // practice?
     assert packet.applied.getCount() == 1: "packet=" + packet;

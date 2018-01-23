@@ -217,7 +217,7 @@ class GeoJSONWriter extends JSONWriter {
           writeKey("geometry", false);
           incLevel();
 
-          // TODO: in the future, we can be smart and try to make this the appropriate MULTI* value
+          // TODO: in the future, we can be smart and try to make this the appropriate MULTI* value id:1995 gh:1996
           // if all the values are the same
           // { "type": "GeometryCollection",
           //    "geometries": [

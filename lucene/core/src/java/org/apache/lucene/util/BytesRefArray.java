@@ -54,7 +54,7 @@ public final class BytesRefArray implements SortableBytesRefArray {
   public void clear() {
     lastElement = 0;
     currentOffset = 0;
-    // TODO: it's trappy that this does not return storage held by int[] offsets array!
+    // TODO: it's trappy that this does not return storage held by int[] offsets array! id:762 gh:763
     Arrays.fill(offsets, 0);
     pool.reset(false, true); // no need to 0 fill the buffers we control the allocator
   }

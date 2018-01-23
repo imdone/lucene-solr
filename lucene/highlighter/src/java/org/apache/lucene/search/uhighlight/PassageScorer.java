@@ -27,7 +27,7 @@ package org.apache.lucene.search.uhighlight;
  */
 public class PassageScorer {
 
-  // TODO: this formula is completely made up. It might not provide relevant snippets!
+  // TODO: this formula is completely made up. It might not provide relevant snippets! id:1041 gh:1042
 
   /**
    * BM25 k1 parameter, controls term frequency normalization

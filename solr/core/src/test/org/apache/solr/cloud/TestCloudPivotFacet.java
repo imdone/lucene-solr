@@ -65,7 +65,7 @@ import static org.apache.solr.common.params.FacetParams.FACET_SORT;
  * each pivot value, but no assertions that the correct "top" counts were chosen.
  * </p>
  * <p>
- * NOTE: this test ignores the control collection and only deals with the 
+ * NOTE: this test ignores the control collection and only deals with the  id:2872 gh:2873
  * CloudSolrServer - this is because the randomized field values make it very easy for 
  * the term stats to miss values even with the overrequest.
  * (because so many values will tie for "1").  What we care about here is 
@@ -111,7 +111,7 @@ public class TestCloudPivotFacet extends AbstractFullDistribZkTestBase {
 
     sanityCheckAssertNumerics();
 
-    waitForThingsToLevelOut(30000); // TODO: why would we have to wait?
+    waitForThingsToLevelOut(30000); // TODO: why would we have to wait? id:2279 gh:2280
     // 
     handle.clear();
     handle.put("QTime", SKIPVAL);
@@ -166,7 +166,7 @@ public class TestCloudPivotFacet extends AbstractFullDistribZkTestBase {
                   pickRandomStatsFields(fieldNames));
         baseP.add(StatsParams.STATS_FIELD, "{!key=sk3 tag=st3,st4}" +
                   pickRandomStatsFields(fieldNames));
-        // NOTE: there's a chance that some of those stats field names
+        // NOTE: there's a chance that some of those stats field names id:2194 gh:2195
         // will be the same, but if so, all the better to test that edge case
       }
       
@@ -212,7 +212,7 @@ public class TestCloudPivotFacet extends AbstractFullDistribZkTestBase {
 
       // overrequest
       //
-      // NOTE: since this test focuses on accuracy of refinement, and doesn't do 
+      // NOTE: since this test focuses on accuracy of refinement, and doesn't do  id:3058 gh:3059
       // control collection comparisons, there isn't a lot of need for excessive
       // overrequesting -- we focus here on trying to exercise the various edge cases
       // involved as different values are used with overrequest
@@ -272,7 +272,7 @@ public class TestCloudPivotFacet extends AbstractFullDistribZkTestBase {
 
         assertTraceOk(pivotKey, baseParams, pivot.getValue());
 
-        // NOTE: we can't make any assumptions/assertions about the number of
+        // NOTE: we can't make any assumptions/assertions about the number of id:2271 gh:2272
         // constraints here because of the random data - which means if pivotting is
         // completely broken and there are no constrains this loop could be a No-Op
         // but in that case we just have to trust that DistributedFacetPivotTest
@@ -358,7 +358,7 @@ public class TestCloudPivotFacet extends AbstractFullDistribZkTestBase {
     if (null == constraint.getFieldStatsInfo()) {
       // no stats for this pivot, nothing to check
 
-      // TODO: use a trace param to know if/how-many to expect ?
+      // TODO: use a trace param to know if/how-many to expect ? id:2874 gh:2875
       log.info("No stats to check for => " + message);
       return;
     }
@@ -777,7 +777,7 @@ public class TestCloudPivotFacet extends AbstractFullDistribZkTestBase {
     assertNumerics("low long", Long.MIN_VALUE, Long.MIN_VALUE);
     assertNumerics("low int", Integer.MIN_VALUE, Integer.MIN_VALUE);
 
-    // NOTE: can't use 'fail' in these try blocks, because we are catching AssertionError
+    // NOTE: can't use 'fail' in these try blocks, because we are catching AssertionError id:2281 gh:2282
     // (ie: the code we are expecting to 'fail' is an actual test assertion generator)
     
     for (Object num : new Object[] { new Date(42), 42, 42L, 42.0F }) {

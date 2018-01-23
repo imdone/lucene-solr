@@ -246,7 +246,7 @@ public class PivotFacetProcessor extends SimpleFacets
     List<StatsField> fields = new ArrayList<>(7);
     List<String> statsAr = StrUtils.splitSmart(statsLocalParam, ',');
 
-    // TODO: for now, we only support a single tag name - we reserve using 
+    // TODO: for now, we only support a single tag name - we reserve using  id:1862 gh:1863
     // ',' as a possible delimiter for logic related to only computing stats
     // at certain levels -- see SOLR-6663
     if (1 < statsAr.size()) {
@@ -275,7 +275,7 @@ public class PivotFacetProcessor extends SimpleFacets
     boolean isShard = rb.req.getParams().getBool(ShardParams.IS_SHARD, false);
 
     SolrIndexSearcher searcher = rb.req.getSearcher();
-    // TODO: optimize to avoid converting to an external string and then having to convert back to internal below
+    // TODO: optimize to avoid converting to an external string and then having to convert back to internal below id:2659 gh:2660
     SchemaField sfield = searcher.getSchema().getField(field);
     FieldType ftype = sfield.getType();
 

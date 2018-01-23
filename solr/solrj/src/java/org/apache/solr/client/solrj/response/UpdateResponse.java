@@ -18,7 +18,7 @@ package org.apache.solr.client.solrj.response;
 
 
 /**
- * TODO -- mostly a stub until we have a defined output format
+ * TODO -- mostly a stub until we have a defined output format id:2448 gh:2449
  * 
  *
  * @since solr 1.3

@@ -37,7 +37,7 @@ import org.apache.lucene.search.Weight;
 import org.apache.lucene.util.ArrayUtil;
 import org.apache.lucene.util.PriorityQueue;
 
-// TODO: this sentence is too long for the class summary.
+// TODO: this sentence is too long for the class summary. id:1034 gh:1035
 /** BlockGroupingCollector performs grouping with a
  *  single pass collector, as long as you are grouping by a
  *  doc block field, ie all documents sharing a given group
@@ -75,7 +75,7 @@ public class BlockGroupingCollector extends SimpleCollector {
   private final int topNGroups;
   private final Weight lastDocPerGroup;
 
-  // TODO: specialize into 2 classes, static "create" method:
+  // TODO: specialize into 2 classes, static "create" method: id:1089 gh:1090
   private final boolean needsScores;
 
   private final FieldComparator<?>[] comparators;
@@ -248,7 +248,7 @@ public class BlockGroupingCollector extends SimpleCollector {
     }
   }
 
-  // TODO: maybe allow no sort on retrieving groups?  app
+  // TODO: maybe allow no sort on retrieving groups?  app id:923 gh:924
   // may want to simply process docs in the group itself?
   // typically they will be presented as a "single" result
   // in the UI?
@@ -306,7 +306,7 @@ public class BlockGroupingCollector extends SimpleCollector {
         collector = TopScoreDocCollector.create(maxDocsPerGroup);
       } else {
         // Sort by fields
-        collector = TopFieldCollector.create(withinGroupSort, maxDocsPerGroup, fillSortFields, needsScores, needsScores, true); // TODO: disable exact counts?
+        collector = TopFieldCollector.create(withinGroupSort, maxDocsPerGroup, fillSortFields, needsScores, needsScores, true); // TODO: disable exact counts? id:1289 gh:1290
       }
 
       LeafCollector leafCollector = collector.getLeafCollector(og.readerContext);
@@ -334,7 +334,7 @@ public class BlockGroupingCollector extends SimpleCollector {
 
       final TopDocs topDocs = collector.topDocs(withinGroupOffset, maxDocsPerGroup);
 
-      // TODO: we could aggregate scores across children
+      // TODO: we could aggregate scores across children id:1510 gh:1511
       // by Sum/Avg instead of passing NaN:
       groups[downTo] = new GroupDocs<>(Float.NaN,
                                              topDocs.getMaxScore(),

@@ -213,14 +213,14 @@ public class BBoxStrategy extends SpatialStrategy {
 
   /**
    * Provides access to each rectangle per document as a {@link ShapeValuesSource}
-   */ //TODO raise to SpatialStrategy
+   */ //TODO raise to SpatialStrategy id:1419 gh:1420
   public ShapeValuesSource makeShapeValueSource() {
     return new BBoxValueSource(this);
   }
 
   @Override
   public DoubleValuesSource makeDistanceValueSource(Point queryPoint, double multiplier) {
-    //TODO if makeShapeValueSource gets lifted to the top; this could become a generic impl.
+    //TODO if makeShapeValueSource gets lifted to the top; this could become a generic impl. id:1343 gh:1344
     return new DistanceToShapeValueSource(makeShapeValueSource(), queryPoint, multiplier, ctx);
   }
 

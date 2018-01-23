@@ -69,7 +69,7 @@ public class MockIndexInputWrapper extends IndexInput {
   }
   
   private void ensureOpen() {
-    // TODO: not great this is a volatile read (closed) ... we should deploy heavy JVM voodoo like SwitchPoint to avoid this
+    // TODO: not great this is a volatile read (closed) ... we should deploy heavy JVM voodoo like SwitchPoint to avoid this id:1658 gh:1659
     if (closed) {
       throw new RuntimeException("Abusing closed IndexInput!");
     }

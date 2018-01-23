@@ -24,7 +24,7 @@ import org.apache.solr.util.LongIterator;
  * a register is at most 64bits.
  */
 class BitVector implements Cloneable {
-    // NOTE:  in this context, a word is 64bits
+    // NOTE: in this context, a word is 64bits id:2830 gh:2831
 
     // rather than doing division to determine how a bit index fits into 64bit
     // words (i.e. longs), bit shifting is used
@@ -78,7 +78,7 @@ class BitVector implements Cloneable {
      * @see #setRegister(long, long)
      * @see #setMaxRegister(long, long)
      */
-    // NOTE:  if this changes then setMaxRegister() must change
+    // NOTE: if this changes then setMaxRegister() must change id:2225 gh:2226
     public long getRegister(final long registerIndex) {
         final long bitIndex = registerIndex * registerWidth;
         final int firstWordIndex = (int)(bitIndex >>> LOG2_BITS_PER_WORD)/*aka (bitIndex / BITS_PER_WORD)*/;
@@ -99,7 +99,7 @@ class BitVector implements Cloneable {
      * @see #getRegister(long)
      * @see #setMaxRegister(long, long)
      */
-    // NOTE:  if this changes then setMaxRegister() must change
+    // NOTE: if this changes then setMaxRegister() must change id:2129 gh:2130
     public void setRegister(final long registerIndex, final long value) {
         final long bitIndex = registerIndex * registerWidth;
         final int firstWordIndex = (int)(bitIndex >>> LOG2_BITS_PER_WORD)/*aka (bitIndex / BITS_PER_WORD)*/;
@@ -185,14 +185,14 @@ class BitVector implements Cloneable {
      * @see #setRegister(long, long)
      * @see java.lang.Math#max(long, long)
      */
-    // NOTE:  if this changes then setRegister() must change
+    // NOTE: if this changes then setRegister() must change id:3016 gh:3017
     public boolean setMaxRegister(final long registerIndex, final long value) {
         final long bitIndex = registerIndex * registerWidth;
         final int firstWordIndex = (int)(bitIndex >>> LOG2_BITS_PER_WORD)/*aka (bitIndex / BITS_PER_WORD)*/;
         final int secondWordIndex = (int)((bitIndex + registerWidth - 1) >>> LOG2_BITS_PER_WORD)/*see above*/;
         final int bitRemainder = (int)(bitIndex & BITS_PER_WORD_MASK)/*aka (bitIndex % BITS_PER_WORD)*/;
 
-        // NOTE:  matches getRegister()
+        // NOTE: matches getRegister() id:2207 gh:2208
         final long registerValue;
         final long words[] = this.words/*for convenience/performance*/;
         if(firstWordIndex == secondWordIndex)
@@ -203,7 +203,7 @@ class BitVector implements Cloneable {
 
         // determine which is the larger and update as necessary
         if(value > registerValue) {
-            // NOTE:  matches setRegister()
+            // NOTE: matches setRegister() id:2832 gh:2833
             if(firstWordIndex == secondWordIndex) {
                 // clear then set
                 words[firstWordIndex] &= ~(registerMask << bitRemainder);

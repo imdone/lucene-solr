@@ -380,7 +380,7 @@ public class AliasIntegrationTest extends SolrCloudTestCase {
 
     ///////////////
     // alias pointing to alias.  One level of indirection is supported; more than that is not (may or may not work)
-    // TODO dubious; remove?
+    // TODO dubious; remove? id:2854 gh:2855
     CollectionAdminRequest.createAlias("testalias3", "testalias2").process(cluster.getSolrClient());
     searchSeveralWays("testalias3", new SolrQuery("*:*"), 2);
 
@@ -518,7 +518,7 @@ public class AliasIntegrationTest extends SolrCloudTestCase {
 
     // Valid
     CollectionAdminRequest.createAlias("testalias", "testErrorChecks-collection").process(cluster.getSolrClient());
-    // TODO dubious; remove?
+    // TODO dubious; remove? id:2255 gh:2256
     CollectionAdminRequest.createAlias("testalias2", "testalias").process(cluster.getSolrClient());
 
     // Alias + invalid

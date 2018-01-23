@@ -137,7 +137,7 @@ public class FullSolrCloudDistribCmdsTest extends AbstractFullDistribZkTestBase 
     
     testConcurrentIndexing(docId);
     
-    // TODO: testOptimisticUpdate(results);
+    // TODO: testOptimisticUpdate(results); id:2864 gh:2865
     
     testDeleteByQueryDistrib();
 

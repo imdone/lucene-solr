@@ -36,7 +36,7 @@
   #if($response.response.highlighting.get($docId).get($f).get(0))
     #set($pad = "")
       #foreach($v in $response.response.highlighting.get($docId).get($f))
-        $pad$v##  #TODO: $esc.html() or maybe make that optional?
+        $pad$v##  #TODO: $esc.html() or maybe make that optional? id:2626 gh:2627
         #set($pad = " ... ")
       #end
   #else

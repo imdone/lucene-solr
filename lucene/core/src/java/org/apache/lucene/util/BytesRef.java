@@ -172,7 +172,7 @@ public final class BytesRef implements Comparable<BytesRef>,Cloneable {
   /** Unsigned byte order comparison */
   @Override
   public int compareTo(BytesRef other) {
-    // TODO: Once we are on Java 9 replace this by java.util.Arrays#compareUnsigned()
+    // TODO: Once we are on Java 9 replace this by java.util.Arrays#compareUnsigned() id:875 gh:876
     // which is implemented by a Hotspot intrinsic! Also consider building a
     // Multi-Release-JAR!
     final byte[] aBytes = this.bytes;

@@ -34,7 +34,7 @@ import org.junit.BeforeClass;
  */
 public class TestErrorHandling extends AbstractDataImportHandlerTestCase {
 
-  //TODO: fix this test to not require FSDirectory.
+  //TODO: fix this test to not require FSDirectory. id:2621 gh:2622
   static String savedFactory;
   @BeforeClass
   public static void beforeClass() throws Exception {

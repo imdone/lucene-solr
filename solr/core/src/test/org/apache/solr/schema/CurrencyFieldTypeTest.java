@@ -485,7 +485,7 @@ public class CurrencyFieldTypeTest extends SolrTestCaseJ4 {
     
     clearIndex();
     
-    // NOTE: in our test conversions EUR uses an asynetric echange rate
+    // NOTE: in our test conversions EUR uses an asynetric echange rate id:3090 gh:3091
     // these are the equivilent values when converting to:     USD        EUR        GBP
     assertU(adoc("id", "" + 1, fieldName, "10.00,USD"));   // 10.00,USD  25.00,EUR   5.00,GBP
     assertU(adoc("id", "" + 2, fieldName, "15.00,EUR"));   //  7.50,USD  15.00,EUR   7.50,GBP
@@ -562,7 +562,7 @@ public class CurrencyFieldTypeTest extends SolrTestCaseJ4 {
             ,"//lst[@name='xxx']/lst[@name='between']/int[@name='count'][.='4']"
             );
 
-    // NOTE: because of asymetric EUR exchange rate, these buckets are diff then the similar looking USD based request above
+    // NOTE: because of asymetric EUR exchange rate, these buckets are diff then the similar looking USD based request above id:2338 gh:2340
     // This request converts the values in each doc into EUR to decide what range buck it's in.
     assertQ("Ensure that we get correct facet counts back in EUR (facet.range)",
             req("fl", "*,score", "q", "*:*", "rows", "0", "facet", "true",

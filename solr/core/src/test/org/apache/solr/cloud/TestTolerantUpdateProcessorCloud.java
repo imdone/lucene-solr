@@ -569,7 +569,7 @@ public class TestTolerantUpdateProcessorCloud extends SolrCloudTestCase {
       // we can't make any reliable assertions about the error message, because
       // it varies based on how the request was routed -- see SOLR-8830
       assertEquals("not the type of error we were expecting ("+e.code()+"): " + e.toString(),
-                   // NOTE: we always expect a 400 because we know that's what we would get from these types of errors
+                   // NOTE: we always expect a 400 because we know that's what we would get from these types of errors id:2888 gh:2889
                    // on a single node setup -- a 5xx type error isn't something we should have triggered
                    400, e.code());
 
@@ -643,7 +643,7 @@ public class TestTolerantUpdateProcessorCloud extends SolrCloudTestCase {
       // we can't make any reliable assertions about the error message, because
       // it varies based on how the request was routed -- see SOLR-8830
       assertEquals("not the type of error we were expecting ("+e.code()+"): " + e.toString(),
-                   // NOTE: we always expect a 400 because we know that's what we would get from these types of errors
+                   // NOTE: we always expect a 400 because we know that's what we would get from these types of errors id:2296 gh:2297
                    // on a single node setup -- a 5xx type error isn't something we should have triggered
                    400, e.code());
 
@@ -722,7 +722,7 @@ public class TestTolerantUpdateProcessorCloud extends SolrCloudTestCase {
       // we can't make any reliable assertions about the error message, because
       // it varies based on how the request was routed -- see SOLR-8830
       assertEquals("not the type of error we were expecting ("+e.code()+"): " + e.toString(),
-                   // NOTE: we always expect a 400 because we know that's what we would get from these types of errors
+                   // NOTE: we always expect a 400 because we know that's what we would get from these types of errors id:2219 gh:2220
                    // on a single node setup -- a 5xx type error isn't something we should have triggered
                    400, e.code());
 
@@ -924,14 +924,14 @@ public class TestTolerantUpdateProcessorCloud extends SolrCloudTestCase {
   }
 
   /**
-   * HACK: Loops over every Jetty instance in the specified MiniSolrCloudCluster to see if they are running,
+   * HACK: Loops over every Jetty instance in the specified MiniSolrCloudCluster to see if they are running, id:3070 gh:3071
    * and sleeps small increments until they all report that they are, or a max num iters is reached
    * 
    * (work around for SOLR-8862.  Maybe something like this should be promoted into MiniSolrCloudCluster's 
    * start() method? or SolrCloudTestCase's configureCluster?)
    */
   public static void assertSpinLoopAllJettyAreRunning(MiniSolrCloudCluster cluster) throws InterruptedException {
-    // NOTE: idealy we could use an ExecutorService that tried to open Sockets (with a long timeout)
+    // NOTE: idealy we could use an ExecutorService that tried to open Sockets (with a long timeout) id:2297 gh:2298
     // to each of the jetty instances in parallel w/o any sleeping -- but since they pick their ports
     // dynamically and don't report them until/unless the server is up, that won't neccessarily do us
     // any good.

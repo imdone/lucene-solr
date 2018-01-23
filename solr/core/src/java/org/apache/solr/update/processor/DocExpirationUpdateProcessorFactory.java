@@ -237,7 +237,7 @@ public final class DocExpirationUpdateProcessorFactory
     this.core = core;
     
     if (null == core.getLatestSchema().getFieldTypeNoEx(expireField)) {
-      // TODO: check for managed schema and auto-add as a date field?
+      // TODO: check for managed schema and auto-add as a date field? id:2188 gh:2189
       throw confErr(EXP_FIELD_NAME_CONF + " does not exist in schema: " + expireField);
     }
 
@@ -281,8 +281,8 @@ public final class DocExpirationUpdateProcessorFactory
     executor.setContinueExistingPeriodicTasksAfterShutdownPolicy(false);
     // we don't want this firing right away, since the core may not be ready
     final long initialDelay = deletePeriodSeconds;
-    // TODO: should we make initialDelay configurable
-    // TODO: should we make initialDelay some fraction of the period?
+    // TODO: should we make initialDelay configurable id:2106 gh:2107
+    // TODO: should we make initialDelay some fraction of the period? id:2994 gh:2995
     executor.scheduleAtFixedRate(new DeleteExpiredDocsRunnable(this), 
                                  deletePeriodSeconds,
                                  deletePeriodSeconds,
@@ -330,7 +330,7 @@ public final class DocExpirationUpdateProcessorFactory
       if (null != math) {
         try {
           final DateMathParser dmp = new DateMathParser();
-          // TODO: should we try to accept things like "1DAY" as well as "+1DAY" ?
+          // TODO: should we try to accept things like "1DAY" as well as "+1DAY" ? id:2175 gh:2176
           // How? 
           // 'startsWith("+")' is a bad idea because it would cause problems with
           // things like "/DAY+1YEAR"
@@ -405,8 +405,8 @@ public final class DocExpirationUpdateProcessorFactory
                          + "]");
             proc.processDelete(del);
             
-            // TODO: should this be more configurable? 
-            // TODO: in particular: should hard commit be optional?
+            // TODO: should this be more configurable?  id:2810 gh:2811
+            // TODO: in particular: should hard commit be optional? id:2191 gh:2192
             CommitUpdateCommand commit = new CommitUpdateCommand(req, false);
             commit.softCommit = true;
             commit.openSearcher = true;

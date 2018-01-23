@@ -333,7 +333,7 @@ public final class IOUtils {
   private static LinkedHashMap<Path,Throwable> rm(final LinkedHashMap<Path,Throwable> unremoved, Path... locations) {
     if (locations != null) {
       for (Path location : locations) {
-        // TODO: remove this leniency!
+        // TODO: remove this leniency! id:616 gh:617
         if (location != null && Files.exists(location)) {
           try {
             Files.walkFileTree(location, new FileVisitor<Path>() {            

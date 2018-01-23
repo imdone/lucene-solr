@@ -295,7 +295,7 @@ public final class SegmentInfos implements Cloneable, Iterable<SegmentCommitInfo
   /** Read the commit from the provided {@link ChecksumIndexInput}. */
   public static final SegmentInfos readCommit(Directory directory, ChecksumIndexInput input, long generation) throws IOException {
 
-    // NOTE: as long as we want to throw indexformattooold (vs corruptindexexception), we need
+    // NOTE: as long as we want to throw indexformattooold (vs corruptindexexception), we need id:713 gh:714
     // to read the magic ourselves.
     int magic = input.readInt();
     if (magic != CodecUtil.CODEC_MAGIC) {

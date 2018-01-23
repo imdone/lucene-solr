@@ -282,7 +282,7 @@ public class TestNodeAddedTrigger extends SimSolrCloudTestCase {
       assertTrue(fired.get());
       TriggerEvent nodeAddedEvent = eventRef.get();
       assertNotNull(nodeAddedEvent);
-      //TODO assertEquals("", newNode.getNodeName(), nodeAddedEvent.getProperty(NodeAddedTrigger.NodeAddedEvent.NODE_NAME));
+      //TODO assertEquals("", newNode.getNodeName(), nodeAddedEvent.getProperty(NodeAddedTrigger.NodeAddedEvent.NODE_NAME)); id:2307 gh:2308
     }
   }
 

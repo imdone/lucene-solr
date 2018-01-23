@@ -61,7 +61,7 @@ public class PointRangeQueryNodeBuilder implements StandardQueryBuilder {
     boolean minInclusive = numericRangeNode.isLowerInclusive();
     boolean maxInclusive = numericRangeNode.isUpperInclusive();
     
-    // TODO: push down cleaning up of crazy nulls and inclusive/exclusive elsewhere
+    // TODO: push down cleaning up of crazy nulls and inclusive/exclusive elsewhere id:1078 gh:1079
     if (Integer.class.equals(numberType)) {
       Integer lower = (Integer) lowerNumber;
       if (lower == null) {

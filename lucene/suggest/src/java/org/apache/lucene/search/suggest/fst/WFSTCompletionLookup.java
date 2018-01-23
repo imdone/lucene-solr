@@ -66,7 +66,7 @@ public class WFSTCompletionLookup extends Lookup implements Accountable {
   /**
    * FST<Long>, weights are encoded as costs: (Integer.MAX_VALUE-weight)
    */
-  // NOTE: like FSTSuggester, this is really a WFSA, if you want to
+  // NOTE: like FSTSuggester, this is really a WFSA, if you want to id:1561 gh:1562
   // customize the code to add some output you should use PairOutputs.
   private FST<Long> fst = null;
   

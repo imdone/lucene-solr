@@ -140,7 +140,7 @@ final class OrdsSegmentTermsEnumFrame {
     //System.out.println("    loadNextFloorBlock fp=" + fp + " fpEnd=" + fpEnd);
     //}
     assert arc == null || isFloor: "arc=" + arc + " isFloor=" + isFloor;
-    // NOTE: we don't need to touch termOrd here, because we fully scanned this current frame
+    // NOTE: we don't need to touch termOrd here, because we fully scanned this current frame id:276 gh:277
     fp = fpEnd;
     nextEnt = -1;
     loadBlock();
@@ -175,7 +175,7 @@ final class OrdsSegmentTermsEnumFrame {
     isLastInFloor = (code & 1) != 0;
     assert arc == null || (isLastInFloor || isFloor);
 
-    // TODO: if suffixes were stored in random-access
+    // TODO: if suffixes were stored in random-access id:391 gh:392
     // array structure, then we could do binary search
     // instead of linear scan to find target term; eg
     // we could have simple array of offsets
@@ -212,7 +212,7 @@ final class OrdsSegmentTermsEnumFrame {
     nextEnt = 0;
     lastSubFP = -1;
 
-    // TODO: we could skip this if !hasTerms; but
+    // TODO: we could skip this if !hasTerms; but id:373 gh:374
     // that's rare so won't help much
     // metadata
     numBytes = ste.in.readVInt();
@@ -274,7 +274,7 @@ final class OrdsSegmentTermsEnumFrame {
     statsReader.rewind();
     metaDataUpto = 0;
     state.termBlockOrd = 0;
-    // TODO: skip this if !hasTerms?  Then postings
+    // TODO: skip this if !hasTerms?  Then postings id:284 gh:285
     // impl wouldn't have to write useless 0 byte
     postingsReader.resetTermsBlock(fieldInfo, state);
     lastSubFP = -1;
@@ -334,7 +334,7 @@ final class OrdsSegmentTermsEnumFrame {
     }
   }
         
-  // TODO: make this array'd so we can do bin search?
+  // TODO: make this array'd so we can do bin search? id:273 gh:274
   // likely not worth it?  need to measure how many
   // floor blocks we "typically" get
   public void scanToFloorFrame(BytesRef target) {
@@ -411,7 +411,7 @@ final class OrdsSegmentTermsEnumFrame {
     }
   }
 
-  // TODO: make this array'd so we can do bin search?
+  // TODO: make this array'd so we can do bin search? id:278 gh:279
   // likely not worth it?  need to measure how many
   // floor blocks we "typically" get
   public void scanToFloorFrame(long targetOrd) {
@@ -484,16 +484,16 @@ final class OrdsSegmentTermsEnumFrame {
 
     // if (DEBUG) System.out.println("\nBTTR.decodeMetadata seg=" + ste.fr.parent.segment + " mdUpto=" + metaDataUpto + " vs termBlockOrd=" + state.termBlockOrd + " limit=" + limit);
 
-    // TODO: better API would be "jump straight to term=N"???
+    // TODO: better API would be "jump straight to term=N"??? id:394 gh:395
     while (metaDataUpto < limit) {
 
-      // TODO: we could make "tiers" of metadata, ie,
+      // TODO: we could make "tiers" of metadata, ie, id:375 gh:376
       // decode docFreq/totalTF but don't decode postings
       // metadata; this way caller could get
       // docFreq/totalTF w/o paying decode cost for
       // postings
 
-      // TODO: if docFreq were bulk decoded we could
+      // TODO: if docFreq were bulk decoded we could id:287 gh:288
       // just skipN here:
 
       // stats
@@ -531,7 +531,7 @@ final class OrdsSegmentTermsEnumFrame {
   }
 
   // Scans to sub-block that has this target fp; only
-  // called by next(); NOTE: does not set
+  // called by next(); NOTE: does not set id:275 gh:276
   // startBytePos/suffix as a side effect
   public void scanToSubBlock(long subFP) {
     assert !isLeafBlock;
@@ -567,7 +567,7 @@ final class OrdsSegmentTermsEnumFrame {
     }
   }
 
-  // NOTE: sets startBytePos/suffix as a side effect
+  // NOTE: sets startBytePos/suffix as a side effect id:280 gh:281
   public SeekStatus scanToTerm(BytesRef target, boolean exactOnly) throws IOException {
     return isLeafBlock ? scanToTermLeaf(target, exactOnly) : scanToTermNonLeaf(target, exactOnly);
   }
@@ -684,7 +684,7 @@ final class OrdsSegmentTermsEnumFrame {
       fillTerm();
     }
 
-    // TODO: not consistent that in the
+    // TODO: not consistent that in the id:397 gh:398
     // not-exact case we don't next() into the next
     // frame here
     return SeekStatus.END;
@@ -821,7 +821,7 @@ final class OrdsSegmentTermsEnumFrame {
       fillTerm();
     }
 
-    // TODO: not consistent that in the
+    // TODO: not consistent that in the id:378 gh:379
     // not-exact case we don't next() into the next
     // frame here
     return SeekStatus.END;

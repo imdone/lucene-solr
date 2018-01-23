@@ -49,7 +49,7 @@ import org.w3c.dom.Element;
 public class DIHConfiguration {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-  // TODO - remove from here and add it to entity
+  // TODO - remove from here and add it to entity id:1698 gh:1699
   private final String deleteQuery;
   
   private final List<Entity> entities;

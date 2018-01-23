@@ -280,5 +280,5 @@ public class TestFlattenGraphFilter extends BaseTokenStreamTestCase {
     
   }
 
-  // NOTE: TestSynonymGraphFilter's testRandomSyns also tests FlattenGraphFilter
+  // NOTE: TestSynonymGraphFilter's testRandomSyns also tests FlattenGraphFilter id:69 gh:70
 }

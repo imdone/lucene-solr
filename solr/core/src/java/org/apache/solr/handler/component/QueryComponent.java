@@ -114,7 +114,7 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * TODO!
+ * TODO ! id:1938 gh:1939
  * 
  *
  * @since solr 1.3
@@ -251,11 +251,11 @@ public class QueryComponent extends SearchComponent
 
     final SortSpec sortSpec = rb.getSortSpec();
 
-    //TODO: move weighting of sort
+    //TODO: move weighting of sort id:1833 gh:1834
     final SortSpec groupSortSpec = searcher.weightSortSpec(sortSpec, Sort.RELEVANCE);
 
     String withinGroupSortStr = params.get(GroupParams.GROUP_SORT);
-    //TODO: move weighting of sort
+    //TODO: move weighting of sort id:2781 gh:2782
     final SortSpec withinGroupSortSpec;
     if (withinGroupSortStr != null) {
       SortSpec parsedWithinGroupSortSpec = SortSpecParsing.parseSortSpec(withinGroupSortStr, req);
@@ -383,7 +383,7 @@ public class QueryComponent extends SearchComponent
     // currently have an option to return sort field values.  Because of this, we
     // take the documents given and re-derive the sort values.
     //
-    // TODO: See SOLR-5595
+    // TODO: See SOLR-5595 id:1864 gh:1865
     boolean fsv = req.getParams().getBool(ResponseBuilder.FIELD_SORT_VALUES,false);
     if(fsv){
       NamedList<Object[]> sortVals = new NamedList<>(); // order is important for the sort fields
@@ -692,7 +692,7 @@ public class QueryComponent extends SearchComponent
     }
 
     sreq.params = new ModifiableSolrParams(rb.req.getParams());
-    // TODO: base on current params or original params?
+    // TODO: base on current params or original params? id:2660 gh:2661
 
     // don't pass through any shards param
     sreq.params.remove(ShardParams.SHARDS);
@@ -705,7 +705,7 @@ public class QueryComponent extends SearchComponent
     } else {
       sreq.params.set(CommonParams.START, "0");
     }
-    // TODO: should we even use the SortSpec?  That's obtained from the QParser, and
+    // TODO: should we even use the SortSpec?  That's obtained from the QParser, and id:1940 gh:1941
     // perhaps we shouldn't attempt to parse the query at this level?
     // Alternate Idea: instead of specifying all these things at the upper level,
     // we could just specify that this is a shard request.
@@ -745,7 +745,7 @@ public class QueryComponent extends SearchComponent
       }
     }
 
-    // TODO: should this really sendGlobalDfs if just includeScore?
+    // TODO: should this really sendGlobalDfs if just includeScore? id:1835 gh:1836
 
     if (shardQueryIncludeScore) {
       StatsCache statsCache = rb.req.getCore().getStatsCache();
@@ -901,7 +901,7 @@ public class QueryComponent extends SearchComponent
             continue;
             // make which duplicate is used deterministic based on shard
             // if (prevShard.compareTo(srsp.shard) >= 0) {
-            //  TODO: remove previous from priority queue
+            //  TODO: remove previous from priority queue id:2783 gh:2784
             //  continue;
             // }
           }
@@ -953,7 +953,7 @@ public class QueryComponent extends SearchComponent
 
       // save these results in a private area so we can access them
       // again when retrieving stored fields.
-      // TODO: use ResponseBuilder (w/ comments) or the request context?
+      // TODO: use ResponseBuilder (w/ comments) or the request context? id:1866 gh:1867
       rb.resultIds = resultIds;
       rb.setResponseDocs(responseDocs);
 
@@ -1069,7 +1069,7 @@ public class QueryComponent extends SearchComponent
 
   protected void createRetrieveDocs(ResponseBuilder rb) {
 
-    // TODO: in a system with nTiers > 2, we could be passed "ids" here
+    // TODO: in a system with nTiers > 2, we could be passed "ids" here id:2661 gh:2662
     // unless those requests always go to the final destination shard
 
     // for each shard, collect the documents for that shard.
@@ -1110,7 +1110,7 @@ public class QueryComponent extends SearchComponent
     
       ArrayList<String> ids = new ArrayList<>(shardDocs.size());
       for (ShardDoc shardDoc : shardDocs) {
-        // TODO: depending on the type, we may need more tha a simple toString()?
+        // TODO: depending on the type, we may need more tha a simple toString()? id:1942 gh:1943
         ids.add(shardDoc.id.toString());
       }
       sreq.params.add(ShardParams.IDS, StrUtils.join(ids, ','));
@@ -1123,9 +1123,9 @@ public class QueryComponent extends SearchComponent
 
   protected void returnFields(ResponseBuilder rb, ShardRequest sreq) {
     // Keep in mind that this could also be a shard in a multi-tiered system.
-    // TODO: if a multi-tiered system, it seems like some requests
+    // TODO: if a multi-tiered system, it seems like some requests id:1837 gh:1838
     // could/should bypass middlemen (like retrieving stored fields)
-    // TODO: merge fsv to if requested
+    // TODO: merge fsv to if requested id:2785 gh:2786
 
     if ((sreq.purpose & ShardRequest.PURPOSE_GET_FIELDS) != 0) {
       boolean returnScores = (rb.getFieldFlags() & SolrIndexSearcher.GET_SCORES) != 0;
@@ -1234,7 +1234,7 @@ public class QueryComponent extends SearchComponent
     DocListAndSet res = new DocListAndSet();
     res.docList = new DocSlice(0, docs, luceneIds, null, docs, 0);
     if (rb.isNeedDocSet()) {
-      // TODO: create a cache for this!
+      // TODO: create a cache for this! id:1868 gh:1869
       List<Query> queries = new ArrayList<>();
       queries.add(rb.getQuery());
       List<Query> filters = rb.getFilters();
@@ -1458,7 +1458,7 @@ public class QueryComponent extends SearchComponent
   /**
    * Fake scorer for a single document
    *
-   * TODO: when SOLR-5595 is fixed, this wont be needed, as we dont need to recompute sort values here from the comparator
+   * TODO: when SOLR-5595 is fixed, this wont be needed, as we dont need to recompute sort values here from the comparator id:2662 gh:2663
    */
   protected static class FakeScorer extends Scorer {
     final int docid;

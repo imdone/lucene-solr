@@ -57,7 +57,7 @@ import org.apache.lucene.util.StringHelper;
 import org.apache.lucene.util.TestUtil;
 import org.apache.lucene.util.Version;
 
-// TODO:
+// TODO: id:984 gh:985
 //   - old parallel indices are only pruned on commit/close; can we do it on refresh?
 
 /** Simple example showing how to use ParallelLeafReader to index new
@@ -133,7 +133,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
         // This will build the parallel index for the merged segment before the merge becomes visible, so reopen delay is only due to
         // newly flushed segments:
         if (DEBUG) System.out.println(Thread.currentThread().getName() +": TEST: now warm " + reader);
-        // TODO: it's not great that we pass false here; it means we close the reader & reopen again for NRT reader; still we did "warm" by
+        // TODO: it's not great that we pass false here; it means we close the reader & reopen again for NRT reader; still we did "warm" by id:825 gh:826
         // building the parallel index, if necessary
         getParallelLeafReader(reader, false, getCurrentSchemaGen());
       });
@@ -166,7 +166,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
         assertFalse(parallelReader instanceof ParallelLeafReader);
         assertFalse(reader instanceof ParallelLeafReader);
 
-        // NOTE: important that parallelReader is first, so if there are field name overlaps, because changes to the schema
+        // NOTE: important that parallelReader is first, so if there are field name overlaps, because changes to the schema id:907 gh:908
         // overwrote existing field names, it wins:
         LeafReader newReader = new ParallelLeafReader(false, parallelReader, reader) {
           @Override
@@ -199,7 +199,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
               try {
                 return getCurrentReader(reader, currentSchemaGen);
               } catch (IOException ioe) {
-                // TODO: must close on exc here:
+                // TODO: must close on exc here: id:1259 gh:1258
                 throw new RuntimeException(ioe);
               }
             }
@@ -304,7 +304,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
         if (parts.length != 2) {
           throw new IllegalArgumentException("invalid SegmentIDAndGen \"" + s + "\"");
         }
-        // TODO: better checking of segID?
+        // TODO: better checking of segID? id:791 gh:792
         segID = parts[0];
         schemaGen = Long.parseLong(parts[1]);
       }
@@ -342,7 +342,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
       @Override
       public void onClose(IndexReader.CacheKey ignored) {
         try {
-          // TODO: make this sync finer, i.e. just the segment + schemaGen
+          // TODO: make this sync finer, i.e. just the segment + schemaGen id:986 gh:987
           synchronized(ReindexingReader.this) {
             if (DEBUG) System.out.println(Thread.currentThread().getName() + ": TEST: now close parallel parLeafReader dir=" + dir + " segIDGen=" + segIDGen);
             parallelReaders.remove(segIDGen);
@@ -380,7 +380,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
       // While loop because the parallel reader may be closed out from under us, so we must retry:
       while (true) {
 
-        // TODO: make this sync finer, i.e. just the segment + schemaGen
+        // TODO: make this sync finer, i.e. just the segment + schemaGen id:827 gh:828
         synchronized (this) {
           LeafReader parReader = parallelReaders.get(segIDGen);
       
@@ -461,7 +461,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
       }
     }
 
-    // TODO: we could pass a writer already opened...?
+    // TODO: we could pass a writer already opened...? id:909 gh:910
     protected abstract void reindex(long oldSchemaGen, long newSchemaGen, LeafReader reader, Directory parallelDir) throws IOException;
 
     /** Returns the gen for the current schema. */
@@ -601,7 +601,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
       public MergeSpecification findForcedMerges(SegmentInfos segmentInfos,
                                                  int maxSegmentCount, Map<SegmentCommitInfo,Boolean> segmentsToMerge, IndexWriter writer)
         throws IOException {
-        // TODO: do we need to force-force this?  Ie, wrapped MP may think index is already optimized, yet maybe its schemaGen is old?  need test!
+        // TODO: do we need to force-force this?  Ie, wrapped MP may think index is already optimized, yet maybe its schemaGen is old?  need test! id:1263 gh:1264
         return wrap(in.findForcedMerges(segmentInfos, maxSegmentCount, segmentsToMerge, writer));
       }
 
@@ -664,7 +664,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
 
         // Slowly parse the stored field into a new doc values field:
         for(int i=0;i<maxDoc;i++) {
-          // TODO: is this still O(blockSize^2)?
+          // TODO: is this still O(blockSize^2)? id:793 gh:794
           Document oldDoc = reader.document(i);
           Document newDoc = new Document();
           long value = Long.parseLong(oldDoc.get("text").split(" ")[1]);
@@ -718,7 +718,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
         if (oldSchemaGen <= 0) {
           // Must slowly parse the stored field into a new doc values field:
           for(int i=0;i<maxDoc;i++) {
-            // TODO: is this still O(blockSize^2)?
+            // TODO: is this still O(blockSize^2)? id:988 gh:989
             Document oldDoc = reader.document(i);
             Document newDoc = new Document();
             long value = Long.parseLong(oldDoc.get("text").split(" ")[1]);
@@ -731,7 +731,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
           NumericDocValues oldValues = reader.getNumericDocValues("number_" + oldSchemaGen);
           assertNotNull("oldSchemaGen=" + oldSchemaGen, oldValues);
           for(int i=0;i<maxDoc;i++) {
-            // TODO: is this still O(blockSize^2)?
+            // TODO: is this still O(blockSize^2)? id:829 gh:830
             assertEquals(i, oldValues.nextDoc());
             Document oldDoc = reader.document(i);
             Document newDoc = new Document();
@@ -813,7 +813,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
         if (oldSchemaGen <= 0) {
           // Must slowly parse the stored field into a new doc values field:
           for(int i=0;i<maxDoc;i++) {
-            // TODO: is this still O(blockSize^2)?
+            // TODO: is this still O(blockSize^2)? id:911 gh:912
             Document oldDoc = reader.document(i);
             Document newDoc = new Document();
             long value = Long.parseLong(oldDoc.get("text").split(" ")[1]);
@@ -826,7 +826,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
           NumericDocValues oldValues = reader.getNumericDocValues("number");
           assertNotNull("oldSchemaGen=" + oldSchemaGen, oldValues);
           for(int i=0;i<maxDoc;i++) {
-            // TODO: is this still O(blockSize^2)?
+            // TODO: is this still O(blockSize^2)? id:1266 gh:1267
             Document oldDoc = reader.document(i);
             Document newDoc = new Document();
             assertEquals(i, oldValues.nextDoc());
@@ -880,7 +880,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
 
     AtomicLong currentSchemaGen = new AtomicLong();
 
-    // TODO: separate refresh thread, search threads, indexing threads
+    // TODO: separate refresh thread, search threads, indexing threads id:795 gh:796
     Path root = createTempDir();
     ReindexingReader reindexer = getReindexerNewDVFields(root, currentSchemaGen);
     reindexer.commit();
@@ -948,7 +948,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
     AtomicLong currentSchemaGen = new AtomicLong();
     ReindexingReader reindexer = null;
 
-    // TODO: separate refresh thread, search threads, indexing threads
+    // TODO: separate refresh thread, search threads, indexing threads id:990 gh:991
     int numDocs = atLeast(TEST_NIGHTLY ? 20000 : 1000);
     int maxID = 0;
     Path root = createTempDir();
@@ -1033,7 +1033,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
 
     ReindexingReader reindexer = null;
 
-    // TODO: separate refresh thread, search threads, indexing threads
+    // TODO: separate refresh thread, search threads, indexing threads id:831 gh:832
     int numDocs = atLeast(TEST_NIGHTLY ? 20000 : 1000);
     int maxID = 0;
     Path root = createTempDir();
@@ -1211,7 +1211,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
     Path root = createTempDir();
     ReindexingReader reindexer = null;
 
-    // TODO: separate refresh thread, search threads, indexing threads
+    // TODO: separate refresh thread, search threads, indexing threads id:915 gh:916
     int numDocs = atLeast(TEST_NIGHTLY ? 20000 : 1000);
     int maxID = 0;
     int refreshEveryNumDocs = 100;
@@ -1367,7 +1367,7 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
     }
   }
 
-  // TODO: maybe the leading id could be further restricted?  It's from StringHelper.idToString:
+  // TODO: maybe the leading id could be further restricted?  It's from StringHelper.idToString: id:1268 gh:1269
   static final Pattern SEG_GEN_SUB_DIR_PATTERN = Pattern.compile("^[a-z0-9]+_([0-9]+)$");
 
   private static List<Path> segSubDirs(Path segsPath) throws IOException {
@@ -1384,5 +1384,5 @@ public class TestDemoParallelLeafReader extends LuceneTestCase {
     return result;
   }
 
-  // TODO: test exceptions
+  // TODO: test exceptions id:797 gh:798
 }

@@ -576,7 +576,7 @@ public class RealTimeGetComponent extends SearchComponent
   /**
    * Obtains the latest document for a given id from the tlog or index (if not found in the tlog).
    * 
-   * NOTE: This method uses the effective value for avoidRetrievingStoredFields param as false and
+   * NOTE: This method uses the effective value for avoidRetrievingStoredFields param as false and id:1839 gh:1840
    * for nonStoredDVs as null in the call to @see {@link RealTimeGetComponent#getInputDocument(SolrCore, BytesRef, AtomicLong, boolean, Set, boolean)},
    * so as to retrieve all stored and non-stored DV fields from all documents. Also, it uses the effective value of
    * resolveFullDocument param as true, i.e. it resolves any partial documents (in-place updates), in case the 
@@ -741,7 +741,7 @@ public class RealTimeGetComponent extends SearchComponent
     return new ClonedField(in);
   }
 
-  private static class ClonedField extends Field { // TODO Lucene Field has no copy constructor; maybe it should?
+  private static class ClonedField extends Field { // TODO Lucene Field has no copy constructor; maybe it should? id:2787 gh:2788
     ClonedField(IndexableField in) {
       super(in.name(), in.fieldType());
       this.fieldsData = in.numericValue();
@@ -763,7 +763,7 @@ public class RealTimeGetComponent extends SearchComponent
    * @lucene.experimental
    */
   public static SolrDocument toSolrDoc(SolrInputDocument sdoc, IndexSchema schema) {
-    // TODO: do something more performant than this double conversion
+    // TODO: do something more performant than this double conversion id:1870 gh:1871
     Document doc = DocumentBuilder.toDocument(sdoc, schema, false);
 
     // copy the stored fields only
@@ -803,7 +803,7 @@ public class RealTimeGetComponent extends SearchComponent
     
     SolrParams params = rb.req.getParams();
 
-    // TODO: handle collection=...?
+    // TODO: handle collection=...? id:2663 gh:2664
 
     ZkController zkController = rb.req.getCore().getCoreContainer().getZkController();
 
@@ -832,7 +832,7 @@ public class RealTimeGetComponent extends SearchComponent
         String shard = entry.getKey();
 
         ShardRequest sreq = createShardRequest(rb, entry.getValue());
-        // sreq.shards = new String[]{shard};    // TODO: would be nice if this would work...
+        // sreq.shards = new String[]{shard};    // TODO: would be nice if this would work... id:1946 gh:1947
         sreq.shards = sliceToShards(rb, collection, shard);
         sreq.actualShards = sreq.shards;
         
@@ -859,7 +859,7 @@ public class RealTimeGetComponent extends SearchComponent
     sreq.purpose = 1;
     sreq.params = new ModifiableSolrParams(rb.req.getParams());
 
-    // TODO: how to avoid hardcoding this and hit the same handler?
+    // TODO: how to avoid hardcoding this and hit the same handler? id:1841 gh:1842
     sreq.params.set(ShardParams.SHARDS_QT,"/get");      
     sreq.params.set(DISTRIB,false);
 
@@ -1033,7 +1033,7 @@ public class RealTimeGetComponent extends SearchComponent
     PeerSync peerSync = new PeerSync(rb.req.getCore(), replicas, nVersions, cantReachIsSuccess, true);
     boolean success = peerSync.sync().isSuccess();
     
-    // TODO: more complex response?
+    // TODO: more complex response? id:2789 gh:2790
     rb.rsp.add("sync", success);
   }
   
@@ -1075,7 +1075,7 @@ public class RealTimeGetComponent extends SearchComponent
 
     long minVersion = Long.MAX_VALUE;
 
-    // TODO: get this from cache instead of rebuilding?
+    // TODO: get this from cache instead of rebuilding? id:1872 gh:1873
     try (UpdateLog.RecentUpdates recentUpdates = ulog.getRecentUpdates()) {
       for (Long version : versions) {
         try {
@@ -1086,7 +1086,7 @@ public class RealTimeGetComponent extends SearchComponent
             minVersion = Math.min(minVersion, version);
           }
 
-          // TODO: do any kind of validation here?
+          // TODO: do any kind of validation here? id:2664 gh:2665
           updates.add(o);
 
         } catch (SolrException | ClassCastException e) {
@@ -1111,7 +1111,7 @@ public class RealTimeGetComponent extends SearchComponent
     
     List<String> ranges = StrUtils.splitSmart(versionsStr, ",", true);
     
-    // TODO merge ranges.
+    // TODO merge ranges. id:1948 gh:1949
     
     // get all the versions from updatelog and sort them
     List<Long> versionAvailable = null;
@@ -1132,7 +1132,7 @@ public class RealTimeGetComponent extends SearchComponent
         versionsToRet.addAll(versionAvailable.subList(indexStart, indexEnd + 1)); // indexEnd is exclusive
       }
     }
-    // TODO do we need to sort versions using PeerSync.absComparator?
+    // TODO do we need to sort versions using PeerSync.absComparator? id:1843 gh:1844
     return new ArrayList<>(versionsToRet);
   }
 

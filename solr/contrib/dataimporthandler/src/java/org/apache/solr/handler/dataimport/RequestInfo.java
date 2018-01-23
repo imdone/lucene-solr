@@ -41,7 +41,7 @@ public class RequestInfo {
   private final String dataConfig;
   private final SolrQueryRequest request;
   
-  //TODO:  find a different home for these two...
+  //TODO: find a different home for these two... id:2620 gh:2621
   private final ContentStream contentStream;  
   private final DebugInfo debugInfo;
   

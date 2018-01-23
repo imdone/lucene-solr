@@ -136,7 +136,7 @@ public class TolerantUpdateProcessorFactory extends UpdateRequestProcessorFactor
       throw new SolrException(ErrorCode.BAD_REQUEST, "'"+MAX_ERRORS_PARAM + "' must either be non-negative, or -1 to indicate 'unlimiited': " + maxErrors);
     }
 
-    // NOTE: even if 0==maxErrors, we still inject processor into chain so respones has expected header info
+    // NOTE: even if 0==maxErrors, we still inject processor into chain so respones has expected header info id:2818 gh:2819
     return new TolerantUpdateProcessor(req, rsp, next, maxErrors, distribPhase);
   }
 }

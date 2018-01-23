@@ -125,7 +125,7 @@ public class Optimizer extends Reduce {
     Row n = new Row();
     for (; i.hasNext();) {
       Character ch = i.next();
-      // XXX also must handle Cnt and Skip !!
+      // XXX also must handle Cnt and Skip !! id:183 gh:184
       Cell a = master.cells.get(ch);
       Cell b = existing.cells.get(ch);
       

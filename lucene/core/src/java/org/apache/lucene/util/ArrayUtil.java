@@ -124,7 +124,7 @@ public final class ArrayUtil {
    *  over-allocating exponentially to achieve amortized
    *  linear-time cost as the array grows.
    *
-   *  NOTE: this was originally borrowed from Python 2.4.2
+   *  NOTE: this was originally borrowed from Python 2.4.2 id:667 gh:668
    *  listobject.c sources (attribution in LICENSE.txt), but
    *  has now been substantially changed based on
    *  discussions from java-dev thread with subject "Dynamic

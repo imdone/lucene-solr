@@ -27,7 +27,7 @@ import org.apache.solr.common.util.NamedList;
 /**
  * StatsValue defines the interface for the collection of statistical values about fields and facets.
  */
-// TODO: should implement Collector?
+// TODO: should implement Collector? id:1852 gh:1853
 public interface StatsValues {
 
   /**

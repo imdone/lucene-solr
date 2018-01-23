@@ -25,13 +25,13 @@ import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionLengthAttribute;
 
-// TODO: rename to OffsetsXXXTF?  ie we only validate
+// TODO: rename to OffsetsXXXTF?  ie we only validate id:1583 gh:1584
 // offsets (now anyway...)
 
-// TODO: also make a DebuggingTokenFilter, that just prints
+// TODO: also make a DebuggingTokenFilter, that just prints id:2582 gh:2583
 // all att values that come through it...
 
-// TODO: BTSTC should just append this to the chain
+// TODO: BTSTC should just append this to the chain id:1672 gh:1673
 // instead of checking itself:
 
 /** A TokenFilter that checks consistency of the tokens (eg
@@ -133,9 +133,9 @@ public final class ValidatingTokenFilter extends TokenFilter {
   public void end() throws IOException {
     super.end();
 
-    // TODO: what else to validate
+    // TODO: what else to validate id:1446 gh:1447
 
-    // TODO: check that endOffset is >= max(endOffset)
+    // TODO: check that endOffset is >= max(endOffset) id:1333 gh:1334
     // we've seen
   }
 

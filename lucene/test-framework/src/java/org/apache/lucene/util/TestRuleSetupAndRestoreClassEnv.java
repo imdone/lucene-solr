@@ -111,7 +111,7 @@ final class TestRuleSetupAndRestoreClassEnv extends AbstractBeforeAfterRule {
   @Override
   protected void before() throws Exception {
     // enable this by default, for IDE consistency with ant tests (as it's the default from ant)
-    // TODO: really should be in solr base classes, but some extend LTC directly.
+    // TODO: really should be in solr base classes, but some extend LTC directly. id:2610 gh:2611
     // we do this in beforeClass, because some tests currently disable it
     if (System.getProperty("solr.directoryFactory") == null) {
       System.setProperty("solr.directoryFactory", "org.apache.solr.core.MockDirectoryFactory");

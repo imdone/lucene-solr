@@ -29,7 +29,7 @@ import org.apache.lucene.util.LuceneTestCase.SuppressCodecs;
 
 /** Tests for SortedSetSortField selectors other than MIN,
  *  these require optional codec support (random access to ordinals) */
-@SuppressCodecs({"Memory", "SimpleText"}) // TODO: fix MemoryDV to support random access to ordinals
+@SuppressCodecs({"Memory", "SimpleText"}) // TODO: fix MemoryDV to support random access to ordinals id:1323 gh:1324
 public class TestSortedSetSelector extends LuceneTestCase {
   
   public void testMax() throws Exception {

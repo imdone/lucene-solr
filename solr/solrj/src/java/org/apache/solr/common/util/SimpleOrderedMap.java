@@ -51,7 +51,7 @@ public class SimpleOrderedMap<T> extends NamedList<T> {
    * pairwise names/values.
    *
    * <p>
-   * TODO: this method was formerly public, now that it's not we can change the impl details of 
+   * TODO: this method was formerly public, now that it's not we can change the impl details of  id:2533 gh:2534
    * this class to be based on a Map.Entry[] 
    * </p>
    *

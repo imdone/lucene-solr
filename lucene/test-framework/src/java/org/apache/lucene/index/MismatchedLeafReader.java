@@ -66,7 +66,7 @@ public class MismatchedLeafReader extends FilterLeafReader {
     // now renumber:
     for (int i = 0; i < shuffled.size(); i++) {
       FieldInfo oldInfo = shuffled.get(i);
-      // TODO: should we introduce "gaps" too?
+      // TODO: should we introduce "gaps" too? id:2594 gh:2595
       FieldInfo newInfo = new FieldInfo(oldInfo.name,                // name
                                         i,                           // number
                                         oldInfo.hasVectors(),        // storeTermVector
@@ -88,7 +88,7 @@ public class MismatchedLeafReader extends FilterLeafReader {
    * StoredFieldsVisitor that remaps actual field numbers
    * to our new shuffled ones.
    */
-  // TODO: its strange this part of our IR api exposes FieldInfo,
+  // TODO: its strange this part of our IR api exposes FieldInfo, id:1699 gh:1700
   // no other "user-accessible" codec apis do this?
   class MismatchedVisitor extends StoredFieldVisitor {
     final StoredFieldVisitor in;

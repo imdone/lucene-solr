@@ -42,7 +42,7 @@ public class TriLevelCompositeIdRoutingTest extends ShardRoutingTest {
 
   @BeforeClass
   public static void beforeTriLevelCompositeIdRoutingTest() throws Exception {
-    // TODO: we use an fs based dir because something
+    // TODO: we use an fs based dir because something id:3071 gh:3072
     // like a ram dir will not recover correctly right now
     // because tran log will still exist on restart and ram
     // dir will not persist - perhaps translog can empty on

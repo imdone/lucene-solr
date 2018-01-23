@@ -84,7 +84,7 @@ public class RestoreCmd implements OverseerCollectionMessageHandler.Cmd {
 
   @Override
   public void call(ClusterState state, ZkNodeProps message, NamedList results) throws Exception {
-    // TODO maybe we can inherit createCollection's options/code
+    // TODO maybe we can inherit createCollection's options/code id:1822 gh:1823
 
     String restoreCollectionName = message.getStr(COLLECTION_PROP);
     String backupName = message.getStr(NAME); // of backup
@@ -134,7 +134,7 @@ public class RestoreCmd implements OverseerCollectionMessageHandler.Cmd {
     String restoreConfigName = message.getStr(OverseerCollectionMessageHandler.COLL_CONF, configName);
     if (zkStateReader.getConfigManager().configExists(restoreConfigName)) {
       log.info("Using existing config {}", restoreConfigName);
-      //TODO add overwrite option?
+      //TODO add overwrite option? id:2637 gh:2638
     } else {
       log.info("Uploading config {}", restoreConfigName);
       backupMgr.uploadConfigDir(location, backupName, configName, restoreConfigName);
@@ -197,7 +197,7 @@ public class RestoreCmd implements OverseerCollectionMessageHandler.Cmd {
 
     //Mark all shards in CONSTRUCTION STATE while we restore the data
     {
-      //TODO might instead createCollection accept an initial state?  Is there a race?
+      //TODO might instead createCollection accept an initial state?  Is there a race? id:1788 gh:1789
       Map<String, Object> propMap = new HashMap<>();
       propMap.put(Overseer.QUEUE_OPERATION, OverseerAction.UPDATESHARDSTATE.toLower());
       for (Slice shard : restoreCollection.getSlices()) {
@@ -207,7 +207,7 @@ public class RestoreCmd implements OverseerCollectionMessageHandler.Cmd {
       inQueue.offer(Utils.toJSON(new ZkNodeProps(propMap)));
     }
 
-    // TODO how do we leverage the RULE / SNITCH logic in createCollection?
+    // TODO how do we leverage the RULE / SNITCH logic in createCollection? id:1761 gh:1762
 
     ClusterState clusterState = zkStateReader.getClusterState();
 

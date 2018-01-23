@@ -269,7 +269,7 @@ public class TestJsonFacets extends SolrTestCaseHS {
     client.add(sdoc("id", "6", "1_s", "C", "2_s", "B", "3_s", "A", "y_s", "C", "x_t", "x y z", "z_t", "1    "), null);
     client.commit();
 
-    assertJQ(req("q", "x_t:x", "rows", "0", // NOTE q - only x=x in base set (1,2,5,6)
+    assertJQ(req("q", "x_t:x", "rows", "0", // NOTE q - only x=x in base set (1,2,5,6) id:2370 gh:2371
                  "json.facet", ""
                  + "{x: { type: terms, field: 'x_t', "
                  + "      domain: { join: { from:'1_s', to:'2_s' } },"
@@ -471,7 +471,7 @@ public class TestJsonFacets extends SolrTestCaseHS {
     fieldLists.put("sparse_s", getAlternatives("sparse_s"));
     fieldLists.put("multi_ss", getAlternatives("multi_ss"));
 
-    // TODO: if a field will be used as a function source, we can't use multi-valued types for it (currently)
+    // TODO: if a field will be used as a function source, we can't use multi-valued types for it (currently) id:2960 gh:2961
 
     int maxAlt = 0;
     for (List<String> fieldList : fieldLists.values()) {
@@ -950,7 +950,7 @@ public class TestJsonFacets extends SolrTestCaseHS {
 
     // test numBuckets
     client.testJQ(params(p, "q", "*:*", "rows", "0", "facet", "true"
-            , "json.facet", "{f1:{terms:{${terms_method} field:${cat_s}, numBuckets:true, limit:1}}}" // TODO: limit:0 produced an error
+            , "json.facet", "{f1:{terms:{${terms_method} field:${cat_s}, numBuckets:true, limit:1}}}" // TODO: limit:0 produced an error id:2372 gh:2373
         )
         , "facets=={ 'count':6, " +
             "'f1':{ numBuckets:2, buckets:[{val:B, count:3}]} } "
@@ -1138,7 +1138,7 @@ public class TestJsonFacets extends SolrTestCaseHS {
     );
 
     // stats at top level, matching documents, but no values in the field
-    // NOTE: this represents the current state of what is returned, not the ultimate desired state.
+    // NOTE: this represents the current state of what is returned, not the ultimate desired state. id:2408 gh:2407
     client.testJQ(params(p, "q", "id:3"
         , "json.facet", "{ sum1:'sum(${num_d})', sumsq1:'sumsq(${num_d})', avg1:'avg(${num_d})', min1:'min(${num_d})', max1:'max(${num_d})'" +
             ", numwhere:'unique(${where_s})', unique_num_i:'unique(${num_i})', unique_num_d:'unique(${num_d})', unique_date:'unique(${date})'" +
@@ -1148,7 +1148,7 @@ public class TestJsonFacets extends SolrTestCaseHS {
         , "facets=={count:1 " +
             ",sum1:0.0," +
             " sumsq1:0.0," +
-            " avg1:0.0," +   // TODO: undesirable. omit?
+            " avg1:0.0," +   // TODO: undesirable. omit? id:3106 gh:3108
             // " min1:'NaN'," +
             // " max1:'NaN'," +
             " numwhere:0," +
@@ -1417,7 +1417,7 @@ public class TestJsonFacets extends SolrTestCaseHS {
             ",f6:{ buckets:[{val:-5,count:2}]  , numBuckets:4  } " +
             ",f7:{ buckets:[{val:2,count:1},{val:-5,count:2}] , numBuckets:4 } " +
             ",f8:{ buckets:[] , numBuckets:4 } " +
-            ",f9:{ buckets:[{val:7,count:1,x:11.0},{val:2,count:1,x:4.0},{val:3,count:1,x:2.0},{val:-5,count:2,x:-7.0} ],  numBuckets:4, allBuckets:{count:5,x:0.6},missing:{count:1,x:0.0} } " +  // TODO: should missing exclude "x" because no values were collected?
+            ",f9:{ buckets:[{val:7,count:1,x:11.0},{val:2,count:1,x:4.0},{val:3,count:1,x:2.0},{val:-5,count:2,x:-7.0} ],  numBuckets:4, allBuckets:{count:5,x:0.6},missing:{count:1,x:0.0} } " +  // TODO: should missing exclude "x" because no values were collected? id:2373 gh:2374
             ",f10:{ buckets:[{val:-5,count:2,a:{count:0}},{val:2,count:1,a:{count:1}},{val:3,count:1,a:{count:1}},{val:7,count:1,a:{count:0}} ],  numBuckets:4, allBuckets:{count:5},missing:{count:1,a:{count:0}} } " +
             ",f11:{ buckets:[{val:-5,count:2,a:2},{val:2,count:1,a:1},{val:3,count:1,a:1},{val:7,count:1,a:1} ] , missing:{count:1,a:0} , allBuckets:{count:5,a:5}  } " +
             "}"
@@ -1573,7 +1573,7 @@ public class TestJsonFacets extends SolrTestCaseHS {
     ////////////////////////////////////////////////////////////////
     if (client.local()) {
       long creates, resets;
-      // NOTE: these test the current implementation and may need to be adjusted to match future optimizations (such as calculating N buckets in parallel in the second phase)
+      // NOTE: these test the current implementation and may need to be adjusted to match future optimizations (such as calculating N buckets in parallel in the second phase) id:2961 gh:2962
 
       creates = DebugAgg.Acc.creates.get();
       resets = DebugAgg.Acc.resets.get();

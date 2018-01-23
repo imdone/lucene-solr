@@ -575,7 +575,7 @@ public class ExtendedDismaxQParser extends QParser {
     // two or there shouldn't be a boost)
     pp.minClauseSize = 2;  
     
-    // TODO: perhaps we shouldn't use synonyms either...
+    // TODO: perhaps we shouldn't use synonyms either... id:2702 gh:2703
     
     Query phrase = pp.parse(userPhraseQuery.toString());
     if (phrase != null) {

@@ -294,7 +294,7 @@ public class TestSolr4Spatial extends SolrTestCaseJ4 {
     );
 
     //
-    //  NOTE: the rest work via the score of the spatial query. Generally, you should use geodist() instead.
+    //  NOTE: the rest work via the score of the spatial query. Generally, you should use geodist() instead. id:2359 gh:2360
     //
 
     //test absence of score=distance means it doesn't score

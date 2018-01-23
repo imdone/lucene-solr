@@ -82,6 +82,6 @@ class TreeCellIterator extends CellIterator {
     descend = false;
   }
 
-  //TODO implement a smart nextFrom() that looks at the parent's bytes first
+  //TODO implement a smart nextFrom() that looks at the parent's bytes first id:1205 gh:1206
 
 }

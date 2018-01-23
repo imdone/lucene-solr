@@ -87,7 +87,7 @@ public class TestWildcardRandom extends LuceneTestCase {
   }
   
   private void assertPatternHits(String pattern, int numHits) throws Exception {
-    // TODO: run with different rewrites
+    // TODO: run with different rewrites id:880 gh:881
     final String filledPattern = fillPattern(pattern);
     if (VERBOSE) {
       System.out.println("TEST: run wildcard pattern=" + pattern + " filled=" + filledPattern);

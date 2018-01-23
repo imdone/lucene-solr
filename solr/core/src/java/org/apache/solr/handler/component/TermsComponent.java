@@ -87,7 +87,7 @@ public class TermsComponent extends SearchComponent {
       return;
     }
 
-    // TODO: temporary... this should go in a different component.
+    // TODO: temporary... this should go in a different component. id:2803 gh:2804
     String shards = params.get(ShardParams.SHARDS);
     if (shards != null) {
       rb.isDistrib = true;
@@ -187,7 +187,7 @@ public class TermsComponent extends SearchComponent {
           if (!sort) {
             /***
             // streaming solution that is deferred until writing the response
-            // TODO: we can't use the streaming solution until XML writer supports PushWriter!
+            // TODO: we can't use the streaming solution until XML writer supports PushWriter! id:1886 gh:1887
             termsResult.add(field, (MapWriter) ew -> {
               PointMerger.ValueIterator valueIterator = new PointMerger.ValueIterator(sf, rb.req.getSearcher().getRawReader().leaves());
               MutableValue mv = valueIterator.getMutableValue();
@@ -243,7 +243,7 @@ public class TermsComponent extends SearchComponent {
       } else {
         lowerBytes = new BytesRef();
         if (raw) {
-          // TODO: how to handle binary? perhaps we don't for "raw"... or if the field exists
+          // TODO: how to handle binary? perhaps we don't for "raw"... or if the field exists id:2671 gh:2672
           // perhaps we detect if the FieldType is non-character and expect hex if so?
           lowerBytes = new BytesRef(lowerStr);
         } else {
@@ -283,7 +283,7 @@ public class TermsComponent extends SearchComponent {
 
         if (pattern != null) {
           // indexed text or external text?
-          // TODO: support "raw" mode?
+          // TODO: support "raw" mode? id:1962 gh:1963
           ft.indexedToReadable(term, external);
           externalized = true;
           if (!pattern.matcher(external.get()).matches()) {
@@ -306,7 +306,7 @@ public class TermsComponent extends SearchComponent {
             queue.add(new CountPair<>(BytesRef.deepCopyOf(term), docFreq));
           } else {
 
-            // TODO: handle raw somehow
+            // TODO: handle raw somehow id:1856 gh:1857
             if (!externalized) {
               ft.indexedToReadable(term, external);
             }
@@ -443,7 +443,7 @@ public class TermsComponent extends SearchComponent {
       String[] fields = params.getParams(TermsParams.TERMS_FIELD);
       if (fields != null) {
         for (String field : fields) {
-          // TODO: not sure 128 is the best starting size
+          // TODO: not sure 128 is the best starting size id:2805 gh:2806
           // It use it because that is what is used for facets
           fieldmap.put(field, new HashMap<String, TermsResponse.Term>(128));
         }
@@ -615,7 +615,7 @@ public class TermsComponent extends SearchComponent {
         continue;
       }
 
-      // Since splitTerms is already sorted, this array will also be sorted. NOTE: this may not be true, it depends on readableToIndexed.
+      // Since splitTerms is already sorted, this array will also be sorted. NOTE: this may not be true, it depends on readableToIndexed. id:1888 gh:1889
       Term[] terms = new Term[splitTerms.length];
       for (int i = 0; i < splitTerms.length; i++) {
         terms[i] = new Term(field, fieldType.readableToIndexed(splitTerms[i]));

@@ -260,7 +260,7 @@ public class LFUCache<K, V> implements SolrCache<K, V> {
         long cinserts = 0;
         long cevictions = 0;
 
-        // NOTE: It is safe to iterate on a CopyOnWriteArrayList
+        // NOTE: It is safe to iterate on a CopyOnWriteArrayList id:2707 gh:2708
         for (ConcurrentLFUCache.Stats statistics : statsList) {
           clookups += statistics.getCumulativeLookups();
           chits += statistics.getCumulativeHits();

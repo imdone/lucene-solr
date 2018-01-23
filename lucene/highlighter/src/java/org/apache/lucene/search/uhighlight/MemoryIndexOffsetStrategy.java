@@ -82,7 +82,7 @@ public class MemoryIndexOffsetStrategy extends AnalysisOffsetStrategy {
     if (allAutomata.size() == 1) {
       return allAutomata.get(0);
     }
-    //TODO it'd be nice if we could get at the underlying Automaton in CharacterRunAutomaton so that we
+    //TODO it'd be nice if we could get at the underlying Automaton in CharacterRunAutomaton so that we id:1099 gh:1100
     //  could union them all. But it's not exposed, and sometimes the automaton is byte (not char) oriented
 
     // Return an aggregate CharacterRunAutomaton of others
@@ -116,7 +116,7 @@ public class MemoryIndexOffsetStrategy extends AnalysisOffsetStrategy {
 
   private static FilteringTokenFilter newKeepWordFilter(final TokenStream tokenStream,
                                                         final CharacterRunAutomaton charRunAutomaton) {
-    // it'd be nice to use KeepWordFilter but it demands a CharArraySet. TODO File JIRA? Need a new interface?
+    // it'd be nice to use KeepWordFilter but it demands a CharArraySet. TODO File JIRA? Need a new interface? id:935 gh:936
     return new FilteringTokenFilter(tokenStream) {
       final CharTermAttribute charAtt = addAttribute(CharTermAttribute.class);
 

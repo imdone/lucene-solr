@@ -148,7 +148,7 @@ public final class DefaultSolrCoreState extends SolrCoreState implements Recover
   }
 
   private void initRefCntWriter() {
-    // TODO: since we moved to a read-write lock, and don't rely on the count to close the writer, we don't really
+    // TODO: since we moved to a read-write lock, and don't rely on the count to close the writer, we don't really id:2144 gh:2145
     // need this class any more.  It could also be a singleton created at the same time as SolrCoreState
     // or we could change the API of SolrCoreState to just return the writer and then add a releaseWriter() call.
     if (refCntWriter == null && indexWriter != null) {

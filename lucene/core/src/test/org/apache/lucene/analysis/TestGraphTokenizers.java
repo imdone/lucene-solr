@@ -49,10 +49,10 @@ public class TestGraphTokenizers extends BaseTokenStreamTestCase {
   // over 'a' at position 0 with posLen=1, "a/x:3 b c" adds
   // 'x' over a with posLen=3.  Tokens are in normal-form!
   // So, offsets are computed based on the first token at a
-  // given position.  NOTE: each token must be a single
+  // given position.  NOTE: each token must be a single id:808 gh:809
   // character!  We assume this when computing offsets...
   
-  // NOTE: all input tokens must be length 1!!!  This means
+  // NOTE: all input tokens must be length 1!!!  This means id:895 gh:896
   // you cannot turn on MockCharFilter when random
   // testing...
 
@@ -96,7 +96,7 @@ public class TestGraphTokenizers extends BaseTokenStreamTestCase {
     @Override
     public void end() throws IOException {
       super.end();
-      // NOTE: somewhat... hackish, but we need this to
+      // NOTE: somewhat... hackish, but we need this to id:1242 gh:1243
       // satisfy BTSTC:
       final int lastOffset;
       if (tokens != null && !tokens.isEmpty()) {

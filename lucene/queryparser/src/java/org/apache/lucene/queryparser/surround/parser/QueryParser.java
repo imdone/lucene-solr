@@ -72,7 +72,7 @@ public class QueryParser implements QueryParserConstants {
 
   protected SrndQuery getFieldsQuery(
       SrndQuery q, ArrayList<String> fieldNames) {
-    /* FIXME: check acceptable subquery: at least one subquery should not be
+    /* FIXME: check acceptable subquery: at least one subquery should not be id:982 gh:983
      * a fields query.
      */
     return new FieldsQuery(q, fieldNames, FIELD_OPERATOR);

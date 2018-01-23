@@ -108,7 +108,7 @@ public abstract class QueryRescorer extends Rescorer {
       hitUpto++;
     }
 
-    // TODO: we should do a partial sort (of only topN)
+    // TODO: we should do a partial sort (of only topN) id:581 gh:582
     // instead, but typically the number of hits is
     // smallish:
     Arrays.sort(hits,

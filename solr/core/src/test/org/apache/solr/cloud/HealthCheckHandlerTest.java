@@ -49,7 +49,7 @@ public class HealthCheckHandlerTest extends SolrCloudTestCase {
     SolrRequest req = new GenericSolrRequest(SolrRequest.METHOD.GET, HEALTH_CHECK_HANDLER_PATH, new ModifiableSolrParams());
 
     // positive check that our only existing "healthy" node works with cloud client
-    // NOTE: this is using GenericSolrRequest, not HealthCheckRequest which is why it passes
+    // NOTE: this is using GenericSolrRequest, not HealthCheckRequest which is why it passes id:2269 gh:2270
     // as compared with testHealthCheckHandlerWithCloudClient
     // (Not sure if that's actaully a good thing -- but it's how the existing test worked)
     assertEquals(CommonParams.OK,

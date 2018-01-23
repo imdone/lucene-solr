@@ -216,7 +216,7 @@ public class AutomatonTermsEnum extends FilteredTermsEnum {
           /* String is good to go as-is */
           return true;
         /* else advance further */
-        // TODO: paranoia? if we backtrack thru an infinite DFA, the loop detection is important!
+        // TODO: paranoia? if we backtrack thru an infinite DFA, the loop detection is important! id:385 gh:386
         // for now, restart from scratch for all infinite DFAs 
         if (!finite) pos = 0;
       }

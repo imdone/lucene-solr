@@ -193,7 +193,7 @@ class SimplePrimaryNode extends PrimaryNode {
       long startNS = System.nanoTime();
       long lastWarnNS = startNS;
 
-      // TODO: maybe ... place some sort of time limit on how long we are willing to wait for slow replica(s) to finish copying?
+      // TODO: maybe ... place some sort of time limit on how long we are willing to wait for slow replica(s) to finish copying? id:1106 gh:1107
       while (preCopy.finished() == false) {
         try {
           Thread.sleep(10);
@@ -307,9 +307,9 @@ class SimplePrimaryNode extends PrimaryNode {
           c.out.writeVLong(primaryGen);
           c.out.writeInt(tcpPort);
           c.flush();
-          // TODO: we should use multicast to broadcast files out to replicas
-          // TODO: ... replicas could copy from one another instead of just primary
-          // TODO: we could also prioritize one replica at a time?
+          // TODO: we should use multicast to broadcast files out to replicas id:1250 gh:1251
+          // TODO: ... replicas could copy from one another instead of just primary id:1126 gh:1127
+          // TODO: we could also prioritize one replica at a time? id:1392 gh:1393
         } catch (Throwable t) {
           message("top: failed to connect R" + replicaID + " for newNRTPoint; skipping: " + t.getMessage());
         }
@@ -322,7 +322,7 @@ class SimplePrimaryNode extends PrimaryNode {
 
   /** Pushes CopyState on the wire */
   private static void writeCopyState(CopyState state, DataOutput out) throws IOException {
-    // TODO (opto): we could encode to byte[] once when we created the copyState, and then just send same byts to all replicas...
+    // TODO (opto): we could encode to byte[] once when we created the copyState, and then just send same byts to all replicas... id:1601 gh:1602
     out.writeVInt(state.infosBytes.length);
     out.writeBytes(state.infosBytes, 0, state.infosBytes.length);
     out.writeVLong(state.gen);
@@ -489,7 +489,7 @@ class SimplePrimaryNode extends PrimaryNode {
     for(int i=0;i<fieldCount;i++) {
       String name = in.readString();
       String value = in.readString();
-      // NOTE: clearly NOT general!
+      // NOTE: clearly NOT general! id:1110 gh:1111
       if (name.equals("docid") || name.equals("marker")) {
         doc.add(new StringField(name, value, Field.Store.YES));
       } else if (name.equals("title")) {
@@ -511,7 +511,7 @@ class SimplePrimaryNode extends PrimaryNode {
     for(int i=0;i<fieldCount;i++) {
       String name = in.readString();
       String value = in.readString();
-      // NOTE: clearly NOT general!
+      // NOTE: clearly NOT general! id:1252 gh:1253
       if (name.equals("docid")) {
         docid = value;
         doc.add(new StringField("docid", value, Field.Store.YES));

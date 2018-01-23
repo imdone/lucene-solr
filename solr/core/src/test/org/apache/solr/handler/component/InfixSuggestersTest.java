@@ -122,7 +122,7 @@ public class InfixSuggestersTest extends SolrTestCaseJ4 {
               () -> assertQ(req("qt", rh_analyzing_long,
                   SuggesterParams.SUGGEST_BUILD_ALL, "true"),
                   "//str[@name='command'][.='buildAll']")));
-      Thread.sleep(100); // TODO: is there a better way to ensure that the build has begun?
+      Thread.sleep(100); // TODO: is there a better way to ensure that the build has begun? id:2918 gh:2919
       h.close();
       // Stop the dictionary's input iterator
       System.clearProperty(RandomTestDictionaryFactory.RandomTestDictionary

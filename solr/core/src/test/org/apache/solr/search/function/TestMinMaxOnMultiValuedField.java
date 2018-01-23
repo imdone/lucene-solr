@@ -222,7 +222,7 @@ public class TestMinMaxOnMultiValuedField extends SolrTestCaseJ4 {
 
   public void testExpectedSortMissingOrderings() {
 
-    // NOTE: we never test the "true" min/max value for a type, because
+    // NOTE: we never test the "true" min/max value for a type, because id:2411 gh:2412
     // (in this simple test) we aren't using a secondary sort, so there is no way to disambiguate
     // docs that have those values from docs that have those *effective* sort values
 

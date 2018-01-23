@@ -188,7 +188,7 @@ public abstract class ManagedResourceStorage {
       return deleteIfFile(storedFile);
     }
     
-    // TODO: this interface should probably be changed, this simulates the old behavior,
+    // TODO: this interface should probably be changed, this simulates the old behavior, id:1922 gh:1923
     // only throw security exception, just return false otherwise
     private boolean deleteIfFile(File f) {
       if (!f.isFile()) {

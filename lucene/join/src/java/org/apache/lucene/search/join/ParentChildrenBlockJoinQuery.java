@@ -196,7 +196,7 @@ public class ParentChildrenBlockJoinQuery extends Query {
 
       @Override
       public boolean isCacheable(LeafReaderContext ctx) {
-        return false;   // TODO delegate to BitSetProducer?
+        return false;   // TODO delegate to BitSetProducer? id:949 gh:950
       }
 
     };

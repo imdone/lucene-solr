@@ -63,13 +63,13 @@ public abstract class Terms {
    *  number of terms visited. */
   public TermsEnum intersect(CompiledAutomaton compiled, final BytesRef startTerm) throws IOException {
     
-    // TODO: could we factor out a common interface b/w
+    // TODO: could we factor out a common interface b/w id:832 gh:833
     // CompiledAutomaton and FST?  Then we could pass FST there too,
     // and likely speed up resolving terms to deleted docs ... but
     // AutomatonTermsEnum makes this tricky because of its on-the-fly cycle
     // detection
     
-    // TODO: eventually we could support seekCeil/Exact on
+    // TODO: eventually we could support seekCeil/Exact on id:722 gh:723
     // the returned enum, instead of only being able to seek
     // at the start
 

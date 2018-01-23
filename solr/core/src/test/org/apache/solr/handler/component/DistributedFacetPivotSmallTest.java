@@ -48,13 +48,13 @@ public class DistributedFacetPivotSmallTest extends BaseDistributedSearchTestCas
     
     del("*:*");
 
-    // NOTE: we use the literal (4 character) string "null" as a company name
+    // NOTE: we use the literal (4 character) string "null" as a company name id:2321 gh:2322
     // to help ensure there isn't any bugs where the literal string is treated as if it 
     // were a true NULL value.
     index(id, 19, "place_t", "cardiff dublin", "company_t", "microsoft polecat", "price_ti", "15");
     index(id, 20, "place_t", "dublin", "company_t", "polecat microsoft null", "price_ti", "19",
           // this is the only doc to have solo_* fields, therefore only 1 shard has them
-          // TODO: add enum field - blocked by SOLR-6682
+          // TODO: add enum field - blocked by SOLR-6682 id:2914 gh:2915
           "solo_i", 42, "solo_s", "lonely", "solo_dt", "1976-03-06T01:23:45Z");
     index(id, 21, "place_t", "london la dublin", "company_t",
         "microsoft fujitsu null polecat", "price_ti", "29");
@@ -215,7 +215,7 @@ public class DistributedFacetPivotSmallTest extends BaseDistributedSearchTestCas
     
     // Test facet.missing=true with diff sorts
 
-    index("id",777); // NOTE: id=25 has no place as well
+    index("id",777); // NOTE: id=25 has no place as well id:2322 gh:2323
     commit();
 
     SolrParams missingA = params( "q", "*:*",
@@ -696,7 +696,7 @@ public class DistributedFacetPivotSmallTest extends BaseDistributedSearchTestCas
 
     // Test facet.missing=true with diff sorts
 
-    index("id", 777); // NOTE: id=25 has no place as well
+    index("id", 777); // NOTE: id=25 has no place as well id:2264 gh:2265
     commit();
 
     SolrParams missingA = params("q", "*:*", "rows", "0", "facet", "true",
@@ -1159,7 +1159,7 @@ public class DistributedFacetPivotSmallTest extends BaseDistributedSearchTestCas
 
     // Test facet.missing=true with diff sorts
 
-    index("id", 777); // NOTE: id=25 has no place as well
+    index("id", 777); // NOTE: id=25 has no place as well id:3083 gh:3084
     commit();
 
     SolrParams missingA = params("q", "*:*", "rows", "0", "facet", "true",
@@ -1490,7 +1490,7 @@ public class DistributedFacetPivotSmallTest extends BaseDistributedSearchTestCas
       assertEquals(pf.getField()+":"+pf.getValue()+": date mean",
                    expected, pf.getFieldStatsInfo().get("solo_dt").getMean());
 
-      // TODO: add enum field asserts - blocked by SOLR-6682
+      // TODO: add enum field asserts - blocked by SOLR-6682 id:2323 gh:2324
     }
   }
   

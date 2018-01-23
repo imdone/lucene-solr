@@ -60,7 +60,7 @@ import static org.apache.lucene.index.PostingsEnum.POSITIONS;
 
 /**
  * Abstract class to do basic tests for a postings format.
- * NOTE: This test focuses on the postings
+ * NOTE: This test focuses on the postings id:1693 gh:1694
  * (docs/freqs/positions/payloads/offsets) impl, not the
  * terms dict.  The [stretch] goal is for this test to be
  * so thorough in testing a new PostingsFormat that if this
@@ -68,11 +68,11 @@ import static org.apache.lucene.index.PostingsEnum.POSITIONS;
  * if there is some bug in a given PostingsFormat that this
  * test fails to catch then this test needs to be improved! */
 
-// TODO can we make it easy for testing to pair up a "random terms dict impl" with your postings base format...
+// TODO can we make it easy for testing to pair up a "random terms dict impl" with your postings base format... id:1588 gh:1589
 
-// TODO test when you reuse after skipping a term or two, eg the block reuse case
+// TODO test when you reuse after skipping a term or two, eg the block reuse case id:1360 gh:1361
 
-/* TODO
+/* TODO id:1620 gh:1621
   - threads
   - assert doc=-1 before any nextDoc
   - if a PF passes this test but fails other tests then this
@@ -86,7 +86,7 @@ public abstract class BasePostingsFormatTestCase extends BaseIndexFileFormatTest
 
   static RandomPostingsTester postingsTester;
 
-  // TODO maybe instead of @BeforeClass just make a single test run: build postings & index & test it?
+  // TODO maybe instead of @BeforeClass just make a single test run: build postings & index & test it? id:2592 gh:2593
 
   @BeforeClass
   public static void createPostings() throws IOException {
@@ -131,12 +131,12 @@ public abstract class BasePostingsFormatTestCase extends BaseIndexFileFormatTest
       Directory dir = newFSDirectory(path);
 
       boolean indexPayloads = random().nextBoolean();
-      // TODO test thread safety of buildIndex too
+      // TODO test thread safety of buildIndex too id:1695 gh:1696
       FieldsProducer fieldsProducer = postingsTester.buildIndex(getCodec(), dir, IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS, indexPayloads, false);
 
       postingsTester.testFields(fieldsProducer);
 
-      // NOTE: you can also test "weaker" index options than
+      // NOTE: you can also test "weaker" index options than id:1592 gh:1593
       // you indexed with:
       postingsTester.testTerms(fieldsProducer, EnumSet.allOf(RandomPostingsTester.Option.class), IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS, IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS, false);
 
@@ -274,7 +274,7 @@ public abstract class BasePostingsFormatTestCase extends BaseIndexFileFormatTest
   }
   
   // tests that ghost fields still work
-  // TODO: can this be improved?
+  // TODO: can this be improved? id:1363 gh:1364
   public void testGhosts() throws Exception {
     Directory dir = newDirectory();
     IndexWriterConfig iwc = newIndexWriterConfig(null);
@@ -372,7 +372,7 @@ public abstract class BasePostingsFormatTestCase extends BaseIndexFileFormatTest
     final AtomicLong sumDocFreq = new AtomicLong();
     final AtomicLong sumTotalTermFreq = new AtomicLong();
 
-    // TODO: would be better to use / delegate to the current
+    // TODO: would be better to use / delegate to the current id:1622 gh:1623
     // Codec returned by getCodec()
 
     iwc.setCodec(new FilterCodec(getCodec().getName(), getCodec()) {
@@ -424,7 +424,7 @@ public abstract class BasePostingsFormatTestCase extends BaseIndexFileFormatTest
                   PostingsEnum docs = null;
                   while(termsEnum.next() != null) {
                     BytesRef term = termsEnum.term();
-                    // TODO: also sometimes ask for payloads/offsets?
+                    // TODO: also sometimes ask for payloads/offsets? id:2593 gh:2594
                     boolean noPositions = random().nextBoolean();
                     if (noPositions) {
                       docs = termsEnum.postings(docs, PostingsEnum.FREQS);
@@ -473,7 +473,7 @@ public abstract class BasePostingsFormatTestCase extends BaseIndexFileFormatTest
                   // Also test seeking the TermsEnum:
                   for(String term : termFreqs.keySet()) {
                     if (termsEnum.seekExact(new BytesRef(term))) {
-                      // TODO: also sometimes ask for payloads/offsets?
+                      // TODO: also sometimes ask for payloads/offsets? id:1697 gh:1698
                       boolean noPositions = random().nextBoolean();
                       if (noPositions) {
                         docs = termsEnum.postings(docs, PostingsEnum.FREQS);

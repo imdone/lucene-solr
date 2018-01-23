@@ -86,7 +86,7 @@ public class JaspellLookup extends Lookup implements Accountable {
    */
   public boolean add(CharSequence key, Object value) {
     trie.put(key, value);
-    // XXX
+    // XXX id:2570 gh:2571
     return false;
   }
 

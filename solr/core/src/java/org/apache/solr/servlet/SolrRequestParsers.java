@@ -160,7 +160,7 @@ public class SolrRequestParsers
   {
     SolrRequestParser parser = standard;
     
-    // TODO -- in the future, we could pick a different parser based on the request
+    // TODO -- in the future, we could pick a different parser based on the request id:2121 gh:2122
     
     // Pick the parser from the request...
     ArrayList<ContentStream> streams = new ArrayList<>(1);
@@ -578,8 +578,8 @@ public class SolrRequestParsers
       if (fct != null) {
         factory.setFileCleaningTracker(fileCleaningTracker);
       }
-      // TODO - configure factory.setSizeThreshold(yourMaxMemorySize);
-      // TODO - configure factory.setRepository(yourTempDirectory);
+      // TODO - configure factory.setSizeThreshold(yourMaxMemorySize); id:2042 gh:2043
+      // TODO - configure factory.setRepository(yourTempDirectory); id:2933 gh:2934
     }
     
     @Override

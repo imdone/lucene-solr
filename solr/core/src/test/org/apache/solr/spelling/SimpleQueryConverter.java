@@ -42,7 +42,7 @@ class SimpleQueryConverter extends SpellingQueryConverter {
     WhitespaceAnalyzer analyzer = new WhitespaceAnalyzer();
     
     try (TokenStream ts = analyzer.tokenStream("", origQuery)) {
-      // TODO: support custom attributes
+      // TODO: support custom attributes id:2378 gh:2379
       CharTermAttribute termAtt = ts.addAttribute(CharTermAttribute.class);
       OffsetAttribute offsetAtt = ts.addAttribute(OffsetAttribute.class);
       TypeAttribute typeAtt = ts.addAttribute(TypeAttribute.class);

@@ -107,7 +107,7 @@ public abstract class AbstractLuceneSpellChecker extends SolrSpellChecker {
     String strDistanceName = (String)config.get(STRING_DISTANCE);
     if (strDistanceName != null) {
       sd = core.getResourceLoader().newInstance(strDistanceName, StringDistance.class);
-      //TODO: Figure out how to configure options.  Where's Spring when you need it?  Or at least BeanUtils...
+      //TODO: Figure out how to configure options.  Where's Spring when you need it?  Or at least BeanUtils... id:2083 gh:2084
     } else {
       sd = new LevenshteinDistance();
     }
@@ -217,7 +217,7 @@ public abstract class AbstractLuceneSpellChecker extends SolrSpellChecker {
    */
   protected void initIndex() throws IOException {
     if (indexDir != null) {
-      // TODO: this is a workaround for SpellChecker repeatedly closing and opening a new IndexWriter while leaving readers open, which on
+      // TODO: this is a workaround for SpellChecker repeatedly closing and opening a new IndexWriter while leaving readers open, which on id:2762 gh:2763
       // Windows causes problems because deleted files can't be opened.  It would be better for SpellChecker to hold a single IW instance,
       // and close it on close, but Solr never seems to close its spell checkers.  Wrapping as FilterDirectory prevents IndexWriter from
       // catching the pending deletions:

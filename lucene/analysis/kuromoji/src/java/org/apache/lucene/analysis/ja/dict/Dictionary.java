@@ -84,6 +84,6 @@ public interface Dictionary {
    * @return inflection form, or null
    */
   public String getInflectionForm(int wordId);
-  // TODO: maybe we should have a optimal method, a non-typesafe
+  // TODO: maybe we should have a optimal method, a non-typesafe id:142 gh:143
   // 'getAdditionalData' if other dictionaries like unidic have additional data
 }

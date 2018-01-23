@@ -60,7 +60,7 @@ public class FunctionRangeQParserPlugin extends QParserPlugin {
         boolean includeLower = localParams.getBool("incl",true);
         boolean includeUpper = localParams.getBool("incu",true);
 
-        // TODO: add a score=val option to allow score to be the value
+        // TODO: add a score=val option to allow score to be the value id:1916 gh:1917
         ValueSourceRangeFilter rf = new ValueSourceRangeFilter(vs, l, u, includeLower, includeUpper);
         FunctionRangeQuery frq = new FunctionRangeQuery(rf);
         return frq;

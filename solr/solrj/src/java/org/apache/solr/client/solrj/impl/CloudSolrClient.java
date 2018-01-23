@@ -116,7 +116,7 @@ public class CloudSolrClient extends SolrClient {
   
   private final boolean updatesToLeaders;
   private final boolean directUpdatesToLeadersOnly;
-  private boolean parallelUpdates; //TODO final
+  private boolean parallelUpdates; //TODO final id:2427 gh:2428
   private ExecutorService threadPool = ExecutorUtil
       .newMDCAwareCachedThreadPool(new SolrjNamedThreadFactory(
           "CloudSolrClient ThreadPool"));
@@ -719,7 +719,7 @@ public class CloudSolrClient extends SolrClient {
       if (maxToleratedErrors < toleratedErrors.size()) {
         // cumulative errors are too high, we need to throw a client exception w/correct metadata
 
-        // NOTE: it shouldn't be possible for 1 == toleratedErrors.size(), because if that were the case
+        // NOTE: it shouldn't be possible for 1 == toleratedErrors.size(), because if that were the case id:2501 gh:2502
         // then at least one shard should have thrown a real error before this, so we don't worry
         // about having a more "singular" exception msg for that situation
         StringBuilder msgBuf =  new StringBuilder()
@@ -1019,7 +1019,7 @@ public class CloudSolrClient extends SolrClient {
     }
     
     SolrParams reqParams = request.getParams();
-    if (reqParams == null) { // TODO fix getParams to never return null!
+    if (reqParams == null) { // TODO fix getParams to never return null! id:3125 gh:3125
       reqParams = new ModifiableSolrParams();
     }
 
@@ -1048,7 +1048,7 @@ public class CloudSolrClient extends SolrClient {
             "No collection param specified on request and no default collection has been set: " + inputCollections);
       }
 
-      // TODO: not a big deal because of the caching, but we could avoid looking
+      // TODO: not a big deal because of the caching, but we could avoid looking id:2429 gh:2430
       //   at every shard when getting leaders if we tweaked some things
       
       // Retrieve slices from the cloud state and, for each collection specified, add it to the Map of slices.
@@ -1064,7 +1064,7 @@ public class CloudSolrClient extends SolrClient {
       }
 
       // Gather URLs, grouped by leader or replica
-      // TODO: allow filtering by group, role, etc
+      // TODO: allow filtering by group, role, etc id:2988 gh:2989
       Set<String> seenNodes = new HashSet<>();
       List<String> replicas = new ArrayList<>();
       String joinedInputCollections = StrUtils.join(inputCollections, ',');

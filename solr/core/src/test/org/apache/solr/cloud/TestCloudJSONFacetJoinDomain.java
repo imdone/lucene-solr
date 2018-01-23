@@ -71,7 +71,7 @@ public class TestCloudJSONFacetJoinDomain extends SolrCloudTestCase {
   private static final int MAX_FIELD_NUM = 15;
   private static final int UNIQUE_FIELD_VALS = 20;
 
-  // NOTE: set to 'true' to see if refinement testing is adequate (should get fails occasionally)
+  // NOTE: set to 'true' to see if refinement testing is adequate (should get fails occasionally) id:2276 gh:2277
   private static final boolean FORCE_DISABLE_REFINEMENT = false;
   
   /** Multivalued string field suffixes that can be randomized for testing diff facet/join code paths */
@@ -126,7 +126,7 @@ public class TestCloudJSONFacetJoinDomain extends SolrCloudTestCase {
     for (int id = 0; id < numDocs; id++) {
       SolrInputDocument doc = sdoc("id", ""+id);
       for (int fieldNum = 0; fieldNum < MAX_FIELD_NUM; fieldNum++) {
-        // NOTE: some docs may have no value in a field
+        // NOTE: some docs may have no value in a field id:2192 gh:2193
         final int numValsThisDoc = TestUtil.nextInt(random(), 0, (usually() ? 3 : 6));
         for (int v = 0; v < numValsThisDoc; v++) {
           final String fieldValue = randFieldValue(fieldNum);
@@ -171,7 +171,7 @@ public class TestCloudJSONFacetJoinDomain extends SolrCloudTestCase {
 
   /**
    * Given a (random) field number, returns a random (integer based) value for that field.
-   * NOTE: The number of unique values in each field is constant acording to {@link #UNIQUE_FIELD_VALS}
+   * NOTE: The number of unique values in each field is constant acording to {@link #UNIQUE_FIELD_VALS} id:3056 gh:3057
    * but the precise <em>range</em> of values will vary for each unique field number, such that cross field joins 
    * will match fewer documents based on how far apart the field numbers are.
    *
@@ -774,7 +774,7 @@ public class TestCloudJSONFacetJoinDomain extends SolrCloudTestCase {
         if (noJoin) break;
         from = field(suffixes, random().nextInt(MAX_FIELD_NUM));
         to = field(suffixes, random().nextInt(MAX_FIELD_NUM));
-        // HACK: joined numeric point fields need docValues.. for now just skip _is fields if we are dealing with points.
+        // HACK: joined numeric point fields need docValues.. for now just skip _is fields if we are dealing with points. id:2268 gh:2269
         if (Boolean.getBoolean(NUMERIC_POINTS_SYSPROP) && (from.endsWith("_is") || to.endsWith("_is")))
         {
             continue;

@@ -81,7 +81,7 @@ public class HLL implements Cloneable {
 
     // ------------------------------------------------------------------------
     // Characteristic parameters
-    // NOTE:  These members are named to match the PostgreSQL implementation's
+    // NOTE: These members are named to match the PostgreSQL implementation's id:2228 gh:2229
     //        parameters.
     // log2(the number of probabilistic HLL registers)
     private final int log2m;
@@ -96,12 +96,12 @@ public class HLL implements Cloneable {
     private final boolean explicitOff;
     // flag indicating that the promotion threshold from EXPLICIT should be
     // computed automatically
-    // NOTE:  this only has meaning when 'explicitOff' is false
+    // NOTE: this only has meaning when 'explicitOff' is false id:2132 gh:2133
     private final boolean explicitAuto;
     // threshold (in element count) at which a EXPLICIT HLL is converted to a
     // SPARSE or FULL HLL, always greater than or equal to zero and always a
     // power of two OR simply zero
-    // NOTE:  this only has meaning when 'explicitOff' is false
+    // NOTE: this only has meaning when 'explicitOff' is false id:3018 gh:3019
     private final int explicitThreshold;
 
     // ........................................................................
@@ -135,7 +135,7 @@ public class HLL implements Cloneable {
 
     // ========================================================================
     /**
-     * NOTE: Arguments here are named and structured identically to those in the
+     * NOTE: Arguments here are named and structured identically to those in the id:2209 gh:2210
      *       PostgreSQL implementation, which can be found
      *       <a href="https://github.com/aggregateknowledge/postgresql-hll/blob/master/README.markdown#explanation-of-parameters-and-tuning">here</a>.
      *
@@ -174,7 +174,7 @@ public class HLL implements Cloneable {
             this.explicitAuto = true;
             this.explicitOff = false;
 
-            // NOTE:  This math matches the size calculation in the PostgreSQL impl.
+            // NOTE: This math matches the size calculation in the PostgreSQL impl. id:2834 gh:2835
             final long fullRepresentationSize = (this.regwidth * (long)this.m + 7/*round up to next whole byte*/)/Byte.SIZE;
             final int numLongs = (int)(fullRepresentationSize / 8/*integer division to round down*/);
 
@@ -200,7 +200,7 @@ public class HLL implements Cloneable {
         if(this.sparseOff) {
             this.sparseThreshold = 0;
         } else {
-            // TODO improve this cutoff to include the cost overhead of Java
+            // TODO improve this cutoff to include the cost overhead of Java id:2231 gh:2232
             //      members/objects
             final int largestPow2LessThanCutoff =
                     (int)NumberUtil.log2((this.m * this.regwidth) / this.shortWordLength);
@@ -300,7 +300,7 @@ public class HLL implements Cloneable {
     public void addRaw(final long rawValue) {
         switch(type) {
             case EMPTY: {
-                // NOTE:  EMPTY type is always promoted on #addRaw()
+                // NOTE: EMPTY type is always promoted on #addRaw() id:2135 gh:2136
                 if(explicitThreshold > 0) {
                     initializeStorage(HLLType.EXPLICIT);
                     explicitStorage.add(rawValue);
@@ -394,7 +394,7 @@ public class HLL implements Cloneable {
             return;
         }
 
-        // NOTE:  no +1 as in paper since 0-based indexing
+        // NOTE: no +1 as in paper since 0-based indexing id:3020 gh:3021
         final int j = (int)(rawValue & mBitsMask);
 
         final byte currentValue;
@@ -446,7 +446,7 @@ public class HLL implements Cloneable {
             return;
         }
 
-        // NOTE:  no +1 as in paper since 0-based indexing
+        // NOTE: no +1 as in paper since 0-based indexing id:2212 gh:2213
         final int j = (int)(rawValue & mBitsMask);
 
         probabilisticStorage.setMaxRegister(j, p_w);
@@ -583,7 +583,7 @@ public class HLL implements Cloneable {
      * Clears the HLL. The HLL will have cardinality zero and will act as if no
      * elements have been added.
      *
-     * NOTE: Unlike {@link #addRaw(long)}, <code>clear</code> does NOT handle
+     * NOTE: Unlike {@link #addRaw(long)}, <code>clear</code> does NOT handle id:2836 gh:2837
      * transitions between {@link HLLType}s - a probabilistic type will remain
      * probabilistic after being cleared.
      */
@@ -614,7 +614,7 @@ public class HLL implements Cloneable {
      *        cannot be <code>null</code>.
      */
     public void union(final HLL other) {
-        // TODO: verify HLLs are compatible
+        // TODO: verify HLLs are compatible id:2234 gh:2235
         final HLLType otherType = other.getType();
 
         if(type.equals(otherType)) {
@@ -651,7 +651,7 @@ public class HLL implements Cloneable {
         // ....................................................................
         // Union with an EMPTY
         if(HLLType.EMPTY.equals(type)) {
-            // NOTE:  The union of empty with non-empty HLL is just a
+            // NOTE: The union of empty with non-empty HLL is just a id:2139 gh:2140
             //        clone of the non-empty.
 
             switch(other.getType()) {
@@ -706,7 +706,7 @@ public class HLL implements Cloneable {
         } /* else -- both of the sets are not empty */
 
         // ....................................................................
-        // NOTE: Since EMPTY is handled above, the HLLs are non-EMPTY below
+        // NOTE: Since EMPTY is handled above, the HLLs are non-EMPTY below id:3022 gh:3023
         switch(type) {
             case EXPLICIT: {
                 // src:  FULL/SPARSE
@@ -717,7 +717,7 @@ public class HLL implements Cloneable {
                 // into that.
 
                 // Determine source and destination storage.
-                // NOTE:  destination storage may change through promotion if
+                // NOTE: destination storage may change through promotion if id:2215 gh:2216
                 //        source is SPARSE.
                 if(HLLType.SPARSE.equals(other.getType())) {
                     if(!sparseOff) {
@@ -750,7 +750,7 @@ public class HLL implements Cloneable {
                     for(LongCursor c : other.explicitStorage) {
                         addRaw(c.value);
                     }
-                    // NOTE:  addRaw will handle promotion cleanup
+                    // NOTE: addRaw will handle promotion cleanup id:2838 gh:2839
                 } else /*source is HLLType.FULL*/ {
                     // src:  FULL
                     // dest: SPARSE
@@ -812,7 +812,7 @@ public class HLL implements Cloneable {
             for(LongCursor c : other.explicitStorage) {
                 addRaw(c.value);
             }
-            // NOTE:  #addRaw() will handle promotion, if necessary
+            // NOTE: #addRaw() will handle promotion, if necessary id:2237 gh:2236
             return;
         case SPARSE:
             for(IntByteCursor c : other.sparseProbabilisticStorage) {
@@ -951,7 +951,7 @@ public class HLL implements Cloneable {
         } else if(metadata.explicitOff()) {
             expthresh = 0;
         } else {
-            // NOTE: take into account that the postgres-compatible constructor
+            // NOTE: take into account that the postgres-compatible constructor id:2143 gh:2144
             //       subtracts one before taking a power of two.
             expthresh = metadata.log2ExplicitCutoff() + 1;
         }
@@ -982,7 +982,7 @@ public class HLL implements Cloneable {
                 schemaVersion.getDeserializer(type, wordLength, bytes);
         switch(type) {
             case EXPLICIT:
-                // NOTE:  This should not exceed expthresh and this will always
+                // NOTE: This should not exceed expthresh and this will always id:3024 gh:3025
                 //        be exactly the number of words that were encoded,
                 //        because the word length is at least a byte wide.
                 // SEE:   IWordDeserializer#totalWordCount()
@@ -991,7 +991,7 @@ public class HLL implements Cloneable {
                 }
                 break;
             case SPARSE:
-                // NOTE:  If the shortWordLength were smaller than 8 bits
+                // NOTE: If the shortWordLength were smaller than 8 bits id:2218 gh:2219
                 //        (1 byte) there would be a possibility (because of
                 //        padding arithmetic) of having one or more extra
                 //        registers read. However, this is not relevant as the
@@ -1007,7 +1007,7 @@ public class HLL implements Cloneable {
                 }
                 break;
             case FULL:
-                // NOTE:  Iteration is done using m (register count) and NOT
+                // NOTE: Iteration is done using m (register count) and NOT id:2840 gh:2841
                 //        deserializer#totalWordCount() because regwidth may be
                 //        less than 8 and as such the padding on the 'last' byte
                 //        may be larger than regwidth, causing an extra register
@@ -1031,11 +1031,11 @@ public class HLL implements Cloneable {
      */
     @Override
     public HLL clone() throws CloneNotSupportedException {
-        // NOTE: Since the package-only constructor assumes both explicit and
+        // NOTE: Since the package-only constructor assumes both explicit and id:2240 gh:2241
         //       sparse are enabled, the easiest thing to do here is to re-derive
         //       the expthresh parameter and create a new HLL with the public
         //       constructor.
-        // TODO: add a more sensible constructor to make this less obfuscated
+        // TODO: add a more sensible constructor to make this less obfuscated id:2147 gh:2148
         final int copyExpthresh;
         if(explicitAuto) {
             copyExpthresh = -1;

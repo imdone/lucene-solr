@@ -991,8 +991,8 @@ public class TestIndexWriterDelete extends LuceneTestCase {
   }
   
   public void testIndexingThenDeleting() throws Exception {
-    // TODO: move this test to its own class and just @SuppressCodecs?
-    // TODO: is it enough to just use newFSDirectory?
+    // TODO: move this test to its own class and just @SuppressCodecs? id:841 gh:842
+    // TODO: is it enough to just use newFSDirectory? id:1035 gh:1036
     final String fieldFormat = TestUtil.getPostingsFormat("field");
     assumeFalse("This test cannot run with Memory codec", fieldFormat.equals("Memory"));
     assumeFalse("This test cannot run with SimpleText codec", fieldFormat.equals("SimpleText"));
@@ -1069,7 +1069,7 @@ public class TestIndexWriterDelete extends LuceneTestCase {
       }
       w.updateDocument(delTerm, doc);
       // Eventually segment 0 should get a del docs:
-      // TODO: fix this test
+      // TODO: fix this test id:1278 gh:1279
       if (slowFileExists(dir, "_0_1.del") || slowFileExists(dir, "_0_1.liv") ) {
         if (VERBOSE) {
           System.out.println("TEST: deletes created @ count=" + count);
@@ -1128,7 +1128,7 @@ public class TestIndexWriterDelete extends LuceneTestCase {
       doc.add(newTextField("body", sb.toString(), Field.Store.NO));
       w.updateDocument(new Term("id", ""+id), doc);
       docsInSegment.incrementAndGet();
-      // TODO: fix this test
+      // TODO: fix this test id:807 gh:808
       if (slowFileExists(dir, "_0_1.del") || slowFileExists(dir, "_0_1.liv")) {
         if (VERBOSE) {
           System.out.println("TEST: deletes created @ id=" + id);

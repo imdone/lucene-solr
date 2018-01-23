@@ -34,7 +34,7 @@ public class FacetBucket {
   public FacetBucket(FacetBucketMerger parent, Comparable bucketValue, FacetMerger.Context mcontext) {
     this.parent = parent;
     this.bucketValue = bucketValue;
-    this.bucketNumber = mcontext.getNewBucketNumber(); // TODO: we don't need bucket numbers for all buckets...
+    this.bucketNumber = mcontext.getNewBucketNumber(); // TODO: we don't need bucket numbers for all buckets... id:1998 gh:1999
   }
 
   public long getCount() {
@@ -130,11 +130,11 @@ public class FacetBucket {
   }
 
   public Map<String, Object> getRefinement2(FacetMerger.Context mcontext, Collection<String> refineTags) {
-    // TODO - partial results should turn off refining!!!
+    // TODO - partial results should turn off refining!!! id:2883 gh:2884
 
     boolean parentMissing = mcontext.bucketWasMissing();
 
-    // TODO: this is a redundant check for many types of facets... only do on field faceting
+    // TODO: this is a redundant check for many types of facets... only do on field faceting id:1973 gh:1974
     if (!parentMissing) {
       // if parent bucket wasn't missing, check if this bucket was.
       // this really only needs checking on certain buckets... (like terms facet)
@@ -164,7 +164,7 @@ public class FacetBucket {
       refinement.put("_m",1);
     }
 
-    // TODO: listing things like sub-facets that have no field facets are redundant
+    // TODO: listing things like sub-facets that have no field facets are redundant id:2722 gh:2723
     // (we only need facet that have variable values)
 
     for (Map.Entry<String,FacetMerger> sub : subs.entrySet()) {

@@ -33,7 +33,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *  the same time by two threads, because in this case you
  *  cannot in general know which thread "won". */
 
-// TODO: should this class handle deletions better...?
+// TODO: should this class handle deletions better...? id:735 gh:736
 public abstract class LiveFieldValues<S,T> implements ReferenceManager.RefreshListener, Closeable {
 
   private volatile Map<String,T> current = new ConcurrentHashMap<>();

@@ -81,7 +81,7 @@ public class ShowFileRequestHandlerTest extends SolrJettyTestBase {
 
   public void testDirList() throws SolrServerException, IOException {
     SolrClient client = getSolrClient();
-    //assertQ(req("qt", "/admin/file")); TODO file bug that SolrJettyTestBase extends SolrTestCaseJ4
+    //assertQ(req("qt", "/admin/file")); TODO file bug that SolrJettyTestBase extends SolrTestCaseJ4 id:2317 gh:2318
     QueryRequest request = new QueryRequest();
     request.setPath("/admin/file");
     QueryResponse resp = request.process(client);
@@ -91,7 +91,7 @@ public class ShowFileRequestHandlerTest extends SolrJettyTestBase {
 
   public void testGetRawFile() throws SolrServerException, IOException {
     SolrClient client = getSolrClient();
-    //assertQ(req("qt", "/admin/file")); TODO file bug that SolrJettyTestBase extends SolrTestCaseJ4
+    //assertQ(req("qt", "/admin/file")); TODO file bug that SolrJettyTestBase extends SolrTestCaseJ4 id:2910 gh:2911
     QueryRequest request = new QueryRequest(params("file", "managed-schema"));
     request.setPath("/admin/file");
     final AtomicBoolean readFile = new AtomicBoolean();
@@ -114,7 +114,7 @@ public class ShowFileRequestHandlerTest extends SolrJettyTestBase {
 
       @Override
       public NamedList<Object> processResponse(Reader reader) {
-        throw new UnsupportedOperationException("TODO unimplemented");//TODO
+        throw new UnsupportedOperationException("TODO unimplemented");//TODO id:2318 gh:2319
       }
     });
 

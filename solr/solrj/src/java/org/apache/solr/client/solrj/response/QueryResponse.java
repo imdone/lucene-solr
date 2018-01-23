@@ -315,7 +315,7 @@ public class QueryResponse extends SolrResponseBase
     }
     
     // Parse the facet info into fields
-    // TODO?? The list could be <int> or <long>?  If always <long> then we can switch to <Long>
+    // TODO ?? The list could be <int> or <long>?  If always <long> then we can switch to <Long> id:2449 gh:2450
     NamedList<NamedList<Number>> ff = (NamedList<NamedList<Number>>) info.get( "facet_fields" );
     if( ff != null ) {
       _facetFields = new ArrayList<>( ff.size() );
@@ -420,7 +420,7 @@ public class QueryResponse extends SolrResponseBase
   {
     ArrayList<PivotField> values = new ArrayList<>( list.size() );
     for( NamedList nl : list ) {
-      // NOTE, this is cheating, but we know the order they are written in, so no need to check
+      // NOTE , this is cheating, but we know the order they are written in, so no need to check id:2999 gh:3000
       assert "field".equals(nl.getName(0));
       String f = (String)nl.getVal( 0 );
       assert "value".equals(nl.getName(1));

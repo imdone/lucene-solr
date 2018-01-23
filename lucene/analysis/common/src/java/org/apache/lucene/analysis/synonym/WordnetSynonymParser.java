@@ -33,7 +33,7 @@ import org.apache.lucene.util.CharsRefBuilder;
  * See http://wordnet.princeton.edu/man/prologdb.5WN.html for a description of the format.
  * @lucene.experimental
  */
-// TODO: allow you to specify syntactic categories (e.g. just nouns, etc)
+// TODO: allow you to specify syntactic categories (e.g. just nouns, etc) id:49 gh:50
 public class WordnetSynonymParser extends SynonymMap.Parser {
   private final boolean expand;
   

@@ -104,7 +104,7 @@ public class TermQueryPrefixTreeStrategy extends PrefixTreeStrategy {
       byteRef.bytes = masterBytes.bytes();
     }
     //unfortunately TermsQuery will needlessly sort & dedupe
-    //TODO an automatonQuery might be faster?
+    //TODO an automatonQuery might be faster? id:1499 gh:1500
     return new TermInSetQuery(getFieldName(), terms);
   }
 

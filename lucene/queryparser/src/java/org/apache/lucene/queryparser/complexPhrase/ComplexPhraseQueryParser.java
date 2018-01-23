@@ -236,7 +236,7 @@ public class ComplexPhraseQueryParser extends QueryParser {
     // parse
     // thread is through
     protected void parsePhraseElements(ComplexPhraseQueryParser qp) throws ParseException {
-      // TODO ensure that field-sensitivity is preserved ie the query
+      // TODO ensure that field-sensitivity is preserved ie the query id:1359 gh:1360
       // string below is parsed as
       // field+":("+phrasedQueryStringContents+")"
       // but this will need code in rewrite to unwrap the first layer of
@@ -399,7 +399,7 @@ public class ComplexPhraseQueryParser extends QueryParser {
           BooleanQuery cbq = (BooleanQuery) childQuery;
           addComplexPhraseClause(chosenList, cbq);
         } else {
-          // TODO alternatively could call extract terms here?
+          // TODO alternatively could call extract terms here? id:1567 gh:1568
           throw new IllegalArgumentException("Unknown query type:"
               + childQuery.getClass().getName());
         }

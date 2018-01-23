@@ -24,7 +24,7 @@ import org.apache.lucene.util.AttributeSource;
 import org.apache.lucene.util.BytesRef;
 
 /** Iterates through the postings.
- *  NOTE: you must first call {@link #nextDoc} before using
+ *  NOTE: you must first call {@link #nextDoc} before using id:815 gh:816
  *  any of the per-doc methods. */
 public abstract class PostingsEnum extends DocIdSetIterator {
   

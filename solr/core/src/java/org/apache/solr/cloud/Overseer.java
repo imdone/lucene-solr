@@ -88,7 +88,7 @@ public class Overseer implements SolrCloseable {
     private final String myId;
     //queue where everybody can throw tasks
     private final ZkDistributedQueue stateUpdateQueue;
-    //TODO remove in 9.0, we do not push message into this queue anymore
+    //TODO remove in 9.0, we do not push message into this queue anymore id:1803 gh:1804
     //Internal queue where overseer stores events that have not yet been published into cloudstate
     //If Overseer dies while extracting the main queue a new overseer will start from this queue
     private final ZkDistributedQueue workQueue;
@@ -151,7 +151,7 @@ public class Overseer implements SolrCloseable {
             continue; // not a no, not a yes, try ask again
           }
 
-          //TODO consider removing 'refreshClusterState' and simply check if clusterState is null
+          //TODO consider removing 'refreshClusterState' and simply check if clusterState is null id:2629 gh:2630
           if (refreshClusterState) {
             try {
               reader.forciblyRefreshAllClusterStateSlow();
@@ -281,7 +281,7 @@ public class Overseer implements SolrCloseable {
         // generally there is nothing we can do - in most cases, we have
         // an issue that will fail again on retry or we cannot communicate with     a
         // ZooKeeper in which case another Overseer should take over
-        // TODO: if ordering for the message is not important, we could
+        // TODO: if ordering for the message is not important, we could id:1772 gh:1773
         // track retries and put it back on the end of the queue
         log.error("Overseer could not process the current clusterstate state update message, skipping the message: " + message, e);
         stats.error(operation);

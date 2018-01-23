@@ -100,7 +100,7 @@ public class QueryParser extends QueryParserBase implements QueryParserConstants
    * Set to true if phrase queries will be automatically generated
    * when the analyzer returns more than one term from whitespace
    * delimited text.
-   * NOTE: this behavior may not be suitable for all languages.
+   * NOTE: this behavior may not be suitable for all languages. id:1072 gh:1073
    * <p>
    * Set to false if phrase queries should only be generated when
    * surrounded by double quotes.

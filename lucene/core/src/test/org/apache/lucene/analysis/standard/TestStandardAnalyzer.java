@@ -35,7 +35,7 @@ public class TestStandardAnalyzer extends BaseTokenStreamTestCase {
   // LUCENE-5897: slow tokenization of strings of the form (\p{WB:ExtendNumLet}[\p{WB:Format}\p{WB:Extend}]*)+
   @Slow
   public void testLargePartiallyMatchingToken() throws Exception {
-    // TODO: get these lists of chars matching a property from ICU4J
+    // TODO: get these lists of chars matching a property from ICU4J id:776 gh:777
     // http://www.unicode.org/Public/6.3.0/ucd/auxiliary/WordBreakProperty.txt
     char[] WordBreak_ExtendNumLet_chars = "_\u203f\u2040\u2054\ufe33\ufe34\ufe4d\ufe4e\ufe4f\uff3f".toCharArray();
 

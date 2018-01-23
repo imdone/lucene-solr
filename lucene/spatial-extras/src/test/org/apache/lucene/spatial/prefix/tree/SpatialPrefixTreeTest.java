@@ -39,7 +39,7 @@ import java.util.List;
 
 public class SpatialPrefixTreeTest extends SpatialTestCase {
 
-  //TODO plug in others and test them
+  //TODO plug in others and test them id:1512 gh:1513
   private SpatialContext ctx;
   private SpatialPrefixTree trie;
 

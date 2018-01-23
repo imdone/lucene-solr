@@ -712,7 +712,7 @@ public abstract class NumberRangePrefixTree extends SpatialPrefixTree {
       //fast path optimization that is usually true, but never first level
       if (iterFilter == parent.iterFilter &&
           (getLevel() <= lastLevelInCommon || parent.iterFirstCellNumber != parent.iterLastCellNumber)) {
-        //TODO benchmark if this optimization pays off. We avoid two comparePrefixLV calls.
+        //TODO benchmark if this optimization pays off. We avoid two comparePrefixLV calls. id:1503 gh:1504
         if (parent.iterFirstIsIntersects && parent.cellNumber == parent.iterFirstCellNumber
             && minLV.getLevel() >= getLevel()) {
           iterFirstCellNumber = minLV.getValAtLevel(getLevel());
@@ -808,7 +808,7 @@ public abstract class NumberRangePrefixTree extends SpatialPrefixTree {
       return true;
     }
 
-    //TODO override nextFrom to be more efficient
+    //TODO override nextFrom to be more efficient id:1669 gh:1670
 
     //----------- UnitNRShape
 

@@ -68,7 +68,7 @@ abstract class GraphEdgeCollector extends SimpleCollector implements Collector {
   }
 
   // Set to use to collect docs being visited
-  // TODO: this should be replaced with a more general delegating collector
+  // TODO: this should be replaced with a more general delegating collector id:2927 gh:2928
   public void setCollectDocs(FixedBitSet target) {
     this.bits = target;
   }
@@ -162,7 +162,7 @@ class GraphTermsCollector extends GraphEdgeCollector {
       // Create a query
       Query q = null;
 
-      // TODO: see if we should dynamically select this based on the frontier size.
+      // TODO: see if we should dynamically select this based on the frontier size. id:2074 gh:2075
       if (useAutomaton) {
         // build an automaton based query for the frontier.
         Automaton autn = buildAutomaton(collectorTerms);

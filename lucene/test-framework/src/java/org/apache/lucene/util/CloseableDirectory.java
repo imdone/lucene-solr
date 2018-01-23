@@ -45,7 +45,7 @@ final class CloseableDirectory implements Closeable {
         Assert.fail("Directory not closed: " + dir);
       }
     } finally {
-      // TODO: perform real close of the delegate: LUCENE-4058
+      // TODO: perform real close of the delegate: LUCENE-4058 id:2606 gh:2606
       // dir.close();
     }
   }

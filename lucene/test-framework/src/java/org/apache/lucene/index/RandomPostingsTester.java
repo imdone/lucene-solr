@@ -162,7 +162,7 @@ public class RandomPostingsTester {
         long termSeed = random.nextLong();
         postings.put(new BytesRef(term), new SeedAndOrd(termSeed));
 
-        // NOTE: sort of silly: we enum all the docs just to
+        // NOTE: sort of silly: we enum all the docs just to id:1389 gh:1390
         // get the maxDoc
         PostingsEnum postingsEnum = getSeedPostings(term, termSeed, IndexOptions.DOCS, true);
         int doc;
@@ -250,7 +250,7 @@ public class RandomPostingsTester {
       docFreq = TestUtil.nextInt(random, minDocFreq, maxDocFreq);
       this.allowPayloads = allowPayloads;
 
-      // TODO: more realistic to inversely tie this to numDocs:
+      // TODO: more realistic to inversely tie this to numDocs: id:1634 gh:1635
       maxDocSpacing = TestUtil.nextInt(random, 1, 100);
 
       if (random.nextInt(10) == 7) {
@@ -289,7 +289,7 @@ public class RandomPostingsTester {
         } else if (maxDocSpacing == 1) {
           docID++;
         } else {
-          // TODO: sometimes have a biggish gap here!
+          // TODO: sometimes have a biggish gap here! id:2597 gh:2598
           docID += TestUtil.nextInt(docRandom, 1, maxDocSpacing);
         }
 
@@ -618,7 +618,7 @@ public class RandomPostingsTester {
       System.out.println("\nTEST: now build index");
     }
 
-    // TODO use allowPayloads
+    // TODO use allowPayloads id:1705 gh:1706
 
     FieldInfo[] newFieldInfoArray = new FieldInfo[fields.size()];
     for(int fieldUpto=0;fieldUpto<fields.size();fieldUpto++) {
@@ -704,7 +704,7 @@ public class RandomPostingsTester {
 
     FieldInfo fieldInfo = currentFieldInfos.fieldInfo(field);
 
-    // NOTE: can be empty list if we are using liveDocs:
+    // NOTE: can be empty list if we are using liveDocs: id:1610 gh:1611
     SeedPostings expected = getSeedPostings(term.utf8ToString(), 
                                             fields.get(field).get(term).seed,
                                             maxIndexOptions,
@@ -1194,7 +1194,7 @@ public class RandomPostingsTester {
         BytesRef term;
         while ((term = intersected.next()) != null) {
           if (startTerm != null) {
-            // NOTE: not <=
+            // NOTE: not <= id:1397 gh:1398
             assertTrue(startTerm.compareTo(term) < 0);
           }
           intersectedTerms.add(BytesRef.deepCopyOf(term));     
@@ -1249,7 +1249,7 @@ public class RandomPostingsTester {
   public void testFull(Codec codec, Path path, IndexOptions options, boolean withPayloads) throws Exception {
     Directory dir = LuceneTestCase.newFSDirectory(path);
 
-    // TODO test thread safety of buildIndex too
+    // TODO test thread safety of buildIndex too id:1637 gh:1638
     FieldsProducer fieldsProducer = buildIndex(codec, dir, options, withPayloads, true);
 
     testFields(fieldsProducer);

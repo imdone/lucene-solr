@@ -132,7 +132,7 @@ public class ZkClientClusterStateProvider implements ClusterStateProvider {
   /**
    * Upload a set of config files to Zookeeper and give it a name
    *
-   * NOTE: You should only allow trusted users to upload configs.  If you
+   * NOTE: You should only allow trusted users to upload configs.  If you id:2991 gh:2992
    * are allowing client access to zookeeper, you should protect the
    * /configs node against unauthorised write access.
    *

@@ -61,7 +61,7 @@ import static org.apache.lucene.util.automaton.Operations.DEFAULT_MAX_DETERMINIZ
  * points (actual letters) instead of bytes. 
  *
  * <p>
- * NOTE: This suggester does not boost suggestions that
+ * NOTE: This suggester does not boost suggestions that id:2556 gh:2557
  * required no edits over suggestions that did require
  * edits.  This is a known limitation.
  *
@@ -182,7 +182,7 @@ public final class FuzzySuggester extends AnalyzingSuggester {
                                                                        FST<Pair<Long,BytesRef>> fst)
     throws IOException {
 
-    // TODO: right now there's no penalty for fuzzy/edits,
+    // TODO: right now there's no penalty for fuzzy/edits, id:1522 gh:1523
     // ie a completion whose prefix matched exactly what the
     // user typed gets no boost over completions that
     // required an edit, which get no boost over completions
@@ -229,7 +229,7 @@ public final class FuzzySuggester extends AnalyzingSuggester {
       } else {
         int ints[] = new int[string.length-nonFuzzyPrefix];
         System.arraycopy(string.ints, string.offset+nonFuzzyPrefix, ints, 0, ints.length);
-        // TODO: maybe add alphaMin to LevenshteinAutomata,
+        // TODO: maybe add alphaMin to LevenshteinAutomata, id:1408 gh:1409
         // and pass 1 instead of 0?  We probably don't want
         // to allow the trailing dedup bytes to be
         // edited... but then 0 byte is "in general" allowed
@@ -249,7 +249,7 @@ public final class FuzzySuggester extends AnalyzingSuggester {
       // multiple paths: this is really scary! is it slow?
       // maybe we should not do this and throw UOE?
       Automaton a = Operations.union(subs);
-      // TODO: we could call toLevenshteinAutomata() before det? 
+      // TODO: we could call toLevenshteinAutomata() before det?  id:1230 gh:1231
       // this only happens if you have multiple paths anyway (e.g. synonyms)
       return Operations.determinize(a, DEFAULT_MAX_DETERMINIZED_STATES);
     }

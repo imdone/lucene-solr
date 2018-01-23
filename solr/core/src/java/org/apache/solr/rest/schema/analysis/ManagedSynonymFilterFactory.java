@@ -80,7 +80,7 @@ public class ManagedSynonymFilterFactory extends BaseManagedTokenFilterFactory {
     Set<String> getMappings(boolean ignoreCase, String key) {
       Set<String> synMappings = null;
       if (ignoreCase) {
-        // TODO: should we return the mapped values in all lower-case here?
+        // TODO: should we return the mapped values in all lower-case here? id:2689 gh:2690
         if (mappings.size() == 1) {
           // if only one in the map (which is common) just return it directly
           return mappings.values().iterator().next();

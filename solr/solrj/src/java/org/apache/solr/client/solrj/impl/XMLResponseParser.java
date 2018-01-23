@@ -265,7 +265,7 @@ public class XMLResponseParser extends ResponseParser
         nl.add( name, type.read( builder.toString().trim() ) );
         break;
 
-      case XMLStreamConstants.SPACE: // TODO?  should this be trimmed? make sure it only gets one/two space?
+      case XMLStreamConstants.SPACE: // TODO ?  should this be trimmed? make sure it only gets one/two space? id:2508 gh:2509
       case XMLStreamConstants.CDATA:
       case XMLStreamConstants.CHARACTERS:
         builder.append( parser.getText() );
@@ -333,7 +333,7 @@ public class XMLResponseParser extends ResponseParser
         vals.add( val );
         break;
 
-      case XMLStreamConstants.SPACE: // TODO?  should this be trimmed? make sure it only gets one/two space?
+      case XMLStreamConstants.SPACE: // TODO ?  should this be trimmed? make sure it only gets one/two space? id:3127 gh:3128
       case XMLStreamConstants.CDATA:
       case XMLStreamConstants.CHARACTERS:
         builder.append( parser.getText() );
@@ -453,7 +453,7 @@ public class XMLResponseParser extends ResponseParser
         doc.addField( name, val );
         break;
 
-      case XMLStreamConstants.SPACE: // TODO?  should this be trimmed? make sure it only gets one/two space?
+      case XMLStreamConstants.SPACE: // TODO ?  should this be trimmed? make sure it only gets one/two space? id:2436 gh:2437
       case XMLStreamConstants.CDATA:
       case XMLStreamConstants.CHARACTERS:
         builder.append( parser.getText() );

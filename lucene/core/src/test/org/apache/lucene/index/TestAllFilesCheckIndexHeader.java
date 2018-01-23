@@ -128,7 +128,7 @@ public class TestAllFilesCheckIndexHeader extends LuceneTestCase {
       }
 
       try {
-        // NOTE: we .close so that if the test fails (truncation not detected) we don't also get all these confusing errors about open files:
+        // NOTE: we .close so that if the test fails (truncation not detected) we don't also get all these confusing errors about open files: id:903 gh:904
         DirectoryReader.open(dirCopy).close();
         fail("wrong bytes not detected after randomizing first " + wrongBytes + " bytes out of " + victimLength + " for file " + victim);
       } catch (CorruptIndexException | EOFException | IndexFormatTooOldException e) {

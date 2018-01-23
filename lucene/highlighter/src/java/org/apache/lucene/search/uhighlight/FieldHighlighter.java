@@ -68,7 +68,7 @@ public class FieldHighlighter {
    * The primary method -- highlight this doc, assuming a specific field and given this content.
    */
   public Object highlightFieldForDoc(IndexReader reader, int docId, String content) throws IOException {
-    // TODO accept LeafReader instead?
+    // TODO accept LeafReader instead? id:1298 gh:1299
     // note: it'd be nice to accept a CharSequence for content, but we need a CharacterIterator impl for it.
     if (content.length() == 0) {
       return null; // nothing to do
@@ -137,7 +137,7 @@ public class FieldHighlighter {
     BreakIterator breakIterator = this.breakIterator;
     final int contentLength = breakIterator.getText().getEndIndex();
 
-    //TODO consider moving this part to an aggregate OffsetsEnum subclass so we have one enum that already has its weight
+    //TODO consider moving this part to an aggregate OffsetsEnum subclass so we have one enum that already has its weight id:1523 gh:1524
     PriorityQueue<OffsetsEnum> offsetsEnumQueue = new PriorityQueue<>(offsetsEnums.size() + 1);
     for (OffsetsEnum off : offsetsEnums) {
       off.setWeight(scorer.weight(contentLength, off.freq()));

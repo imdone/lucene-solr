@@ -52,7 +52,7 @@ public class PeerSyncWithIndexFingerprintCachingTest extends BaseDistributedSear
   public PeerSyncWithIndexFingerprintCachingTest() {
     stress = 0;
 
-    // TODO: a better way to do this?
+    // TODO: a better way to do this? id:2388 gh:2389
     configString = "solrconfig-tlog.xml";
     schemaString = "schema.xml";
   }

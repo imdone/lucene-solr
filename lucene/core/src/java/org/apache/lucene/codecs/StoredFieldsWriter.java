@@ -174,7 +174,7 @@ public abstract class StoredFieldsWriter implements Closeable {
     @Override
     public void binaryField(FieldInfo fieldInfo, byte[] value) throws IOException {
       reset(fieldInfo);
-      // TODO: can we avoid new BR here?
+      // TODO: can we avoid new BR here? id:459 gh:460
       binaryValue = new BytesRef(value);
       write();
     }
@@ -182,7 +182,7 @@ public abstract class StoredFieldsWriter implements Closeable {
     @Override
     public void stringField(FieldInfo fieldInfo, byte[] value) throws IOException {
       reset(fieldInfo);
-      // TODO: can we avoid new String here?
+      // TODO: can we avoid new String here? id:344 gh:345
       stringValue = new String(value, StandardCharsets.UTF_8);
       write();
     }

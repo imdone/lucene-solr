@@ -176,7 +176,7 @@ public class XMLLoader extends ContentStreamLoader {
         is = stream.getStream();
         if (log.isTraceEnabled()) {
           final byte[] body = IOUtils.toByteArray(is);
-          // TODO: The charset may be wrong, as the real charset is later
+          // TODO: The charset may be wrong, as the real charset is later id:2672 gh:2673
           // determined by the XML parser, the content-type is only used as a hint!
           log.trace("body", new String(body, (charset == null) ?
             ContentStreamBase.DEFAULT_CHARSET : charset));

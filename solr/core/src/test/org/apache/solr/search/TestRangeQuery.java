@@ -242,7 +242,7 @@ public class TestRangeQuery extends SolrTestCaseJ4 {
     final String[] fields = {"foo_s","foo_i","foo_l","foo_f","foo_d",
                              "foo_ti","foo_tl","foo_tf","foo_td" };
     
-    // NOTE: foo_s supports ranges, but for the arrays below we are only
+    // NOTE: foo_s supports ranges, but for the arrays below we are only id:2350 gh:2351
     // interested in fields that support *equivilent* ranges -- strings
     // are not ordered the same as ints/longs, so we can't test the ranges
     // for equivilence across diff fields.

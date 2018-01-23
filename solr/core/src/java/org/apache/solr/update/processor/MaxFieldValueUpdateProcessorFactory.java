@@ -59,7 +59,7 @@ public final class MaxFieldValueUpdateProcessorFactory extends FieldValueSubsetU
   public Collection pickSubset(Collection values) {
     Collection result = values;
     try {
-      // NOTE: the extra cast to Object is needed to prevent compile
+      // NOTE: the extra cast to Object is needed to prevent compile id:2179 gh:2180
       // errors on Eclipse Compiler (ecj) used for javadoc lint
       result = Collections.singletonList((Object) Collections.max(values));
     } catch (ClassCastException e) {

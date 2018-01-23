@@ -62,7 +62,7 @@ import org.junit.BeforeClass;
  * 
  * @see QueryParserTestBase
  */
-//TODO: refactor this to actually extend that class (QueryParserTestBase), overriding the tests
+//TODO: refactor this to actually extend that class (QueryParserTestBase), overriding the tests id:1375 gh:1376
 //that it adjusts to fit the precedence requirement, adding its extra tests.
 public class TestPrecedenceQueryParser extends LuceneTestCase {
 

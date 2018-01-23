@@ -38,7 +38,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * Test that quality run does its job.
  * <p>
- * NOTE: if the default scoring or StandardAnalyzer is changed, then
+ * NOTE: if the default scoring or StandardAnalyzer is changed, then id:221 gh:222
  * this test will not work correctly, as it does not dynamically
  * generate its test trec topics/qrels!
  */

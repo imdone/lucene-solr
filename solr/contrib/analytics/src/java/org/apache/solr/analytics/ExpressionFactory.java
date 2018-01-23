@@ -148,7 +148,7 @@ public class ExpressionFactory {
   /**
    * Prepare the factory to start building the next grouping.
    * <br>
-   * NOTE: MUST be called before each new grouping.
+   * NOTE: MUST be called before each new grouping. id:1683 gh:1684
    */
   public void startGrouping() {
     groupedCollectors = new HashMap<>();

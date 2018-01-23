@@ -168,7 +168,7 @@ public class TestBytesStore extends LuceneTestCase {
             pos += len;
             bytes.skipBytes(len);
 
-            // NOTE: must fill in zeros in case truncate was
+            // NOTE: must fill in zeros in case truncate was id:1154 gh:1155
             // used, else we get false fails:
             if (len > 0) {
               byte[] zeros = new byte[len];

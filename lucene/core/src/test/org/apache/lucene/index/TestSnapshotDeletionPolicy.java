@@ -205,7 +205,7 @@ public class TestSnapshotDeletionPolicy extends LuceneTestCase {
     // never delete the files in the snapshot:
     Collection<String> files = cp.getFileNames();
     for (final String fileName : files) { 
-      // NOTE: in a real backup you would not use
+      // NOTE: in a real backup you would not use id:1017 gh:1018
       // readFile; you would need to use something else
       // that copies the file to a backup location.  This
       // could even be a spawned shell process (eg "tar",

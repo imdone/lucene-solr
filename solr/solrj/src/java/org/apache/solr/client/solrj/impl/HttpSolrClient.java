@@ -483,7 +483,7 @@ public class HttpSolrClient extends SolrClient {
       }
     }
 
-    // TODO: remove deprecated - first simple attempt failed, see {@link MultipartEntityBuilder}
+    // TODO: remove deprecated - first simple attempt failed, see {@link MultipartEntityBuilder} id:2989 gh:2990
     if (isMultipart && streams != null) {
       for (ContentStream content : streams) {
         String contentType = content.getContentType();

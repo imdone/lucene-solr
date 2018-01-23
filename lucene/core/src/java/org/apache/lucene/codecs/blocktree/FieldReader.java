@@ -127,7 +127,7 @@ public final class FieldReader extends Terms implements Accountable {
   /** For debugging -- used by CheckIndex too*/
   @Override
   public Stats getStats() throws IOException {
-    // TODO: add auto-prefix terms into stats
+    // TODO: add auto-prefix terms into stats id:467 gh:468
     return new SegmentTermsEnum(this).computeBlockStats();
   }
 
@@ -180,7 +180,7 @@ public final class FieldReader extends Terms implements Accountable {
   public TermsEnum intersect(CompiledAutomaton compiled, BytesRef startTerm) throws IOException {
     // if (DEBUG) System.out.println("  FieldReader.intersect startTerm=" + BlockTreeTermsWriter.brToString(startTerm));
     //System.out.println("intersect: " + compiled.type + " a=" + compiled.automaton);
-    // TODO: we could push "it's a range" or "it's a prefix" down into IntersectTermsEnum?
+    // TODO: we could push "it's a range" or "it's a prefix" down into IntersectTermsEnum? id:352 gh:353
     // can we optimize knowing that...?
     if (compiled.type != CompiledAutomaton.AUTOMATON_TYPE.NORMAL) {
       throw new IllegalArgumentException("please use CompiledAutomaton.getTermsEnum instead");

@@ -257,7 +257,7 @@ public class TestFiltering extends SolrTestCaseJ4 {
 
     if (negative) {
       q = "-_query_:\"" + q + "\"";
-      // q = "-" + q; // TODO: need to be encapsulated for some reason?
+      // q = "-" + q; // TODO: need to be encapsulated for some reason? id:2371 gh:2372
     } else {
       if (random().nextBoolean()) {
         // try some different query structures - important for testing different code paths

@@ -375,7 +375,7 @@ public final class RamUsageEstimator {
   static long adjustForField(long sizeSoFar, final Field f) {
     final Class<?> type = f.getType();
     final int fsize = type.isPrimitive() ? primitiveSizes.get(type) : NUM_BYTES_OBJECT_REF;
-    // TODO: No alignments based on field type/ subclass fields alignments?
+    // TODO: No alignments based on field type/ subclass fields alignments? id:627 gh:628
     return sizeSoFar + fsize;
   }
 

@@ -76,5 +76,5 @@ public class VirusCheckingFS extends FilterFileSystemProvider {
     super.delete(path);
   }
 
-  // TODO: we could be more evil here, e.g. rename, createOutput, deleteIfExists
+  // TODO: we could be more evil here, e.g. rename, createOutput, deleteIfExists id:1709 gh:1710
 }

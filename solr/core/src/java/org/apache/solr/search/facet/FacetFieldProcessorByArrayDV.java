@@ -90,11 +90,11 @@ class FacetFieldProcessorByArrayDV extends FacetFieldProcessorByArray {
   protected void collectDocs() throws IOException {
     int domainSize = fcontext.base.size();
 
-    if (nTerms <= 0 || domainSize < effectiveMincount) { // TODO: what about allBuckets? missing bucket?
+    if (nTerms <= 0 || domainSize < effectiveMincount) { // TODO: what about allBuckets? missing bucket? id:2726 gh:2727
       return;
     }
 
-    // TODO: refactor some of this logic into a base class
+    // TODO: refactor some of this logic into a base class id:2072 gh:2073
     boolean countOnly = collectAcc==null && allBucketsAcc==null;
     boolean fullRange = startTermIndex == 0 && endTermIndex == si.getValueCount();
 
@@ -132,7 +132,7 @@ class FacetFieldProcessorByArrayDV extends FacetFieldProcessorByArray {
       SortedDocValues singleDv = null;
       SortedSetDocValues multiDv = null;
       if (multiValuedField) {
-        // TODO: get sub from multi?
+        // TODO: get sub from multi? id:2008 gh:2009
         multiDv = subCtx.reader().getSortedSetDocValues(sf.getName());
         if (multiDv == null) {
           multiDv = DocValues.emptySortedSet();

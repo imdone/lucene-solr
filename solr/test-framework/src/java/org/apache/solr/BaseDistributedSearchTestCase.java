@@ -89,7 +89,7 @@ import org.slf4j.LoggerFactory;
  * @since solr 1.5
  */
 public abstract class BaseDistributedSearchTestCase extends SolrTestCaseJ4 {
-  // TODO: this shouldn't be static. get the random when you need it to avoid sharing.
+  // TODO: this shouldn't be static. get the random when you need it to avoid sharing. id:3021 gh:3022
   public static Random r;
   
   private AtomicInteger nodeCnt = new AtomicInteger(0);
@@ -594,7 +594,7 @@ public abstract class BaseDistributedSearchTestCase extends SolrTestCaseJ4 {
     
     final ModifiableSolrParams params = new ModifiableSolrParams(p);
 
-    // TODO: look into why passing true causes fails
+    // TODO: look into why passing true causes fails id:2473 gh:2474
     params.set("distrib", "false");
     final QueryResponse controlRsp = controlClient.query(params);
     validateControlData(controlRsp);
@@ -917,7 +917,7 @@ public abstract class BaseDistributedSearchTestCase extends SolrTestCaseJ4 {
     if (System.getProperty("remove.version.field") != null) {
       // we don't care if one has a version and the other doesnt -
       // control vs distrib
-      // TODO: this should prob be done by adding an ignore on _version_ rather than mutating the responses?
+      // TODO: this should prob be done by adding an ignore on _version_ rather than mutating the responses? id:2537 gh:2538
       if (a.getResults() != null) {
         for (SolrDocument doc : a.getResults()) {
           doc.removeFields("_version_");

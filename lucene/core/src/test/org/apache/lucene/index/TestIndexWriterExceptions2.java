@@ -78,7 +78,7 @@ public class TestIndexWriterExceptions2 extends LuceneTestCase {
       @Override
       protected TokenStreamComponents createComponents(String fieldName) {
         MockTokenizer tokenizer = new MockTokenizer(MockTokenizer.SIMPLE, false);
-        tokenizer.setEnableChecks(false); // TODO: can we turn this on? our filter is probably too evil
+        tokenizer.setEnableChecks(false); // TODO: can we turn this on? our filter is probably too evil id:1280 gh:1281
         TokenStream stream = tokenizer;
         // emit some payloads
         if (fieldName.contains("payloads")) {
@@ -105,7 +105,7 @@ public class TestIndexWriterExceptions2 extends LuceneTestCase {
     try {
       boolean allowAlreadyClosed = false;
       for (int i = 0; i < numDocs; i++) {
-        // TODO: add crankyDocValuesFields, etc
+        // TODO: add crankyDocValuesFields, etc id:810 gh:811
         Document doc = new Document();
         doc.add(newStringField("id", Integer.toString(i), Field.Store.NO));
         doc.add(new NumericDocValuesField("dv", i));

@@ -84,7 +84,7 @@ import static org.apache.solr.update.processor.DistributingUpdateProcessorFactor
  * @since 7.2.0
  */
 public class TimeRoutedAliasUpdateProcessor extends UpdateRequestProcessor {
-  //TODO do we make this more generic to others who want to partition collections using something else?
+  //TODO do we make this more generic to others who want to partition collections using something else? id:2998 gh:2999
 
   public static final String ALIAS_DISTRIB_UPDATE_PARAM = "alias." + DISTRIB_UPDATE_PARAM; // param
   public static final String TIME_PARTITION_ALIAS_NAME_CORE_PROP = "timePartitionAliasName"; // core prop
@@ -122,7 +122,7 @@ public class TimeRoutedAliasUpdateProcessor extends UpdateRequestProcessor {
   private Aliases parsedCollectionsAliases; // a cached reference to the source of what we parse into parsedCollectionsDesc
 
   public static UpdateRequestProcessor wrap(SolrQueryRequest req, SolrQueryResponse rsp, UpdateRequestProcessor next) {
-    //TODO get from "Collection property"
+    //TODO get from "Collection property" id:2182 gh:2183
     final String timePartitionAliasName = req.getCore().getCoreDescriptor()
         .getCoreProperty(TIME_PARTITION_ALIAS_NAME_CORE_PROP, null);
     final DistribPhase shardDistribPhase =
@@ -131,7 +131,7 @@ public class TimeRoutedAliasUpdateProcessor extends UpdateRequestProcessor {
         DistribPhase.parseParam(req.getParams().get(ALIAS_DISTRIB_UPDATE_PARAM));
     if (timePartitionAliasName == null || aliasDistribPhase != DistribPhase.NONE || shardDistribPhase != DistribPhase.NONE) {
       // if aliasDistribPhase is not NONE, then there is no further collection routing to be done here.
-      //    TODO this may eventually not be true but at the moment it is
+      //    TODO this may eventually not be true but at the moment it is id:2814 gh:2815
       // if shardDistribPhase is not NONE, then the phase is after the scope of this URP
       return next;
     } else {
@@ -251,7 +251,7 @@ public class TimeRoutedAliasUpdateProcessor extends UpdateRequestProcessor {
 
   /** Computes the timestamp of the next collection given the timestamp of the one before. */
   public static Instant computeNextCollTimestamp(Instant fromTimestamp, String intervalDateMath, TimeZone intervalTimeZone) {
-    //TODO overload DateMathParser.parseMath to take tz and "now"
+    //TODO overload DateMathParser.parseMath to take tz and "now" id:2198 gh:2199
     final DateMathParser dateMathParser = new DateMathParser(intervalTimeZone);
     dateMathParser.setNow(Date.from(fromTimestamp));
     final Instant nextCollTimestamp;
@@ -419,7 +419,7 @@ public class TimeRoutedAliasUpdateProcessor extends UpdateRequestProcessor {
   public void processCommit(CommitUpdateCommand cmd) throws IOException {
     final List<SolrCmdDistributor.Node> nodes = lookupShardLeadersOfCollections();
     cmdDistrib.distribCommit(cmd, nodes, new ModifiableSolrParams(outParamsToLeader));
-    cmdDistrib.blockAndDoRetries(); //TODO shouldn't distribCommit do this implicitly?  It doesn't.
+    cmdDistrib.blockAndDoRetries(); //TODO shouldn't distribCommit do this implicitly?  It doesn't. id:2112 gh:2113
   }
 
 // Not supported by SolrCmdDistributor and is sketchy any way
@@ -459,13 +459,13 @@ public class TimeRoutedAliasUpdateProcessor extends UpdateRequestProcessor {
   }
 
   private SolrCmdDistributor.Node lookupShardLeaderOfCollection(String collection) {
-    //TODO consider router to get the right slice.  Refactor common code in CloudSolrClient & DistributedUrp
+    //TODO consider router to get the right slice.  Refactor common code in CloudSolrClient & DistributedUrp id:3000 gh:3001
     final Collection<Slice> activeSlices = zkController.getClusterState().getCollection(collection).getActiveSlices();
     if (activeSlices.isEmpty()) {
       throw new SolrException(SolrException.ErrorCode.SERVICE_UNAVAILABLE, "Cannot route to collection " + collection);
     }
     final Slice slice = activeSlices.iterator().next();
-    //TODO when should we do StdNode vs RetryNode?
+    //TODO when should we do StdNode vs RetryNode? id:2186 gh:2187
     final Replica leader = slice.getLeader();
     if (leader == null) {
       throw new SolrException(SolrException.ErrorCode.SERVICE_UNAVAILABLE,

@@ -226,7 +226,7 @@ public class TimeLimitingCollector implements Collector {
     
     public static final String THREAD_NAME = "TimeLimitedCollector timer thread";
     public static final int DEFAULT_RESOLUTION = 20;
-    // NOTE: we can avoid explicit synchronization here for several reasons:
+    // NOTE: we can avoid explicit synchronization here for several reasons: id:661 gh:662
     // * updates to volatile long variables are atomic
     // * only single thread modifies this value
     // * use of volatile keyword ensures that it does not reside in
@@ -255,7 +255,7 @@ public class TimeLimitingCollector implements Collector {
     @Override
     public void run() {
       while (!stop) {
-        // TODO: Use System.nanoTime() when Lucene moves to Java SE 5.
+        // TODO: Use System.nanoTime() when Lucene moves to Java SE 5. id:591 gh:592
         counter.addAndGet(resolution);
         try {
           Thread.sleep( resolution );

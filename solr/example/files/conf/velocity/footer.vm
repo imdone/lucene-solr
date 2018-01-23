@@ -5,7 +5,7 @@
   <div id="admin"><a href="#url_root/index.html#/#{core_name}">Solr Admin</a></div>
 
   <a href="#" onclick='jQuery(".debug").toggle(); return false;'>toggle debug mode</a>
-  <a href="#url_for_lens&wt=xml#if($debug)&debug=true#end">XML results</a> ## TODO: Add links for other formats, maybe dynamically?
+  <a href="#url_for_lens&wt=xml#if($debug)&debug=true#end">XML results</a> ## TODO: Add links for other formats, maybe dynamically? id:2407 gh:2409
 
 </div>
 

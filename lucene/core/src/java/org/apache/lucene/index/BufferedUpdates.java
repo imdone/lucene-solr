@@ -37,7 +37,7 @@ import org.apache.lucene.util.RamUsageEstimator;
  *  are converted to a {@link FrozenBufferedUpdates} instance and
  *  pushed to the {@link BufferedUpdatesStream}. */
 
-// NOTE: instances of this class are accessed either via a private
+// NOTE: instances of this class are accessed either via a private id:520 gh:521
 // instance on DocumentWriterPerThread, or via sync'd code by
 // DocumentsWriterDeleteQueue
 

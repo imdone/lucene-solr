@@ -69,7 +69,7 @@ public class TestSortRandom extends LuceneTestCase {
 
     int numDocs = 0;
     final List<BytesRef> docValues = new ArrayList<>();
-    // TODO: deletions
+    // TODO: deletions id:876 gh:878
     while (numDocs < NUM_DOCS) {
       final Document doc = new Document();
 

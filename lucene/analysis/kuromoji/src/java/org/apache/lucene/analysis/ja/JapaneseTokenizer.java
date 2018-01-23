@@ -46,7 +46,7 @@ import org.apache.lucene.util.IntsRef;
 import org.apache.lucene.util.RamUsageEstimator;
 import org.apache.lucene.util.fst.FST;
 
-// TODO: somehow factor out a reusable viterbi search here,
+// TODO: somehow factor out a reusable viterbi search here, id:134 gh:135
 // so other decompounders/tokenizers can reuse...
 
 /**
@@ -301,7 +301,7 @@ public final class JapaneseTokenizer extends Tokenizer {
   // segmentation and if its path score is within this
   // threshold of X, we'll include it in the output:
   private int computeSecondBestThreshold(int pos, int length) throws IOException {
-    // TODO: maybe we do something else here, instead of just
+    // TODO: maybe we do something else here, instead of just id:163 gh:164
     // using the penalty...?  EG we can be more aggressive on
     // when to also test for 2nd best path
     return computePenalty(pos, length);
@@ -357,7 +357,7 @@ public final class JapaneseTokenizer extends Tokenizer {
       backIndex = ArrayUtil.grow(backIndex, 1+count);
       backID = ArrayUtil.grow(backID, 1+count);
 
-      // NOTE: sneaky: grow separately because
+      // NOTE: sneaky: grow separately because id:219 gh:220
       // ArrayUtil.grow will otherwise pick a different
       // length than the int[]s we just grew:
       final Type[] newBackType = new Type[backID.length];
@@ -370,7 +370,7 @@ public final class JapaneseTokenizer extends Tokenizer {
       forwardID = ArrayUtil.grow(forwardID, 1+forwardCount);
       forwardIndex = ArrayUtil.grow(forwardIndex, 1+forwardCount);
 
-      // NOTE: sneaky: grow separately because
+      // NOTE: sneaky: grow separately because id:138 gh:139
       // ArrayUtil.grow will otherwise pick a different
       // length than the int[]s we just grew:
       final Type[] newForwardType = new Type[forwardPos.length];
@@ -379,7 +379,7 @@ public final class JapaneseTokenizer extends Tokenizer {
     }
 
     public void add(int cost, int lastRightID, int backPos, int backIndex, int backID, Type backType) {
-      // NOTE: this isn't quite a true Viterbi search,
+      // NOTE: this isn't quite a true Viterbi search, id:135 gh:136
       // because we should check if lastRightID is
       // already present here, and only update if the new
       // cost is less than the current cost, instead of
@@ -509,7 +509,7 @@ public final class JapaneseTokenizer extends Tokenizer {
     return true;
   }
 
-  // TODO: make generic'd version of this "circular array"?
+  // TODO: make generic'd version of this "circular array"? id:137 gh:138
   // It's a bit tricky because we do things to the Position
   // (eg, set .pos = N on reuse)...
   static final class WrappedPositionArray {
@@ -783,7 +783,7 @@ public final class JapaneseTokenizer extends Tokenizer {
         }
       }
 
-      // TODO: we can be more aggressive about user
+      // TODO: we can be more aggressive about user id:167 gh:168
       // matches?  if we are "under" a user match then don't
       // extend KNOWN/UNKNOWN paths?
 
@@ -838,7 +838,7 @@ public final class JapaneseTokenizer extends Tokenizer {
         final int characterId = characterDefinition.getCharacterClass(firstCharacter);
         final boolean isPunct = isPunctuation(firstCharacter);
 
-        // NOTE: copied from UnknownDictionary.lookup:
+        // NOTE: copied from UnknownDictionary.lookup: id:222 gh:223
         int unknownWordLength;
         if (!characterDefinition.isGroup(firstCharacter)) {
           unknownWordLength = 1;
@@ -1588,7 +1588,7 @@ public final class JapaneseTokenizer extends Tokenizer {
 
     int backCount = 0;
 
-    // TODO: sort of silly to make Token instances here; the
+    // TODO: sort of silly to make Token instances here; the id:161 gh:162
     // back trace has all info needed to generate the
     // token.  So, we could just directly set the attrs,
     // from the backtrace, in incrementToken w/o ever
@@ -1711,7 +1711,7 @@ public final class JapaneseTokenizer extends Tokenizer {
         // the start of the altToken:
         assert altToken.getPosition() == backPos: altToken.getPosition() + " vs " + backPos;
 
-        // NOTE: not quite right: the compound token may
+        // NOTE: not quite right: the compound token may id:143 gh:144
         // have had all punctuation back traced so far, but
         // then the decompounded token at this position is
         // not punctuation.  In this case backCount is 0,

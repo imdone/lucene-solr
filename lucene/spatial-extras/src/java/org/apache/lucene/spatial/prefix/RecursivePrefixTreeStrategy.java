@@ -60,7 +60,7 @@ public class RecursivePrefixTreeStrategy extends PrefixTreeStrategy {
 
   public RecursivePrefixTreeStrategy(SpatialPrefixTree grid, String fieldName) {
     super(grid, fieldName);
-    prefixGridScanLevel = grid.getMaxLevels() - 4;//TODO this default constant is dependent on the prefix grid size
+    prefixGridScanLevel = grid.getMaxLevels() - 4;//TODO this default constant is dependent on the prefix grid size id:1435 gh:1436
   }
 
   public int getPrefixGridScanLevel() {
@@ -75,7 +75,7 @@ public class RecursivePrefixTreeStrategy extends PrefixTreeStrategy {
    * @param prefixGridScanLevel 1 to maxLevels
    */
   public void setPrefixGridScanLevel(int prefixGridScanLevel) {
-    //TODO if negative then subtract from maxlevels
+    //TODO if negative then subtract from maxlevels id:1358 gh:1359
     this.prefixGridScanLevel = prefixGridScanLevel;
   }
 
@@ -220,7 +220,7 @@ public class RecursivePrefixTreeStrategy extends PrefixTreeStrategy {
       return new TermQuery(new Term(getFieldName(), cell.getTokenBytesWithLeaf(null)));
     } else {
       // Well there could be parent cells. But we can reduce the "scan level" which will be slower for a point query.
-      // TODO: AVPTQ will still scan the bottom nonetheless; file an issue to eliminate that
+      // TODO: AVPTQ will still scan the bottom nonetheless; file an issue to eliminate that id:1199 gh:1200
       return new IntersectsPrefixTreeQuery(
           gridShape, getFieldName(), grid, getGrid().getMaxLevels(), getGrid().getMaxLevels() + 1);
     }

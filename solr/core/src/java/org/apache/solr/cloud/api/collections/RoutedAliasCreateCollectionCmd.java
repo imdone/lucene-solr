@@ -70,7 +70,7 @@ public class RoutedAliasCreateCollectionCmd implements OverseerCollectionMessage
     this.ocmh = ocmh;
   }
 
-  /* TODO:
+  /* TODO: id:2736 gh:2737
   There are a few classes related to time routed alias processing.  We need to share some logic better.
    */
 
@@ -83,7 +83,7 @@ public class RoutedAliasCreateCollectionCmd implements OverseerCollectionMessage
     // the client believes this is the mostRecent collection name.  We assert this if provided.
     final String ifMostRecentCollName = message.getStr(IF_MOST_RECENT_COLL_NAME); // optional
 
-    // TODO collection param (or intervalDateMath override?), useful for data capped collections
+    // TODO collection param (or intervalDateMath override?), useful for data capped collections id:1823 gh:1824
 
     //---- PARSE ALIAS INFO FROM ZK
     final ZkStateReader.AliasesManager aliasesHolder = ocmh.zkStateReader.aliasesHolder;
@@ -101,7 +101,7 @@ public class RoutedAliasCreateCollectionCmd implements OverseerCollectionMessage
     String intervalDateMath = aliasMetadata.getOrDefault(ROUTER_INTERVAL_METADATA, "+1DAY");
     TimeZone intervalTimeZone = TimeZoneUtils.parseTimezone(aliasMetadata.get(CommonParams.TZ));
 
-    //TODO this is ugly; how can we organize the code related to this feature better?
+    //TODO this is ugly; how can we organize the code related to this feature better? id:2638 gh:2639
     final List<Map.Entry<Instant, String>> parsedCollections =
         TimeRoutedAliasUpdateProcessor.parseCollections(aliasName, aliases, () -> newAliasMustExistException(aliasName));
 
@@ -158,7 +158,7 @@ public class RoutedAliasCreateCollectionCmd implements OverseerCollectionMessage
 
     CollectionsHandler.waitForActiveCollection(createCollName, null, ocmh.overseer.getCoreContainer(), new OverseerSolrResponse(results));
 
-    //TODO delete some of the oldest collection(s) ?
+    //TODO delete some of the oldest collection(s) ? id:1790 gh:1791
 
     //---- UPDATE THE ALIAS
     aliasesHolder.applyModificationAndExportToZk(curAliases -> {

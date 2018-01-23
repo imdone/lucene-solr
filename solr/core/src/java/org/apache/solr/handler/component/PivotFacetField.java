@@ -75,7 +75,7 @@ public class PivotFacetField {
     valueCollection = new PivotFacetFieldValueCollection(facetFieldMinimumCount, facetFieldOffset, facetFieldLimit, facetFieldSort);
     
     if ( (facetFieldLimit < 0) || 
-         // TODO: possible refinement issue if limit=0 & mincount=0 & missing=true
+         // TODO: possible refinement issue if limit=0 & mincount=0 & missing=true id:1860 gh:1861
          // (ie: we only want the missing count for this field)
          (facetFieldLimit <= 0 && facetFieldMinimumCount == 0) ||
          (facetFieldSort.equals(FacetParams.FACET_SORT_INDEX) && facetFieldMinimumCount <= 0) 

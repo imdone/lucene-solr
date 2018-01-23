@@ -23,7 +23,7 @@ $( document ).ready(function() {
   anchors.add('h2,h3,h4,h5');
 
   // "Bootstrap Bootstrap"
-  // NOTE: by default, we use "dynamic-tabs" in our wrapper instead of "tab-content"
+  // NOTE: by default, we use "dynamic-tabs" in our wrapper instead of "tab-content" id:3121 gh:3122
   // so that if javascript is disabled, bootstrap's CSS doesn't hide all non-active "tab-pane" divs
   $(".dynamic-tabs").each(function(ignored) {
     $(this).addClass("tab-content");
@@ -54,12 +54,12 @@ $( document ).ready(function() {
         // views the resultin HTML, draw attention to it...
         pill_a.append( " BAD TAB-PANE HAS NO TAB-LABEL ");
       } else {
-        // NOTE: using the "inner" HTML of the label...
+        // NOTE: using the "inner" HTML of the label... id:2417 gh:2418
         // so by default we can use "bold" (or whatever) in our asciidoc and have that
         // be what people see in the PDF or when javascript is disabled,
         // but when the pills+tabs get active, the pills won't all be bold (or whatever)
         pill_a.append( label.html() );
-        // NOTE: Removing the label isn't strictly neccessary, but makes the pills/tabs less redundent
+        // NOTE: Removing the label isn't strictly neccessary, but makes the pills/tabs less redundent id:2984 gh:2985
         label.remove();
       }
 

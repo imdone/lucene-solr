@@ -29,7 +29,7 @@ import org.apache.lucene.facet.TopOrdAndFloatQueue;
  *  to a per-ords float[]. */
 public abstract class FloatTaxonomyFacets extends TaxonomyFacets {
 
-  // TODO: also use native hash map for sparse collection, like IntTaxonomyFacets
+  // TODO: also use native hash map for sparse collection, like IntTaxonomyFacets id:1497 gh:1498
 
   /** Per-ordinal value. */
   protected final float[] values;

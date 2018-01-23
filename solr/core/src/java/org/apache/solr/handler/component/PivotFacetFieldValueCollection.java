@@ -184,8 +184,8 @@ public class PivotFacetFieldValueCollection implements Iterable<PivotFacetValue>
    * @see PivotFacetField#trim
    * @see PivotFacet#getTrimmedPivotsAsListOfNamedLists
    */
-  public void trim() {   // NOTE: destructive
-    // TODO: see comment in PivotFacetField about potential optimization
+  public void trim() {   // NOTE: destructive id:2658 gh:2659
+    // TODO: see comment in PivotFacetField about potential optimization id:1936 gh:1937
     // (ie: trim as we refine)
     trimNonNullValues(); 
     trimNullValue();

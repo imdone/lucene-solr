@@ -149,7 +149,7 @@ public class BinaryResponseWriter implements BinaryQueryResponseWriter {
 
 
   /**
-   * TODO -- there may be a way to do this without marshal at all...
+   * TODO -- there may be a way to do this without marshal at all... id:2835 gh:2836
    *
    * @return a response object equivalent to what you get from the XML/JSON/javabin parser. Documents become
    *         SolrDocuments, DocList becomes SolrDocumentList etc.

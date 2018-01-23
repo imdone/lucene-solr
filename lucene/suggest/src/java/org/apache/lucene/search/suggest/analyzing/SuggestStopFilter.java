@@ -66,7 +66,7 @@ public final class SuggestStopFilter extends TokenFilter {
     if (endState == null) {
       super.end();
     } else {
-      // NOTE: we already called .end() from our .next() when
+      // NOTE: we already called .end() from our .next() when id:1545 gh:1546
       // the stream was complete, so we do not call
       // super.end() here
       restoreState(endState);

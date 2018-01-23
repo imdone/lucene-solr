@@ -27,7 +27,7 @@ public class ZkCmdExecutor {
   private double timeouts;
   
   /**
-   * TODO: At this point, this should probably take a SolrZkClient in
+   * TODO: At this point, this should probably take a SolrZkClient in id:3005 gh:3006
    * its constructor.
    * 
    * @param timeoutms

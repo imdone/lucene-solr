@@ -164,7 +164,7 @@ public class RandomSamplingFacetsCollector extends FacetsCollector {
   private MatchingDocs createSample(MatchingDocs docs) {
     int maxdoc = docs.context.reader().maxDoc();
     
-    // TODO: we could try the WAH8DocIdSet here as well, as the results will be sparse
+    // TODO: we could try the WAH8DocIdSet here as well, as the results will be sparse id:1071 gh:1072
     FixedBitSet sampleDocs = new FixedBitSet(maxdoc);
     
     int binSize = (int) (1.0 / samplingRate);

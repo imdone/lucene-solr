@@ -99,7 +99,7 @@ import static org.apache.solr.common.params.CommonParams.DISTRIB;
 import static org.apache.solr.update.processor.DistributingUpdateProcessorFactory.DISTRIB_UPDATE_PARAM;
 
 // NOT mt-safe... create a new processor for each add thread
-// TODO: we really should not wait for distrib after local? unless a certain replication factor is asked for
+// TODO: we really should not wait for distrib after local? unless a certain replication factor is asked for id:2174 gh:2175
 public class DistributedUpdateProcessor extends UpdateRequestProcessor {
 
   final static String PARAM_WHITELIST_CTX_KEY = DistributedUpdateProcessor.class + "PARAM_WHITELIST_CTX_KEY";
@@ -205,7 +205,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
     versionsStored = this.vinfo != null && this.vinfo.getVersionField() != null;
     returnVersions = req.getParams().getBool(UpdateParams.VERSIONS ,false);
 
-    // TODO: better way to get the response, or pass back info to it?
+    // TODO: better way to get the response, or pass back info to it? id:2097 gh:2098
     // SolrRequestInfo reqInfo = returnVersions ? SolrRequestInfo.getRequestInfo() : null;
 
     this.req = req;
@@ -272,7 +272,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
     if (slice == null) {
       // No slice found.  Most strict routers will have already thrown an exception, so a null return is
       // a signal to use the slice of this core.
-      // TODO: what if this core is not in the targeted collection?
+      // TODO: what if this core is not in the targeted collection? id:2974 gh:2976
       String shardId = cloudDesc.getShardId();
       slice = coll.getSlice(shardId);
       if (slice == null) {
@@ -566,7 +566,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
       Replica leaderReplica = zkController.getZkStateReader().getLeaderRetry(collection, shardId);
       isLeader = leaderReplica.getName().equals(cloudDesc.getCoreNodeName());
 
-      // TODO: what if we are no longer the leader?
+      // TODO: what if we are no longer the leader? id:2164 gh:2165
 
       forwardToLeader = false;
       List<ZkCoreNodeProps> replicaProps = zkController.getZkStateReader()
@@ -608,7 +608,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
     if (!cmd.isInPlaceUpdate()) {
       cmd.prevVersion = cmd.getReq().getParams().getLong(DistributedUpdateProcessor.DISTRIB_INPLACE_PREVVERSION, -1);
     }
-    // TODO: if minRf > 1 and we know the leader is the only active replica, we could fail
+    // TODO: if minRf > 1 and we know the leader is the only active replica, we could fail id:2802 gh:2803
     // the request right here but for now I think it is better to just return the status
     // to the client that the minRf wasn't reached and let them handle it    
 
@@ -618,7 +618,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
     }
 
     if (dropCmd) {
-      // TODO: do we need to add anything to the response?
+      // TODO: do we need to add anything to the response? id:2177 gh:2178
       return;
     }
 
@@ -674,7 +674,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
       }
     }
 
-    // TODO: what to do when no idField?
+    // TODO: what to do when no idField? id:2100 gh:2101
     if (returnVersions && rsp != null && idField != null) {
       if (addsResponse == null) {
         addsResponse = new NamedList<>(1);
@@ -685,7 +685,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
       addsResponse.add(scratch.toString(), cmd.getVersion());
     }
 
-    // TODO: keep track of errors?  needs to be done at a higher level though since
+    // TODO: keep track of errors?  needs to be done at a higher level though since id:2976 gh:2977
     // an id may fail before it gets to this processor.
     // Given that, it may also make sense to move the version reporting out of this
     // processor too.
@@ -741,14 +741,14 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
     }
   }
  
-  // TODO: optionally fail if n replicas are not reached...
+  // TODO: optionally fail if n replicas are not reached... id:2166 gh:2167
   private void doFinish() {
-    // TODO: if not a forward and replication req is not specified, we could
+    // TODO: if not a forward and replication req is not specified, we could id:2804 gh:2805
     // send in a background thread
 
     cmdDistrib.finish();    
     List<Error> errors = cmdDistrib.getErrors();
-    // TODO - we may need to tell about more than one error...
+    // TODO - we may need to tell about more than one error... id:2180 gh:2181
 
     List<Error> errorsForClient = new ArrayList<>(errors.size());
     
@@ -946,7 +946,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
     // we may or may not be the leader.
 
     // Find any existing version in the document
-    // TODO: don't reuse update commands any more!
+    // TODO: don't reuse update commands any more! id:2102 gh:2103
     long versionOnUpdate = cmd.getVersion();
 
     if (versionOnUpdate == 0) {
@@ -988,7 +988,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
         // even if we don't store the version field, synchronizing on the bucket
         // will enable us to know what version happened first, and thus enable
         // realtime-get to work reliably.
-        // TODO: if versions aren't stored, do we need to set on the cmd anyway for some reason?
+        // TODO: if versions aren't stored, do we need to set on the cmd anyway for some reason? id:2990 gh:2991
         // there may be other reasons in the future for a version on the commands
 
         if (versionsStored) {
@@ -1118,7 +1118,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
           clonedDoc = cmd.solrDoc.deepCopy();
         }
 
-        // TODO: possibly set checkDeleteByQueries as a flag on the command?
+        // TODO: possibly set checkDeleteByQueries as a flag on the command? id:2168 gh:2170
         doLocalAdd(cmd);
         
         if (willDistrib && cloneRequiredOnLeader) {
@@ -1269,7 +1269,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
     return cmd;
   }
   
-  // TODO: may want to switch to using optimistic locking in the future for better concurrency
+  // TODO: may want to switch to using optimistic locking in the future for better concurrency id:2806 gh:2807
   // that's why this code is here... need to retry in a loop closely around/in versionAdd
   boolean getUpdatedDocument(AddUpdateCommand cmd, long versionOnUpdate) throws IOException {
     if (!AtomicUpdateDocumentMerger.isAtomicUpdate(cmd)) return false;
@@ -1341,7 +1341,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
     }
 
     if (dropCmd) {
-      // TODO: do we need to add anything to the response?
+      // TODO: do we need to add anything to the response? id:2184 gh:2185
       return;
     }
 
@@ -1385,7 +1385,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
     }
 
     // cmd.getIndexId == null when delete by query
-    // TODO: what to do when no idField?
+    // TODO: what to do when no idField? id:2104 gh:2105
     if (returnVersions && rsp != null && cmd.getIndexedId() != null && idField != null) {
       if (deleteResponse == null) {
         deleteResponse = new NamedList<>(1);
@@ -1468,7 +1468,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
           throw new SolrException(ErrorCode.SERVICE_UNAVAILABLE, "Exception finding leader for shard " + sliceName, e);
         }
 
-        // TODO: What if leaders changed in the meantime?
+        // TODO: What if leaders changed in the meantime? id:2993 gh:2994
         // should we send out slice-at-a-time and if a node returns "hey, I'm not a leader" (or we get an error because it went down) then look up the new leader?
 
         // Am I the leader for this slice?
@@ -1621,7 +1621,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
         if (leaderLogic) {
           long version = vinfo.getNewClock();
           cmd.setVersion(-version);
-          // TODO update versions in all buckets
+          // TODO update versions in all buckets id:2172 gh:2173
 
           doLocalDelete(cmd);
 
@@ -1653,7 +1653,7 @@ public class DistributedUpdateProcessor extends UpdateRequestProcessor {
   }
 
   // internal helper method to tell if we are the leader for an add or deleteById update
-  // NOTE: not called by this class!
+  // NOTE: not called by this class! id:2808 gh:2809
   boolean isLeader(UpdateCommand cmd) {
     updateCommand = cmd;
 

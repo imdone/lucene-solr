@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * tests some edge cases of pivot faceting with stats
  *
- * NOTE: This test ignores the control collection (in single node mode, there is no 
+ * NOTE: This test ignores the control collection (in single node mode, there is no  id:2261 gh:2262
  * need for the overrequesting, all the data is local -- so comparisons with it wouldn't 
  * be valid in some cases we are testing here)
  */
@@ -50,7 +50,7 @@ public class DistributedFacetPivotSmallAdvancedTest extends BaseDistributedSearc
     final SolrClient shard0 = clients.get(0);
     final SolrClient shard1 = clients.get(1);
 
-    // NOTE: we use the literal (4 character) string "null" as a company name
+    // NOTE: we use the literal (4 character) string "null" as a company name id:3082 gh:3083
     // to help ensure there isn't any bugs where the literal string is treated as if it 
     // were a true NULL value.
 

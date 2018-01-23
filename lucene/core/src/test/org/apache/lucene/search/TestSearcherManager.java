@@ -88,7 +88,7 @@ public class TestSearcherManager extends ThreadedIndexingAndSearchingTestCase {
       }
     };
     if (random().nextBoolean()) {
-      // TODO: can we randomize the applyAllDeletes?  But
+      // TODO: can we randomize the applyAllDeletes?  But id:1142 gh:1143
       // somehow for final searcher we must apply
       // deletes...
       mgr = new SearcherManager(writer, factory);
@@ -148,7 +148,7 @@ public class TestSearcherManager extends ThreadedIndexingAndSearchingTestCase {
   @Override
   protected IndexSearcher getCurrentSearcher() throws Exception {
     if (random().nextInt(10) == 7) {
-      // NOTE: not best practice to call maybeRefresh
+      // NOTE: not best practice to call maybeRefresh id:1313 gh:1314
       // synchronous to your search threads, but still we
       // test as apps will presumably do this for
       // simplicity:

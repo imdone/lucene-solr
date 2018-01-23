@@ -82,7 +82,7 @@ public class SpellChecker implements java.io.Closeable {
    * the spell index
    */
   // don't modify the directory directly - see #swapSearcher()
-  // TODO: why is this package private?
+  // TODO: why is this package private? id:1381 gh:1382
   Directory spellIndex;
   /**
    * Boost value for start and end grams
@@ -160,7 +160,7 @@ public class SpellChecker implements java.io.Closeable {
    * @throws AlreadyClosedException if the Spellchecker is already closed
    * @throws  IOException if spellchecker can not open the directory
    */
-  // TODO: we should make this final as it is called in the constructor
+  // TODO: we should make this final as it is called in the constructor id:1217 gh:1218
   public void setSpellIndex(Directory spellIndexDir) throws IOException {
     // this could be the same directory as the current spellIndex
     // modifications to the directory should be synchronized 
@@ -469,7 +469,7 @@ public class SpellChecker implements java.io.Closeable {
     // obtainSearcher calls ensureOpen
     final IndexSearcher indexSearcher = obtainSearcher();
     try{
-      // TODO: we should use ReaderUtil+seekExact, we dont care about the docFreq
+      // TODO: we should use ReaderUtil+seekExact, we dont care about the docFreq id:1521 gh:1522
       // this is just an existence check
       return indexSearcher.getIndexReader().docFreq(new Term(F_WORD, word)) > 0;
     } finally {
@@ -536,7 +536,7 @@ public class SpellChecker implements java.io.Closeable {
       }
       // close writer
       writer.close();
-      // TODO: this isn't that great, maybe in the future SpellChecker should take
+      // TODO: this isn't that great, maybe in the future SpellChecker should take id:1818 gh:1819
       // IWC in its ctor / keep its writer open?
       
       // also re-open the spell index to see our own changes when the next suggestion

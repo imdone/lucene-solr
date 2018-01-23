@@ -44,10 +44,10 @@ public final class SimplePatternSplitTokenizer extends Tokenizer {
 
   private final CharacterRunAutomaton runDFA;
 
-  // TODO: this is copied from SimplePatternTokenizer, but there are subtle differences e.g. we track sepUpto an tokenUpto;
+  // TODO: this is copied from SimplePatternTokenizer, but there are subtle differences e.g. we track sepUpto an tokenUpto; id:32 gh:33
   // find a clean way to share it:
 
-  // TODO: we could likely use a single rolling buffer instead of two separate char buffers here.  We could also use PushBackReader but I
+  // TODO: we could likely use a single rolling buffer instead of two separate char buffers here.  We could also use PushBackReader but I id:31 gh:32
   // suspect it's slowish:
 
   private char[] pendingChars = new char[8];

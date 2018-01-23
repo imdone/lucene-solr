@@ -106,7 +106,7 @@ public class IfFunction extends BoolFunction {
 
       @Override
       public ValueFiller getValueFiller() {
-        // TODO: we need types of trueSource / falseSource to handle this
+        // TODO: we need types of trueSource / falseSource to handle this id:1560 gh:1561
         // for now, use float.
         return super.getValueFiller();
       }

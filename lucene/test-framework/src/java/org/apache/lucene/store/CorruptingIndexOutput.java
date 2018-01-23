@@ -42,7 +42,7 @@ public class CorruptingIndexOutput extends IndexOutput {
   public void close() throws IOException {
     if (closed == false) {
       out.close();
-      // NOTE: must corrupt after file is closed, because if we corrupt "inlined" (as bytes are being written) the checksum sees the wrong
+      // NOTE: must corrupt after file is closed, because if we corrupt "inlined" (as bytes are being written) the checksum sees the wrong id:1633 gh:1634
       // bytes and is "correct"!!
       corruptFile();
       closed = true;

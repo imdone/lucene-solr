@@ -46,7 +46,7 @@ public class DistributedQueryElevationComponentTest extends BaseDistributedSearc
   public DistributedQueryElevationComponentTest() {
     stress = 0;
 
-    // TODO: a better way to do this?
+    // TODO: a better way to do this? id:2267 gh:2268
     configString = "solrconfig-elevate.xml";
     schemaString = "schema11.xml";
   }

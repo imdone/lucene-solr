@@ -38,13 +38,13 @@ public class DistributedFacetPivotWhiteBoxTest extends BaseDistributedSearchTest
 
     del("*:*");
 
-    // NOTE: we use the literal (4 character) string "null" as a company name
+    // NOTE: we use the literal (4 character) string "null" as a company name id:2916 gh:2917
     // to help ensure there isn't any bugs where the literal string is treated as if it 
     // were a true NULL value.
     index(id, 19, "place_t", "cardiff dublin", "company_t", "microsoft polecat", "price_ti", "15");
     index(id, 20, "place_t", "dublin", "company_t", "polecat microsoft null", "price_ti", "19",
         // this is the only doc to have solo_* fields, therefore only 1 shard has them
-        // TODO: add enum field - blocked by SOLR-6682
+        // TODO: add enum field - blocked by SOLR-6682 id:2324 gh:2325
         "solo_i", 42, "solo_s", "lonely", "solo_dt", "1976-03-06T01:23:45Z");
     index(id, 21, "place_t", "krakow london la dublin", "company_t",
         "microsoft fujitsu null polecat", "price_ti", "29");

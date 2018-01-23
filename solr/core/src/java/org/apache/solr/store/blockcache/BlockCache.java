@@ -112,7 +112,7 @@ public class BlockCache {
 
   /**
    * This is only best-effort... it's possible for false to be returned, meaning the block was not able to be cached.
-   * NOTE: blocks may not currently be updated (false will be returned if the block is already cached)
+   * NOTE: blocks may not currently be updated (false will be returned if the block is already cached) id:2091 gh:2092
    * The blockCacheKey is cloned before it is inserted into the map, so it may be reused by clients if desired.
    *
    * @param blockCacheKey the key for the block
@@ -135,7 +135,7 @@ public class BlockCache {
       if (!findEmptyLocation(location)) {
         // YCS: it looks like when the cache is full (a normal scenario), then two concurrent writes will result in one of them failing
         // because no eviction is done first.  The code seems to rely on leaving just a single block empty.
-        // TODO: simplest fix would be to leave more than one block empty
+        // TODO: simplest fix would be to leave more than one block empty id:2768 gh:2769
         metrics.blockCacheStoreFail.incrementAndGet();
         return false;
       }

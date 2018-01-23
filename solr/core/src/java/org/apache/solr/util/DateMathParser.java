@@ -140,7 +140,7 @@ public class DateMathParser  {
   /** @see #CALENDAR_UNITS */
   private static Map<String,ChronoUnit> makeUnitsMap() {
 
-    // NOTE: consciously choosing not to support WEEK at this time,
+    // NOTE: consciously choosing not to support WEEK at this time, id:2820 gh:2821
     // because of complexity in rounding down to the nearest week
     // around a month/year boundary.
     // (Not to mention: it's not clear what people would *expect*)
@@ -168,7 +168,7 @@ public class DateMathParser  {
     units.put("MILLISECOND", ChronoUnit.MILLIS);
     units.put("MILLISECONDS",ChronoUnit.MILLIS);
 
-    // NOTE: Maybe eventually support NANOS
+    // NOTE: Maybe eventually support NANOS id:2210 gh:2211
 
     return units;
   }
@@ -264,7 +264,7 @@ public class DateMathParser  {
    * @throws DateTimeParseException if it can't parse
    */
   private static Date parseNoMath(String val) {
-    //TODO write the equivalent of a Date::from; avoids Instant -> Date
+    //TODO write the equivalent of a Date::from; avoids Instant -> Date id:2118 gh:2119
     return new Date(PARSER.parse(val, Instant::from).toEpochMilli());
   }
 

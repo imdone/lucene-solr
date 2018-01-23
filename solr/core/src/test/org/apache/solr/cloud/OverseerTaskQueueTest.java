@@ -32,7 +32,7 @@ import org.junit.Test;
 public class OverseerTaskQueueTest extends DistributedQueueTest {
 
 
-  // TODO: OverseerTaskQueue specific tests.
+  // TODO: OverseerTaskQueue specific tests. id:2187 gh:2188
 
   @Override
   protected OverseerTaskQueue makeDistributedQueue(String dqZNode) throws Exception {

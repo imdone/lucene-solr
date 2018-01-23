@@ -241,7 +241,7 @@ public class SolrIndexConfig implements MapSerializable {
     iwc.setUseCompoundFile(useCompoundFile);
 
     if (mergedSegmentWarmerInfo != null) {
-      // TODO: add infostream -> normal logging system (there is an issue somewhere)
+      // TODO: add infostream -> normal logging system (there is an issue somewhere) id:2788 gh:2789
       IndexReaderWarmer warmer = schema.getResourceLoader().newInstance(mergedSegmentWarmerInfo.className, 
                                                                         IndexReaderWarmer.class,
                                                                         null,

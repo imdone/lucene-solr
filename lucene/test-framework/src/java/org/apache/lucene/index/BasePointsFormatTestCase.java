@@ -48,7 +48,7 @@ import static org.apache.lucene.search.DocIdSetIterator.NO_MORE_DOCS;
 
 /**
  * Abstract class to do basic tests for a points format.
- * NOTE: This test focuses on the points impl, nothing else.
+ * NOTE: This test focuses on the points impl, nothing else. id:1535 gh:1536
  * The [stretch] goal is for this test to be
  * so thorough in testing a new PointsFormat that if this
  * test passes, then all Lucene/Solr tests should also pass.  Ie,
@@ -251,7 +251,7 @@ public abstract class BasePointsFormatTestCase extends BaseIndexFileFormatTestCa
     }
   }
 
-  // TODO: merge w/ BaseIndexFileFormatTestCase.handleFakeIOException
+  // TODO: merge w/ BaseIndexFileFormatTestCase.handleFakeIOException id:1357 gh:1358
   private boolean handlePossiblyFakeException(Exception e) {
     Throwable ex = e;
     while (ex != null) {
@@ -528,7 +528,7 @@ public abstract class BasePointsFormatTestCase extends BaseIndexFileFormatTestCa
       byte[][] values = new byte[numDims][];
       for(int dim=0;dim<numDims;dim++) {
         values[dim] = new byte[numBytesPerDim];
-        // TODO: sometimes test on a "small" volume too, so we test the high density cases, higher chance of boundary, etc. cases:
+        // TODO: sometimes test on a "small" volume too, so we test the high density cases, higher chance of boundary, etc. cases: id:1617 gh:1618
         random().nextBytes(values[dim]);
       }
       docValues[docID] = values;
@@ -588,7 +588,7 @@ public abstract class BasePointsFormatTestCase extends BaseIndexFileFormatTestCa
           expectedMaxValues[dim] = new byte[numBytesPerDim];
           System.arraycopy(docValues[ord][dim], 0, expectedMaxValues[dim], 0, numBytesPerDim);
         } else {
-          // TODO: it's cheating that we use StringHelper.compare for "truth": what if it's buggy?
+          // TODO: it's cheating that we use StringHelper.compare for "truth": what if it's buggy? id:2591 gh:2592
           if (StringHelper.compare(numBytesPerDim, docValues[ord][dim], 0, expectedMinValues[dim], 0) < 0) {
             System.arraycopy(docValues[ord][dim], 0, expectedMinValues[dim], 0, numBytesPerDim);
           }

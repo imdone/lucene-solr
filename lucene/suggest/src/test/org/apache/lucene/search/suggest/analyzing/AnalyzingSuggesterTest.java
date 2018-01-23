@@ -215,7 +215,7 @@ public class AnalyzingSuggesterTest extends LuceneTestCase {
     IOUtils.close(lineFile, indexAnalyzer, queryAnalyzer, tempDir);
   }
   
-  // TODO: more tests
+  // TODO: more tests id:1563 gh:1564
   /**
    * basic "standardanalyzer" test with stopword removal
    */
@@ -274,7 +274,7 @@ public class AnalyzingSuggesterTest extends LuceneTestCase {
     Directory tempDir = getDirectory();
     AnalyzingSuggester suggester = new AnalyzingSuggester(tempDir, "suggest", a, a, options, 256, -1, true);
     suggester.build(new InputArrayIterator(keys));
-    // TODO: would be nice if "ab " would allow the test to
+    // TODO: would be nice if "ab " would allow the test to id:2572 gh:2573
     // pass, and more generally if the analyzer can know
     // that the user's current query has ended at a word, 
     // but, analyzers don't produce SEP tokens!
@@ -710,7 +710,7 @@ public class AnalyzingSuggesterTest extends LuceneTestCase {
         for(int token=0;token < numTokens;token++) {
           String s;
           while (true) {
-            // TODO: would be nice to fix this slowCompletor/comparator to
+            // TODO: would be nice to fix this slowCompletor/comparator to id:1549 gh:1550
             // use full range, but we might lose some coverage too...
             s = TestUtil.randomSimpleString(random());
             if (s.length() > 0) {
@@ -847,7 +847,7 @@ public class AnalyzingSuggesterTest extends LuceneTestCase {
         System.out.println("  analyzed: " + analyzedKey);
       }
 
-      // TODO: could be faster... but it's slowCompletor for a reason
+      // TODO: could be faster... but it's slowCompletor for a reason id:1426 gh:1427
       for (TermFreq2 e : slowCompletor) {
         if (e.analyzedForm.startsWith(analyzedKey)) {
           matches.add(e);
@@ -1304,7 +1304,7 @@ public class AnalyzingSuggesterTest extends LuceneTestCase {
     return asList;
   }
 
-  // TODO: we need BaseSuggesterTestCase?
+  // TODO: we need BaseSuggesterTestCase? id:1306 gh:1307
   public void testTooLongSuggestion() throws Exception {
     Analyzer a = new MockAnalyzer(random());
     Directory tempDir = getDirectory();

@@ -51,7 +51,7 @@ public class NumericFieldsTest extends SolrTestCaseJ4 {
   public void testSortMissingFirstLast() {
     clearIndex();
 
-    // NOTE: segments may be merged in any order, so we can't make any assumptions about
+    // NOTE: segments may be merged in any order, so we can't make any assumptions about id:2337 gh:2339
     // the relative order of M1 vs M2 unless we have a secondary sort
     assertU(adoc("id", "M1"));
     assertU(adoc(getDoc("+4", 4, "2011-04-04T00:00:00Z")));

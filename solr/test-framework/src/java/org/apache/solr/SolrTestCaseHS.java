@@ -226,7 +226,7 @@ public class SolrTestCaseHS extends SolrTestCaseJ4 {
   }
 
   /** Adds a document using the specific client, or to the local test core if null.
-   * Returns the version.  TODO: work in progress... version not always returned.  */
+   * Returns the version.  TODO: work in progress... version not always returned.  id:3023 gh:3024*/
   public static Long add(SolrClient client, SolrInputDocument sdoc, ModifiableSolrParams params) throws Exception {
     if (client == null) {
       Long version = addAndGetVersion( sdoc, params );
@@ -238,7 +238,7 @@ public class SolrTestCaseHS extends SolrTestCaseJ4 {
       }
       updateRequest.add( sdoc );
       UpdateResponse rsp = updateRequest.process( client );
-      // TODO - return version
+      // TODO - return version id:2475 gh:2476
       return null;
     }
   }

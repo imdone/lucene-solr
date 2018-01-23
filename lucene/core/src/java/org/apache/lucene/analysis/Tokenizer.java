@@ -27,7 +27,7 @@ import org.apache.lucene.util.AttributeSource;
   <p>
   This is an abstract class; subclasses must override {@link #incrementToken()}
   <p>
-  NOTE: Subclasses overriding {@link #incrementToken()} must
+  NOTE: Subclasses overriding {@link #incrementToken()} must id:450 gh:451
   call {@link AttributeSource#clearAttributes()} before
   setting attributes.
  */

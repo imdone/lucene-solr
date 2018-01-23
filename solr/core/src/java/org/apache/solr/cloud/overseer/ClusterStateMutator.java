@@ -108,7 +108,7 @@ public class ClusterStateMutator {
       collectionProps.put("autoCreated", "true");
     }
 
-    //TODO default to 2; but need to debug why BasicDistributedZk2Test fails early on
+    //TODO default to 2; but need to debug why BasicDistributedZk2Test fails early on id:1825 gh:1825
     String znode = message.getInt(DocCollection.STATE_FORMAT, 1) == 1 ? null
         : ZkStateReader.getCollectionPath(cName);
 

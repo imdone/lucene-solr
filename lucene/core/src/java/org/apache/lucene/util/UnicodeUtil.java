@@ -103,7 +103,7 @@ public final class UnicodeUtil {
    **/
   public static final BytesRef BIG_TERM = new BytesRef(
       new byte[] {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
-  ); // TODO this is unrelated here find a better place for it
+  ); // TODO this is unrelated here find a better place for it id:924 gh:925
   
   private UnicodeUtil() {} // no instance
 
@@ -449,7 +449,7 @@ public final class UnicodeUtil {
    *    content is prematurely truncated.
    */
   public static int UTF8toUTF32(final BytesRef utf8, final int[] ints) {
-    // TODO: ints must not be null, should be an assert
+    // TODO: ints must not be null, should be an assert id:771 gh:772
     int utf32Count = 0;
     int utf8Upto = utf8.offset;
     final byte[] bytes = utf8.bytes;
@@ -477,7 +477,7 @@ public final class UnicodeUtil {
         throw new IllegalArgumentException("invalid utf8");
       }
 
-      // TODO: this may read past utf8's limit.
+      // TODO: this may read past utf8's limit. id:689 gh:690
       final int limit = utf8Upto + numBytes-1;
       while(utf8Upto < limit) {
         v = v << 6 | bytes[utf8Upto++]&63;
@@ -579,11 +579,11 @@ public final class UnicodeUtil {
    * Interprets the given byte array as UTF-8 and converts to UTF-16. It is the
    * responsibility of the caller to make sure that the destination array is large enough.
    * <p>
-   * NOTE: Full characters are read, even if this reads past the length passed (and
+   * NOTE: Full characters are read, even if this reads past the length passed (and id:1153 gh:1154
    * can result in an ArrayOutOfBoundsException if invalid UTF-8 is passed).
    * Explicit checks for valid UTF-8 are not performed. 
    */
-  // TODO: broken if chars.offset != 0
+  // TODO: broken if chars.offset != 0 id:631 gh:632
   public static int UTF8toUTF16(byte[] utf8, int offset, int length, char[] out) {
     int out_offset = 0;
     final int limit = offset + length;

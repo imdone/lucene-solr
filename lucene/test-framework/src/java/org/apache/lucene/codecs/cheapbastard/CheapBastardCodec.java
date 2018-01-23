@@ -21,11 +21,11 @@ import org.apache.lucene.codecs.PostingsFormat;
 import org.apache.lucene.util.TestUtil;
 
 /** Codec that tries to use as little ram as possible because he spent all his money on beer */
-// TODO: better name :) 
+// TODO: better name :)  id:1468 gh:1469
 // but if we named it "LowMemory" in codecs/ package, it would be irresistible like optimize()!
 public class CheapBastardCodec extends FilterCodec {
   
-  // TODO: would be better to have no terms index at all and bsearch a terms dict
+  // TODO: would be better to have no terms index at all and bsearch a terms dict id:1339 gh:1340
   private final PostingsFormat postings = TestUtil.getDefaultPostingsFormat(100, 200);
 
   public CheapBastardCodec() {

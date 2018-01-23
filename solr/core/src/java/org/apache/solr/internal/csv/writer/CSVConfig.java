@@ -241,7 +241,7 @@ public class CSVConfig {
     }
     
     /**
-     * TODO..
+     * TODO .. id:2813 gh:2813
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -257,7 +257,7 @@ public class CSVConfig {
 
     /**
      * Creates a config based on a stream. It tries to guess<br>
-     * NOTE : The stream will be closed.
+     * NOTE : The stream will be closed. id:1896 gh:1897
      * @param inputStream the inputstream. 
      * @return the guessed config. 
      */

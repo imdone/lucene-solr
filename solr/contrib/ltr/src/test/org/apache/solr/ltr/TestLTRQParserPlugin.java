@@ -88,7 +88,7 @@ public class TestLTRQParserPlugin extends TestRerankBase {
     query.add("rows", "4");
     query.add("fv", "true");
 
-    // FIXME: design better way to test this, we cannot check an absolute score
+    // FIXME: design better way to test this, we cannot check an absolute score id:1759 gh:1760
     // String nonRerankedScore = "0.09271725";
 
     // Normal solr order

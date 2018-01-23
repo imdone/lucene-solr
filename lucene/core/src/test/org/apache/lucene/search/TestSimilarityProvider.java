@@ -71,7 +71,7 @@ public class TestSimilarityProvider extends LuceneTestCase {
 
   public void testBasics() throws Exception {
     // sanity check of norms writer
-    // TODO: generalize
+    // TODO: generalize id:996 gh:997
     NumericDocValues fooNorms = MultiDocValues.getNormValues(reader, "foo");
     NumericDocValues barNorms = MultiDocValues.getNormValues(reader, "bar");
     for (int i = 0; i < reader.maxDoc(); i++) {

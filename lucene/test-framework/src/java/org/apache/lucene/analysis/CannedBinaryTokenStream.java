@@ -65,7 +65,7 @@ public final class CannedBinaryTokenStream extends TokenStream {
   public boolean incrementToken() {
     if (upto < tokens.length) {
       final BinaryToken token = tokens[upto++];     
-      // TODO: can we just capture/restoreState so
+      // TODO: can we just capture/restoreState so id:1317 gh:1318
       // we get all attrs...?
       clearAttributes();      
       termAtt.setBytesRef(token.term);

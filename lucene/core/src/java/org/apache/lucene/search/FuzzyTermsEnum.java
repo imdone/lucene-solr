@@ -45,7 +45,7 @@ import java.util.Arrays;
  */
 public final class FuzzyTermsEnum extends TermsEnum {
 
-  // NOTE: we can't subclass FilteredTermsEnum here because we need to sometimes change actualEnum:
+  // NOTE: we can't subclass FilteredTermsEnum here because we need to sometimes change actualEnum: id:628 gh:629
   private TermsEnum actualEnum;
   
   // We use this to communicate the score (boost) of the current matched term we are on back to
@@ -119,7 +119,7 @@ public final class FuzzyTermsEnum extends TermsEnum {
     this.dfaAtt = atts.addAttribute(LevenshteinAutomataAttribute.class);
     this.maxBoostAtt = atts.addAttribute(MaxNonCompetitiveBoostAttribute.class);
 
-    // NOTE: boostAtt must pulled from attributes() not from atts!  This is because TopTermsRewrite looks for boostAtt from this TermsEnum's
+    // NOTE: boostAtt must pulled from attributes() not from atts!  This is because TopTermsRewrite looks for boostAtt from this TermsEnum's id:642 gh:643
     // private attributes() and not the global atts passed to us from MultiTermQuery:
     this.boostAtt = attributes().addAttribute(BoostAttribute.class);
 
