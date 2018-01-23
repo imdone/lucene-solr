@@ -249,10 +249,9 @@ public class HttpPartitionTest extends AbstractFullDistribZkTestBase {
 
       System.clearProperty("solr.cloud.wait-for-updates-with-stale-state-pause");
       JettySolrRunner notLeaderJetty = getJettyOnPort(getReplicaPort(notLeaders.get(0)));
-      notLeaderJetty.stop();
-      //DOWNNODE will bring replica into DOWN state
-      waitForState(testCollectionName, notLeaders.get(0).getName(), DOWN, 10000);
-      notLeaderJetty.start();
+      ChaosMonkey.stop(notLeaderJetty);
+
+      ChaosMonkey.start(notLeaderJetty);
       ensureAllReplicasAreActive(testCollectionName, "shard1", 1, 2, 100);
       assertDocsExistInAllReplicas(notLeaders, testCollectionName, 1, 2);
     } finally {
